@@ -2,7 +2,7 @@
 
 import Foundation
 
-public extension URLRequest {
+extension URLRequest {
     /// Returns a cURL command for a request
     /// - return A String object that contains cURL command or "" if an URL is not properly initalized.
     public var cURLRepresentation: String {

@@ -49,7 +49,7 @@ let TMP: String = NSTemporaryDirectory()
                     let fileTime = fm[FileAttributeKey.creationDate] as? Date
                     let ourTime  = Date().addingTimeInterval(0)
                     
-                    if (fileTime?.timeIntervalSince(ourTime) < 86400) {
+                    if (fileTime?.timeIntervalSince(ourTime) ?? 99999 < Double(86400)) {
                         rimage = UIImage(contentsOfFile: fileStore)!
                     } else {
                         rimage = false
@@ -84,7 +84,7 @@ let TMP: String = NSTemporaryDirectory()
                     let fileTime = fm[FileAttributeKey.creationDate] as? Date
                     let ourTime  = Date().addingTimeInterval(0)
                     
-                    if (fileTime?.timeIntervalSince(ourTime) < 86400) {
+                    if (fileTime?.timeIntervalSince(ourTime) ?? 99999 < Double(86400)) {
                         rimage = UIImage(contentsOfFile: fileStore)!
                     } else {
                         // Download & Cache image

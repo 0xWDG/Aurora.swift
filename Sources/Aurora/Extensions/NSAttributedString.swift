@@ -4,7 +4,7 @@ import Foundation
 #if os(iOS)
 import UIKit
 
-public extension NSMutableAttributedString {
+extension NSMutableAttributedString {
     @discardableResult public func bold(_ text: String) -> NSMutableAttributedString {
         let attrs: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: UIFont.systemFontSize)]
         let boldString = NSMutableAttributedString(string: "\(text)", attributes: attrs)
