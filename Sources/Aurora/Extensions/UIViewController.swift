@@ -3,7 +3,7 @@
 #if os(iOS)
 import UIKit
 
-public extension UIViewController {
+extension UIViewController {
     public func canPerformSegue(withIdentifier id: String) -> Bool {
         guard let segues = UIApplication.shared.delegate?.window??.rootViewController?.value(forKey: "storyboardSegueTemplates") as? [NSObject] else { return false }
         return segues.first { $0.value(forKey: "identifier") as? String == id } != nil
@@ -15,14 +15,29 @@ public extension UIViewController {
         UIApplication.shared.delegate?.window??.rootViewController?.performSegue(withIdentifier: id, sender: sender)
     }
     
-   public func showInputDialog(title: String? = nil,
-                         subtitle: String? = nil,
-                         actionTitle: String? = "Add",
-                         cancelTitle: String? = "Cancel",
-                         inputPlaceholder: String? = nil,
-                         inputKeyboardType: UIKeyboardType = UIKeyboardType.default,
-                         cancelHandler: ((UIAlertAction) -> Swift.Void)? = nil,
-                         actionHandler: ((_ text: String?) -> Void)? = nil) {
+    public func openSegue(name: String?, sender: AnyObject? = nil) {
+        guard let name = name else {
+            BaaS.shared.log("No identifier given")
+            return
+        }
+        
+        if !canPerformSegue(withIdentifier: name) {
+            BaaS.shared.log("Segue \"\(name)\" is unreachable")
+            return
+        }
+        
+        UIApplication.shared.delegate?.window??.rootViewController?.performSegue(withIdentifier: name, sender: sender)
+        
+    }
+    
+    public func showInputDialog(title: String? = nil,
+                                subtitle: String? = nil,
+                                actionTitle: String? = "Add",
+                                cancelTitle: String? = "Cancel",
+                                inputPlaceholder: String? = nil,
+                                inputKeyboardType: UIKeyboardType = UIKeyboardType.default,
+                                cancelHandler: ((UIAlertAction) -> Swift.Void)? = nil,
+                                actionHandler: ((_ text: String?) -> Void)? = nil) {
         
         let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
         alert.addTextField { (textField:UITextField) in
