@@ -54,20 +54,6 @@ open class Aurora {
         iCloud.startSync()
     }
     
-    
-    /**
-     ?
-     */
-    @discardableResult
-    func log(_ message: String, file: String = #file, line: Int = #line, function: String = #function) -> Bool {
-        if (debug) {
-            let x: String = (file.split("/").last)!.split(".").first!
-            Swift.print("[Aurora.Framework] \(x):\(line) \(function):\n \(message)\n")
-        }
-        
-        return debug
-    }
-    
     #if canImport(CryptoKit)
     func md5(phrase: String) -> String {
         return phrase.md5
