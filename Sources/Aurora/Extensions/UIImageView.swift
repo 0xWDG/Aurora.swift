@@ -22,5 +22,7 @@ extension Bluring where Self: UIView {
     }
 }
 
+#if canImport(UIKit)
 // Conformance
-extension UIView: Bluring {}
+//extension UIView: Bluring {}
+#endif
