@@ -3,7 +3,7 @@
 #if os(iOS)
 import UIKit
 
-extension UIViewController {
+public extension UIViewController {
     public func canPerformSegue(withIdentifier id: String) -> Bool {
         guard let segues = UIApplication.shared.delegate?.window??.rootViewController?.value(forKey: "storyboardSegueTemplates") as? [NSObject] else { return false }
         return segues.first { $0.value(forKey: "identifier") as? String == id } != nil
