@@ -12,14 +12,13 @@ import AppKit
 #if canImport(CryptoKit)
 import CryptoKit
 #endif
-private var Aurora_Loaded: Bool = true
 
 open class Aurora {
     /**
      The shared instance of the "WDGWVFramework"
      - Parameter sharedInstance: The "WDGWVFramework" shared instance
      */
-    public static let shared = Aurora(!_isDebugAssertConfiguration())
+    public static let shared = Aurora()
     
     /**
      The version of WDGWVFramework
@@ -40,51 +39,33 @@ open class Aurora {
      This will setup iCloud sync!
      NSUserDefaults to iCloud & Back.
      */
-    public init(_ silent: Bool = false) {
-        self.log("Aurora Framework \(self.version) loaded")
+    public init(_ silent: Bool = true) {
         #if os(iOS)
-        self.log("Hello iOS")
-        #elseif os(OSX)
-        self.log("Hello OS X")
+        self.log("Aurora Framework for iOS \(self.version) loaded")
+        #elseif os(macOS)
+        self.log("Aurora Framework for Mac OS \(self.version) loaded")
         #elseif os(watchOS)
-        self.log("Hello  Watch")
+        self.log("Aurora Framework for WachtOS \(self.version) loaded")
         #elseif os(tvOS)
-        self.log("Hello  TV")
+        self.log("Aurora Framework for tvOS \(self.version) loaded")
         #endif
-        
-        self.log("_isDebugAssertConfiguration() = \(_isDebugAssertConfiguration())")
-        self.debug = silent
-        
+                
         let iCloud: WDGFrameworkiCloudSync = WDGFrameworkiCloudSync()
         iCloud.startSync()
     }
     
-    public func printif(_ str: Any, file: String = #file, line: Int = #line, function: String = #function) {
-        if (debug) {
-            let x: String = (file.split("/").last)!.split(".").first!
-            Swift.print("[DEBUG] \(x):\(line) \(function):\n \(str)\n")
-        }
-    }
     
     /**
      ?
      */
     @discardableResult
-    open func log(_ message: String, file: String = #file, line: Int = #line, function: String = #function) -> Bool {
+    func log(_ message: String, file: String = #file, line: Int = #line, function: String = #function) -> Bool {
         if (debug) {
             let x: String = (file.split("/").last)!.split(".").first!
-            Swift.print("[DEBUG] \(x):\(line) \(function):\n \(message)\n")
+            Swift.print("[Aurora.Framework] \(x):\(line) \(function):\n \(message)\n")
         }
         
-        return true
-    }
-    
-    /**
-     Is the framework loaded
-     - Returns: loaded or not (Bool)
-     */
-    open func loaded() -> Bool {
-        return Aurora_Loaded
+        return debug
     }
     
     #if canImport(CryptoKit)
