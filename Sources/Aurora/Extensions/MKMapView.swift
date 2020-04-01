@@ -4,7 +4,7 @@ import Foundation
 import MapKit
 
 extension MKMapView {
-    func newAnnotation(coordinate: CLLocationCoordinate2D, title: String, subtitle: String) {
+    public func newAnnotation(coordinate: CLLocationCoordinate2D, title: String, subtitle: String) {
         let x = MKPointAnnotation.init()
         x.title = title
         x.subtitle = subtitle
@@ -12,7 +12,7 @@ extension MKMapView {
         self.addAnnotation(x)
     }
     
-    func addAnnotation(coordinate: CLLocationCoordinate2D, title: String, subtitle: String) {
+    public func addAnnotation(coordinate: CLLocationCoordinate2D, title: String, subtitle: String) {
         let x = MKPointAnnotation.init()
         x.title = title
         x.subtitle = subtitle

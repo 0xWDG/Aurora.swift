@@ -8,7 +8,7 @@ open class ImageSlider {
     var imageHeight: Int
     var pageControl: UIPageControl
     var scrollView: UIScrollView
-    var colors: [UIColor] = [UIColor.red, UIColor.orange, UIColor.green, UIColor.yellow, UIColor.gray, UIColor.cyan, UIColor.clear, UIColor.brown, UIColor.black]
+    var colors: [UIColor] = [.red, .orange, .green, .yellow, .gray, .cyan, .clear, .brown, .black]
     
     public init(images: [UIImage?], view: UIViewController, pageControl: UIPageControl, scrollView: UIScrollView, height: Int? = Int.max) {
         self.images = images as! [UIImage]

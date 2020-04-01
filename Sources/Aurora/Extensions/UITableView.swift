@@ -4,7 +4,7 @@ import Foundation
 import UIKit
 
 extension UITableView {
-    func scrollToBottom_(animated: Bool) {
+    public func scrollToBottom_(animated: Bool) {
         let yPosition = (contentSize.height - frame.size.height) + 250
         if yPosition < 0 { return }
         

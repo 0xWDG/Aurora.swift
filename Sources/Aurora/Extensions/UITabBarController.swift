@@ -4,7 +4,7 @@ import Foundation
 import UIKit
 
 extension UITabBarController {
-    func select(withName: String) {
+    public func select(withName: String) {
         var currentIndex = 0
         
         guard let items = tabBar.items else {

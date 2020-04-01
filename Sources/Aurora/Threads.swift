@@ -8,7 +8,7 @@ infix operator ~>   // serial queue operator
  upon completion, the righthand closure on the main thread.
  Passes the background closure's output to the main closure.
  */
-func ~> (
+public func ~> (
     backgroundClosure: @escaping () -> (),
     mainClosure:       @escaping () -> ())
 {
@@ -19,7 +19,7 @@ func ~> (
         }
     }
 }
-func ~> <R> (
+public func ~> <R> (
     backgroundClosure:   @escaping () -> R,
     mainClosure:         @escaping (_ result: R) -> ())
 {
@@ -30,7 +30,7 @@ func ~> <R> (
         })
     }
 }
-func ~> (
+public func ~> (
     backgroundClosure:   @escaping () -> String,
     mainClosure:         @escaping (_ result: String) -> ())
 {
@@ -57,19 +57,19 @@ func ~> (
 private let serial_queue = DispatchQueue(label: "serial-worker")
 
 public extension Aurora {
-    func runInBackground(block: @escaping () -> Void) -> Void {
+    public func runInBackground(block: @escaping () -> Void) -> Void {
         DispatchQueue.global(qos: .background).async {
             block()
         }
     }
     
-    func runInForeground(block: @escaping () -> Void) -> Void {
+    public func runInForeground(block: @escaping () -> Void) -> Void {
         DispatchQueue.main.async(execute: {
             block()
         })
     }
     
-    func run(background: @escaping () -> String, foreground: @escaping (_ returning: String) -> Void) -> Void {
+    public func run(background: @escaping () -> String, foreground: @escaping (_ returning: String) -> Void) -> Void {
         DispatchQueue.global(qos: .background).async {
             let _result = background()
         
@@ -80,7 +80,7 @@ public extension Aurora {
         }
     }
     
-     func run(background: @escaping () -> Bool, foreground: @escaping (_ returning: Bool) -> Void) -> Void {
+     public func run(background: @escaping () -> Bool, foreground: @escaping (_ returning: Bool) -> Void) -> Void {
         DispatchQueue.global(qos: .background).async {
             let _result = background()
             
@@ -91,7 +91,7 @@ public extension Aurora {
         }
     }
     
-    func run(background: @escaping () -> Any, foreground: @escaping (_ returning: Any) -> Void) -> Void {
+    public func run(background: @escaping () -> Any, foreground: @escaping (_ returning: Any) -> Void) -> Void {
         DispatchQueue.global(qos: .background).async {
             let _result = background()
             

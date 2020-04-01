@@ -5,20 +5,20 @@ import Foundation
 import UIKit
 
 public extension NSMutableAttributedString {
-    @discardableResult func bold(_ text: String) -> NSMutableAttributedString {
+    @discardableResult public func bold(_ text: String) -> NSMutableAttributedString {
         let attrs: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: UIFont.systemFontSize)]
         let boldString = NSMutableAttributedString(string: "\(text)", attributes: attrs)
         self.append(boldString)
         return self
     }
     
-    @discardableResult func normal(_ text: String) -> NSMutableAttributedString {
+    @discardableResult public func normal(_ text: String) -> NSMutableAttributedString {
         let normal = NSAttributedString(string: text)
         self.append(normal)
         return self
     }
 
-    @discardableResult func changeColor(toColor: UIColor, backgroundColor: UIColor?) -> NSMutableAttributedString {
+    @discardableResult public func changeColor(toColor: UIColor, backgroundColor: UIColor?) -> NSMutableAttributedString {
         let attrs: [NSAttributedString.Key: Any] = [
             NSAttributedString.Key.foregroundColor: toColor,
             NSAttributedString.Key.backgroundColor: backgroundColor ?? UIColor.clear

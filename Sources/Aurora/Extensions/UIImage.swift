@@ -4,7 +4,7 @@ import Foundation
 #if os(iOS)
 import UIKit
 extension UIImage {
-    func imageResize (sizeChange:CGSize)-> UIImage{
+    public func imageResize (sizeChange:CGSize)-> UIImage{
         
         let hasAlpha = true
         let scale: CGFloat = 0.0 // Use scale factor of main screen
