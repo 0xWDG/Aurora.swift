@@ -6,7 +6,9 @@ import CloudKit
 private var WDGIiCloudSyncInProgress: Bool = false
 
 open class WDGFrameworkiCloudSync {
-    public static let shared:WDGFrameworkiCloudSync = WDGFrameworkiCloudSync()
+    public static let shared = WDGFrameworkiCloudSync()
+    private let keyValueStore = NSUbiquitousKeyValueStore
+    private let notificationCenter = NotificationCenter.default
     
     public init () {
         if (WDGIiCloudSyncInProgress == false) {
@@ -16,10 +18,22 @@ open class WDGFrameworkiCloudSync {
     }
     
     open func startSync ( ) {
-        if (NSUbiquitousKeyValueStore.default.isKind(of: NSUbiquitousKeyValueStore.self)) {
-            NotificationCenter.default.addObserver(self, selector: #selector(WDGFrameworkiCloudSync.fromCloud), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: nil)
-            NotificationCenter.default.addObserver(self, selector: #selector(WDGFrameworkiCloudSync.toCloud), name: UserDefaults.didChangeNotification, object: nil)
-            if (NSUbiquitousKeyValueStore.default.dictionaryRepresentation.count == 0) {
+        if (keyValueStore.default.isKind(of: keyValueStore.self)) {
+            notificationCenter.addObserver(
+                self,
+                selector: #selector(WDGFrameworkiCloudSync.fromCloud),
+                name: keyValueStore.didChangeExternallyNotification,
+                object: nil
+            )
+            
+            notificationCenter.addObserver(
+                self,
+                selector: #selector(WDGFrameworkiCloudSync.toCloud),
+                name: UserDefaults.didChangeNotification,
+                object: nil
+            )
+            
+            if (keyValueStore.default.dictionaryRepresentation.count == 0) {
                 self.toCloud()
             }
             self.fromCloud()
@@ -34,12 +48,15 @@ open class WDGFrameworkiCloudSync {
     }
     
     @objc private func fromCloud () {
-//        print("Getting from iCloud")
         // iCloud to a Dictionary
-        let dict: NSDictionary = NSUbiquitousKeyValueStore.default.dictionaryRepresentation as NSDictionary
+        let dict: NSDictionary = keyValueStore.default.dictionaryRepresentation as NSDictionary
         
         // Disable ObServer temporary...
-        NotificationCenter.default.removeObserver(self, name: UserDefaults.didChangeNotification, object: nil)
+        notificationCenter.removeObserver(
+            self,
+            name: UserDefaults.didChangeNotification,
+            object: nil
+        )
         
         // Enumerate & Duplicate
         dict.enumerateKeysAndObjects(options: []) { (key, value, pointer) -> Void in
@@ -50,30 +67,47 @@ open class WDGFrameworkiCloudSync {
         UserDefaults.standard.synchronize()
         
         // Enable ObServer
-        NotificationCenter.default.addObserver(self, selector: #selector(WDGFrameworkiCloudSync.toCloud), name: UserDefaults.didChangeNotification, object: nil)
+        notificationCenter.addObserver(
+            self,
+            selector: #selector(WDGFrameworkiCloudSync.toCloud),
+            name: UserDefaults.didChangeNotification,
+            object: nil
+        )
         
         // Post a super cool notification.
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "iCloudSyncDidUpdateToLatest"), object: nil)
+        notificationCenter.post(
+            name: Notification.Name(rawValue: "iCloudSyncDidUpdateToLatest"),
+            object: nil
+        )
     }
     
     @objc private func toCloud() {
-//        print("Going to iCloud")
+        //        print("Going to iCloud")
         // NSUserDefaults to a dictionary
         let dict: NSDictionary = UserDefaults.standard.dictionaryRepresentation() as NSDictionary
         
         // Disable ObServer temporary...
-        NotificationCenter.default.removeObserver(self, name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: nil)
+        notificationCenter.removeObserver(
+            self,
+            name: keyValueStore.didChangeExternallyNotification,
+            object: nil
+        )
         
         // Enumerate & Duplicate
         dict.enumerateKeysAndObjects() { (key, value, pointer) -> Void in
-            NSUbiquitousKeyValueStore.default.set(value, forKey: key as! String)
+            keyValueStore.default.set(value, forKey: key as! String)
         }
         
         // Sync!
-        NSUbiquitousKeyValueStore.default.synchronize()
+        keyValueStore.default.synchronize()
         
         // Enable ObServer
-        NotificationCenter.default.addObserver(self, selector: #selector(WDGFrameworkiCloudSync.fromCloud), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: nil)
+        notificationCenter.addObserver(
+            self,
+            selector: #selector(WDGFrameworkiCloudSync.fromCloud),
+            name: keyValueStore.didChangeExternallyNotification,
+            object: nil
+        )
     }
     
     fileprivate func unset ( ) {
@@ -81,8 +115,13 @@ open class WDGFrameworkiCloudSync {
         WDGIiCloudSyncInProgress = false
         
         // Disable ObServers
-        NotificationCenter.default.removeObserver(self, name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UserDefaults.didChangeNotification, object: nil)
+        notificationCenter.removeObserver(
+            self,
+            name: keyValueStore.didChangeExternallyNotification,
+            object: nil
+        )
+        
+        notificationCenter.removeObserver(self, name: keyValueStore.didChangeNotification, object: nil)
     }
     
     open func sync ( ) {
@@ -92,7 +131,7 @@ open class WDGFrameworkiCloudSync {
             self.startSync()
         } else {
             // Sync!
-            NSUbiquitousKeyValueStore.default.synchronize()
+            keyValueStore.default.synchronize()
         }
     }
     

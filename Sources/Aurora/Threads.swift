@@ -56,7 +56,7 @@ public func ~> (
 /** Serial dispatch queue used by the ~> operator. */
 private let serial_queue = DispatchQueue(label: "serial-worker")
 
-public extension Aurora {
+extension Aurora {
     public func runInBackground(block: @escaping () -> Void) -> Void {
         DispatchQueue.global(qos: .background).async {
             block()
@@ -64,9 +64,9 @@ public extension Aurora {
     }
     
     public func runInForeground(block: @escaping () -> Void) -> Void {
-        DispatchQueue.main.async(execute: {
+        DispatchQueue.main.async {
             block()
-        })
+        }
     }
     
     public func run(background: @escaping () -> String, foreground: @escaping (_ returning: String) -> Void) -> Void {
@@ -84,10 +84,10 @@ public extension Aurora {
         DispatchQueue.global(qos: .background).async {
             let _result = background()
             
-            DispatchQueue.main.async(execute: {
+            DispatchQueue.main.async {
                 foreground(_result)
                 
-            })
+            }
         }
     }
     
@@ -95,10 +95,9 @@ public extension Aurora {
         DispatchQueue.global(qos: .background).async {
             let _result = background()
             
-            DispatchQueue.main.async(execute: {
+            DispatchQueue.main.async {
                 foreground(_result)
-                
-            })
+            }
         }
     }
 

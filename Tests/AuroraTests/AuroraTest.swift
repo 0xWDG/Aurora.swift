@@ -12,6 +12,14 @@ class AuroraTest: XCTestCase {
 
     func testRegexFalse() {
         let regexMatch = "qqqqlxldddd" =~ "l(o|O)l"
-        XCTAssert(regexMatch != true)
+        XCTAssert(regexMatch != true, "Regex must fail")
+    }
+    
+    func testLocalLog() {
+        XCTAssert(log("This is a test"), "Should be true")
+    }
+
+    func testAuroraLog() {
+        XCTAssert(Aurora.shared.log("This is a test"), "Should be true")
     }
 }

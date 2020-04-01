@@ -6,27 +6,14 @@ import Foundation
 
 #if os(iOS)
 import UIKit
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
-
-let target_is_iOS:Bool = true
-    
-let TMP:String = NSTemporaryDirectory()
+let TMP: String = NSTemporaryDirectory()
     
     extension UIImage {
         //- (void) cacheImage: (NSString *) ImageURLString
         func cacheImage(_ image : String) {
-            let imageURL:URL = URL(string: image)!
-            let filename:String = String(describing: imageURL).md5
-            let fileStore:String = TMP + filename
+            let imageURL: URL = URL(string: image)!
+            let filename: String = String(describing: imageURL).md5
+            let fileStore: String = TMP + filename
             
             ((try? (try? Data(contentsOf: imageURL))?.write(to: URL(fileURLWithPath: fileStore), options: [.atomic])) as ()??)
         }
