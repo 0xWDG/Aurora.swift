@@ -1,11 +1,50 @@
 // $$HEADER$$
 
-import Foundation
-
-#if os(iOS)
 import UIKit
-import WebKit
+
 extension UILabel {
+    private struct AssociatedKeys {
+        static var padding = UIEdgeInsets()
+    }
+    
+    var padding: UIEdgeInsets? {
+        // swiftlint:disable:next implicit_getter
+        get {
+            return objc_getAssociatedObject(
+                self,
+                &AssociatedKeys.padding
+                ) as? UIEdgeInsets
+        }
+        set {
+            if let newValue = newValue {
+                objc_setAssociatedObject(
+                    self,
+                    &AssociatedKeys.padding,
+                    newValue as UIEdgeInsets,
+                    objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC
+                )
+            }
+        }
+    }
+    //&AssociatedKeys.padding, newValue as UIEdgeInsets!,
+    
+    override open func draw(_ rect: CGRect) {
+        if let insets = padding {
+            self.drawText(in: rect.inset(by: insets))
+        } else {
+            self.drawText(in: rect)
+        }
+    }
+    
+    override open var intrinsicContentSize: CGSize {
+        var contentSize = super.intrinsicContentSize
+        if let insets = padding {
+            contentSize.height += insets.top + insets.bottom
+            contentSize.width += insets.left + insets.right
+        }
+        return contentSize
+    }
+    
     open func HTMLString(_ text: String) {
         self.HTML(text)
     }
@@ -22,4 +61,3 @@ extension UILabel {
         self.attributedText = attrStr
     }
 }
-#endif
