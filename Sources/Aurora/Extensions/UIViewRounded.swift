@@ -6,7 +6,7 @@ import QuartzCore
 
 @IBDesignable
 class UIViewRounded: UIView {
-    /// First Gradient color
+    /// Radius for the UIViewRounded
     @IBInspectable public var radius: CGFloat = 24
     
     override func draw(_ rect: CGRect) {

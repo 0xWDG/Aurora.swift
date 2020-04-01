@@ -8,6 +8,7 @@ import CommonCrypto
  Extensions for Strings
  */
 public extension String {
+    /// MD5 hash of string
     var md5: String {
         get {
             let data = Data(utf8)
@@ -21,6 +22,7 @@ public extension String {
         }
     }
     
+    /// Lowercased and no spaces
     var lowerAndNoSpaces: String {
         get {
             return self.lowercased.replace(" ", withString: "")
