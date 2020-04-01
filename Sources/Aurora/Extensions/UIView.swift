@@ -2,7 +2,6 @@
 
 import Foundation
 import UIKit
-import BaaS
 
 extension UIView {
     func roundedCorners(radius: CGFloat? = 45) {
@@ -81,7 +80,7 @@ extension UIView {
             GestureClosures.right = completionHandler
             
         default:
-            BaaS.shared.log("Nothing")
+            return
         }
     }
     
