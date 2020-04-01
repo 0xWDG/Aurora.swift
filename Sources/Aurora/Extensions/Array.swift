@@ -3,6 +3,7 @@
 import Foundation
 
 extension Array {
+    /// A shuffeled Array
     public mutating func shuffle()
     {
         for _ in 0..<10

@@ -3,6 +3,7 @@
 import Foundation
 
 extension Int {
+    /// a.k.a. the JavaScript function
     public func toString(_ i: Int) -> String {
         if (i == 16) { // hexadecimal
             return String(format: "%2X", self).lowerAndNoSpaces
