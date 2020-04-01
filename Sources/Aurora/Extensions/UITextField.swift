@@ -5,7 +5,7 @@ import UIKit
 
 extension UITextField {
     // swiftlint:disable implicit_getter valid_ibinspectable
-    @IBInspectable var doneAccessory: Bool {
+    @IBInspectable public var doneAccessory: Bool {
         get {
             return self.doneAccessory
         }
@@ -17,7 +17,7 @@ extension UITextField {
     }
     // swiftlint:enable implicit_getter valid_ibinspectable
     
-    func addDoneButtonOnKeyboard() {
+    public func addDoneButtonOnKeyboard() {
         let doneToolbar: UIToolbar = UIToolbar().configure {
             $0.frame = CGRect.init(
                 x: 0,
@@ -53,7 +53,7 @@ extension UITextField {
         self.resignFirstResponder()
     }
     
-    func addShowPasswordButton(with icon: String? = "👁️") {
+    public func addShowPasswordButton(with icon: String? = "👁️") {
         let rightButton = UIButton(type: .custom)
         rightButton.setTitle(icon, for: .normal)
         

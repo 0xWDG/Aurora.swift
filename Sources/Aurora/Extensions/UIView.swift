@@ -4,11 +4,11 @@ import Foundation
 import UIKit
 
 extension UIView {
-    func roundedCorners(radius: CGFloat? = 45) {
+    public func roundedCorners(radius: CGFloat? = 45) {
         self.layer.cornerRadius = radius ?? 46
     }
     
-    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+    public func roundCorners(corners: UIRectCorner, radius: CGFloat) {
         let path = UIBezierPath(
             roundedRect: bounds,
             byRoundingCorners: corners,
@@ -24,7 +24,7 @@ extension UIView {
         layer.masksToBounds = true
     }
     
-    func gradientBackground(colorOne: UIColor, colorTwo: UIColor) {
+    public func gradientBackground(colorOne: UIColor, colorTwo: UIColor) {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds
         gradientLayer.colors = [colorOne.cgColor, colorTwo.cgColor]
@@ -34,7 +34,7 @@ extension UIView {
         layer.insertSublayer(gradientLayer, at: 0)
     }
     
-    func addGradientOnForeground(colorOne: UIColor, colorTwo: UIColor) {
+    public func addGradientOnForeground(colorOne: UIColor, colorTwo: UIColor) {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds
         gradientLayer.colors = [colorOne.cgColor, colorTwo.cgColor]
@@ -45,7 +45,7 @@ extension UIView {
         layer.insertSublayer(gradientLayer, at: UInt32(truncating: intVal! as NSNumber))
     }
     
-    func removeLastSubview() {
+    public func removeLastSubview() {
         let intVal = (layer.sublayers?.count)! - 1
         layer.sublayers?.remove(at: intVal)
     }
@@ -57,7 +57,7 @@ extension UIView {
         static var right: (() -> Void)?
     }
     
-    func swipeAction(
+    public func swipeAction(
         swipeDirection: UISwipeGestureRecognizer.Direction,
         completionHandler: @escaping () -> Void
     ) {
@@ -118,12 +118,12 @@ extension UIView {
     }
 }
 
-protocol Blurable {
+public protocol Blurable {
     func addBlur(_ alpha: CGFloat)
 }
 
 extension Blurable where Self: UIView {
-    func addBlur(_ alpha: CGFloat = 0.5) {
+    public func addBlur(_ alpha: CGFloat = 0.5) {
         // create effect
         let effect = UIBlurEffect(style: .dark)
         let effectView = UIVisualEffectView(effect: effect)

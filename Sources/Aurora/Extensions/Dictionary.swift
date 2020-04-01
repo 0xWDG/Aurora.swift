@@ -5,7 +5,7 @@ import Foundation
 
 /// Support Dynamic Member Lookups for a Dictionary.
 @dynamicMemberLookup
-protocol DictionaryDynamicLookup {
+public protocol DictionaryDynamicLookup {
     /// We have a  "Key"
     associatedtype Key
     
@@ -18,7 +18,7 @@ protocol DictionaryDynamicLookup {
 }
 
 // Extend, if key equals the string (so dict["Key"] exists.
-extension DictionaryDynamicLookup where Key == String {
+public extension DictionaryDynamicLookup where Key == String {
     // then return the value (optional, conform Dictionary protocol, not needed, but still required)
     subscript(dynamicMember member: String) -> Value? {
         // return our member

@@ -5,7 +5,7 @@ import Foundation
 
 // MARK: ...
 private var WDGWVFrameworkWebDebug : Bool = false
-class SimpleTimer {/*<--was named Timer, but since swift 3, NSTimer is now Timer*/
+open class SimpleTimer {/*<--was named Timer, but since swift 3, NSTimer is now Timer*/
     typealias Tick = () -> Void
     var timer: Timer?
     var interval: TimeInterval /*in seconds*/

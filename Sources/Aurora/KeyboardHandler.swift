@@ -19,13 +19,13 @@ import UIKit
 ///
 /// _WARNING, do not use if the input field is on the upper-part of the screen,
 /// there's no protection for such things built-in._
-class KeyboardHandler {
+public class KeyboardHandler {
     /// Fixes the issue for screens being to small and that inputfields will be gone!
     ///
     ///     keyboardHandler(forViewController: self)
     ///
     /// - Parameter forViewController: Viewcontroller (mostly `self`)
-    @discardableResult init(forViewController: UIViewController) {
+    @discardableResult public init(forViewController: UIViewController) {
         // Add a notification handler for 'keyboard will show'
         _ = NotificationCenter.default.addObserver(
             forName: UIResponder.keyboardWillShowNotification,

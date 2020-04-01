@@ -3,7 +3,7 @@
 import Foundation
 
 extension Array {
-    mutating func shuffle()
+    public mutating func shuffle()
     {
         for _ in 0..<10
         {

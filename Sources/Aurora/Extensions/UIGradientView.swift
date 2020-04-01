@@ -4,9 +4,9 @@ import UIKit
 import QuartzCore
 
 @IBDesignable
-class UIGradientView: UIView {
+public class UIGradientView: UIView {
     /// Light color | First Gradient color
-    @IBInspectable var lightFirstColor: UIColor = UIColor.init(
+    @IBInspectable public var lightFirstColor: UIColor = UIColor.init(
         red: 0.439216,
         green: 0.74902,
         blue: 0.254902,
@@ -14,7 +14,7 @@ class UIGradientView: UIView {
     )
     
     /// Light color: Second Gradient color
-    @IBInspectable var lightSecondColor: UIColor = UIColor.init(
+    @IBInspectable public var lightSecondColor: UIColor = UIColor.init(
         red: 0.0117647,
         green: 0.396078,
         blue: 0.752941,
@@ -22,7 +22,7 @@ class UIGradientView: UIView {
     )
     
     /// Dark mode | First Gradient color
-    @IBInspectable var darkFirstColor: UIColor = UIColor.init(
+    @IBInspectable public var darkFirstColor: UIColor = UIColor.init(
         red: 0,
         green: 204 / 255,
         blue: 68 / 255,
@@ -30,7 +30,7 @@ class UIGradientView: UIView {
     )
     
     /// Dark mode | Second Gradient color
-    @IBInspectable var darkSecondColor: UIColor = UIColor.init(
+    @IBInspectable public var darkSecondColor: UIColor = UIColor.init(
         red: 0,
         green: 0,
         blue: 1,
@@ -38,13 +38,13 @@ class UIGradientView: UIView {
     )
     
     /// Start point
-    @IBInspectable var startPoint: CGPoint = CGPoint(
+    @IBInspectable public var startPoint: CGPoint = CGPoint(
         x: 0.0,
         y: 0.0
     )
     
     /// End point
-    @IBInspectable var endPoint: CGPoint = CGPoint(
+    @IBInspectable public var endPoint: CGPoint = CGPoint(
         x: 0.5,
         y: 1.2
     )
@@ -56,14 +56,14 @@ class UIGradientView: UIView {
     private var _oldOrientation = UIDevice.current.orientation
     
     /// Somethings have changed, if it is the orientation, then update
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         if (_oldOrientation != UIDevice.current.orientation) {
             updateBackground(rect: frame)
         }
     }
     
     /// Draw the background
-    override func draw(_ rect: CGRect) {
+    public override func draw(_ rect: CGRect) {
         super.draw(rect)
         
         // Create our gradient layer

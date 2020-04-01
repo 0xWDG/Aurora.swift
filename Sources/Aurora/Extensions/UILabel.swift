@@ -7,7 +7,7 @@ extension UILabel {
         static var padding = UIEdgeInsets()
     }
     
-    var padding: UIEdgeInsets? {
+    public var padding: UIEdgeInsets? {
         // swiftlint:disable:next implicit_getter
         get {
             return objc_getAssociatedObject(
@@ -45,11 +45,11 @@ extension UILabel {
         return contentSize
     }
     
-    open func HTMLString(_ text: String) {
+    public func HTMLString(_ text: String) {
         self.HTML(text)
     }
 
-    open func HTML(_ text: String) {
+    public func HTML(_ text: String) {
         let attrStr = try! NSAttributedString(
             data: text.data(using: String.Encoding(rawValue: String.Encoding.unicode.rawValue), allowLossyConversion: true)!,
             options: [

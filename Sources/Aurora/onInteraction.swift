@@ -20,7 +20,7 @@ extension UIControl {
     ///     myControlElement.onInteraction { sender in
     ///        print(sender)
     ///     }
-    func onInteraction(
+    public func onInteraction(
         for controlEvents: UIControl.Event = .primaryActionTriggered,
         action: @escaping (AnyObject) -> Void
     ) {
@@ -40,7 +40,7 @@ extension UIControl {
 class UIControlHelper {
     let closure: (AnyObject) -> Void
     
-    init(attachTo: AnyObject, closure: @escaping (AnyObject) -> Void) {
+    public init(attachTo: AnyObject, closure: @escaping (AnyObject) -> Void) {
         self.closure = closure
         objc_setAssociatedObject(
             attachTo,
@@ -86,7 +86,7 @@ extension NSControl {
     ///     myControlElement.onInteraction { sender in
     ///        print(sender)
     ///     }
-    var onInteraction: ActionClosure? {
+    public var onInteraction: ActionClosure? {
         // swiftlint:disable:next implicit_getter
         get {
             return AssociatedKeys.onActionClosure[self]

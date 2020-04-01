@@ -4,12 +4,12 @@ import Foundation
 import UIKit
 
 @IBDesignable
-class UIGreenButton: UIButton {
+public class UIGreenButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
-    override func awakeFromNib() {
+    public override func awakeFromNib() {
         super.awakeFromNib()
         
         setTitleColor(.white, for: .normal)
