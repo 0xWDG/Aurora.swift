@@ -1,6 +1,7 @@
 // $$HEADER$$
 
 import Foundation
+import UIKit
 
 protocol Bluring {
     func addBlur(_ alpha: CGFloat)
