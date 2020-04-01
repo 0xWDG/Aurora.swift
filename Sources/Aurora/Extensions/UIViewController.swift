@@ -17,12 +17,10 @@ extension UIViewController {
     
     public func openSegue(name: String?, sender: AnyObject? = nil) {
         guard let name = name else {
-            BaaS.shared.log("No identifier given")
             return
         }
         
         if !canPerformSegue(withIdentifier: name) {
-            BaaS.shared.log("Segue \"\(name)\" is unreachable")
             return
         }
         
