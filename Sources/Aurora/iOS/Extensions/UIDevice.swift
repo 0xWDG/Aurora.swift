@@ -1,6 +1,8 @@
 // $$HEADER$$
 
 import Foundation
+
+#if canImport(UIKit)
 import UIKit
 
 extension UIDevice {
@@ -8,3 +10,4 @@ extension UIDevice {
         return (UIDevice.current.model.range(of: "iPad") != nil)
     }
 }
+#endif

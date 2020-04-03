@@ -4,7 +4,7 @@
 import Foundation
 
 // MARK: ...
-private var WDGWVFrameworkWebDebug : Bool = false
+private var AuroraFrameworkWebDebug : Bool = false
 open class SimpleTimer {/*<--was named Timer, but since swift 3, NSTimer is now Timer*/
     typealias Tick = () -> Void
     var timer: Timer?
@@ -329,6 +329,6 @@ extension Aurora {
      - Parameter debugVal: Debugmode on/off
      */
     open func setDebug(_ debugVal:Bool) {
-        WDGWVFrameworkWebDebug = debugVal
+        AuroraFrameworkWebDebug = debugVal
     }
 }
