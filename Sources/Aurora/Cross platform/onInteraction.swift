@@ -4,7 +4,7 @@ import Foundation
 import UIKit
 
 #if canImport(UIKit)
-extension UIControl {
+public extension UIControl {
     /// .onInteraction
     ///
     /// Do something on interaction
@@ -20,7 +20,7 @@ extension UIControl {
     ///     myControlElement.onInteraction { sender in
     ///        print(sender)
     ///     }
-    public func onInteraction(
+    func onInteraction(
         for controlEvents: UIControl.Event = .primaryActionTriggered,
         action: @escaping (AnyObject) -> Void
     ) {
@@ -37,7 +37,7 @@ extension UIControl {
     }
 }
 
-class UIControlHelper {
+public class UIControlHelper {
     let closure: (AnyObject) -> Void
     
     public init(attachTo: AnyObject, closure: @escaping (AnyObject) -> Void) {
@@ -59,7 +59,7 @@ class UIControlHelper {
 #if canImport(AppKit)
 // see https://gist.github.com/sindresorhus/3580ce9426fff8fafb1677341fca4815
 // renamed onAction to onInteraction
-extension NSControl {
+public extension NSControl {
     typealias ActionClosure = ((NSControl) -> Void)
     
     private struct AssociatedKeys {
