@@ -2,6 +2,7 @@
 
 import Foundation
 
+#if os(iOS)
 extension Bundle {
     /// Version number
     public var releaseVersionNumber: String? {
@@ -13,3 +14,4 @@ extension Bundle {
         return self.infoDictionary?["CFBundleVersion"] as? String
     }
 }
+#endif

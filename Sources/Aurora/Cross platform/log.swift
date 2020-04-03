@@ -5,6 +5,7 @@
 //  Created by Wesley de Groot on 01/04/2020.
 //
 
+#if canImport(Foundation)
 import Foundation
 
 /**
@@ -32,3 +33,4 @@ public func log(_ message: Any, file: String = #file, line: Int = #line, functio
     
     return _isDebugAssertConfiguration()
 }
+#endif

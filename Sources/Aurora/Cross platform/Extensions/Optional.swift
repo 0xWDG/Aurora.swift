@@ -1,6 +1,8 @@
 // $$HEADER$$
 
+#if canImport(Foundation)
 import Foundation
+
 public struct NilError: Error, CustomStringConvertible {
     let file: String
     let line: Int
@@ -23,3 +25,4 @@ extension Optional {
         return result
     }
 }
+#endif

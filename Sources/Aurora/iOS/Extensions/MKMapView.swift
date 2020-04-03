@@ -1,6 +1,10 @@
 // $$HEADER$$
 
+#if canImport(Foundation)
 import Foundation
+#endif
+
+#if canImport(MapKit)
 import MapKit
 
 extension MKMapView {
@@ -30,3 +34,4 @@ extension MKMapView {
         self.addAnnotation(x)
     }
 }
+#endif

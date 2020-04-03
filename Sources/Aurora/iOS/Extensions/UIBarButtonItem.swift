@@ -1,6 +1,8 @@
 // $$HEADER$$
 
 import Foundation
+
+#if canImport(UIKit)
 import UIKit
 
 extension UIBarButtonItem {
@@ -18,3 +20,4 @@ extension UIBarButtonItem {
         return view
     }
 }
+#endif

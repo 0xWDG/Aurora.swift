@@ -3,12 +3,7 @@
 #if os(iOS)
 import UIKit
 
-extension UIViewController {
-    ///  Get class name
-    public var className: String {
-        return NSStringFromClass(self.classForCoder)
-    }
-    
+extension UIViewController {  
     /// Can i perform a segue?
     /// - Parameter id: segue name
     /// - Returns: boolean

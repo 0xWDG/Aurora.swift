@@ -1,5 +1,6 @@
 // $$HEADER$$
 
+#if canImport(UIKit)
 import UIKit
 
 @IBDesignable extension UIButton {
@@ -62,4 +63,4 @@ import UIKit
     }
 }
 
-//// https://stackoverflow.com/questions/28854469/change-uibutton-bordercolor-in-storyboard
+#endif
