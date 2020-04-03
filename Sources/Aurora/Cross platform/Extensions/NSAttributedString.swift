@@ -11,7 +11,7 @@ public extension NSMutableAttributedString {
     /// Make a string **bold**
     /// - Parameter text: The text what needs to be bold
     /// - Returns: a bold NSAttributedString
-    @discardableResult public func bold(_ text: String) -> NSMutableAttributedString {
+    @discardableResult func bold(_ text: String) -> NSMutableAttributedString {
         let attrs: [NSAttributedString.Key: Any] = [
             .font: UIFont.boldSystemFont(
                 ofSize: UIFont.systemFontSize
@@ -30,7 +30,7 @@ public extension NSMutableAttributedString {
     /// Make a string "normal"
     /// - Parameter text: The text what needs to be "normal"
     /// - Returns: a bold NSAttributedString
-    @discardableResult public func normal(_ text: String) -> NSMutableAttributedString {
+    @discardableResult func normal(_ text: String) -> NSMutableAttributedString {
         let normal = NSAttributedString(string: text)
         self.append(normal)
         return self
@@ -40,7 +40,7 @@ public extension NSMutableAttributedString {
     ///   - toColor: text color
     ///   - backgroundColor: background color
     /// - Returns: a bold NSAttributedString
-    @discardableResult public func changeColor(toColor: UIColor, backgroundColor: UIColor?) -> NSMutableAttributedString {
+    @discardableResult func changeColor(toColor: UIColor, backgroundColor: UIColor?) -> NSMutableAttributedString {
         let attrs: [NSAttributedString.Key: Any] = [
             .foregroundColor: toColor,
             .backgroundColor: backgroundColor ?? UIColor.clear

@@ -9,18 +9,18 @@ extension Aurora {
         }
     }
 
-    public func runOn(main: @escaping ()->()) {
+    public func runOn(main: @escaping () -> Void) {
         DispatchQueue.main.async {
             main()
         }
     }
     
-    public func runOn(background: @escaping ()->()) {
+    public func runOn(background: @escaping () -> Void) {
         DispatchQueue.global().async {
             background()
         }
     }
-    public func delay(_ delay:Double, closure:@escaping ()->()) {
+    public func delay(_ delay:Double, closure:@escaping () -> Void) {
         let when = DispatchTime.now() + delay
         DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
     }

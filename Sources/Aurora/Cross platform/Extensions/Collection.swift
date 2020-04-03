@@ -9,7 +9,7 @@ extension Collection {
     ///   - try: The index of the element.
     @inlinable
     public subscript(try index: Index) -> Element? {
-        indices.contains(index) ? self[index] : nil
+        indices.contains(index) ? self[index]: nil
     }
 }
 

@@ -4,7 +4,7 @@
 import Foundation
 
 // MARK: ...
-private var AuroraFrameworkWebDebug : Bool = false
+private var AuroraFrameworkWebDebug: Bool = false
 open class SimpleTimer {/*<--was named Timer, but since swift 3, NSTimer is now Timer*/
     typealias Tick = () -> Void
     var timer: Timer?

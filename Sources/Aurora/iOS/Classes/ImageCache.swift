@@ -2,15 +2,13 @@
 
 import Foundation
 
-
-
 #if os(iOS)
 import UIKit
 let TMP: String = NSTemporaryDirectory()
     
     extension UIImage {
         //- (void) cacheImage: (NSString *) ImageURLString
-        func cacheImage(_ image : String) {
+        func cacheImage(_ image: String) {
             let imageURL: URL = URL(string: image)!
             let filename: String = String(describing: imageURL).md5
             let fileStore: String = TMP + filename
