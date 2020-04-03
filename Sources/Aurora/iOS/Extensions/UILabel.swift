@@ -8,7 +8,6 @@ extension UILabel {
     }
     
     public var padding: UIEdgeInsets? {
-        // swiftlint:disable:next implicit_getter
         get {
             return objc_getAssociatedObject(
                 self,

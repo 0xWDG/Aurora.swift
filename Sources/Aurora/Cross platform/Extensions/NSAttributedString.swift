@@ -48,7 +48,7 @@ public extension NSMutableAttributedString {
         
         self.addAttributes(
             attrs,
-            range: NSMakeRange(0, self.string.count)
+            range: NSRange(location: 0, length: self.string.count)
         )
         
         return self

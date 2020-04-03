@@ -24,7 +24,7 @@ public func ~> <R> (backgroundClosure:   @escaping () -> R, mainClosure: @escapi
         })
     }
 }
-public func ~> (backgroundClosure: @escaping () -> String, mainClosure: @escaping (_ result: String) -> ()) {
+public func ~> (backgroundClosure: @escaping () -> String, mainClosure: @escaping (_ result: String) -> Void) {
     serialQueue.async {
         let result = backgroundClosure()
         DispatchQueue.main.async(execute: {

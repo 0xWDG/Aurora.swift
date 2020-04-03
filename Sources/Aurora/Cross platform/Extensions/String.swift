@@ -33,23 +33,19 @@ public extension String {
     
     /// MD5 hash of string
     var md5: String {
-        get {
-            let data = Data(utf8)
-            var hash = [UInt8](repeating: 0, count: Int(CC_MD5_DIGEST_LENGTH))
-            
-            data.withUnsafeBytes { buffer in
-                _ = CC_MD5(buffer.baseAddress, CC_LONG(buffer.count), &hash)
-            }
-            
-            return hash.map { String(format: "%02hhx", $0) }.joined()
+        let data = Data(utf8)
+        var hash = [UInt8](repeating: 0, count: Int(CC_MD5_DIGEST_LENGTH))
+        
+        data.withUnsafeBytes { buffer in
+            _ = CC_MD5(buffer.baseAddress, CC_LONG(buffer.count), &hash)
         }
+        
+        return hash.map { String(format: "%02hhx", $0) }.joined()
     }
     
     /// Lowercased and no spaces
     var lowerAndNoSpaces: String {
-        get {
-            return self.lowercased.replace(" ", withString: "")
-        }
+        return self.lowercased.replace(" ", withString: "")
     }
     
     /// Checks if string is empty or consists only of whitespace and newline characters
@@ -368,7 +364,7 @@ public extension String {
             "&spades;": "\u{2660}",
             "&clubs;": "\u{2663}",
             "&hearts;": "\u{2665}",
-            "&diams;": "\u{2666}",
+            "&diams;": "\u{2666}"
         ]
     }
     
@@ -654,10 +650,9 @@ public extension String {
             .joined(separator: " ")
     }
     
-    func times(_ n: Int) -> String {
-        //        return (0..<n).reduce("") {$0 + self}
+    func times(_ num: Int) -> String {
         var returnString = ""
-        for _ in stride(from: 0, to: n, by: 1) {
+        for _ in stride(from: 0, to: num, by: 1) {
             returnString += self
         }
         return returnString
@@ -678,9 +673,9 @@ public extension String {
     }
     
     func toDouble(_ locale: Locale = Locale.current) -> Double? {
-        let nf = NumberFormatter()
-        nf.locale = locale as Locale
-        if let number = nf.number(from: self) {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.locale = locale as Locale
+        if let number = numberFormatter.number(from: self) {
             return number.doubleValue
         }
         return nil
@@ -839,8 +834,6 @@ public extension String {
         }
     }
     func UcharCodeAt(_ character: Int) -> UInt {
-        // ok search for the character...
-        
         if (self.length > Int(character)) {
             let character = String(self.characterAtIndex(Int(character)))
             return UInt(String(character.unicodeScalars.first!.value))!
@@ -1020,7 +1013,7 @@ public extension String {
                 ],
                 documentAttributes: nil
             )
-                  } catch {
+        } catch {
             return NSAttributedString()
         }
     }
@@ -1168,13 +1161,16 @@ public extension String {
     #if canImport(Foundation)
     /// Check if string is valid email format.
     ///
-    /// - Note: Note that this property does not validate the email address against an email server. It merely attempts to determine whether its format is suitable for an email address.
+    /// - Note: Note that this property does not validate the email address against an email server.
+    /// It merely attempts to determine whether its format is suitable for an email address.
     ///
     ///        "john@doe.com".isValidEmail -> true
     ///
     var isValidEmail: Bool {
         // http://emailregex.com/
+        // swiftlint:disable:next line_length
         let regex = "^(?:[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[\\p{L}0-9](?:[a-z0-9-]*[\\p{L}0-9])?\\.)+[\\p{L}0-9](?:[\\p{L}0-9-]*[\\p{L}0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[\\p{L}0-9-]*[\\p{L}0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+        
         return range(of: regex, options: .regularExpression, range: nil, locale: nil) != nil
     }
     #endif
@@ -1348,9 +1344,9 @@ public extension String {
         guard length > 0 else { return "" }
         
         // https://www.lipsum.com/
-        let loremIpsum = """
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        """
+        // swiftlint:disable:next line_length
+        let loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        
         if loremIpsum.count > length {
             return String(loremIpsum[loremIpsum.startIndex..<loremIpsum.index(loremIpsum.startIndex, offsetBy: length)])
         }

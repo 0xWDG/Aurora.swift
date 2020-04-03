@@ -51,7 +51,7 @@ extension Aurora {
         )
         
         let task = session.dataTask(with: request, completionHandler: {
-            (data, response,  _) -> Void in
+            (data, response, _) -> Void in
             
             self.log("Got response")
             
@@ -106,8 +106,7 @@ extension Aurora {
                 )
                 
                 return myHTMLString as String
-            }
-            catch _ {
+            } catch _ {
                 do {
                     let myHTMLString = try NSString(
                         contentsOf: url,
@@ -115,8 +114,7 @@ extension Aurora {
                     )
                     
                     return myHTMLString as String
-                }
-                catch _ {
+                } catch _ {
                     do {
                         let myHTMLString = try NSString(
                             contentsOf: url,
@@ -124,8 +122,7 @@ extension Aurora {
                         )
                         
                         return myHTMLString as String
-                    }
-                    catch _ {
+                    } catch _ {
                         do {
                             let myHTMLString = try NSString(
                                 contentsOf: url,
@@ -133,8 +130,7 @@ extension Aurora {
                             )
                             
                             return myHTMLString as String
-                        }
-                        catch {
+                        } catch {
                             do {
                                 let myHTMLString = try NSString(
                                     contentsOf: url,
@@ -142,8 +138,7 @@ extension Aurora {
                                 )
                                 
                                 return myHTMLString as String
-                            }
-                            catch let error {
+                            } catch let error {
                                 if (returnString != "") {
                                     return returnString
                                 }
@@ -192,7 +187,7 @@ extension Aurora {
                 request.httpBody = httpBody.data(using: .utf8)
                 
                 let session = URLSession.shared
-                session.dataTask(with: request) { (sitedata, response, error) in
+                session.dataTask(with: request) { (sitedata, _, _) in
                     if let sitedata = sitedata {
                         data = String(data: sitedata, encoding: .utf8)!
                         waiting = false
@@ -226,7 +221,11 @@ extension Aurora {
             var error: NSError?
             
             if (String(describing: error) == "fuckswifterrors") {
-                error = NSError(domain: "this", code: 89, userInfo: ["n":"o","n":"e"])
+                error = NSError(
+                    domain: "this",
+                    code: 89,
+                    userInfo: ["n": "o", "n": "e"]
+                )
             }
             
             if (post == ["nothing": "send"]) {
@@ -254,7 +253,7 @@ extension Aurora {
                 request.httpBody = httpBody.data(using: .utf8)
                 
                 let session = URLSession.shared
-                session.dataTask(with: request) { (sitedata, response, error) in
+                session.dataTask(with: request) { (sitedata, _, _) in
                     if let sitedata = sitedata {
                         data = sitedata
                         waiting = false
@@ -276,7 +275,6 @@ extension Aurora {
         }
     }
     
-    
     /**
      Remove all html elements from a string
      
@@ -286,12 +284,11 @@ extension Aurora {
      */
     open func removeHTML(_ html: String) -> String {
         do {
-            let regex:NSRegularExpression = try NSRegularExpression(pattern: "<.*?>", options: NSRegularExpression.Options.caseInsensitive)
-            let range = NSMakeRange(0, html.count)
-            let htmlLessString :String = regex.stringByReplacingMatches(in: html, options: [], range:range, withTemplate: "")
+            let regex: NSRegularExpression = try NSRegularExpression(pattern: "<.*?>", options: NSRegularExpression.Options.caseInsensitive)
+            let range = NSRange(location: 0, length: html.count)
+            let htmlLessString: String = regex.stringByReplacingMatches(in: html, options: [], range: range, withTemplate: "")
             return htmlLessString
-        }
-        catch {
+        } catch {
             print("Failed to parse HTML String")
             return html
         }
@@ -328,7 +325,7 @@ extension Aurora {
      
      - Parameter debugVal: Debugmode on/off
      */
-    open func setDebug(_ debugVal:Bool) {
+    open func setDebug(_ debugVal: Bool) {
         AuroraFrameworkWebDebug = debugVal
     }
 }
