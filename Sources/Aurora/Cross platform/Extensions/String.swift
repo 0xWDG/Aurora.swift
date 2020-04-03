@@ -499,11 +499,12 @@ public extension String {
      - returns: The string between the two bookends, or nil if the bookends cannot be found, the bookends are the same or appear contiguously.
      */
     func between(_ left: String, _ right: String) -> String? {
-        guard let leftRange = range(of: left), let rightRange = range(of: right, options: .backwards), left != right && leftRange.upperBound != rightRange.lowerBound
+        guard let leftRange = range(of: left),
+            let rightRange = range(of: right, options: .backwards),
+            left != right && leftRange.upperBound != rightRange.lowerBound
             else {
                 return nil
         }
-        
         
         //        return self[leftRange.upperBound...(before: rightRange.lowerBound)]
         return self
@@ -613,16 +614,16 @@ public extension String {
         return elements.map {String(describing: $0)}.joined(separator: self)
     }
     
-    func pad(_ n: Int, _ string: String = " ") -> String {
-        return "".join([string.times(n), self, string.times(n)])
+    func pad(_ num: Int, _ string: String = " ") -> String {
+        return "".join([string.times(num), self, string.times(num)])
     }
     
-    func padLeft(_ n: Int, _ string: String = " ") -> String {
-        return "".join([string.times(n), self])
+    func padLeft(_ num: Int, _ string: String = " ") -> String {
+        return "".join([string.times(num), self])
     }
     
-    func padRight(_ n: Int, _ string: String = " ") -> String {
-        return "".join([self, string.times(n)])
+    func padRight(_ num: Int, _ string: String = " ") -> String {
+        return "".join([self, string.times(num)])
     }
     
     mutating func slugify() -> String {
@@ -994,9 +995,8 @@ public extension String {
         return returnValue
     }
     
-    
-    subscript (i: Int) -> String {
-        return String(self[i] as Character)
+    subscript (idx: Int) -> String {
+        return String(self[idx] as Character)
     }
     
     //    /**
@@ -1020,8 +1020,7 @@ public extension String {
                 ],
                 documentAttributes: nil
             )
-            
-        }catch{
+                  } catch {
             return NSAttributedString()
         }
     }
