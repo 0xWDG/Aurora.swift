@@ -485,7 +485,7 @@ public extension String {
      */
     subscript(range: CountableClosedRange<Int>) -> String {
         let startIndex = self.index(self.startIndex, offsetBy: range.lowerBound)
-        let endIndex = self.index(self.startIndex, offsetBy: rrange.upperBound - 1)
+        let endIndex = self.index(self.startIndex, offsetBy: range.upperBound - 1)
         
         return String(self[startIndex..<endIndex])
     }
