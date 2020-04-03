@@ -9,8 +9,8 @@ infix operator ~>   // serial queue operator
  Passes the background closure's output to the main closure.
  */
 public func ~> (
-    backgroundClosure: @escaping () -> (),
-    mainClosure:       @escaping () -> ())
+    backgroundClosure: @escaping () -> Void,
+    mainClosure:       @escaping () -> Void)
 {
     serial_queue.async {
         backgroundClosure()

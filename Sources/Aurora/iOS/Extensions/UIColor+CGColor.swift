@@ -41,7 +41,7 @@ extension UIColor {
         let redValue = CGFloat.random(in: 0...255) / 255.0
         let greenValue = CGFloat.random(in: 0...255) / 255.0
         let blueValue = CGFloat.random(in: 0...255) / 255.0
-        let alphaValue = randomApha ? CGFloat.random(in: 0...255) / 255.0 : 1
+        let alphaValue = randomApha ? CGFloat.random(in: 0...255) / 255.0: 1
         
         return UIColor(
             red: redValue,

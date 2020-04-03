@@ -176,7 +176,7 @@ public extension UIView {
     @objc
     var lastSubviewOnX: UIView? {
         return self.subviews.reduce(UIView(frame: .zero)) {
-            return $1.x > $0.x ? $1 : $0
+            return $1.x > $0.x ? $1: $0
         }
     }
     
@@ -184,7 +184,7 @@ public extension UIView {
     @objc
     var lastSubviewOnY: UIView? {
         return self.subviews.reduce(UIView(frame: .zero)) {
-            return $1.y > $0.y ? $1 : $0
+            return $1.y > $0.y ? $1: $0
         }
     }
     
@@ -262,7 +262,6 @@ public extension UIView {
         guard let superview = self.superview else { return }
         
         switch UIApplication.shared.statusBarOrientation {
-            
         case .landscapeLeft, .landscapeRight:
             self.origin = CGPoint(
                 x: (superview.height / 2) - (self.width / 2),
@@ -276,6 +275,9 @@ public extension UIView {
             )
             
         case .unknown:
+            return
+            
+        @unknown default:
             return
         }
     }
