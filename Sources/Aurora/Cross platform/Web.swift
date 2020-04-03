@@ -4,7 +4,7 @@
 import Foundation
 
 // MARK: ...
-private var AuroraFrameworkWebDebug: Bool = false
+private var auroraFrameworkWebDebug: Bool = false
 open class SimpleTimer {/*<--was named Timer, but since swift 3, NSTimer is now Timer*/
     typealias Tick = () -> Void
     var timer: Timer?
@@ -50,8 +50,9 @@ extension Aurora {
             timeoutInterval: 10
         )
         
-        let task = session.dataTask(with: request, completionHandler: {
-            (data, response, _) -> Void in
+        let task = session.dataTask(
+            with: request,
+            completionHandler: { (data, response, _) -> Void in
             
             self.log("Got response")
             
@@ -326,6 +327,6 @@ extension Aurora {
      - Parameter debugVal: Debugmode on/off
      */
     open func setDebug(_ debugVal: Bool) {
-        AuroraFrameworkWebDebug = debugVal
+        auroraFrameworkWebDebug = debugVal
     }
 }

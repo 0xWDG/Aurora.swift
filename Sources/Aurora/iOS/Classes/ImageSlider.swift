@@ -10,8 +10,8 @@ open class ImageSlider {
     var scrollView: UIScrollView
     var colors: [UIColor] = [.red, .orange, .green, .yellow, .gray, .cyan, .clear, .brown, .black]
     
-    public init(images: [UIImage?], view: UIViewController, pageControl: UIPageControl, scrollView: UIScrollView, height: Int? = Int.max) {
-        self.images = images as! [UIImage]
+    public init(images: [UIImage], view: UIViewController, pageControl: UIPageControl, scrollView: UIScrollView, height: Int? = Int.max) {
+        self.images = images
         self.imageHeight = height!
         self.pageControl = pageControl
         self.scrollView = scrollView
@@ -33,7 +33,7 @@ open class ImageSlider {
             imageView.contentMode = UIView.ContentMode.scaleAspectFit
             imageView.clipsToBounds = true
             imageView.layer.masksToBounds = true
-            imageView.image = image?.imageResize(sizeChange: CGSize(width: imageSizeAsFloat, height: scrollView.frame.size.height))
+            imageView.image = image.imageResize(sizeChange: CGSize(width: imageSizeAsFloat, height: scrollView.frame.size.height))
             scrollView.addSubview(imageView)
             
             xPos += imageSizeAsFloat

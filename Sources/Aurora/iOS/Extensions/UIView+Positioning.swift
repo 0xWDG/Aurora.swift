@@ -9,8 +9,8 @@ import UIKit
 public extension UIView {
     // MARK: - Basic Properties
     /// X Axis value of UIView.
-    @objc
-    var x: CGFloat {
+    // swiftlint:disable:next identifier_name
+    @objc var x: CGFloat {
         set {
             self.frame = CGRect(
                 x: _pixelIntegral(newValue),
@@ -25,8 +25,8 @@ public extension UIView {
     }
     
     /// Y Axis value of UIView.
-    @objc
-    var y: CGFloat {
+    // swiftlint:disable:next identifier_name
+    @objc var y: CGFloat {
         set {
             self.frame = CGRect(
                 x: self.x,

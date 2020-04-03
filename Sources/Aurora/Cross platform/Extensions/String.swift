@@ -1,4 +1,5 @@
 // $$HEADER$$
+// swiftlint:disable file_length
 
 #if canImport(Foundation)
 import Foundation
@@ -102,7 +103,13 @@ public extension String {
     
     var isEmail: Bool {
         let dataDetector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
-        let firstMatch = dataDetector?.firstMatch(in: self, options: NSRegularExpression.MatchingOptions.reportCompletion, range: NSRange(location: 0, length: length))
+        
+        let firstMatch = dataDetector?.firstMatch(
+            in: self,
+            options: NSRegularExpression.MatchingOptions.reportCompletion,
+            range: NSRange(location: 0, length: length)
+        )
+        
         return (firstMatch?.range.location != NSNotFound && firstMatch?.url?.scheme == "mailto")
     }
     
@@ -824,19 +831,9 @@ public extension String {
      - Returns: charcode (int)
      */
     func charCodeAt(_ character: Int) -> Int {
-        // ok search for the character...
-        
         if (self.length > character) {
             let character = String(self.characterAtIndex(character))
             return Int(String(character.unicodeScalars.first!.value))!
-        } else {
-            return 0
-        }
-    }
-    func UcharCodeAt(_ character: Int) -> UInt {
-        if (self.length > Int(character)) {
-            let character = String(self.characterAtIndex(Int(character)))
-            return UInt(String(character.unicodeScalars.first!.value))!
         } else {
             return 0
         }
@@ -1417,7 +1414,13 @@ public extension String {
         let checker = UITextChecker()
         let range = NSRange(location: 0, length: utf16.count)
         
-        let misspelledRange = checker.rangeOfMisspelledWord(in: self, range: range, startingAt: 0, wrap: false, language: Locale.preferredLanguages.first ?? "en")
+        let misspelledRange = checker.rangeOfMisspelledWord(
+        in: self,
+        range: range,
+        startingAt: 0,
+        wrap: false,
+        language: Locale.preferredLanguages.first ?? "en"
+        )
         return misspelledRange.location == NSNotFound
     }
     #endif
