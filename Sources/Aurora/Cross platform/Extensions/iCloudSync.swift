@@ -59,7 +59,7 @@ open class WDGFrameworkiCloudSync {
         )
         
         // Enumerate & Duplicate
-        dict.enumerateKeysAndObjects(options: []) { (key, value, pointer) -> Void in
+        dict.enumerateKeysAndObjects(options: []) { (key, value, _) -> Void in
             UserDefaults.standard.set(value, forKey: key as! String)
         }
         
@@ -94,7 +94,7 @@ open class WDGFrameworkiCloudSync {
         )
         
         // Enumerate & Duplicate
-        dict.enumerateKeysAndObjects() { (key, value, pointer) -> Void in
+        dict.enumerateKeysAndObjects { (key, value, _) -> Void in
             keyValueStore.set(value, forKey: key as! String)
         }
         

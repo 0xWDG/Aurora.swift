@@ -42,7 +42,7 @@ open class SimpleTimer {/*<--was named Timer, but since swift 3, NSTimer is now 
 }
 
 extension Aurora {
-    open func dataTaskHelper(forURL: URL?, completion: @escaping (String) -> ()) {
+    open func dataTaskHelper(forURL: URL?, completion: @escaping (String) -> Void) {
         let session = URLSession.shared
         let request = URLRequest.init(
             url: forURL ?? URL.init(string: "")!,
@@ -51,7 +51,7 @@ extension Aurora {
         )
         
         let task = session.dataTask(with: request, completionHandler: {
-            (data, response, error) -> Void in
+            (data, response,  _) -> Void in
             
             self.log("Got response")
             
