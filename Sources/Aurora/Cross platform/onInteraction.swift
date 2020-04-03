@@ -87,7 +87,6 @@ public extension NSControl {
     ///        print(sender)
     ///     }
     public var onInteraction: ActionClosure? {
-        // swiftlint:disable:next implicit_getter
         get {
             return AssociatedKeys.onActionClosure[self]
         }

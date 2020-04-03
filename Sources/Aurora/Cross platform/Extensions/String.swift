@@ -803,22 +803,22 @@ public extension String {
      */
     func encodeHTML() -> String {
         // Ok, this feels weird.
-        var _tempString = self
+        var tempString = self
         
         // First do the amperstand, otherwise it will ruin everything.
-        _tempString = _tempString.replace("&", withString: "&amp;")
+        tempString = tempString.replace("&", withString: "&amp;")
         
         // Loop trough the HTMLEntities.
         for (index, value) in HTMLEntities.characterEntities {
             // Ignore the "&".
             if (String(value) != "&") {
                 // Replace val, with index.
-                _tempString = _tempString.replace(String(value), withString: index)
+                tempString = tempString.replace(String(value), withString: index)
             }
         }
         
         // return and be happy
-        return _tempString
+        return tempString
     }
     
     /**
@@ -838,21 +838,21 @@ public extension String {
      
      - Returns: charcode (int)
      */
-    func charCodeAt(_ Char: Int) -> Int {
+    func charCodeAt(_ character: Int) -> Int {
         // ok search for the character...
         
-        if (self.length > Char) {
-            let character = String(self.characterAtIndex(Char))
+        if (self.length > character) {
+            let character = String(self.characterAtIndex(character))
             return Int(String(character.unicodeScalars.first!.value))!
         } else {
             return 0
         }
     }
-    func UcharCodeAt(_ Char: Int) -> UInt {
+    func UcharCodeAt(_ character: Int) -> UInt {
         // ok search for the character...
         
-        if (self.length > Int(Char)) {
-            let character = String(self.characterAtIndex(Int(Char)))
+        if (self.length > Int(character)) {
+            let character = String(self.characterAtIndex(Int(character)))
             return UInt(String(character.unicodeScalars.first!.value))!
         } else {
             return 0

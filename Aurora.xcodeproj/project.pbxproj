@@ -1,0 +1,723 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		"Aurora::AuroraPackageTests::ProductTarget" /* AuroraPackageTests */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = OBJ_121 /* Build configuration list for PBXAggregateTarget "AuroraPackageTests" */;
+			buildPhases = (
+			);
+			dependencies = (
+				OBJ_124 /* PBXTargetDependency */,
+			);
+			name = AuroraPackageTests;
+			productName = AuroraPackageTests;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		OBJ_100 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* UIDevice.swift */; };
+		OBJ_101 /* UIGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_45 /* UIGradientView.swift */; };
+		OBJ_102 /* UIGreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_46 /* UIGreenButton.swift */; };
+		OBJ_103 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_47 /* UIImage.swift */; };
+		OBJ_104 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_48 /* UILabel.swift */; };
+		OBJ_105 /* UITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_49 /* UITabBarController.swift */; };
+		OBJ_106 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_50 /* UITableView.swift */; };
+		OBJ_107 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_51 /* UITextField.swift */; };
+		OBJ_108 /* UIView+Positioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_52 /* UIView+Positioning.swift */; };
+		OBJ_109 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_53 /* UIView.swift */; };
+		OBJ_110 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_54 /* UIViewController.swift */; };
+		OBJ_111 /* UIViewRounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_55 /* UIViewRounded.swift */; };
+		OBJ_112 /* UInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_56 /* UInt.swift */; };
+		OBJ_119 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
+		OBJ_130 /* AuroraTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_59 /* AuroraTest.swift */; };
+		OBJ_131 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_60 /* File.swift */; };
+		OBJ_132 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_61 /* XCTestManifests.swift */; };
+		OBJ_134 /* Aurora.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Aurora::Aurora::Product" /* Aurora.framework */; };
+		OBJ_71 /* AuroraFramework.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* AuroraFramework.swift */; };
+		OBJ_72 /* CrossPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* CrossPlatform.swift */; };
+		OBJ_73 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* Collection.swift */; };
+		OBJ_74 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* Color.swift */; };
+		OBJ_75 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* Data.swift */; };
+		OBJ_76 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* Dictionary.swift */; };
+		OBJ_77 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* Int.swift */; };
+		OBJ_78 /* NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* NSAttributedString.swift */; };
+		OBJ_79 /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* NSObject.swift */; };
+		OBJ_80 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* Optional.swift */; };
+		OBJ_81 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* String.swift */; };
+		OBJ_82 /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* URLRequest.swift */; };
+		OBJ_83 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* UserDefaults.swift */; };
+		OBJ_84 /* iCloudSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* iCloudSync.swift */; };
+		OBJ_85 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* Regex.swift */; };
+		OBJ_86 /* SyncTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* SyncTasks.swift */; };
+		OBJ_87 /* Threads.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* Threads.swift */; };
+		OBJ_88 /* Web.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* Web.swift */; };
+		OBJ_89 /* log.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* log.swift */; };
+		OBJ_90 /* onInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_31 /* onInteraction.swift */; };
+		OBJ_91 /* validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_32 /* validators.swift */; };
+		OBJ_92 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* ImageCache.swift */; };
+		OBJ_93 /* ImageSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_36 /* ImageSlider.swift */; };
+		OBJ_94 /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_37 /* KeyboardHandler.swift */; };
+		OBJ_95 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* Bundle.swift */; };
+		OBJ_96 /* MKMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_40 /* MKMapView.swift */; };
+		OBJ_97 /* UIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_41 /* UIBarButtonItem.swift */; };
+		OBJ_98 /* UIButtonCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_42 /* UIButtonCorner.swift */; };
+		OBJ_99 /* UIColor+CGColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_43 /* UIColor+CGColor.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DE8CB3822437A9B800577333 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Aurora::Aurora";
+			remoteInfo = Aurora;
+		};
+		DE8CB3832437A9B900577333 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Aurora::AuroraTests";
+			remoteInfo = AuroraTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		"Aurora::Aurora::Product" /* Aurora.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Aurora.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"Aurora::AuroraTests::Product" /* AuroraTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = AuroraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_10 /* AuroraFramework.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraFramework.swift; sourceTree = "<group>"; };
+		OBJ_12 /* CrossPlatform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossPlatform.swift; sourceTree = "<group>"; };
+		OBJ_14 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		OBJ_15 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		OBJ_16 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		OBJ_17 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		OBJ_18 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
+		OBJ_19 /* NSAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedString.swift; sourceTree = "<group>"; };
+		OBJ_20 /* NSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObject.swift; sourceTree = "<group>"; };
+		OBJ_21 /* Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
+		OBJ_22 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		OBJ_23 /* URLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequest.swift; sourceTree = "<group>"; };
+		OBJ_24 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		OBJ_25 /* iCloudSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCloudSync.swift; sourceTree = "<group>"; };
+		OBJ_26 /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
+		OBJ_27 /* SyncTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncTasks.swift; sourceTree = "<group>"; };
+		OBJ_28 /* Threads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Threads.swift; sourceTree = "<group>"; };
+		OBJ_29 /* Web.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Web.swift; sourceTree = "<group>"; };
+		OBJ_30 /* log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = log.swift; sourceTree = "<group>"; };
+		OBJ_31 /* onInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onInteraction.swift; sourceTree = "<group>"; };
+		OBJ_32 /* validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = validators.swift; sourceTree = "<group>"; };
+		OBJ_35 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		OBJ_36 /* ImageSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSlider.swift; sourceTree = "<group>"; };
+		OBJ_37 /* KeyboardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandler.swift; sourceTree = "<group>"; };
+		OBJ_39 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		OBJ_40 /* MKMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMapView.swift; sourceTree = "<group>"; };
+		OBJ_41 /* UIBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem.swift; sourceTree = "<group>"; };
+		OBJ_42 /* UIButtonCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonCorner.swift; sourceTree = "<group>"; };
+		OBJ_43 /* UIColor+CGColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+CGColor.swift"; sourceTree = "<group>"; };
+		OBJ_44 /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
+		OBJ_45 /* UIGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGradientView.swift; sourceTree = "<group>"; };
+		OBJ_46 /* UIGreenButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGreenButton.swift; sourceTree = "<group>"; };
+		OBJ_47 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		OBJ_48 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		OBJ_49 /* UITabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabBarController.swift; sourceTree = "<group>"; };
+		OBJ_50 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		OBJ_51 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		OBJ_52 /* UIView+Positioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Positioning.swift"; sourceTree = "<group>"; };
+		OBJ_53 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		OBJ_54 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		OBJ_55 /* UIViewRounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewRounded.swift; sourceTree = "<group>"; };
+		OBJ_56 /* UInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UInt.swift; sourceTree = "<group>"; };
+		OBJ_59 /* AuroraTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraTest.swift; sourceTree = "<group>"; };
+		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		OBJ_60 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		OBJ_61 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
+		OBJ_65 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		OBJ_9 /* AuroraFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuroraFramework.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		OBJ_113 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_133 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_134 /* Aurora.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		OBJ_11 /* Cross platform */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_12 /* CrossPlatform.swift */,
+				OBJ_13 /* Extensions */,
+				OBJ_26 /* Regex.swift */,
+				OBJ_27 /* SyncTasks.swift */,
+				OBJ_28 /* Threads.swift */,
+				OBJ_29 /* Web.swift */,
+				OBJ_30 /* log.swift */,
+				OBJ_31 /* onInteraction.swift */,
+				OBJ_32 /* validators.swift */,
+			);
+			path = "Cross platform";
+			sourceTree = "<group>";
+		};
+		OBJ_13 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_14 /* Collection.swift */,
+				OBJ_15 /* Color.swift */,
+				OBJ_16 /* Data.swift */,
+				OBJ_17 /* Dictionary.swift */,
+				OBJ_18 /* Int.swift */,
+				OBJ_19 /* NSAttributedString.swift */,
+				OBJ_20 /* NSObject.swift */,
+				OBJ_21 /* Optional.swift */,
+				OBJ_22 /* String.swift */,
+				OBJ_23 /* URLRequest.swift */,
+				OBJ_24 /* UserDefaults.swift */,
+				OBJ_25 /* iCloudSync.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		OBJ_33 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_34 /* Classes */,
+				OBJ_38 /* Extensions */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		OBJ_34 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_35 /* ImageCache.swift */,
+				OBJ_36 /* ImageSlider.swift */,
+				OBJ_37 /* KeyboardHandler.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		OBJ_38 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_39 /* Bundle.swift */,
+				OBJ_40 /* MKMapView.swift */,
+				OBJ_41 /* UIBarButtonItem.swift */,
+				OBJ_42 /* UIButtonCorner.swift */,
+				OBJ_43 /* UIColor+CGColor.swift */,
+				OBJ_44 /* UIDevice.swift */,
+				OBJ_45 /* UIGradientView.swift */,
+				OBJ_46 /* UIGreenButton.swift */,
+				OBJ_47 /* UIImage.swift */,
+				OBJ_48 /* UILabel.swift */,
+				OBJ_49 /* UITabBarController.swift */,
+				OBJ_50 /* UITableView.swift */,
+				OBJ_51 /* UITextField.swift */,
+				OBJ_52 /* UIView+Positioning.swift */,
+				OBJ_53 /* UIView.swift */,
+				OBJ_54 /* UIViewController.swift */,
+				OBJ_55 /* UIViewRounded.swift */,
+				OBJ_56 /* UInt.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		OBJ_5 /*  */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_6 /* Package.swift */,
+				OBJ_7 /* Sources */,
+				OBJ_57 /* Tests */,
+				OBJ_62 /* Products */,
+				OBJ_65 /* README.md */,
+			);
+			name = "";
+			sourceTree = "<group>";
+		};
+		OBJ_57 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_58 /* AuroraTests */,
+			);
+			name = Tests;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_58 /* AuroraTests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_59 /* AuroraTest.swift */,
+				OBJ_60 /* File.swift */,
+				OBJ_61 /* XCTestManifests.swift */,
+			);
+			name = AuroraTests;
+			path = Tests/AuroraTests;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_62 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				"Aurora::Aurora::Product" /* Aurora.framework */,
+				"Aurora::AuroraTests::Product" /* AuroraTests.xctest */,
+			);
+			name = Products;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		OBJ_7 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_8 /* Aurora */,
+			);
+			name = Sources;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_8 /* Aurora */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_9 /* AuroraFramework.h */,
+				OBJ_10 /* AuroraFramework.swift */,
+				OBJ_11 /* Cross platform */,
+				OBJ_33 /* iOS */,
+			);
+			name = Aurora;
+			path = Sources/Aurora;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		"Aurora::Aurora" /* Aurora */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_67 /* Build configuration list for PBXNativeTarget "Aurora" */;
+			buildPhases = (
+				OBJ_70 /* Sources */,
+				OBJ_113 /* Frameworks */,
+				DE8CB3842437A9C600577333 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Aurora;
+			productName = Aurora;
+			productReference = "Aurora::Aurora::Product" /* Aurora.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"Aurora::AuroraTests" /* AuroraTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_126 /* Build configuration list for PBXNativeTarget "AuroraTests" */;
+			buildPhases = (
+				OBJ_129 /* Sources */,
+				OBJ_133 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_135 /* PBXTargetDependency */,
+			);
+			name = AuroraTests;
+			productName = AuroraTests;
+			productReference = "Aurora::AuroraTests::Product" /* AuroraTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		"Aurora::SwiftPMPackageDescription" /* AuroraPackageDescription */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_115 /* Build configuration list for PBXNativeTarget "AuroraPackageDescription" */;
+			buildPhases = (
+				OBJ_118 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AuroraPackageDescription;
+			productName = AuroraPackageDescription;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		OBJ_1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftMigration = 9999;
+				LastUpgradeCheck = 9999;
+			};
+			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "Aurora" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = OBJ_5 /*  */;
+			productRefGroup = OBJ_62 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				"Aurora::Aurora" /* Aurora */,
+				"Aurora::SwiftPMPackageDescription" /* AuroraPackageDescription */,
+				"Aurora::AuroraPackageTests::ProductTarget" /* AuroraPackageTests */,
+				"Aurora::AuroraTests" /* AuroraTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		DE8CB3842437A9C600577333 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		OBJ_118 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_119 /* Package.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_129 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_130 /* AuroraTest.swift in Sources */,
+				OBJ_131 /* File.swift in Sources */,
+				OBJ_132 /* XCTestManifests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_70 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_71 /* AuroraFramework.swift in Sources */,
+				OBJ_72 /* CrossPlatform.swift in Sources */,
+				OBJ_73 /* Collection.swift in Sources */,
+				OBJ_74 /* Color.swift in Sources */,
+				OBJ_75 /* Data.swift in Sources */,
+				OBJ_76 /* Dictionary.swift in Sources */,
+				OBJ_77 /* Int.swift in Sources */,
+				OBJ_78 /* NSAttributedString.swift in Sources */,
+				OBJ_79 /* NSObject.swift in Sources */,
+				OBJ_80 /* Optional.swift in Sources */,
+				OBJ_81 /* String.swift in Sources */,
+				OBJ_82 /* URLRequest.swift in Sources */,
+				OBJ_83 /* UserDefaults.swift in Sources */,
+				OBJ_84 /* iCloudSync.swift in Sources */,
+				OBJ_85 /* Regex.swift in Sources */,
+				OBJ_86 /* SyncTasks.swift in Sources */,
+				OBJ_87 /* Threads.swift in Sources */,
+				OBJ_88 /* Web.swift in Sources */,
+				OBJ_89 /* log.swift in Sources */,
+				OBJ_90 /* onInteraction.swift in Sources */,
+				OBJ_91 /* validators.swift in Sources */,
+				OBJ_92 /* ImageCache.swift in Sources */,
+				OBJ_93 /* ImageSlider.swift in Sources */,
+				OBJ_94 /* KeyboardHandler.swift in Sources */,
+				OBJ_95 /* Bundle.swift in Sources */,
+				OBJ_96 /* MKMapView.swift in Sources */,
+				OBJ_97 /* UIBarButtonItem.swift in Sources */,
+				OBJ_98 /* UIButtonCorner.swift in Sources */,
+				OBJ_99 /* UIColor+CGColor.swift in Sources */,
+				OBJ_100 /* UIDevice.swift in Sources */,
+				OBJ_101 /* UIGradientView.swift in Sources */,
+				OBJ_102 /* UIGreenButton.swift in Sources */,
+				OBJ_103 /* UIImage.swift in Sources */,
+				OBJ_104 /* UILabel.swift in Sources */,
+				OBJ_105 /* UITabBarController.swift in Sources */,
+				OBJ_106 /* UITableView.swift in Sources */,
+				OBJ_107 /* UITextField.swift in Sources */,
+				OBJ_108 /* UIView+Positioning.swift in Sources */,
+				OBJ_109 /* UIView.swift in Sources */,
+				OBJ_110 /* UIViewController.swift in Sources */,
+				OBJ_111 /* UIViewRounded.swift in Sources */,
+				OBJ_112 /* UInt.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		OBJ_124 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Aurora::AuroraTests" /* AuroraTests */;
+			targetProxy = DE8CB3832437A9B900577333 /* PBXContainerItemProxy */;
+		};
+		OBJ_135 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Aurora::Aurora" /* Aurora */;
+			targetProxy = DE8CB3822437A9B800577333 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		OBJ_116 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -package-description-version 5.1.0";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		OBJ_117 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -package-description-version 5.1.0";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		OBJ_122 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		OBJ_123 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		OBJ_127 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = Aurora.xcodeproj/AuroraTests_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = AuroraTests;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		OBJ_128 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = Aurora.xcodeproj/AuroraTests_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = AuroraTests;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		OBJ_3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"SWIFT_PACKAGE=1",
+					"DEBUG=1",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SWIFT_PACKAGE DEBUG";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USE_HEADERMAP = NO;
+			};
+			name = Debug;
+		};
+		OBJ_4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"SWIFT_PACKAGE=1",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SWIFT_PACKAGE";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				USE_HEADERMAP = NO;
+			};
+			name = Release;
+		};
+		OBJ_68 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = Aurora.xcodeproj/Aurora_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Aurora;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = Aurora;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		OBJ_69 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = Aurora.xcodeproj/Aurora_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Aurora;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = Aurora;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		OBJ_115 /* Build configuration list for PBXNativeTarget "AuroraPackageDescription" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_116 /* Debug */,
+				OBJ_117 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_121 /* Build configuration list for PBXAggregateTarget "AuroraPackageTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_122 /* Debug */,
+				OBJ_123 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_126 /* Build configuration list for PBXNativeTarget "AuroraTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_127 /* Debug */,
+				OBJ_128 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_2 /* Build configuration list for PBXProject "Aurora" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_3 /* Debug */,
+				OBJ_4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_67 /* Build configuration list for PBXNativeTarget "Aurora" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_68 /* Debug */,
+				OBJ_69 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = OBJ_1 /* Project object */;
+}

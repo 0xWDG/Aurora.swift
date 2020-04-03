@@ -14,11 +14,11 @@ extension MKMapView {
     ///   - title: the title
     ///   - subtitle: the subtitle
     public func newAnnotation(coordinate: CLLocationCoordinate2D, title: String, subtitle: String) {
-        let x = MKPointAnnotation.init()
-        x.title = title
-        x.subtitle = subtitle
-        x.coordinate = coordinate
-        self.addAnnotation(x)
+        let point = MKPointAnnotation.init()
+        point.title = title
+        point.subtitle = subtitle
+        point.coordinate = coordinate
+        self.addAnnotation(point)
     }
     
     /// Add Annotation
@@ -27,11 +27,11 @@ extension MKMapView {
     ///   - title: the title
     ///   - subtitle: the subtitle
     public func addAnnotation(coordinate: CLLocationCoordinate2D, title: String, subtitle: String) {
-        let x = MKPointAnnotation.init()
-        x.title = title
-        x.subtitle = subtitle
-        x.coordinate = coordinate
-        self.addAnnotation(x)
+        let point = MKPointAnnotation.init()
+        point.title = title
+        point.subtitle = subtitle
+        point.coordinate = coordinate
+        self.addAnnotation(point)
     }
 }
 #endif

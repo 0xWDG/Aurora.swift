@@ -12,7 +12,7 @@ public func ~> (
     backgroundClosure: @escaping () -> Void,
     mainClosure:       @escaping () -> Void)
 {
-    serial_queue.async {
+    serialQueue.async {
         backgroundClosure()
         DispatchQueue.main.async {
             mainClosure()
@@ -23,7 +23,7 @@ public func ~> <R> (
     backgroundClosure:   @escaping () -> R,
     mainClosure:         @escaping (_ result: R) -> ())
 {
-    serial_queue.async {
+    serialQueue.async {
         let result = backgroundClosure()
         DispatchQueue.main.async(execute: {
             mainClosure(result)
@@ -34,7 +34,7 @@ public func ~> (
     backgroundClosure:   @escaping () -> String,
     mainClosure:         @escaping (_ result: String) -> ())
 {
-    serial_queue.async {
+    serialQueue.async {
         let result = backgroundClosure()
         DispatchQueue.main.async(execute: {
             mainClosure(result)
@@ -54,16 +54,16 @@ public func ~> (
 //}
 
 /** Serial dispatch queue used by the ~> operator. */
-private let serial_queue = DispatchQueue(label: "serial-worker")
+private let serialQueue = DispatchQueue(label: "serial-worker")
 
 extension Aurora {
-    public func runInBackground(block: @escaping () -> Void) -> Void {
+    public func runInBackground(block: @escaping () -> Void) {
         DispatchQueue.global(qos: .background).async {
             block()
         }
     }
     
-    public func runInForeground(block: @escaping () -> Void) -> Void {
+    public func runInForeground(block: @escaping () -> Void) {
         DispatchQueue.main.async {
             block()
         }
@@ -71,21 +71,20 @@ extension Aurora {
     
     public func run(background: @escaping () -> String, foreground: @escaping (_ returning: String) -> Void) -> Void {
         DispatchQueue.global(qos: .background).async {
-            let _result = background()
+            let result = background()
         
             DispatchQueue.main.async(execute: {
-                foreground(_result)
-                
+                foreground(result)
             })
         }
     }
     
      public func run(background: @escaping () -> Bool, foreground: @escaping (_ returning: Bool) -> Void) -> Void {
         DispatchQueue.global(qos: .background).async {
-            let _result = background()
+            let result = background()
             
             DispatchQueue.main.async {
-                foreground(_result)
+                foreground(result)
                 
             }
         }
@@ -93,12 +92,11 @@ extension Aurora {
     
     public func run(background: @escaping () -> Any, foreground: @escaping (_ returning: Any) -> Void) -> Void {
         DispatchQueue.global(qos: .background).async {
-            let _result = background()
+            let result = background()
             
             DispatchQueue.main.async {
-                foreground(_result)
+                foreground(result)
             }
         }
     }
-
 }

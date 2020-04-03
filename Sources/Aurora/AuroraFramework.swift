@@ -80,8 +80,8 @@ open class Aurora {
     @discardableResult
     func log(_ message: String, file: String = #file, line: Int = #line, function: String = #function) -> Bool {
         if (debug) {
-            let x: String = (file.split("/").last)!.split(".").first!
-            Swift.print("[Aurora.Framework] \(x):\(line) \(function):\n \(message)\n")
+            let fileName: String = (file.split("/").last)!.split(".").first!
+            Swift.print("[Aurora.Framework] \(fileName):\(line) \(function):\n \(message)\n")
         }
         
         return debug
@@ -96,4 +96,3 @@ open class Aurora {
 
 /// Support older configurations
 open class WDGFramework: Aurora { }
-
