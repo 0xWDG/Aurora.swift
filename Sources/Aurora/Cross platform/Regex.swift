@@ -22,7 +22,6 @@ public func !~ (source: String, pattern: String) -> Bool {
     return !(source =~ pattern)
 }
 
-
 // Copyright © 2018 Flinesoft. All rights reserved.
 //  Originally from: https://github.com/sharplet/Regex (modified to remove some weight).
 

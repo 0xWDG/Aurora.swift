@@ -7,10 +7,10 @@ let package = Package(
     platforms: [
         .macOS(.v10_13),
         .iOS(.v12),
-        .tvOS(.v12),
+        .tvOS(.v12)
     ],
     products: [
-        .library(name: "Aurora", targets: ["Aurora"]),
+        .library(name: "Aurora", targets: ["Aurora"])
     ],
     dependencies: [],
     targets: [
@@ -21,6 +21,6 @@ let package = Package(
         .testTarget(
             name: "AuroraTests",
             dependencies: ["Aurora"]
-        ),
+        )
     ]
 )

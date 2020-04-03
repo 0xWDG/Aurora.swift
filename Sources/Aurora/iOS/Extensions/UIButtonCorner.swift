@@ -4,7 +4,6 @@
 import UIKit
 
 @IBDesignable extension UIButton {
-    // swiftlint:disable valid_ibinspectable implicit_getter
     @IBInspectable public var borderWidth: CGFloat {
         set {
             layer.borderWidth = newValue

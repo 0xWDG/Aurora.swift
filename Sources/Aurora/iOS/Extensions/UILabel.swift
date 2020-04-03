@@ -8,7 +8,6 @@ extension UILabel {
     }
     
     public var padding: UIEdgeInsets? {
-        // swiftlint:disable:next implicit_getter
         get {
             return objc_getAssociatedObject(
                 self,
@@ -50,6 +49,7 @@ extension UILabel {
     }
 
     public func HTML(_ text: String) {
+        // swiftlint:disable:next force_try
         let attrStr = try! NSAttributedString(
             data: text.data(using: String.Encoding(rawValue: String.Encoding.unicode.rawValue), allowLossyConversion: true)!,
             options: [

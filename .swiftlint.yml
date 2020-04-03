@@ -1,0 +1,40 @@
+disabled_rules: # rule identifiers to exclude from running
+  - trailing_whitespace # We like clean code
+  - control_statement # We want to use ( )
+  - cyclomatic_complexity # WTF.
+  - syntactic_sugar
+
+function_body_length: 100
+
+# rules that have both warning and error levels, can set just the warning level
+# implicitly
+line_length: 
+  - 150
+  - 200
+# they can set both implicitly with an array
+type_body_length:
+  - 300 # warning
+  - 500 # error
+# or they can set both explicitly
+file_length:
+  warning: 500
+  error: 1200
+# naming rules can set warnings/errors for min_length and max_length
+# additionally they can set excluded names
+type_name:
+  min_length: 2 # only warning
+  max_length: # warning and error
+    warning: 50
+    error: 60
+  excluded: iPhone # excluded via string
+  allowed_symbols: ["_"] # these are allowed in type names
+identifier_name:
+  min_length: # only min_length
+    error: 2 # only error
+  excluded: # excluded via string array
+    - to
+    - db
+    - id
+    - up
+    - URL
+    - GlobalAPIKey

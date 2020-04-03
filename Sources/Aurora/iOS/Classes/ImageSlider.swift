@@ -10,8 +10,8 @@ open class ImageSlider {
     var scrollView: UIScrollView
     var colors: [UIColor] = [.red, .orange, .green, .yellow, .gray, .cyan, .clear, .brown, .black]
     
-    public init(images: [UIImage?], view: UIViewController, pageControl: UIPageControl, scrollView: UIScrollView, height: Int? = Int.max) {
-        self.images = images as! [UIImage]
+    public init(images: [UIImage], view: UIViewController, pageControl: UIPageControl, scrollView: UIScrollView, height: Int? = Int.max) {
+        self.images = images
         self.imageHeight = height!
         self.pageControl = pageControl
         self.scrollView = scrollView
@@ -26,26 +26,22 @@ open class ImageSlider {
 //        scrollView.clipsToBounds = false
         scrollView.delegate = view as? UIScrollViewDelegate
         pageControl.numberOfPages = 0
-        var xPos:CGFloat = 0.0;
+        var xPos: CGFloat = 0.0
         
-        print("Scrollview Size: x:\(scrollView.frame.origin.x) y:\(scrollView.frame.origin.y) w:\(scrollView.frame.size.width) h:\(scrollView.frame.size.height)")
         for image in images {
             let imageView = UIImageView.init(frame: CGRect(x: xPos, y: 0.0, width: imageSizeAsFloat, height: scrollView.frame.size.height))
             imageView.contentMode = UIView.ContentMode.scaleAspectFit
             imageView.clipsToBounds = true
             imageView.layer.masksToBounds = true
-            imageView.image = image?.imageResize(sizeChange: CGSize(width: imageSizeAsFloat, height: scrollView.frame.size.height))
-//            imageView.backgroundColor = colors[Int.random(lower: 0, colors.count-1)]
-            print("image Size x:\(imageView.frame.origin.x) y:\(imageView.frame.origin.y) w:\(imageView.frame.size.width) h:\(imageView.frame.size.height)")
+            imageView.image = image.imageResize(sizeChange: CGSize(width: imageSizeAsFloat, height: scrollView.frame.size.height))
             scrollView.addSubview(imageView)
             
             xPos += imageSizeAsFloat
             pageControl.numberOfPages += 1
-//            scrollView.contentInset = UIEdgeInsets.zero// UIEdgeInsetsZero
         }
         
         // Fix scroll to bottom
-        scrollView.contentSize = CGSize.init(width: scrollView.contentSize.width, height: 0);
+        scrollView.contentSize = CGSize.init(width: scrollView.contentSize.width, height: 0)
     }
     
     public func scroll(scrollView: UIScrollView, view: UIViewController, pageControl: UIPageControl) {

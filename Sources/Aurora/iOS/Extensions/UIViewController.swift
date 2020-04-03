@@ -8,8 +8,13 @@ extension UIViewController {
     /// - Parameter id: segue name
     /// - Returns: boolean
     public func canPerformSegue(withIdentifier id: String) -> Bool {
-        guard let segues = UIApplication.shared.delegate?.window??.rootViewController?.value(forKey: "storyboardSegueTemplates") as? [NSObject] else { return false }
-        return segues.first { $0.value(forKey: "identifier") as? String == id } != nil
+        guard let segues = UIApplication.shared.delegate?.window??.rootViewController?.value(
+            forKey: "storyboardSegueTemplates"
+            ) as? [NSObject] else { return false }
+        
+        return segues.first {
+            $0.value(forKey: "identifier") as? String == id
+            } != nil
     }
     
     /// Open/Run a segue
@@ -48,11 +53,11 @@ extension UIViewController {
                                 actionHandler: ((_ text: String?) -> Void)? = nil) {
         
         let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
-        alert.addTextField { (textField:UITextField) in
+        alert.addTextField { (textField: UITextField) in
             textField.placeholder = inputPlaceholder
             textField.keyboardType = inputKeyboardType
         }
-        alert.addAction(UIAlertAction(title: actionTitle, style: .destructive, handler: { (action:UIAlertAction) in
+        alert.addAction(UIAlertAction(title: actionTitle, style: .destructive, handler: { (_: UIAlertAction) in
             guard let textField =  alert.textFields?.first else {
                 actionHandler?(nil)
                 return

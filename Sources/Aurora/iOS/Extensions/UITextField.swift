@@ -4,7 +4,6 @@ import Foundation
 import UIKit
 
 extension UITextField {
-    // swiftlint:disable implicit_getter valid_ibinspectable
     @IBInspectable public var doneAccessory: Bool {
         get {
             return self.doneAccessory
