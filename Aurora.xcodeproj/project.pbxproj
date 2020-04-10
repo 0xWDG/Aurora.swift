@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		DE8CB3B424409B8200577333 /* AuroraCrashHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8CB3B324409B8200577333 /* AuroraCrashHandler.swift */; };
 		OBJ_100 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* UIDevice.swift */; };
 		OBJ_101 /* UIGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_45 /* UIGradientView.swift */; };
 		OBJ_102 /* UIGreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_46 /* UIGreenButton.swift */; };
@@ -90,6 +91,7 @@
 /* Begin PBXFileReference section */
 		"Aurora::Aurora::Product" /* Aurora.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Aurora.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Aurora::AuroraTests::Product" /* AuroraTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = AuroraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE8CB3B324409B8200577333 /* AuroraCrashHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraCrashHandler.swift; sourceTree = "<group>"; };
 		OBJ_10 /* AuroraFramework.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraFramework.swift; sourceTree = "<group>"; };
 		OBJ_12 /* CrossPlatform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossPlatform.swift; sourceTree = "<group>"; };
 		OBJ_14 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				OBJ_30 /* log.swift */,
 				OBJ_31 /* onInteraction.swift */,
 				OBJ_32 /* validators.swift */,
+				DE8CB3B324409B8200577333 /* AuroraCrashHandler.swift */,
 			);
 			path = "Cross platform";
 			sourceTree = "<group>";
@@ -238,7 +241,7 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -247,7 +250,6 @@
 				OBJ_62 /* Products */,
 				OBJ_65 /* README.md */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_57 /* Tests */ = {
@@ -365,7 +367,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_62 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -458,6 +460,7 @@
 				OBJ_105 /* UITabBarController.swift in Sources */,
 				OBJ_106 /* UITableView.swift in Sources */,
 				OBJ_107 /* UITextField.swift in Sources */,
+				DE8CB3B424409B8200577333 /* AuroraCrashHandler.swift in Sources */,
 				OBJ_108 /* UIView+Positioning.swift in Sources */,
 				OBJ_109 /* UIView.swift in Sources */,
 				OBJ_110 /* UIViewController.swift in Sources */,
