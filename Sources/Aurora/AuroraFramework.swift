@@ -29,6 +29,9 @@ open class Aurora {
      */
     public static let shared = Aurora()
     
+    /// Initialize crash logger
+    static let crashLogger = AuroraCrashHandler.shared
+
     /**
      The version of
      - Parameter version: The version of AuroraFramework
@@ -72,8 +75,6 @@ open class Aurora {
         let iCloud: WDGFrameworkiCloudSync = WDGFrameworkiCloudSync()
         iCloud.startSync()
         #endif
-        
-        _ = AuroraCrashHandler.shared
     }
     
     /**
@@ -87,6 +88,14 @@ open class Aurora {
         }
         
         return debug
+    }
+    
+    public func getLastCrashLog() -> String? {
+        return Aurora.crashLogger.getLastCrashLog()
+    }
+    
+    public func deleteLastCrashLog() -> Bool {
+        return Aurora.crashLogger.deleteLastCrashLog()
     }
     
     #if canImport(CryptoKit)

@@ -127,17 +127,52 @@ class AuroraCrashHandler {
         crashReport += "\nEnd of Aurora crash report\n\n"
         Aurora.shared.log(crashReport)
         
-        // Try to save:
-    }
-    
-    private class func appInfo() -> String {
+        // Try to save to the disk
         
-        return ""
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            let fileURL = dir.appendingPathComponent("crash.txt")
+            do {
+                try Data(crashReport.utf8).write(to: fileURL)
+                
+                Aurora.shared.log("Saved crash report to: \(fileURL)")
+            } catch let error as NSError {
+                Aurora.shared.log("Failed to write to \(fileURL)")
+                Aurora.shared.log(error.description)
+            }
+        }
     }
     
-    private var didRegister = false
+    public func getLastCrashLog() -> String? {
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            let fileURL = dir.appendingPathComponent("crash.txt")
+            if let crashLog = try? String(contentsOf: fileURL) {
+                return crashLog
+            }
+        }
+        
+        return nil
+    }
     
     @discardableResult
+    public func deleteLastCrashLog() -> Bool {
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            let fileURL = dir.appendingPathComponent("crash.txt")
+            do {
+                try FileManager.default.removeItem(at: fileURL)
+                
+                return true
+            } catch let error as NSError {
+                Aurora.shared.log("Failed to remove \(fileURL)")
+                Aurora.shared.log(error.description)
+            }
+        }
+        
+        return false
+    }
+
+    /// Did we already register?
+    private var didRegister = false
+    
     init() {
         // Ok.
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -148,10 +183,8 @@ class AuroraCrashHandler {
     func registerForSignals() {
         if !didRegister {
             NSSetUncaughtExceptionHandler(AuroraCrashHandler.RecieveException)
-            dump(signalCodes)
             
-            for (signalCode, signalDescriptipn) in signalCodes {
-                Aurora.shared.log("Registered for signal(\(signalCode)): \(signalDescriptipn)")
+            for (signalCode, _) in signalCodes {
                 signal(signalCode, AuroraCrashHandler.RecieveSignal)
             }
             
