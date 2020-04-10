@@ -29,6 +29,9 @@ open class Aurora {
      */
     public static let shared = Aurora()
     
+    /// Initialize crash logger
+    static let crashLogger = AuroraCrashHandler.shared
+
     /**
      The version of
      - Parameter version: The version of AuroraFramework
@@ -78,7 +81,7 @@ open class Aurora {
      ?
      */
     @discardableResult
-    func log(_ message: String, file: String = #file, line: Int = #line, function: String = #function) -> Bool {
+    public func log(_ message: String, file: String = #file, line: Int = #line, function: String = #function) -> Bool {
         if (debug) {
             let fileName: String = (file.split("/").last)!.split(".").first!
             Swift.print("[Aurora.Framework] \(fileName):\(line) \(function):\n \(message)\n")
@@ -87,8 +90,16 @@ open class Aurora {
         return debug
     }
     
+    public func getLastCrashLog() -> String? {
+        return Aurora.crashLogger.getLastCrashLog()
+    }
+    
+    public func deleteLastCrashLog() -> Bool {
+        return Aurora.crashLogger.deleteLastCrashLog()
+    }
+    
     #if canImport(CryptoKit)
-    func md5(phrase: String) -> String {
+    public func md5(phrase: String) -> String {
         return phrase.md5
     }
     #endif
