@@ -1,9 +1,4 @@
-//
-//  File.swift
-//  
-//
-//  Created by Wesley de Groot on 01/04/2020.
-//
+// $$HEADER$$
 
 #if canImport(Foundation)
 import Foundation

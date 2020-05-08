@@ -1,6 +1,7 @@
 // $$HEADER$$
 
 import Foundation
+#if canImport(UIKit)
 import UIKit
 
 /// Fixes the issue for screens being to small and that inputfields will be gone!
@@ -85,3 +86,4 @@ public class KeyboardHandler {
         }
     }
 }
+#endif

@@ -1,5 +1,6 @@
 // $$HEADER$$
 
+#if os(iOS)
 import Foundation
 import UIKit
 
@@ -50,3 +51,5 @@ open class ImageSlider {
         pageControl.currentPage = currentPage
     }
 }
+#endif
+
