@@ -12,9 +12,9 @@ import Foundation
 import UIKit
 #endif
 
-#if canImport(CoreTelephony)
-import CoreTelephony
-#endif
+//#if canImport(CoreTelephony)
+//import CoreTelephony
+//#endif
 
 class AuroraCrashHandler {
     static public let shared: AuroraCrashHandler = AuroraCrashHandler.init()
@@ -96,14 +96,14 @@ class AuroraCrashHandler {
         crashReport += "\t\tModel: \(deviceType)\n"
         crashReport += "\t\tSoftware: \(device.systemName) \(device.systemVersion)\n"
         
-        #if canImport(CoreTelephony)
-        let networkInfo = CTTelephonyNetworkInfo()
-        if let carrier = networkInfo.serviceSubscriberCellularProviders?.first?.value {
-            if let carrierName = carrier.carrierName {
-                crashReport += "\t\tCarrier: \(carrierName)\n"
-            }
-        }
-        #endif
+//        #if canImport(CoreTelephony)
+//        let networkInfo = CTTelephonyNetworkInfo()
+//        if let carrier = networkInfo.serviceSubscriberCellularProviders?.first?.value {
+//            if let carrierName = carrier.carrierName {
+//                crashReport += "\t\tCarrier: \(carrierName)\n"
+//            }
+//        }
+//        #endif
         #endif
         
         if let fromException = from as? NSException {
