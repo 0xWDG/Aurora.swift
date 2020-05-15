@@ -1,8 +1,10 @@
 // $$HEADER$$
 
 import Foundation
+
 #if os(iOS)
 import UIKit
+
 extension UIImage {
     public func imageResize (sizeChange: CGSize) -> UIImage {
         
