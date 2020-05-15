@@ -25,6 +25,33 @@ import CommonCrypto
  Extensions for Strings
  */
 public extension String {
+    subscript (bounds: CountableClosedRange<Int>) -> String {
+        let start = index(startIndex, offsetBy: bounds.lowerBound)
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        return String(self[start...end])
+    }
+    
+    subscript (bounds: CountableRange<Int>) -> String {
+        let start = index(startIndex, offsetBy: bounds.lowerBound)
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        return String(self[start..<end])
+    }
+    
+    subscript (bounds: PartialRangeUpTo<Int>) -> String {
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        return String(self[startIndex..<end])
+    }
+    
+    subscript (bounds: PartialRangeThrough<Int>) -> String {
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        return String(self[startIndex...end])
+    }
+    
+    subscript (bounds: CountablePartialRangeFrom<Int>) -> String {
+        let start = index(startIndex, offsetBy: bounds.lowerBound)
+        return String(self[start..<endIndex])
+    }
+    
     /// base64 encoded of string
     var base64: String {
         let plainData = self.data(using: .utf8)
@@ -463,34 +490,6 @@ public extension String {
     subscript(idx: Int) -> Character {
         let index = self.index(self.startIndex, offsetBy: idx)
         return self[index]
-    }
-    
-    /**
-     add subscript
-     
-     - Parameter range: Range [1..2]
-     
-     - Returns: The ranged string.
-     */
-    subscript(range: Range<Int>) -> String {
-        let startIndex = self.index(self.startIndex, offsetBy: range.lowerBound)
-        let endIndex = self.index(self.startIndex, offsetBy: range.upperBound - 1)
-        
-        return String(self[startIndex..<endIndex])
-    }
-    
-    /**
-     add subscript
-     
-     - Parameter range: Range [1..2]
-     
-     - Returns: The ranged string.
-     */
-    subscript(range: CountableClosedRange<Int>) -> String {
-        let startIndex = self.index(self.startIndex, offsetBy: range.lowerBound)
-        let endIndex = self.index(self.startIndex, offsetBy: range.upperBound - 1)
-        
-        return String(self[startIndex..<endIndex])
     }
     
     /**
@@ -1153,6 +1152,22 @@ public extension String {
         let firstHalf = letters[letters.startIndex..<midIndex]
         let secondHalf = letters[midIndex..<letters.endIndex].reversed()
         return !zip(firstHalf, secondHalf).contains(where: { $0.lowercased() != $1.lowercased() })
+    }
+    
+    var decodeEmoji: String{
+        let data = self.data(using: String.Encoding.utf8);
+        let decodedStr = NSString(data: data!, encoding: String.Encoding.nonLossyASCII.rawValue)
+        if let str = decodedStr{
+            return str as String
+        }
+        return self
+    }
+    
+    var encodeEmoji: String{
+        if let encodeStr = NSString(cString: self.cString(using: .nonLossyASCII)!, encoding: String.Encoding.utf8.rawValue){
+            return encodeStr as String
+        }
+        return self
     }
     
     #if canImport(Foundation)
