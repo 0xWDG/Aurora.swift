@@ -54,7 +54,7 @@ open class Aurora {
     ///            your log statements! Use log levels appropriately
     ///            to keep private data out of logs that are sent over
     ///            the Internet.
-    public static var logHandler: ((String) -> Void)?
+    public var logHandler: ((String) -> Void)?
 
     /**
      This will setup iCloud sync!
@@ -104,7 +104,7 @@ open class Aurora {
         if (debug) {
             let fileName: String = (file.split("/").last)!.split(".").first!
             Swift.print("[Aurora.Framework] \(fileName):\(line) \(function):\n \(message)\n")
-            Aurora.logHandler?("[Aurora.Framework] \(fileName):\(line) \(function):\n \(message)\n")
+            Aurora.shared.logHandler?("[Aurora.Framework] \(fileName):\(line) \(function):\n \(message)\n")
         }
         
         return debug
