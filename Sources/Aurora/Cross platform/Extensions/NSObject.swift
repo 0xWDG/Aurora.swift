@@ -66,13 +66,64 @@ extension Set: Configure {}
   extension UIRectEdge: Configure {}
 #endif
 
+// NSO callbackKey
+private var callbackKey = "ObjCallbackKey"
+
 extension NSObject {
+    /// <#Description#>
     public var className: String {
         return type(of: self).className
     }
     
+    /// <#Description#>
     public static var className: String {
         return String(describing: self)
+    }
+        
+    /// <#Description#>
+    @objc private class callbackHolder: NSObject {
+        var callbacks = [() -> Void]()
+        
+        deinit {
+            callbacks.forEach {
+                $0()
+            }
+        }
+    }
+    
+    /// <#Description#>
+    /// - Parameter object: <#object description#>
+    /// - Returns: <#description#>
+    private static func getHolder(of object: NSObject) -> callbackHolder {
+        if let existing = objc_getAssociatedObject(object, &callbackKey) {
+            return existing as! NSObject.callbackHolder
+        }
+        else {
+            let new = callbackHolder()
+            objc_setAssociatedObject(object, &callbackKey, new, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            return new
+        }
+    }
+    
+    
+    /// Run on Deinit
+    /// - Parameters:
+    ///   - object: Object class.
+    ///   - block: Run after deinit
+    ///
+    /// **example:**
+    ///
+    ///      func createViewController() {
+    ///           // We'll init a VC as example.
+    ///           let viewController = UIViewController()
+    ///
+    ///           // Actual code
+    ///           NSObject.onDeinit(of: viewController) {
+    ///               print("The viewcontroller dissapeared")
+    ///           }
+    ///      }
+    public static func onDeinit(of object: NSObject, do block: @escaping () -> Void) {
+        getHolder(of: object).callbacks.append(block)
     }
 }
 #endif

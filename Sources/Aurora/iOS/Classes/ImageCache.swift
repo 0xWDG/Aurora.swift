@@ -7,7 +7,8 @@ import UIKit
 let TMP: String = NSTemporaryDirectory()
 
 extension UIImage {
-    //- (void) cacheImage: (NSString *) ImageURLString
+    /// <#Description#>
+    /// - Parameter image: <#image description#>
     func cacheImage(_ image: String) {
         let imageURL: URL = URL(string: image)!
         let filename: String = String(describing: imageURL).md5
@@ -16,7 +17,8 @@ extension UIImage {
         ((try? (try? Data(contentsOf: imageURL))?.write(to: URL(fileURLWithPath: fileStore), options: [.atomic])) as ()??)
     }
     
-    //- (void) resetImage: (NSString *) iURL
+    /// <#Description#>
+    /// - Parameter image: <#image description#>
     func resetImage(_ image: String) {
         let imageURL: URL = URL(string: image)!
         let filename: String = String(describing: imageURL).md5
@@ -31,7 +33,9 @@ extension UIImage {
         }
     }
     
-    //- (UIImage *) imageExists: (NSString *) ImageURLString
+    /// <#Description#>
+    /// - Parameter image: <#image description#>
+    /// - Returns: <#description#>
     func imageExists(_ image: String) -> Any {
         let imageURL: URL = URL(string: image)!
         let filename: String = String(describing: imageURL).md5
@@ -64,7 +68,9 @@ extension UIImage {
         return rimage
     }
     
-    // - (UIImage *) getImage: (NSString *) ImageURLString
+    /// <#Description#>
+    /// - Parameter image: <#image description#>
+    /// - Returns: <#description#>
     func getImage(_ image: String) -> UIImage {
         let imageURL: URL = URL(string: image)!
         let filename: String = String(describing: imageURL).md5

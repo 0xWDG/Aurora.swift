@@ -6,7 +6,7 @@ import QuartzCore
 
 @IBDesignable
 public class UIGradientView: UIView {
-    /// Light color | First Gradient color
+    /// Light color: First Gradient color
     @IBInspectable public var lightFirstColor: UIColor = UIColor.init(
         red: 0.439216,
         green: 0.74902,
@@ -22,7 +22,7 @@ public class UIGradientView: UIView {
         alpha: 1
     )
     
-    /// Dark mode | First Gradient color
+    /// Dark mode: First Gradient color
     @IBInspectable public var darkFirstColor: UIColor = UIColor.init(
         red: 0,
         green: 204 / 255,
@@ -30,7 +30,7 @@ public class UIGradientView: UIView {
         alpha: 1
     )
     
-    /// Dark mode | Second Gradient color
+    /// Dark mode: Second Gradient color
     @IBInspectable public var darkSecondColor: UIColor = UIColor.init(
         red: 0,
         green: 0,

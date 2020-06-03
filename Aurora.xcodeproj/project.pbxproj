@@ -22,6 +22,7 @@
 
 /* Begin PBXBuildFile section */
 		DE8CB3B424409B8200577333 /* AuroraCrashHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8CB3B324409B8200577333 /* AuroraCrashHandler.swift */; };
+		DEE6FFE72487ED2E00002510 /* ImageCache_NSCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE6FFE62487ED2E00002510 /* ImageCache_NSCache.swift */; };
 		OBJ_100 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* UIDevice.swift */; };
 		OBJ_101 /* UIGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_45 /* UIGradientView.swift */; };
 		OBJ_102 /* UIGreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_46 /* UIGreenButton.swift */; };
@@ -92,6 +93,7 @@
 		"Aurora::Aurora::Product" /* Aurora.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Aurora.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Aurora::AuroraTests::Product" /* AuroraTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = AuroraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE8CB3B324409B8200577333 /* AuroraCrashHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraCrashHandler.swift; sourceTree = "<group>"; };
+		DEE6FFE62487ED2E00002510 /* ImageCache_NSCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache_NSCache.swift; sourceTree = "<group>"; };
 		OBJ_10 /* AuroraFramework.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraFramework.swift; sourceTree = "<group>"; };
 		OBJ_12 /* CrossPlatform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossPlatform.swift; sourceTree = "<group>"; };
 		OBJ_14 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				OBJ_35 /* ImageCache.swift */,
 				OBJ_36 /* ImageSlider.swift */,
 				OBJ_37 /* KeyboardHandler.swift */,
+				DEE6FFE62487ED2E00002510 /* ImageCache_NSCache.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				OBJ_94 /* KeyboardHandler.swift in Sources */,
 				OBJ_95 /* Bundle.swift in Sources */,
 				OBJ_96 /* MKMapView.swift in Sources */,
+				DEE6FFE72487ED2E00002510 /* ImageCache_NSCache.swift in Sources */,
 				OBJ_97 /* UIBarButtonItem.swift in Sources */,
 				OBJ_98 /* UIButtonCorner.swift in Sources */,
 				OBJ_99 /* UIColor+CGColor.swift in Sources */,
