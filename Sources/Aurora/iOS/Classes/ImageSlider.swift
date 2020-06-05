@@ -12,7 +12,6 @@ open class ImageSlider {
     var scrollView: UIScrollView
     var colors: [UIColor] = [.red, .orange, .green, .yellow, .gray, .cyan, .clear, .brown, .black]
     
-    
     /// <#Description#>
     /// - Parameters:
     ///   - images: <#images description#>
@@ -54,7 +53,6 @@ open class ImageSlider {
         scrollView.contentSize = CGSize.init(width: scrollView.contentSize.width, height: 0)
     }
     
-    
     /// <#Description#>
     /// - Parameters:
     ///   - scrollView: <#scrollView description#>
@@ -67,4 +65,3 @@ open class ImageSlider {
     }
 }
 #endif
-

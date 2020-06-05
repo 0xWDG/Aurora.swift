@@ -41,7 +41,7 @@ extension Optional where Wrapped == Bool {
     ///    isFavorite = true
     ///    print(!isFavorite)
     ///    // false
-    static prefix func !(value: Bool?) -> Bool? {
+    static prefix func ! (value: Bool?) -> Bool? {
         return value.flatMap { $0 }
     }
 }

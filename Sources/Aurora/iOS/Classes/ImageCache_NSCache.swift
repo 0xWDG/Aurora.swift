@@ -9,8 +9,7 @@
 import Foundation
 import UIKit
 
-class imageCache {
-    
+class ImageCache {
     /// <#Description#>
     private let cache = NSCache<NSString, NSData>()
     

@@ -1154,17 +1154,17 @@ public extension String {
         return !zip(firstHalf, secondHalf).contains(where: { $0.lowercased() != $1.lowercased() })
     }
     
-    var decodeEmoji: String{
-        let data = self.data(using: String.Encoding.utf8);
+    var decodeEmoji: String {
+        let data = self.data(using: String.Encoding.utf8)
         let decodedStr = NSString(data: data!, encoding: String.Encoding.nonLossyASCII.rawValue)
-        if let str = decodedStr{
+        if let str = decodedStr {
             return str as String
         }
         return self
     }
     
-    var encodeEmoji: String{
-        if let encodeStr = NSString(cString: self.cString(using: .nonLossyASCII)!, encoding: String.Encoding.utf8.rawValue){
+    var encodeEmoji: String {
+        if let encodeStr = NSString(cString: self.cString(using: .nonLossyASCII)!, encoding: String.Encoding.utf8.rawValue) {
             return encodeStr as String
         }
         return self
