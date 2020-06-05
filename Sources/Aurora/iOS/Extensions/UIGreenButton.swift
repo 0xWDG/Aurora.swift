@@ -5,10 +5,13 @@ import UIKit
 
 @IBDesignable
 public class UIGreenButton: UIButton {
+    /// <#Description#>
+    /// - Parameter frame: <#frame description#>
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
+    /// <#Description#>
     public override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -23,6 +26,9 @@ public class UIGreenButton: UIButton {
         updateFocusIfNeeded()
     }
     
+    
+    /// <#Description#>
+    /// - Parameter coder: <#coder description#>
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }

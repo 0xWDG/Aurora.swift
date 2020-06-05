@@ -4,6 +4,8 @@ import Foundation
 import UIKit
 
 extension UITabBarController {
+    /// <#Description#>
+    /// - Parameter withName: <#withName description#>
     public func select(withName: String) {
         var currentIndex = 0
         

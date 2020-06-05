@@ -4,10 +4,27 @@ import Foundation
 import UIKit
 
 extension UIView {
+    /// Ignore invert colors?
+    @IBInspectable var ignoresInvertColors: Bool {
+        get {
+            return accessibilityIgnoresInvertColors
+        }
+        set {
+            accessibilityIgnoresInvertColors = newValue
+        }
+    }
+    
+    /// <#Description#>
+    /// - Parameter radius: <#radius description#>
     public func roundedCorners(radius: CGFloat? = 45) {
         self.layer.cornerRadius = radius ?? 46
     }
     
+    
+    /// <#Description#>
+    /// - Parameters:
+    ///   - corners: <#corners description#>
+    ///   - radius: <#radius description#>
     public func roundCorners(corners: UIRectCorner, radius: CGFloat) {
         let path = UIBezierPath(
             roundedRect: bounds,
@@ -24,6 +41,10 @@ extension UIView {
         layer.masksToBounds = true
     }
     
+    /// <#Description#>
+    /// - Parameters:
+    ///   - colorOne: <#colorOne description#>
+    ///   - colorTwo: <#colorTwo description#>
     public func gradientBackground(colorOne: UIColor, colorTwo: UIColor) {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds
@@ -34,6 +55,10 @@ extension UIView {
         layer.insertSublayer(gradientLayer, at: 0)
     }
     
+    /// <#Description#>
+    /// - Parameters:
+    ///   - colorOne: <#colorOne description#>
+    ///   - colorTwo: <#colorTwo description#>
     public func addGradientOnForeground(colorOne: UIColor, colorTwo: UIColor) {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds
@@ -45,11 +70,13 @@ extension UIView {
         layer.insertSublayer(gradientLayer, at: UInt32(truncating: intVal! as NSNumber))
     }
     
+    /// <#Description#>
     public func removeLastSubview() {
         let intVal = (layer.sublayers?.count)! - 1
         layer.sublayers?.remove(at: intVal)
     }
     
+    /// <#Description#>
     public func sameSizeAsParent() {
         guard let superview = self.superview else { return }
         translatesAutoresizingMaskIntoConstraints = superview.translatesAutoresizingMaskIntoConstraints
@@ -63,6 +90,8 @@ extension UIView {
             rightAnchor.constraint(equalTo: superview.rightAnchor).isActive = true
         }
     }
+    
+    /// <#Description#>
     struct GestureClosures {
         static var up: (() -> Void)?
         static var down: (() -> Void)?
@@ -70,6 +99,11 @@ extension UIView {
         static var right: (() -> Void)?
     }
     
+    
+    /// <#Description#>
+    /// - Parameters:
+    ///   - swipeDirection: <#swipeDirection description#>
+    ///   - completionHandler: <#completionHandler description#>
     public func swipeAction(
         swipeDirection: UISwipeGestureRecognizer.Direction,
         completionHandler: @escaping () -> Void
@@ -97,6 +131,9 @@ extension UIView {
         }
     }
     
+    
+    /// <#Description#>
+    /// - Parameter gesture: <#gesture description#>
     @objc func invokeTarget(_ gesture: UIGestureRecognizer?) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
@@ -131,11 +168,16 @@ extension UIView {
     }
 }
 
+/// <#Description#>
 public protocol Blurable {
+    /// <#Description#>
+    /// - Parameter alpha: <#alpha description#>
     func addBlur(_ alpha: CGFloat)
 }
 
 extension Blurable where Self: UIView {
+    /// <#Description#>
+    /// - Parameter alpha: <#alpha description#>
     public func addBlur(_ alpha: CGFloat = 0.5) {
         // create effect
         let effect = UIBlurEffect(style: .dark)

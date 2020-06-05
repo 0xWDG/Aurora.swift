@@ -43,6 +43,7 @@ extension UIViewController {
         
     }
     
+    /// <#Description#>
     public func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(
             target: self,
@@ -52,10 +53,21 @@ extension UIViewController {
         view.addGestureRecognizer(tap)
     }
     
+    /// <#Description#>
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
     
+    /// <#Description#>
+    /// - Parameters:
+    ///   - title: <#title description#>
+    ///   - subtitle: <#subtitle description#>
+    ///   - actionTitle: <#actionTitle description#>
+    ///   - cancelTitle: <#cancelTitle description#>
+    ///   - inputPlaceholder: <#inputPlaceholder description#>
+    ///   - inputKeyboardType: <#inputKeyboardType description#>
+    ///   - cancelHandler: <#cancelHandler description#>
+    ///   - actionHandler: <#actionHandler description#>
     public func showInputDialog(title: String? = nil,
                                 subtitle: String? = nil,
                                 actionTitle: String? = "Add",
@@ -65,19 +77,38 @@ extension UIViewController {
                                 cancelHandler: ((UIAlertAction) -> Swift.Void)? = nil,
                                 actionHandler: ((_ text: String?) -> Void)? = nil) {
         
-        let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
+        let alert = UIAlertController(
+            title: title,
+            message: subtitle,
+            preferredStyle: .alert
+        )
+        
         alert.addTextField { (textField: UITextField) in
             textField.placeholder = inputPlaceholder
             textField.keyboardType = inputKeyboardType
         }
-        alert.addAction(UIAlertAction(title: actionTitle, style: .destructive, handler: { (_: UIAlertAction) in
-            guard let textField =  alert.textFields?.first else {
-                actionHandler?(nil)
-                return
+        
+        alert.addAction(
+            UIAlertAction(
+                title: actionTitle,
+                style: .destructive,
+                handler: { (_: UIAlertAction) in
+                    guard let textField =  alert.textFields?.first else {
+                        actionHandler?(nil)
+                        return
+                    }
+                    actionHandler?(textField.text)
             }
-            actionHandler?(textField.text)
-        }))
-        alert.addAction(UIAlertAction(title: cancelTitle, style: .cancel, handler: cancelHandler))
+            )
+        )
+        
+        alert.addAction(
+            UIAlertAction(
+                title: cancelTitle,
+                style: .cancel,
+                handler: cancelHandler
+            )
+        )
         
         self.present(alert, animated: true, completion: nil)
     }

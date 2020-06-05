@@ -47,6 +47,15 @@ open class Aurora {
     /// Should we debug right now?
     private var debug = _isDebugAssertConfiguration()
     
+    /// If this is non-nil, we will call it with the same string that we
+    /// are going to print to the console. You can use this to pass log
+    /// messages along to your crash reporter, analytics service, etc.
+    /// - warning: Be mindful of private user data that might end up in
+    ///            your log statements! Use log levels appropriately
+    ///            to keep private data out of logs that are sent over
+    ///            the Internet.
+    public var logHandler: ((String) -> Void)?
+
     /**
      This will setup iCloud sync!
      NSUserDefaults to iCloud & Back.
@@ -78,13 +87,24 @@ open class Aurora {
     }
     
     /**
-     ?
+     * Log
+     *
+     * This is used to send log messages with the following syntax
+     *
+     *     [Aurora] Filename:line functionName(...):
+     *      Message
+     *
+     * - parameter message: the message to send
+     * - parameter file: the filename
+     * - parameter line: the line
+     * - parameter function: function name
      */
     @discardableResult
     public func log(_ message: String, file: String = #file, line: Int = #line, function: String = #function) -> Bool {
         if (debug) {
             let fileName: String = (file.split("/").last)!.split(".").first!
             Swift.print("[Aurora.Framework] \(fileName):\(line) \(function):\n \(message)\n")
+            Aurora.shared.logHandler?("[Aurora.Framework] \(fileName):\(line) \(function):\n \(message)\n")
         }
         
         return debug

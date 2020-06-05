@@ -10,8 +10,11 @@ import AVFoundation
 #endif
 
 extension UIImage {
+    
+    /// <#Description#>
+    /// - Parameter sizeChange: <#sizeChange description#>
+    /// - Returns: <#description#>
     public func imageResize (sizeChange: CGSize) -> UIImage {
-        
         let hasAlpha = true
         let scale: CGFloat = 0.0 // Use scale factor of main screen
         

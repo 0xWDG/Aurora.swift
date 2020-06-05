@@ -3,11 +3,15 @@
 import UIKit
 
 extension CGColor {
+    /// <#Description#>
     public static let dinnerGreen = UIColor.dinnerGreen.cgColor
+    
+    /// <#Description#>
     public static let dinnerBlue = UIColor.dinnerBlue.cgColor
 }
 
 extension UIColor {
+    /// <#Description#>
     public static let dinnerGreen = UIColor.init(
         red: 0.439216,
         green: 0.74902,
@@ -15,6 +19,7 @@ extension UIColor {
         alpha: 1
     )
     
+    /// <#Description#>
     public static let dinnerBlue = UIColor.init(
         red: 0.0117647,
         green: 0.396078,
@@ -22,6 +27,7 @@ extension UIColor {
         alpha: 1
     )
     
+    /// <#Description#>
     public static let button = UIColor.init(
         red: 0,
         green: 176/255,
@@ -29,6 +35,7 @@ extension UIColor {
         alpha: 1.0
     )
     
+    /// <#Description#>
     public static var cellBackgroundcolor: UIColor {
         if #available(iOS 13.0, *) {
             return .systemBackground // .systemGray6 
@@ -37,6 +44,10 @@ extension UIColor {
         }
     }
     
+    
+    /// <#Description#>
+    /// - Parameter randomApha: <#randomApha description#>
+    /// - Returns: <#description#>
     public class func random(randomAlpha randomApha: Bool = false) -> UIColor {
         let redValue = CGFloat.random(in: 0...255) / 255.0
         let greenValue = CGFloat.random(in: 0...255) / 255.0

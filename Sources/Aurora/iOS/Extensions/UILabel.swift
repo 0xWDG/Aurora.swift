@@ -3,10 +3,13 @@
 import UIKit
 
 extension UILabel {
+    
+    /// <#Description#>
     private struct AssociatedKeys {
         static var padding = UIEdgeInsets()
     }
     
+    /// <#Description#>
     public var padding: UIEdgeInsets? {
         get {
             return objc_getAssociatedObject(
@@ -27,6 +30,8 @@ extension UILabel {
     }
     //&AssociatedKeys.padding, newValue as UIEdgeInsets!,
     
+    /// <#Description#>
+    /// - Parameter rect: <#rect description#>
     override open func draw(_ rect: CGRect) {
         if let insets = padding {
             self.drawText(in: rect.inset(by: insets))
@@ -35,6 +40,7 @@ extension UILabel {
         }
     }
     
+    /// <#Description#>
     override open var intrinsicContentSize: CGSize {
         var contentSize = super.intrinsicContentSize
         if let insets = padding {
@@ -44,10 +50,14 @@ extension UILabel {
         return contentSize
     }
     
+    /// <#Description#>
+    /// - Parameter text: <#text description#>
     public func HTMLString(_ text: String) {
         self.HTML(text)
     }
-
+    
+    /// <#Description#>
+    /// - Parameter text: <#text description#>
     public func HTML(_ text: String) {
         // swiftlint:disable:next force_try
         let attrStr = try! NSAttributedString(

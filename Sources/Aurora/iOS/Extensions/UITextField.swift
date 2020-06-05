@@ -4,6 +4,7 @@ import Foundation
 import UIKit
 
 extension UITextField {
+    /// <#Description#>
     @IBInspectable public var doneAccessory: Bool {
         get {
             return self.doneAccessory
@@ -16,6 +17,7 @@ extension UITextField {
     }
     // swiftlint:enable implicit_getter valid_ibinspectable
     
+    /// <#Description#>
     public func addDoneButtonOnKeyboard() {
         let doneToolbar: UIToolbar = UIToolbar().configure {
             $0.frame = CGRect.init(
@@ -48,10 +50,13 @@ extension UITextField {
         self.inputAccessoryView = doneToolbar
     }
     
+    /// <#Description#>
     @objc func doneButtonAction() {
         self.resignFirstResponder()
     }
     
+    /// <#Description#>
+    /// - Parameter icon: <#icon description#>
     public func addShowPasswordButton(with icon: String? = "👁️") {
         let rightButton = UIButton(type: .custom)
         rightButton.setTitle(icon, for: .normal)
@@ -85,11 +90,13 @@ extension UITextField {
         )
     }
     
+    /// <#Description#>
     @objc func showPasswordView() {
         isSecureTextEntry = false
         isUserInteractionEnabled = false
     }
     
+    /// <#Description#>
     @objc func hidePasswordView() {
         isSecureTextEntry = true
         isUserInteractionEnabled = true
