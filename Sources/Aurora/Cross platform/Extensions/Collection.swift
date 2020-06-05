@@ -22,7 +22,14 @@ extension Sequence where Element: Numeric {
 }
 
 public protocol DivisibleArithmetic: Numeric {
+    /// <#Description#>
+    /// - Parameter value: <#value description#>
     init(_ value: Int)
+    
+    /// <#Description#>
+    /// - Parameters:
+    ///   - lhs: <#lhs description#>
+    ///   - rhs: <#rhs description#>
     static func / (lhs: Self, rhs: Self) -> Self
 }
 

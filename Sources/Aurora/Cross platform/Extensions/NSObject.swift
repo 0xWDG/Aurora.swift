@@ -81,7 +81,7 @@ extension NSObject {
     }
         
     /// <#Description#>
-    @objc private class callbackHolder: NSObject {
+    @objc private class CallbackHolder: NSObject {
         var callbacks = [() -> Void]()
         
         deinit {
@@ -94,17 +94,15 @@ extension NSObject {
     /// <#Description#>
     /// - Parameter object: <#object description#>
     /// - Returns: <#description#>
-    private static func getHolder(of object: NSObject) -> callbackHolder {
-        if let existing = objc_getAssociatedObject(object, &callbackKey) {
-            return existing as! NSObject.callbackHolder
-        }
-        else {
-            let new = callbackHolder()
+    private static func getHolder(of object: NSObject) -> CallbackHolder {
+        if let existing = objc_getAssociatedObject(object, &callbackKey) as? NSObject.CallbackHolder {
+            return existing
+        } else {
+            let new = CallbackHolder()
             objc_setAssociatedObject(object, &callbackKey, new, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             return new
         }
     }
-    
     
     /// Run on Deinit
     /// - Parameters:

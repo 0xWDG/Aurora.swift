@@ -21,7 +21,7 @@
     extension WatchDeviceType: CaseIterable {}
     #endif
     
-    public func <(lhs: WatchDeviceType, rhs: WatchDeviceType) -> Bool { return lhs.rawValue < rhs.rawValue }
+    public func < (lhs: WatchDeviceType, rhs: WatchDeviceType) -> Bool { return lhs.rawValue < rhs.rawValue }
 
     @available(iOS 8.2, watchOS 2.0, *)
     public extension WKInterfaceDevice {

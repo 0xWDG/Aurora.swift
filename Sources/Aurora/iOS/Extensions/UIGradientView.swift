@@ -167,4 +167,3 @@ public class UIGradientView: UIView {
     
 }
 #endif
-

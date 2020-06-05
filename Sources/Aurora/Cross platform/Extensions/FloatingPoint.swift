@@ -17,11 +17,15 @@ public extension FloatingPoint {
     
     /// Converts an angle measured in degrees to radians.
     var degreesToRadians: Self {
-        return self * .pi / (180.0 as! Self)
+        guard let val = 180.0 as? Self else { return }
+        
+        return self * .pi / val
     }
     
     /// Converts an angle measured in radians to degrees.
     var radiansToDegrees: Self {
-        return self * (180.0 as! Self) / .pi
+        guard let val = 180.0 as? Self else { return }
+        
+        return self * val / .pi
     }
 }

@@ -26,7 +26,6 @@ public class UIGreenButton: UIButton {
         updateFocusIfNeeded()
     }
     
-    
     /// <#Description#>
     /// - Parameter coder: <#coder description#>
     required init?(coder: NSCoder) {

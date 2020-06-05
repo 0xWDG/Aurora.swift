@@ -22,8 +22,8 @@ extension AuroraTest {
     }
     
     func fetchIds() -> Promise<[Int]> {
-        return Promise { xx in
-            xx([0, 1, 2])
+        return Promise { xxx in
+            xxx([0, 1, 2])
         }
     }
     

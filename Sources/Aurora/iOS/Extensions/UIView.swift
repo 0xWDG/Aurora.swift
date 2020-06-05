@@ -20,7 +20,6 @@ extension UIView {
         self.layer.cornerRadius = radius ?? 46
     }
     
-    
     /// <#Description#>
     /// - Parameters:
     ///   - corners: <#corners description#>
@@ -99,7 +98,6 @@ extension UIView {
         static var right: (() -> Void)?
     }
     
-    
     /// <#Description#>
     /// - Parameters:
     ///   - swipeDirection: <#swipeDirection description#>
@@ -130,7 +128,6 @@ extension UIView {
             return
         }
     }
-    
     
     /// <#Description#>
     /// - Parameter gesture: <#gesture description#>
