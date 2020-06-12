@@ -1,6 +1,8 @@
 // $$HEADER$$
 
 import Foundation
+
+#if canImport(UIKit)
 import UIKit
 
 extension UITextField {
@@ -102,3 +104,5 @@ extension UITextField {
         isUserInteractionEnabled = true
     }
 }
+
+#endif

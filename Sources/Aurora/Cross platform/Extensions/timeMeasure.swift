@@ -6,6 +6,7 @@
 //
 
 import Foundation
+#if canImport(UIKit)
 import UIKit
 
 extension Aurora {
@@ -33,3 +34,4 @@ extension Aurora {
         return work()
     }
 }
+#endif

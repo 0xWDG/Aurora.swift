@@ -24,7 +24,7 @@ import Vision
 ///            print(String(format: "%.1f %% NSFW", confidence * 100.0))
 ///        }
 ///    }
-@available(iOS 12.0, *) public class NSFWDetector {
+@available(macOS 10.14, *) @available(iOS 12.0, *) public class NSFWDetector {
     /// Singleton for NSFWDetector
     public static let shared = NSFWDetector()
     
@@ -80,6 +80,7 @@ import Vision
         let requestHandler: VNImageRequestHandler?
         
         /// <#Description#>
+        #if os(iOS)
         if let cgImage = image.cgImage {
             requestHandler = VNImageRequestHandler(cgImage: cgImage, options: [:])
         } else if let ciImage = image.ciImage {
@@ -87,6 +88,13 @@ import Vision
         } else {
             requestHandler = nil
         }
+        #endif
+        #if os(macOS)
+        //swiftlint:ignore:next force_unwrap
+        let cgImage = image.cgImage as! CGImage
+        
+        requestHandler = VNImageRequestHandler(cgImage: cgImage, options: [:])
+        #endif
         
         self.check(requestHandler, completion: completion)
     }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+#if canImport(UIKit)
 import UIKit
 
 public enum Model: String {
@@ -231,3 +232,4 @@ public extension UIDevice {
     }
 
 }
+#endif

@@ -1,6 +1,7 @@
 // $$HEADER$$
 
 import Foundation
+#if canImport(UIKit)
 import UIKit
 
 /// A Designable UIGreenButton
@@ -32,3 +33,4 @@ import UIKit
         super.init(coder: coder)
     }
 }
+#endif

@@ -13,7 +13,9 @@ import CoreGraphics
 #endif
 
 #if os(iOS) || os(tvOS)
+#if canImport(UIKit)
   import UIKit.UIGeometry
+#endif
 #endif
 
 #if canImport(Foundation)

@@ -1,9 +1,9 @@
 // $$HEADER$$
 
 import Foundation
-import UIKit
 
 #if canImport(UIKit)
+import UIKit
 public extension UIControl {
     /// .onInteraction
     ///
@@ -64,6 +64,9 @@ public class UIControlHelper {
 #endif
 
 #if canImport(AppKit)
+// Temporary off, swift > 10.
+#if swift(>=10)
+import AppKit
 // see https://gist.github.com/sindresorhus/3580ce9426fff8fafb1677341fca4815
 // renamed onAction to onInteraction
 public extension NSControl {
@@ -96,7 +99,7 @@ public extension NSControl {
     ///     myControlElement.onInteraction { sender in
     ///        print(sender)
     ///     }
-    public var onInteraction: ActionClosure? {
+    var onInteraction: ActionClosure? {
         get {
             return AssociatedKeys.onActionClosure[self]
         }
@@ -107,4 +110,5 @@ public extension NSControl {
         }
     }
 }
+#endif
 #endif

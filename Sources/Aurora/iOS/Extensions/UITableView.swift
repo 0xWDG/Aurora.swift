@@ -1,6 +1,7 @@
 // $$HEADER$$
 
 import Foundation
+#if canImport(UIKit)
 import UIKit
 
 extension UITableView {
@@ -42,3 +43,4 @@ extension UITableView {
         }
     }
 }
+#endif

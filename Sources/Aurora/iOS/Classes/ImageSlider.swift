@@ -2,6 +2,7 @@
 
 #if os(iOS)
 import Foundation
+#if canImport(UIKit)
 import UIKit
 
 /// <#Description#>
@@ -73,4 +74,5 @@ open class ImageSlider {
         pageControl.currentPage = currentPage
     }
 }
+#endif
 #endif

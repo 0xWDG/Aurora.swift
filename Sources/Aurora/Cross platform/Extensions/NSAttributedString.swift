@@ -5,6 +5,7 @@ import Foundation
 #endif
 
 #if os(iOS)
+#if canImport(UIKit)
 import UIKit
 
 public extension NSMutableAttributedString {
@@ -98,4 +99,5 @@ public extension NSAttributedString {
         return lhs + NSAttributedString(string: rhs)
     }
 }
+#endif
 #endif

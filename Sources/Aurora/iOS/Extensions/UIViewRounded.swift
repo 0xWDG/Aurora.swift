@@ -1,6 +1,8 @@
 // $$HEADER$$
 
 import Foundation
+
+#if canImport(UIKit)
 import UIKit
 import QuartzCore
 
@@ -21,3 +23,5 @@ import QuartzCore
         )
     }
 }
+#endif
+

@@ -1,6 +1,7 @@
 // $$HEADER$$
 
 #if os(iOS)
+#if canImport(UIKit)
 import UIKit
 import QuartzCore
 
@@ -173,4 +174,5 @@ public class UIGradientView: UIView {
     }
     
 }
+#endif
 #endif

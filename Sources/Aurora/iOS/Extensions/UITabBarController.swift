@@ -1,6 +1,8 @@
 // $$HEADER$$
 
 import Foundation
+
+#if canImport(UIKit)
 import UIKit
 
 extension UITabBarController {
@@ -25,3 +27,4 @@ extension UITabBarController {
         print("Could not find item \(withName).")
     }
 }
+#endif
