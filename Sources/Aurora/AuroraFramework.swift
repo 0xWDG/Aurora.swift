@@ -56,6 +56,9 @@ open class Aurora {
     ///            the Internet.
     public var logHandler: ((String) -> Void)?
 
+    /// Is it already started?
+    var isInitialized: Bool = false
+    
     /**
      This will setup iCloud sync!
      NSUserDefaults to iCloud & Back.
@@ -84,6 +87,8 @@ open class Aurora {
         let iCloud: WDGFrameworkiCloudSync = WDGFrameworkiCloudSync()
         iCloud.startSync()
         #endif
+        
+        isInitialized = true
     }
     
     /**
@@ -99,12 +104,14 @@ open class Aurora {
      * - parameter line: the line
      * - parameter function: function name
      */
-    @discardableResult
-    public func log(_ message: String, file: String = #file, line: Int = #line, function: String = #function) -> Bool {
+    @discardableResult public func log(_ message: String, file: String = #file, line: Int = #line, function: String = #function) -> Bool {
         if (debug) {
             let fileName: String = (file.split("/").last)!.split(".").first!
             Swift.print("[Aurora.Framework] \(fileName):\(line) \(function):\n \(message)\n")
-            Aurora.shared.logHandler?("[Aurora.Framework] \(fileName):\(line) \(function):\n \(message)\n")
+            
+            if (isInitialized) {
+                Aurora.shared.logHandler?("[Aurora.Framework] \(fileName):\(line) \(function):\n \(message)\n")
+            }
         }
         
         return debug
