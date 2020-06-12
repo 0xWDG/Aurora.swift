@@ -27,10 +27,16 @@ let package = Package(
         .target(
             name: "Aurora",
             dependencies: []
+//            resources: [
+//                .process("Resources"),
+//            ]
         ),
         .testTarget(
             name: "AuroraTests",
             dependencies: ["Aurora"]
+//            resources: [
+//                .process("Resources"),
+//            ]
         )
     ]
 )

@@ -35,9 +35,15 @@ import Vision
     public required init() {
         var NSFWModel: MLModel?
         
+        #if swift(>=5.3)
+        guard let modelURL = Bundle.module.url(forResource: "NSFW", withExtension: "mlmodel") else {
+            fatalError("No model found.")
+        }
+        #else
         guard let modelURL = Bundle.main.url(forResource: "NSFW", withExtension: "mlmodel") else {
             fatalError("No model found.")
         }
+        #endif
         
         do {
             let config = MLModelConfiguration().configure {
