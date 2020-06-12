@@ -4,7 +4,6 @@ import Foundation
 import UIKit
 
 extension UIApplication {
-    
     /// Clear the cache of the launchscreen
     func clearLaunchScreenCache() {
         do {

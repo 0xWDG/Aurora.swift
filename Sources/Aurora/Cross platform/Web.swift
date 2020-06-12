@@ -5,6 +5,8 @@ import Foundation
 
 // MARK: ...
 private var auroraFrameworkWebDebug: Bool = false
+
+/// <#Description#>
 open class SimpleTimer {/*<--was named Timer, but since swift 3, NSTimer is now Timer*/
     typealias Tick = () -> Void
     var timer: Timer?
@@ -12,12 +14,18 @@ open class SimpleTimer {/*<--was named Timer, but since swift 3, NSTimer is now 
     var repeats: Bool
     var tick: Tick
     
+    /// <#Description#>
+    /// - Parameters:
+    ///   - interval: <#interval description#>
+    ///   - repeats: <#repeats description#>
+    ///   - onTick: <#onTick description#>
     init(interval: TimeInterval, repeats: Bool = false, onTick: @escaping Tick) {
         self.interval = interval
         self.repeats = repeats
         self.tick = onTick
     }
     
+    /// <#Description#>
     func start() {
         timer = Timer.scheduledTimer(
             timeInterval: interval,
@@ -27,6 +35,8 @@ open class SimpleTimer {/*<--was named Timer, but since swift 3, NSTimer is now 
             repeats: true
         )
     }
+    
+    /// <#Description#>
     func stop() {
         if (timer != nil) {
             timer!.invalidate()
@@ -42,6 +52,10 @@ open class SimpleTimer {/*<--was named Timer, but since swift 3, NSTimer is now 
 }
 
 extension Aurora {
+    /// <#Description#>
+    /// - Parameters:
+    ///   - forURL: <#forURL description#>
+    ///   - completion: <#completion description#>
     open func dataTaskHelper(forURL: URL?, completion: @escaping (String) -> Void) {
         let session = URLSession.shared
         let request = URLRequest.init(
@@ -84,6 +98,9 @@ extension Aurora {
         task.resume()
     }
     
+    /// <#Description#>
+    /// - Parameter url: <#url description#>
+    /// - Returns: <#description#>
     open func getSiteAsText(url: URL) -> String {
         log("getSiteAsText init(url: \"\(url)\")")
         var returnString: String = ""

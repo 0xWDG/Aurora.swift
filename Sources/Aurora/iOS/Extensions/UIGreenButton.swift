@@ -3,8 +3,8 @@
 import Foundation
 import UIKit
 
-@IBDesignable
-public class UIGreenButton: UIButton {
+/// A Designable UIGreenButton
+@IBDesignable public class UIGreenButton: UIButton {
     /// <#Description#>
     /// - Parameter frame: <#frame description#>
     override init(frame: CGRect) {

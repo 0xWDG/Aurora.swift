@@ -1,13 +1,9 @@
-//
-//  File.swift
-//  
-//
-//  Created by Wesley de Groot on 08/05/2020.
-//
+// $$HEADER$$
 
 import Foundation
 
 class Promise<Value> {
+    /// <#Description#>
     enum State<T> {
         case pending
         case resolved(T)
@@ -17,8 +13,10 @@ class Promise<Value> {
     /// On which state we are
     private var state: State<Value> = .pending
     
-    /// What callbacks are waiting
+    /// What (resolved) callbacks are waiting
     private var callbacksOnResolved: [(Value) -> Void] = []
+    
+    /// What (error) callbacks are waiting
     private var callbacksOnError: [(Value) -> Void] = []
     
     /// <#Description#>

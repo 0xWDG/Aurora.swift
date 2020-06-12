@@ -8,8 +8,8 @@ import UIKit
 
 public extension UIView {
     // MARK: - Basic Properties
-    /// X Axis value of UIView.
     // swiftlint:disable:next identifier_name
+    /// X Axis value of UIView.
     @objc var x: CGFloat {
         set {
             self.frame = CGRect(
@@ -23,9 +23,9 @@ public extension UIView {
             return self.frame.origin.x
         }
     }
-    
-    /// Y Axis value of UIView.
+
     // swiftlint:disable:next identifier_name
+    /// Y Axis value of UIView.
     @objc var y: CGFloat {
         set {
             self.frame = CGRect(

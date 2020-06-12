@@ -3,6 +3,12 @@
 import Foundation
 
 infix operator =~
+
+/// <#Description#>
+/// - Parameters:
+///   - string: <#string description#>
+///   - regex: <#regex description#>
+/// - Returns: <#description#>
 public func =~ (string: String, regex: String) -> Bool {
     return string.range(
         of: regex,
@@ -13,6 +19,12 @@ public func =~ (string: String, regex: String) -> Bool {
 }
 
 infix operator !~
+
+/// <#Description#>
+/// - Parameters:
+///   - source: <#source description#>
+///   - pattern: <#pattern description#>
+/// - Returns: <#description#>
 public func !~ (source: String, pattern: String) -> Bool {
     return !(source =~ pattern)
 }
@@ -50,8 +62,7 @@ public struct Regex {
     /// - parameter string: The string to test.
     ///
     /// - returns: `true` if the regular expression matches, otherwise `false`.
-    @inlinable
-    public func matches(_ string: String) -> Bool {
+    @inlinable public func matches(_ string: String) -> Bool {
         firstMatch(in: string) != nil
     }
     
@@ -62,8 +73,7 @@ public struct Regex {
     /// - parameter string: The string to match against.
     ///
     /// - returns: An optional `Match` describing the first match, or `nil`.
-    @inlinable
-    public func firstMatch(in string: String) -> Match? {
+    @inlinable public func firstMatch(in string: String) -> Match? {
         let firstMatch = regularExpression
             .firstMatch(
                 in: string,
@@ -86,8 +96,7 @@ public struct Regex {
     /// - parameter string: The string to match against.
     ///
     /// - returns: An array of `Match` describing every match in `string`.
-    @inlinable
-    public func matches(in string: String) -> [Match] {
+    @inlinable public func matches(in string: String) -> [Match] {
         let matches = regularExpression
             .matches(in: string, options: [], range: NSRange(location: 0, length: string.utf16.count))
             .map { Match(result: $0, in: string) }
@@ -111,8 +120,7 @@ public struct Regex {
     ///     - count: The maximum count of matches to replace, beginning with the first match.
     ///
     /// - returns: A string with all matches of `regex` replaced by `template`.
-    @inlinable
-    public func replacingMatches(in input: String, with template: String, count: Int? = nil) -> String {
+    @inlinable public func replacingMatches(in input: String, with template: String, count: Int? = nil) -> String {
         var output = input
         let matches = self.matches(in: input)
         let rangedMatches = Array(matches[0 ..< min(matches.count, count ?? .max)])
@@ -259,8 +267,10 @@ extension Regex {
             }
         }()
         
+        /// <#Description#>
         private let result: NSTextCheckingResult
         
+        /// <#Description#>
         private let baseString: String
         
         // MARK: - Initializers

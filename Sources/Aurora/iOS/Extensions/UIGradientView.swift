@@ -108,6 +108,8 @@ public class UIGradientView: UIView {
         )
     }
     
+    /// <#Description#>
+    /// - Parameter rect: <#rect description#>
     func updateBackground(rect: CGRect) {
         let oldLayer = self._layer
         self._layer = getLayer(rect: rect)
@@ -121,6 +123,9 @@ public class UIGradientView: UIView {
         }
     }
     
+    /// Get the CA Layer
+    /// - Parameter rect: Which size
+    /// - Returns: CALayer (with CAGradient)
     func getLayer(rect: CGRect) -> CALayer {
         // Create our gradient layer
         let gradientLayer = CAGradientLayer()
@@ -157,6 +162,8 @@ public class UIGradientView: UIView {
         return gradientLayer
     }
     
+    /// The trait collection did change
+    /// - Parameter previousTraitCollection: UITraitCollection
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         

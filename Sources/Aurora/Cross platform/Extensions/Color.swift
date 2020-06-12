@@ -169,7 +169,6 @@ public extension Color {
 
 // MARK: - Methods
 public extension Color {
-    
     /// Blend two Colors
     ///
     /// - Parameters:

@@ -25,28 +25,33 @@ import CommonCrypto
  Extensions for Strings
  */
 public extension String {
+    /// <#Description#>
     subscript (bounds: CountableClosedRange<Int>) -> String {
         let start = index(startIndex, offsetBy: bounds.lowerBound)
         let end = index(startIndex, offsetBy: bounds.upperBound)
         return String(self[start...end])
     }
     
+    /// <#Description#>
     subscript (bounds: CountableRange<Int>) -> String {
         let start = index(startIndex, offsetBy: bounds.lowerBound)
         let end = index(startIndex, offsetBy: bounds.upperBound)
         return String(self[start..<end])
     }
     
+    /// <#Description#>
     subscript (bounds: PartialRangeUpTo<Int>) -> String {
         let end = index(startIndex, offsetBy: bounds.upperBound)
         return String(self[startIndex..<end])
     }
     
+    /// <#Description#>
     subscript (bounds: PartialRangeThrough<Int>) -> String {
         let end = index(startIndex, offsetBy: bounds.upperBound)
         return String(self[startIndex...end])
     }
     
+    /// <#Description#>
     subscript (bounds: CountablePartialRangeFrom<Int>) -> String {
         let start = index(startIndex, offsetBy: bounds.lowerBound)
         return String(self[start..<endIndex])
@@ -88,13 +93,11 @@ public extension String {
     }
     
     #if os(iOS)
-    
     /// copy string to pasteboard
     func addToPasteboard() {
         let pasteboard = UIPasteboard.general
         pasteboard.string = self
     }
-    
     #endif
     
     /// Extracts URLS from String
@@ -128,6 +131,7 @@ public extension String {
         return self.range(of: find, options: compareOption) != nil
     }
     
+    /// <#Description#>
     var isEmail: Bool {
         let dataDetector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
         
@@ -140,6 +144,7 @@ public extension String {
         return (firstMatch?.range.location != NSNotFound && firstMatch?.url?.scheme == "mailto")
     }
     
+    /// <#Description#>
     fileprivate struct HTMLEntities {
         static let characterEntities: [String: Character] = [
             
@@ -513,10 +518,15 @@ public extension String {
         
     }
     
+    /// <#Description#>
+    /// - Returns: <#description#>
     func capitalize() -> String {
         return self.capitalized
     }
     
+    /// <#Description#>
+    /// - Parameter prefix: <#prefix description#>
+    /// - Returns: <#description#>
     func chompLeft(_ prefix: String) -> String {
         if let prefixRange = range(of: prefix) {
             if prefixRange.upperBound >= endIndex {
@@ -528,6 +538,9 @@ public extension String {
         return self
     }
     
+    /// <#Description#>
+    /// - Parameter suffix: <#suffix description#>
+    /// - Returns: <#description#>
     func chompRight(_ suffix: String) -> String {
         if let suffixRange = range(of: suffix, options: .backwards) {
             if suffixRange.upperBound >= endIndex {
@@ -539,11 +552,18 @@ public extension String {
         return self
     }
     
+    /// <#Description#>
+    /// - Returns: <#description#>
     func collapseWhitespace() -> String {
         let components = self.components(separatedBy: CharacterSet.whitespacesAndNewlines).filter {!$0.isEmpty}
         return components.joined(separator: " ")
     }
     
+    /// <#Description#>
+    /// - Parameters:
+    ///   - with: <#with description#>
+    ///   - allOf: <#allOf description#>
+    /// - Returns: <#description#>
     func clean(_ with: String, allOf: String...) -> String {
         var string = self
         for target in allOf {
@@ -552,14 +572,23 @@ public extension String {
         return string
     }
     
+    /// <#Description#>
+    /// - Parameter substring: <#substring description#>
+    /// - Returns: <#description#>
     func count(_ substring: String) -> Int {
         return components(separatedBy: substring).count - 1
     }
     
+    /// <#Description#>
+    /// - Parameter suffix: <#suffix description#>
+    /// - Returns: <#description#>
     func endsWith(_ suffix: String) -> Bool {
         return hasSuffix(suffix)
     }
     
+    /// <#Description#>
+    /// - Parameter prefix: <#prefix description#>
+    /// - Returns: <#description#>
     func ensureLeft(_ prefix: String) -> String {
         if startsWith(prefix) {
             return self
@@ -568,6 +597,9 @@ public extension String {
         }
     }
     
+    /// <#Description#>
+    /// - Parameter suffix: <#suffix description#>
+    /// - Returns: <#description#>
     func ensureRight(_ suffix: String) -> String {
         if endsWith(suffix) {
             return self
@@ -576,6 +608,9 @@ public extension String {
         }
     }
     
+    /// <#Description#>
+    /// - Parameter substring: <#substring description#>
+    /// - Returns: <#description#>
     func indexOf(_ substring: String) -> Int? {
         if let range = range(of: substring) {
             return self.distance(from: startIndex, to: range.lowerBound)
@@ -583,16 +618,22 @@ public extension String {
         return nil
     }
     
+    /// <#Description#>
+    /// - Returns: <#description#>
     func initials() -> String {
         let words = self.components(separatedBy: " ")
         return words.reduce("") {$0 + $1[0...0]}
     }
     
+    /// <#Description#>
+    /// - Returns: <#description#>
     func initialsFirstAndLast() -> String {
         let words = self.components(separatedBy: " ")
         return words.reduce("") {($0 == "" ? "": $0[0...0]) + $1[0...0]}
     }
     
+    /// <#Description#>
+    /// - Returns: <#description#>
     func isAlpha() -> Bool {
         for chr in self {
             if (!(chr >= "a" && chr <= "z") && !(chr >= "A" && chr <= "Z")) {
@@ -602,32 +643,56 @@ public extension String {
         return true
     }
     
+    /// <#Description#>
+    /// - Returns: <#description#>
     func isAlphaNumeric() -> Bool {
         let alphaNumeric = CharacterSet.alphanumerics
         return components(separatedBy: alphaNumeric).joined(separator: "").length == 0
     }
     
+    /// <#Description#>
+    /// - Returns: <#description#>
     func isEmpty() -> Bool {
         let nonWhitespaceSet = CharacterSet.whitespacesAndNewlines
         return components(separatedBy: nonWhitespaceSet).joined(separator: "").length != 0
     }
     
+    /// <#Description#>
+    /// - Parameter elements: <#elements description#>
+    /// - Returns: <#description#>
     func join<S: Sequence>(_ elements: S) -> String {
         return elements.map {String(describing: $0)}.joined(separator: self)
     }
     
+    /// <#Description#>
+    /// - Parameters:
+    ///   - num: <#num description#>
+    ///   - string: <#string description#>
+    /// - Returns: <#description#>
     func pad(_ num: Int, _ string: String = " ") -> String {
         return "".join([string.times(num), self, string.times(num)])
     }
     
+    /// <#Description#>
+    /// - Parameters:
+    ///   - num: <#num description#>
+    ///   - string: <#string description#>
+    /// - Returns: <#description#>
     func padLeft(_ num: Int, _ string: String = " ") -> String {
         return "".join([string.times(num), self])
     }
     
+    /// <#Description#>
+    /// - Parameters:
+    ///   - num: <#num description#>
+    ///   - string: <#string description#>
+    /// - Returns: <#description#>
     func padRight(_ num: Int, _ string: String = " ") -> String {
         return "".join([self, string.times(num)])
     }
     
+    /// <#Description#>
+    /// - Returns: <#description#>
     mutating func slugify() -> String {
         let slugCharacterSet = CharacterSet.init(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-")
         return latinize().lowercased()
@@ -636,18 +701,27 @@ public extension String {
             .joined(separator: "-")
     }
     
+    /// <#Description#>
+    /// - Parameter separator: <#separator description#>
+    /// - Returns: <#description#>
     func split(_ separator: Character) -> [String] {
         return self.split {$0 == separator}.map(String.init)
     }
     
+    /// <#Description#>
     var textLines: [String] {
         return split("\n")
     }
     
+    /// <#Description#>
+    /// - Parameter prefix: <#prefix description#>
+    /// - Returns: <#description#>
     func startsWith(_ prefix: String) -> Bool {
         return hasPrefix(prefix)
     }
     
+    /// <#Description#>
+    /// - Returns: <#description#>
     func stripPunctuation() -> String {
         return components(separatedBy: .punctuationCharacters)
             .joined(separator: "")
@@ -656,6 +730,9 @@ public extension String {
             .joined(separator: " ")
     }
     
+    /// <#Description#>
+    /// - Parameter num: <#num description#>
+    /// - Returns: <#description#>
     func times(_ num: Int) -> String {
         var returnString = ""
         for _ in stride(from: 0, to: num, by: 1) {
@@ -664,6 +741,8 @@ public extension String {
         return returnString
     }
     
+    /// <#Description#>
+    /// - Returns: <#description#>
     func toFloat() -> Float? {
         if let number = NumberFormatter().number(from: self) {
             return number.floatValue
@@ -671,6 +750,8 @@ public extension String {
         return nil
     }
     
+    /// <#Description#>
+    /// - Returns: <#description#>
     func toInt() -> Int? {
         if let number = NumberFormatter().number(from: self) {
             return number.intValue
@@ -678,6 +759,9 @@ public extension String {
         return nil
     }
     
+    /// <#Description#>
+    /// - Parameter locale: <#locale description#>
+    /// - Returns: <#description#>
     func toDouble(_ locale: Locale = Locale.current) -> Double? {
         let numberFormatter = NumberFormatter()
         numberFormatter.locale = locale as Locale
@@ -700,12 +784,18 @@ public extension String {
         return nil
     }
     
+    /// <#Description#>
+    /// - Parameter format: <#format description#>
+    /// - Returns: <#description#>
     func toDate(_ format: String = "yyyy-MM-dd") -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
         return dateFormatter.date(from: self)
     }
     
+    /// <#Description#>
+    /// - Parameter format: <#format description#>
+    /// - Returns: <#description#>
     func toDateTime(_ format: String = "yyyy-MM-dd HH:mm:ss") -> Date? {
         return toDate(format)
     }
@@ -942,10 +1032,14 @@ public extension String {
         // And it's done.
     }
     
+    /// <#Description#>
+    /// - Returns: <#description#>
     func smile() -> String {
         return self.smilie()
     }
     
+    /// <#Description#>
+    /// - Returns: <#description#>
     func smilie() -> String {
         return self.replaceLC(":@", withString: "😡")
             .replaceLC(":)", withString: "😊")
@@ -958,6 +1052,11 @@ public extension String {
             .replaceLC("(bl)", withString: "💙")
     }
     
+    /// <#Description#>
+    /// - Parameters:
+    ///   - search: <#search description#>
+    ///   - caseSentive: <#caseSentive description#>
+    /// - Returns: <#description#>
     func contains(search: String, caseSentive: Bool = false) -> Bool {
         if (caseSentive) {
             return (self.range(of: search) != nil)
@@ -966,10 +1065,17 @@ public extension String {
         }
     }
     
+    /// <#Description#>
+    /// - Parameters:
+    ///   - target: <#target description#>
+    ///   - withString: <#withString description#>
+    /// - Returns: <#description#>
     func replaceLC(_ target: String, withString: String) -> String {
         return (self.lowercased()).replacingOccurrences(of: target, with: withString, options: NSString.CompareOptions.literal, range: nil)
     }
     
+    /// <#Description#>
+    /// - Returns: <#description#>
     func load() -> String {
         DispatchQueue.main.async {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
@@ -984,6 +1090,7 @@ public extension String {
         return returnValue
     }
     
+    /// <#Description#>
     subscript (idx: Int) -> String {
         return String(self[idx] as Character)
     }
@@ -998,6 +1105,8 @@ public extension String {
     //        }
     //    }
     
+    /// <#Description#>
+    /// - Returns: <#description#>
     func convertHtml() -> NSAttributedString {
         guard let data = data(using: .utf8) else { return NSAttributedString() }
         do {
@@ -1154,6 +1263,7 @@ public extension String {
         return !zip(firstHalf, secondHalf).contains(where: { $0.lowercased() != $1.lowercased() })
     }
     
+    /// <#Description#>
     var decodeEmoji: String {
         let data = self.data(using: String.Encoding.utf8)
         let decodedStr = NSString(data: data!, encoding: String.Encoding.nonLossyASCII.rawValue)
@@ -1163,6 +1273,7 @@ public extension String {
         return self
     }
     
+    /// <#Description#>
     var encodeEmoji: String {
         if let encodeStr = NSString(cString: self.cString(using: .nonLossyASCII)!, encoding: String.Encoding.utf8.rawValue) {
             return encodeStr as String
@@ -1444,7 +1555,6 @@ public extension String {
 
 // MARK: - Methods
 public extension String {
-    
     #if canImport(Foundation)
     /// Float value from string (if applicable).
     ///

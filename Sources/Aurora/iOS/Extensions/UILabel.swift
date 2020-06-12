@@ -3,7 +3,6 @@
 import UIKit
 
 extension UILabel {
-    
     /// <#Description#>
     private struct AssociatedKeys {
         static var padding = UIEdgeInsets()

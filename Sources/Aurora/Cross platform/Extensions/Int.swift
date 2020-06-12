@@ -63,8 +63,7 @@ extension Int {
     ///
     /// - Parameters:
     ///   - closure: The code to be run multiple times.
-    @inlinable
-    public func times(_ closure: () -> Void) {
+    @inlinable public func times(_ closure: () -> Void) {
         guard self > 0 else { return }
         for _ in 0 ..< self { closure() }
     }
@@ -74,8 +73,7 @@ extension Int {
     ///
     /// - Parameters:
     ///   - closure: The code to deliver a return value multiple times.
-    @inlinable
-    public func timesMake<ReturnType>(_ closure: () -> ReturnType) -> [ReturnType] {
+    @inlinable public func timesMake<ReturnType>(_ closure: () -> ReturnType) -> [ReturnType] {
         guard self > 0 else { return [] }
         return (0 ..< self).map { _ in closure() }
     }

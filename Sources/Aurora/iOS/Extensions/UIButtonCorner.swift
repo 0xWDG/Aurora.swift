@@ -3,8 +3,9 @@
 #if canImport(UIKit)
 import UIKit
 
+/// Designable UIButton
 @IBDesignable extension UIButton {
-    /// <#Description#>
+    /// Set the border with
     @IBInspectable public var borderWidth: CGFloat {
         set {
             layer.borderWidth = newValue
@@ -14,7 +15,7 @@ import UIKit
         }
     }
     
-    /// <#Description#>
+    /// Set the corner radius
     @IBInspectable public var cornerRadius: CGFloat {
         set {
             layer.cornerRadius = newValue
@@ -24,7 +25,7 @@ import UIKit
         }
     }
     
-    /// <#Description#>
+    /// Set the border color
     @IBInspectable public var borderColor: UIColor? {
         set {
             guard newValue != nil else { return }
@@ -41,7 +42,7 @@ import UIKit
     }
     // swiftlint:enable valid_ibinspectable implicit_getter
     
-    /// <#Description#>
+    /// Is the button highlighted
     override public var isHighlighted: Bool {
         didSet {
             guard let currentBorderColor = borderColor else {

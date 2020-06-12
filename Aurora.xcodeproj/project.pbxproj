@@ -22,6 +22,8 @@
 
 /* Begin PBXBuildFile section */
 		DE8CB3B424409B8200577333 /* AuroraCrashHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8CB3B324409B8200577333 /* AuroraCrashHandler.swift */; };
+		DED1353D2493B89900451EA2 /* NSFWDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED1353C2493B89900451EA2 /* NSFWDetector.swift */; };
+		DED135402493BC1800451EA2 /* NSFW.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = DED1353F2493BC1800451EA2 /* NSFW.mlmodel */; };
 		DEE6FFE72487ED2E00002510 /* ImageCache_NSCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE6FFE62487ED2E00002510 /* ImageCache_NSCache.swift */; };
 		OBJ_101 /* UIGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_45 /* UIGradientView.swift */; };
 		OBJ_102 /* UIGreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_46 /* UIGreenButton.swift */; };
@@ -92,6 +94,8 @@
 		"Aurora::Aurora::Product" /* Aurora.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Aurora.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Aurora::AuroraTests::Product" /* AuroraTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = AuroraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE8CB3B324409B8200577333 /* AuroraCrashHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraCrashHandler.swift; sourceTree = "<group>"; };
+		DED1353C2493B89900451EA2 /* NSFWDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSFWDetector.swift; sourceTree = "<group>"; };
+		DED1353F2493BC1800451EA2 /* NSFW.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = NSFW.mlmodel; sourceTree = "<group>"; };
 		DEE6FFE62487ED2E00002510 /* ImageCache_NSCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache_NSCache.swift; sourceTree = "<group>"; };
 		OBJ_10 /* AuroraFramework.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraFramework.swift; sourceTree = "<group>"; };
 		OBJ_12 /* CrossPlatform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossPlatform.swift; sourceTree = "<group>"; };
@@ -161,6 +165,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DED1353E2493B8CF00451EA2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DED1353F2493BC1800451EA2 /* NSFW.mlmodel */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		OBJ_11 /* Cross platform */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +186,7 @@
 				OBJ_31 /* onInteraction.swift */,
 				OBJ_32 /* validators.swift */,
 				DE8CB3B324409B8200577333 /* AuroraCrashHandler.swift */,
+				DED1353C2493B89900451EA2 /* NSFWDetector.swift */,
 			);
 			path = "Cross platform";
 			sourceTree = "<group>";
@@ -291,6 +304,7 @@
 		OBJ_8 /* Aurora */ = {
 			isa = PBXGroup;
 			children = (
+				DED1353E2493B8CF00451EA2 /* Resources */,
 				OBJ_9 /* AuroraFramework.h */,
 				OBJ_10 /* AuroraFramework.swift */,
 				OBJ_11 /* Cross platform */,
@@ -464,8 +478,10 @@
 				OBJ_108 /* UIView+Positioning.swift in Sources */,
 				OBJ_109 /* UIView.swift in Sources */,
 				OBJ_110 /* UIViewController.swift in Sources */,
+				DED1353D2493B89900451EA2 /* NSFWDetector.swift in Sources */,
 				OBJ_111 /* UIViewRounded.swift in Sources */,
 				OBJ_112 /* UInt.swift in Sources */,
+				DED135402493BC1800451EA2 /* NSFW.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
