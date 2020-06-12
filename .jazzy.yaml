@@ -1,0 +1,31 @@
+# Create Documentation
+
+# Set author name
+author: "Wesley de Groot (et. al)"
+
+# Set author url
+author_url: https://wesleydegroot.nl
+
+# Set Module name
+module: Aurora
+
+# Set module version
+module_version: 1.0
+
+# Set github URL
+github_url: https://github.com/AuroraFramework/Aurora.swift
+
+# Set github direct file url
+github_file_prefix: https://github.com/AuroraFramework/Aurora.swift/blob/master/
+
+# Set Output path
+output: docs
+
+# Set readme path
+readme: ../README.md
+
+# Set dash URL
+dash_url: https://AuroraFramework.github.io/Aurora.swift/docsets/BaaS.docset
+
+# Set a nice text for undocumented.
+undocumented_text: Undocumented, Help us document it!

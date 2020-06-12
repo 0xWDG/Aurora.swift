@@ -1,0 +1,124 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/AuroraFramework.swift",
+      "line": 113,
+      "symbol": "Aurora.getLastCrashLog()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/AuroraFramework.swift",
+      "line": 117,
+      "symbol": "Aurora.deleteLastCrashLog()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/AuroraFramework.swift",
+      "line": 122,
+      "symbol": "Aurora.md5(phrase:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/Cross platform/Extensions/Collection.swift",
+      "line": 22,
+      "symbol": "DivisibleArithmetic",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/Cross platform/Extensions/Dictionary.swift",
+      "line": 22,
+      "symbol": "DictionaryDynamicLookup.subscript(dynamicMember:)",
+      "symbol_kind": "source.lang.swift.decl.function.subscript",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/Cross platform/Extensions/NSObject.swift",
+      "line": 22,
+      "symbol": "Configure",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/Cross platform/Extensions/NSObject.swift",
+      "line": 24,
+      "symbol": "Configure",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/Cross platform/Extensions/iCloudSync.swift",
+      "line": 8,
+      "symbol": "WDGFrameworkiCloudSync",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/Cross platform/Extensions/iCloudSync.swift",
+      "line": 9,
+      "symbol": "WDGFrameworkiCloudSync.shared",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/Cross platform/Extensions/iCloudSync.swift",
+      "line": 13,
+      "symbol": "WDGFrameworkiCloudSync.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/Cross platform/Extensions/iCloudSync.swift",
+      "line": 20,
+      "symbol": "WDGFrameworkiCloudSync.startSync()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/Cross platform/Extensions/iCloudSync.swift",
+      "line": 135,
+      "symbol": "WDGFrameworkiCloudSync.sync()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/Cross platform/NSFWDetector.swift",
+      "line": 70,
+      "symbol": "NSFWDetector.DetectionResult.error(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/Cross platform/NSFWDetector.swift",
+      "line": 71,
+      "symbol": "NSFWDetector.DetectionResult.success(nsfwConfidence:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/Cross platform/onInteraction.swift",
+      "line": 41,
+      "symbol": "UIControlHelper",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/iOS/Extensions/UIGradientView.swift",
+      "line": 9,
+      "symbol": "UIGradientView",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/iOS/Extensions/UIViewRounded.swift",
+      "line": 9,
+      "symbol": "UIViewRounded",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/wes/Cloud/Apps/Universal/Aurora.swift"
+}

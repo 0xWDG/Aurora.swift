@@ -1,5 +1,6 @@
 // $$HEADER$$
 
+#if canImport(UIKit)
 import UIKit
 
 extension UILabel {
@@ -70,3 +71,4 @@ extension UILabel {
         self.attributedText = attrStr
     }
 }
+#endif

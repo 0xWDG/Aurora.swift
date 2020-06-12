@@ -1,6 +1,8 @@
 // $$HEADER$$
 
 import Foundation
+
+#if canImport(UIKit)
 import UIKit
 
 extension UIView {
@@ -191,3 +193,4 @@ extension Blurable where Self: UIView {
 
 // Conformance
 extension UIView: Blurable {}
+#endif

@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Color Extension Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Extension/Color" class="dashAnchor"></a>
+    <a title="Color Extension Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Aurora 1.0 Docs</a> (98% documented)</p>
+        <p class="header-right"><a href="https://github.com/AuroraFramework/Aurora.swift"><img src="../img/gh.png"/>View on GitHub</a></p>
+        <p class="header-right"><a href="dash-feed://https%3A%2F%2FAuroraFramework%2Egithub%2Eio%2FAurora%2Eswift%2Fdocsets%2FBaaS%2Edocset"><img src="../img/dash.png"/>Install in Dash</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Aurora Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Color Extension Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/Aurora.html">Aurora</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ImageSlider.html">ImageSlider</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/KeyboardHandler.html">KeyboardHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NSFWDetector.html">NSFWDetector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NSFWDetector/DetectionResult.html">– DetectionResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:6Aurora11SimpleTimerC">SimpleTimer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/UIControlHelper.html">UIControlHelper</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/UIGradientView.html">UIGradientView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/UIGreenButton.html">UIGreenButton</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/UIViewRounded.html">UIViewRounded</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Validator.html">Validator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:6Aurora12WDGFrameworkC">WDGFramework</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/WDGFrameworkiCloudSync.html">WDGFrameworkiCloudSync</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:Sa">Array</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Bundle.html">Bundle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/CGColor.html">CGColor</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:12CoreGraphics7CGFloatV">CGFloat</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/c:@S@CGPoint">CGPoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/c:@S@CGRect">CGRect</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/c:@S@CGSize">CGSize</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/c:@S@CGVector">CGVector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Collection.html">Collection</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Color.html">Color</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Color/Social.html">– Social</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Color/Material.html">– Material</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Color/CSS.html">– CSS</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Color/FlatUI.html">– FlatUI</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Data.html">Data</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:SD">Dictionary</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:Sd">Double</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:Sf">Float</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Int.html">Int</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/MKMapView.html">MKMapView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/NSAttributedString.html">NSAttributedString</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/NSControl.html">NSControl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/NSMutableAttributedString.html">NSMutableAttributedString</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/c:objc(cs)NSMutableDictionary">NSMutableDictionary</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/NSObject.html">NSObject</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Optional.html">Optional</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Sequence.html">Sequence</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:Sh">Set</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIBarButtonItem.html">UIBarButtonItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIButton.html">UIButton</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIColor.html">UIColor</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIControl.html">UIControl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/c:@S@UIEdgeInsets">UIEdgeInsets</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIImage.html">UIImage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UILabel.html">UILabel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/c:@S@UIOffset">UIOffset</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/c:@E@UIRectEdge">UIRectEdge</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UITabBarController.html">UITabBarController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UITableView.html">UITableView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UITextField.html">UITextField</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIView.html">UIView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIViewController.html">UIViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UInt.html">UInt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/URLRequest.html">URLRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UserDefaults.html">UserDefaults</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:6Aurora2ntoiySbSS_SStF">!~(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:6Aurora2etoiySbSS_SStF">=~(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:6Aurora3log_4file4line8functionSbyp_SSSiSStF">log(_:file:line:function:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:6Aurora2tgoiyySSyc_ySSctF">~&gt;(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:6Aurora2tgoiyyxyc_yxctlF">~&gt;(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:6Aurora2tgoiyyyyc_yyctF">~&gt;(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/Blurable.html">Blurable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Configure.html">Configure</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/DictionaryDynamicLookup.html">DictionaryDynamicLookup</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/DivisibleArithmetic.html">DivisibleArithmetic</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/NilError.html">NilError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Regex.html">Regex</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Regex/Options.html">– Options</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Regex/Match.html">– Match</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/BezierPath">BezierPath</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:6Aurora10BezierPatha">BezierPath</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/Color">Color</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:6Aurora5Colora">Color</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/Font">Font</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:6Aurora4Fonta">Font</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/Image">Image</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:6Aurora5Imagea">Image</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/View">View</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:6Aurora4Viewa">View</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/ViewController">ViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:6Aurora14ViewControllera">ViewController</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Color</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">extension</span> <span class="kt"><a href="../Typealiases.html#/s:6Aurora5Colora">Color</a></span></code></pre>
+
+                </div>
+              </div>
+            
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So7UIColorC6AuroraEAcBvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/Aurora" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIColorC6AuroraEAcBvpZ">Aurora</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Aurora color</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">Aurora</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:6Aurora5Colora">Color</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Extensions/Color.swift#L12">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So7UIColorC6AuroraE6randomABvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/random" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIColorC6AuroraE6randomABvpZ">random</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Random color.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">random</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:6Aurora5Colora">Color</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Extensions/Color.swift#L15-L20">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So7UIColorC6AuroraE13rgbComponentsSi3red_Si5greenSi4bluetvp"></a>
+                    <a name="//apple_ref/swift/Property/rgbComponents" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIColorC6AuroraE13rgbComponentsSi3red_Si5greenSi4bluetvp">rgbComponents</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>RGB components for a Color (between 0 and 255).</p>
+<pre class="highlight swift"><code><span class="kt">UIColor</span><span class="o">.</span><span class="n">red</span><span class="o">.</span><span class="n">rgbComponents</span><span class="o">.</span><span class="n">red</span> <span class="o">-&gt;</span> <span class="mi">255</span>
+<span class="kt">NSColor</span><span class="o">.</span><span class="n">green</span><span class="o">.</span><span class="n">rgbComponents</span><span class="o">.</span><span class="n">green</span> <span class="o">-&gt;</span> <span class="mi">255</span>
+<span class="kt">UIColor</span><span class="o">.</span><span class="n">blue</span><span class="o">.</span><span class="n">rgbComponents</span><span class="o">.</span><span class="n">blue</span> <span class="o">-&gt;</span> <span class="mi">255</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">rgbComponents</span><span class="p">:</span> <span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Extensions/Color.swift#L29-L40">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So7UIColorC6AuroraE17cgFloatComponents12CoreGraphics7CGFloatV3red_AG5greenAG4bluetvp"></a>
+                    <a name="//apple_ref/swift/Property/cgFloatComponents" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIColorC6AuroraE17cgFloatComponents12CoreGraphics7CGFloatV3red_AG5greenAG4bluetvp">cgFloatComponents</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>RGB components for a Color represented as CGFloat numbers (between 0 and 1)</p>
+<pre class="highlight swift"><code><span class="kt">UIColor</span><span class="o">.</span><span class="n">red</span><span class="o">.</span><span class="n">rgbComponents</span><span class="o">.</span><span class="n">red</span> <span class="o">-&gt;</span> <span class="mf">1.0</span>
+<span class="kt">NSColor</span><span class="o">.</span><span class="n">green</span><span class="o">.</span><span class="n">rgbComponents</span><span class="o">.</span><span class="n">green</span> <span class="o">-&gt;</span> <span class="mf">1.0</span>
+<span class="kt">UIColor</span><span class="o">.</span><span class="n">blue</span><span class="o">.</span><span class="n">rgbComponents</span><span class="o">.</span><span class="n">blue</span> <span class="o">-&gt;</span> <span class="mf">1.0</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">cgFloatComponents</span><span class="p">:</span> <span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">)</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Extensions/Color.swift#L49-L60">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So7UIColorC6AuroraE14hsbaComponents12CoreGraphics7CGFloatV3hue_AG10saturationAG10brightnessAG5alphatvp"></a>
+                    <a name="//apple_ref/swift/Property/hsbaComponents" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIColorC6AuroraE14hsbaComponents12CoreGraphics7CGFloatV3hue_AG10saturationAG10brightnessAG5alphatvp">hsbaComponents</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get components of hue, saturation, and brightness, and alpha (read-only).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">hsbaComponents</span><span class="p">:</span> <span class="p">(</span><span class="nv">hue</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">,</span> <span class="nv">saturation</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">,</span> <span class="nv">brightness</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">)</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Extensions/Color.swift#L64-L72">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So7UIColorC6AuroraE9hexStringSSvp"></a>
+                    <a name="//apple_ref/swift/Property/hexString" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIColorC6AuroraE9hexStringSSvp">hexString</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Hexadecimal value string (read-only).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">hexString</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Extensions/Color.swift#L75-L82">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So7UIColorC6AuroraE14shortHexStringSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/shortHexString" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIColorC6AuroraE14shortHexStringSSSgvp">shortHexString</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Short hexadecimal value string (read-only, if applicable).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">shortHexString</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Extensions/Color.swift#L85-L90">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So7UIColorC6AuroraE010shortHexOrD6StringSSvp"></a>
+                    <a name="//apple_ref/swift/Property/shortHexOrHexString" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIColorC6AuroraE010shortHexOrD6StringSSvp">shortHexOrHexString</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Short hexadecimal value string, or full hexadecimal string if not possible (read-only).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">shortHexOrHexString</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Extensions/Color.swift#L93-L114">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So7UIColorC6AuroraE5alpha12CoreGraphics7CGFloatVvp"></a>
+                    <a name="//apple_ref/swift/Property/alpha" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIColorC6AuroraE5alpha12CoreGraphics7CGFloatVvp">alpha</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Alpha of Color (read-only).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">alpha</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Extensions/Color.swift#L117-L119">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So7UIColorC6AuroraE14coreImageColorSo7CIColorCSgvp"></a>
+                    <a name="//apple_ref/swift/Property/coreImageColor" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIColorC6AuroraE14coreImageColorSo7CIColorCSgvp">coreImageColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>CoreImage.CIColor (read-only)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">coreImageColor</span><span class="p">:</span> <span class="kt">CoreImage</span><span class="o">.</span><span class="kt">CIColor</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Extensions/Color.swift#L123-L125">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So7UIColorC6AuroraE4uIntSuvp"></a>
+                    <a name="//apple_ref/swift/Property/uInt" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIColorC6AuroraE4uIntSuvp">uInt</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get UInt representation of a Color (read-only).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">uInt</span><span class="p">:</span> <span class="kt">UInt</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Extensions/Color.swift#L129-L141">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So7UIColorC6AuroraE13complementaryABSgvp"></a>
+                    <a name="//apple_ref/swift/Property/complementary" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIColorC6AuroraE13complementaryABSgvp">complementary</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get color complementary (read-only, if applicable).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">complementary</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:6Aurora5Colora">Color</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Extensions/Color.swift#L144-L166">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Methods"></a>
+                <a name="//apple_ref/swift/Section/Methods" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Methods"></a>
+                  <h3 class="section-name"><p>Methods</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So7UIColorC6AuroraE5blend_10intensity14with10intensity2A2B_12CoreGraphics7CGFloatVAbJtFZ"></a>
+                    <a name="//apple_ref/swift/Method/blend(_:intensity1:with:intensity2:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIColorC6AuroraE5blend_10intensity14with10intensity2A2B_12CoreGraphics7CGFloatVAbJtFZ">blend(_:<wbr>intensity1:<wbr>with:<wbr>intensity2:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Blend two Colors</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="nf">blend</span><span class="p">(</span><span class="n">_</span> <span class="nv">color1</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:6Aurora5Colora">Color</a></span><span class="p">,</span> <span class="nv">intensity1</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">with</span> <span class="nv">color2</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:6Aurora5Colora">Color</a></span><span class="p">,</span> <span class="nv">intensity2</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Typealiases.html#/s:6Aurora5Colora">Color</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>color1</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>first color to blend</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>intensity1</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>intensity of first color (default is 0.5)</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>color2</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>second color to blend</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>intensity2</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>intensity of second color (default is 0.5)</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Color created by blending first and seond colors.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Extensions/Color.swift#L180-L217">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So7UIColorC6AuroraE7lighten2byAB12CoreGraphics7CGFloatV_tF"></a>
+                    <a name="//apple_ref/swift/Method/lighten(by:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIColorC6AuroraE7lighten2byAB12CoreGraphics7CGFloatV_tF">lighten(by:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Lighten a color</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">color</span> <span class="o">=</span> <span class="kt">Color</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="n">r</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="n">g</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="n">b</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="n">a</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">lighterColor</span><span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="nf">lighten</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">)</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">lighten</span><span class="p">(</span><span class="n">by</span> <span class="nv">percentage</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Typealiases.html#/s:6Aurora5Colora">Color</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>percentage</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Percentage by which to lighten the color</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A lightened color</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Extensions/Color.swift#L226-L234">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So7UIColorC6AuroraE6darken2byAB12CoreGraphics7CGFloatV_tF"></a>
+                    <a name="//apple_ref/swift/Method/darken(by:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIColorC6AuroraE6darken2byAB12CoreGraphics7CGFloatV_tF">darken(by:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Darken a color</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">color</span> <span class="o">=</span> <span class="kt">Color</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="n">r</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="n">g</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="n">b</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="n">a</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">darkerColor</span><span class="p">:</span> <span class="kt">Color</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="nf">darken</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">)</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">darken</span><span class="p">(</span><span class="n">by</span> <span class="nv">percentage</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Typealiases.html#/s:6Aurora5Colora">Color</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>percentage</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Percentage by which to darken the color</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A darkened color</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Extensions/Color.swift#L243-L251">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Initializers"></a>
+                <a name="//apple_ref/swift/Section/Initializers" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Initializers"></a>
+                  <h3 class="section-name"><p>Initializers</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So7UIColorC6AuroraE3red5green4blue12transparencyABSgSi_S2i12CoreGraphics7CGFloatVtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(red:green:blue:transparency:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIColorC6AuroraE3red5green4blue12transparencyABSgSi_S2i12CoreGraphics7CGFloatVtcfc">init(red:<wbr>green:<wbr>blue:<wbr>transparency:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create Color from RGB values with optional transparency.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">convenience</span> <span class="nf">init</span><span class="p">?(</span><span class="nv">red</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">transparency</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>red</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>red component.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>green</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>green component.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>blue</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>blue component.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>transparency</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>optional transparency value (default is 1).</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Extensions/Color.swift#L265-L275">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So7UIColorC6AuroraE3hex12transparencyABSgSi_12CoreGraphics7CGFloatVtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(hex:transparency:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIColorC6AuroraE3hex12transparencyABSgSi_12CoreGraphics7CGFloatVtcfc">init(hex:<wbr>transparency:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create Color from hexadecimal value with optional transparency.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">convenience</span> <span class="nf">init</span><span class="p">?(</span><span class="nv">hex</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">transparency</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>hex</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>hex Int (example: 0xDECEB5).</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>transparency</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>optional transparency value (default is 1).</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Extensions/Color.swift#L282-L291">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So7UIColorC6AuroraE9hexString12transparencyABSgSS_12CoreGraphics7CGFloatVtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(hexString:transparency:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIColorC6AuroraE9hexString12transparencyABSgSS_12CoreGraphics7CGFloatVtcfc">init(hexString:<wbr>transparency:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create Color from hexadecimal string with optional transparency (if applicable).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">convenience</span> <span class="nf">init</span><span class="p">?(</span><span class="nv">hexString</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">transparency</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>hexString</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>hexadecimal string (examples: EDE7F6, 0xEDE7F6, #EDE7F6, #0ff, 0xF0F, ..).</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>transparency</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>optional transparency value (default is 1).</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Extensions/Color.swift#L298-L324">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So7UIColorC6AuroraE16complementaryForABSgAB_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(complementaryFor:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIColorC6AuroraE16complementaryForABSgAB_tcfc">init(complementaryFor:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create Color from a complementary of a Color (if applicable).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">convenience</span> <span class="nf">init</span><span class="p">?(</span><span class="n">complementaryFor</span> <span class="nv">color</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:6Aurora5Colora">Color</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>color</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>color of which opposite color is desired.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Extensions/Color.swift#L329-L350">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Social"></a>
+                <a name="//apple_ref/swift/Section/Social" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Social"></a>
+                  <h3 class="section-name"><p>Social</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So7UIColorC6AuroraE6SocialV"></a>
+                    <a name="//apple_ref/swift/Struct/Social" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIColorC6AuroraE6SocialV">Social</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Brand identity color of popular social media platform.</p>
+
+                        <a href="../Extensions/Color/Social.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">Social</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Extensions/Color.swift#L358-L442">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Material%20colors"></a>
+                <a name="//apple_ref/swift/Section/Material colors" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Material%20colors"></a>
+                  <h3 class="section-name"><p>Material colors</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So7UIColorC6AuroraE8MaterialV"></a>
+                    <a name="//apple_ref/swift/Struct/Material" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIColorC6AuroraE8MaterialV">Material</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Google Material design colors palette.</p>
+
+                        <a href="../Extensions/Color/Material.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">Material</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Extensions/Color.swift#L450-L1278">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/CSS%20colors"></a>
+                <a name="//apple_ref/swift/Section/CSS colors" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/CSS%20colors"></a>
+                  <h3 class="section-name"><p>CSS colors</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So7UIColorC6AuroraE3CSSV"></a>
+                    <a name="//apple_ref/swift/Struct/CSS" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIColorC6AuroraE3CSSV">CSS</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>CSS colors.</p>
+
+                        <a href="../Extensions/Color/CSS.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">CSS</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Extensions/Color.swift#L1286-L1733">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Flat%20UI%20colors"></a>
+                <a name="//apple_ref/swift/Section/Flat UI colors" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Flat%20UI%20colors"></a>
+                  <h3 class="section-name"><p>Flat UI colors</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:So7UIColorC6AuroraE6FlatUIV"></a>
+                    <a name="//apple_ref/swift/Struct/FlatUI" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So7UIColorC6AuroraE6FlatUIV">FlatUI</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Flat UI colors</p>
+
+                        <a href="../Extensions/Color/FlatUI.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">FlatUI</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Extensions/Color.swift#L1741-L1802">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2020 <a class="link" href="https://wesleydegroot.nl" target="_blank" rel="external">Wesley de Groot (et. al)</a>. All rights reserved. (Last updated: 2020-06-12)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

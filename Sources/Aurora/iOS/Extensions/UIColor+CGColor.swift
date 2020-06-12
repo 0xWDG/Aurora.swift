@@ -1,5 +1,6 @@
 // $$HEADER$$
 
+#if canImport(UIKit)
 import UIKit
 
 extension CGColor {
@@ -133,3 +134,4 @@ extension UIColor {
         return alpha == 1.0 ? hex : hex.appendingFormat("%02X", Int(alpha * 255.0))
     }
 }
+#endif

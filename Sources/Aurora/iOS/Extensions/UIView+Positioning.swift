@@ -8,7 +8,7 @@ import UIKit
 
 public extension UIView {
     // MARK: - Basic Properties
-    // swiftlint:disable:next identifier_name
+    // swiftlint:disable identifier_name
     /// X Axis value of UIView.
     @objc var x: CGFloat {
         set {
@@ -24,7 +24,6 @@ public extension UIView {
         }
     }
 
-    // swiftlint:disable:next identifier_name
     /// Y Axis value of UIView.
     @objc var y: CGFloat {
         set {
@@ -39,6 +38,7 @@ public extension UIView {
             return self.frame.origin.y
         }
     }
+    // swiftlint:enable identifier_name
     
     /// Width of view.
     @objc var width: CGFloat {

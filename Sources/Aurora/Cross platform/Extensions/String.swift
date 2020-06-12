@@ -1078,13 +1078,17 @@ public extension String {
     /// - Returns: <#description#>
     func load() -> String {
         DispatchQueue.main.async {
+            #if os(iOS)
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            #endif
         }
         
         let returnValue = Aurora().getDataAsText(self) as String
         
         DispatchQueue.main.async {
+            #if os(iOS)
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            #endif
         }
         
         return returnValue

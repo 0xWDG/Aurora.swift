@@ -1,4 +1,6 @@
 // $$HEADER$$
+
+#if canImport(UIKit)
 import UIKit
 import ImageIO
 
@@ -246,3 +248,4 @@ extension UIImage {
         return animation
     }
 }
+#endif

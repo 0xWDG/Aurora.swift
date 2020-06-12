@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Match Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../../js/jquery.min.js" defer></script>
+    <script src="../../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/Match" class="dashAnchor"></a>
+    <a title="Match Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../../index.html">Aurora 1.0 Docs</a> (98% documented)</p>
+        <p class="header-right"><a href="https://github.com/AuroraFramework/Aurora.swift"><img src="../../img/gh.png"/>View on GitHub</a></p>
+        <p class="header-right"><a href="dash-feed://https%3A%2F%2FAuroraFramework%2Egithub%2Eio%2FAurora%2Eswift%2Fdocsets%2FBaaS%2Edocset"><img src="../../img/dash.png"/>Install in Dash</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../../index.html">Aurora Reference</a>
+        <img id="carat" src="../../img/carat.png" />
+        Match Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Classes/Aurora.html">Aurora</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/ImageSlider.html">ImageSlider</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/KeyboardHandler.html">KeyboardHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/NSFWDetector.html">NSFWDetector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/NSFWDetector/DetectionResult.html">– DetectionResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes.html#/s:6Aurora11SimpleTimerC">SimpleTimer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/UIControlHelper.html">UIControlHelper</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/UIGradientView.html">UIGradientView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/UIGreenButton.html">UIGreenButton</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/UIViewRounded.html">UIViewRounded</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/Validator.html">Validator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes.html#/s:6Aurora12WDGFrameworkC">WDGFramework</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/WDGFrameworkiCloudSync.html">WDGFrameworkiCloudSync</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Extensions.html#/s:Sa">Array</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/Bundle.html">Bundle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/CGColor.html">CGColor</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions.html#/s:12CoreGraphics7CGFloatV">CGFloat</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions.html#/c:@S@CGPoint">CGPoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions.html#/c:@S@CGRect">CGRect</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions.html#/c:@S@CGSize">CGSize</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions.html#/c:@S@CGVector">CGVector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/Collection.html">Collection</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/Color.html">Color</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/Color/Social.html">– Social</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/Color/Material.html">– Material</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/Color/CSS.html">– CSS</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/Color/FlatUI.html">– FlatUI</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/Data.html">Data</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions.html#/s:SD">Dictionary</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions.html#/s:Sd">Double</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions.html#/s:Sf">Float</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/Int.html">Int</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/MKMapView.html">MKMapView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/NSAttributedString.html">NSAttributedString</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/NSControl.html">NSControl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/NSMutableAttributedString.html">NSMutableAttributedString</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions.html#/c:objc(cs)NSMutableDictionary">NSMutableDictionary</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/NSObject.html">NSObject</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/Optional.html">Optional</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/Sequence.html">Sequence</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions.html#/s:Sh">Set</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/UIBarButtonItem.html">UIBarButtonItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/UIButton.html">UIButton</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/UIColor.html">UIColor</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/UIControl.html">UIControl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions.html#/c:@S@UIEdgeInsets">UIEdgeInsets</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/UIImage.html">UIImage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/UILabel.html">UILabel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions.html#/c:@S@UIOffset">UIOffset</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions.html#/c:@E@UIRectEdge">UIRectEdge</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/UITabBarController.html">UITabBarController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/UITableView.html">UITableView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/UITextField.html">UITextField</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/UIView.html">UIView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/UIViewController.html">UIViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/UInt.html">UInt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/URLRequest.html">URLRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/UserDefaults.html">UserDefaults</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Functions.html#/s:6Aurora2ntoiySbSS_SStF">!~(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Functions.html#/s:6Aurora2etoiySbSS_SStF">=~(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Functions.html#/s:6Aurora3log_4file4line8functionSbyp_SSSiSStF">log(_:file:line:function:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Functions.html#/s:6Aurora2tgoiyySSyc_ySSctF">~&gt;(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Functions.html#/s:6Aurora2tgoiyyxyc_yxctlF">~&gt;(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Functions.html#/s:6Aurora2tgoiyyyyc_yyctF">~&gt;(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Protocols/Blurable.html">Blurable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Protocols/Configure.html">Configure</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Protocols/DictionaryDynamicLookup.html">DictionaryDynamicLookup</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Protocols/DivisibleArithmetic.html">DivisibleArithmetic</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Structs/NilError.html">NilError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/Regex.html">Regex</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/Regex/Options.html">– Options</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/Regex/Match.html">– Match</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Typealiases.html#/BezierPath">BezierPath</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Typealiases.html#/s:6Aurora10BezierPatha">BezierPath</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Typealiases.html#/Color">Color</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Typealiases.html#/s:6Aurora5Colora">Color</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Typealiases.html#/Font">Font</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Typealiases.html#/s:6Aurora4Fonta">Font</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Typealiases.html#/Image">Image</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Typealiases.html#/s:6Aurora5Imagea">Image</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Typealiases.html#/View">View</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Typealiases.html#/s:6Aurora4Viewa">View</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Typealiases.html#/ViewController">ViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Typealiases.html#/s:6Aurora14ViewControllera">ViewController</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Match</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Match</span> <span class="p">:</span> <span class="kt">CustomStringConvertible</span></code></pre>
+
+                </div>
+              </div>
+            <p>A <code>Match</code> encapsulates the result of a single match in a string,
+providing access to the matched string, as well as any capture groups within
+that string.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Properties"></a>
+                <a name="//apple_ref/swift/Section/Properties" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Properties"></a>
+                  <h3 class="section-name"><p>Properties</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6Aurora5RegexV5MatchC6stringSSvp"></a>
+                    <a name="//apple_ref/swift/Property/string" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6Aurora5RegexV5MatchC6stringSSvp">string</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The entire matched string.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">string</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Regex.swift#L227">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6Aurora5RegexV5MatchC5rangeSnySS5IndexVGvp"></a>
+                    <a name="//apple_ref/swift/Property/range" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6Aurora5RegexV5MatchC5rangeSnySS5IndexVGvp">range</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The range of the matched string.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">range</span><span class="p">:</span> <span class="kt">Range</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">.</span><span class="kt">Index</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Regex.swift#L232">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6Aurora5RegexV5MatchC8capturesSaySSSgGvp"></a>
+                    <a name="//apple_ref/swift/Property/captures" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6Aurora5RegexV5MatchC8capturesSaySSSgGvp">captures</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The matching string for each capture group in the regular expression
+(if any).</p>
+
+<p><strong>Note:</strong> Usually if the match was successful, the captures will by
+definition be non-nil. However if a given capture group is optional, the
+captured string may also be nil, depending on the particular string that
+is being matched against.</p>
+
+<p>Example:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">regex</span> <span class="o">=</span> <span class="kt">Regex</span><span class="p">(</span><span class="s">"(a)?(b)"</span><span class="p">)</span>
+
+<span class="n">regex</span><span class="o">.</span><span class="nf">matches</span><span class="p">(</span><span class="nv">in</span><span class="p">:</span> <span class="s">"ab"</span><span class="p">)</span><span class="n">first</span><span class="p">?</span><span class="o">.</span><span class="n">captures</span> <span class="c1">// [Optional("a"), Optional("b")]</span>
+<span class="n">regex</span><span class="o">.</span><span class="nf">matches</span><span class="p">(</span><span class="nv">in</span><span class="p">:</span> <span class="s">"b"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">?</span><span class="o">.</span><span class="n">captures</span> <span class="c1">// [nil, Optional("b")]</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">captures</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">?]</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Regex.swift#L250">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Methods"></a>
+                <a name="//apple_ref/swift/Section/Methods" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Methods"></a>
+                  <h3 class="section-name"><p>Methods</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6Aurora5RegexV5MatchC6string16applyingTemplateS2S_tF"></a>
+                    <a name="//apple_ref/swift/Method/string(applyingTemplate:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6Aurora5RegexV5MatchC6string16applyingTemplateS2S_tF">string(applyingTemplate:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a new string where the matched string is replaced according to the <code>template</code>.</p>
+
+<p>The template string may be a literal string, or include template variables:
+the variable <code>$0</code> will be replaced with the entire matched substring, <code>$1</code>
+with the first capture group, etc.</p>
+
+<p>For example, to include the literal string &ldquo;$1&rdquo; in the replacement string,
+you must escape the &ldquo;$&rdquo;: <code>\$1</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">string</span><span class="p">(</span><span class="n">applyingTemplate</span> <span class="nv">template</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>template</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The template string used to replace matches.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A string with <code>template</code> applied to the matched string.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Regex.swift#L302-L311">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/CustomStringConvertible"></a>
+                <a name="//apple_ref/swift/Section/CustomStringConvertible" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/CustomStringConvertible"></a>
+                  <h3 class="section-name"><p>CustomStringConvertible</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6Aurora5RegexV5MatchC11descriptionSSvp"></a>
+                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6Aurora5RegexV5MatchC11descriptionSSvp">description</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a string describing the match.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Regex.swift#L315-L317">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2020 <a class="link" href="https://wesleydegroot.nl" target="_blank" rel="external">Wesley de Groot (et. al)</a>. All rights reserved. (Last updated: 2020-06-12)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
