@@ -4,8 +4,7 @@
 import Foundation
 
 /// Support Dynamic Member Lookups for a Dictionary.
-@dynamicMemberLookup
-public protocol DictionaryDynamicLookup {
+@dynamicMemberLookup public protocol DictionaryDynamicLookup {
     /// We have a  "Key"
     associatedtype Key
     

@@ -3,21 +3,33 @@
 #if canImport(Foundation)
 import Foundation
 
+/// <#Description#>
 public struct NilError: Error, CustomStringConvertible {
     let file: String
     let line: Int
     
+    /// <#Description#>
+    /// - Parameters:
+    ///   - file: <#file description#>
+    ///   - line: <#line description#>
     public init(file: String = #file, line: Int = #line) {
         self.file = file
         self.line = line
     }
     
+    /// <#Description#>
     public var description: String {
         return "Nil returned at " + (file) + ":\(line)"
     }
 }
 
 extension Optional {
+    /// <#Description#>
+    /// - Parameters:
+    ///   - file: <#file description#>
+    ///   - line: <#line description#>
+    /// - Throws: <#description#>
+    /// - Returns: <#description#>
     public func unwrap(file: String = #file, line: Int = #line) throws -> Wrapped {
         guard let result = self else {
             throw NilError(file: file, line: line)

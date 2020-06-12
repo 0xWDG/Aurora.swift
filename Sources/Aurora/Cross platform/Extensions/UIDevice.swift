@@ -85,6 +85,7 @@ public enum Model: String {
 
 // MARK: UIDevice extensions
 public extension UIDevice {
+    /// Which type is this?
     var type: Model {
         var systemInfo = utsname()
         uname(&systemInfo)
@@ -223,6 +224,8 @@ public extension UIDevice {
         return Model.unrecognized
     }
     
+    /// Is it a iPad?
+    /// - Returns: bool(true) if is a iPad
     func isiPad() -> Bool {
         return (UIDevice.current.model.range(of: "iPad") != nil)
     }

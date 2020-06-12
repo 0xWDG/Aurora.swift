@@ -3,10 +3,14 @@
 import Foundation
 
 infix operator ~>   // serial queue operator
+
 /**
  Executes the lefthand closure on a background thread and,
  upon completion, the righthand closure on the main thread.
  Passes the background closure's output to the main closure.
+ - Parameters:
+ - backgroundClosure: <#backgroundClosure description#>
+ - mainClosure: <#mainClosure description#>
  */
 public func ~> (backgroundClosure: @escaping () -> Void, mainClosure: @escaping () -> Void) {
     serialQueue.async {
@@ -16,7 +20,11 @@ public func ~> (backgroundClosure: @escaping () -> Void, mainClosure: @escaping 
         }
     }
 }
-public func ~> <R> (backgroundClosure:   @escaping () -> R, mainClosure: @escaping (_ result: R) -> Void) {
+/// <#Description#>
+/// - Parameters:
+///   - backgroundClosure: <#backgroundClosure description#>
+///   - mainClosure: <#mainClosure description#>
+public func ~> <R> (backgroundClosure: @escaping () -> R, mainClosure: @escaping (_ result: R) -> Void) {
     serialQueue.async {
         let result = backgroundClosure()
         DispatchQueue.main.async(execute: {
@@ -24,6 +32,10 @@ public func ~> <R> (backgroundClosure:   @escaping () -> R, mainClosure: @escapi
         })
     }
 }
+/// <#Description#>
+/// - Parameters:
+///   - backgroundClosure: <#backgroundClosure description#>
+///   - mainClosure: <#mainClosure description#>
 public func ~> (backgroundClosure: @escaping () -> String, mainClosure: @escaping (_ result: String) -> Void) {
     serialQueue.async {
         let result = backgroundClosure()
@@ -37,18 +49,26 @@ public func ~> (backgroundClosure: @escaping () -> String, mainClosure: @escapin
 private let serialQueue = DispatchQueue(label: "serial-worker")
 
 extension Aurora {
+    /// <#Description#>
+    /// - Parameter block: <#block description#>
     public func runInBackground(block: @escaping () -> Void) {
         DispatchQueue.global(qos: .background).async {
             block()
         }
     }
     
+    /// <#Description#>
+    /// - Parameter block: <#block description#>
     public func runInForeground(block: @escaping () -> Void) {
         DispatchQueue.main.async {
             block()
         }
     }
     
+    /// <#Description#>
+    /// - Parameters:
+    ///   - background: <#background description#>
+    ///   - foreground: <#foreground description#>
     public func run(background: @escaping () -> String, foreground: @escaping (_ returning: String) -> Void) {
         DispatchQueue.global(qos: .background).async {
             let result = background()
@@ -59,6 +79,10 @@ extension Aurora {
         }
     }
     
+    /// <#Description#>
+    /// - Parameters:
+    ///   - background: <#background description#>
+    ///   - foreground: <#foreground description#>
      public func run(background: @escaping () -> Bool, foreground: @escaping (_ returning: Bool) -> Void) {
         DispatchQueue.global(qos: .background).async {
             let result = background()
@@ -70,6 +94,10 @@ extension Aurora {
         }
     }
     
+    /// <#Description#>
+    /// - Parameters:
+    ///   - background: <#background description#>
+    ///   - foreground: <#foreground description#>
     public func run(background: @escaping () -> Any, foreground: @escaping (_ returning: Any) -> Void) {
         DispatchQueue.global(qos: .background).async {
             let result = background()

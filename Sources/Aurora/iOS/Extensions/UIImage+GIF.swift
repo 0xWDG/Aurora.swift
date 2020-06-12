@@ -4,7 +4,8 @@ import ImageIO
 
 // Got this from https://github.com/hasnine/iOSUtilitiesSource/blob/master/iOSUtilitiesSource/GifImageLoader.swift
 extension UIImageView {
-    
+    /// <#Description#>
+    /// - Parameter name: <#name description#>
     public func loadGif(name: String) {
         DispatchQueue.global().async {
             let image = UIImage.gif(name: name)
@@ -14,8 +15,9 @@ extension UIImageView {
         }
     }
     
-    @available(iOS 9.0, *)
-    public func loadGif(asset: String) {
+    /// <#Description#>
+    /// - Parameter asset: <#asset description#>
+    @available(iOS 9.0, *) public func loadGif(asset: String) {
         DispatchQueue.global().async {
             let image = UIImage.gif(asset: asset)
             DispatchQueue.main.async {
@@ -27,7 +29,9 @@ extension UIImageView {
 }
 
 extension UIImage {
-    
+    /// <#Description#>
+    /// - Parameter data: <#data description#>
+    /// - Returns: <#description#>
     public class func gif(data: Data) -> UIImage? {
         // Create source from data
         guard let source = CGImageSourceCreateWithData(data as CFData, nil) else {
@@ -38,6 +42,9 @@ extension UIImage {
         return UIImage.animatedImageWithSource(source)
     }
     
+    /// <#Description#>
+    /// - Parameter url: <#url description#>
+    /// - Returns: <#description#>
     public class func gif(url: String) -> UIImage? {
         // Validate URL
         guard let bundleURL = URL(string: url) else {
@@ -54,6 +61,9 @@ extension UIImage {
         return gif(data: imageData)
     }
     
+    /// <#Description#>
+    /// - Parameter name: <#name description#>
+    /// - Returns: <#description#>
     public class func gif(name: String) -> UIImage? {
         // Check for existance of gif
         guard let bundleURL = Bundle.main
@@ -71,8 +81,10 @@ extension UIImage {
         return gif(data: imageData)
     }
     
-    @available(iOS 9.0, *)
-    public class func gif(asset: String) -> UIImage? {
+    /// <#Description#>
+    /// - Parameter asset: <#asset description#>
+    /// - Returns: <#description#>
+    @available(iOS 9.0, *) public class func gif(asset: String) -> UIImage? {
         // Create source from assets catalog
         guard let dataAsset = NSDataAsset(name: asset) else {
             print("SwiftGif: Cannot turn image named \"\(asset)\" into NSDataAsset")
@@ -82,6 +94,11 @@ extension UIImage {
         return gif(data: dataAsset.data)
     }
     
+    /// <#Description#>
+    /// - Parameters:
+    ///   - index: <#index description#>
+    ///   - source: <#source description#>
+    /// - Returns: <#description#>
     internal class func delayForImageAtIndex(_ index: Int, source: CGImageSource!) -> Double {
         var delay = 0.1
         
@@ -116,6 +133,11 @@ extension UIImage {
         return delay
     }
     
+    /// <#Description#>
+    /// - Parameters:
+    ///   - valueA: <#valueA description#>
+    ///   - valueB: <#valueB description#>
+    /// - Returns: <#description#>
     internal class func gcdForPair(_ valueA: Int?, _ valueB: Int?) -> Int {
         var valueA = valueA
         var valueB = valueB
@@ -151,6 +173,9 @@ extension UIImage {
         }
     }
     
+    /// <#Description#>
+    /// - Parameter array: <#array description#>
+    /// - Returns: <#description#>
     internal class func gcdForArray(_ array: Array<Int>) -> Int {
         if array.isEmpty {
             return 1
@@ -165,6 +190,9 @@ extension UIImage {
         return gcd
     }
     
+    /// <#Description#>
+    /// - Parameter source: <#source description#>
+    /// - Returns: <#description#>
     internal class func animatedImageWithSource(_ source: CGImageSource) -> UIImage? {
         let count = CGImageSourceGetCount(source)
         var images = [CGImage]()
@@ -217,5 +245,4 @@ extension UIImage {
         
         return animation
     }
-    
 }

@@ -4,6 +4,8 @@ import Foundation
 
 #if os(iOS)
 import UIKit
+
+/// Temporary Directory
 let TMP: String = NSTemporaryDirectory()
 
 extension UIImage {

@@ -10,7 +10,6 @@ import AVFoundation
 #endif
 
 extension UIImage {
-    
     /// <#Description#>
     /// - Parameter sizeChange: <#sizeChange description#>
     /// - Returns: <#description#>

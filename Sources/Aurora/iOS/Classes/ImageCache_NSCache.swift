@@ -52,6 +52,7 @@ class ImageCache {
         }
     }
     
+    /// <#Description#>
     func flush() {
         cache.removeAllObjects()
     }

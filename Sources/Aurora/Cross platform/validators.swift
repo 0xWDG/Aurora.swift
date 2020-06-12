@@ -2,11 +2,17 @@
 
 import Foundation
 
+/// <#Description#>
 open class Validator {
+    /// <#Description#>
     public static let shared = Validator.init()
     
+    /// <#Description#>
     public init() {}
     
+    /// <#Description#>
+    /// - Parameter str: <#str description#>
+    /// - Returns: <#description#>
     public func containsPhoneNumber(str: String) -> Bool {
         do {
             let detector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.phoneNumber.rawValue)
@@ -24,6 +30,9 @@ open class Validator {
         }
     }
     
+    /// <#Description#>
+    /// - Parameter str: <#str description#>
+    /// - Returns: <#description#>
     public func containsEmailaddress(str: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
         do {
@@ -41,6 +50,9 @@ open class Validator {
         }
     }
     
+    /// <#Description#>
+    /// - Parameter str: <#str description#>
+    /// - Returns: <#description#>
     public func containsAddress(str: String) -> Bool {
         do {
             let detector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.address.rawValue)

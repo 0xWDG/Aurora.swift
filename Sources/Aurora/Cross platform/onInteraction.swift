@@ -24,6 +24,7 @@ public extension UIControl {
         for controlEvents: UIControl.Event = .primaryActionTriggered,
         action: @escaping (AnyObject) -> Void
     ) {
+        /// <#Description#>
         let helper = UIControlHelper(
             attachTo: self,
             closure: action
@@ -40,6 +41,10 @@ public extension UIControl {
 public class UIControlHelper {
     let closure: (AnyObject) -> Void
     
+    /// <#Description#>
+    /// - Parameters:
+    ///   - attachTo: <#attachTo description#>
+    ///   - closure: <#closure description#>
     public init(attachTo: AnyObject, closure: @escaping (AnyObject) -> Void) {
         self.closure = closure
         objc_setAssociatedObject(
@@ -50,6 +55,8 @@ public class UIControlHelper {
         )
     }
     
+    /// <#Description#>
+    /// - Parameter sender: <#sender description#>
     @objc func invoke(sender: AnyObject) {
         closure(sender)
     }
@@ -60,14 +67,17 @@ public class UIControlHelper {
 // see https://gist.github.com/sindresorhus/3580ce9426fff8fafb1677341fca4815
 // renamed onAction to onInteraction
 public extension NSControl {
+    /// <#Description#>
     typealias ActionClosure = ((NSControl) -> Void)
     
+    /// <#Description#>
     private struct AssociatedKeys {
         static let onActionClosure = AssociatedObject<ActionClosure>()
     }
     
-    @objc
-    private func callClosure(_ sender: NSControl) {
+    /// <#Description#>
+    /// - Parameter sender: <#sender description#>
+    @objc private func callClosure(_ sender: NSControl) {
         onInteraction?(sender)
     }
     

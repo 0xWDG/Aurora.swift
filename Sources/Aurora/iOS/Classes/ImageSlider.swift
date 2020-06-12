@@ -6,10 +6,19 @@ import UIKit
 
 /// <#Description#>
 open class ImageSlider {
+    /// <#Description#>
     var images: [UIImage] = []
+    
+    /// <#Description#>
     var imageHeight: Int
+    
+    /// <#Description#>
     var pageControl: UIPageControl
+    
+    /// <#Description#>
     var scrollView: UIScrollView
+    
+    /// <#Description#>
     var colors: [UIColor] = [.red, .orange, .green, .yellow, .gray, .cyan, .clear, .brown, .black]
     
     /// <#Description#>

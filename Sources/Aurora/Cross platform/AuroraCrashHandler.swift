@@ -16,9 +16,12 @@ import UIKit
 //import CoreTelephony
 //#endif
 
+/// <#Description#>
 class AuroraCrashHandler {
+    /// <#Description#>
     static public let shared: AuroraCrashHandler = AuroraCrashHandler.init()
     
+    /// <#Description#>
     private let signalCodes = [
         SIGABRT: "SIGABRT: abort()",
         SIGILL: "SIGILL: illegal instruction (not reset when caught)",
@@ -53,16 +56,20 @@ class AuroraCrashHandler {
         SIGUSR2: "SIGUSR2: user defined signal 2"
     ]
     
+    /// <#Description#>
     private static let RecieveSignal : @convention(c) (Int32) -> Void = {
         (signal) -> Void in       
         AuroraCrashHandler.createReport(from: signal)
     }
     
+    /// <#Description#>
     private static let RecieveException: @convention(c) (NSException) -> Swift.Void = {
         (theExteption) -> Void in
         AuroraCrashHandler.createReport(from: theExteption)
     }
     
+    /// <#Description#>
+    /// - Parameter from: <#from description#>
     private class func createReport(from: Any) {
         var crashReport = ""
         crashReport += "Aurora Framework (v\(Aurora.shared.version)) crash report\n\n"
@@ -142,6 +149,8 @@ class AuroraCrashHandler {
         }
     }
     
+    /// <#Description#>
+    /// - Returns: <#description#>
     public func getLastCrashLog() -> String? {
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             let fileURL = dir.appendingPathComponent("crash.txt")
@@ -153,8 +162,9 @@ class AuroraCrashHandler {
         return nil
     }
     
-    @discardableResult
-    public func deleteLastCrashLog() -> Bool {
+    /// <#Description#>
+    /// - Returns: <#description#>
+    @discardableResult public func deleteLastCrashLog() -> Bool {
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             let fileURL = dir.appendingPathComponent("crash.txt")
             do {
@@ -173,6 +183,7 @@ class AuroraCrashHandler {
     /// Did we already register?
     private var didRegister = false
     
+    /// <#Description#>
     init() {
         // Ok.
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -180,6 +191,7 @@ class AuroraCrashHandler {
         }
     }
     
+    /// <#Description#>
     func registerForSignals() {
         if !didRegister {
             NSSetUncaughtExceptionHandler(AuroraCrashHandler.RecieveException)
