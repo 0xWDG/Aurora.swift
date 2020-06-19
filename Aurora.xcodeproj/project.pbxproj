@@ -24,6 +24,7 @@
 		DE8CB3B424409B8200577333 /* AuroraCrashHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8CB3B324409B8200577333 /* AuroraCrashHandler.swift */; };
 		DEAB2EEE249CE45800C09EE3 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAB2EED249CE45800C09EE3 /* Double.swift */; };
 		DEAB2EF0249CE4DF00C09EE3 /* Float.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAB2EEF249CE4DF00C09EE3 /* Float.swift */; };
+		DEAB2EF3249CE86E00C09EE3 /* IntTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAB2EF1249CE86100C09EE3 /* IntTest.swift */; };
 		DED1353D2493B89900451EA2 /* NSFWDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED1353C2493B89900451EA2 /* NSFWDetector.swift */; };
 		DED135402493BC1800451EA2 /* NSFW.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = DED1353F2493BC1800451EA2 /* NSFW.mlmodel */; };
 		DEE6FFE72487ED2E00002510 /* ImageCache_NSCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE6FFE62487ED2E00002510 /* ImageCache_NSCache.swift */; };
@@ -40,8 +41,8 @@
 		OBJ_111 /* UIViewRounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_55 /* UIViewRounded.swift */; };
 		OBJ_112 /* UInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_56 /* UInt.swift */; };
 		OBJ_119 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
-		OBJ_130 /* AuroraTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_59 /* AuroraTest.swift */; };
-		OBJ_131 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_60 /* File.swift */; };
+		OBJ_130 /* AuroraFrameworkTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_59 /* AuroraFrameworkTest.swift */; };
+		OBJ_131 /* DictionaryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_60 /* DictionaryTest.swift */; };
 		OBJ_132 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_61 /* XCTestManifests.swift */; };
 		OBJ_134 /* Aurora.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Aurora::Aurora::Product" /* Aurora.framework */; };
 		OBJ_71 /* AuroraFramework.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* AuroraFramework.swift */; };
@@ -98,6 +99,7 @@
 		DE8CB3B324409B8200577333 /* AuroraCrashHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraCrashHandler.swift; sourceTree = "<group>"; };
 		DEAB2EED249CE45800C09EE3 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		DEAB2EEF249CE4DF00C09EE3 /* Float.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Float.swift; sourceTree = "<group>"; };
+		DEAB2EF1249CE86100C09EE3 /* IntTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntTest.swift; sourceTree = "<group>"; };
 		DED1353C2493B89900451EA2 /* NSFWDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSFWDetector.swift; sourceTree = "<group>"; };
 		DED1353F2493BC1800451EA2 /* NSFW.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = NSFW.mlmodel; sourceTree = "<group>"; };
 		DEE6FFE62487ED2E00002510 /* ImageCache_NSCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache_NSCache.swift; sourceTree = "<group>"; };
@@ -142,9 +144,9 @@
 		OBJ_54 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		OBJ_55 /* UIViewRounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewRounded.swift; sourceTree = "<group>"; };
 		OBJ_56 /* UInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UInt.swift; sourceTree = "<group>"; };
-		OBJ_59 /* AuroraTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraTest.swift; sourceTree = "<group>"; };
+		OBJ_59 /* AuroraFrameworkTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraFrameworkTest.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		OBJ_60 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		OBJ_60 /* DictionaryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTest.swift; sourceTree = "<group>"; };
 		OBJ_61 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 		OBJ_65 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		OBJ_9 /* AuroraFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuroraFramework.h; sourceTree = "<group>"; };
@@ -258,8 +260,9 @@
 		OBJ_58 /* AuroraTests */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_59 /* AuroraTest.swift */,
-				OBJ_60 /* File.swift */,
+				OBJ_59 /* AuroraFrameworkTest.swift */,
+				OBJ_60 /* DictionaryTest.swift */,
+				DEAB2EF1249CE86100C09EE3 /* IntTest.swift */,
 				OBJ_61 /* XCTestManifests.swift */,
 			);
 			name = AuroraTests;
@@ -410,9 +413,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_130 /* AuroraTest.swift in Sources */,
-				OBJ_131 /* File.swift in Sources */,
+				OBJ_130 /* AuroraFrameworkTest.swift in Sources */,
+				OBJ_131 /* DictionaryTest.swift in Sources */,
 				OBJ_132 /* XCTestManifests.swift in Sources */,
+				DEAB2EF3249CE86E00C09EE3 /* IntTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

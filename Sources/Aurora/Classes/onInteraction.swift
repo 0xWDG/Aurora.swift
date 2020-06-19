@@ -110,6 +110,7 @@ public class UIControlHelper {
 #if swift(>=10)
 import AppKit
 
+// Thanks @sindresorhus
 // see https://gist.github.com/sindresorhus/3580ce9426fff8fafb1677341fca4815
 // renamed onAction to onInteraction
 public extension NSControl {

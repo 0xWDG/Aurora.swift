@@ -9,7 +9,11 @@ import UIKit
 #endif
 
 extension Int {
-    /// a.k.a. the JavaScript function
+    /// Converts a string to:
+    ///
+    /// * 16 = Hexadecimal
+    /// * 8   = Octal
+    /// * 2   = Binary
     public func toString(_ int: Int) -> String {
         if (int == 16) { // hexadecimal
             return String(format: "%2X", self).lowerAndNoSpaces
@@ -23,26 +27,31 @@ extension Int {
     }
     
     #if canImport(Foundation)
-    /// Checks if the integer is even.
-    public var isEven: Bool {
-        return (self % 2 == 0)
-    }
-
     /// Checks if the integer is odd.
     public var isOdd: Bool {
         return (self % 2 != 0)
     }
-
-    /// Checks if the integer is positive.
-    public var isPositive: Bool {
-        return (self > 0)
+    
+    /// Checks if the integer is even.
+    public var isEven: Bool {
+        return (self % 2 == 0)
     }
 
     /// Checks if the integer is negative.
     public var isNegative: Bool {
         return (self < 0)
     }
+    
+    /// Checks if the integer is positive.
+    public var isPositive: Bool {
+        return (self > 0)
+    }
 
+    /// Converts a (negative)integer value to a positive value.
+    public var toPositive: Int {
+        return abs(self)
+    }
+    
     /// Converts integer value to Double.
     public var toDouble: Double {
         return Double(self)
@@ -67,18 +76,18 @@ extension Int {
     public var toInt32: Int32 {
         return Int32(self)
     }
-
-    public var toPositive: Int {
-        return abs(self)
-    }
     
     /// Converts integer value to a 0..<Int range. Useful in for loops.
-    public var range: CountableRange<Int> { return 0..<self }
+    public var range: CountableRange<Int> {
+        return 0..<self
+    }
     #endif
     
     #if canImport(UIKit)
     /// Converts integer value to CGFloat.
-    public var toCGFloat: CGFloat { return CGFloat(self) }
+    public var toCGFloat: CGFloat {
+        return CGFloat(self)
+    }
     #endif
     
     /// Runs the code passed as a closure the specified number of times.
@@ -93,6 +102,13 @@ extension Int {
 
     /// Runs the code passed as a closure the specified number of times
     /// and creates an array from the return values.
+    ///
+    /// Example:
+    ///
+    ///    // This returns [5, 5, 5, 5, 5]
+    ///    5.timesMake({ () -> Int in
+    ///      return 5
+    ///    })
     ///
     /// - Parameters:
     ///   - closure: The code to deliver a return value multiple times.
