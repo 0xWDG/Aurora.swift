@@ -49,17 +49,17 @@ public func < (lhs: WatchDeviceType, rhs: WatchDeviceType) -> Bool { return lhs.
         let currentBounds = WKInterfaceDevice.current().screenBounds
         
         switch currentBounds {
-            case watch38mm:
-                return .watch38mm
-            case watch40mm:
-                return .watch38mm
-            case watch42mm:
-                return .watch42mm
-            case watch44mm:
-                return .watch44mm
+        case watch38mm:
+            return .watch38mm
+        case watch40mm:
+            return .watch38mm
+        case watch42mm:
+            return .watch42mm
+        case watch44mm:
+            return .watch44mm
             
-            default:
-                return .unknown
+        default:
+            return .unknown
         }
     }
 }

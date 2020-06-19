@@ -2248,7 +2248,12 @@ public extension String {
     #if canImport(Foundation)
     /// Strikethrough string.
     var strikethrough: NSAttributedString {
-        return NSAttributedString(string: self, attributes: [.strikethroughStyle: NSNumber(value: NSUnderlineStyle.single.rawValue as Int)])
+        return NSAttributedString(
+        string: self,
+        attributes: [
+        .strikethroughStyle: NSNumber(value: NSUnderlineStyle.single.rawValue as Int)
+        ]
+        )
     }
     #endif
     
@@ -2352,7 +2357,8 @@ public extension String {
     /// NSString appendingPathExtension(str: String)
     ///
     /// - Parameter str: The extension to append to the receiver.
-    /// - Returns: a new string made by appending to the receiver an extension separator followed by ext (if applicable).
+    /// - Returns: a new string made by appending to the receiver\
+    /// an extension separator followed by ext (if applicable).
     func appendingPathExtension(_ str: String) -> String? {
         return (self as NSString).appendingPathExtension(str)
     }
@@ -2364,7 +2370,8 @@ public extension String {
 // Got this one from
 // https://www.avanderlee.com/swift/string-interpolation/
 extension String.StringInterpolation {
-    /// Prints `Optional` values by only interpolating it if the value is set. `nil` is used as a fallback value to provide a clear output.
+    /// Prints `Optional` values by only interpolating it if the value is set.
+    /// `nil` is used as a fallback value to provide a clear output.
     mutating func appendInterpolation<T: CustomStringConvertible>(_ value: T?) {
         appendInterpolation(value ?? "nil" as CustomStringConvertible)
     }

@@ -7,13 +7,13 @@ extension UIViewController {
     /// Can i perform a segue?
     /// - Parameter id: segue name
     /// - Returns: boolean
-    public func canPerformSegue(withIdentifier id: String) -> Bool {
+    public func canPerformSegue(withIdentifier: String) -> Bool {
         guard let segues = UIApplication.shared.delegate?.window??.rootViewController?.value(
             forKey: "storyboardSegueTemplates"
             ) as? [NSObject] else { return false }
         
         return segues.first {
-            $0.value(forKey: "identifier") as? String == id
+            $0.value(forKey: "identifier") as? String == withIdentifier
             } != nil
     }
     
@@ -21,8 +21,8 @@ extension UIViewController {
     /// - Parameters:
     ///   - name: Segue name
     ///   - sender: a Sender
-    public func performSegueIfPossible(id: String?, sender: AnyObject? = nil) {
-        guard let id = id, canPerformSegue(withIdentifier: id) else { return }
+    public func performSegueIfPossible(segueID: String?, sender: AnyObject? = nil) {
+        guard let segueID = segueID, canPerformSegue(withIdentifier: id) else { return }
         UIApplication.shared.delegate?.window??.rootViewController?.performSegue(withIdentifier: id, sender: sender)
     }
     

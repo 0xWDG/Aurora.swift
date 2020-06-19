@@ -307,9 +307,17 @@ extension Aurora {
      */
     open func removeHTML(_ html: String) -> String {
         do {
-            let regex: NSRegularExpression = try NSRegularExpression(pattern: "<.*?>", options: NSRegularExpression.Options.caseInsensitive)
+            let regex: NSRegularExpression = try NSRegularExpression(
+                pattern: "<.*?>",
+                options: NSRegularExpression.Options.caseInsensitive
+            )
             let range = NSRange(location: 0, length: html.count)
-            let htmlLessString: String = regex.stringByReplacingMatches(in: html, options: [], range: range, withTemplate: "")
+            let htmlLessString: String = regex.stringByReplacingMatches(
+                in: html,
+                options: [],
+                range: range,
+                withTemplate: ""
+            )
             return htmlLessString
         } catch {
             print("Failed to parse HTML String")

@@ -10,14 +10,14 @@ open class WDGFrameworkiCloudSync {
     private let keyValueStore = NSUbiquitousKeyValueStore.default
     private let notificationCenter = NotificationCenter.default
     
-    public init () {
+    public init() {
         if WDGIiCloudSyncInProgress == false {
             // Start the sync!
             self.startSync()
         }
     }
     
-    open func startSync ( ) {
+    open func startSync() {
         if keyValueStore.isKind(of: NSUbiquitousKeyValueStore.self) {
             notificationCenter.addObserver(
                 self,
@@ -48,7 +48,7 @@ open class WDGFrameworkiCloudSync {
     }
     
     @objc
-    private func fromCloud () {
+    private func fromCloud() {
         // iCloud to a Dictionary
         let dict: NSDictionary = keyValueStore.dictionaryRepresentation as NSDictionary
         
@@ -116,7 +116,7 @@ open class WDGFrameworkiCloudSync {
         )
     }
     
-    fileprivate func unset ( ) {
+    fileprivate func unset() {
         // Say i'm not syncing anymore
         WDGIiCloudSyncInProgress = false
         

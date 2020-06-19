@@ -94,6 +94,7 @@ extension UIView {
     
     /// <#Description#>
     struct GestureClosures {
+        // swiftlint:disable:next identifier_name
         static var up: (() -> Void)?
         static var down: (() -> Void)?
         static var left: (() -> Void)?

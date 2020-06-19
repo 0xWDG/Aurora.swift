@@ -16,17 +16,17 @@ extension Int {
     /// * 2   = Binary
     public func toString(_ radix: Int) -> String {
         switch radix {
-            case 16:
-                return String(format: "%2X", self).lowerAndNoSpaces
+        case 16:
+            return String(format: "%2X", self).lowerAndNoSpaces
             
-            case 8:
-                return String(self, radix: 8, uppercase: false).lowerAndNoSpaces
+        case 8:
+            return String(self, radix: 8, uppercase: false).lowerAndNoSpaces
             
-            case 2:
-                return String(self, radix: 2, uppercase: false).lowerAndNoSpaces
+        case 2:
+            return String(self, radix: 2, uppercase: false).lowerAndNoSpaces
             
-            default:
-                return String(self)
+        default:
+            return String(self)
         }
     }
     
