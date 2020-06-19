@@ -148,9 +148,20 @@ open class Aurora {
     
     /// This is a demo func, thing for unavailable things.
     /// - Returns: Void
-    @available(*, unavailable)
-    public func unavailableFunc() -> Void {
-        
+    @available(*, unavailable) public func unavailableFunc() -> Void {
+    }
+    
+    
+    /// **No op**eration
+    /// - Parameter something: Whay ever you want.
+    private func noop(_ something: Any...) {
+        // Great.
+    }
+
+    /// **No op**eration
+    /// - Parameter something: Whay ever you want. (object)
+    private func noop(_ something: AnyObject...) {
+        // Great.
     }
 }
 
