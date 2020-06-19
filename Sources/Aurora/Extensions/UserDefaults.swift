@@ -9,7 +9,8 @@ import Foundation
 
 public extension UserDefaults {
     /// <#Description#>
-    @nonobjc subscript(key: String) -> Any? {
+    @nonobjc
+    subscript(key: String) -> Any? {
         get {
             return object(forKey: key)
         }
@@ -20,7 +21,8 @@ public extension UserDefaults {
     }
     
     /// <#Description#>
-    @nonobjc subscript(key: String) -> Bool {
+    @nonobjc
+    subscript(key: String) -> Bool {
         get {
             return bool(forKey: key)
         }

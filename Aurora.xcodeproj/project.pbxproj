@@ -22,6 +22,8 @@
 
 /* Begin PBXBuildFile section */
 		DE8CB3B424409B8200577333 /* AuroraCrashHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8CB3B324409B8200577333 /* AuroraCrashHandler.swift */; };
+		DEAB2EEE249CE45800C09EE3 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAB2EED249CE45800C09EE3 /* Double.swift */; };
+		DEAB2EF0249CE4DF00C09EE3 /* Float.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAB2EEF249CE4DF00C09EE3 /* Float.swift */; };
 		DED1353D2493B89900451EA2 /* NSFWDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED1353C2493B89900451EA2 /* NSFWDetector.swift */; };
 		DED135402493BC1800451EA2 /* NSFW.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = DED1353F2493BC1800451EA2 /* NSFW.mlmodel */; };
 		DEE6FFE72487ED2E00002510 /* ImageCache_NSCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE6FFE62487ED2E00002510 /* ImageCache_NSCache.swift */; };
@@ -94,6 +96,8 @@
 		"Aurora::Aurora::Product" /* Aurora.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Aurora.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Aurora::AuroraTests::Product" /* AuroraTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = AuroraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE8CB3B324409B8200577333 /* AuroraCrashHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraCrashHandler.swift; sourceTree = "<group>"; };
+		DEAB2EED249CE45800C09EE3 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		DEAB2EEF249CE4DF00C09EE3 /* Float.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Float.swift; sourceTree = "<group>"; };
 		DED1353C2493B89900451EA2 /* NSFWDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSFWDetector.swift; sourceTree = "<group>"; };
 		DED1353F2493BC1800451EA2 /* NSFW.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = NSFW.mlmodel; sourceTree = "<group>"; };
 		DEE6FFE62487ED2E00002510 /* ImageCache_NSCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache_NSCache.swift; sourceTree = "<group>"; };
@@ -173,68 +177,44 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		OBJ_11 /* Cross platform */ = {
+		OBJ_11 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				DE8CB3B324409B8200577333 /* AuroraCrashHandler.swift */,
 				OBJ_12 /* CrossPlatform.swift */,
-				OBJ_13 /* Extensions */,
+				DEE6FFE62487ED2E00002510 /* ImageCache_NSCache.swift */,
+				OBJ_35 /* ImageCache.swift */,
+				OBJ_36 /* ImageSlider.swift */,
+				OBJ_37 /* KeyboardHandler.swift */,
+				OBJ_30 /* log.swift */,
+				DED1353C2493B89900451EA2 /* NSFWDetector.swift */,
+				OBJ_31 /* onInteraction.swift */,
 				OBJ_26 /* Regex.swift */,
 				OBJ_27 /* SyncTasks.swift */,
 				OBJ_28 /* Threads.swift */,
-				OBJ_29 /* Web.swift */,
-				OBJ_30 /* log.swift */,
-				OBJ_31 /* onInteraction.swift */,
 				OBJ_32 /* validators.swift */,
-				DE8CB3B324409B8200577333 /* AuroraCrashHandler.swift */,
-				DED1353C2493B89900451EA2 /* NSFWDetector.swift */,
+				OBJ_29 /* Web.swift */,
 			);
-			path = "Cross platform";
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		OBJ_13 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				OBJ_39 /* Bundle.swift */,
 				OBJ_14 /* Collection.swift */,
 				OBJ_15 /* Color.swift */,
 				OBJ_16 /* Data.swift */,
 				OBJ_17 /* Dictionary.swift */,
+				DEAB2EED249CE45800C09EE3 /* Double.swift */,
+				DEAB2EEF249CE4DF00C09EE3 /* Float.swift */,
+				OBJ_25 /* iCloudSync.swift */,
 				OBJ_18 /* Int.swift */,
+				OBJ_40 /* MKMapView.swift */,
 				OBJ_19 /* NSAttributedString.swift */,
 				OBJ_20 /* NSObject.swift */,
 				OBJ_21 /* Optional.swift */,
 				OBJ_22 /* String.swift */,
-				OBJ_23 /* URLRequest.swift */,
-				OBJ_24 /* UserDefaults.swift */,
-				OBJ_25 /* iCloudSync.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		OBJ_33 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_34 /* Classes */,
-				OBJ_38 /* Extensions */,
-			);
-			path = iOS;
-			sourceTree = "<group>";
-		};
-		OBJ_34 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_35 /* ImageCache.swift */,
-				OBJ_36 /* ImageSlider.swift */,
-				OBJ_37 /* KeyboardHandler.swift */,
-				DEE6FFE62487ED2E00002510 /* ImageCache_NSCache.swift */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		OBJ_38 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_39 /* Bundle.swift */,
-				OBJ_40 /* MKMapView.swift */,
 				OBJ_41 /* UIBarButtonItem.swift */,
 				OBJ_42 /* UIButtonCorner.swift */,
 				OBJ_43 /* UIColor+CGColor.swift */,
@@ -242,14 +222,16 @@
 				OBJ_46 /* UIGreenButton.swift */,
 				OBJ_47 /* UIImage.swift */,
 				OBJ_48 /* UILabel.swift */,
+				OBJ_56 /* UInt.swift */,
 				OBJ_49 /* UITabBarController.swift */,
 				OBJ_50 /* UITableView.swift */,
 				OBJ_51 /* UITextField.swift */,
-				OBJ_52 /* UIView+Positioning.swift */,
 				OBJ_53 /* UIView.swift */,
+				OBJ_52 /* UIView+Positioning.swift */,
 				OBJ_54 /* UIViewController.swift */,
 				OBJ_55 /* UIViewRounded.swift */,
-				OBJ_56 /* UInt.swift */,
+				OBJ_23 /* URLRequest.swift */,
+				OBJ_24 /* UserDefaults.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -304,11 +286,11 @@
 		OBJ_8 /* Aurora */ = {
 			isa = PBXGroup;
 			children = (
-				DED1353E2493B8CF00451EA2 /* Resources */,
 				OBJ_9 /* AuroraFramework.h */,
 				OBJ_10 /* AuroraFramework.swift */,
-				OBJ_11 /* Cross platform */,
-				OBJ_33 /* iOS */,
+				OBJ_11 /* Classes */,
+				OBJ_13 /* Extensions */,
+				DED1353E2493B8CF00451EA2 /* Resources */,
 			);
 			name = Aurora;
 			path = Sources/Aurora;
@@ -467,11 +449,13 @@
 				DEE6FFE72487ED2E00002510 /* ImageCache_NSCache.swift in Sources */,
 				OBJ_97 /* UIBarButtonItem.swift in Sources */,
 				OBJ_98 /* UIButtonCorner.swift in Sources */,
+				DEAB2EF0249CE4DF00C09EE3 /* Float.swift in Sources */,
 				OBJ_99 /* UIColor+CGColor.swift in Sources */,
 				OBJ_101 /* UIGradientView.swift in Sources */,
 				OBJ_102 /* UIGreenButton.swift in Sources */,
 				OBJ_103 /* UIImage.swift in Sources */,
 				OBJ_104 /* UILabel.swift in Sources */,
+				DEAB2EEE249CE45800C09EE3 /* Double.swift in Sources */,
 				OBJ_105 /* UITabBarController.swift in Sources */,
 				OBJ_106 /* UITableView.swift in Sources */,
 				OBJ_107 /* UITextField.swift in Sources */,

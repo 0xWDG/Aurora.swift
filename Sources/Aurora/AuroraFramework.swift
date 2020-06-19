@@ -112,7 +112,8 @@ open class Aurora {
      * - parameter line: the line
      * - parameter function: function name
      */
-    @discardableResult public func log(_ message: String, file: String = #file, line: Int = #line, function: String = #function) -> Bool {
+    @discardableResult
+    public func log(_ message: String, file: String = #file, line: Int = #line, function: String = #function) -> Bool {
         if (debug) {
             let fileName: String = (file.split("/").last)!.split(".").first!
             Swift.print("[Aurora.Framework] \(fileName):\(line) \(function):\n \(message)\n")
@@ -146,12 +147,6 @@ open class Aurora {
     }
     #endif
     
-    /// This is a demo func, thing for unavailable things.
-    /// - Returns: Void
-    @available(*, unavailable) public func unavailableFunc() -> Void {
-    }
-    
-    
     /// **No op**eration
     /// - Parameter something: Whay ever you want.
     private func noop(_ something: Any...) {
@@ -162,6 +157,12 @@ open class Aurora {
     /// - Parameter something: Whay ever you want. (object)
     private func noop(_ something: AnyObject...) {
         // Great.
+    }
+    
+    /// This is a demo func, thing for unavailable things.
+    /// - Returns: Void
+    @available(*, unavailable)
+    public func unavailableFunc() -> Void {
     }
 }
 

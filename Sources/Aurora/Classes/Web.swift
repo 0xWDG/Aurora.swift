@@ -46,7 +46,8 @@ open class SimpleTimer {/*<--was named Timer, but since swift 3, NSTimer is now 
     /**
      * This method must be in the public or scope
      */
-    @objc func update() {
+    @objc
+    func update() {
         tick()
     }
 }

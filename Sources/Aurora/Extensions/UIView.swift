@@ -133,7 +133,8 @@ extension UIView {
     
     /// <#Description#>
     /// - Parameter gesture: <#gesture description#>
-    @objc func invokeTarget(_ gesture: UIGestureRecognizer?) {
+    @objc
+    func invokeTarget(_ gesture: UIGestureRecognizer?) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
             case .up:

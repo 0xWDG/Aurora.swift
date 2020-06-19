@@ -6,7 +6,8 @@ import Foundation
 import UIKit
 import QuartzCore
 
-@IBDesignable public class UIViewRounded: UIView {
+@IBDesignable
+public class UIViewRounded: UIView {
     /// Radius for the UIViewRounded
     @IBInspectable public var radius: CGFloat = 24
     

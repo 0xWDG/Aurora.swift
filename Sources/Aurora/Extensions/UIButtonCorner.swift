@@ -4,7 +4,8 @@
 import UIKit
 
 /// Designable UIButton
-@IBDesignable extension UIButton {
+@IBDesignable
+extension UIButton {
     /// Set the border with
     @IBInspectable public var borderWidth: CGFloat {
         set {

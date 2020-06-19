@@ -164,7 +164,8 @@ class AuroraCrashHandler {
     
     /// <#Description#>
     /// - Returns: <#description#>
-    @discardableResult public func deleteLastCrashLog() -> Bool {
+    @discardableResult
+    public func deleteLastCrashLog() -> Bool {
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             let fileURL = dir.appendingPathComponent("crash.txt")
             do {

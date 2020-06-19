@@ -53,7 +53,8 @@ extension UITextField {
     }
     
     /// <#Description#>
-    @objc func doneButtonAction() {
+    @objc
+    func doneButtonAction() {
         self.resignFirstResponder()
     }
     
@@ -93,13 +94,15 @@ extension UITextField {
     }
     
     /// <#Description#>
-    @objc func showPasswordView() {
+    @objc
+    func showPasswordView() {
         isSecureTextEntry = false
         isUserInteractionEnabled = false
     }
     
     /// <#Description#>
-    @objc func hidePasswordView() {
+    @objc
+    func hidePasswordView() {
         isSecureTextEntry = true
         isUserInteractionEnabled = true
     }

@@ -47,7 +47,8 @@ open class WDGFrameworkiCloudSync {
         }
     }
     
-    @objc private func fromCloud () {
+    @objc
+    private func fromCloud () {
         // iCloud to a Dictionary
         let dict: NSDictionary = keyValueStore.dictionaryRepresentation as NSDictionary
         
@@ -83,7 +84,8 @@ open class WDGFrameworkiCloudSync {
         )
     }
     
-    @objc private func toCloud() {
+    @objc
+    private func toCloud() {
         //        print("Going to iCloud")
         // NSUserDefaults to a dictionary
         let dict: NSDictionary = UserDefaults.standard.dictionaryRepresentation() as NSDictionary

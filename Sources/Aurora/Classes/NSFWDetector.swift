@@ -24,7 +24,9 @@ import Vision
 ///            print(String(format: "%.1f %% NSFW", confidence * 100.0))
 ///        }
 ///    }
-@available(macOS 10.14, *) @available(iOS 12.0, *) public class NSFWDetector {
+@available(macOS 10.14, *)
+@available(iOS 12.0, *)
+public class NSFWDetector {
     /// Singleton for NSFWDetector
     public static let shared = NSFWDetector()
     

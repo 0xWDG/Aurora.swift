@@ -26,7 +26,8 @@ public class KeyboardHandler {
     ///     keyboardHandler(forViewController: self)
     ///
     /// - Parameter forViewController: Viewcontroller (mostly `self`)
-    @discardableResult public init(forViewController: UIViewController) {
+    @discardableResult
+    public init(forViewController: UIViewController) {
         // Add a notification handler for 'keyboard will show'
         _ = NotificationCenter.default.addObserver(
             forName: UIResponder.keyboardWillShowNotification,

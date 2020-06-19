@@ -44,8 +44,8 @@ extension Configure {
     /// Makes it available to execute something with closures.
     ///
     ///     UserDefaults.standard.do {
-    ///       $0.set("devxoul", forKey: "username")
-    ///       $0.set("devxoul@gmail.com", forKey: "email")
+    ///       $0.set("test", forKey: "username")
+    ///       $0.set("my_email@gmail.com", forKey: "email")
     ///       $0.synchronize()
     ///     }
     public func `do`(_ block: (Self) throws -> Void) rethrows {
@@ -83,7 +83,8 @@ extension NSObject {
     }
         
     /// <#Description#>
-    @objc private class CallbackHolder: NSObject {
+    @objc
+    private class CallbackHolder: NSObject {
         var callbacks = [() -> Void]()
         
         deinit {

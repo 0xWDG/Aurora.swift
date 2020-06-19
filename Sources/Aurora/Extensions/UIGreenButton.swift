@@ -5,7 +5,8 @@ import Foundation
 import UIKit
 
 /// A Designable UIGreenButton
-@IBDesignable public class UIGreenButton: UIButton {
+@IBDesignable
+public class UIGreenButton: UIButton {
     /// <#Description#>
     /// - Parameter frame: <#frame description#>
     override init(frame: CGRect) {
