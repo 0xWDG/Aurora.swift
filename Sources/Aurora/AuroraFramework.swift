@@ -99,6 +99,14 @@ open class Aurora {
      *     [Aurora] Filename:line functionName(...):
      *      Message
      *
+     * _want to use a callback/loghandler?_
+     *
+     * Put the following (preffered in your AppDelegate):
+     *
+     *      Aurora.shared.logHandler { message in
+     *          // Do something with the message
+     *      }
+     *
      * - parameter message: the message to send
      * - parameter file: the filename
      * - parameter line: the line
