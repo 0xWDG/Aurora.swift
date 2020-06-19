@@ -125,19 +125,33 @@ open class Aurora {
         return debug
     }
     
+    /// Get the last crash log
+    /// - Returns: The last crashlog
     public func getLastCrashLog() -> String? {
         return Aurora.crashLogger.getLastCrashLog()
     }
     
+    /// Delete the last crash log
+    /// - Returns: Bool if deleted
     public func deleteLastCrashLog() -> Bool {
         return Aurora.crashLogger.deleteLastCrashLog()
     }
     
     #if canImport(CryptoKit)
+    /// Create a MD5 string
+    /// - Parameter phrase: The phrase which needs to be converted into MD5
+    /// - Returns: MD5 Hash
     public func md5(phrase: String) -> String {
         return phrase.md5
     }
     #endif
+    
+    /// This is a demo func, thing for unavailable things.
+    /// - Returns: Void
+    @available(*, unavailable)
+    public func unavailableFunc() -> Void {
+        
+    }
 }
 
 /// Support older configurations
