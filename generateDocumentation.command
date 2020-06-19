@@ -1,3 +1,7 @@
+# update Xcode project
+
+swift package generate-xcodeproj
+
 #if which swiftlint >/dev/null; then
 #  swiftlint
 #else
@@ -7,5 +11,6 @@
 # Disable run scripts
 
 # Run Jazzy
+jazzy
 
 # Restore run scrips

@@ -12,12 +12,16 @@ import XCTest
 @testable import Aurora
 
 extension AuroraTest {
+    /// <#Description#>
+    /// - Parameters:
+    ///   - timeInterval: <#timeInterval description#>
+    ///   - work: <#work description#>
     func after(_ timeInterval: TimeInterval = 0.1, work: @escaping () -> Void) {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + timeInterval, execute: work)
     }
     
     struct User {
-        let id: Int
+        let userID: Int
         let name: String
     }
     
@@ -27,17 +31,17 @@ extension AuroraTest {
         }
     }
     
-    func fetchUser(id: Int) -> Promise<User> {
+    func fetchUser(userID: Int) -> Promise<User> {
         return Promise { resolve in
         after(0.1) {
-            resolve(User.init(id: 0, name: "Aurora Framework"))
+            resolve(User.init(userID: 0, name: "Aurora Framework"))
             }
         }
     }
     
     func testBasicPromise() {
         fetchIds().then { ids in // flatMap
-                return self.fetchUser(id: ids[0])
+                return self.fetchUser(userID: ids[0])
         }.then { user in // map
             return user.name
         }.then { name in // observe

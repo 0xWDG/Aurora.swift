@@ -99,17 +99,26 @@ open class Aurora {
      *     [Aurora] Filename:line functionName(...):
      *      Message
      *
+     * _want to use a callback/loghandler?_
+     *
+     * Put the following (preffered in your AppDelegate):
+     *
+     *      Aurora.shared.logHandler { message in
+     *          // Do something with the message
+     *      }
+     *
      * - parameter message: the message to send
      * - parameter file: the filename
      * - parameter line: the line
      * - parameter function: function name
      */
-    @discardableResult public func log(_ message: String, file: String = #file, line: Int = #line, function: String = #function) -> Bool {
-        if (debug) {
+    @discardableResult
+    public func log(_ message: String, file: String = #file, line: Int = #line, function: String = #function) -> Bool {
+        if debug {
             let fileName: String = (file.split("/").last)!.split(".").first!
             Swift.print("[Aurora.Framework] \(fileName):\(line) \(function):\n \(message)\n")
             
-            if (isInitialized) {
+            if isInitialized {
                 Aurora.shared.logHandler?("[Aurora.Framework] \(fileName):\(line) \(function):\n \(message)\n")
             }
         }
@@ -117,19 +126,44 @@ open class Aurora {
         return debug
     }
     
+    /// Get the last crash log
+    /// - Returns: The last crashlog
     public func getLastCrashLog() -> String? {
         return Aurora.crashLogger.getLastCrashLog()
     }
     
+    /// Delete the last crash log
+    /// - Returns: Bool if deleted
     public func deleteLastCrashLog() -> Bool {
         return Aurora.crashLogger.deleteLastCrashLog()
     }
     
     #if canImport(CryptoKit)
+    /// Create a MD5 string
+    /// - Parameter phrase: The phrase which needs to be converted into MD5
+    /// - Returns: MD5 Hash
     public func md5(phrase: String) -> String {
         return phrase.md5
     }
     #endif
+    
+    /// **No op**eration
+    /// - Parameter something: Whay ever you want.
+    private func noop(_ something: Any...) {
+        // Great.
+    }
+
+    /// **No op**eration
+    /// - Parameter something: Whay ever you want. (object)
+    private func noop(_ something: AnyObject...) {
+        // Great.
+    }
+    
+    /// This is a demo func, thing for unavailable things.
+    /// - Returns: Void
+    @available(*, unavailable)
+    func unavailableFunc() {
+    }
 }
 
 /// Support older configurations

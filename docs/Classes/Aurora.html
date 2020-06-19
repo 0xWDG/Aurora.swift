@@ -74,10 +74,24 @@
             </ul>
           </li>
           <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/Model.html">Model</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/WatchDeviceType.html">WatchDeviceType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Extensions.html#/s:Sa">Array</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Aurora.html">Aurora</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/Bundle.html">Bundle</a>
@@ -122,13 +136,19 @@
                 <a href="../Extensions/Data.html">Data</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Extensions/Date.html">Date</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Extensions.html#/s:SD">Dictionary</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions.html#/s:Sd">Double</a>
+                <a href="../Extensions/Double.html">Double</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions.html#/s:Sf">Float</a>
+                <a href="../Extensions/Float.html">Float</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/FloatingPoint.html">FloatingPoint</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/Int.html">Int</a>
@@ -176,25 +196,34 @@
                 <a href="../Extensions/UIControl.html">UIControl</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions.html#/c:@S@UIEdgeInsets">UIEdgeInsets</a>
+                <a href="../Extensions/UIDevice.html">UIDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/UIEdgeInsets">UIEdgeInsets</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/UIImage.html">UIImage</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Extensions/UIImageView.html">UIImageView</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Extensions/UILabel.html">UILabel</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions.html#/c:@S@UIOffset">UIOffset</a>
+                <a href="../Extensions.html#/UIOffset">UIOffset</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions.html#/c:@E@UIRectEdge">UIRectEdge</a>
+                <a href="../Extensions.html#/UIRectEdge">UIRectEdge</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/UITabBarController.html">UITabBarController</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/UITableView.html">UITableView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UITableViewCell.html">UITableViewCell</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/UITextField.html">UITextField</a>
@@ -209,6 +238,9 @@
                 <a href="../Extensions/UInt.html">UInt</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Extensions/URL.html">URL</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Extensions/URLRequest.html">URLRequest</a>
               </li>
               <li class="nav-group-task">
@@ -221,6 +253,9 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Functions.html#/s:6Aurora2ntoiySbSS_SStF">!~(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/&lt;(_:_:)">&lt;(_:_:)</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Functions.html#/s:6Aurora2etoiySbSS_SStF">=~(_:_:)</a>
@@ -559,7 +594,7 @@ NSUserDefaults to iCloud &amp; Back.</p>
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/AuroraFramework.swift#L63-L87">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/AuroraFramework.swift#L66-L92">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -582,6 +617,14 @@ NSUserDefaults to iCloud &amp; Back.</p>
 <p>This is used to send log messages with the following syntax</p>
 <pre class="highlight swift"><code> <span class="p">[</span><span class="kt">Aurora</span><span class="p">]</span> <span class="kt">Filename</span><span class="p">:</span><span class="n">line</span> <span class="nf">functionName</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
   <span class="kt">Message</span>
+</code></pre>
+
+<p><em>want to use a callback/loghandler?</em></p>
+
+<p>Put the following (preffered in your AppDelegate):</p>
+<pre class="highlight swift"><code>  <span class="kt">Aurora</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">logHandler</span> <span class="p">{</span> <span class="n">message</span> <span class="k">in</span>
+      <span class="c1">// Do something with the message</span>
+  <span class="p">}</span>
 </code></pre>
 
                       </div>
@@ -650,7 +693,7 @@ NSUserDefaults to iCloud &amp; Back.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/AuroraFramework.swift#L103-L111">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/AuroraFramework.swift#L116-L127">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -668,7 +711,7 @@ NSUserDefaults to iCloud &amp; Back.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented, Help us document it!</p>
+                        <p>Get the last crash log</p>
 
                       </div>
                       <div class="declaration">
@@ -679,8 +722,12 @@ NSUserDefaults to iCloud &amp; Back.</p>
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The last crashlog</p>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/AuroraFramework.swift#L113-L115">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/AuroraFramework.swift#L131-L133">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -698,7 +745,7 @@ NSUserDefaults to iCloud &amp; Back.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented, Help us document it!</p>
+                        <p>Delete the last crash log</p>
 
                       </div>
                       <div class="declaration">
@@ -709,8 +756,12 @@ NSUserDefaults to iCloud &amp; Back.</p>
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Bool if deleted</p>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/AuroraFramework.swift#L117-L119">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/AuroraFramework.swift#L137-L139">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -728,7 +779,7 @@ NSUserDefaults to iCloud &amp; Back.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented, Help us document it!</p>
+                        <p>Create a MD5 string</p>
 
                       </div>
                       <div class="declaration">
@@ -739,8 +790,31 @@ NSUserDefaults to iCloud &amp; Back.</p>
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>phrase</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The phrase which needs to be converted into MD5</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>MD5 Hash</p>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/AuroraFramework.swift#L122-L124">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/AuroraFramework.swift#L145-L147">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -789,7 +863,7 @@ NSUserDefaults to iCloud &amp; Back.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/SyncTasks.swift#L8-L12">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/SyncTasks.swift#L8-L12">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -838,7 +912,7 @@ NSUserDefaults to iCloud &amp; Back.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/SyncTasks.swift#L16-L20">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/SyncTasks.swift#L16-L20">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -887,7 +961,7 @@ NSUserDefaults to iCloud &amp; Back.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/SyncTasks.swift#L24-L28">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/SyncTasks.swift#L24-L28">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -948,7 +1022,7 @@ NSUserDefaults to iCloud &amp; Back.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/SyncTasks.swift#L34-L37">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/SyncTasks.swift#L34-L37">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1009,7 +1083,7 @@ NSUserDefaults to iCloud &amp; Back.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/SyncTasks.swift#L43-L46">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/SyncTasks.swift#L43-L46">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1058,7 +1132,7 @@ NSUserDefaults to iCloud &amp; Back.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Threads.swift#L54-L58">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Threads.swift#L54-L58">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1107,7 +1181,7 @@ NSUserDefaults to iCloud &amp; Back.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Threads.swift#L62-L66">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Threads.swift#L62-L66">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1168,7 +1242,7 @@ NSUserDefaults to iCloud &amp; Back.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Threads.swift#L72-L80">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Threads.swift#L72-L80">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1229,7 +1303,7 @@ NSUserDefaults to iCloud &amp; Back.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Threads.swift#L86-L95">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Threads.swift#L86-L95">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1290,7 +1364,7 @@ NSUserDefaults to iCloud &amp; Back.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Threads.swift#L101-L109">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Threads.swift#L101-L109">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1364,7 +1438,7 @@ NSUserDefaults to iCloud &amp; Back.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Web.swift#L59-L99">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Web.swift#L60-L100">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1417,7 +1491,7 @@ NSUserDefaults to iCloud &amp; Back.</p>
                         <p>&lt;#description#&gt;</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Web.swift#L104-L171">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Web.swift#L105-L172">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1470,7 +1544,7 @@ NSUserDefaults to iCloud &amp; Back.</p>
                         <p>the contents of the file</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Web.swift#L179-L228">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Web.swift#L180-L229">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1523,7 +1597,7 @@ NSUserDefaults to iCloud &amp; Back.</p>
                         <p>the contents of the file</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Web.swift#L237-L294">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Web.swift#L238-L295">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1576,7 +1650,7 @@ NSUserDefaults to iCloud &amp; Back.</p>
                         <p>the plain HTML String</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Web.swift#L303-L313">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Web.swift#L304-L314">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1629,7 +1703,7 @@ NSUserDefaults to iCloud &amp; Back.</p>
                         <p>the string with <br /> tags</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Web.swift#L322-L324">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Web.swift#L323-L325">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1682,7 +1756,7 @@ NSUserDefaults to iCloud &amp; Back.</p>
                         <p>the string with line-breaks</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Web.swift#L333-L339">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Web.swift#L334-L340">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1731,7 +1805,7 @@ NSUserDefaults to iCloud &amp; Back.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Cross platform/Web.swift#L346-L348">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Web.swift#L347-L349">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1741,7 +1815,7 @@ NSUserDefaults to iCloud &amp; Back.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="https://wesleydegroot.nl" target="_blank" rel="external">Wesley de Groot (et. al)</a>. All rights reserved. (Last updated: 2020-06-12)</p>
+          <p>&copy; 2020 <a class="link" href="https://wesleydegroot.nl" target="_blank" rel="external">Wesley de Groot (et. al)</a>. All rights reserved. (Last updated: 2020-06-19)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
