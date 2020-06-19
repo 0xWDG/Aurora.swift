@@ -30,7 +30,8 @@ extension UIImage {
      - parameter color: The color to fill the image.
      - parameter size: The size of the created image. \
      When function requires `size` and is called without this parameter, then `(1.0, 1.0)` is used as a default value.
-     - returns: An initialized `UIImage` object, or `nil` if the method could not initialize the image from the specified data.
+     - returns: An initialized `UIImage` object, or `nil`\
+     if the method could not initialize the image from the specified data.
      */
     convenience init?(color: UIColor, size: CGSize = CGSize(width: 1.0, height: 1.0)) {
         let rect = CGRect(origin: .zero, size: size)
@@ -264,7 +265,10 @@ extension UIImage {
      - returns: A UIColor object.
      */
     func color(at point: CGPoint) -> UIColor? {
-        guard let dataProvider = cgImage?.dataProvider, let data = CFDataGetBytePtr(dataProvider.data) else { return nil }
+        guard let dataProvider = cgImage?.dataProvider,
+              let data = CFDataGetBytePtr(dataProvider.data) else {
+                return nil
+        }
         
         let pixelInfo = ((Int(self.size.width) * Int(point.y)) + Int(point.x)) * 4
         
@@ -285,12 +289,15 @@ extension UIImage {
      Gets an image in asynchronous way using the `URLSession` for downloading the content.
      
      If the request completes successfully and the request's data is formatted to match the file format of\
-     one of the system’s supported image types, the `image` parameter of the completion handler block contains the image.\
-     If the request fails or the request's data is not formatted to match the file format of one of the system’s supported image types,\
+     one of the system’s supported image types, the `image` \
+     parameter of the completion handler block contains the image.\
+     If the request fails or the request's data is not formatted to\
+     match the file format of one of the system’s supported image types,\
      the `image` parameter is nil.
      
      - parameter url: The URL to be retrieved.
-     - parameter completion: The completion handler to call when the load request is complete. This handler is executed on the main queue.
+     - parameter completion: The completion handler to call when the load request is complete. \
+     This handler is executed on the main queue.
      */
     static func get(from url: URL, completion: @escaping (UIImage?) -> Void) {
         URLSession.shared.dataTask(with: url) { data, _, _ in

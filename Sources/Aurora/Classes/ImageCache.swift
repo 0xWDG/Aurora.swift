@@ -16,7 +16,14 @@ extension UIImage {
         let filename: String = String(describing: imageURL).md5
         let fileStore: String = TMP + filename
         
-        ((try? (try? Data(contentsOf: imageURL))?.write(to: URL(fileURLWithPath: fileStore), options: [.atomic])) as ()??)
+        (
+            (try?
+                (try? Data(contentsOf: imageURL)
+            )?.write(
+                to: URL(fileURLWithPath: fileStore),
+                options: [.atomic]
+            )
+        ) as ()??)
     }
     
     /// <#Description#>

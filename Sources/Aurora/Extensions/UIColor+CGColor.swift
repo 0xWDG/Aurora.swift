@@ -125,7 +125,8 @@ extension UIColor {
         self.init(red: red, green: green, blue: blue, alpha: alphaChannel ?? alpha)
     }
     
-    /// Returns the color's hexadecimal code starting with `#` and followed by 6 or 8 signs (depending on the alpha channel information).
+    /// Returns the color's hexadecimal code starting with `#` and followed
+    /// by 6 or 8 signs (depending on the alpha channel information).
     var hex: String {
         var red: CGFloat = 0.0, green: CGFloat = 0.0, blue: CGFloat = 0.0, alpha: CGFloat = 0.0
         getRed(&red, green: &green, blue: &blue, alpha: &alpha)

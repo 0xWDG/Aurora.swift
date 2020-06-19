@@ -70,6 +70,7 @@ class AuroraCrashHandler {
     
     /// <#Description#>
     /// - Parameter from: <#from description#>
+    // swiftlint:disable:next function_body_length
     private class func createReport(from: Any) {
         var crashReport = ""
         crashReport += "Aurora Framework (v\(Aurora.shared.version)) crash report\n\n"

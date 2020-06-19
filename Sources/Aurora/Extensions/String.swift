@@ -145,6 +145,7 @@ public extension String {
     }
     
     /// <#Description#>
+    // swiftlint:disable:next type_body_length
     fileprivate struct HTMLEntities {
         static let characterEntities: [String: Character] = [
             
@@ -441,7 +442,12 @@ public extension String {
      - Returns: Replaced string
      */
     func replace(_ target: String, withString: String) -> String {
-        return self.replacingOccurrences(of: target, with: withString, options: NSString.CompareOptions.literal, range: nil)
+        return self.replacingOccurrences(
+            of: target,
+            with: withString,
+            options: NSString.CompareOptions.literal,
+            range: nil
+        )
     }
     
     /**
@@ -453,7 +459,12 @@ public extension String {
      - Returns: Replaced string
      */
     func ireplace(_ target: String, withString: String) -> String {
-        return self.replacingOccurrences(of: target, with: withString, options: NSString.CompareOptions.caseInsensitive, range: nil)
+        return self.replacingOccurrences(
+            of: target,
+            with: withString,
+            options: NSString.CompareOptions.caseInsensitive,
+            range: nil
+        )
     }
     
     /**
@@ -503,7 +514,8 @@ public extension String {
      - parameter left:  The left bookend
      - parameter right: The right bookend
      
-     - returns: The string between the two bookends, or nil if the bookends cannot be found, the bookends are the same or appear contiguously.
+     - returns: The string between the two bookends, or nil if the bookends cannot be found,\
+     the bookends are the same or appear contiguously.
      */
     func between(_ left: String, _ right: String) -> String? {
         guard let leftRange = range(of: left),
@@ -694,7 +706,9 @@ public extension String {
     /// <#Description#>
     /// - Returns: <#description#>
     mutating func slugify() -> String {
-        let slugCharacterSet = CharacterSet.init(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-")
+        let slugCharacterSet = CharacterSet.init(
+            charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+        )
         return latinize().lowercased()
             .components(separatedBy: slugCharacterSet.inverted)
             .filter {$0 != ""}
@@ -842,7 +856,8 @@ public extension String {
     }
     
     /**
-     Returns a new string made by replacing in the `String` all HTML character entity references with the corresponding character.
+     Returns a new string made by replacing in the `String` all HTML \
+     character entity references with the corresponding character.
      
      - Returns: the decoded HTML
      */
@@ -1071,7 +1086,12 @@ public extension String {
     ///   - withString: <#withString description#>
     /// - Returns: <#description#>
     func replaceLC(_ target: String, withString: String) -> String {
-        return (self.lowercased()).replacingOccurrences(of: target, with: withString, options: NSString.CompareOptions.literal, range: nil)
+        return (self.lowercased()).replacingOccurrences(
+            of: target,
+            with: withString,
+            options: NSString.CompareOptions.literal,
+            range: nil
+        )
     }
     
     /// <#Description#>
@@ -1279,7 +1299,10 @@ public extension String {
     
     /// <#Description#>
     var encodeEmoji: String {
-        if let encodeStr = NSString(cString: self.cString(using: .nonLossyASCII)!, encoding: String.Encoding.utf8.rawValue) {
+        if let encodeStr = NSString(
+            cString: self.cString(using: .nonLossyASCII)!,
+            encoding: String.Encoding.utf8.rawValue
+        ) {
             return encodeStr as String
         }
         return self
@@ -1357,12 +1380,13 @@ public extension String {
     #endif
     
     #if canImport(Foundation)
-    /// Check if string is a valid Swift number. Note: In North America, "." is the decimal separator, while in many parts of Europe "," is used,
+    /// Check if string is a valid Swift number. Note: In North America, \
+    /// "." is the decimal separator, while in many parts of Europe "," is used,
     ///
-    ///        "123".isNumeric -> true
+    ///     "123".isNumeric -> true
     ///     "1.3".isNumeric -> true (en_US)
     ///     "1,3".isNumeric -> true (fr_FR)
-    ///        "abc".isNumeric -> false
+    ///     "abc".isNumeric -> false
     ///
     var isNumeric: Bool {
         let scanner = Scanner(string: self)
@@ -1625,7 +1649,8 @@ public extension String {
     
     /// The most common character in string.
     ///
-    ///        "This is a test, since e is appearing everywhere e should be the common character".mostCommonCharacter() -> "e"
+    ///        "This is a test, since e is appearing everywhere" +
+    ///        " e should be the common character".mostCommonCharacter() -> "e"
     ///
     /// - Returns: The most common character.
     func mostCommonCharacter() -> Character? {
@@ -1893,7 +1918,8 @@ public extension String {
     /// - Parameters:
     ///   - index: string index the slicing should start from.
     ///   - length: amount of characters to be sliced after given index.
-    /// - Returns: sliced substring of length number of characters (if applicable) (example: "Hello World".slicing(from: 6, length: 5) -> "World")
+    /// - Returns: sliced substring of length number of characters (if applicable) \
+    /// (example: "Hello World".slicing(from: 6, length: 5) -> "World")
     func slicing(from index: Int, length: Int) -> String? {
         guard length >= 0, index >= 0, index < count  else { return nil }
         guard index.advanced(by: length) <= count else {
@@ -2234,14 +2260,24 @@ public extension String {
     #if os(iOS) || os(macOS)
     /// Bold string.
     var bold: NSAttributedString {
-        return NSMutableAttributedString(string: self, attributes: [.font: Font.boldSystemFont(ofSize: Font.systemFontSize)])
+        return NSMutableAttributedString(
+        string: self,
+        attributes: [
+        .font: Font.boldSystemFont(ofSize: Font.systemFontSize)
+        ]
+        )
     }
     #endif
     
     #if canImport(Foundation)
     /// Underlined string
     var underline: NSAttributedString {
-        return NSAttributedString(string: self, attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
+        return NSAttributedString(
+        string: self,
+        attributes: [
+        .underlineStyle: NSUnderlineStyle.single.rawValue
+        ]
+        )
     }
     #endif
     
@@ -2260,7 +2296,12 @@ public extension String {
     #if os(iOS)
     /// Italic string.
     var italic: NSAttributedString {
-        return NSMutableAttributedString(string: self, attributes: [.font: UIFont.italicSystemFont(ofSize: UIFont.systemFontSize)])
+        return NSMutableAttributedString(
+        string: self,
+        attributes: [
+        .font: UIFont.italicSystemFont(ofSize: UIFont.systemFontSize)
+        ]
+        )
     }
     #endif
     
@@ -2347,7 +2388,7 @@ public extension String {
     /// NSString appendingPathComponent(str: String)
     ///
     /// - Note: This method only works with file paths (not, for example, string representations of URLs.
-    ///   See NSString [appendingPathComponent(_:)](https://developer.apple.com/documentation/foundation/nsstring/1417069-appendingpathcomponent)
+    ///   See `NSString.appendingPathComponent(_:)`
     /// - Parameter str: the path component to append to the receiver.
     /// - Returns: a new string made by appending aString to the receiver, preceded if necessary by a path separator.
     func appendingPathComponent(_ str: String) -> String {

@@ -110,7 +110,7 @@ extension UIImage {
         if CFDictionaryGetValueIfPresent(
             cfProperties,
             Unmanaged.passUnretained(kCGImagePropertyGIFDictionary
-        ).toOpaque(), gifPropertiesPointer) == false {
+            ).toOpaque(), gifPropertiesPointer) == false {
             return delay
         }
         
@@ -122,8 +122,11 @@ extension UIImage {
                                  Unmanaged.passUnretained(kCGImagePropertyGIFUnclampedDelayTime).toOpaque()),
             to: AnyObject.self)
         if delayObject.doubleValue == 0 {
-            delayObject = unsafeBitCast(CFDictionaryGetValue(gifProperties,
-                                                             Unmanaged.passUnretained(kCGImagePropertyGIFDelayTime).toOpaque()), to: AnyObject.self)
+            delayObject = unsafeBitCast(
+                CFDictionaryGetValue(
+                    gifProperties,
+                    Unmanaged.passUnretained(kCGImagePropertyGIFDelayTime).toOpaque()), to: AnyObject.self
+            )
         }
         
         delay = delayObject as? Double ?? 0

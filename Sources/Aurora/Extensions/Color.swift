@@ -146,7 +146,10 @@ public extension Color {
         let convertColorToRGBSpace: ((_ color: Color) -> Color?) = { color -> Color? in
             if self.cgColor.colorSpace!.model == CGColorSpaceModel.monochrome {
                 let oldComponents = self.cgColor.components
-                let components: [CGFloat] = [ oldComponents![0], oldComponents![0], oldComponents![0], oldComponents![1]]
+                let components: [CGFloat] = [
+                    oldComponents![0], oldComponents![0],
+                    oldComponents![0], oldComponents![1]
+                ]
                 let colorRef = CGColor(colorSpace: colorSpaceRGB, components: components)
                 let colorOut = Color(cgColor: colorRef!)
                 return colorOut
@@ -177,7 +180,11 @@ public extension Color {
     ///   - color2: second color to blend
     ///   - intensity2: intensity of second color (default is 0.5)
     /// - Returns: Color created by blending first and seond colors.
-    static func blend(_ color1: Color, intensity1: CGFloat = 0.5, with color2: Color, intensity2: CGFloat = 0.5) -> Color {
+    static func blend(
+        _ color1: Color,
+        intensity1: CGFloat = 0.5,
+        with color2: Color,
+        intensity2: CGFloat = 0.5) -> Color {
         // http://stackoverflow.com/questions/27342715/blend-uicolors-in-swift
         let total = intensity1 + intensity2
         let level1 = intensity1/total
@@ -224,7 +231,6 @@ public extension Color {
     /// - Parameter percentage: Percentage by which to lighten the color
     /// - Returns: A lightened color
     func lighten(by percentage: CGFloat = 0.2) -> Color {
-        // https://stackoverflow.com/questions/38435308/swift-get-lighter-and-darker-color-variations-for-a-given-uicolor
         var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
         getRed(&red, green: &green, blue: &blue, alpha: &alpha)
         return Color(red: min(red + percentage, 1.0),
@@ -241,7 +247,6 @@ public extension Color {
     /// - Parameter percentage: Percentage by which to darken the color
     /// - Returns: A darkened color
     func darken(by percentage: CGFloat = 0.2) -> Color {
-        // https://stackoverflow.com/questions/38435308/swift-get-lighter-and-darker-color-variations-for-a-given-uicolor
         var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
         getRed(&red, green: &green, blue: &blue, alpha: &alpha)
         return Color(red: max(red - percentage, 0),
@@ -331,7 +336,10 @@ public extension Color {
         let convertColorToRGBSpace: ((_ color: Color) -> Color?) = { color -> Color? in
             if color.cgColor.colorSpace!.model == CGColorSpaceModel.monochrome {
                 let oldComponents = color.cgColor.components
-                let components: [CGFloat] = [ oldComponents![0], oldComponents![0], oldComponents![0], oldComponents![1]]
+                let components: [CGFloat] = [
+                    oldComponents![0], oldComponents![0],
+                    oldComponents![0], oldComponents![1]
+                ]
                 let colorRef = CGColor(colorSpace: colorSpaceRGB, components: components)
                 let colorOut = Color(cgColor: colorRef!)
                 return colorOut
@@ -447,6 +455,7 @@ public extension Color {
 public extension Color {
     
     /// Google Material design colors palette.
+    // swiftlint:disable:next type_body_length
     struct Material {
         // https://material.google.com/style/color.html
         private init() {}

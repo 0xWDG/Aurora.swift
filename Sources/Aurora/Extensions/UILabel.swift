@@ -61,7 +61,12 @@ extension UILabel {
     public func HTML(_ text: String) {
         // swiftlint:disable:next force_try
         let attrStr = try! NSAttributedString(
-            data: text.data(using: String.Encoding(rawValue: String.Encoding.unicode.rawValue), allowLossyConversion: true)!,
+            data: text.data(
+                using: String.Encoding(
+                    rawValue: String.Encoding.unicode.rawValue
+                ),
+                allowLossyConversion: true
+                )!,
             options: [
                 NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html,
                 NSAttributedString.DocumentReadingOptionKey.characterEncoding: String.Encoding.utf8.rawValue

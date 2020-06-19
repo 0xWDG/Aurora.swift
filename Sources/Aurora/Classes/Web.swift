@@ -42,7 +42,7 @@ open class SimpleTimer {/*<--was named Timer, but since swift 3, NSTimer is now 
             timer!.invalidate()
         }
     }
-
+    
     /**
      * This method must be in the public or scope
      */
@@ -68,33 +68,35 @@ extension Aurora {
         let task = session.dataTask(
             with: request,
             completionHandler: { (data, response, _) -> Void in
-            
-            self.log("Got response")
-            
-            guard let data = data else {
-                self.log("Failed to decode data")
-                completion("Error")
-                return
-            }
-            
-            var usedEncoding = String.Encoding.utf8 // Some fallback value
-            if let encodingName = response?.textEncodingName {
-                let encoding = CFStringConvertEncodingToNSStringEncoding(CFStringConvertIANACharSetNameToEncoding(encodingName as CFString))
-                if encoding != UInt(kCFStringEncodingInvalidId) {
-                    usedEncoding = String.Encoding(rawValue: encoding)
-                }
-            }
-            
-            DispatchQueue.main.async {
-                if let myString = String(data: data, encoding: usedEncoding) {
-                    self.log("Unwrapped and returning")
-                    completion(myString)
-                } else {
-                    self.log("Failed to use the proper encoding")
-                    // ... Error
+                
+                self.log("Got response")
+                
+                guard let data = data else {
+                    self.log("Failed to decode data")
                     completion("Error")
+                    return
                 }
-            }
+                
+                var usedEncoding = String.Encoding.utf8 // Some fallback value
+                if let encodingName = response?.textEncodingName {
+                    let encoding = CFStringConvertEncodingToNSStringEncoding(
+                        CFStringConvertIANACharSetNameToEncoding(encodingName as CFString)
+                    )
+                    if encoding != UInt(kCFStringEncodingInvalidId) {
+                        usedEncoding = String.Encoding(rawValue: encoding)
+                    }
+                }
+                
+                DispatchQueue.main.async {
+                    if let myString = String(data: data, encoding: usedEncoding) {
+                        self.log("Unwrapped and returning")
+                        completion(myString)
+                    } else {
+                        self.log("Failed to use the proper encoding")
+                        // ... Error
+                        completion("Error")
+                    }
+                }
         })
         task.resume()
     }
@@ -105,23 +107,31 @@ extension Aurora {
     open func getSiteAsText(url: URL) -> String {
         log("getSiteAsText init(url: \"\(url)\")")
         var returnString: String = ""
-
+        
         self.dataTaskHelper(forURL: url) { (dataTaskString) in
             self.log("Return: \(dataTaskString)")
             returnString = dataTaskString
         }
-
-//        while(returnString==""){}
+        
+        //        while(returnString==""){}
         
         log("After the datatask = \(returnString)")
-
-//        if (returnString != "Error") {
-//            return returnString
-//        } else {
+        
+        //        if (returnString != "Error") {
+        //            return returnString
+        //        } else {
+        do {
+            let myHTMLString = try NSString(
+                contentsOf: url,
+                encoding: String.Encoding.utf8.rawValue
+            )
+            
+            return myHTMLString as String
+        } catch _ {
             do {
                 let myHTMLString = try NSString(
                     contentsOf: url,
-                    encoding: String.Encoding.utf8.rawValue
+                    encoding: String.Encoding.utf16.rawValue
                 )
                 
                 return myHTMLString as String
@@ -129,7 +139,7 @@ extension Aurora {
                 do {
                     let myHTMLString = try NSString(
                         contentsOf: url,
-                        encoding: String.Encoding.utf16.rawValue
+                        encoding: String.Encoding.isoLatin1.rawValue
                     )
                     
                     return myHTMLString as String
@@ -137,38 +147,30 @@ extension Aurora {
                     do {
                         let myHTMLString = try NSString(
                             contentsOf: url,
-                            encoding: String.Encoding.isoLatin1.rawValue
+                            encoding: String.Encoding.isoLatin2.rawValue
                         )
                         
                         return myHTMLString as String
-                    } catch _ {
+                    } catch {
                         do {
                             let myHTMLString = try NSString(
                                 contentsOf: url,
-                                encoding: String.Encoding.isoLatin2.rawValue
+                                encoding: String.Encoding.utf32.rawValue
                             )
                             
                             return myHTMLString as String
-                        } catch {
-                            do {
-                                let myHTMLString = try NSString(
-                                    contentsOf: url,
-                                    encoding: String.Encoding.utf32.rawValue
-                                )
-                                
-                                return myHTMLString as String
-                            } catch let error {
-                                if returnString != "" {
-                                    return returnString
-                                }
-                                
-                                return "Decoding Error: \(error.localizedDescription)"
+                        } catch let error {
+                            if returnString != "" {
+                                return returnString
                             }
+                            
+                            return "Decoding Error: \(error.localizedDescription)"
                         }
                     }
                 }
             }
-//        }
+        }
+        //        }
     }
     /**
      Get data as (plain) text
@@ -215,10 +217,10 @@ extension Aurora {
                         waiting = false
                     }
                     
-                    }.resume()
+                }.resume()
                 
                 while waiting {
-                 print("Waiting...")
+                    print("Waiting...")
                 }
                 
                 return data
@@ -235,18 +237,11 @@ extension Aurora {
      
      - Returns: the contents of the file
      */
-    open func getDataAsData(_ url: String, _ post: [String: String]? = ["nothing": "send"]) -> Data {
+    open func getDataAsData(
+        _ url: String,
+        _ post: [String: String]? = ["nothing": "send"]
+    ) -> Data {
         if let myURL = URL(string: url) {
-            var error: NSError?
-            
-            if String(describing: error) == "none" {
-                error = NSError(
-                    domain: "this",
-                    code: 89,
-                    userInfo: ["n": "o", "n": "e"]
-                )
-            }
-            
             if post == ["nothing": "send"] {
                 return getSiteAsText(url: myURL).data(using: .utf8)!
             } else {
@@ -254,8 +249,10 @@ extension Aurora {
                 var data = "".data(using: .utf8)
                 var request = URLRequest(url: myURL)
                 request.httpMethod = "POST"
-                request.setValue("application/x-www-form-urlencoded",
-                                 forHTTPHeaderField: "Content-Type")
+                request.setValue(
+                    "application/x-www-form-urlencoded",
+                    forHTTPHeaderField: "Content-Type"
+                )
                 
                 var httpBody = ""
                 var idx = 0
@@ -285,7 +282,7 @@ extension Aurora {
                         waiting = false
                     }
                     
-                    }.resume()
+                }.resume()
                 
                 while waiting {
                     //                    print("Waiting...")
