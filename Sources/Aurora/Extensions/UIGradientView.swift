@@ -59,7 +59,7 @@ public class UIGradientView: UIView {
     
     /// Somethings have changed, if it is the orientation, then update
     public override func layoutSubviews() {
-        if (_oldOrientation != UIDevice.current.orientation) {
+        if _oldOrientation != UIDevice.current.orientation {
             updateBackground(rect: frame)
         }
     }

@@ -18,7 +18,7 @@ import Foundation
  */
 @discardableResult
 public func log(_ message: Any, file: String = #file, line: Int = #line, function: String = #function) -> Bool {
-    if (_isDebugAssertConfiguration()) {
+    if _isDebugAssertConfiguration() {
         let fileName: String = String(
             (file.split(separator: "/").last)!.split(separator: ".").first!
         )

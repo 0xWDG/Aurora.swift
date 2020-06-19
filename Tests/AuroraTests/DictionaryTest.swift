@@ -1,9 +1,4 @@
-//
-//  File.swift
-//  
-//
-//  Created by Wesley de Groot on 03/04/2020.
-//
+// $$HEADER$$
 
 import Foundation
 

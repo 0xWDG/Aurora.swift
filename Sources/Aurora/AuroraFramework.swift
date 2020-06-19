@@ -114,11 +114,11 @@ open class Aurora {
      */
     @discardableResult
     public func log(_ message: String, file: String = #file, line: Int = #line, function: String = #function) -> Bool {
-        if (debug) {
+        if debug {
             let fileName: String = (file.split("/").last)!.split(".").first!
             Swift.print("[Aurora.Framework] \(fileName):\(line) \(function):\n \(message)\n")
             
-            if (isInitialized) {
+            if isInitialized {
                 Aurora.shared.logHandler?("[Aurora.Framework] \(fileName):\(line) \(function):\n \(message)\n")
             }
         }
@@ -162,7 +162,7 @@ open class Aurora {
     /// This is a demo func, thing for unavailable things.
     /// - Returns: Void
     @available(*, unavailable)
-    public func unavailableFunc() -> Void {
+    func unavailableFunc() {
     }
 }
 

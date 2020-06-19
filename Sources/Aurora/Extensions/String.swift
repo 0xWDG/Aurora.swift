@@ -636,7 +636,7 @@ public extension String {
     /// - Returns: <#description#>
     func isAlpha() -> Bool {
         for chr in self {
-            if (!(chr >= "a" && chr <= "z") && !(chr >= "A" && chr <= "Z")) {
+            if !(chr >= "a" && chr <= "z") && !(chr >= "A" && chr <= "Z") {
                 return false
             }
         }
@@ -892,7 +892,7 @@ public extension String {
         // Loop trough the HTMLEntities.
         for (index, value) in HTMLEntities.characterEntities {
             // Ignore the "&".
-            if (String(value) != "&") {
+            if String(value) != "&" {
                 // Replace val, with index.
                 tempString = tempString.replace(String(value), withString: index)
             }
@@ -920,7 +920,7 @@ public extension String {
      - Returns: charcode (int)
      */
     func charCodeAt(_ character: Int) -> Int {
-        if (self.length > character) {
+        if self.length > character {
             let character = String(self.characterAtIndex(character))
             return Int(String(character.unicodeScalars.first!.value))!
         } else {
@@ -938,10 +938,10 @@ public extension String {
      */
     func substr(_ start: Int, _ length: Int = 0) -> String {
         let str = self
-        if (length == 0) {
+        if length == 0 {
             // We'll only have a 'start' position
             
-            if (start < 1) {
+            if start < 1 {
                 // Count down to end.
                 let startPosition: Int = (str.count + start)
                 return str[startPosition...str.count]
@@ -954,8 +954,8 @@ public extension String {
             // Nevermind.
             // We'll need to handle the length...
             
-            if (length > 0) {
-                if (start < 1) {
+            if length > 0 {
+                if start < 1 {
                     // We'll know this trick!
                     let startPosition: Int = (str.count + start)
                     
@@ -967,7 +967,7 @@ public extension String {
                     var endPosition: Int = ((str.count - (str.count + start)) + length)
                     
                     // If the endposition > the string, just string length.
-                    if (endPosition > str.count) {
+                    if endPosition > str.count {
                         endPosition = str.count
                     }
                     
@@ -981,7 +981,7 @@ public extension String {
                     var endPosition: Int = ((str.count - start) + length)
                     
                     // If the endposition > the string, just string length.
-                    if (endPosition > str.count) {
+                    if endPosition > str.count {
                         endPosition = str.count
                     }
                     
@@ -993,7 +993,7 @@ public extension String {
                 // so fix that.
                 // Length (end = negative)
                 
-                if (start < 1) {
+                if start < 1 {
                     // But, Wait. Start is also negative?!
                     
                     // Count down to end.
@@ -1003,7 +1003,7 @@ public extension String {
                     var endPosition: Int = (str.count - ((str.count + start) + (length + 1)))
                     
                     // If the endposition > the string, just string length.
-                    if (endPosition > str.count) {
+                    if endPosition > str.count {
                         endPosition = str.count
                     }
                     
@@ -1019,7 +1019,7 @@ public extension String {
                     var endPosition: Int = (str.count - ((str.count - start) + (length + 1)))
                     
                     // If the endposition > the string, just string length.
-                    if (endPosition > str.count) {
+                    if endPosition > str.count {
                         endPosition = str.count
                     }
                     
@@ -1058,7 +1058,7 @@ public extension String {
     ///   - caseSentive: <#caseSentive description#>
     /// - Returns: <#description#>
     func contains(search: String, caseSentive: Bool = false) -> Bool {
-        if (caseSentive) {
+        if caseSentive {
             return (self.range(of: search) != nil)
         } else {
             return (self.lowercased.range(of: search.lowercased) != nil)

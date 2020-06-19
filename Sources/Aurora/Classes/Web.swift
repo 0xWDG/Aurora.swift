@@ -38,7 +38,7 @@ open class SimpleTimer {/*<--was named Timer, but since swift 3, NSTimer is now 
     
     /// <#Description#>
     func stop() {
-        if (timer != nil) {
+        if timer != nil {
             timer!.invalidate()
         }
     }
@@ -158,7 +158,7 @@ extension Aurora {
                                 
                                 return myHTMLString as String
                             } catch let error {
-                                if (returnString != "") {
+                                if returnString != "" {
                                     return returnString
                                 }
                                 
@@ -177,10 +177,10 @@ extension Aurora {
      
      - Returns: the contents of the file
      */
-    open func getDataAsText(_ url: String, _ post: Dictionary<String, String>? = ["nothing": "send"]) -> String {
+    open func getDataAsText(_ url: String, _ post: [String: String]? = ["nothing": "send"]) -> String {
         log("Init.")
         if let myURL = URL(string: url) {
-            if (post == ["nothing": "send"]) {
+            if post == ["nothing": "send"] {
                 log("get site as text")
                 return getSiteAsText(url: myURL)
             } else {
@@ -194,7 +194,7 @@ extension Aurora {
                 var httpBody = ""
                 var idx = 0
                 for (key, val) in post! {
-                    if (idx == 0) {
+                    if idx == 0 {
                         httpBody.append(contentsOf:
                             "\(key)=\(val.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)")
                     } else {
@@ -217,7 +217,7 @@ extension Aurora {
                     
                     }.resume()
                 
-                while (waiting) {
+                while waiting {
                  print("Waiting...")
                 }
                 
@@ -235,11 +235,11 @@ extension Aurora {
      
      - Returns: the contents of the file
      */
-    open func getDataAsData(_ url: String, _ post: Dictionary<String, String>? = ["nothing": "send"]) -> Data {
+    open func getDataAsData(_ url: String, _ post: [String: String]? = ["nothing": "send"]) -> Data {
         if let myURL = URL(string: url) {
             var error: NSError?
             
-            if (String(describing: error) == "fuckswifterrors") {
+            if String(describing: error) == "none" {
                 error = NSError(
                     domain: "this",
                     code: 89,
@@ -247,7 +247,7 @@ extension Aurora {
                 )
             }
             
-            if (post == ["nothing": "send"]) {
+            if post == ["nothing": "send"] {
                 return getSiteAsText(url: myURL).data(using: .utf8)!
             } else {
                 var waiting = true
@@ -260,12 +260,16 @@ extension Aurora {
                 var httpBody = ""
                 var idx = 0
                 for (key, val) in post! {
-                    if (idx == 0) {
-                        httpBody.append(contentsOf:
-                            "\(key)=\(val.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)")
+                    if idx == 0 {
+                        httpBody.append(
+                            contentsOf:
+                            "\(key)=\(val.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)"
+                        )
                     } else {
-                        httpBody.append(contentsOf:
-                            "&\(key)=\(val.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)")
+                        httpBody.append(
+                            contentsOf:
+                            "&\(key)=\(val.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)"
+                        )
                     }
                     idx += 1
                 }
@@ -283,7 +287,7 @@ extension Aurora {
                     
                     }.resume()
                 
-                while (waiting) {
+                while waiting {
                     //                    print("Waiting...")
                 }
                 

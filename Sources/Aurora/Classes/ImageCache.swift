@@ -44,14 +44,14 @@ extension UIImage {
         let fileStore: String = TMP + filename
         var rimage: Any
         
-        if (FileManager().fileExists(atPath: fileStore)) {
+        if FileManager().fileExists(atPath: fileStore) {
             do {
                 let fMgr = try FileManager().attributesOfItem(atPath: fileStore)
                 
                 let fileTime = fMgr[FileAttributeKey.creationDate] as? Date
                 let ourTime  = Date().addingTimeInterval(0)
                 
-                if (fileTime?.timeIntervalSince(ourTime) ?? 99999 < Double(86400)) {
+                if fileTime?.timeIntervalSince(ourTime) ?? 99999 < Double(86400) {
                     rimage = UIImage(contentsOfFile: fileStore)!
                 } else {
                     rimage = false
@@ -79,14 +79,14 @@ extension UIImage {
         let fileStore: String = TMP + filename
         var rimage: UIImage = UIImage()
         
-        if ((UIImage(contentsOfFile: fileStore)) != nil) {
+        if UIImage(contentsOfFile: fileStore) != nil {
             do {
                 let fMgr = try FileManager().attributesOfItem(atPath: fileStore)
                 
                 let fileTime = fMgr[FileAttributeKey.creationDate] as? Date
                 let ourTime  = Date().addingTimeInterval(0)
                 
-                if (fileTime?.timeIntervalSince(ourTime) ?? 99999 < Double(86400)) {
+                if fileTime?.timeIntervalSince(ourTime) ?? 99999 < Double(86400) {
                     rimage = UIImage(contentsOfFile: fileStore)!
                 } else {
                     // Download & Cache image

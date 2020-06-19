@@ -14,15 +14,19 @@ extension Int {
     /// * 16 = Hexadecimal
     /// * 8   = Octal
     /// * 2   = Binary
-    public func toString(_ int: Int) -> String {
-        if (int == 16) { // hexadecimal
-            return String(format: "%2X", self).lowerAndNoSpaces
-        } else if (int == 8) { // octal
-            return String(self, radix: 8, uppercase: false).lowerAndNoSpaces
-        } else if (int == 2) { // binary
-            return String(self, radix: 2, uppercase: false).lowerAndNoSpaces
-        } else {
-            return String(self)
+    public func toString(_ radix: Int) -> String {
+        switch radix {
+            case 16:
+                return String(format: "%2X", self).lowerAndNoSpaces
+            
+            case 8:
+                return String(self, radix: 8, uppercase: false).lowerAndNoSpaces
+            
+            case 2:
+                return String(self, radix: 2, uppercase: false).lowerAndNoSpaces
+            
+            default:
+                return String(self)
         }
     }
     
@@ -36,7 +40,7 @@ extension Int {
     public var isEven: Bool {
         return (self % 2 == 0)
     }
-
+    
     /// Checks if the integer is negative.
     public var isNegative: Bool {
         return (self < 0)
@@ -46,7 +50,7 @@ extension Int {
     public var isPositive: Bool {
         return (self > 0)
     }
-
+    
     /// Converts a (negative)integer value to a positive value.
     public var toPositive: Int {
         return abs(self)
@@ -56,22 +60,22 @@ extension Int {
     public var toDouble: Double {
         return Double(self)
     }
-
+    
     /// Converts integer value to Float.
     public var toFloat: Float {
         return Float(self)
     }
-
+    
     /// Converts integer value to String.
     public var toString: String {
         return String(self)
     }
-
+    
     /// Converts integer value to UInt.
     public var toUInt: UInt {
         return UInt(self)
     }
-
+    
     /// Converts integer value to Int32.
     public var toInt32: Int32 {
         return Int32(self)
@@ -99,7 +103,7 @@ extension Int {
         guard self > 0 else { return }
         for _ in 0 ..< self { closure() }
     }
-
+    
     /// Runs the code passed as a closure the specified number of times
     /// and creates an array from the return values.
     ///

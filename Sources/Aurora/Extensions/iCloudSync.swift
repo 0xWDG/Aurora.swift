@@ -11,14 +11,14 @@ open class WDGFrameworkiCloudSync {
     private let notificationCenter = NotificationCenter.default
     
     public init () {
-        if (WDGIiCloudSyncInProgress == false) {
+        if WDGIiCloudSyncInProgress == false {
             // Start the sync!
             self.startSync()
         }
     }
     
     open func startSync ( ) {
-        if (keyValueStore.isKind(of: NSUbiquitousKeyValueStore.self)) {
+        if keyValueStore.isKind(of: NSUbiquitousKeyValueStore.self) {
             notificationCenter.addObserver(
                 self,
                 selector: #selector(WDGFrameworkiCloudSync.fromCloud),
@@ -33,7 +33,7 @@ open class WDGFrameworkiCloudSync {
                 object: nil
             )
             
-            if (keyValueStore.dictionaryRepresentation.count == 0) {
+            if keyValueStore.dictionaryRepresentation.count == 0 {
                 self.toCloud()
             }
             self.fromCloud()
@@ -136,7 +136,7 @@ open class WDGFrameworkiCloudSync {
     
     open func sync() {
         // If not started (impossible, but ok)
-        if (WDGIiCloudSyncInProgress == false) {
+        if WDGIiCloudSyncInProgress == false {
             // Just for starting.
             self.startSync()
         } else {

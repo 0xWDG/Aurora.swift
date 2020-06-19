@@ -92,7 +92,7 @@ public class NSFWDetector {
         }
         #endif
         #if os(macOS)
-        //swiftlint:ignore:next force_unwrap
+        // swiftlint:disable:next force_cast
         let cgImage = image.cgImage as! CGImage
         
         requestHandler = VNImageRequestHandler(cgImage: cgImage, options: [:])

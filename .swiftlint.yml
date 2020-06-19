@@ -1,8 +1,7 @@
 disabled_rules: # rule identifiers to exclude from running
   - trailing_whitespace # We like clean code
-  - control_statement # We want to use ( )
   - cyclomatic_complexity # WTF.
-  - syntactic_sugar
+  - switch_case_alignment
 
 function_body_length: 100
 
