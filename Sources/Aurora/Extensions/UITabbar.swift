@@ -1,23 +1,27 @@
-// $$HEADER$$
+//
+//  UITabbar.swift
+//  Aurora
+//
+//  Created by Wesley de Groot on 26/06/2020.
+//
 
-import Foundation
 
 #if canImport(UIKit)
 import UIKit
 
-extension UITabBarController {
+extension UITabBar {
     /// <#Description#>
     /// - Parameter withName: <#withName description#>
     public func select(withName: String) {
         var currentIndex = 0
         
-        guard let items = tabBar.items else {
+        guard let items = items else {
             return
         }
         
         for barItem in items {
             if barItem.title == withName {
-                selectedIndex = currentIndex
+                selectedItem = barItem
                 return
             }
             
@@ -27,11 +31,12 @@ extension UITabBarController {
         print("Could not find item \(withName).")
     }
     
+    
     /// Execute a action after x taps
     ///
     /// Example:
     ///
-    ///     self.tabBarController?.onTap(times: 10, execute: {
+    ///     self.tabBar?.onTap(times: 10, execute: {
     ///       // Code to run.
     ///     })
     ///

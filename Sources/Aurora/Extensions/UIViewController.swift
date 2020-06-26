@@ -22,8 +22,13 @@ extension UIViewController {
     ///   - name: Segue name
     ///   - sender: a Sender
     public func performSegueIfPossible(segueID: String?, sender: AnyObject? = nil) {
-        guard let segueID = segueID, canPerformSegue(withIdentifier: id) else { return }
-        UIApplication.shared.delegate?.window??.rootViewController?.performSegue(withIdentifier: id, sender: sender)
+        guard let segueID = segueID,
+            canPerformSegue(withIdentifier: segueID) else { return }
+        
+        UIApplication.shared.delegate?.window??.rootViewController?.performSegue(
+            withIdentifier: segueID,
+            sender: sender
+        )
     }
     
     /// Open/Run a segue
