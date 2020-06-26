@@ -92,6 +92,31 @@ extension UIView {
         }
     }
     
+    // Animate a view, adding effect of "something went wrong". Useful for login button for example.
+    /// - Parameter repeat: <#repeat description#>
+    func wiggle(_ repeat: Bool? = false) {
+        let wiggleAnim = CABasicAnimation(keyPath: "position")
+        wiggleAnim.configure {
+            $0.duration = 0.05
+            $0.repeatCount = 5
+            $0.autoreverses = true
+            $0.fromValue = CGPoint(
+                x: self.center.x - 4.0,
+                y: self.center.y
+            )
+            $0.toValue = CGPoint(
+                x: self.center.x + 4.0,
+                y: self.center.y
+            )
+        }
+        
+        if let `repeat` = `repeat`, `repeat` == true {
+            wiggleAnim.repeatCount = Float.infinity
+        }
+        
+        self.layer.add(wiggleAnim, forKey: "position")
+    }
+    
     /// <#Description#>
     struct GestureClosures {
         // swiftlint:disable:next identifier_name
