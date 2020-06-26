@@ -93,10 +93,10 @@ extension UIView {
     }
     
     // Animate a view, adding effect of "something went wrong". Useful for login button for example.
-    /// - Parameter repeat: <#repeat description#>
-    func wiggle(_ repeat: Bool? = false) {
-        let wiggleAnim = CABasicAnimation(keyPath: "position")
-        wiggleAnim.configure {
+    /// - Parameter repeatAnimation: Repeat the animation?
+    public func shakeWrong(_ repeatAnimation: Bool? = false) {
+        let shakeAnimation = CABasicAnimation(keyPath: "position")
+        shakeAnimation.configure {
             $0.duration = 0.05
             $0.repeatCount = 5
             $0.autoreverses = true
@@ -110,11 +110,32 @@ extension UIView {
             )
         }
         
-        if let `repeat` = `repeat`, `repeat` == true {
-            wiggleAnim.repeatCount = Float.infinity
+        if let repeatAnimation = repeatAnimation, repeatAnimation == true {
+            shakeAnimation.repeatCount = Float.infinity
         }
         
-        self.layer.add(wiggleAnim, forKey: "position")
+        self.layer.add(shakeAnimation, forKey: "position")
+    }
+    
+    
+    /// Wiggle
+    /// - Parameter repeatAnimation: repeat?
+    public func wiggle(_ repeatAnimation: Bool? = true) {
+        let wiggleAnimation = CAKeyframeAnimation(keyPath:"transform")
+        wiggleAnimation.configure {
+            $0.values  = [
+                NSValue(caTransform3D: CATransform3DMakeRotation(0.04, 0.0, 0.0, 1.0)),
+                NSValue(caTransform3D: CATransform3DMakeRotation(-0.04 , 0, 0, 1))
+            ]
+            $0.autoreverses = true
+            $0.duration = 0.115
+        }
+        
+        if let repeatAnimation = repeatAnimation, repeatAnimation == true {
+            wiggleAnimation.repeatCount = Float.infinity
+        }
+        
+        self.layer.add(wiggleAnimation, forKey: "transform")
     }
     
     /// <#Description#>

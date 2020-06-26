@@ -21,7 +21,7 @@ extension UITabBar {
         
         for barItem in items {
             if barItem.title == withName {
-                selectedIndex = currentIndex
+                selectedItem = barItem
                 return
             }
             

@@ -20,7 +20,7 @@ class AuroraOnTabBarInteractionDelegate: NSObject, UITabBarControllerDelegate, U
     private var tapCounter: (Double, Int) = (0.0, 0)
     
     /// The shared instance, otherwise it will deinit direct
-    static let sharedInstance: OnInteractionDelegate = OnInteractionDelegate()
+    static let sharedInstance: AuroraOnTabBarInteractionDelegate = AuroraOnTabBarInteractionDelegate()
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         if oldItem != nil {
