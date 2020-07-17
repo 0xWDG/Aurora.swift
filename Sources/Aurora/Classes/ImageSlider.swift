@@ -1,4 +1,19 @@
-// $$HEADER$$
+// Aurora framework for Swift
+//
+// The **Aurora.framework** contains a base for your project.
+//
+// It has a lot of extensions built-in to make development easier.
+//
+// - Version: 1.0
+// - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
+//  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
+//
+// Please note: this is a beta version.
+// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
+//
+// Thanks for using!
+//
+// Licence: Needs to be decided.
 
 #if os(iOS)
 import Foundation
@@ -51,7 +66,6 @@ open class ImageSlider {
         )
         
         scrollView.isPagingEnabled = true
-        //        scrollView.clipsToBounds = false
         scrollView.delegate = view as? UIScrollViewDelegate
         pageControl.numberOfPages = 0
         var xPos: CGFloat = 0.0
@@ -81,7 +95,10 @@ open class ImageSlider {
         }
         
         // Fix scroll to bottom
-        scrollView.contentSize = CGSize.init(width: scrollView.contentSize.width, height: 0)
+        scrollView.contentSize = CGSize.init(
+            width: scrollView.contentSize.width,
+            height: 0
+        )
     }
     
     /// <#Description#>
@@ -90,7 +107,11 @@ open class ImageSlider {
     ///   - view: <#view description#>
     ///   - pageControl: <#pageControl description#>
     public func scroll(scrollView: UIScrollView, view: UIViewController, pageControl: UIPageControl) {
-        let currentPage: Int = Int.init(floor(scrollView.contentOffset.x / view.view.frame.size.width))
+        let currentPage: Int = Int.init(
+            floor(
+                scrollView.contentOffset.x / view.view.frame.size.width
+            )
+        )
         //        print("CurrentPage=\(currentPage) x:\(scrollView.contentOffset.x)")
         pageControl.currentPage = currentPage
     }

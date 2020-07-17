@@ -1,4 +1,19 @@
-// $$HEADER$$
+// Aurora framework for Swift
+//
+// The **Aurora.framework** contains a base for your project.
+//
+// It has a lot of extensions built-in to make development easier.
+//
+// - Version: 1.0
+// - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
+//  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
+//
+// Please note: this is a beta version.
+// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
+//
+// Thanks for using!
+//
+// Licence: Needs to be decided.
 
 import Foundation
 
@@ -124,7 +139,8 @@ public struct Regex {
     ///     - count: The maximum count of matches to replace, beginning with the first match.
     ///
     /// - returns: A string with all matches of `regex` replaced by `template`.
-    @inlinable public func replacingMatches(in input: String, with template: String, count: Int? = nil) -> String {
+    @inlinable
+    public func replacingMatches(in input: String, with template: String, count: Int? = nil) -> String {
         var output = input
         let matches = self.matches(in: input)
         let rangedMatches = Array(matches[0 ..< min(matches.count, count ?? .max)])

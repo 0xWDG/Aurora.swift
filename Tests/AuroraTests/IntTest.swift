@@ -14,28 +14,40 @@ class AuroraIntTest: XCTestCase {
     // XCTAssert is the same as XCTAssertTrue
     // True = good.
     // False = bad.
+
     /// A random odd number (1)
     let myOddNumber = 1
+
     /// A random even number (2)
     let myEvenNumber = 2
+
     /// A static number to convert
     let convertMe = 13
+
     /// This is a positive number
     let iAmPositive = 10
+
     /// This number is negative
     let iAmNegative = -10
+
     /// This number is a 'Double'
     let iAmADouble: Double = 1.0
+
     /// This number is a 'Float'
     let iAmAFloat: Float = 2.0
+
     /// This number is a 'String'
     let iAmAString: String = "3"
+
     /// This number is a 'UInt'
     let iAmAUInt: UInt = 4
+
     /// This number is a 'Int32'
     let iAmAInt32: Int32 = 5
+
     /// This number is a 'CountableRange'
     let myRange: CountableRange<Int> = 0..<10
+
     #if canImport(UIKit)
     /// This number is a 'CGFloat'
     let iAmACGFloat: CGFloat = 6
@@ -191,7 +203,7 @@ class AuroraIntTest: XCTestCase {
         #if canImport(UIKit)
         XCTAssert(
             6.toCGFloat == iAmACGFloat,
-            "This should be a range from 0<10"
+            "This should be a CGFloat now"
         )
         #else
         print("Test Case '-[AuroraTests.AuroraIntTest test_toCGFloat]' skipped. (not supported on this platform)")
