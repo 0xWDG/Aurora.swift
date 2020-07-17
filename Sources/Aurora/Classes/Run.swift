@@ -18,7 +18,7 @@
 import Foundation
 
 /// <#Description#>
-class Run {
+public class Run {
     typealias Action = () -> Void
     /// <#Description#>
     var queue: [Action] = [Action]()
