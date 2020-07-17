@@ -23,6 +23,7 @@
 /* Begin PBXBuildFile section */
 		DE3B59A524A6786F00A87688 /* OnInteractionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3B59A424A6786F00A87688 /* OnInteractionDelegate.swift */; };
 		DE3B59A724A678ED00A87688 /* UITabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3B59A624A678ED00A87688 /* UITabbar.swift */; };
+		DE8AFE5424C1D7930072ED31 /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8AFE5324C1D7930072ED31 /* Run.swift */; };
 		OBJ_100 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* Promise.swift */; };
 		OBJ_101 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* Regex.swift */; };
 		OBJ_102 /* SyncTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* SyncTasks.swift */; };
@@ -115,6 +116,7 @@
 		"Aurora::AuroraTests::Product" /* AuroraTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = AuroraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE3B59A424A6786F00A87688 /* OnInteractionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnInteractionDelegate.swift; sourceTree = "<group>"; };
 		DE3B59A624A678ED00A87688 /* UITabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabbar.swift; sourceTree = "<group>"; };
+		DE8AFE5324C1D7930072ED31 /* Run.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Run.swift; sourceTree = "<group>"; };
 		OBJ_10 /* AuroraFramework.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraFramework.swift; sourceTree = "<group>"; };
 		OBJ_12 /* AuroraCrashHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraCrashHandler.swift; sourceTree = "<group>"; };
 		OBJ_13 /* CrossPlatform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossPlatform.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				OBJ_26 /* onInteraction.swift */,
 				OBJ_27 /* validators.swift */,
 				DE3B59A424A6786F00A87688 /* OnInteractionDelegate.swift */,
+				DE8AFE5324C1D7930072ED31 /* Run.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				OBJ_114 /* Dictionary.swift in Sources */,
 				OBJ_115 /* Double.swift in Sources */,
 				OBJ_116 /* Float.swift in Sources */,
+				DE8AFE5424C1D7930072ED31 /* Run.swift in Sources */,
 				OBJ_117 /* FloatingPoint.swift in Sources */,
 				OBJ_118 /* Int.swift in Sources */,
 				OBJ_119 /* MKMapView.swift in Sources */,

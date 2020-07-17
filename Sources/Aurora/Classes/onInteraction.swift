@@ -1,7 +1,23 @@
-// $$HEADER$$
+// Aurora framework for Swift
+//
+// The **Aurora.framework** contains a base for your project.
+//
+// It has a lot of extensions built-in to make development easier.
+//
+// - Version: 1.0
+// - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
+//  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
+//
+// Please note: this is a beta version.
+// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
+//
+// Thanks for using!
+//
+// Licence: Needs to be decided.
 
 import Foundation
 
+/// <#Description#>
 enum AssociationPolicy {
     case assign
     case retainNonatomic
@@ -25,6 +41,7 @@ enum AssociationPolicy {
     }
 }
 
+/// <#Description#>
 final class ObjectAssociation<T: Any> {
     private let policy: AssociationPolicy
     
@@ -46,6 +63,7 @@ final class ObjectAssociation<T: Any> {
 
 #if canImport(UIKit)
 import UIKit
+
 public extension UIControl {
     /// .onInteraction
     ///
@@ -80,7 +98,9 @@ public extension UIControl {
     }
 }
 
+/// <#Description#>
 public class UIControlHelper {
+    /// <#Description#>
     let closure: (AnyObject) -> Void
     
     /// <#Description#>
@@ -99,7 +119,8 @@ public class UIControlHelper {
     
     /// <#Description#>
     /// - Parameter sender: <#sender description#>
-    @objc func invoke(sender: AnyObject) {
+    @objc
+    func invoke(sender: AnyObject) {
         closure(sender)
     }
 }

@@ -17,25 +17,30 @@
 
 import Foundation
 
-extension URL: ExpressibleByStringLiteral {
+/// <#Description#>
+public class Run {
+    typealias Action = () -> Void
     /// <#Description#>
-    /// - Parameter value: <#value description#>
-    public init(stringLiteral value: String) {
-        guard let url = URL(string: value) else {
-            fatalError("\(value) is an invalid url")
+    var queue: [Action] = [Action]()
+    
+    /// <#Description#>
+    /// - Parameter act: <#act description#>
+    init(act: @escaping Action) {
+        queue.append(act)
+    }
+    
+    /// <#Description#>
+    /// - Parameter act: <#act description#>
+    /// - Returns: <#description#>
+    func then(act: @escaping Action) -> Self {
+        queue.append(act)
+        return self
+    }
+    
+    /// <#Description#>
+    deinit {
+        for item in queue {
+            item()
         }
-        self = url
-    }
-    
-    /// <#Description#>
-    /// - Parameter value: <#value description#>
-    public init(extendedGraphemeClusterLiteral value: String) {
-        self.init(stringLiteral: value)
-    }
-    
-    /// <#Description#>
-    /// - Parameter value: <#value description#>
-    public init(unicodeScalarLiteral value: String) {
-        self.init(stringLiteral: value)
     }
 }
