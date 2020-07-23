@@ -96,6 +96,42 @@ public enum Model: String {
 
 // MARK: UIDevice extensions
 public extension UIDevice {
+    /// Generate a random uuid string.
+    public class var idForVendor: String? {
+        UIDevice.current.identifierForVendor?.uuidString
+    }
+    
+    /// Returns the systeme name.
+    public class func systemName() -> String {
+        UIDevice.current.systemName
+    }
+    
+    /// Returns the systeme version.
+    @objc
+    public class func systemVersion() -> String {
+        UIDevice.current.systemVersion
+    }
+    
+    /// Returns the device name.
+    public class var deviceName: String {
+        UIDevice.current.name
+    }
+    
+    /// Returns the device language.
+    public class var deviceLanguage: String {
+        Bundle.main.preferredLocalizations[0]
+    }
+    
+    /// Check if the device is either a Phone or not.
+    @objc public class var isPhone: Bool {
+        UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.phone
+    }
+    
+    /// Check if the device is either a Pad or not.
+    @objc public class var isPad: Bool {
+        UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad
+    }
+    
     /// Which type is this?
     var type: Model {
         var systemInfo = utsname()
@@ -234,12 +270,25 @@ public extension UIDevice {
         }
         return Model.unrecognized
     }
-    
-    /// Is it a iPad?
-    /// - Returns: bool(true) if is a iPad
-    func isiPad() -> Bool {
-        return (UIDevice.current.model.range(of: "iPad") != nil)
-    }
-
 }
+
+// MARK: - Rotation
+#if os(iOS)
+extension UIDevice {
+    
+    /// Force the device rotation.
+    /// - Parameter orientation: The orientation that the device will be forced to.
+    public class func forceRotation(_ orientation: UIInterfaceOrientation) {
+        UIDevice.current.forceRotation(orientation)
+    }
+    
+    /// Force the device rotation.
+    /// - Parameter orientation: The orientation that the device will be forced to.
+    public func forceRotation(_ orientation: UIInterfaceOrientation) {
+        setValue(orientation.rawValue, forKey: "orientation")
+    }
+    
+}
+#endif
+
 #endif

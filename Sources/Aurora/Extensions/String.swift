@@ -37,38 +37,55 @@ import CommonCrypto
 
 // swiftlint:disable file_length
 public extension String {
-    /// <#Description#>
+    /// A subscript to get a substring at a specified range.
+    /// - Parameter bounds: The range that will be used to find the substring.
+    /// - Returns: The substring corresponding to the specified range.
     subscript (bounds: CountableClosedRange<Int>) -> String {
         let start = index(startIndex, offsetBy: bounds.lowerBound)
         let end = index(startIndex, offsetBy: bounds.upperBound)
         return String(self[start...end])
     }
     
-    /// <#Description#>
+    /// A subscript to get a substring at a specified range.
+    /// - Parameter bounds: The range that will be used to find the substring.
+    /// - Returns: The substring corresponding to the specified range.
     subscript (bounds: CountableRange<Int>) -> String {
         let start = index(startIndex, offsetBy: bounds.lowerBound)
         let end = index(startIndex, offsetBy: bounds.upperBound)
         return String(self[start..<end])
     }
-    
-    /// <#Description#>
+
+    /// A subscript to get a substring at a specified range.
+    /// - Parameter bounds: The range that will be used to find the substring.
+    /// - Returns: The substring corresponding to the specified range.
     subscript (bounds: PartialRangeUpTo<Int>) -> String {
         let end = index(startIndex, offsetBy: bounds.upperBound)
         return String(self[startIndex..<end])
     }
     
-    /// <#Description#>
+    /// A subscript to get a substring at a specified range.
+    /// - Parameter bounds: The range that will be used to find the substring.
+    /// - Returns: The substring corresponding to the specified range.
     subscript (bounds: PartialRangeThrough<Int>) -> String {
         let end = index(startIndex, offsetBy: bounds.upperBound)
         return String(self[startIndex...end])
     }
-    
-    /// <#Description#>
+
+    /// A subscript to get a substring at a specified range.
+    /// - Parameter bounds: The range that will be used to find the substring.
+    /// - Returns: The substring corresponding to the specified range.
     subscript (bounds: CountablePartialRangeFrom<Int>) -> String {
         let start = index(startIndex, offsetBy: bounds.lowerBound)
         return String(self[start..<endIndex])
     }
     
+    /// A subscript to get the character at a specified index.
+    /// - Parameter integerIndex: The index of the character that we search for.
+    /// - Returns: The character found at the specified index.
+    subscript(integerIndex: Int) -> Character {
+        self[index(startIndex, offsetBy: integerIndex)]
+    }
+
     /// base64 encoded of string
     var base64: String {
         let plainData = self.data(using: .utf8)
@@ -138,9 +155,12 @@ public extension String {
         return urls
     }
     
-    /// Checking if String contains input with comparing options
-    func contains(_ find: String, compareOption: NSString.CompareOptions) -> Bool {
-        return self.range(of: find, options: compareOption) != nil
+    /// Check if a string contains a text with dedicated options.
+    /// - Parameters:
+    ///   - text: The text to search for.
+    ///   - compareOptions: The options available to many of the string classes’ search and comparison methods.
+    func contains(_ text: String, compareOption: NSString.CompareOptions) -> Bool {
+        self.range(of: text, options: compareOption) != nil
     }
     
     /// <#Description#>
@@ -154,6 +174,75 @@ public extension String {
         )
         
         return (firstMatch?.range.location != NSNotFound && firstMatch?.url?.scheme == "mailto")
+    }
+    
+    /// Check if the string contains an IP4 address.
+    var isIP4Address: Bool {
+        confirmIP4isValid(ip4: self)
+    }
+    
+    /// Check if the string contains an IP6 address.
+    var isIP6Address: Bool {
+        confirmIP6isValid(ip6: self)
+    }
+    
+    /// Check if the string contains an IP4 or an IP6 address.
+    var isIPAddress: Bool {
+        confirmIP4isValid(ip4: self) || confirmIP6isValid(ip6: self)
+    }
+    
+    private func confirmIP4isValid(ip4: String) -> Bool {
+        var sin = sockaddr_in()
+        return ip4.withCString { cstring in inet_pton(AF_INET, cstring, &sin.sin_addr) } == 1
+    }
+    
+    private func confirmIP6isValid(ip6: String) -> Bool {
+        var sin6 = sockaddr_in6()
+        return ip6.withCString { cstring in inet_pton(AF_INET6, cstring, &sin6.sin6_addr) } == 1
+    }
+    
+    /// Uncamelized the string.
+    var uncamelized: String {
+        let upperCase = CharacterSet.uppercaseLetters
+        return self.unicodeScalars.map { upperCase.contains($0) ? "_" + String($0).lowercased(): String($0) }
+            .joined()
+    }
+    
+    /// Capitalized first character of the String.
+    var capitalizedFirst: String {
+        let first = prefix(1).capitalized
+        let other = dropFirst()
+        return first + other
+    }
+    
+    /// Truncate the string if it's number of character go beyong a specified limit.
+    /// - Parameter limit: The number max of characters in the String.
+    mutating func truncate(limit: Int) {
+        self = truncated(limit: limit)
+    }
+    
+    /// Truncate the string if it's number of character go beyong a specified limit.
+    /// - Parameter limit: The number max of characters in the String.
+    /// - Returns: The string truncated.
+    func truncated(limit: Int) -> String {
+        if self.count > limit {
+            var truncatedString = self[0..<limit]
+            truncatedString = truncatedString.appending("...")
+            return truncatedString
+        }
+        return self
+    }
+    
+    /// Split the string in several substrings of a specified size.
+    /// - Parameter chunkSize: The size of each substring.
+    /// - Returns: An array containing all the substrings.
+    func split(intoChunksOf chunkSize: Int) -> [String] {
+        var output = [String]()
+        let splittedString = Array(self).split(intoChunksOf: chunkSize)
+        splittedString.forEach {
+            output.append($0.map { String($0) }.joined())
+        }
+        return output
     }
     
     /// <#Description#>
@@ -507,19 +596,7 @@ public extension String {
     func charCodeAtindex(_ index: Int) -> Int! {
         return self.charCodeAt(index)
     }
-    
-    /**
-     add subscript
-     
-     - Parameter idx: The index
-     
-     - Returns: The ranged string
-     */
-    subscript(idx: Int) -> Character {
-        let index = self.index(self.startIndex, offsetBy: idx)
-        return self[index]
-    }
-    
+
     /**
      Finds the string between two bookend strings if it can be found.
      

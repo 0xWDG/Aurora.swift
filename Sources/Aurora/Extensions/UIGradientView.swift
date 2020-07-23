@@ -15,8 +15,7 @@
 //
 // Licence: Needs to be decided.
 
-#if os(iOS)
-#if canImport(UIKit)
+#if os(iOS) && canImport(UIKit)
 import UIKit
 import QuartzCore
 
@@ -189,5 +188,4 @@ public class UIGradientView: UIView {
     }
     
 }
-#endif
 #endif
