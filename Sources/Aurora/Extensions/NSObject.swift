@@ -87,14 +87,22 @@ extension Set: Configure {}
 private var callbackKey = "ObjCallbackKey"
 
 extension NSObject {
-    /// <#Description#>
+    #if !os(macOS)
+    /// The name of a the type inheriting of `NSObject`
+    /// - Returns: String
     public var className: String {
-        return type(of: self).className
+        Self.className
+    }
+    #endif
+    
+    /// The name of a the type inheriting of `NSObject`
+    public static var className: String {
+        String(describing: self)
     }
     
     /// <#Description#>
-    public static var className: String {
-        return String(describing: self)
+    public var className: String {
+        return type(of: self).className
     }
         
     /// <#Description#>

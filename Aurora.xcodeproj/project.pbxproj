@@ -24,6 +24,13 @@
 		DE3B59A524A6786F00A87688 /* OnInteractionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3B59A424A6786F00A87688 /* OnInteractionDelegate.swift */; };
 		DE3B59A724A678ED00A87688 /* UITabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3B59A624A678ED00A87688 /* UITabbar.swift */; };
 		DE8AFE5424C1D7930072ED31 /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8AFE5324C1D7930072ED31 /* Run.swift */; };
+		DE8AFE5624CA0AB50072ED31 /* Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8AFE5524CA0AB50072ED31 /* Testing.swift */; };
+		DE8AFE5A24CA0C830072ED31 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8AFE5924CA0C820072ED31 /* FileManager.swift */; };
+		DE8AFE5C24CA0DC50072ED31 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8AFE5B24CA0DC50072ED31 /* Timer.swift */; };
+		DE8AFE5E24CA109B0072ED31 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8AFE5D24CA109B0072ED31 /* Array.swift */; };
+		DE8AFE6024CA11A40072ED31 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8AFE5F24CA11A40072ED31 /* UIScreen.swift */; };
+		DE8AFE6224CA12B80072ED31 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8AFE6124CA12B80072ED31 /* UIButton.swift */; };
+		DE8AFE6424CA139C0072ED31 /* UIStoryBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8AFE6324CA139C0072ED31 /* UIStoryBoard.swift */; };
 		OBJ_100 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* Promise.swift */; };
 		OBJ_101 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* Regex.swift */; };
 		OBJ_102 /* SyncTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* SyncTasks.swift */; };
@@ -117,6 +124,13 @@
 		DE3B59A424A6786F00A87688 /* OnInteractionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnInteractionDelegate.swift; sourceTree = "<group>"; };
 		DE3B59A624A678ED00A87688 /* UITabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabbar.swift; sourceTree = "<group>"; };
 		DE8AFE5324C1D7930072ED31 /* Run.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Run.swift; sourceTree = "<group>"; };
+		DE8AFE5524CA0AB50072ED31 /* Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing.swift; sourceTree = "<group>"; };
+		DE8AFE5924CA0C820072ED31 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		DE8AFE5B24CA0DC50072ED31 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		DE8AFE5D24CA109B0072ED31 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		DE8AFE5F24CA11A40072ED31 /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
+		DE8AFE6124CA12B80072ED31 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		DE8AFE6324CA139C0072ED31 /* UIStoryBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryBoard.swift; sourceTree = "<group>"; };
 		OBJ_10 /* AuroraFramework.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraFramework.swift; sourceTree = "<group>"; };
 		OBJ_12 /* AuroraCrashHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraCrashHandler.swift; sourceTree = "<group>"; };
 		OBJ_13 /* CrossPlatform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossPlatform.swift; sourceTree = "<group>"; };
@@ -231,6 +245,7 @@
 				OBJ_27 /* validators.swift */,
 				DE3B59A424A6786F00A87688 /* OnInteractionDelegate.swift */,
 				DE8AFE5324C1D7930072ED31 /* Run.swift */,
+				DE8AFE5524CA0AB50072ED31 /* Testing.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -241,12 +256,15 @@
 				OBJ_29 /* Bundle.swift */,
 				OBJ_30 /* Collection.swift */,
 				OBJ_31 /* Color.swift */,
+				OBJ_70 /* compactMap.swift */,
 				OBJ_32 /* Data.swift */,
 				OBJ_33 /* Date.swift */,
 				OBJ_34 /* Dictionary.swift */,
 				OBJ_35 /* Double.swift */,
+				DE8AFE5924CA0C820072ED31 /* FileManager.swift */,
 				OBJ_36 /* Float.swift */,
 				OBJ_37 /* FloatingPoint.swift */,
+				OBJ_71 /* iCloudSync.swift */,
 				OBJ_38 /* Int.swift */,
 				OBJ_39 /* MKMapView.swift */,
 				OBJ_40 /* NSAttributedString.swift */,
@@ -254,35 +272,38 @@
 				OBJ_42 /* NSObject.swift */,
 				OBJ_43 /* Optional.swift */,
 				OBJ_44 /* String.swift */,
+				OBJ_72 /* timeMeasure.swift */,
+				DE8AFE5B24CA0DC50072ED31 /* Timer.swift */,
 				OBJ_45 /* UIApplication.swift */,
 				OBJ_46 /* UIBarButtonItem.swift */,
+				DE8AFE6124CA12B80072ED31 /* UIButton.swift */,
 				OBJ_47 /* UIButtonCorner.swift */,
 				OBJ_48 /* UIColor+CGColor.swift */,
 				OBJ_49 /* UIDevice.swift */,
 				OBJ_50 /* UIGradientView.swift */,
 				OBJ_51 /* UIGreenButton.swift */,
-				OBJ_52 /* UIImage+GIF.swift */,
+				DE8AFE5F24CA11A40072ED31 /* UIScreen.swift */,
 				OBJ_53 /* UIImage.swift */,
+				OBJ_52 /* UIImage+GIF.swift */,
 				OBJ_54 /* UIImageView.swift */,
 				OBJ_55 /* UILabel.swift */,
+				DE8AFE6324CA139C0072ED31 /* UIStoryBoard.swift */,
 				OBJ_56 /* UINavigationBar.swift */,
-				OBJ_57 /* UITabBarController.swift */,
+				OBJ_65 /* UInt.swift */,
 				DE3B59A624A678ED00A87688 /* UITabbar.swift */,
-				OBJ_58 /* UITableViewCell.swift */,
+				OBJ_57 /* UITabBarController.swift */,
 				OBJ_59 /* UITableView.swift */,
+				OBJ_58 /* UITableViewCell.swift */,
 				OBJ_60 /* UITextField.swift */,
-				OBJ_61 /* UIView+Positioning.swift */,
 				OBJ_62 /* UIView.swift */,
+				OBJ_61 /* UIView+Positioning.swift */,
 				OBJ_63 /* UIViewController.swift */,
 				OBJ_64 /* UIViewRounded.swift */,
-				OBJ_65 /* UInt.swift */,
 				OBJ_66 /* URL.swift */,
 				OBJ_67 /* URLRequest.swift */,
 				OBJ_68 /* UserDefaults.swift */,
 				OBJ_69 /* WKInterfaceDevice.swift */,
-				OBJ_70 /* compactMap.swift */,
-				OBJ_71 /* iCloudSync.swift */,
-				OBJ_72 /* timeMeasure.swift */,
+				DE8AFE5D24CA109B0072ED31 /* Array.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -498,20 +519,25 @@
 				OBJ_111 /* Color.swift in Sources */,
 				OBJ_112 /* Data.swift in Sources */,
 				OBJ_113 /* Date.swift in Sources */,
+				DE8AFE5624CA0AB50072ED31 /* Testing.swift in Sources */,
 				OBJ_114 /* Dictionary.swift in Sources */,
 				OBJ_115 /* Double.swift in Sources */,
+				DE8AFE6224CA12B80072ED31 /* UIButton.swift in Sources */,
+				DE8AFE6424CA139C0072ED31 /* UIStoryBoard.swift in Sources */,
 				OBJ_116 /* Float.swift in Sources */,
 				DE8AFE5424C1D7930072ED31 /* Run.swift in Sources */,
 				OBJ_117 /* FloatingPoint.swift in Sources */,
 				OBJ_118 /* Int.swift in Sources */,
 				OBJ_119 /* MKMapView.swift in Sources */,
 				OBJ_120 /* NSAttributedString.swift in Sources */,
+				DE8AFE6024CA11A40072ED31 /* UIScreen.swift in Sources */,
 				OBJ_121 /* NSError.swift in Sources */,
 				OBJ_122 /* NSObject.swift in Sources */,
 				OBJ_123 /* Optional.swift in Sources */,
 				OBJ_124 /* String.swift in Sources */,
 				OBJ_125 /* UIApplication.swift in Sources */,
 				OBJ_126 /* UIBarButtonItem.swift in Sources */,
+				DE8AFE5E24CA109B0072ED31 /* Array.swift in Sources */,
 				DE3B59A724A678ED00A87688 /* UITabbar.swift in Sources */,
 				OBJ_127 /* UIButtonCorner.swift in Sources */,
 				OBJ_128 /* UIColor+CGColor.swift in Sources */,
@@ -519,6 +545,7 @@
 				OBJ_130 /* UIGradientView.swift in Sources */,
 				OBJ_131 /* UIGreenButton.swift in Sources */,
 				OBJ_132 /* UIImage+GIF.swift in Sources */,
+				DE8AFE5C24CA0DC50072ED31 /* Timer.swift in Sources */,
 				OBJ_133 /* UIImage.swift in Sources */,
 				OBJ_134 /* UIImageView.swift in Sources */,
 				OBJ_135 /* UILabel.swift in Sources */,
@@ -526,6 +553,7 @@
 				OBJ_137 /* UITabBarController.swift in Sources */,
 				OBJ_138 /* UITableViewCell.swift in Sources */,
 				OBJ_139 /* UITableView.swift in Sources */,
+				DE8AFE5A24CA0C830072ED31 /* FileManager.swift in Sources */,
 				OBJ_140 /* UITextField.swift in Sources */,
 				OBJ_141 /* UIView+Positioning.swift in Sources */,
 				OBJ_142 /* UIView.swift in Sources */,

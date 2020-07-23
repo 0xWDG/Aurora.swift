@@ -15,7 +15,6 @@
 //
 // Licence: Needs to be decided.
 
-
 #if canImport(UIKit)
 import UIKit
 
@@ -40,7 +39,6 @@ extension UITabBar {
         
         print("Could not find item \(withName).")
     }
-    
     
     /// Execute a action after x taps
     ///

@@ -137,4 +137,16 @@ public extension Date {
         
         return components.weekday
     }
+    
+    /// Check if a `Date` is in the future.
+    /// - Returns: Bool.
+    var isInFuture: Bool {
+        self > Date()
+    }
+    
+    /// Check if a `Date` is in the past.
+    /// - Returns: Bool.
+    var isInPast: Bool {
+        self < Date()
+    }
 }

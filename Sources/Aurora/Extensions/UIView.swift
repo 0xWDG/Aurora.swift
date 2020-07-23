@@ -132,15 +132,14 @@ extension UIView {
         self.layer.add(shakeAnimation, forKey: "position")
     }
     
-    
     /// Wiggle
     /// - Parameter repeatAnimation: repeat?
     public func wiggle(_ repeatAnimation: Bool? = true) {
-        let wiggleAnimation = CAKeyframeAnimation(keyPath:"transform")
+        let wiggleAnimation = CAKeyframeAnimation(keyPath: "transform")
         wiggleAnimation.configure {
             $0.values  = [
                 NSValue(caTransform3D: CATransform3DMakeRotation(0.04, 0.0, 0.0, 1.0)),
-                NSValue(caTransform3D: CATransform3DMakeRotation(-0.04 , 0, 0, 1))
+                NSValue(caTransform3D: CATransform3DMakeRotation(-0.04, 0, 0, 1))
             ]
             $0.autoreverses = true
             $0.duration = 0.115
