@@ -1,4 +1,4 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.2
 
 import PackageDescription
 
@@ -11,7 +11,8 @@ let package = Package(
     platforms: [
         .macOS(.v10_13),
         .iOS(.v12),
-        .tvOS(.v12)
+        .tvOS(.v12),
+        .watchOS(.v6),
     ],
     
     /// It is a framework/library
@@ -27,16 +28,12 @@ let package = Package(
         .target(
             name: "Aurora",
             dependencies: []
-//            resources: [
-//                .process("Resources"),
-//            ]
+//            resources: [.process("Resources")]
         ),
         .testTarget(
             name: "AuroraTests",
             dependencies: ["Aurora"]
-//            resources: [
-//                .process("Resources"),
-//            ]
+//            resources: [.process("Resources")]
         )
     ]
 )

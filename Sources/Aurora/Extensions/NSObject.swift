@@ -50,7 +50,7 @@ extension Configure {
     ///     let frame = NSView().configure {
     ///       $0.backgroundColor = .red
     ///     }
-    public func configure(_ block: (inout Self) -> Void) -> Self {
+    @discardableResult public func configure(_ block: (inout Self) -> Void) -> Self {
         var copy = self
         block(&copy)
         return copy
@@ -86,15 +86,7 @@ extension Set: Configure {}
 // NSO callbackKey
 private var callbackKey = "ObjCallbackKey"
 
-extension NSObject {
-    #if !os(macOS)
-    /// The name of a the type inheriting of `NSObject`
-    /// - Returns: String
-    public var className: String {
-        Self.className
-    }
-    #endif
-    
+extension NSObject {    
     /// The name of a the type inheriting of `NSObject`
     public static var className: String {
         String(describing: self)

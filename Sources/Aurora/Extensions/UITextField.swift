@@ -146,7 +146,7 @@ extension UITextField {
     /// Change the textfield's placeholder color.
     /// - Parameter color: The new placeholder's color.
     public func setPlaceHolderTextColor(_ color: UIColor) {
-        guard let placeholder = placeholder, placeholder.isNotEmpty else {
+        guard let placeholder = placeholder, !placeholder.isEmpty else {
             return
         }
         let attributes = [NSAttributedString.Key.foregroundColor: color]
@@ -166,7 +166,7 @@ extension UITextField {
                                       adjustToFit: Bool = true) {
         adjustsFontForContentSizeCategory = true
         adjustsFontSizeToFitWidth = adjustToFit
-        font = UIFont.dynamicStyle(style, traits: traits)
+//        font = UIFont.dynamicStyle(style, traits: traits)
     }
     
 }
