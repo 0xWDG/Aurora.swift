@@ -46,7 +46,7 @@ public class NSFWDetector {
     public required init() {
         var NSFWModel: MLModel?
         
-        #if swift(>=5.3)
+        #if swift(>=5.4)
         guard let modelURL = Bundle.module.url(forResource: "NSFW", withExtension: "mlmodel") else {
             fatalError("No model found.")
         }
