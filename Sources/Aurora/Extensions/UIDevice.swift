@@ -16,6 +16,7 @@
 // Licence: Needs to be decided.
 
 import Foundation
+#if canImport(UIKit)
 import UIKit
 
 #if os(iOS)
@@ -83,5 +84,6 @@ extension UIDevice {
     }
     
 }
+#endif
 #endif
 #endif
