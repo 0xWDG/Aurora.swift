@@ -19,7 +19,7 @@
 import Foundation
 #endif
 
-#if canImport(MapKit)
+#if canImport(MapKit) && !os(watchOS) && !os(tvOS)
 import MapKit
 
 extension MKMapView {

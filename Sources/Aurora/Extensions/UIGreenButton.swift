@@ -16,7 +16,7 @@
 // Licence: Needs to be decided.
 
 import Foundation
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 import UIKit
 
 /// A Designable UIGreenButton

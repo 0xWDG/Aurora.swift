@@ -16,6 +16,8 @@
 // Licence: Needs to be decided.
 
 import Foundation
+
+#if !os(watchOS)
 import CloudKit
 
 private var WDGIiCloudSyncInProgress: Bool = false
@@ -165,3 +167,4 @@ open class WDGFrameworkiCloudSync {
         self.unset()
     }
 }
+#endif

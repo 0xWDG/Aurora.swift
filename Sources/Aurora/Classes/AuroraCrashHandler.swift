@@ -85,7 +85,7 @@ class AuroraCrashHandler {
         var crashReport = ""
         crashReport += "Aurora Framework (v\(Aurora.shared.version)) crash report\n\n"
         
-        #if canImport(UIKit)
+        #if canImport(UIKit) && !os(watchOS)
         let device = UIDevice.current
         var deviceType: String {
             var utsnameInstance = utsname()

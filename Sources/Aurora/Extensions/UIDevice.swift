@@ -16,7 +16,10 @@
 // Licence: Needs to be decided.
 
 import Foundation
+#if canImport(UIKit)
 import UIKit
+
+#if os(iOS)
 
 public extension UIDevice {
     /// Generate a random uuid string.
@@ -81,4 +84,6 @@ extension UIDevice {
     }
     
 }
+#endif
+#endif
 #endif

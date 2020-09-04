@@ -17,7 +17,7 @@
 
 import Foundation
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 import UIKit
 
 public extension UIView {
@@ -273,10 +273,12 @@ public extension UIView {
     
     // MARK: - Useful Methods
     /// Center view to it's parent view.
+    @available(iOS 10, *)
     @objc
     func centerToParent() {
+        #if os(iOS)
         guard let superview = self.superview else { return }
-        
+
         switch UIApplication.shared.statusBarOrientation {
         case .landscapeLeft, .landscapeRight:
             self.origin = CGPoint(
@@ -296,6 +298,7 @@ public extension UIView {
         @unknown default:
             return
         }
+        #endif
     }
     
     // MARK: - Private Methods

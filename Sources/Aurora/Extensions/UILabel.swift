@@ -15,7 +15,7 @@
 //
 // Licence: Needs to be decided.
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 import UIKit
 
 extension UILabel {

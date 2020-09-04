@@ -16,7 +16,7 @@
 // Licence: Needs to be decided.
 
 import Foundation
-#if canImport(UIKit)
+#if canImport(UIKit) && os(iOS)
 import UIKit
 
 /// Fixes the issue for screens being to small and that inputfields will be gone!

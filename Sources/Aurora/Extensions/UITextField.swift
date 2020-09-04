@@ -17,10 +17,12 @@
 
 import Foundation
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 import UIKit
 
 extension UITextField {
+    #if os(iOS)
+    
     /// <#Description#>
     @IBInspectable public var doneAccessory: Bool {
         get {
@@ -66,6 +68,8 @@ extension UITextField {
         
         self.inputAccessoryView = doneToolbar
     }
+    
+    #endif
     
     /// <#Description#>
     @objc
