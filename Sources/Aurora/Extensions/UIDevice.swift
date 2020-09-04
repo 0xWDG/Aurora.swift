@@ -18,6 +18,8 @@
 import Foundation
 import UIKit
 
+#if os(iOS)
+
 public extension UIDevice {
     /// Generate a random uuid string.
     var idForVendor: String? {
@@ -81,4 +83,5 @@ extension UIDevice {
     }
     
 }
+#endif
 #endif

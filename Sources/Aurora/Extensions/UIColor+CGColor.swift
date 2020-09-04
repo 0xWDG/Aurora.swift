@@ -54,7 +54,11 @@ extension UIColor {
     /// <#Description#>
     public static var cellBackgroundcolor: UIColor {
         if #available(iOS 13.0, *) {
-            return .systemBackground // .systemGray6 
+            #if os(tvOS)
+            return .white
+            #else
+            return .systemBackground
+            #endif
         } else {
             return .white
         }

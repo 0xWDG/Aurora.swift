@@ -50,7 +50,11 @@ extension UIButton {
         get {
             guard layer.borderColor != nil else { return nil }
             if #available(iOS 13.0, *) {
+                #if os(tvOS)
+                return .white
+                #else
                 return .systemBackground
+                #endif
             } else {
                 return .white
             }

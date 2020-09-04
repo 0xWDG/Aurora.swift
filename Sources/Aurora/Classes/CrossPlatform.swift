@@ -45,9 +45,6 @@ public typealias ViewController = NSViewController
 #endif
 
 #if canImport(UIKit)
-/// For UIKit we typealias NSView as View
-public typealias View = UIView
-
 /// For UIKit we typealias UIFont as Font
 public typealias Font = UIFont
 
@@ -60,8 +57,13 @@ public typealias Image = UIImage
 /// For UIKit we typealias UIBezierPath as BezierPath
 public typealias BezierPath = UIBezierPath
 
+#if !os(watchOS)
+/// For UIKit we typealias NSView as View
+public typealias View = UIView
+
 /// For UIKit we typealias UIViewController as ViewController
 public typealias ViewController = UIViewController
+#endif
 #endif
 
 #if canImport(AppKit) && !targetEnvironment(macCatalyst)

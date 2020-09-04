@@ -17,7 +17,7 @@
 
 import Foundation
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS) && !os(tvOS)
 import UIKit
 import QuartzCore
 

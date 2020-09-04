@@ -15,7 +15,7 @@
 //
 // Licence: Needs to be decided.
 
-#if os(iOS) || os(tvOS)
+#if os(iOS)
 #if canImport(UIKit)
 import Foundation
 import UIKit

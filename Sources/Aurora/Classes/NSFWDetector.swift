@@ -17,7 +17,7 @@
 
 import Foundation
 
-#if canImport(CoreML) && canImport(Vision)
+#if canImport(CoreML) && canImport(Vision) && !os(tvOS)
 import CoreML
 import Vision
 
@@ -100,6 +100,7 @@ public class NSFWDetector {
             requestHandler = nil
         }
         #endif
+        
         #if os(macOS)
         // swiftlint:disable:next force_cast
         let cgImage = image.cgImage as! CGImage
@@ -107,7 +108,9 @@ public class NSFWDetector {
         requestHandler = VNImageRequestHandler(cgImage: cgImage, options: [:])
         #endif
         
+        #if os(iOS) || os(macOS)
         self.check(requestHandler, completion: completion)
+        #endif
     }
     
     /// Check the image (using pixels)
