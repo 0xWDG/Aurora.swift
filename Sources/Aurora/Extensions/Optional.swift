@@ -51,6 +51,40 @@ extension Optional {
         }
         return result
     }
+    
+    /// <#Description#>
+    ///
+    /// Example:
+    ///
+    ///     myOptional.matching { $0.count > 2 }
+    ///     // Or
+    ///     myOptional.matching { $0.age > 18 }
+    ///
+    /// - Parameter predicate: <#predicate description#>
+    /// - Returns: <#description#>
+    public func matching(_ predicate: (Wrapped) -> Bool) -> Wrapped? {
+        guard let value = self else {
+            return nil
+        }
+        
+        guard predicate(value) else {
+            return nil
+        }
+        
+        return value
+    }
+    
+    /// <#Description#>
+    /// - Parameter errorExpression: <#errorExpression description#>
+    /// - Throws: <#description#>
+    /// - Returns: <#description#>
+    func unwrapOrThrow(_ errorExpression: @autoclosure () -> Error) throws -> Wrapped {
+        guard let value = self else {
+            throw errorExpression()
+        }
+        
+        return value
+    }
 }
 
 // From: https://www.instagram.com/p/Bi46gJjD8i2/

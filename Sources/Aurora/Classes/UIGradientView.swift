@@ -15,10 +15,14 @@
 //
 // Licence: Needs to be decided.
 
-#if os(iOS) && canImport(UIKit)
+#if os(iOS) && canImport(UIKit) && !os(tvOS)
 import UIKit
 import QuartzCore
 
+
+/// UIGradient View
+///
+/// Have a gradient background.
 @IBDesignable
 public class UIGradientView: UIView {
     /// Light color: First Gradient color

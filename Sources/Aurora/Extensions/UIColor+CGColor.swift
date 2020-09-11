@@ -43,6 +43,14 @@ extension UIColor {
         alpha: 1
     )
     
+    
+    public static let baas = UIColor.init(
+        red: 0.0,
+        green: 0.831372549,
+        blue: 1.0,
+        alpha: 1.0
+    )
+    
     /// <#Description#>
     public static let button = UIColor.init(
         red: 0,

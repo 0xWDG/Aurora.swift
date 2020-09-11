@@ -371,7 +371,6 @@ public extension Color {
         let blue: CGFloat = sqrt(pow(255.0, 2.0) - pow((componentColors[2]*255), 2.0))/255
         self.init(red: red, green: green, blue: blue, alpha: 1.0)
     }
-    
 }
 
 // MARK: - Social

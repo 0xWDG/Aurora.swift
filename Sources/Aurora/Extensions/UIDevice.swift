@@ -20,6 +20,9 @@ import Foundation
 import UIKit
 
 #if os(iOS)
+#if canImport(AudioToolbox)
+import AudioToolbox
+#endif
 
 public extension UIDevice {
     /// Generate a random uuid string.
@@ -35,6 +38,11 @@ public extension UIDevice {
     /// Returns the systeme version.
     @objc class func systemVersion() -> String {
         return UIDevice.current.systemVersion
+    }
+    
+    /// Is the device running on low power mode?
+    var lowPowerMode: Bool {
+        return ProcessInfo.processInfo.isLowPowerModeEnabled
     }
     
     /// Returns the device name.
@@ -53,7 +61,7 @@ public extension UIDevice {
     }
     
     /// Check if the device is either a iPad or not.
-    var isPad: Bool {
+    var isiPad: Bool {
         return UIDevice.current.userInterfaceIdiom == .pad
     }
     
@@ -66,6 +74,13 @@ public extension UIDevice {
     var isCarPlay: Bool {
         return UIDevice.current.userInterfaceIdiom == .carPlay
     }
+    
+    #if canImport(AudioToolbox)
+    /// Vibrate the device
+    static func vibrate() {
+        AudioServicesPlaySystemSound(1519)
+    }
+    #endif
 }
 
 // MARK: - Rotation

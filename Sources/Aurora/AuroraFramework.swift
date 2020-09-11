@@ -128,7 +128,7 @@ open class Aurora {
      * - parameter function: function name
      */
     @discardableResult
-    public func log(_ message: String, file: String = #file, line: Int = #line, function: String = #function) -> Bool {
+    public func log(_ message: Any..., file: String = #file, line: Int = #line, function: String = #function) -> Bool {
         if debug {
             let fileName: String = (file.split("/").last)!.split(".").first!
             Swift.print("[Aurora.Framework] \(fileName):\(line) \(function):\n \(message)\n")
@@ -164,13 +164,13 @@ open class Aurora {
     
     /// **No op**eration
     /// - Parameter something: Whay ever you want.
-    private func noop(_ something: Any...) {
+    public func noop(_ something: Any...) {
         // Great.
     }
 
     /// **No op**eration
     /// - Parameter something: Whay ever you want. (object)
-    private func noop(_ something: AnyObject...) {
+    public func noop(_ something: AnyObject...) {
         // Great.
     }
     
