@@ -9,7 +9,7 @@ let package = Package(
     
     /// It is created for:
     platforms: [
-        .macOS(.v10_13),
+        .macOS(.v10_14),
         .iOS(.v12),
         .tvOS(.v12),
         .watchOS(.v6),

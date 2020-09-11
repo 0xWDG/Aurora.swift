@@ -176,6 +176,53 @@ public extension String {
         return (firstMatch?.range.location != NSNotFound && firstMatch?.url?.scheme == "mailto")
     }
     
+    /// String as URL
+    var asURL: URL? {
+        URL(string: self)
+    }
+    
+    /// Contains only digits?
+    var containsOnlyDigits: Bool {
+        let notDigits = NSCharacterSet.decimalDigits.inverted
+        return rangeOfCharacter(from: notDigits, options: String.CompareOptions.literal, range: nil) == nil
+    }
+    
+    /// JSON to Dictionary
+    var asDict: [String: Any]? {
+        guard let data = self.data(using: .utf8) else { return nil }
+        return try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any]
+    }
+    
+    /// JSON to Array
+    var asArray: [Any]? {
+        guard let data = self.data(using: .utf8) else { return nil }
+        return try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [Any]
+    }
+    
+    /// <#Description#>
+    /// - Parameters:
+    ///   - width: <#width description#>
+    ///   - font: <#font description#>
+    /// - Returns: <#description#>
+    func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
+        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
+        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil)
+        
+        return ceil(boundingBox.height)
+    }
+    
+    /// <#Description#>
+    /// - Parameters:
+    ///   - height: <#height description#>
+    ///   - font: <#font description#>
+    /// - Returns: <#description#>
+    func width(withConstrainedHeight height: CGFloat, font: UIFont) -> CGFloat {
+        let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
+        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil)
+        
+        return ceil(boundingBox.width)
+    }
+    
     /// Check if the string contains an IP4 address.
     var isIP4Address: Bool {
         confirmIP4isValid(ip4: self)
@@ -191,11 +238,26 @@ public extension String {
         confirmIP4isValid(ip4: self) || confirmIP6isValid(ip6: self)
     }
     
+    /// <#Description#>
+    /// - Parameter format: <#format description#>
+    /// - Returns: <#description#>
+    func toDate(format: String) -> Date? {
+        let df = DateFormatter()
+        df.dateFormat = format
+        return df.date(from: self)
+    }
+    
+    /// <#Description#>
+    /// - Parameter ip4: <#ip4 description#>
+    /// - Returns: <#description#>
     private func confirmIP4isValid(ip4: String) -> Bool {
         var sin = sockaddr_in()
         return ip4.withCString { cstring in inet_pton(AF_INET, cstring, &sin.sin_addr) } == 1
     }
     
+    /// <#Description#>
+    /// - Parameter ip6: <#ip6 description#>
+    /// - Returns: <#description#>
     private func confirmIP6isValid(ip6: String) -> Bool {
         var sin6 = sockaddr_in6()
         return ip6.withCString { cstring in inet_pton(AF_INET6, cstring, &sin6.sin6_addr) } == 1

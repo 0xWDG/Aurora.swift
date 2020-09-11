@@ -22,4 +22,23 @@ public extension Double {
     var toPositive: Double {
         return fabs(self)
     }
+    
+    /// To string
+    var toString: String {
+        return String(format: "%.02f", self)
+    }
+    
+    /// Double to price
+    /// - Parameter currency: currency symbol (Defaults to: €)
+    /// - Returns: ""
+    func toPrice(currency: String = "€") -> String {
+        let nf = NumberFormatter()
+        nf.decimalSeparator = ","
+        nf.groupingSeparator = "."
+        nf.groupingSize = 3
+        nf.usesGroupingSeparator = true
+        nf.minimumFractionDigits = 2
+        nf.maximumFractionDigits = 2
+        return currency + " " + (nf.string(from: NSNumber(value: self)) ?? "?")
+    }
 }

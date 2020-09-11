@@ -149,4 +149,13 @@ public extension Date {
     var isInPast: Bool {
         self < Date()
     }
+    
+    /// <#Description#>
+    /// - Parameter format: <#format description#>
+    /// - Returns: <#description#>
+    func toString(format: String) -> String {
+        let df = DateFormatter()
+        df.dateFormat = format
+        return df.string(from: self)
+    }
 }

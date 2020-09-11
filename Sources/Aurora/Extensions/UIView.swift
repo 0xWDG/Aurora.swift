@@ -31,6 +31,20 @@ extension UIView {
         }
     }
     
+    /// is darkmode enabled
+    var isDarkModeEnabled: Bool {
+        get {
+            return traitCollection.userInterfaceStyle == .dark
+        }
+    }
+
+    /// is darkmode enabled
+    var darkMode: Bool {
+        get {
+            return traitCollection.userInterfaceStyle == .dark
+        }
+    }
+    
     /// <#Description#>
     /// - Parameter radius: <#radius description#>
     public func roundedCorners(radius: CGFloat? = 45) {

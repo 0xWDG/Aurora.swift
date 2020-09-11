@@ -24,6 +24,21 @@ open class Validator {
     
     /// <#Description#>
     public init() {}
+
+    /// <#Description#>
+    /// - Parameter str: <#str description#>
+    /// - Returns: <#description#>
+    public func containsBannedWord(str: String) -> Bool {
+        let bannedWords = [
+            "neuken",
+            "fuck",
+            "lul",
+            "hoer",
+            "i hate this app"
+        ]
+        
+        return bannedWords.filter { str.contains($0) }.count > 0
+    }
     
     /// <#Description#>
     /// - Parameter str: <#str description#>
