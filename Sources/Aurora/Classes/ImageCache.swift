@@ -51,9 +51,9 @@ extension UIImage {
         do {
             try FileManager().removeItem(atPath: fileStore)
         } catch let err as NSError {
-            print(err)
+            Aurora.shared.log(err)
         } catch {
-            print("error")
+            Aurora.shared.log("error")
         }
     }
     
@@ -82,7 +82,7 @@ extension UIImage {
                 print(err)
                 rimage = false
             } catch {
-                print("error")
+                Aurora.shared.log("error")
                 rimage = false
             }
         } else {
@@ -118,7 +118,7 @@ extension UIImage {
                         UIImage().cacheImage(image)
                         rimage = UIImage(contentsOfFile: image)!
                     } catch {
-                        print("Something happend, this is terrible wrong!")
+                        fatalError("Something happend, this is terrible wrong!\nError: \(error)")
                     }
                 }
             } catch {

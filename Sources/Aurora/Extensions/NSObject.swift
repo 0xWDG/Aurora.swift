@@ -135,7 +135,7 @@ extension NSObject {
     ///
     ///           // Actual code
     ///           NSObject.onDeinit(of: viewController) {
-    ///               print("The viewcontroller dissapeared")
+    ///               Aurora.shared.log("The viewcontroller dissapeared")
     ///           }
     ///      }
     public static func onDeinit(of object: NSObject, do block: @escaping () -> Void) {

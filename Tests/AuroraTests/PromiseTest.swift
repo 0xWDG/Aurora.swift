@@ -45,8 +45,8 @@ extension AuroraTest {
         }.then { user in // map
             return user.name
         }.then { name in // observe
-                print(name)
-                XCTAssertNotNil(name)
+            print(name)
+            XCTAssertNotNil(name)
         }
     }
 }

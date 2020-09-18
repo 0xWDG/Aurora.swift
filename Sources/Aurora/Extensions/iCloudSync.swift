@@ -60,7 +60,7 @@ open class WDGFrameworkiCloudSync {
         } else {
             // Say i'm not syncing :'(
             WDGIiCloudSyncInProgress = false
-            print("Can't start sync!")
+            Aurora.shared.log("Can't start sync!")
         }
     }
     
@@ -103,7 +103,7 @@ open class WDGFrameworkiCloudSync {
     
     @objc
     private func toCloud() {
-        //        print("Going to iCloud")
+        //        Aurora.shared.log("Going to iCloud")
         // NSUserDefaults to a dictionary
         let dict: NSDictionary = UserDefaults.standard.dictionaryRepresentation() as NSDictionary
         

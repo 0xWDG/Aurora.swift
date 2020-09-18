@@ -409,7 +409,7 @@ class URLSessionPinningDelegate: NSObject, URLSessionDelegate {
                 let status = SecTrustEvaluate(serverTrust, &secresult)
                 
                 if(errSecSuccess == status) {
-                    // print(SecTrustGetCertificateCount(serverTrust))
+                    // Aurora.shared.log(SecTrustGetCertificateCount(serverTrust))
                     /// Server certificate
                     if let serverCertificate = SecTrustGetCertificateAtIndex(serverTrust, 0) {
                         
