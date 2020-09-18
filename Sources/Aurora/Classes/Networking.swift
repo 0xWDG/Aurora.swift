@@ -13,10 +13,12 @@ import CommonCrypto
 #endif
 
 extension Aurora {
-     struct HTTPSCertificate {
+    static var cookies: [HTTPCookie]? = []
+    
+    struct HTTPSCertificate {
         /// Server's public key hash
         static var publicKeyHash = ""
-    
+        
         /// Server's certificate hash
         static var certificateHash = ""
     }
@@ -72,9 +74,133 @@ extension Aurora {
      *
      * - parameter url: The url to be parsed
      * - parameter posting: What do you need to post
-     * - returns: the data we've got from the server
+     * - returns: closure -> sucess, fail.
      */
     public func networkRequest(
+        url: String,
+        posting: Dictionary<String, Any>? = ["nothing": "send"],
+        completionHandler: @escaping (Result<String, Error>) -> Void
+    ) {
+        /// Check if the URL is valid
+        guard let siteURL = URL(string: url) else {
+            completionHandler(
+                .failure("Error: \(url) doesn't appear to be an URL" as! Error)
+            )
+            return
+        }
+        
+        /// Create a new post dict, for the JSON String
+        var post: String = ""
+        
+        // Try
+        do {
+            /// Create JSON
+            let JSON = try JSONSerialization.data(
+                withJSONObject: posting as Any,
+                options: .sortedKeys
+            )
+            
+            // set NewPosting
+            post = String.init(
+                data: JSON,
+                encoding: .utf8
+            )!.addingPercentEncoding(
+                withAllowedCharacters: .urlHostAllowed
+            )!
+        }
+        
+        /// Catch errors
+        catch let error as NSError {
+            completionHandler(.failure("Error: \(error.localizedDescription)" as! Error))
+        }
+        
+        /// Create a URL Request
+        let request = URLRequest(url: siteURL).configure {
+            if post.length > 3 {
+                // We're posting
+                
+                // Set the HTTP Method to POST
+                $0.httpMethod = "POST"
+                
+                // Set Content-Type to FORM
+                $0.setValue(
+                    "application/x-www-form-urlencoded",
+                    forHTTPHeaderField: "Content-Type"
+                )
+                
+                // Set the httpBody
+                $0.httpBody = post.data(using: .utf8)
+                
+                // Log, if we are in debugmode.
+                log("HTTP (POST): \(url)\nbody (escaped): \(post)\nbody (unescaped): \(post.removingPercentEncoding!)")
+
+            } else {
+                // We're getting
+                
+                // Set the HTTP Method to GET
+                $0.httpMethod = "GET"
+                
+                // Log, if we are in debugmode.
+                log("HTTP (GET): \(url)\npost body (escaped): \(post)\npost body (unescaped): \(post.removingPercentEncoding!)")
+
+            }
+        }
+        
+        /// Create a pinned URLSession
+        var session = URLSession.init(
+            // With default configuration
+            configuration: .ephemeral,
+            
+            // With our pinning delegate
+            delegate: URLSessionPinningDelegate(),
+            
+            // with no queue
+            delegateQueue: nil
+        )
+        
+        // Check if we have a public key, or certificate hash.
+        if (HTTPSCertificate.publicKeyHash.count == 0 || HTTPSCertificate.certificateHash.count == 0) {
+            // Show a error, only on debug builds
+            log(
+                "[WARNING] No Public key pinning/Certificate pinning\n" +
+                    "           Improve your security to enable this!\n"
+            )
+            // Use a non-pinned URLSession
+            session = URLSession.shared
+        }
+        
+        if let cookieData = Aurora.cookies {
+            session.configuration.httpCookieStorage?.setCookies(
+                cookieData,
+                for: siteURL,
+                mainDocumentURL: nil
+            )
+        }
+        
+        // Start our datatask
+        session.dataTask(with: request) { (sitedata, _, theError) in
+            /// Check if we got any useable site data
+            guard let sitedata = sitedata else {
+                completionHandler(.failure(theError!))
+                return
+            }
+            
+            // Save our cookies
+            Aurora.cookies = session.configuration.httpCookieStorage?.cookies
+            
+            completionHandler(.success(String.init(data: sitedata, encoding: .utf8)!))
+        }.resume()
+    }
+    /**
+     * networkRequest
+     *
+     * Start a network request
+     *
+     * - parameter url: The url to be parsed
+     * - parameter posting: What do you need to post
+     * - returns: the data we've got from the server
+     */
+    public func dep_networkRequest(
         _ url: String,
         _ posting: Dictionary<String, Any>? = ["nothing": "send"]
     ) -> Data {
