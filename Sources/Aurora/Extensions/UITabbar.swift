@@ -37,7 +37,7 @@ extension UITabBar {
             currentIndex += 1
         }
         
-        print("Could not find item \(withName).")
+        fatalError("Could not find item \(withName).")
     }
     
     /// Execute a action after x taps

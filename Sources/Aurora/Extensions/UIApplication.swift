@@ -30,7 +30,7 @@ extension UIApplication {
                     )!
             )
         } catch {
-            print("Failed to delete launch screen cache with error: \(error)")
+            Aurora.shared.log("Failed to delete launch screen cache with error: \(error)")
         }
     }
 }

@@ -21,6 +21,6 @@ class AuroraTest: XCTestCase {
     }
     
     func testLocalLog() {
-        XCTAssert(log("This is a test"), "Should be true")
+        XCTAssert(Aurora.shared.log("This is a test"), "Should be true")
     }
 }

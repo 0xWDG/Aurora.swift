@@ -28,9 +28,9 @@ import Vision
 ///     NSFWDetector.shared.check(image: image) { result in
 ///        switch result {
 ///        case .error:
-///            print("Detection failed")
+///            Aurora.shared.log("Detection failed")
 ///        case let .success(nsfwConfidence: confidence):
-///            print(String(format: "%.1f %% NSFW", confidence * 100.0))
+///            Aurora.shared.log(String(format: "%.1f %% NSFW", confidence * 100.0))
 ///        }
 ///    }
 @available(macOS 10.14, *)

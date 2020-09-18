@@ -24,7 +24,7 @@ open class Validator {
     
     /// <#Description#>
     public init() {}
-
+    
     /// <#Description#>
     /// - Parameter str: <#str description#>
     /// - Returns: <#description#>
@@ -74,7 +74,9 @@ open class Validator {
                 range: NSRange(location: 0, length: nsString.length)
             )
             
-            //            results.map {print("\"\(nsString.substring(with: $0.range))\" is an email adress!")}
+//            results.map {
+//                Aurora.shared.log("\"\(nsString.substring(with: $0.range))\" is an email adress!")
+//            }
             
             return (results?.count ?? 0) > 0
         }

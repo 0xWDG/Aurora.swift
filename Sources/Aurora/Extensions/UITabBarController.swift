@@ -39,7 +39,7 @@ extension UITabBarController {
             currentIndex += 1
         }
         
-        print("Could not find item \(withName).")
+        fatalError("Could not find item \(withName).")
     }
     
     /// Execute a action after x taps
@@ -60,6 +60,28 @@ extension UITabBarController {
         runner.onTimes = times ?? 10
         
         self.delegate = runner
+    }
+    
+    /// Reload the current selected view
+    public func reloadCurrentView() {
+        // save the selected index
+        let oldSelected = selectedIndex
+        
+        // Count the number of viewControllers
+        let vcCount = viewControllers?.count ?? 0
+        
+        if vcCount > 1 {
+            if (oldSelected != 0) {
+                selectedIndex = 0
+            } else {
+                if vcCount > 2 {
+                    if (oldSelected != 1) {
+                        selectedIndex = 1
+                    }
+                }
+            }
+            selectedIndex = oldSelected
+        }
     }
 }
 #endif

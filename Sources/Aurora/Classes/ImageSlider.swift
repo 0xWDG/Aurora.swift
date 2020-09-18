@@ -112,7 +112,7 @@ open class ImageSlider {
                 scrollView.contentOffset.x / view.view.frame.size.width
             )
         )
-        //        print("CurrentPage=\(currentPage) x:\(scrollView.contentOffset.x)")
+        //        Aurora.shared.log("CurrentPage=\(currentPage) x:\(scrollView.contentOffset.x)")
         pageControl.currentPage = currentPage
     }
 }

@@ -19,7 +19,7 @@
 import Foundation
 
 /**
- * Log
+ * aprint _alias for_ `Aurora.shared.log(....)`
  *
  * This is used to send log messages with the following syntax
  *
@@ -32,15 +32,7 @@ import Foundation
  * - parameter function: function name
  */
 @discardableResult
-public func log(_ message: Any, file: String = #file, line: Int = #line, function: String = #function) -> Bool {
-    if _isDebugAssertConfiguration() {
-        let fileName: String = String(
-            (file.split(separator: "/").last)!.split(separator: ".").first!
-        )
-        
-        Swift.print("[Aurora] \(fileName):\(line) \(function):\n \(message)\n")
-    }
-    
-    return _isDebugAssertConfiguration()
+public func aprint(_ message: Any, file: String = #file, line: Int = #line, function: String = #function) -> Bool {
+    return Aurora.shared.log(message, file: file, line: line, function: function)
 }
 #endif

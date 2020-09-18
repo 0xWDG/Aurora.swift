@@ -204,7 +204,7 @@ public extension String {
     ///   - width: <#width description#>
     ///   - font: <#font description#>
     /// - Returns: <#description#>
-    func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
+    func height(withConstrainedWidth width: CGFloat, font: Font) -> CGFloat {
         let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
         let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil)
         
@@ -216,7 +216,7 @@ public extension String {
     ///   - height: <#height description#>
     ///   - font: <#font description#>
     /// - Returns: <#description#>
-    func width(withConstrainedHeight height: CGFloat, font: UIFont) -> CGFloat {
+    func width(withConstrainedHeight height: CGFloat, font: Font) -> CGFloat {
         let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
         let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil)
         
@@ -2401,11 +2401,11 @@ public extension String {
 public extension String {
     
     #if canImport(UIKit)
-    private typealias Font = UIFont
+    typealias Font = UIFont
     #endif
     
     #if canImport(AppKit) && !targetEnvironment(macCatalyst)
-    private typealias Font = NSFont
+    typealias Font = NSFont
     #endif
     
     #if os(iOS) || os(macOS)

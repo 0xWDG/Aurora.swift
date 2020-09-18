@@ -235,7 +235,7 @@ extension Aurora {
                 }.resume()
                 
                 while waiting {
-                    print("Waiting...")
+                    Aurora.shared.log("Waiting...")
                 }
                 
                 return data
@@ -300,7 +300,7 @@ extension Aurora {
                 }.resume()
                 
                 while waiting {
-                    //                    print("Waiting...")
+                    //                    Aurora.shared.log("Waiting...")
                 }
                 
                 return data!
@@ -332,7 +332,7 @@ extension Aurora {
             )
             return htmlLessString
         } catch {
-            print("Failed to parse HTML String")
+            Aurora.shared.log("Failed to parse HTML String")
             return html
         }
     }
