@@ -76,6 +76,7 @@ extension CGVector: Configure {}
 extension Array: Configure {}
 extension Dictionary: Configure {}
 extension Set: Configure {}
+extension URLRequest: Configure {}
 
 #if os(iOS) || os(tvOS)
   extension UIEdgeInsets: Configure {}
