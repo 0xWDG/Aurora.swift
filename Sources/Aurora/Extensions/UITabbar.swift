@@ -44,7 +44,7 @@ extension UITabBar {
     ///
     /// Example:
     ///
-    ///     self.tabBar?.onTap(times: 10, execute: {
+    ///     self.tabBar?.onTap(times: 10, execute: { title in
     ///       // Code to run.
     ///     })
     ///
@@ -52,7 +52,7 @@ extension UITabBar {
     /// - Parameters:
     ///   - times: After x taps
     ///   - execute: What to execute
-    public func onTap(times: Int? = 10, execute: @escaping (() -> Void)) {
+    public func onTap(times: Int? = 10, execute: @escaping ((String) -> Void)) {
         let runner = AuroraOnTabBarInteractionDelegate.sharedInstance
         runner.onInteractionClosure = execute
         runner.onTimes = times ?? 10

@@ -193,6 +193,12 @@ public extension String {
         return try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any]
     }
     
+    /// JSON to Dictionary
+    var asStrDict: [String: String]? {
+        guard let data = self.data(using: .utf8) else { return nil }
+        return try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: String]
+    }
+    
     /// JSON to Array
     var asArray: [Any]? {
         guard let data = self.data(using: .utf8) else { return nil }
