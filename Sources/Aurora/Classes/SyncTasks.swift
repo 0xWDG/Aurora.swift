@@ -46,8 +46,8 @@ extension Aurora {
     /// - Parameters:
     ///   - after: <#after description#>
     ///   - closure: <#closure description#>
-    public func delay(_ after: Double, closure: @escaping () -> Void) {
-        let when = DispatchTime.now() + after
+    public func delay(seconds: Double, closure: @escaping () -> Void) {
+        let when = DispatchTime.now() + seconds
         DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
     }
     
@@ -55,7 +55,7 @@ extension Aurora {
     /// - Parameters:
     ///   - after: <#after description#>
     ///   - closure: <#closure description#>
-    public func execute(_ after: Double, closure: @escaping () -> Void) {
+    public func execute(after: Double, closure: @escaping () -> Void) {
         let when = DispatchTime.now() + after
         DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
     }

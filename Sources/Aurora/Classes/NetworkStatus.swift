@@ -37,7 +37,8 @@ public class NetworkStatus {
         guard let monitor = monitor else { return nil }
         
         return monitor.currentPath.availableInterfaces.filter {
-            monitor.currentPath.usesInterfaceType($0.type) }.first?.type
+            monitor.currentPath.usesInterfaceType($0.type)
+        }.first?.type
     }
     
     /// <#Description#>

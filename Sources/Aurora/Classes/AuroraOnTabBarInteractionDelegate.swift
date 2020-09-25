@@ -23,7 +23,7 @@ import UIKit
 /// <#Description#>
 class AuroraOnTabBarInteractionDelegate: NSObject, UITabBarControllerDelegate, UITabBarDelegate {
     /// onInteraction closute
-    public var onInteractionClosure: (() -> Void)?
+    public var onInteractionClosure: ((String) -> Void)?
     /// On x times
     public var onTimes: Int = 10
     
@@ -55,7 +55,11 @@ class AuroraOnTabBarInteractionDelegate: NSObject, UITabBarControllerDelegate, U
                 if tapCounter.1 >= onTimes {
                     tapCounter.1 = 0
                     
-                    onInteractionClosure?()
+                    if let title = item.title {
+                        onInteractionClosure?(title)
+                    } else {
+                        onInteractionClosure?("item")
+                    }
                 }
             }
         }
@@ -79,8 +83,12 @@ class AuroraOnTabBarInteractionDelegate: NSObject, UITabBarControllerDelegate, U
                 
                 if tapCounter.1 >= onTimes {
                     tapCounter.1 = 0
-                    
-                    onInteractionClosure?()
+
+                    if let title = tabBarController.tabBar.items?[tabBarController.selectedIndex].title {
+                        onInteractionClosure?(title)
+                    } else {
+                        onInteractionClosure?("item")
+                    }
                 }
             }
         }

@@ -46,7 +46,7 @@ extension UITabBarController {
     ///
     /// Example:
     ///
-    ///     self.tabBarController?.onTap(times: 10, execute: {
+    ///     self.tabBarController?.onTap(times: 10, execute: { title in
     ///       // Code to run.
     ///     })
     ///
@@ -54,7 +54,7 @@ extension UITabBarController {
     /// - Parameters:
     ///   - times: After x taps
     ///   - execute: What to execute
-    public func onTap(times: Int? = 10, execute: @escaping (() -> Void)) {
+    public func onTap(times: Int? = 10, execute: @escaping ((String) -> Void)) {
         let runner = AuroraOnTabBarInteractionDelegate.sharedInstance
         runner.onInteractionClosure = execute
         runner.onTimes = times ?? 10
@@ -63,6 +63,15 @@ extension UITabBarController {
     }
     
     /// Reload the current selected view
+    ///
+    /// It resets the loading of the current view.
+    /// switches from tab and then switches back.
+    /// - note: the current view will be re-loaded
+    /// the functions below will be re-called
+    /// - `viewWillDisappear(_ animated: Bool)`
+    /// - `viewDidDisappear(_ animated: Bool)`
+    /// - `viewWillAappear(_ animated: Bool)`
+    /// - `viewDidAppear(_ animated: Bool)`
     public func reloadCurrentView() {
         // save the selected index
         let oldSelected = selectedIndex
