@@ -21,32 +21,32 @@ import Foundation
 extension Bundle {
     /// The app name
     public var appName: String {
-        string(for: kCFBundleNameKey as String)
+        return string(for: kCFBundleNameKey as String)
     }
     
     /// The app version
     @objc public var appVersion: String {
-        string(for: "CFBundleShortVersionString")
+        return string(for: "CFBundleShortVersionString")
     }
     
     /// The display name
     public var displayName: String {
-        string(for: "CFBundleDisplayName")
+        return string(for: "CFBundleDisplayName")
     }
     
     /// The app build number
     public var appBuild: String {
-        string(for: kCFBundleVersionKey as String)
+        return string(for: kCFBundleVersionKey as String)
     }
     
     /// The app bundle identifier
     public var bundleId: String {
-        string(for: "CFBundleIdentifier")
+        return string(for: "CFBundleIdentifier")
     }
     
     /// Check either the app has been installed using TestFlight.
     public var isInTestFlight: Bool {
-        appStoreReceiptURL?.path.contains("sandboxReceipt") == true
+        return appStoreReceiptURL?.path.contains("sandboxReceipt") == true
     }
     
     /// Runtime code to check if the code runs in an app extension
@@ -88,7 +88,7 @@ extension Bundle {
     
     /// <#Description#>
     public var mainScheme: String? {
-        schemes.first
+        return schemes.first
     }
 }
 #endif
