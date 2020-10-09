@@ -19,7 +19,7 @@ import Foundation
 #if canImport(UIKit)
 import UIKit
 
-#if os(iOS)
+#if os(iOS) || os(tvOS)
 #if canImport(AudioToolbox)
 import AudioToolbox
 #endif
@@ -81,24 +81,73 @@ public extension UIDevice {
         AudioServicesPlaySystemSound(1519)
     }
     #endif
+    
+    #if os(iOS)
+    /// Current screen orientation
+    static var screenOrientation: UIInterfaceOrientation {
+        return UIApplication.shared.statusBarOrientation
+    }
+    #endif
+    
+    /// Screen width
+    var screenWidth: CGFloat {
+        #if os(iOS)
+        if UIDevice.screenOrientation.isPortrait {
+            return UIScreen.main.bounds.size.width
+        } else {
+            return UIScreen.main.bounds.size.height
+        }
+        #elseif os(tvOS)
+        return UIScreen.main.bounds.size.width
+        #endif
+    }
+    
+    /// Screen height
+    static var screenHeight: CGFloat {
+        #if os(iOS)
+        if UIDevice.screenOrientation.isPortrait {
+            return UIScreen.main.bounds.size.height
+        } else {
+            return UIScreen.main.bounds.size.width
+        }
+        #elseif os(tvOS)
+        return UIScreen.main.bounds.size.height
+        #endif
+    }
 }
 
 // MARK: - Rotation
-#if os(iOS)
-extension UIDevice {
+public extension UIDevice {
     /// Force the device rotation.
     /// - Parameter orientation: The orientation that the device will be forced to.
-    public class func forceRotation(_ orientation: UIInterfaceOrientation) {
+    class func forceRotation(_ orientation: UIInterfaceOrientation) {
         UIDevice.current.forceRotation(orientation)
     }
     
     /// Force the device rotation.
     /// - Parameter orientation: The orientation that the device will be forced to.
-    public func forceRotation(_ orientation: UIInterfaceOrientation) {
+    func forceRotation(_ orientation: UIInterfaceOrientation) {
         setValue(orientation.rawValue, forKey: "orientation")
     }
     
+    /// StatusBar height
+    static var screenStatusBarHeight: CGFloat {
+        return UIApplication.shared.statusBarFrame.height
+    }
+    
+    /// Screen's height without StatusBar
+    static var screenHeightWithoutStatusBar: CGFloat {
+        if screenOrientation.isPortrait {
+            return UIScreen.main.bounds.size.height - screenStatusBarHeight
+        } else {
+            return UIScreen.main.bounds.size.width - screenStatusBarHeight
+        }
+    }
+
+    /// Returns the locale country code. An example value might be "ES".
+    static var currentRegion: String? {
+        return (Locale.current as NSLocale).object(forKey: NSLocale.Key.countryCode) as? String
+    }
 }
-#endif
 #endif
 #endif
