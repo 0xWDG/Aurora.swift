@@ -61,7 +61,7 @@ final class ObjectAssociation<T: Any> {
     }
 }
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 import UIKit
 
 public extension UIControl {

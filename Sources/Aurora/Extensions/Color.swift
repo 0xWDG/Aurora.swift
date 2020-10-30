@@ -15,10 +15,8 @@
 //
 // Licence: Needs to be decided.
 
-#if !os(Linux)
-#if !os(watchOS)
+#if !os(Linux) && !os(watchOS)
 import CoreImage
-#endif
 
 // swiftlint:disable file_length
 // MARK: - Properties
@@ -133,12 +131,10 @@ public extension Color {
         return cgColor.alpha
     }
     
-    #if !os(watchOS)
     /// CoreImage.CIColor (read-only)
     var coreImageColor: CoreImage.CIColor? {
         return CoreImage.CIColor(color: self)
     }
-    #endif
     
     /// Get UInt representation of a Color (read-only).
     var uInt: UInt {
@@ -154,7 +150,7 @@ public extension Color {
         
         return UInt(colorAsUInt32)
     }
-    
+
     /// Get color complementary (read-only, if applicable).
     var complementary: Color? {
         let colorSpaceRGB = CGColorSpaceCreateDeviceRGB()
@@ -182,7 +178,6 @@ public extension Color {
         
         return Color(red: red, green: green, blue: blue, alpha: 1.0)
     }
-    
 }
 
 // MARK: - Methods

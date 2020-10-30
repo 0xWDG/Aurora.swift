@@ -75,6 +75,10 @@ public class UIGradientView: UIView {
     /// Old orientation
     private var _oldOrientation = UIDevice.current.orientation
     
+    override open func prepareForInterfaceBuilder() {
+        print("i should generate a preview.")
+    }
+    
     /// Somethings have changed, if it is the orientation, then update
     public override func layoutSubviews() {
         if _oldOrientation != UIDevice.current.orientation {

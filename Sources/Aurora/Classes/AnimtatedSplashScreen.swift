@@ -6,7 +6,7 @@ import Foundation
 // Added: .init(.... backgroundView: yourview)
 // Better handling of the onComplete.
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 
 import UIKit
 

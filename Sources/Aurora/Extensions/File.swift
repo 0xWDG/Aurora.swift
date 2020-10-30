@@ -7,7 +7,7 @@
 
 import Foundation
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 import UIKit
 extension UIWindow {
     static var key: UIWindow? {

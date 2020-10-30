@@ -1,5 +1,6 @@
 // $$HEADER$$
 
+#if !os(watchOS)
 import Foundation
 
 import XCTest
@@ -17,3 +18,4 @@ class AuroraDictionaryTest: XCTestCase {
         XCTAssert(dict["Dictionary"] == "!", "Should be \"!\"")
     }
 }
+#endif

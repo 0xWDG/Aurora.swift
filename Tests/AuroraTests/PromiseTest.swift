@@ -5,6 +5,7 @@
 //  Created by Wesley de Groot on 08/05/2020.
 //
 
+#if !os(watchOS)
 import Foundation
 
 import XCTest
@@ -50,3 +51,4 @@ extension AuroraTest {
         }
     }
 }
+#endif

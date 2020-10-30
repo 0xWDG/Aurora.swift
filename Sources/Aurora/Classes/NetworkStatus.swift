@@ -4,6 +4,7 @@ import Foundation
 import Network
 
 /// <#Description#>
+@available(tvOS 12.0, *)
 public class NetworkStatus {
     
     // MARK: - Properties

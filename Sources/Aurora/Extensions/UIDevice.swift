@@ -82,7 +82,7 @@ public extension UIDevice {
     }
     #endif
     
-    #if os(iOS)
+    #if os(iOS) && !os(tvOS)
     /// Current screen orientation
     static var screenOrientation: UIInterfaceOrientation {
         return UIApplication.shared.statusBarOrientation
@@ -118,6 +118,7 @@ public extension UIDevice {
 
 // MARK: - Rotation
 public extension UIDevice {
+    #if !os(tvOS)
     /// Force the device rotation.
     /// - Parameter orientation: The orientation that the device will be forced to.
     class func forceRotation(_ orientation: UIInterfaceOrientation) {
@@ -143,7 +144,8 @@ public extension UIDevice {
             return UIScreen.main.bounds.size.width - screenStatusBarHeight
         }
     }
-
+    #endif
+    
     /// Returns the locale country code. An example value might be "ES".
     static var currentRegion: String? {
         return (Locale.current as NSLocale).object(forKey: NSLocale.Key.countryCode) as? String

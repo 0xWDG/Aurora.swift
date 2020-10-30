@@ -5,6 +5,7 @@
 //  Created by Wesley de Groot on 19/06/2020.
 //
 
+#if !os(watchOS)
 import XCTest
 
 @testable import Aurora
@@ -237,3 +238,4 @@ class AuroraIntTest: XCTestCase {
         )
     }
 }
+#endif
