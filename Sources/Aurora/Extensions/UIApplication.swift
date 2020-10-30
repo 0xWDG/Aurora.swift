@@ -16,7 +16,7 @@
 // Licence: Needs to be decided.
 
 import Foundation
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 import UIKit
 
 public extension UIApplication {
@@ -29,6 +29,7 @@ public extension UIApplication {
         }
     }
     
+    #if !os(watchOS)
     var key: UIWindow? {
         if #available(iOS 13, *) {
             return UIApplication.shared.windows.first { $0.isKeyWindow }
@@ -36,6 +37,7 @@ public extension UIApplication {
             return UIApplication.shared.keyWindow
         }
     }
+    #endif
 }
 
 @available(iOS 10.0, tvOS 10.0, *)
@@ -58,6 +60,7 @@ public extension UIApplication {
     
 }
 
+#if os(iOS)
 public extension UIApplication {
     /// Get the UIApplication delegate
     /// - Parameter type: The application delegate type.
@@ -67,4 +70,5 @@ public extension UIApplication {
     }
     
 }
+#endif
 #endif

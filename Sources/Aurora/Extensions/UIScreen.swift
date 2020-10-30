@@ -48,10 +48,12 @@ extension UIScreen {
         UIScreen.main.bounds.size.width - statusBarHeight
     }
     
+    #if !os(tvOS)
     /// Get the current screen orientation.
     @objc public class var currentOrientation: UIInterfaceOrientation {
         UIApplication.shared.statusBarOrientation
     }
+    #endif
     #endif
 }
 #endif

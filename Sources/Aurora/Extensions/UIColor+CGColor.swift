@@ -62,7 +62,7 @@ extension UIColor {
     /// <#Description#>
     public static var cellBackgroundcolor: UIColor {
         if #available(iOS 13.0, *) {
-            #if os(tvOS)
+            #if os(tvOS) || os(watchOS)
             return .white
             #else
             return .systemBackground
@@ -108,9 +108,9 @@ extension UIColor {
             hexCode.remove(at: hexCode.range(of: "#")!.lowerBound)
         }
         
-        var hexInt: UInt32 = 0
+        var hexInt: UInt64 = 0
         let scanner = Scanner(string: hexCode)
-        if !scanner.scanHexInt32(&hexInt) {
+        if !scanner.scanHexInt64(&hexInt) {
             return nil
         }
         

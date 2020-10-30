@@ -1,5 +1,6 @@
 // $$HEADER$$
 
+#if !os(watchOS)
 import Foundation
 import XCTest
 
@@ -24,3 +25,4 @@ class AuroraTest: XCTestCase {
         XCTAssert(Aurora.shared.log("This is a test"), "Should be true")
     }
 }
+#endif

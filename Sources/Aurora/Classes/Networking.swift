@@ -12,6 +12,7 @@ import CommonCrypto
 #endif
 #endif
 
+@available(tvOS 12.0, *)
 extension Aurora {
     static var cookies: [HTTPCookie]? = []
     
@@ -133,7 +134,7 @@ extension Aurora {
                 
                 // Log, if we are in debugmode.
                 log("HTTP (POST): \(url)\nbody (escaped): \(post)\nbody (unescaped): \(post.removingPercentEncoding!)")
-
+                
             } else {
                 // We're getting
                 
@@ -142,7 +143,7 @@ extension Aurora {
                 
                 // Log, if we are in debugmode.
                 log("HTTP (GET): \(url)\npost body (escaped): \(post)\npost body (unescaped): \(post.removingPercentEncoding!)")
-
+                
             }
         }
         
@@ -177,10 +178,24 @@ extension Aurora {
             )
         }
         
+        //        #if os(iOS)
+        //        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        //        #endif
+        
         // Start our datatask
         session.dataTask(with: request) { (sitedata, _, theError) in
+            //            #if os(iOS)
+            //            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            //            #endif
+            
             /// Check if we got any useable site data
             guard let sitedata = sitedata else {
+                if post.length > 3 {
+                    self.log("HTTP (POST): \(url)\nbody (escaped): \(post)\nbody (unescaped): \(post.removingPercentEncoding!)\nError: \(theError?.localizedDescription)")
+                } else {
+                    self.log("HTTP (GET): \(url)\npost body (escaped): \(post)\npost body (unescaped): \(post.removingPercentEncoding!)\nError: \(theError?.localizedDescription)")
+                }
+                
                 completionHandler(.failure(theError!))
                 return
             }
@@ -188,9 +203,16 @@ extension Aurora {
             // Save our cookies
             Aurora.cookies = session.configuration.httpCookieStorage?.cookies
             
+            if post.length > 3 {
+                self.log("HTTP (POST): \(url)\nbody (escaped): \(post)\nbody (unescaped): \(post.removingPercentEncoding!)\nresponse: \(String.init(data: sitedata, encoding: .utf8)?.substr(0, 120).replace("\n", withString: ""))")
+            } else {
+                self.log("HTTP (GET): \(url)\npost body (escaped): \(post)\npost body (unescaped): \(post.removingPercentEncoding!)\nresponse: \(String.init(data: sitedata, encoding: .utf8)?.substr(0, 120).replace("\n", withString: ""))")
+            }
+            
             completionHandler(.success(String.init(data: sitedata, encoding: .utf8)!))
         }.resume()
     }
+    
     /**
      * networkRequest
      *
@@ -479,8 +501,13 @@ class URLSessionPinningDelegate: NSObject, URLSessionDelegate {
     let pinnedPublicKeyHash: String
     
     override init() {
-        pinnedCertificateHash = Aurora.shared.getCertificateHash()
-        pinnedPublicKeyHash = Aurora.shared.getPublicKeyHash()
+        if #available(tvOS 12.0, *) {
+            pinnedCertificateHash = Aurora.shared.getCertificateHash()
+            pinnedPublicKeyHash = Aurora.shared.getPublicKeyHash()
+        } else {
+            pinnedCertificateHash = ""
+            pinnedPublicKeyHash = ""
+        }
         
         super.init()
     }
@@ -533,7 +560,8 @@ class URLSessionPinningDelegate: NSObject, URLSessionDelegate {
                 
                 /// status
                 let status = SecTrustEvaluate(serverTrust, &secresult)
-                
+//                let status = SecTrustEvaluateWithError(serverTrust, &secresult)
+
                 if(errSecSuccess == status) {
                     // Aurora.shared.log(SecTrustGetCertificateCount(serverTrust))
                     /// Server certificate
@@ -562,31 +590,35 @@ class URLSessionPinningDelegate: NSObject, URLSessionDelegate {
                             }
                         }
                         
-                        if (pinnedPublicKeyHash.count > 2) {
-                            /// Public key pinning
-                            let serverPublicKey = SecCertificateCopyKey(
-                                serverCertificate
-                            )
-                            
-                            /// Public key data
-                            let serverPublicKeyData: NSData = SecKeyCopyExternalRepresentation(
-                                serverPublicKey!,
-                                nil
-                            )!
-                            
-                            /// Key hash
-                            let keyHash = sha256(
-                                data: serverPublicKeyData as Data
-                            )
-                            
-                            if (keyHash == pinnedPublicKeyHash) {
-                                // Success! This is our server
-                                completionHandler(
-                                    .useCredential,
-                                    URLCredential(trust: serverTrust)
+                        if #available(tvOS 12.0, *) {
+                            if (pinnedPublicKeyHash.count > 2) {
+                                /// Public key pinning
+                                let serverPublicKey = SecCertificateCopyKey(
+                                    serverCertificate
                                 )
-                                return
+                                
+                                /// Public key data
+                                let serverPublicKeyData: NSData = SecKeyCopyExternalRepresentation(
+                                    serverPublicKey!,
+                                    nil
+                                )!
+                                
+                                /// Key hash
+                                let keyHash = sha256(
+                                    data: serverPublicKeyData as Data
+                                )
+                                
+                                if (keyHash == pinnedPublicKeyHash) {
+                                    // Success! This is our server
+                                    completionHandler(
+                                        .useCredential,
+                                        URLCredential(trust: serverTrust)
+                                    )
+                                    return
+                                }
                             }
+                        } else {
+                            fatalError("SSL Pinning is not available on this version of tvOS")
                         }
                     }
                 }

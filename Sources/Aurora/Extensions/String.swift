@@ -42,7 +42,17 @@ public extension String {
     /// - Returns: The substring corresponding to the specified range.
     subscript (bounds: CountableClosedRange<Int>) -> String {
         let start = index(startIndex, offsetBy: bounds.lowerBound)
-        let end = index(startIndex, offsetBy: bounds.upperBound)
+        
+        let end = index(
+            startIndex,
+            offsetBy: (self.length <= bounds.upperBound ? bounds.upperBound : self.length) - 1
+        )
+
+        // If self is empty, then do nothing with it.
+        if self == "" {
+            return self
+        }
+        
         return String(self[start...end])
     }
     
@@ -1127,7 +1137,7 @@ public extension String {
             // We'll need to handle the length...
             
             if length > 0 {
-                if start < 1 {
+                if start < 0 {
                     // We'll know this trick!
                     let startPosition: Int = (str.count + start)
                     
@@ -1150,7 +1160,7 @@ public extension String {
                     let startPosition: Int = start
                     
                     // Will be postitive in the end. (hopefully :P)
-                    var endPosition: Int = ((str.count - start) + length)
+                    var endPosition: Int = length
                     
                     // If the endposition > the string, just string length.
                     if endPosition > str.count {
