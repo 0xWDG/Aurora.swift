@@ -32,6 +32,7 @@ $aurora = array(
 	'main' => glob("Sources/Aurora/*.swift"),
 	'classess' => glob("Sources/Aurora/Classes/*.swift"),
 	'extensions' => glob("Sources/Aurora/Extensions/*.swift"),
+	'tests' => glob("Tests/AuroraTests/*.swift"),
 );
 
 foreach ($aurora as $key => $value) {
