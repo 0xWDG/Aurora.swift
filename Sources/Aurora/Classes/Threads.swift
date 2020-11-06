@@ -80,6 +80,14 @@ extension Aurora {
         }
     }
     
+    /// repeat/run
+    /// - Parameters:
+    ///   - every: <#every description#>
+    ///   - block: <#block description#>
+    public func run(every: TimeInterval, block: @escaping (Timer) -> Void) {
+        Timer.scheduledTimer(withTimeInterval: every, repeats: true, block: block)
+    }
+    
     /// <#Description#>
     /// - Parameters:
     ///   - background: <#background description#>

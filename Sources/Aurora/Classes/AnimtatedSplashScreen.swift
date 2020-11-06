@@ -58,7 +58,6 @@ public protocol SplashAnimatable: class {
  - Twitter: The default animation type is the Twitter App animation
  */
 public enum SplashAnimationType: String{
-    
     case twitter
     case rotateOut
     case woobleAndZoomOut
@@ -72,31 +71,27 @@ public enum SplashAnimationType: String{
 open class AnimatedSplashScreen: UIView, SplashAnimatable {
     /// The icon image to show and reveal with
     open var iconImage: UIImage? {
-        
-        didSet{
-            if let iconImage = self.iconImage{
+        didSet {
+            if let iconImage = self.iconImage {
                 imageView?.image = iconImage
             }
         }
-        
     }
     
     ///The icon color of the image, defaults to white
-    open var iconColor: UIColor = UIColor.white{
-        didSet{
+    open var iconColor: UIColor = UIColor.white {
+        didSet {
             imageView?.tintColor = iconColor
         }
     }
     
-    open var useCustomIconColor: Bool = false{
-        didSet{
-            if(useCustomIconColor == true){
+    open var useCustomIconColor: Bool = false {
+        didSet {
+            if(useCustomIconColor == true) {
                 if let iconImage = self.iconImage {
                     imageView?.image = iconImage.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
                 }
-            }
-            else{
-                
+            } else {
                 if let iconImage = self.iconImage {
                     imageView?.image = iconImage.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
                 }
@@ -106,9 +101,7 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
     
     ///The initial size of the icon. Ideally it has to match with the size of the icon in your LaunchScreen Splash view
     open var iconInitialSize: CGSize = CGSize(width: 60, height: 60) {
-        
-        didSet{
-            
+        didSet {
             imageView?.frame = CGRect(x: 0, y: 0, width: iconInitialSize.width, height: iconInitialSize.height)
         }
     }
@@ -143,8 +136,7 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
      
      - returns: The created RevealingSplashViewObject
      */
-    public init(iconImage: UIImage, iconInitialSize:CGSize, backgroundColor: UIColor)
-    {
+    public init(iconImage: UIImage, iconInitialSize:CGSize, backgroundColor: UIColor) {
         //Sets the initial values of the image view and icon view
         self.imageView = UIImageView()
         self.iconImage = iconImage
@@ -168,8 +160,7 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
         
     }
     
-    public init(iconImage: UIImage, iconInitialSize:CGSize, backgroundImage: UIImage)
-    {
+    public init(iconImage: UIImage, iconInitialSize:CGSize, backgroundImage: UIImage) {
         //Sets the initial values of the image view and icon view
         self.imageView = UIImageView()
         self.iconImage = iconImage
@@ -198,8 +189,7 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
         
     }
     
-    public init(iconImage: UIImage, iconInitialSize:CGSize, backgroundView: UIView)
-    {
+    public init(iconImage: UIImage, iconInitialSize:CGSize, backgroundView: UIView) {
         //Sets the initial values of the image view and icon view
         self.imageView = UIImageView()
         self.iconImage = iconImage
@@ -227,13 +217,12 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     /**
      Starts the animation depending on the type
      */
-    public func startAnimation(_ completion: SplashAnimatableCompletion? = nil)
-    {
-        switch animationType{
+    public func startAnimation(_ completion: SplashAnimatableCompletion? = nil) {
+        switch animationType {
         case .twitter:
             playTwitterAnimation(completion)
             
@@ -255,7 +244,6 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
         case .heartBeat:
             playHeartBeatAnimation(completion)
         }
-        
     }
     
     
@@ -264,23 +252,28 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
      */
     func playTwitterAnimation(_ completion: SplashAnimatableCompletion? = nil)
     {
-        
         if let imageView = self.imageView {
-            
             //Define the shink and grow duration based on the duration parameter
             let shrinkDuration: TimeInterval = duration * 0.3
             
             //Plays the shrink animation
-            UIView.animate(withDuration: shrinkDuration, delay: delay, usingSpringWithDamping: 0.7, initialSpringVelocity: 10, options: UIView.AnimationOptions(), animations: {
-                //Shrinks the image
-                let scaleTransform: CGAffineTransform = CGAffineTransform(scaleX: 0.75,y: 0.75)
-                imageView.transform = scaleTransform
-                
-                //When animation completes, grow the image
-            }, completion: { finished in
-                
-                self.playZoomOutAnimation(completion)
-            })
+            UIView.animate(
+                withDuration: shrinkDuration,
+                delay: delay,
+                usingSpringWithDamping: 0.7,
+                initialSpringVelocity: 10,
+                options: UIView.AnimationOptions(),
+                animations: {
+                    
+                    //Shrinks the image
+                    let scaleTransform: CGAffineTransform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+                    imageView.transform = scaleTransform
+                },
+                completion: { finished in
+                    // When animation completes, grow the image
+                    self.playZoomOutAnimation(completion)
+                }
+            )
         }
     }
     
@@ -441,11 +434,10 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
      
      - parameter completion: completion
      */
-    func playZoomOutAnimation(_ completion: SplashAnimatableCompletion? = nil)
-    {
-        if let imageView =  imageView
-        {
+    func playZoomOutAnimation(_ completion: SplashAnimatableCompletion? = nil) {
+        if let imageView = imageView {
             let growDuration: TimeInterval =  duration * 0.3
+            completion?()
             
             UIView.animate(withDuration: growDuration, animations:{
                 
@@ -454,10 +446,7 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
                 
                 //When animation completes remote self from super view
             }, completion: { finished in
-                
                 self.removeFromSuperview()
-                
-                completion?()
             })
         }
     }
@@ -492,8 +481,7 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
      
      - parameter completion: completion
      */
-    func playHeartBeatAnimation(_ completion: SplashAnimatableCompletion? = nil)
-    {
+    func playHeartBeatAnimation(_ completion: SplashAnimatableCompletion? = nil) {
         if let imageView = self.imageView {
             
             let popForce = 0.8
@@ -524,8 +512,7 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
      
      This function will not stop the original completion block from getting called
      */
-    func finishHeartBeatAnimation()
-    {
+    func finishHeartBeatAnimation() {
         self.heartAttack = true
     }
 }

@@ -148,7 +148,7 @@ class AuroraCrashHandler {
         // Try to save to the disk
         
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-            let fileURL = dir.appendingPathComponent("crash.txt")
+            let fileURL = dir.appendingPathComponent("AuroraCrashDump")
             do {
                 try Data(crashReport.utf8).write(to: fileURL)
                 
@@ -164,7 +164,7 @@ class AuroraCrashHandler {
     /// - Returns: <#description#>
     public func getLastCrashLog() -> String? {
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-            let fileURL = dir.appendingPathComponent("crash.txt")
+            let fileURL = dir.appendingPathComponent("AuroraCrashDump")
             if let crashLog = try? String(contentsOf: fileURL) {
                 return crashLog
             }

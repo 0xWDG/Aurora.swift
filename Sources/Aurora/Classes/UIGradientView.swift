@@ -24,7 +24,7 @@ import QuartzCore
 ///
 /// Have a gradient background.
 @IBDesignable
-public class UIGradientView: UIView {
+open class UIGradientView: UIView {
     /// Light color: First Gradient color
     @IBInspectable public var lightFirstColor: UIColor = UIColor.init(
         red: 0.439216,
