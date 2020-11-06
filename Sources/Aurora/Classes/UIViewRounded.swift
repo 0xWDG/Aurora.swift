@@ -22,7 +22,7 @@ import UIKit
 import QuartzCore
 
 @IBDesignable
-public class UIViewRounded: UIView {
+open class UIViewRounded: UIView {
     /// Radius for the UIViewRounded
     @IBInspectable public var radius: CGFloat = 24
     

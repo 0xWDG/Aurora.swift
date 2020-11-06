@@ -21,7 +21,7 @@ import UIKit
 
 /// A Designable UIGreenButton
 @IBDesignable
-public class UIGreenButton: UIButton {
+open class UIGreenButton: UIButton {
     /// <#Description#>
     /// - Parameter frame: <#frame description#>
     override init(frame: CGRect) {
@@ -45,7 +45,7 @@ public class UIGreenButton: UIButton {
     
     /// <#Description#>
     /// - Parameter coder: <#coder description#>
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         super.init(coder: coder)
     }
 }

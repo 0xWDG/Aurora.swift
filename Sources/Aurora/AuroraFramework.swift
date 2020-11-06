@@ -38,25 +38,16 @@ import CryptoKit
 /// - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 ///  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 open class Aurora {
-    /**
-     The shared instance of the "AuroraFramework"
-     - Parameter sharedInstance: The "AuroraFramework" shared instance
-     */
+    /// The shared instance of the "AuroraFramework"
     public static let shared = Aurora()
     
-    /// Initialize crash logger
+    /// Initialize crash handler
     static let crashLogger = AuroraCrashHandler.shared
 
-    /**
-     The version of
-     - Parameter version: The version of AuroraFramework
-     */
+    /// the version
     public let version = "1.0"
     
-    /**
-     The product name
-     - Parameter product: The product name
-     */
+    /// The product name
     public let product = "Aurora Framework"
     
     /// Should we debug right now?
@@ -71,13 +62,13 @@ open class Aurora {
     ///            the Internet.
     public var logHandler: ((String) -> Void)?
 
+    /// Logging history
+    private var logHistory: [String] = []
+    
     /// Is it already started?
     var isInitialized: Bool = false
     
-    /**
-     This will setup iCloud sync!
-     NSUserDefaults to iCloud & Back.
-     */
+    /// Initialize
     public init(_ silent: Bool = true) {
         #if os(iOS)
         self.log("Aurora Framework for iOS \(self.version) loaded")
@@ -130,16 +121,20 @@ open class Aurora {
     @discardableResult
     public func log(_ message: String..., file: String = #file, line: Int = #line, function: String = #function) -> Bool {
         if debug {
-            // Any... = [Any]
-            
             // extract filename, without path, and without extension.
             let fileName: String = (file.split("/").last)!.split(".").first!
             
+            // Make up the log message.
+            let logMessage: String = "[Aurora.Framework] \(fileName):\(line) \(function):\n \(message.joined(separator: " "))\n"
+            
             // Print the "messages"
-            Swift.print("[Aurora.Framework] \(fileName):\(line) \(function):\n \(message.joined(separator: " "))\n")
+            Swift.print(logMessage)
+            
+            // Append to the history
+            logHistory.append(logMessage)
             
             if isInitialized {
-                Aurora.shared.logHandler?("[Aurora.Framework] \(fileName):\(line) \(function):\n \(message.joined(separator: " "))\n")
+                Aurora.shared.logHandler?(logMessage)
             }
         }
         
@@ -226,6 +221,12 @@ open class Aurora {
         return log(message.joined(separator: " "), file: file, line: line, function: function)
     }
     
+    /// Get the log messages
+    /// - Returns: The last crashlog
+    public func getLogMessages() -> [String] {
+        return logHistory
+    }
+    
     /// Get the last crash log
     /// - Returns: The last crashlog
     public func getLastCrashLog() -> String? {
@@ -234,6 +235,7 @@ open class Aurora {
     
     /// Delete the last crash log
     /// - Returns: Bool if deleted
+    @discardableResult
     public func deleteLastCrashLog() -> Bool {
         return Aurora.crashLogger.deleteLastCrashLog()
     }
