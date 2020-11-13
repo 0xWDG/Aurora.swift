@@ -18,6 +18,8 @@
 import Foundation
 
 #if os(iOS)
+private class AuroraBundleFinder {}
+
 extension Bundle {
     /// The app name
     public var appName: String {
@@ -91,4 +93,59 @@ extension Bundle {
         return schemes.first
     }
 }
+
+import class Foundation.Bundle
+
+extension Foundation.Bundle {
+    // Thanks 'DateTimePicker'
+    // https://github.com/itsmeichigo/DateTimePicker/pull/104/files
+    // Since Xcode isnt fixed, we'll use this.
+
+    /// The resource bundle associated with the current module..
+    /// important: When `Aurora` is distributed via Swift Package Manager, it will be synthesized automatically in the name of `Bundle.module`.
+    static var resource: Bundle = {
+         let moduleName = "Aurora"
+         #if COCOAPODS
+         let bundleName = moduleName
+         #else
+         let bundleName = "\(moduleName)_\(moduleName)"
+         #endif
+
+          let candidates = [
+             // Bundle should be present here when the package is linked into an App.
+             Bundle.main.resourceURL,
+
+              // Bundle should be present here when the package is linked into a framework.
+             Bundle(for: AuroraBundleFinder.self).resourceURL,
+
+              // For command-line tools.
+             Bundle.main.bundleURL,
+         ]
+
+          for candidate in candidates {
+             let bundlePath = candidate?.appendingPathComponent(bundleName + ".bundle")
+             if let bundle = bundlePath.flatMap(Bundle.init(url:)) {
+                 return bundle
+             }
+         }
+
+          fatalError("Unable to find bundle named \(bundleName)")
+     }()
+ }
+
+#if !SWIFT_PACKAGE
+        // AS DEFINED IN SWIFTPM
+        // https://github.com/apple/swift-package-manager/blob/main/Sources/Build/BuildPlan.swift#L591-L606
+        // extension Foundation.Bundle {
+        //     static var module: Bundle = {
+        //         let mainPath = "\(mainPath.asSwiftStringLiteralConstant)"
+        //         let buildPath = "\(bundlePath.asSwiftStringLiteralConstant)"
+        //         let preferredBundle = Bundle(path: mainPath)
+        //         guard let bundle = preferredBundle != nil ? preferredBundle : Bundle(path: buildPath) else {
+        //             fatalError("could not load resource bundle: from \\(mainPath) or \\(buildPath)")
+        //         }
+        //         return bundle
+        //     }()
+        // }
+#endif
 #endif

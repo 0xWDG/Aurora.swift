@@ -46,6 +46,13 @@ extension FileManager {
         #endif
     }
     
+    /// Does the directory exists at path?
+    /// - Parameter path: a file URL where we will check for an directory.
+    @objc static func directoryExistsAtPath(_ path: String) -> Bool {
+        var isDirectory = ObjCBool(true)
+        let exists = FileManager.default.fileExists(atPath: path, isDirectory: &isDirectory)
+        return exists && isDirectory.boolValue
+    }
 }
 
 // MARK: - Create
@@ -70,7 +77,6 @@ extension FileManager {
             try fileManager.createDirectory(at: directoryUrl, withIntermediateDirectories: true, attributes: nil)
         }
     }
-    
 }
 
 // MARK: - Remove
