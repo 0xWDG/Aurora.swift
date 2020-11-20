@@ -23,7 +23,7 @@ import UIKit
 /// Temporary Directory
 let TMP: String = NSTemporaryDirectory()
 
-extension UIImage {
+public extension UIImage {
     /// <#Description#>
     /// - Parameter image: <#image description#>
     func cacheImage(_ image: String) {

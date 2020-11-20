@@ -18,9 +18,9 @@
 #if os(iOS) || os(tvOS)
 import UIKit
 
-extension UIStoryboard {
+public extension UIStoryboard {
     /// Get the main application storyboard.
-    public class var main: UIStoryboard? {
+    class var main: UIStoryboard? {
         let bundle = Bundle.main
         guard let storyboardName = bundle.object(forInfoDictionaryKey: "UIMainStoryboardFile") as? String else {
             return nil

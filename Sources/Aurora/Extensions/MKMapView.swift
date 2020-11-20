@@ -22,13 +22,13 @@ import Foundation
 #if canImport(MapKit) && !os(watchOS) && !os(tvOS)
 import MapKit
 
-extension MKMapView {
+public extension MKMapView {
     /// New Annotation
     /// - Parameters:
     ///   - coordinate: the coordinate
     ///   - title: the title
     ///   - subtitle: the subtitle
-    public func newAnnotation(coordinate: CLLocationCoordinate2D, title: String, subtitle: String) {
+    func newAnnotation(coordinate: CLLocationCoordinate2D, title: String, subtitle: String) {
         let point = MKPointAnnotation.init()
         point.title = title
         point.subtitle = subtitle
@@ -41,7 +41,7 @@ extension MKMapView {
     ///   - coordinate: the coordinate
     ///   - title: the title
     ///   - subtitle: the subtitle
-    public func addAnnotation(coordinate: CLLocationCoordinate2D, title: String, subtitle: String) {
+    func addAnnotation(coordinate: CLLocationCoordinate2D, title: String, subtitle: String) {
         let point = MKPointAnnotation.init()
         point.title = title
         point.subtitle = subtitle

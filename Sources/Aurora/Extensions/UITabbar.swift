@@ -18,10 +18,10 @@
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
 
-extension UITabBar {
+public extension UITabBar {
     /// <#Description#>
     /// - Parameter withName: <#withName description#>
-    public func select(withName: String) {
+    func select(withName: String) {
         var currentIndex = 0
         
         guard let items = items else {
@@ -52,7 +52,7 @@ extension UITabBar {
     /// - Parameters:
     ///   - times: After x taps
     ///   - execute: What to execute
-    public func onTap(times: Int? = 10, execute: @escaping ((String) -> Void)) {
+    func onTap(times: Int? = 10, execute: @escaping ((String) -> Void)) {
         let runner = AuroraOnTabBarInteractionDelegate.sharedInstance
         runner.onInteractionClosure = execute
         runner.onTimes = times ?? 10

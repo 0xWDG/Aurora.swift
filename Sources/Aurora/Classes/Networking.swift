@@ -83,6 +83,24 @@ extension Aurora {
         return HTTPSCertificate.publicKeyHash
     }
     
+    func networkFetch(fromURL: URL) -> Data {
+        var waiting = true
+        var returnData: Data = Data.init()
+        
+        URLSession.shared.dataTask(with: fromURL) { dataTaskData, _, _ in
+            if let dataTaskData = dataTaskData {
+                returnData = dataTaskData
+            }
+            
+            waiting = false
+        }
+        .resume()
+        
+        while (waiting) { }
+        
+        return returnData
+    }
+    
     /**
      * networkRequest
      *

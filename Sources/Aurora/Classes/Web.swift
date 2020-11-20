@@ -67,12 +67,12 @@ open class SimpleTimer {/*<--was named Timer, but since swift 3, NSTimer is now 
     }
 }
 
-extension Aurora {
+public extension Aurora {
     /// <#Description#>
     /// - Parameters:
     ///   - forURL: <#forURL description#>
     ///   - completion: <#completion description#>
-    open func dataTaskHelper(forURL: URL?, completion: @escaping (String) -> Void) {
+    func dataTaskHelper(forURL: URL?, completion: @escaping (String) -> Void) {
         let session = URLSession.shared
         let request = URLRequest.init(
             url: forURL ?? URL.init(string: "")!,
@@ -119,7 +119,7 @@ extension Aurora {
     /// <#Description#>
     /// - Parameter url: <#url description#>
     /// - Returns: <#description#>
-    open func getSiteAsText(url: URL) -> String {
+    func getSiteAsText(url: URL) -> String {
         log("getSiteAsText init(url: \"\(url)\")")
         var returnString: String = ""
         
@@ -194,7 +194,7 @@ extension Aurora {
      
      - Returns: the contents of the file
      */
-    open func getDataAsText(_ url: String, _ post: [String: String]? = ["nothing": "send"]) -> String {
+    func getDataAsText(_ url: String, _ post: [String: String]? = ["nothing": "send"]) -> String {
         log("Init.")
         if let myURL = URL(string: url) {
             if post == ["nothing": "send"] {
@@ -252,7 +252,7 @@ extension Aurora {
      
      - Returns: the contents of the file
      */
-    open func getDataAsData(
+    func getDataAsData(
         _ url: String,
         _ post: [String: String]? = ["nothing": "send"]
     ) -> Data {
@@ -317,7 +317,7 @@ extension Aurora {
      
      - Returns: the plain HTML String
      */
-    open func removeHTML(_ html: String) -> String {
+    func removeHTML(_ html: String) -> String {
         do {
             let regex: NSRegularExpression = try NSRegularExpression(
                 pattern: "<.*?>",
@@ -344,7 +344,7 @@ extension Aurora {
      
      - Returns: the string with <br /> tags
      */
-    open func nl2br(_ html: String) -> String {
+    func nl2br(_ html: String) -> String {
         return html.replacingOccurrences(of: "\n", with: "<br />")
     }
     
@@ -355,7 +355,7 @@ extension Aurora {
      
      - Returns: the string with line-breaks
      */
-    open func br2nl(_ html: String) -> String {
+    func br2nl(_ html: String) -> String {
         return html.replacingOccurrences(of: "<br />", with: "\n") // html 4
             .replacingOccurrences(of: "<br/>", with: "\n") // invalid html
             .replacingOccurrences(of: "<br>", with: "\n") // html <=4
@@ -368,7 +368,7 @@ extension Aurora {
      
      - Parameter debugVal: Debugmode on/off
      */
-    open func setDebug(_ debugVal: Bool) {
+    func setDebug(_ debugVal: Bool) {
         auroraFrameworkWebDebug = debugVal
     }
 }

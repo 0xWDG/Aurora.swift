@@ -181,9 +181,9 @@ extension Regex: Hashable {
 }
 
 // MARK: - Options
-extension Regex {
+public extension Regex {
     /// `Options` defines alternate behaviours of regular expressions when matching.
-    public struct Options: OptionSet {
+    struct Options: OptionSet {
         // MARK: - Properties
         /// Ignores the case of letters when matching.
         public static let ignoreCase = Options(rawValue: 1)
@@ -237,11 +237,11 @@ extension Regex {
 }
 
 // MARK: - Match
-extension Regex {
+public extension Regex {
     /// A `Match` encapsulates the result of a single match in a string,
     /// providing access to the matched string, as well as any capture groups within
     /// that string.
-    public class Match: CustomStringConvertible {
+    class Match: CustomStringConvertible {
         // MARK: Properties
         /// The entire matched string.
         public lazy var string: String = {

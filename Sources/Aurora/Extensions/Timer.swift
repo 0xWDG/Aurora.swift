@@ -17,13 +17,13 @@
 
 import Foundation
 
-extension Timer {
+public extension Timer {
     /// Create and schedule a timer that will call `block` once after the specified time.
     /// - Parameters:
     ///   - interval: The time interval to wait before schedule the `Timer`.
     ///   - block: The block invoked when the timer fires. The block takes no argument.
     /// - Returns: The created Timer.
-    public class func new(after interval: TimeInterval, _ block: @escaping () -> Void) -> Timer {
+    class func new(after interval: TimeInterval, _ block: @escaping () -> Void) -> Timer {
         CFRunLoopTimerCreateWithHandler(
             kCFAllocatorDefault,
             CFAbsoluteTimeGetCurrent() + interval,
@@ -39,7 +39,7 @@ extension Timer {
     ///   - interval: The time interval to wait before schedule the `Timer`.
     ///   - block: The block invoked when the timer fires. The block takes no argument.
     /// - Returns: The created Timer.
-    public class func after(_ interval: TimeInterval, _ block: @escaping () -> Void) -> Timer {
+    class func after(_ interval: TimeInterval, _ block: @escaping () -> Void) -> Timer {
         let timer = Timer.new(after: interval, block)
         timer.start()
         return timer
@@ -53,7 +53,7 @@ extension Timer {
     ///   - block: The block invoked when the timer fires. The block takes one argument
     ///            corresponding to the `Timer` that has been fired.
     /// - Returns: The created Timer.
-    public class func every(_ interval: TimeInterval,
+    class func every(_ interval: TimeInterval,
                             firesImmediately: Bool = false,
                             _ block: @escaping (Timer) -> Void) -> Timer {
         if firesImmediately {
@@ -81,7 +81,7 @@ extension Timer {
     ///   - block: The block invoked when the timer fires. The block takes one argument corresponding
     ///            to the `Timer` that has been fired.
     /// - Returns: The created Timer.
-    public class func new(every interval: TimeInterval, _ block: @escaping (Timer) -> Void) -> Timer {
+    class func new(every interval: TimeInterval, _ block: @escaping (Timer) -> Void) -> Timer {
         var timer: Timer!
         timer = CFRunLoopTimerCreateWithHandler(
             kCFAllocatorDefault,
@@ -99,7 +99,7 @@ extension Timer {
     ///     - runLoop: The run loop where the Timer is scheduled. The default value is `RunLoop.current`
     ///     - modes: The run loop mode where the timer is scheduled. If none, it will scheduled on
     ///              `RunLoop.Mode.default`.
-    public func start(onRunLoop runLoop: RunLoop = RunLoop.current, modes: RunLoop.Mode...) {
+    func start(onRunLoop runLoop: RunLoop = RunLoop.current, modes: RunLoop.Mode...) {
         let modes = modes.isEmpty ? [RunLoop.Mode.default] : modes
         modes.forEach {
             runLoop.add(self, forMode: $0)

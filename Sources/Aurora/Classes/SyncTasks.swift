@@ -17,10 +17,10 @@
 
 import Foundation
 
-extension Aurora {
+public extension Aurora {
     /// <#Description#>
     /// - Parameter background: <#background description#>
-    public func run(background: @escaping () -> Void) {
+    func run(background: @escaping () -> Void) {
         DispatchQueue.global().async {
             background()
         }
@@ -28,7 +28,7 @@ extension Aurora {
     
     /// <#Description#>
     /// - Parameter main: <#main description#>
-    public func execute(main: @escaping () -> Void) {
+    func execute(main: @escaping () -> Void) {
         DispatchQueue.main.async {
             main()
         }
@@ -36,7 +36,7 @@ extension Aurora {
     
     /// <#Description#>
     /// - Parameter background: <#background description#>
-    public func execute(background: @escaping () -> Void) {
+    func execute(background: @escaping () -> Void) {
         DispatchQueue.global().async {
             background()
         }
@@ -46,7 +46,7 @@ extension Aurora {
     /// - Parameters:
     ///   - after: <#after description#>
     ///   - closure: <#closure description#>
-    public func delay(seconds: Double, closure: @escaping () -> Void) {
+    func delay(seconds: Double, closure: @escaping () -> Void) {
         let when = DispatchTime.now() + seconds
         DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
     }
@@ -55,7 +55,7 @@ extension Aurora {
     /// - Parameters:
     ///   - after: <#after description#>
     ///   - closure: <#closure description#>
-    public func execute(after: Double, closure: @escaping () -> Void) {
+    func execute(after: Double, closure: @escaping () -> Void) {
         let when = DispatchTime.now() + after
         DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
     }

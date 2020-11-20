@@ -20,9 +20,9 @@
 import Foundation
 import UIKit
 
-extension Aurora {
+public extension Aurora {
     /// Calls action when a screen shot is taken
-    public static func onScreenshot(_ action: @escaping () -> Void) {
+    static func onScreenshot(_ action: @escaping () -> Void) {
         let mainQueue = OperationQueue.main
         _ = NotificationCenter.default.addObserver(
             forName: UIApplication.userDidTakeScreenshotNotification,

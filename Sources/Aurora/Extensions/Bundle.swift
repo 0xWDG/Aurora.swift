@@ -20,49 +20,49 @@ import Foundation
 #if os(iOS)
 private class AuroraBundleFinder {}
 
-extension Bundle {
+public extension Bundle {
     /// The app name
-    public var appName: String {
+    var appName: String {
         return string(for: kCFBundleNameKey as String)
     }
     
     /// The app version
-    @objc public var appVersion: String {
+    @objc var appVersion: String {
         return string(for: "CFBundleShortVersionString")
     }
     
     /// The display name
-    public var displayName: String {
+    var displayName: String {
         return string(for: "CFBundleDisplayName")
     }
     
     /// The app build number
-    public var appBuild: String {
+    var appBuild: String {
         return string(for: kCFBundleVersionKey as String)
     }
     
     /// The app bundle identifier
-    public var bundleId: String {
+    var bundleId: String {
         return string(for: "CFBundleIdentifier")
     }
     
     /// Check either the app has been installed using TestFlight.
-    public var isInTestFlight: Bool {
+    var isInTestFlight: Bool {
         return appStoreReceiptURL?.path.contains("sandboxReceipt") == true
     }
     
     /// Runtime code to check if the code runs in an app extension
-    public var isAppExtension: Bool {
+    var isAppExtension: Bool {
         return executablePath?.contains(".appex/") ?? false
     }
     
     /// Is the device running with "Low Power Mode" enabled?
-    public var isOnLowPowerMode: Bool {
+    var isOnLowPowerMode: Bool {
         return ProcessInfo.processInfo.isLowPowerModeEnabled
     }
     
     /// Get the system uptime
-    public var uptime: TimeInterval {
+    var uptime: TimeInterval {
         return ProcessInfo.processInfo.systemUptime
     }
     
@@ -78,7 +78,7 @@ extension Bundle {
     }
     
     /// <#Description#>
-    public var schemes: [String] {
+    var schemes: [String] {
         guard let infoDictionary = Bundle.main.infoDictionary,
             let urlTypes = infoDictionary["CFBundleURLTypes"] as? [AnyObject],
             let urlType = urlTypes.first as? [String: AnyObject],
@@ -89,14 +89,14 @@ extension Bundle {
     }
     
     /// <#Description#>
-    public var mainScheme: String? {
+    var mainScheme: String? {
         return schemes.first
     }
 }
 
 import class Foundation.Bundle
 
-extension Foundation.Bundle {
+public extension Foundation.Bundle {
     // Thanks 'DateTimePicker'
     // https://github.com/itsmeichigo/DateTimePicker/pull/104/files
     // Since Xcode isnt fixed, we'll use this.

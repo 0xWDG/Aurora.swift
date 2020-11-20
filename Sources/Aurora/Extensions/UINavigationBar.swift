@@ -20,7 +20,7 @@ import Foundation
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
 
-extension UINavigationBar {
+public extension UINavigationBar {
     /// Make a clear background color
     ///
     /// Example

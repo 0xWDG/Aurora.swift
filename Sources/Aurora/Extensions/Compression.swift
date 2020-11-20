@@ -18,7 +18,7 @@
 import Foundation
 import Compression
 
-extension Aurora {
+public extension Aurora {
     /// <#Description#>
     /// - Parameter data: <#data description#>
     /// - Returns: <#description#>

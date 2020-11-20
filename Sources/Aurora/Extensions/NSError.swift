@@ -17,7 +17,7 @@
 
 import Foundation
 
-extension NSError {
+public extension NSError {
     /// A convenience initializer for NSError to set its description.
     ///
     /// - Parameters:

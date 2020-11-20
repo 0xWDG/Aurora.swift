@@ -19,7 +19,7 @@ import Foundation
 
 #if os(macOS)
 
-extension Aurora {
+public extension Aurora {
 @discardableResult
 func shell(_ arguments: String, show_log: Bool = false) -> String {
     let task = Process();

@@ -20,7 +20,7 @@ import Foundation
 #if canImport(UIKit) && !os(watchOS) && !os(tvOS)
 import UIKit
 
-extension UIView {
+public extension UIView {
     /// Ignore invert colors?
     @IBInspectable var ignoresInvertColors: Bool {
         get {
@@ -47,7 +47,7 @@ extension UIView {
     
     /// <#Description#>
     /// - Parameter radius: <#radius description#>
-    public func roundedCorners(radius: CGFloat? = 45) {
+    func roundedCorners(radius: CGFloat? = 45) {
         self.layer.cornerRadius = radius ?? 46
     }
     
@@ -55,7 +55,7 @@ extension UIView {
     /// - Parameters:
     ///   - corners: <#corners description#>
     ///   - radius: <#radius description#>
-    public func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
         let path = UIBezierPath(
             roundedRect: bounds,
             byRoundingCorners: corners,
@@ -75,7 +75,7 @@ extension UIView {
     /// - Parameters:
     ///   - colorOne: <#colorOne description#>
     ///   - colorTwo: <#colorTwo description#>
-    public func gradientBackground(colorOne: UIColor, colorTwo: UIColor) {
+    func gradientBackground(colorOne: UIColor, colorTwo: UIColor) {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds
         gradientLayer.colors = [colorOne.cgColor, colorTwo.cgColor]
@@ -89,7 +89,7 @@ extension UIView {
     /// - Parameters:
     ///   - colorOne: <#colorOne description#>
     ///   - colorTwo: <#colorTwo description#>
-    public func addGradientOnForeground(colorOne: UIColor, colorTwo: UIColor) {
+    func addGradientOnForeground(colorOne: UIColor, colorTwo: UIColor) {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds
         gradientLayer.colors = [colorOne.cgColor, colorTwo.cgColor]
@@ -101,13 +101,13 @@ extension UIView {
     }
     
     /// <#Description#>
-    public func removeLastSubview() {
+    func removeLastSubview() {
         let intVal = (layer.sublayers?.count)! - 1
         layer.sublayers?.remove(at: intVal)
     }
     
     /// <#Description#>
-    public func sameSizeAsParent() {
+    func sameSizeAsParent() {
         guard let superview = self.superview else { return }
         translatesAutoresizingMaskIntoConstraints = superview.translatesAutoresizingMaskIntoConstraints
         if translatesAutoresizingMaskIntoConstraints {
@@ -123,7 +123,7 @@ extension UIView {
     
     // Animate a view, adding effect of "something went wrong". Useful for login button for example.
     /// - Parameter repeatAnimation: Repeat the animation?
-    public func shakeWrong(_ repeatAnimation: Bool? = false) {
+    func shakeWrong(_ repeatAnimation: Bool? = false) {
         let shakeAnimation = CABasicAnimation(keyPath: "position")
         shakeAnimation.configure {
             $0.duration = 0.05
@@ -148,7 +148,7 @@ extension UIView {
     
     /// Wiggle
     /// - Parameter repeatAnimation: repeat?
-    public func wiggle(_ repeatAnimation: Bool? = true) {
+    func wiggle(_ repeatAnimation: Bool? = true) {
         let wiggleAnimation = CAKeyframeAnimation(keyPath: "transform")
         wiggleAnimation.configure {
             $0.values  = [
@@ -179,7 +179,7 @@ extension UIView {
     /// - Parameters:
     ///   - swipeDirection: <#swipeDirection description#>
     ///   - completionHandler: <#completionHandler description#>
-    public func swipeAction(
+    func swipeAction(
         swipeDirection: UISwipeGestureRecognizer.Direction,
         completionHandler: @escaping () -> Void
     ) {
@@ -250,10 +250,10 @@ public protocol Blurable {
     func addBlur(_ alpha: CGFloat)
 }
 
-extension Blurable where Self: UIView {
+public extension Blurable where Self: UIView {
     /// <#Description#>
     /// - Parameter alpha: <#alpha description#>
-    public func addBlur(_ alpha: CGFloat = 0.5) {
+    func addBlur(_ alpha: CGFloat = 0.5) {
         // create effect
         let effect = UIBlurEffect(style: .dark)
         let effectView = UIVisualEffectView(effect: effect)

@@ -112,9 +112,42 @@ public extension String {
             _ = CC_MD5(buffer.baseAddress, CC_LONG(buffer.count), &hash)
         }
         
-        return hash.map { String(format: "%02hhx", $0) }.joined()
+        return hash.map {
+            String(format: "%02hhx", $0)
+        }.joined()
     }
     
+    var fetchAsData: Data {
+        get {
+            guard let unwrappedUrl = self.url else {
+                return Data.init()
+            }
+            
+            return Aurora.shared.networkFetch(fromURL: unwrappedUrl)
+        }
+    }
+    
+    var fetchAsText: String? {
+        get {
+            return String.init(data: self.fetchAsData, encoding: .utf8)
+        }
+    }
+    
+    #if os(iOS)
+    var fetchAsImage: UIImage? {
+        get {
+            return UIImage.init(data: self.fetchAsData)
+        }
+    }
+    #endif
+    
+    #if os(macOS)
+    var fetchAsImage: NSImage? {
+        get {
+            return NSImage.init(data: self.fetchAsData)
+        }
+    }
+    #endif
     /// Lowercased and no spaces
     var lowerAndNoSpaces: String {
         return self.lowercased.replace(" ", withString: "")
@@ -215,14 +248,29 @@ public extension String {
         return try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [Any]
     }
     
+    /// String to attributedString
+    var asAttributedString: NSAttributedString? {
+        guard let data = self.data(using: .utf8) else { return nil }
+        return try? NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+    }
+    
     /// <#Description#>
     /// - Parameters:
     ///   - width: <#width description#>
     ///   - font: <#font description#>
     /// - Returns: <#description#>
     func height(withConstrainedWidth width: CGFloat, font: Font) -> CGFloat {
-        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil)
+        let constraintRect = CGSize(
+            width: width,
+            height: .greatestFiniteMagnitude
+        )
+        
+        let boundingBox = self.boundingRect(
+            with: constraintRect,
+            options: .usesLineFragmentOrigin,
+            attributes: [.font: font],
+            context: nil
+        )
         
         return ceil(boundingBox.height)
     }
@@ -233,8 +281,17 @@ public extension String {
     ///   - font: <#font description#>
     /// - Returns: <#description#>
     func width(withConstrainedHeight height: CGFloat, font: Font) -> CGFloat {
-        let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
-        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil)
+        let constraintRect = CGSize(
+            width: .greatestFiniteMagnitude,
+            height: height
+        )
+        
+        let boundingBox = self.boundingRect(
+            with: constraintRect,
+            options: .usesLineFragmentOrigin,
+            attributes: [.font: font],
+            context: nil
+        )
         
         return ceil(boundingBox.width)
     }
@@ -2577,10 +2634,32 @@ public extension String {
 
 // Got this one from
 // https://www.avanderlee.com/swift/string-interpolation/
-extension String.StringInterpolation {
+public extension String.StringInterpolation {
     /// Prints `Optional` values by only interpolating it if the value is set.
     /// `nil` is used as a fallback value to provide a clear output.
     mutating func appendInterpolation<T: CustomStringConvertible>(_ value: T?) {
         appendInterpolation(value ?? "nil" as CustomStringConvertible)
+    }
+    
+    mutating func appendInterpolation(_ request: URLRequest) {
+        appendInterpolation("\(request.url) | \(request.httpMethod) | Headers: \(request.allHTTPHeaderFields)")
+    }
+    
+    mutating func appendInterpolation(HTMLLink link: String) {
+        guard let url = URL(string: link) else {
+            assertionFailure("An invalid URL has been passed.")
+            return
+        }
+        appendInterpolation("<a href=\"\(url.absoluteString)\">\(url.absoluteString)</a>")
+    }
+    
+    mutating func appendInterpolation(json JSONData: Data) {
+        guard
+            let JSONObject = try? JSONSerialization.jsonObject(with: JSONData, options: []),
+            let jsonData = try? JSONSerialization.data(withJSONObject: JSONObject, options: .prettyPrinted) else {
+            appendInterpolation("Invalid JSON data")
+            return
+        }
+        appendInterpolation("\n\(String(decoding: jsonData, as: UTF8.self))")
     }
 }

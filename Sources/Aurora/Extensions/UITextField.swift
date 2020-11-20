@@ -20,11 +20,11 @@ import Foundation
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
 
-extension UITextField {
+public extension UITextField {
     #if os(iOS)
     
     /// <#Description#>
-    @IBInspectable public var doneAccessory: Bool {
+    @IBInspectable var doneAccessory: Bool {
         get {
             return self.doneAccessory
         }
@@ -37,7 +37,7 @@ extension UITextField {
     // swiftlint:enable implicit_getter valid_ibinspectable
     
     /// <#Description#>
-    public func addDoneButtonOnKeyboard() {
+    func addDoneButtonOnKeyboard() {
         let doneToolbar: UIToolbar = UIToolbar().configure {
             $0.frame = CGRect.init(
                 x: 0,
@@ -79,7 +79,7 @@ extension UITextField {
     
     /// <#Description#>
     /// - Parameter icon: <#icon description#>
-    public func addShowPasswordButton(with icon: String? = "👁️") {
+    func addShowPasswordButton(with icon: String? = "👁️") {
         let rightButton = UIButton(type: .custom)
         rightButton.setTitle(icon, for: .normal)
         
@@ -128,7 +128,7 @@ extension UITextField {
     
     /// Add a custom clear button to the textfield.
     /// - Parameter image: The image representing the clear button.
-    public func setClearButton(with image: UIImage) {
+    func setClearButton(with image: UIImage) {
         let clearButton = UIButton(type: .custom)
         clearButton.setImage(image, for: .normal)
         clearButton.frame = CGRect(origin: .zero, size: CGSize(width: self.height, height: self.height))
@@ -149,7 +149,7 @@ extension UITextField {
     
     /// Change the textfield's placeholder color.
     /// - Parameter color: The new placeholder's color.
-    public func setPlaceHolderTextColor(_ color: UIColor) {
+    func setPlaceHolderTextColor(_ color: UIColor) {
         guard let placeholder = placeholder, !placeholder.isEmpty else {
             return
         }
@@ -165,7 +165,7 @@ extension UITextField {
     ///   - adjustToFit: A Boolean value indicating whether the font size should be reduced
     ///                  in order to fit the text string into the text field’s bounding rectangle.
     @available(iOS 11.0, tvOS 11.0, *)
-    public func configureDynamicStyle(_ style: UIFont.TextStyle,
+    func configureDynamicStyle(_ style: UIFont.TextStyle,
                                       traits: UIFontDescriptor.SymbolicTraits? = nil,
                                       adjustToFit: Bool = true) {
         adjustsFontForContentSizeCategory = true
