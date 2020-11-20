@@ -36,7 +36,7 @@ import CoreGraphics
 #if canImport(Foundation)
 public protocol Configure {}
 
-extension Configure {
+public extension Configure {
     /// Makes it available to set properties with closures just after initializing.
     ///
     /// iOS/WatchOS/tvOS
@@ -50,7 +50,7 @@ extension Configure {
     ///     let frame = NSView().configure {
     ///       $0.backgroundColor = .red
     ///     }
-    @discardableResult public func configure(_ block: (inout Self) -> Void) -> Self {
+    @discardableResult func configure(_ block: (inout Self) -> Void) -> Self {
         var copy = self
         block(&copy)
         return copy
@@ -63,7 +63,7 @@ extension Configure {
     ///       $0.set("my_email@gmail.com", forKey: "email")
     ///       $0.synchronize()
     ///     }
-    public func `do`(_ block: (Self) throws -> Void) rethrows {
+    func `do`(_ block: (Self) throws -> Void) rethrows {
       try block(self)
     }
 }
@@ -79,22 +79,22 @@ extension Set: Configure {}
 extension URLRequest: Configure {}
 
 #if os(iOS) || os(tvOS)
-  extension UIEdgeInsets: Configure {}
-  extension UIOffset: Configure {}
-  extension UIRectEdge: Configure {}
+extension UIEdgeInsets: Configure {}
+extension UIOffset: Configure {}
+extension UIRectEdge: Configure {}
 #endif
 
 // NSO callbackKey
 private var callbackKey = "ObjCallbackKey"
 
-extension NSObject {    
+public extension NSObject {
     /// The name of a the type inheriting of `NSObject`
-    public static var className: String {
+    static var className: String {
         String(describing: self)
     }
     
     /// <#Description#>
-    public var className: String {
+    var className: String {
         return type(of: self).className
     }
         
@@ -139,7 +139,7 @@ extension NSObject {
     ///               Aurora.shared.log("The viewcontroller dissapeared")
     ///           }
     ///      }
-    public static func onDeinit(of object: NSObject, do block: @escaping () -> Void) {
+    static func onDeinit(of object: NSObject, do block: @escaping () -> Void) {
         getHolder(of: object).callbacks.append(block)
     }
 }

@@ -21,7 +21,29 @@ import XCTest
 
 @testable import Aurora
 
+public class TestObserver: NSObject, XCTestObservation {
+    public static func observe() {
+        let observer = TestObserver()
+        XCTestObservationCenter.shared.addTestObserver(observer)
+    }
+
+    public func testCase(_ testCase: XCTestCase, didFailWithDescription description: String, inFile filePath: String?, atLine lineNumber: Int) {
+        print("🚫 \(description) line:\(lineNumber)")
+    }
+
+    public func testCaseDidFinish(_ testCase: XCTestCase) {
+        if testCase.testRun?.hasSucceeded == true {
+            print("✅ \(testCase)")
+        }
+    }
+
+}
+
 class AuroraTest: XCTestCase {
+    func testAAAStartObserver() {
+        TestObserver.observe()
+    }
+    
     func testAuroraLog() {
         Aurora.shared.log("This is a test")
     }
@@ -40,4 +62,5 @@ class AuroraTest: XCTestCase {
         XCTAssert(Aurora.shared.log("This is a test"), "Should be true")
     }
 }
+
 #endif

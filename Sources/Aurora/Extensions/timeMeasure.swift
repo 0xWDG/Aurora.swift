@@ -19,7 +19,7 @@ import Foundation
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
 
-extension Aurora {
+public extension Aurora {
     /// Measure time for a task
     /// - Parameters:
     ///   - tag: taskName/function

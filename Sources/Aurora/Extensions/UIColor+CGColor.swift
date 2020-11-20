@@ -18,17 +18,17 @@
 #if canImport(UIKit)
 import UIKit
 
-extension CGColor {
+public extension CGColor {
     /// <#Description#>
-    public static let dinnerGreen = UIColor.dinnerGreen.cgColor
+    static let dinnerGreen = UIColor.dinnerGreen.cgColor
     
     /// <#Description#>
-    public static let dinnerBlue = UIColor.dinnerBlue.cgColor
+    static let dinnerBlue = UIColor.dinnerBlue.cgColor
 }
 
-extension UIColor {
+public extension UIColor {
     /// <#Description#>
-    public static let dinnerGreen = UIColor.init(
+    static let dinnerGreen = UIColor.init(
         red: 0.439216,
         green: 0.74902,
         blue: 0.254902,
@@ -36,7 +36,7 @@ extension UIColor {
     )
     
     /// <#Description#>
-    public static let dinnerBlue = UIColor.init(
+    static let dinnerBlue = UIColor.init(
         red: 0.0117647,
         green: 0.396078,
         blue: 0.752941,
@@ -44,7 +44,7 @@ extension UIColor {
     )
     
     
-    public static let baas = UIColor.init(
+    static let baas = UIColor.init(
         red: 0.0,
         green: 0.831372549,
         blue: 1.0,
@@ -52,7 +52,7 @@ extension UIColor {
     )
     
     /// <#Description#>
-    public static let button = UIColor.init(
+    static let button = UIColor.init(
         red: 0,
         green: 176/255,
         blue: 0,
@@ -60,7 +60,7 @@ extension UIColor {
     )
     
     /// <#Description#>
-    public static var cellBackgroundcolor: UIColor {
+    static var cellBackgroundcolor: UIColor {
         if #available(iOS 13.0, *) {
             #if os(tvOS) || os(watchOS)
             return .white
@@ -75,7 +75,7 @@ extension UIColor {
     /// <#Description#>
     /// - Parameter randomApha: <#randomApha description#>
     /// - Returns: <#description#>
-    public class func random(randomAlpha randomApha: Bool = false) -> UIColor {
+    class func random(randomAlpha randomApha: Bool = false) -> UIColor {
         let redValue = CGFloat.random(in: 0...255) / 255.0
         let greenValue = CGFloat.random(in: 0...255) / 255.0
         let blueValue = CGFloat.random(in: 0...255) / 255.0

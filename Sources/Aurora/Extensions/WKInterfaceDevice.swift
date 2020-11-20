@@ -33,7 +33,7 @@ public enum WatchDeviceType: Int, Equatable, Comparable {
 }
 
 #if swift(>=4.2)
-extension WatchDeviceType: CaseIterable {}
+public extension WatchDeviceType: CaseIterable {}
 #endif
 
 /// <#Description#>
@@ -41,7 +41,9 @@ extension WatchDeviceType: CaseIterable {}
 ///   - lhs: <#lhs description#>
 ///   - rhs: <#rhs description#>
 /// - Returns: <#description#>
-public func < (lhs: WatchDeviceType, rhs: WatchDeviceType) -> Bool { return lhs.rawValue < rhs.rawValue }
+public func < (lhs: WatchDeviceType, rhs: WatchDeviceType) -> Bool {
+    return lhs.rawValue < rhs.rawValue
+}
 
 @available(iOS 8.2, watchOS 2.0, *) public extension WKInterfaceDevice {
     /// A Boolean value that determines whether the Apple watch case size equals 38 or 40 mm.

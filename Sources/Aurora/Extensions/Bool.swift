@@ -15,18 +15,11 @@
 //
 // Licence: Needs to be decided.
 
-#if os(iOS) || os(tvOS)
-import UIKit
+import Foundation
 
-public extension UIStoryboard {
-    /// Get the main application storyboard.
-    class var main: UIStoryboard? {
-        let bundle = Bundle.main
-        guard let storyboardName = bundle.object(forInfoDictionaryKey: "UIMainStoryboardFile") as? String else {
-            return nil
-        }
-        return UIStoryboard(name: storyboardName, bundle: bundle)
+public extension Bool {
+    // is it a boolean?
+    var isBool: Bool {
+        return true
     }
-    
 }
-#endif

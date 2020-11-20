@@ -18,11 +18,11 @@
 #if os(iOS)
 import UIKit
 
-extension UIViewController {  
+public extension UIViewController {  
     /// Can i perform a segue?
     /// - Parameter id: segue name
     /// - Returns: boolean
-    public func canPerformSegue(withIdentifier: String) -> Bool {
+    func canPerformSegue(withIdentifier: String) -> Bool {
         guard let segues = UIApplication.shared.delegate?.window??.rootViewController?.value(
             forKey: "storyboardSegueTemplates"
             ) as? [NSObject] else { return false }
@@ -36,7 +36,7 @@ extension UIViewController {
     /// - Parameters:
     ///   - name: Segue name
     ///   - sender: a Sender
-    public func performSegueIfPossible(segueID: String?, sender: AnyObject? = nil) {
+    func performSegueIfPossible(segueID: String?, sender: AnyObject? = nil) {
         guard let segueID = segueID,
             canPerformSegue(withIdentifier: segueID) else { return }
         
@@ -50,7 +50,7 @@ extension UIViewController {
     /// - Parameters:
     ///   - name: Segue name
     ///   - sender: a Sender
-    public func openSegue(name: String?, sender: AnyObject? = nil) {
+    func openSegue(name: String?, sender: AnyObject? = nil) {
         guard let name = name else {
             return
         }
@@ -64,7 +64,7 @@ extension UIViewController {
     }
     
     /// <#Description#>
-    public func hideKeyboardWhenTappedAround() {
+    func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(
             target: self,
             action: #selector(UIViewController.dismissKeyboard)
@@ -89,7 +89,7 @@ extension UIViewController {
     ///   - inputKeyboardType: <#inputKeyboardType description#>
     ///   - cancelHandler: <#cancelHandler description#>
     ///   - actionHandler: <#actionHandler description#>
-    public func showInputDialog(title: String? = nil,
+    func showInputDialog(title: String? = nil,
                                 subtitle: String? = nil,
                                 actionTitle: String? = "Add",
                                 cancelTitle: String? = "Cancel",

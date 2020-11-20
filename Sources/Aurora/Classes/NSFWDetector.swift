@@ -46,14 +46,22 @@ public class NSFWDetector {
     public required init() {
         var NSFWModel: MLModel?
         
-        #if swift(>=5.4)
+        #if swift(>=6)
         guard let modelURL = Bundle.module.url(forResource: "NSFW", withExtension: "mlmodel") else {
             fatalError("No model found.")
         }
         #else
+        #if os(iOS)
+        //resource
+        guard let modelURL = Bundle.resource.url(forResource: "NSFW", withExtension: "mlmodel") else {
+            fatalError("No model found.")
+        }
+        #else
+        //resource
         guard let modelURL = Bundle.main.url(forResource: "NSFW", withExtension: "mlmodel") else {
             fatalError("No model found.")
         }
+        #endif
         #endif
         
         do {

@@ -18,14 +18,14 @@
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
 
-extension UILabel {
+public extension UILabel {
     /// <#Description#>
     private struct AssociatedKeys {
         static var padding = UIEdgeInsets()
     }
     
     /// <#Description#>
-    public var padding: UIEdgeInsets? {
+    var padding: UIEdgeInsets? {
         get {
             return objc_getAssociatedObject(
                 self,
@@ -47,7 +47,7 @@ extension UILabel {
     
     /// <#Description#>
     /// - Parameter rect: <#rect description#>
-    override open func draw(_ rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         if let insets = padding {
             self.drawText(in: rect.inset(by: insets))
         } else {
@@ -56,7 +56,7 @@ extension UILabel {
     }
     
     /// <#Description#>
-    override open var intrinsicContentSize: CGSize {
+    override var intrinsicContentSize: CGSize {
         var contentSize = super.intrinsicContentSize
         if let insets = padding {
             contentSize.height += insets.top + insets.bottom
@@ -67,13 +67,13 @@ extension UILabel {
     
     /// <#Description#>
     /// - Parameter text: <#text description#>
-    public func HTMLString(_ text: String) {
+    func HTMLString(_ text: String) {
         self.HTML(text)
     }
     
     /// <#Description#>
     /// - Parameter text: <#text description#>
-    public func HTML(_ text: String) {
+    func HTML(_ text: String) {
         // swiftlint:disable:next force_try
         let attrStr = try! NSAttributedString(
             data: text.data(

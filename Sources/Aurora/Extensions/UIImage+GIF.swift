@@ -20,10 +20,10 @@ import UIKit
 import ImageIO
 
 // Got this from https://github.com/hasnine/iOSUtilitiesSource/blob/master/iOSUtilitiesSource/GifImageLoader.swift
-extension UIImageView {
+public extension UIImageView {
     /// <#Description#>
     /// - Parameter name: <#name description#>
-    public func loadGif(name: String) {
+    func loadGif(name: String) {
         DispatchQueue.global().async {
             let image = UIImage.gif(name: name)
             DispatchQueue.main.async {
@@ -35,7 +35,7 @@ extension UIImageView {
     /// <#Description#>
     /// - Parameter asset: <#asset description#>
     @available(iOS 9.0, *)
-    public func loadGif(asset: String) {
+    func loadGif(asset: String) {
         DispatchQueue.global().async {
             let image = UIImage.gif(asset: asset)
             DispatchQueue.main.async {
@@ -46,11 +46,11 @@ extension UIImageView {
     
 }
 
-extension UIImage {
+public extension UIImage {
     /// <#Description#>
     /// - Parameter data: <#data description#>
     /// - Returns: <#description#>
-    public class func gif(data: Data) -> UIImage? {
+    class func gif(data: Data) -> UIImage? {
         // Create source from data
         guard let source = CGImageSourceCreateWithData(data as CFData, nil) else {
             Aurora.shared.log("SwiftGif: Source for the image does not exist")
@@ -63,7 +63,7 @@ extension UIImage {
     /// <#Description#>
     /// - Parameter url: <#url description#>
     /// - Returns: <#description#>
-    public class func gif(url: String) -> UIImage? {
+    class func gif(url: String) -> UIImage? {
         // Validate URL
         guard let bundleURL = URL(string: url) else {
             Aurora.shared.log("SwiftGif: This image named \"\(url)\" does not exist")
@@ -82,7 +82,7 @@ extension UIImage {
     /// <#Description#>
     /// - Parameter name: <#name description#>
     /// - Returns: <#description#>
-    public class func gif(name: String) -> UIImage? {
+    class func gif(name: String) -> UIImage? {
         // Check for existance of gif
         guard let bundleURL = Bundle.main
             .url(forResource: name, withExtension: "gif") else {
@@ -103,7 +103,7 @@ extension UIImage {
     /// - Parameter asset: <#asset description#>
     /// - Returns: <#description#>
     @available(iOS 9.0, *)
-    public class func gif(asset: String) -> UIImage? {
+    class func gif(asset: String) -> UIImage? {
         // Create source from assets catalog
         guard let dataAsset = NSDataAsset(name: asset) else {
             Aurora.shared.log("SwiftGif: Cannot turn image named \"\(asset)\" into NSDataAsset")

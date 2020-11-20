@@ -38,14 +38,14 @@ public struct NilError: Error, CustomStringConvertible {
     }
 }
 
-extension Optional {
+public extension Optional {
     /// <#Description#>
     /// - Parameters:
     ///   - file: <#file description#>
     ///   - line: <#line description#>
     /// - Throws: <#description#>
     /// - Returns: <#description#>
-    public func unwrap(file: String = #file, line: Int = #line) throws -> Wrapped {
+    func unwrap(file: String = #file, line: Int = #line) throws -> Wrapped {
         guard let result = self else {
             throw NilError(file: file, line: line)
         }
@@ -62,7 +62,7 @@ extension Optional {
     ///
     /// - Parameter predicate: <#predicate description#>
     /// - Returns: <#description#>
-    public func matching(_ predicate: (Wrapped) -> Bool) -> Wrapped? {
+    func matching(_ predicate: (Wrapped) -> Bool) -> Wrapped? {
         guard let value = self else {
             return nil
         }
@@ -88,7 +88,7 @@ extension Optional {
 }
 
 // From: https://www.instagram.com/p/Bi46gJjD8i2/
-extension Optional where Wrapped == Bool {
+public extension Optional where Wrapped == Bool {
     /// Unwrap if possible
     /// - Parameter value: value
     /// - Returns: unwrapped value (if possible)

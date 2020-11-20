@@ -15,18 +15,16 @@
 //
 // Licence: Needs to be decided.
 
-#if os(iOS) || os(tvOS)
-import UIKit
+#if canImport(WebKit)
+import Foundation
+import WebKit
 
-public extension UIStoryboard {
-    /// Get the main application storyboard.
-    class var main: UIStoryboard? {
-        let bundle = Bundle.main
-        guard let storyboardName = bundle.object(forInfoDictionaryKey: "UIMainStoryboardFile") as? String else {
-            return nil
-        }
-        return UIStoryboard(name: storyboardName, bundle: bundle)
+extension WKWebView {
+func load(_ urlString: String) {
+    if let url = URL(string: urlString) {
+        let request = URLRequest(url: url)
+        load(request)
     }
-    
+}
 }
 #endif

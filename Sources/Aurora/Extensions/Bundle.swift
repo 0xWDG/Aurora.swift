@@ -18,49 +18,51 @@
 import Foundation
 
 #if os(iOS)
-extension Bundle {
+private class AuroraBundleFinder {}
+
+public extension Bundle {
     /// The app name
-    public var appName: String {
+    var appName: String {
         return string(for: kCFBundleNameKey as String)
     }
     
     /// The app version
-    @objc public var appVersion: String {
+    @objc var appVersion: String {
         return string(for: "CFBundleShortVersionString")
     }
     
     /// The display name
-    public var displayName: String {
+    var displayName: String {
         return string(for: "CFBundleDisplayName")
     }
     
     /// The app build number
-    public var appBuild: String {
+    var appBuild: String {
         return string(for: kCFBundleVersionKey as String)
     }
     
     /// The app bundle identifier
-    public var bundleId: String {
+    var bundleId: String {
         return string(for: "CFBundleIdentifier")
     }
     
     /// Check either the app has been installed using TestFlight.
-    public var isInTestFlight: Bool {
+    var isInTestFlight: Bool {
         return appStoreReceiptURL?.path.contains("sandboxReceipt") == true
     }
     
     /// Runtime code to check if the code runs in an app extension
-    public var isAppExtension: Bool {
+    var isAppExtension: Bool {
         return executablePath?.contains(".appex/") ?? false
     }
     
     /// Is the device running with "Low Power Mode" enabled?
-    public var isOnLowPowerMode: Bool {
+    var isOnLowPowerMode: Bool {
         return ProcessInfo.processInfo.isLowPowerModeEnabled
     }
     
     /// Get the system uptime
-    public var uptime: TimeInterval {
+    var uptime: TimeInterval {
         return ProcessInfo.processInfo.systemUptime
     }
     
@@ -76,7 +78,7 @@ extension Bundle {
     }
     
     /// <#Description#>
-    public var schemes: [String] {
+    var schemes: [String] {
         guard let infoDictionary = Bundle.main.infoDictionary,
             let urlTypes = infoDictionary["CFBundleURLTypes"] as? [AnyObject],
             let urlType = urlTypes.first as? [String: AnyObject],
@@ -87,8 +89,63 @@ extension Bundle {
     }
     
     /// <#Description#>
-    public var mainScheme: String? {
+    var mainScheme: String? {
         return schemes.first
     }
 }
+
+import class Foundation.Bundle
+
+public extension Foundation.Bundle {
+    // Thanks 'DateTimePicker'
+    // https://github.com/itsmeichigo/DateTimePicker/pull/104/files
+    // Since Xcode isnt fixed, we'll use this.
+
+    /// The resource bundle associated with the current module..
+    /// important: When `Aurora` is distributed via Swift Package Manager, it will be synthesized automatically in the name of `Bundle.module`.
+    static var resource: Bundle = {
+         let moduleName = "Aurora"
+         #if COCOAPODS
+         let bundleName = moduleName
+         #else
+         let bundleName = "\(moduleName)_\(moduleName)"
+         #endif
+
+          let candidates = [
+             // Bundle should be present here when the package is linked into an App.
+             Bundle.main.resourceURL,
+
+              // Bundle should be present here when the package is linked into a framework.
+             Bundle(for: AuroraBundleFinder.self).resourceURL,
+
+              // For command-line tools.
+             Bundle.main.bundleURL,
+         ]
+
+          for candidate in candidates {
+             let bundlePath = candidate?.appendingPathComponent(bundleName + ".bundle")
+             if let bundle = bundlePath.flatMap(Bundle.init(url:)) {
+                 return bundle
+             }
+         }
+
+          fatalError("Unable to find bundle named \(bundleName)")
+     }()
+ }
+
+#if !SWIFT_PACKAGE
+        // AS DEFINED IN SWIFTPM
+        // https://github.com/apple/swift-package-manager/blob/main/Sources/Build/BuildPlan.swift#L591-L606
+        // extension Foundation.Bundle {
+        //     static var module: Bundle = {
+        //         let mainPath = "\(mainPath.asSwiftStringLiteralConstant)"
+        //         let buildPath = "\(bundlePath.asSwiftStringLiteralConstant)"
+        //         let preferredBundle = Bundle(path: mainPath)
+        //         guard let bundle = preferredBundle != nil ? preferredBundle : Bundle(path: buildPath) else {
+        //             fatalError("could not load resource bundle: from \\(mainPath) or \\(buildPath)")
+        //         }
+        //         return bundle
+        //     }()
+        // }
+#endif
 #endif

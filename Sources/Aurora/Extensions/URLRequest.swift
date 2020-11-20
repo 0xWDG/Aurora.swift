@@ -17,10 +17,10 @@
 
 import Foundation
 
-extension URLRequest {
+public extension URLRequest {
     /// Returns a cURL command for a request
     /// - return A String object that contains cURL command or "" if an URL is not properly initalized.
-    public var cURLRepresentation: String {
+    var cURLRepresentation: String {
         guard let url = url, let httpMethod = httpMethod, url.absoluteString.count > 0 else {
             return ""
         }

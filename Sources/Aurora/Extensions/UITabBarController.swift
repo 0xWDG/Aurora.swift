@@ -20,10 +20,10 @@ import Foundation
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
 
-extension UITabBarController {
+public extension UITabBarController {
     /// <#Description#>
     /// - Parameter withName: <#withName description#>
-    public func select(withName: String) {
+    func select(withName: String) {
         var currentIndex = 0
         
         guard let items = tabBar.items else {
@@ -54,7 +54,7 @@ extension UITabBarController {
     /// - Parameters:
     ///   - times: After x taps
     ///   - execute: What to execute
-    public func onTap(times: Int? = 10, execute: @escaping ((String) -> Void)) {
+    func onTap(times: Int? = 10, execute: @escaping ((String) -> Void)) {
         let runner = AuroraOnTabBarInteractionDelegate.sharedInstance
         runner.onInteractionClosure = execute
         runner.onTimes = times ?? 10
@@ -72,7 +72,7 @@ extension UITabBarController {
     /// - `viewDidDisappear(_ animated: Bool)`
     /// - `viewWillAappear(_ animated: Bool)`
     /// - `viewDidAppear(_ animated: Bool)`
-    public func reloadCurrentView() {
+    func reloadCurrentView() {
         // save the selected index
         let oldSelected = selectedIndex
         
