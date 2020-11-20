@@ -22,7 +22,6 @@ import XCTest
 @testable import Aurora
 
 public class TestObserver: NSObject, XCTestObservation {
-
     public static func observe() {
         let observer = TestObserver()
         XCTestObservationCenter.shared.addTestObserver(observer)
@@ -41,6 +40,10 @@ public class TestObserver: NSObject, XCTestObservation {
 }
 
 class AuroraTest: XCTestCase {
+    func testAAAStartObserver() {
+        TestObserver.observe()
+    }
+    
     func testAuroraLog() {
         Aurora.shared.log("This is a test")
     }
@@ -59,7 +62,5 @@ class AuroraTest: XCTestCase {
         XCTAssert(Aurora.shared.log("This is a test"), "Should be true")
     }
 }
-
-TestObserver.observe()
 
 #endif
