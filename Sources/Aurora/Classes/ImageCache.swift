@@ -24,6 +24,14 @@ import UIKit
 let TMP: String = NSTemporaryDirectory()
 
 public extension UIImage {
+    func from(url: URL) -> UIImage? {
+        guard let data = try? Data(contentsOf: url) else {
+            return nil
+        }
+        
+        return UIImage.init(data: data)
+    }
+    
     /// <#Description#>
     /// - Parameter image: <#image description#>
     func cacheImage(_ image: String) {
