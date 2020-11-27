@@ -121,6 +121,30 @@ public extension UIView {
         }
     }
     
+    /// <#Description#>
+    /// - Returns: <#description#>
+    func asImage() -> UIImage {
+        let renderer = UIGraphicsImageRenderer(bounds: bounds)
+        return renderer.image { rendererContext in
+            layer.render(in: rendererContext.cgContext)
+        }
+    }
+    
+    /// <#Description#>
+    var visibleFont: UIFont? {
+        if let textView = self as? UITextView {
+            return textView.font
+        } else if let label = self as? UILabel {
+            return label.font
+        } else if let button = self as? UIButton {
+            return button.titleLabel?.font
+        } else if let textField = self as? UITextField {
+            return textField.font
+        }
+        
+        return nil
+    }
+    
     // Animate a view, adding effect of "something went wrong". Useful for login button for example.
     /// - Parameter repeatAnimation: Repeat the animation?
     func shakeWrong(_ repeatAnimation: Bool? = false) {

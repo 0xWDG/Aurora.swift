@@ -161,5 +161,25 @@ public extension UIColor {
         
         return alpha == 1.0 ? hex : hex.appendingFormat("%02X", Int(alpha * 255.0))
     }
+    
+    /// <#Description#>
+    var redValue: CGFloat {
+        return CIColor(color: self).red
+    }
+    
+    /// <#Description#>
+    var greenValue: CGFloat {
+        return CIColor(color: self).green
+    }
+    
+    /// <#Description#>
+    var blueValue: CGFloat {
+        return CIColor(color: self).blue
+    }
+    
+    /// <#Description#>
+    var alphaValue: CGFloat {
+        return CIColor(color: self).alpha
+    }
 }
 #endif

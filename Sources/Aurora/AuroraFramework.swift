@@ -102,7 +102,7 @@ open class Aurora {
      *
      * This is used to send log messages with the following syntax
      *
-     *     [Aurora] Filename:line functionName(...):
+     *     [Aurora] Filename:line functionName(...) @Main/Background:
      *      Message
      *
      * _want to use a callback/loghandler?_
@@ -124,8 +124,10 @@ open class Aurora {
             // extract filename, without path, and without extension.
             let fileName: String = (file.split("/").last)!.split(".").first!
             
+            let queue = Thread.isMainThread ? "Main" : "Background"
+            
             // Make up the log message.
-            let logMessage: String = "[Aurora.Framework] \(fileName):\(line) \(function):\n \(message.joined(separator: " "))\n"
+            let logMessage: String = "[Aurora.Framework] \(fileName):\(line) \(function) @\(queue):\n \(message.joined(separator: " "))\n"
             
             // Print the "messages"
             Swift.print(logMessage)
@@ -153,7 +155,7 @@ open class Aurora {
      *
      * This is used to send log messages with the following syntax
      *
-     *     [Aurora] Filename:line functionName(...):
+     *     [Aurora] Filename:line functionName(...) @Main/Background:
      *      Message
      *
      * _want to use a callback/loghandler?_
@@ -177,11 +179,19 @@ open class Aurora {
             // extract filename, without path, and without extension.
             let fileName: String = (file.split("/").last)!.split(".").first!
             
+            let queue = Thread.isMainThread ? "Main" : "Background"
+            
+            // Make up the log message.
+            let logMessage: String = "[Aurora.Framework] \(fileName):\(line) \(function) @\(queue):\n \(anyThing)\n"
+            
             // Print the "messages"
-            Swift.print("[Aurora.Framework] \(fileName):\(line) \(function):\n \(anyThing)\n")
+            Swift.print(logMessage)
+            
+            // Append to the history
+            logHistory.append(logMessage)
             
             if isInitialized {
-                Aurora.shared.logHandler?("[Aurora.Framework] \(fileName):\(line) \(function):\n \(anyThing)\n")
+                Aurora.shared.logHandler?(logMessage)
             }
         }
         
@@ -200,7 +210,7 @@ open class Aurora {
      *
      * This is used to send log messages with the following syntax
      *
-     *     [Aurora] Filename:line functionName(...):
+     *     [Aurora] Filename:line functionName(...) @Main/Background:
      *      Message
      *
      * _want to use a callback/loghandler?_
