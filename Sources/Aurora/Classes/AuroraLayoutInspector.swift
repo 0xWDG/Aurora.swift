@@ -12,15 +12,16 @@ open class AuroraLayoutInspector {
         // Start.
     }
     
-    public func captureHierarchy() -> ViewDescriptionProtocol? {
+    public func captureHierarchy() -> ViewDescriptionProtocol {
         guard let firstWindow = UIApplication.shared.windows.first else {
-            return nil
+//            return nil
+            fatalError("Oops.")
         }
         
         return buildHierarchy(view: firstWindow)
     }
     
-    func buildHierarchy(view: UIView) -> ViewDescriptionProtocol {
+    public func buildHierarchy(view: UIView) -> ViewDescriptionProtocol {
         let children = view.subviews.map {
             buildHierarchy(view: $0)
         }
@@ -90,6 +91,67 @@ public protocol ViewDescriptionProtocol {
     var tint: UIColor? { get }
     var clipToBounds: Bool { get }
     var font: UIFont? { get }
+}
+
+extension ViewDescription: CustomDebugStringConvertible {
+    func parseView(view: ViewDescriptionProtocol, numberOfTabs: Int = 0) -> String {
+        var tabs: String = ""
+        
+        for _ in 0...numberOfTabs {
+            tabs.append("\t")
+        }
+        
+        var dString = "\(tabs)View<\(className)> "
+            + "(hidden:\(isHidden ? "Yes" : "No"), "
+            + "transparent:\(isTransparent ? "Yes" : "No"), "
+            + "userInteractionEnabled:\(isUserInteractionEnabled ? "Yes" : "No")):\n"
+        dString.append("\(tabs)\tFrame: \(frame)\n")
+        dString.append("\(tabs)\tCenter point: \(center)\n")
+        dString.append("\(tabs)\tParent size: (w: \(parentSize?.width), h: \(parentSize?.height))\n")
+        dString.append("\(tabs)\tBackground color: (r:\(backgroundColor?.redValue), g:\(backgroundColor?.greenValue), b:\(backgroundColor?.blueValue), a:\(backgroundColor?.alphaValue))\n")
+        dString.append("\(tabs)\tTint color: (r:\(tint?.redValue), g:\(tint?.greenValue), b:\(tint?.blueValue), a:\(tint?.alphaValue))\n")
+        dString.append("\(tabs)\tclipToBounds: \(clipToBounds ? "Yes" : "No")\n")
+        dString.append("\(tabs)\tfont: \(font)\n")
+        
+        dString.append("\(tabs)\tSubviews(\(subviews?.count)):\n")
+        
+        if let subviews = subviews {
+            for subView in subviews {
+                if numberOfTabs < 10 {
+                    dString.append(parseView(view: subView, numberOfTabs: (numberOfTabs + 2)))
+                } else {
+                    dString.append("\(tabs)\t\tSubview limit reached.\n")
+                }
+            }
+        }
+        
+        return dString
+    }
+    
+    public var debugDescription: String {
+        var dString = "View<\(className)> "
+                    + "(hidden:\(isHidden ? "Yes" : "No"),"
+                    + "transparent:\(isTransparent ? "Yes" : "No"),"
+                    + "userInteractionEnabled:\(isUserInteractionEnabled ? "Yes" : "No")):\n"
+        dString.append("Frame: \(frame)\n")
+        dString.append("Center point: \(center)\n")
+        dString.append("Parent size: (w: \(parentSize?.width), h: \(parentSize?.height))\n")
+        dString.append("Background color: (r:\(backgroundColor?.redValue), g:\(backgroundColor?.greenValue), b:\(backgroundColor?.blueValue), a:\(backgroundColor?.alphaValue))\n")
+        dString.append("Tint color: (r:\(tint?.redValue), g:\(tint?.greenValue), b:\(tint?.blueValue), a:\(tint?.alphaValue))\n")
+        dString.append("clipToBounds: \(clipToBounds ? "Yes" : "No")\n")
+        dString.append("font: \(font)\n")
+
+        dString.append("Subviews(\(subviews?.count)):\n")
+
+        if let subviews = subviews {
+            for subView in subviews {
+                dString.append(parseView(view: subView, numberOfTabs: 2))
+            }
+        }
+
+        return dString
+//        return parseView(view: self)
+    }
 }
 
 public class ViewDescription: ViewDescriptionProtocol {
