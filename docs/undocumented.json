@@ -1,89 +1,236 @@
 {
   "warnings": [
     {
-      "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/Classes/NSFWDetector.swift",
-      "line": 72,
+      "file": "/Users/wes/Documents/Apps/Universal/Aurora.swift/Sources/Aurora/Classes/NSFWDetector.swift",
+      "line": 89,
       "symbol": "NSFWDetector.DetectionResult.error(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/Classes/NSFWDetector.swift",
-      "line": 73,
+      "file": "/Users/wes/Documents/Apps/Universal/Aurora.swift/Sources/Aurora/Classes/NSFWDetector.swift",
+      "line": 90,
       "symbol": "NSFWDetector.DetectionResult.success(nsfwConfidence:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/Collection.swift",
+      "file": "/Users/wes/Documents/Apps/Universal/Aurora.swift/Sources/Aurora/Classes/Shell.swift",
       "line": 24,
+      "symbol": "Aurora.shell(_:show_log:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Documents/Apps/Universal/Aurora.swift/Sources/Aurora/Classes/Testing.swift",
+      "line": 25,
+      "symbol": "UITest",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Documents/Apps/Universal/Aurora.swift/Sources/Aurora/Classes/Testing.swift",
+      "line": 32,
+      "symbol": "UnitTest",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Documents/Apps/Universal/Aurora.swift/Sources/Aurora/Classes/Testing.swift",
+      "line": 39,
+      "symbol": "UnitTest.measure(closure:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Documents/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/Bool.swift",
+      "line": 22,
+      "symbol": "Bool.isBool",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Documents/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/Collection.swift",
+      "line": 39,
       "symbol": "DivisibleArithmetic",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/Dictionary.swift",
-      "line": 23,
+      "file": "/Users/wes/Documents/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/Color.swift",
+      "line": 468,
+      "symbol": "Color.Material",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Documents/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/Dictionary.swift",
+      "line": 38,
       "symbol": "DictionaryDynamicLookup.subscript(dynamicMember:)",
       "symbol_kind": "source.lang.swift.decl.function.subscript",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/Double.swift",
-      "line": 11,
-      "symbol": "Double.toPositive",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "file": "/Users/wes/Documents/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/DynamicJSON.swift",
+      "line": 27,
+      "symbol": "JSON",
+      "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/NSObject.swift",
-      "line": 22,
+      "file": "/Users/wes/Documents/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/DynamicJSON.swift",
+      "line": 29,
+      "symbol": "JSON.dictionary(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Documents/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/DynamicJSON.swift",
+      "line": 30,
+      "symbol": "JSON.array(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Documents/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/DynamicJSON.swift",
+      "line": 31,
+      "symbol": "JSON.string(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Documents/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/DynamicJSON.swift",
+      "line": 32,
+      "symbol": "JSON.number(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Documents/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/DynamicJSON.swift",
+      "line": 33,
+      "symbol": "JSON.bool(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Documents/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/DynamicJSON.swift",
+      "line": 34,
+      "symbol": "JSON.null",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Documents/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/NSObject.swift",
+      "line": 37,
       "symbol": "Configure",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/NSObject.swift",
-      "line": 24,
+      "file": "/Users/wes/Documents/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/NSObject.swift",
+      "line": 39,
       "symbol": "Configure",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/iCloudSync.swift",
-      "line": 8,
+      "file": "/Users/wes/Documents/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/String.swift",
+      "line": 120,
+      "symbol": "String.fetchAsData",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Documents/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/String.swift",
+      "line": 130,
+      "symbol": "String.fetchAsText",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Documents/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/String.swift",
+      "line": 145,
+      "symbol": "String.fetchAsImage",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Documents/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/String.swift",
+      "line": 2481,
+      "symbol": "String.Font",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Documents/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/String.swift",
+      "line": 2644,
+      "symbol": "String.StringInterpolation.appendInterpolation(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Documents/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/String.swift",
+      "line": 2648,
+      "symbol": "String.StringInterpolation.appendInterpolation(HTMLLink:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Documents/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/String.swift",
+      "line": 2656,
+      "symbol": "String.StringInterpolation.appendInterpolation(json:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Documents/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/iCloudSync.swift",
+      "line": 25,
       "symbol": "WDGFrameworkiCloudSync",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/iCloudSync.swift",
-      "line": 9,
+      "file": "/Users/wes/Documents/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/iCloudSync.swift",
+      "line": 26,
       "symbol": "WDGFrameworkiCloudSync.shared",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/iCloudSync.swift",
-      "line": 13,
+      "file": "/Users/wes/Documents/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/iCloudSync.swift",
+      "line": 30,
       "symbol": "WDGFrameworkiCloudSync.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/iCloudSync.swift",
-      "line": 20,
+      "file": "/Users/wes/Documents/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/iCloudSync.swift",
+      "line": 37,
       "symbol": "WDGFrameworkiCloudSync.startSync()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/iCloudSync.swift",
-      "line": 137,
+      "file": "/Users/wes/Documents/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/iCloudSync.swift",
+      "line": 154,
       "symbol": "WDGFrameworkiCloudSync.sync()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Documents/Apps/Universal/Aurora.swift/Sources/Aurora/propertyWrappers/UserDefault.swift",
+      "line": 19,
+      "symbol": "UserDefault.init(_:defaultValue:userDefaults:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/wes/Documents/Apps/Universal/Aurora.swift/Sources/Aurora/propertyWrappers/UserDefault.swift",
+      "line": 25,
+      "symbol": "UserDefault.wrappedValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
     }
   ],
-  "source_directory": "/Users/wes/Cloud/Apps/Universal/Aurora.swift"
+  "source_directory": "/Users/wes/Documents/Apps/Universal/Aurora.swift"
 }
