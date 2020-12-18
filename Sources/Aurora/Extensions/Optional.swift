@@ -60,7 +60,7 @@ public extension Optional {
     ///     // Or
     ///     myOptional.matching { $0.age > 18 }
     ///
-    /// - Parameter predicate: what do yoy want to check
+    /// - Parameter predicate: what do you want to check
     /// - Returns: items which match the predicate
     func matching(_ predicate: (Wrapped) -> Bool) -> Wrapped? {
         guard let value = self else {
