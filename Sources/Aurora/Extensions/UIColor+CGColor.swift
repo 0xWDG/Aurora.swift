@@ -18,17 +18,6 @@
 #if canImport(UIKit)
 import UIKit
 
-public extension CGColor {
-    /// DiCo Green
-    static let dinnerGreen = UIColor.dinnerGreen.cgColor
-    
-    /// DiCo Blue
-    static let dinnerBlue = UIColor.dinnerBlue.cgColor
-
-    /// BaaS Blue
-    static let BaaS = UIColor.BaaS.cgColor
-}
-
 public extension UIColor {
     /// DiCo Green
     static let dinnerGreen = UIColor.init(

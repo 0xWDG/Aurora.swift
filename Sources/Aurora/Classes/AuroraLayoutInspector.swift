@@ -1,6 +1,6 @@
 // $$HEADER
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS) && !os(tvOS)
 import Foundation
 import UIKit
 
@@ -21,6 +21,13 @@ open class AuroraLayoutInspector {
         return buildHierarchy(view: firstWindow)
     }
     
+    func viewAsImage(view: UIView) -> UIImage {
+        let renderer = UIGraphicsImageRenderer(bounds: view.bounds)
+        return renderer.image { rendererContext in
+            view.layer.render(in: rendererContext.cgContext)
+        }
+    }
+    
     public func buildHierarchy(view: UIView) -> ViewDescriptionProtocol {
         let children = view.subviews.map {
             buildHierarchy(view: $0)
@@ -36,7 +43,8 @@ open class AuroraLayoutInspector {
         }
         
         let isTransparent = isViewTransparent(view)
-        let image = isTransparent ? nil : view.asImage()
+        
+        let image = isTransparent ? nil : viewAsImage(view: view)
         
         // hidden subviews rollback
         viewsToHide.forEach {
