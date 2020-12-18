@@ -21,8 +21,8 @@ import Foundation
 import UIKit
 
 public extension UITabBarController {
-    /// <#Description#>
-    /// - Parameter withName: <#withName description#>
+    /// Selet item with name
+    /// - Parameter withName: name
     func select(withName: String) {
         var currentIndex = 0
         

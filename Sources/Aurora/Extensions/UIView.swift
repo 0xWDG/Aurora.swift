@@ -45,8 +45,8 @@ public extension UIView {
         }
     }
     
-    /// <#Description#>
-    /// - Parameter radius: <#radius description#>
+    /// set the corner radius
+    /// - Parameter radius: which radius
     func roundedCorners(radius: CGFloat? = 45) {
         self.layer.cornerRadius = radius ?? 46
     }
@@ -100,13 +100,13 @@ public extension UIView {
         layer.insertSublayer(gradientLayer, at: UInt32(truncating: intVal! as NSNumber))
     }
     
-    /// <#Description#>
+    /// Remove the last Subview
     func removeLastSubview() {
         let intVal = (layer.sublayers?.count)! - 1
         layer.sublayers?.remove(at: intVal)
     }
     
-    /// <#Description#>
+    /// Same size as parent
     func sameSizeAsParent() {
         guard let superview = self.superview else { return }
         translatesAutoresizingMaskIntoConstraints = superview.translatesAutoresizingMaskIntoConstraints
@@ -121,8 +121,8 @@ public extension UIView {
         }
     }
     
-    /// <#Description#>
-    /// - Returns: <#description#>
+    /// Return view as Image
+    /// - Returns: View as Image
     func asImage() -> UIImage {
         let renderer = UIGraphicsImageRenderer(bounds: bounds)
         return renderer.image { rendererContext in
@@ -130,7 +130,7 @@ public extension UIView {
         }
     }
     
-    /// <#Description#>
+    /// Is the font visible?
     var visibleFont: UIFont? {
         if let textView = self as? UITextView {
             return textView.font

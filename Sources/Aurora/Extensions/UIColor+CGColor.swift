@@ -19,15 +19,18 @@
 import UIKit
 
 public extension CGColor {
-    /// <#Description#>
+    /// DiCo Green
     static let dinnerGreen = UIColor.dinnerGreen.cgColor
     
-    /// <#Description#>
+    /// DiCo Blue
     static let dinnerBlue = UIColor.dinnerBlue.cgColor
+
+    /// BaaS Blue
+    static let BaaS = UIColor.BaaS.cgColor
 }
 
 public extension UIColor {
-    /// <#Description#>
+    /// DiCo Green
     static let dinnerGreen = UIColor.init(
         red: 0.439216,
         green: 0.74902,
@@ -35,7 +38,7 @@ public extension UIColor {
         alpha: 1
     )
     
-    /// <#Description#>
+    /// DiCo Blue
     static let dinnerBlue = UIColor.init(
         red: 0.0117647,
         green: 0.396078,
@@ -43,15 +46,15 @@ public extension UIColor {
         alpha: 1
     )
     
-    
-    static let baas = UIColor.init(
+    /// BaaS Color
+    static let BaaS = UIColor.init(
         red: 0.0,
         green: 0.831372549,
         blue: 1.0,
         alpha: 1.0
     )
     
-    /// <#Description#>
+    /// Default Button Color
     static let button = UIColor.init(
         red: 0,
         green: 176/255,
@@ -59,7 +62,10 @@ public extension UIColor {
         alpha: 1.0
     )
     
-    /// <#Description#>
+    /// A color object with grayscale and alpha values that are both 0.0.
+    static let transparent = UIColor.clear
+    
+    /// default Cell background color
     static var cellBackgroundcolor: UIColor {
         if #available(iOS 13.0, *) {
             #if os(tvOS) || os(watchOS)
@@ -162,22 +168,22 @@ public extension UIColor {
         return alpha == 1.0 ? hex : hex.appendingFormat("%02X", Int(alpha * 255.0))
     }
     
-    /// <#Description#>
+    /// Returns the value of the value of red in the color.
     var redValue: CGFloat {
         return CIColor(color: self).red
     }
     
-    /// <#Description#>
+    /// Returns the value of the value of green in the color.
     var greenValue: CGFloat {
         return CIColor(color: self).green
     }
     
-    /// <#Description#>
+    /// Returns the value of the value of blue in the color.
     var blueValue: CGFloat {
         return CIColor(color: self).blue
     }
     
-    /// <#Description#>
+    /// Returns the value of the value of alpha/transparency in the color.
     var alphaValue: CGFloat {
         return CIColor(color: self).alpha
     }

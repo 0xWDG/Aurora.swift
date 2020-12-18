@@ -303,9 +303,9 @@ public extension UIView {
     
     // MARK: - Private Methods
     
-    /// <#Description#>
-    /// - Parameter pointValue: <#pointValue description#>
-    /// - Returns: <#description#>
+    /// _pixelIntegral
+    /// - Parameter pointValue: point
+    /// - Returns: CGFloat
     fileprivate func _pixelIntegral(_ pointValue: CGFloat) -> CGFloat {
         let scale = UIScreen.main.scale
         return (round(pointValue * scale) / scale)
