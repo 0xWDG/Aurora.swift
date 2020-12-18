@@ -17,7 +17,7 @@
     <a title="Aurora Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Aurora 1.0 Docs</a> (96% documented)</p>
+        <p><a href="../index.html">Aurora 1.0 Docs</a> (94% documented)</p>
         <p class="header-right"><a href="https://github.com/AuroraFramework/Aurora.swift"><img src="../img/gh.png"/>View on GitHub</a></p>
         <p class="header-right"><a href="dash-feed://https%3A%2F%2FAuroraFramework.github.io%2FAurora.swift%2Fdocsets%2FBaaS.docset"><img src="../img/dash.png"/>Install in Dash</a></p>
         <p class="header-right">
@@ -54,6 +54,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/KeyboardHandler.html">KeyboardHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/KeychainWrapper.html">KeychainWrapper</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/NSFWDetector.html">NSFWDetector</a>
@@ -101,6 +104,9 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Enums/JSON.html">JSON</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/KeychainItemAccessibility.html">KeychainItemAccessibility</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Enums/SplashAnimationType.html">SplashAnimationType</a>
@@ -241,9 +247,6 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/NSObject.html">NSObject</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Extensions.html#/c:objc(cs)NSString">NSString</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/Optional.html">Optional</a>
@@ -417,10 +420,16 @@
             <a href="../Structs.html">Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Structs/CodableKeychain.html">CodableKeychain</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/DynamicUIColor.html">DynamicUIColor</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/DynamicUIColor/Style.html">– Style</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Keychain.html">Keychain</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/NilError.html">NilError</a>
@@ -516,7 +525,7 @@ and <a href="https://github.com/AuroraFramework/Aurora.swift/graphs/contributors
 </div>
 
               <div class="slightly-smaller">
-                <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/AuroraFramework.swift#L40-L279">Show on GitHub</a>
+                <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/AuroraFramework.swift#L40-L288">Show on GitHub</a>
               </div>
           </section>
           <section class="section task-group-section">
@@ -716,7 +725,11 @@ messages along to your crash reporter, analytics service, etc.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">log</span><span class="p">(</span><span class="n">_</span> <span class="nv">message</span><span class="p">:</span> <span class="kt">String</span><span class="o">...</span><span class="p">,</span> <span class="nv">file</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="kd">#file</span><span class="p">,</span> <span class="nv">line</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="kd">#line</span><span class="p">,</span> <span class="nv">function</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="kd">#function</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">log</span><span class="p">(</span>
+    <span class="n">_</span> <span class="nv">message</span><span class="p">:</span> <span class="kt">String</span><span class="o">...</span><span class="p">,</span>
+    <span class="nv">file</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="kd">#file</span><span class="p">,</span>
+    <span class="nv">line</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="kd">#line</span><span class="p">,</span>
+    <span class="nv">function</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="kd">#function</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -776,7 +789,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/AuroraFramework.swift#L122-L151">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/AuroraFramework.swift#L122-L156">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -875,7 +888,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/AuroraFramework.swift#L175-L206">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/AuroraFramework.swift#L180-L211">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -914,7 +927,11 @@ messages along to your crash reporter, analytics service, etc.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">print</span><span class="p">(</span><span class="n">_</span> <span class="nv">message</span><span class="p">:</span> <span class="kt">String</span><span class="o">...</span><span class="p">,</span> <span class="nv">file</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="kd">#file</span><span class="p">,</span> <span class="nv">line</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="kd">#line</span><span class="p">,</span> <span class="nv">function</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="kd">#function</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">print</span><span class="p">(</span>
+    <span class="n">_</span> <span class="nv">message</span><span class="p">:</span> <span class="kt">String</span><span class="o">...</span><span class="p">,</span>
+    <span class="nv">file</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="kd">#file</span><span class="p">,</span>
+    <span class="nv">line</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="kd">#line</span><span class="p">,</span>
+    <span class="nv">function</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="kd">#function</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -974,7 +991,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/AuroraFramework.swift#L230-L232">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/AuroraFramework.swift#L235-L241">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1008,7 +1025,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                         <p>The last crashlog</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/AuroraFramework.swift#L236-L238">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/AuroraFramework.swift#L245-L247">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1042,7 +1059,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                         <p>The last crashlog</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/AuroraFramework.swift#L242-L244">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/AuroraFramework.swift#L251-L253">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1077,7 +1094,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                         <p>Bool if deleted</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/AuroraFramework.swift#L249-L251">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/AuroraFramework.swift#L258-L260">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1130,7 +1147,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                         <p>MD5 Hash</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/AuroraFramework.swift#L257-L259">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/AuroraFramework.swift#L266-L268">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1179,7 +1196,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/AuroraFramework.swift#L264-L266">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/AuroraFramework.swift#L273-L275">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1228,7 +1245,113 @@ messages along to your crash reporter, analytics service, etc.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/AuroraFramework.swift#L270-L272">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/AuroraFramework.swift#L279-L281">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6AuroraAAC8compress4data10Foundation4DataVAG_tF"></a>
+                    <a name="//apple_ref/swift/Method/compress(data:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6AuroraAAC8compress4data10Foundation4DataVAG_tF">compress(data:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>&lt;#Description#&gt;</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">compress</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="kt">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Data</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>data</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>&lt;#data description#&gt;</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>&lt;#description#&gt;</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Aurora Extensions/Aurora.Compression.swift#L25-L31">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6AuroraAAC10decompress4data10Foundation4DataVAG_tF"></a>
+                    <a name="//apple_ref/swift/Method/decompress(data:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6AuroraAAC10decompress4data10Foundation4DataVAG_tF">decompress(data:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>&lt;#Description#&gt;</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">decompress</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="kt">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Data</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>data</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>&lt;#data description#&gt;</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>&lt;#description#&gt;</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Aurora Extensions/Aurora.Compression.swift#L36-L42">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1279,7 +1402,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Networking.swift#L49-L51">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Aurora Extensions/Aurora.Networking.swift#L50-L52">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1330,7 +1453,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Networking.swift#L60-L62">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Aurora Extensions/Aurora.Networking.swift#L61-L63">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1362,7 +1485,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Networking.swift#L71-L73">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Aurora Extensions/Aurora.Networking.swift#L72-L74">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1394,7 +1517,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Networking.swift#L82-L84">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Aurora Extensions/Aurora.Networking.swift#L83-L85">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1412,9 +1535,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>networkRequest</p>
-
-<p>Start a network request</p>
+                        <p>Undocumented, Help us document it!</p>
 
                       </div>
                       <div class="declaration">
@@ -1423,49 +1544,14 @@ messages along to your crash reporter, analytics service, etc.</p>
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">networkRequest</span><span class="p">(</span>
     <span class="nv">url</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
-    <span class="nv">posting</span><span class="p">:</span> <span class="kt">Dictionary</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span> <span class="kt">Any</span><span class="o">&gt;</span><span class="p">?</span> <span class="o">=</span> <span class="p">[</span><span class="s">"nothing"</span><span class="p">:</span> <span class="s">"send"</span><span class="p">],</span>
+    <span class="nv">posting</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?</span> <span class="o">=</span> <span class="p">[</span><span class="s">"nothing"</span><span class="p">:</span> <span class="s">"send"</span><span class="p">],</span>
     <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Result</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span>
 <span class="p">)</span></code></pre>
 
                         </div>
                       </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>url</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The url to be parsed</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>posting</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>What do you need to post</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>closure -&gt; sucess, fail.</p>
-                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Networking.swift#L113-L247">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Aurora Extensions/Aurora.Networking.swift#L115-L274">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1483,9 +1569,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>networkRequest</p>
-
-<p>Start a network request</p>
+                        <p>Undocumented, Help us document it!</p>
 
                       </div>
                       <div class="declaration">
@@ -1494,48 +1578,13 @@ messages along to your crash reporter, analytics service, etc.</p>
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">dep_networkRequest</span><span class="p">(</span>
     <span class="n">_</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
-    <span class="n">_</span> <span class="nv">posting</span><span class="p">:</span> <span class="kt">Dictionary</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span> <span class="kt">Any</span><span class="o">&gt;</span><span class="p">?</span> <span class="o">=</span> <span class="p">[</span><span class="s">"nothing"</span><span class="p">:</span> <span class="s">"send"</span><span class="p">]</span>
+    <span class="n">_</span> <span class="nv">posting</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?</span> <span class="o">=</span> <span class="p">[</span><span class="s">"nothing"</span><span class="p">:</span> <span class="s">"send"</span><span class="p">]</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Data</span></code></pre>
 
                         </div>
                       </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>url</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The url to be parsed</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>posting</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>What do you need to post</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>the data we&rsquo;ve got from the server</p>
-                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Networking.swift#L258-L370">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Aurora Extensions/Aurora.Networking.swift#L286-L398">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1553,9 +1602,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>networkRequest_dep (DEPRECATED)</p>
-
-<p>Start a network request</p>
+                        <p>Undocumented, Help us document it!</p>
 
                       </div>
                       <div class="declaration">
@@ -1564,48 +1611,13 @@ messages along to your crash reporter, analytics service, etc.</p>
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">networkRequest_dep</span><span class="p">(</span>
     <span class="n">_</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
-    <span class="n">_</span> <span class="nv">posting</span><span class="p">:</span> <span class="kt">Dictionary</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span> <span class="kt">Any</span><span class="o">&gt;</span><span class="p">?</span> <span class="o">=</span> <span class="p">[</span><span class="s">"nothing"</span><span class="p">:</span> <span class="s">"send"</span><span class="p">]</span>
+    <span class="n">_</span> <span class="nv">posting</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?</span> <span class="o">=</span> <span class="p">[</span><span class="s">"nothing"</span><span class="p">:</span> <span class="s">"send"</span><span class="p">]</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Data</span></code></pre>
 
                         </div>
                       </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>url</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The url to be parsed</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>posting</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>What do you need to post</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>the data we&rsquo;ve got from the server</p>
-                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Networking.swift#L381-L525">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Aurora Extensions/Aurora.Networking.swift#L410-L549">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1613,9 +1625,9 @@ messages along to your crash reporter, analytics service, etc.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6AuroraAAC5shell_8show_logS2S_SbtF"></a>
-                    <a name="//apple_ref/swift/Method/shell(_:show_log:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6AuroraAAC5shell_8show_logS2S_SbtF">shell(_:<wbr>show_log:<wbr>)</a>
+                    <a name="/s:6AuroraAAC5shell_7showLogS2S_SbtF"></a>
+                    <a name="//apple_ref/swift/Method/shell(_:showLog:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6AuroraAAC5shell_7showLogS2S_SbtF">shell(_:<wbr>showLog:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1631,12 +1643,12 @@ messages along to your crash reporter, analytics service, etc.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">func</span> <span class="nf">shell</span><span class="p">(</span><span class="n">_</span> <span class="nv">arguments</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">show_log</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+<span class="kd">func</span> <span class="nf">shell</span><span class="p">(</span><span class="n">_</span> <span class="nv">arguments</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">showLog</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Shell.swift#L24-L44">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Aurora Extensions/Aurora.Shell.swift#L24-L44">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1654,7 +1666,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>&lt;#Description#&gt;</p>
+                        <p>Execute block in background</p>
 
                       </div>
                       <div class="declaration">
@@ -1677,7 +1689,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>&lt;#background description#&gt;</p>
+                                  <p>what to execute</p>
                                 </div>
                               </td>
                             </tr>
@@ -1685,7 +1697,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/SyncTasks.swift#L23-L27">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Aurora Extensions/Aurora.SyncTasks.swift#L23-L27">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1703,7 +1715,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>&lt;#Description#&gt;</p>
+                        <p>Execute block in foreground</p>
 
                       </div>
                       <div class="declaration">
@@ -1726,7 +1738,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>&lt;#main description#&gt;</p>
+                                  <p>What to run in execute foreground</p>
                                 </div>
                               </td>
                             </tr>
@@ -1734,7 +1746,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/SyncTasks.swift#L31-L35">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Aurora Extensions/Aurora.SyncTasks.swift#L31-L35">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1752,7 +1764,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>&lt;#Description#&gt;</p>
+                        <p>Execute block in background</p>
 
                       </div>
                       <div class="declaration">
@@ -1775,7 +1787,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>&lt;#background description#&gt;</p>
+                                  <p>What to execute in the backgroud</p>
                                 </div>
                               </td>
                             </tr>
@@ -1783,7 +1795,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/SyncTasks.swift#L39-L43">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Aurora Extensions/Aurora.SyncTasks.swift#L39-L43">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1801,7 +1813,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>&lt;#Description#&gt;</p>
+                        <p>Delay execution of block (on main)</p>
 
                       </div>
                       <div class="declaration">
@@ -1824,7 +1836,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>&lt;#after description#&gt;</p>
+                                  <p>For how long</p>
                                 </div>
                               </td>
                             </tr>
@@ -1836,7 +1848,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>&lt;#closure description#&gt;</p>
+                                  <p>What to execute</p>
                                 </div>
                               </td>
                             </tr>
@@ -1844,7 +1856,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/SyncTasks.swift#L49-L52">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Aurora Extensions/Aurora.SyncTasks.swift#L49-L52">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1862,7 +1874,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>&lt;#Description#&gt;</p>
+                        <p>Delay execution of block (in background)</p>
 
                       </div>
                       <div class="declaration">
@@ -1885,7 +1897,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>&lt;#after description#&gt;</p>
+                                  <p>For how long</p>
                                 </div>
                               </td>
                             </tr>
@@ -1897,7 +1909,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>&lt;#closure description#&gt;</p>
+                                  <p>What to execute</p>
                                 </div>
                               </td>
                             </tr>
@@ -1905,7 +1917,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/SyncTasks.swift#L58-L61">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Aurora Extensions/Aurora.SyncTasks.swift#L58-L61">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1954,7 +1966,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Threads.swift#L69-L73">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Aurora Extensions/Aurora.Threads.swift#L69-L73">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2003,7 +2015,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Threads.swift#L77-L81">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Aurora Extensions/Aurora.Threads.swift#L77-L81">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2064,7 +2076,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Threads.swift#L87-L89">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Aurora Extensions/Aurora.Threads.swift#L87-L89">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2125,7 +2137,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Threads.swift#L95-L103">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Aurora Extensions/Aurora.Threads.swift#L95-L103">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2186,7 +2198,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Threads.swift#L109-L118">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Aurora Extensions/Aurora.Threads.swift#L109-L118">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2247,7 +2259,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Threads.swift#L124-L132">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Aurora Extensions/Aurora.Threads.swift#L124-L132">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2321,7 +2333,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Web.swift#L75-L117">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Aurora Extensions/Aurora.Web.swift#L75-L117">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2374,7 +2386,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                         <p>&lt;#description#&gt;</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Web.swift#L122-L189">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Aurora Extensions/Aurora.Web.swift#L122-L189">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2427,7 +2439,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                         <p>the contents of the file</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Web.swift#L197-L246">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Aurora Extensions/Aurora.Web.swift#L197-L246">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2483,7 +2495,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                         <p>the contents of the file</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Web.swift#L255-L311">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Aurora Extensions/Aurora.Web.swift#L255-L311">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2536,7 +2548,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                         <p>the plain HTML String</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Web.swift#L320-L338">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Aurora Extensions/Aurora.Web.swift#L320-L338">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2589,7 +2601,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                         <p>the string with <br /> tags</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Web.swift#L347-L349">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Aurora Extensions/Aurora.Web.swift#L347-L349">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2642,7 +2654,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                         <p>the string with line-breaks</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Web.swift#L358-L364">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Aurora Extensions/Aurora.Web.swift#L358-L364">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2691,113 +2703,7 @@ messages along to your crash reporter, analytics service, etc.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Web.swift#L371-L373">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:6AuroraAAC8compress4data10Foundation4DataVAG_tF"></a>
-                    <a name="//apple_ref/swift/Method/compress(data:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6AuroraAAC8compress4data10Foundation4DataVAG_tF">compress(data:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>&lt;#Description#&gt;</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">compress</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="kt">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Data</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>data</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>&lt;#data description#&gt;</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>&lt;#description#&gt;</p>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Extensions/Compression.swift#L25-L31">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:6AuroraAAC10decompress4data10Foundation4DataVAG_tF"></a>
-                    <a name="//apple_ref/swift/Method/decompress(data:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6AuroraAAC10decompress4data10Foundation4DataVAG_tF">decompress(data:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>&lt;#Description#&gt;</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">decompress</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="kt">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Data</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>data</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>&lt;#data description#&gt;</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>&lt;#description#&gt;</p>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Extensions/Compression.swift#L36-L42">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Aurora Extensions/Aurora.Web.swift#L371-L373">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2807,7 +2713,7 @@ messages along to your crash reporter, analytics service, etc.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="https://wesleydegroot.nl" target="_blank" rel="external">Wesley de Groot (et. al)</a>. All rights reserved. (Last updated: 2020-12-11)</p>
+          <p>&copy; 2020 <a class="link" href="https://wesleydegroot.nl" target="_blank" rel="external">Wesley de Groot (et. al)</a>. All rights reserved. (Last updated: 2020-12-18)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

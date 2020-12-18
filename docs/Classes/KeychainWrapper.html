@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>KeychainWrapper Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/KeychainWrapper" class="dashAnchor"></a>
+    <a title="KeychainWrapper Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Aurora 1.0 Docs</a> (94% documented)</p>
+        <p class="header-right"><a href="https://github.com/AuroraFramework/Aurora.swift"><img src="../img/gh.png"/>View on GitHub</a></p>
+        <p class="header-right"><a href="dash-feed://https%3A%2F%2FAuroraFramework.github.io%2FAurora.swift%2Fdocsets%2FBaaS.docset"><img src="../img/dash.png"/>Install in Dash</a></p>
+        <p class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Aurora Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        KeychainWrapper Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/AnimatedSplashScreen.html">AnimatedSplashScreen</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Aurora.html">Aurora</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AuroraLayoutInspector.html">AuroraLayoutInspector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ImageSlider.html">ImageSlider</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/KeyboardHandler.html">KeyboardHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/KeychainWrapper.html">KeychainWrapper</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NSFWDetector.html">NSFWDetector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NSFWDetector/DetectionResult.html">– DetectionResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NetworkStatus.html">NetworkStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:6Aurora3RunC">Run</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:6Aurora11SimpleTimerC">SimpleTimer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/UIControlHelper.html">UIControlHelper</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/UIGradientView.html">UIGradientView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/UIGreenButton.html">UIGreenButton</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/UIViewRounded.html">UIViewRounded</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Validator.html">Validator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ViewDescription.html">ViewDescription</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:6Aurora12WDGFrameworkC">WDGFramework</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/WDGFrameworkiCloudSync.html">WDGFrameworkiCloudSync</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/JSON.html">JSON</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/KeychainItemAccessibility.html">KeychainItemAccessibility</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SplashAnimationType.html">SplashAnimationType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/UITest.html">UITest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/UnitTest.html">UnitTest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/WatchDeviceType.html">WatchDeviceType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Array.html">Array</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Aurora.html">Aurora</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Bool.html">Bool</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Bundle.html">Bundle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/CGColor.html">CGColor</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:12CoreGraphics7CGFloatV">CGFloat</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/c:@S@CGPoint">CGPoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/c:@S@CGRect">CGRect</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/c:@S@CGSize">CGSize</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/c:@S@CGVector">CGVector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Collection.html">Collection</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Collection.html">Collection</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Color.html">Color</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Color/Social.html">– Social</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Color/Material.html">– Material</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Color/CSS.html">– CSS</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Color/FlatUI.html">– FlatUI</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Data.html">Data</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Date.html">Date</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:SD">Dictionary</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Double.html">Double</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/FileManager.html">FileManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Float.html">Float</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/FloatingPoint.html">FloatingPoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Foundation.html">Foundation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Foundation/Bundle.html">– Bundle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Int.html">Int</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:s5Int16V">Int16</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:s5Int32V">Int32</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:s5Int64V">Int64</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:s4Int8V">Int8</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/MKMapView.html">MKMapView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/NSAttributedString.html">NSAttributedString</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/NSControl.html">NSControl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/c:objc(cs)NSData">NSData</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/c:objc(cs)NSDate">NSDate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/NSError.html">NSError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/NSMutableAttributedString.html">NSMutableAttributedString</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/c:objc(cs)NSMutableDictionary">NSMutableDictionary</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/c:objc(cs)NSNumber">NSNumber</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/NSObject.html">NSObject</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Optional.html">Optional</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Sequence.html">Sequence</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:Sh">Set</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/String/StringInterpolation.html">– StringInterpolation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Timer.html">Timer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIApplication.html">UIApplication</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIBarButtonItem.html">UIBarButtonItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIButton.html">UIButton</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIColor.html">UIColor</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIControl.html">UIControl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIDevice.html">UIDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/UIEdgeInsets">UIEdgeInsets</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIImage.html">UIImage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIImageView.html">UIImageView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UILabel.html">UILabel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UINavigationBar.html">UINavigationBar</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/UIOffset">UIOffset</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/UIRectEdge">UIRectEdge</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIScreen.html">UIScreen</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIStoryboard.html">UIStoryboard</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UITabBar.html">UITabBar</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UITabBarController.html">UITabBarController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UITableView.html">UITableView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UITableViewCell.html">UITableViewCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UITextField.html">UITextField</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIView.html">UIView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIView.html#/GestureClosures">– GestureClosures</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIViewController.html">UIViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIWindow.html">UIWindow</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UInt.html">UInt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:s6UInt16V">UInt16</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:s6UInt32V">UInt32</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:s6UInt64V">UInt64</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions.html#/s:s5UInt8V">UInt8</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/URL.html">URL</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/URLRequest.html">URLRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UserDefaults.html">UserDefaults</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:6Aurora2ntoiySbSS_SStF">!~(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/&lt;(_:_:)">&lt;(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:6Aurora2etoiySbSS_SStF">=~(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:6Aurora6aprint_4file4line8functionSbyp_SSSiSStF">aprint(_:file:line:function:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:6Aurora2tgoiyySSyc_ySSctF">~&gt;(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:6Aurora2tgoiyyxyc_yxctlF">~&gt;(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:6Aurora2tgoiyyyyc_yyctF">~&gt;(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/Blurable.html">Blurable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Configure.html">Configure</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/DictionaryDynamicLookup.html">DictionaryDynamicLookup</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/DivisibleArithmetic.html">DivisibleArithmetic</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SplashAnimatable.html">SplashAnimatable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ViewDescriptionProtocol.html">ViewDescriptionProtocol</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/CodableKeychain.html">CodableKeychain</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/DynamicUIColor.html">DynamicUIColor</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/DynamicUIColor/Style.html">– Style</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Keychain.html">Keychain</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NilError.html">NilError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Regex.html">Regex</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Regex/Options.html">– Options</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Regex/Match.html">– Match</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/UserDefault.html">UserDefault</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/BezierPath">BezierPath</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:6Aurora10BezierPatha">BezierPath</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/Color">Color</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:6Aurora5Colora">Color</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/Font">Font</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:6Aurora4Fonta">Font</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/Image">Image</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:6Aurora5Imagea">Image</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/SplashAnimatableCompletion">SplashAnimatableCompletion</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/SplashAnimatableExecution">SplashAnimatableExecution</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/View">View</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:6Aurora4Viewa">View</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/ViewController">ViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:6Aurora14ViewControllera">ViewController</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>KeychainWrapper</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">KeychainWrapper</span></code></pre>
+
+                </div>
+              </div>
+            <p>KeychainWrapper is a class to help make Keychain access in Swift more straightforward.
+It is designed to make accessing the Keychain services more like using NSUserDefaults,
+which is much more familiar to people.</p>
+
+              <div class="slightly-smaller">
+                <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/propertyWrappers/Keychain.swift#L211-L640">Show on GitHub</a>
+              </div>
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6Aurora15KeychainWrapperC8standardACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/standard" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6Aurora15KeychainWrapperC8standardACvpZ">standard</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Default keychain wrapper access</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">standard</span><span class="p">:</span> <span class="kt">KeychainWrapper</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/propertyWrappers/Keychain.swift#L214">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6Aurora15KeychainWrapperC11serviceNameSSvp"></a>
+                    <a name="//apple_ref/swift/Property/serviceName" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6Aurora15KeychainWrapperC11serviceNameSSvp">serviceName</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>ServiceName is used for the kSecAttrService property to uniquely identify this keychain accessor.
+If no service name is specified, KeychainWrapper will default to using the bundleIdentifier.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">serviceName</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/propertyWrappers/Keychain.swift#L218">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6Aurora15KeychainWrapperC11accessGroupSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/accessGroup" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6Aurora15KeychainWrapperC11accessGroupSSSgvp">accessGroup</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>AccessGroup is used for the kSecAttrAccessGroup property to identify
+which Keychain Access Group this entry belongs to.
+This allows you to use the KeychainWrapper with shared keychain access between different applications.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">accessGroup</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/propertyWrappers/Keychain.swift#L223">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6Aurora15KeychainWrapperC11serviceName11accessGroupACSS_SSSgtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(serviceName:accessGroup:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6Aurora15KeychainWrapperC11serviceName11accessGroupACSS_SSSgtcfc">init(serviceName:<wbr>accessGroup:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a custom instance of KeychainWrapper with a custom Service Name and optional custom access group.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">serviceName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">accessGroup</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>serviceName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The ServiceName for this instance.
+Used to uniquely identify all keys stored using this keychain wrapper instance.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>accessGroup</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optional unique AccessGroup for this instance.
+Use a matching AccessGroup between applications to allow shared keychain access.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/propertyWrappers/Keychain.swift#L239-L242">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6Aurora15KeychainWrapperC8hasValue6forKey17withAccessibilitySbSS_AA0b4ItemI0OSgtF"></a>
+                    <a name="//apple_ref/swift/Method/hasValue(forKey:withAccessibility:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6Aurora15KeychainWrapperC8hasValue6forKey17withAccessibilitySbSS_AA0b4ItemI0OSgtF">hasValue(forKey:<wbr>withAccessibility:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Checks if keychain data exists for a specified key.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">hasValue</span><span class="p">(</span><span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">withAccessibility</span> <span class="nv">accessibility</span><span class="p">:</span> <span class="kt"><a href="../Enums/KeychainItemAccessibility.html">KeychainItemAccessibility</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>forKey</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The key to check for.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>withAccessibility</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optional accessibility to use when retrieving the keychain item.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>True if a value exists for the key. False otherwise.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/propertyWrappers/Keychain.swift#L249-L255">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6Aurora15KeychainWrapperC18accessibilityOfKeyyAA0B17ItemAccessibilityOSgSSF"></a>
+                    <a name="//apple_ref/swift/Method/accessibilityOfKey(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6Aurora15KeychainWrapperC18accessibilityOfKeyyAA0B17ItemAccessibilityOSgSSF">accessibilityOfKey(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented, Help us document it!</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">accessibilityOfKey</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Enums/KeychainItemAccessibility.html">KeychainItemAccessibility</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/propertyWrappers/Keychain.swift#L257-L283">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Public%20Getters"></a>
+                <a name="//apple_ref/swift/Section/Public Getters" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Public%20Getters"></a>
+                  <h3 class="section-name"><p>Public Getters</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6Aurora15KeychainWrapperC7integer6forKey17withAccessibilitySiSgSS_AA0b4ItemH0OSgtF"></a>
+                    <a name="//apple_ref/swift/Method/integer(forKey:withAccessibility:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6Aurora15KeychainWrapperC7integer6forKey17withAccessibilitySiSgSS_AA0b4ItemH0OSgtF">integer(forKey:<wbr>withAccessibility:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented, Help us document it!</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">integer</span><span class="p">(</span><span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">withAccessibility</span> <span class="nv">accessibility</span><span class="p">:</span> <span class="kt"><a href="../Enums/KeychainItemAccessibility.html">KeychainItemAccessibility</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/propertyWrappers/Keychain.swift#L287-L293">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6Aurora15KeychainWrapperC5float6forKey17withAccessibilitySfSgSS_AA0b4ItemH0OSgtF"></a>
+                    <a name="//apple_ref/swift/Method/float(forKey:withAccessibility:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6Aurora15KeychainWrapperC5float6forKey17withAccessibilitySfSgSS_AA0b4ItemH0OSgtF">float(forKey:<wbr>withAccessibility:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented, Help us document it!</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">float</span><span class="p">(</span><span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">withAccessibility</span> <span class="nv">accessibility</span><span class="p">:</span> <span class="kt"><a href="../Enums/KeychainItemAccessibility.html">KeychainItemAccessibility</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Float</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/propertyWrappers/Keychain.swift#L295-L301">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6Aurora15KeychainWrapperC6double6forKey17withAccessibilitySdSgSS_AA0b4ItemH0OSgtF"></a>
+                    <a name="//apple_ref/swift/Method/double(forKey:withAccessibility:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6Aurora15KeychainWrapperC6double6forKey17withAccessibilitySdSgSS_AA0b4ItemH0OSgtF">double(forKey:<wbr>withAccessibility:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented, Help us document it!</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">double</span><span class="p">(</span><span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">withAccessibility</span> <span class="nv">accessibility</span><span class="p">:</span> <span class="kt"><a href="../Enums/KeychainItemAccessibility.html">KeychainItemAccessibility</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Double</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/propertyWrappers/Keychain.swift#L303-L309">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6Aurora15KeychainWrapperC4bool6forKey17withAccessibilitySbSgSS_AA0b4ItemH0OSgtF"></a>
+                    <a name="//apple_ref/swift/Method/bool(forKey:withAccessibility:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6Aurora15KeychainWrapperC4bool6forKey17withAccessibilitySbSgSS_AA0b4ItemH0OSgtF">bool(forKey:<wbr>withAccessibility:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented, Help us document it!</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">bool</span><span class="p">(</span><span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">withAccessibility</span> <span class="nv">accessibility</span><span class="p">:</span> <span class="kt"><a href="../Enums/KeychainItemAccessibility.html">KeychainItemAccessibility</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/propertyWrappers/Keychain.swift#L311-L317">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6Aurora15KeychainWrapperC6string6forKey17withAccessibilitySSSgSS_AA0b4ItemH0OSgtF"></a>
+                    <a name="//apple_ref/swift/Method/string(forKey:withAccessibility:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6Aurora15KeychainWrapperC6string6forKey17withAccessibilitySSSgSS_AA0b4ItemH0OSgtF">string(forKey:<wbr>withAccessibility:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a string value for a specified key.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">string</span><span class="p">(</span><span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">withAccessibility</span> <span class="nv">accessibility</span><span class="p">:</span> <span class="kt"><a href="../Enums/KeychainItemAccessibility.html">KeychainItemAccessibility</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>forKey</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The key to lookup data for.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>withAccessibility</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optional accessibility to use when retrieving the keychain item.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The String associated with the key if it exists.
+If no data exists, or the data found cannot be encoded as a string, returns nil.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/propertyWrappers/Keychain.swift#L325-L331">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6Aurora15KeychainWrapperC6object6forKey17withAccessibilitySo8NSCoding_pSgSS_AA0b4ItemH0OSgtF"></a>
+                    <a name="//apple_ref/swift/Method/object(forKey:withAccessibility:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6Aurora15KeychainWrapperC6object6forKey17withAccessibilitySo8NSCoding_pSgSS_AA0b4ItemH0OSgtF">object(forKey:<wbr>withAccessibility:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns an object that conforms to NSCoding for a specified key.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">object</span><span class="p">(</span>
+    <span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+    <span class="n">withAccessibility</span> <span class="nv">accessibility</span><span class="p">:</span> <span class="kt"><a href="../Enums/KeychainItemAccessibility.html">KeychainItemAccessibility</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">NSCoding</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>forKey</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The key to lookup data for.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>withAccessibility</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optional accessibility to use when retrieving the keychain item.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The decoded object associated with the key if it exists.
+If no data exists, or the data found cannot be decoded, returns nil.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/propertyWrappers/Keychain.swift#L339-L352">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6Aurora15KeychainWrapperC4data6forKey17withAccessibility10Foundation4DataVSgSS_AA0b4ItemH0OSgtF"></a>
+                    <a name="//apple_ref/swift/Method/data(forKey:withAccessibility:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6Aurora15KeychainWrapperC4data6forKey17withAccessibility10Foundation4DataVSgSS_AA0b4ItemH0OSgtF">data(forKey:<wbr>withAccessibility:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a Data object for a specified key.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">data</span><span class="p">(</span><span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">withAccessibility</span> <span class="nv">accessibility</span><span class="p">:</span> <span class="kt"><a href="../Enums/KeychainItemAccessibility.html">KeychainItemAccessibility</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Data</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>forKey</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The key to lookup data for.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>withAccessibility</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optional accessibility to use when retrieving the keychain item.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The Data object associated with the key if it exists. If no data exists, returns nil.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/propertyWrappers/Keychain.swift#L359-L375">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6Aurora15KeychainWrapperC7dataRef6forKey17withAccessibility10Foundation4DataVSgSS_AA0b4ItemI0OSgtF"></a>
+                    <a name="//apple_ref/swift/Method/dataRef(forKey:withAccessibility:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6Aurora15KeychainWrapperC7dataRef6forKey17withAccessibility10Foundation4DataVSgSS_AA0b4ItemI0OSgtF">dataRef(forKey:<wbr>withAccessibility:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a persistent data reference object for a specified key.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">dataRef</span><span class="p">(</span><span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">withAccessibility</span> <span class="nv">accessibility</span><span class="p">:</span> <span class="kt"><a href="../Enums/KeychainItemAccessibility.html">KeychainItemAccessibility</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Data</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>forKey</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The key to lookup data for.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>withAccessibility</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optional accessibility to use when retrieving the keychain item.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The persistent data reference object associated with the key if it exists.
+If no data exists, returns nil.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/propertyWrappers/Keychain.swift#L383-L399">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Public%20Setters"></a>
+                <a name="//apple_ref/swift/Section/Public Setters" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Public%20Setters"></a>
+                  <h3 class="section-name"><p>Public Setters</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6Aurora15KeychainWrapperC3set_6forKey17withAccessibilitySbSi_SSAA0b4ItemH0OSgtF"></a>
+                    <a name="//apple_ref/swift/Method/set(_:forKey:withAccessibility:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6Aurora15KeychainWrapperC3set_6forKey17withAccessibilitySbSi_SSAA0b4ItemH0OSgtF">set(_:<wbr>forKey:<wbr>withAccessibility:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented, Help us document it!</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">open</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span>
+    <span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span>
+    <span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+    <span class="n">withAccessibility</span> <span class="nv">accessibility</span><span class="p">:</span> <span class="kt"><a href="../Enums/KeychainItemAccessibility.html">KeychainItemAccessibility</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/propertyWrappers/Keychain.swift#L403-L408">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6Aurora15KeychainWrapperC3set_6forKey17withAccessibilitySbSf_SSAA0b4ItemH0OSgtF"></a>
+                    <a name="//apple_ref/swift/Method/set(_:forKey:withAccessibility:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6Aurora15KeychainWrapperC3set_6forKey17withAccessibilitySbSf_SSAA0b4ItemH0OSgtF">set(_:<wbr>forKey:<wbr>withAccessibility:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented, Help us document it!</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">open</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span>
+    <span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Float</span><span class="p">,</span>
+    <span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+    <span class="n">withAccessibility</span> <span class="nv">accessibility</span><span class="p">:</span> <span class="kt"><a href="../Enums/KeychainItemAccessibility.html">KeychainItemAccessibility</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/propertyWrappers/Keychain.swift#L410-L415">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6Aurora15KeychainWrapperC3set_6forKey17withAccessibilitySbSd_SSAA0b4ItemH0OSgtF"></a>
+                    <a name="//apple_ref/swift/Method/set(_:forKey:withAccessibility:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6Aurora15KeychainWrapperC3set_6forKey17withAccessibilitySbSd_SSAA0b4ItemH0OSgtF">set(_:<wbr>forKey:<wbr>withAccessibility:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented, Help us document it!</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">open</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span>
+    <span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Double</span><span class="p">,</span>
+    <span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+    <span class="n">withAccessibility</span> <span class="nv">accessibility</span><span class="p">:</span> <span class="kt"><a href="../Enums/KeychainItemAccessibility.html">KeychainItemAccessibility</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/propertyWrappers/Keychain.swift#L417-L422">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6Aurora15KeychainWrapperC3set_6forKey17withAccessibilityS2b_SSAA0b4ItemH0OSgtF"></a>
+                    <a name="//apple_ref/swift/Method/set(_:forKey:withAccessibility:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6Aurora15KeychainWrapperC3set_6forKey17withAccessibilityS2b_SSAA0b4ItemH0OSgtF">set(_:<wbr>forKey:<wbr>withAccessibility:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented, Help us document it!</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">open</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span>
+    <span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span>
+    <span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+    <span class="n">withAccessibility</span> <span class="nv">accessibility</span><span class="p">:</span> <span class="kt"><a href="../Enums/KeychainItemAccessibility.html">KeychainItemAccessibility</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/propertyWrappers/Keychain.swift#L424-L429">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6Aurora15KeychainWrapperC3set_6forKey17withAccessibilitySbSS_SSAA0b4ItemH0OSgtF"></a>
+                    <a name="//apple_ref/swift/Method/set(_:forKey:withAccessibility:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6Aurora15KeychainWrapperC3set_6forKey17withAccessibilitySbSS_SSAA0b4ItemH0OSgtF">set(_:<wbr>forKey:<wbr>withAccessibility:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Save a String value to the keychain associated with a specified key.
+If a String value already exists for the given key, the string will be overwritten with the new value.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">open</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span>
+    <span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+    <span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+    <span class="n">withAccessibility</span> <span class="nv">accessibility</span><span class="p">:</span> <span class="kt"><a href="../Enums/KeychainItemAccessibility.html">KeychainItemAccessibility</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The String value to save.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>forKey</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The key to save the String under.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>withAccessibility</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optional accessibility to use when setting the keychain item.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>True if the save was successful, false otherwise.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/propertyWrappers/Keychain.swift#L438-L447">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6Aurora15KeychainWrapperC3set_6forKey17withAccessibilitySbSo8NSCoding_p_SSAA0b4ItemH0OSgtF"></a>
+                    <a name="//apple_ref/swift/Method/set(_:forKey:withAccessibility:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6Aurora15KeychainWrapperC3set_6forKey17withAccessibilitySbSo8NSCoding_p_SSAA0b4ItemH0OSgtF">set(_:<wbr>forKey:<wbr>withAccessibility:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Save an NSCoding compliant object to the keychain associated with a specified key.
+If an object already exists for the given key, the object will be overwritten with the new value.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">open</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span>
+    <span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">NSCoding</span><span class="p">,</span>
+    <span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+    <span class="n">withAccessibility</span> <span class="nv">accessibility</span><span class="p">:</span> <span class="kt"><a href="../Enums/KeychainItemAccessibility.html">KeychainItemAccessibility</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The NSCoding compliant object to save.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>forKey</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The key to save the object under.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>withAccessibility</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optional accessibility to use when setting the keychain item.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>True if the save was successful, false otherwise.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/propertyWrappers/Keychain.swift#L456-L467">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6Aurora15KeychainWrapperC3set_6forKey17withAccessibilitySb10Foundation4DataV_SSAA0b4ItemH0OSgtF"></a>
+                    <a name="//apple_ref/swift/Method/set(_:forKey:withAccessibility:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6Aurora15KeychainWrapperC3set_6forKey17withAccessibilitySb10Foundation4DataV_SSAA0b4ItemH0OSgtF">set(_:<wbr>forKey:<wbr>withAccessibility:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Save a Data object to the keychain associated with a specified key.
+If data already exists for the given key, the data will be overwritten with the new value.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">open</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span>
+    <span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Data</span><span class="p">,</span>
+    <span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+    <span class="n">withAccessibility</span> <span class="nv">accessibility</span><span class="p">:</span> <span class="kt"><a href="../Enums/KeychainItemAccessibility.html">KeychainItemAccessibility</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Data object to save.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>forKey</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The key to save the object under.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>withAccessibility</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optional accessibility to use when setting the keychain item.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>True if the save was successful, false otherwise.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/propertyWrappers/Keychain.swift#L476-L502">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6Aurora15KeychainWrapperC12removeObject6forKey17withAccessibilitySbSS_AA0b4ItemI0OSgtF"></a>
+                    <a name="//apple_ref/swift/Method/removeObject(forKey:withAccessibility:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6Aurora15KeychainWrapperC12removeObject6forKey17withAccessibilitySbSS_AA0b4ItemI0OSgtF">removeObject(forKey:<wbr>withAccessibility:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Remove an object associated with a specified key. If re-using a key but with a different accessibility,
+first remove the previous key value using removeObjectForKey(:withAccessibility)
+ using the same accessibilty it was saved with.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">open</span> <span class="kd">func</span> <span class="nf">removeObject</span><span class="p">(</span>
+    <span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+    <span class="n">withAccessibility</span> <span class="nv">accessibility</span><span class="p">:</span> <span class="kt"><a href="../Enums/KeychainItemAccessibility.html">KeychainItemAccessibility</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>forKey</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The key value to remove data for.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>withAccessibility</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Optional accessibility level to use when looking up the keychain item.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>True if successful, false otherwise.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/propertyWrappers/Keychain.swift#L511-L526">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6Aurora15KeychainWrapperC13removeAllKeysSbyF"></a>
+                    <a name="//apple_ref/swift/Method/removeAllKeys()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6Aurora15KeychainWrapperC13removeAllKeysSbyF">removeAllKeys()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Remove all keychain data added through KeychainWrapper.
+This will only delete items matching the currnt ServiceName and AccessGroup if one is set.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">removeAllKeys</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/propertyWrappers/Keychain.swift#L530-L550">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6Aurora15KeychainWrapperC04wipeB0yyFZ"></a>
+                    <a name="//apple_ref/swift/Method/wipeKeychain()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6Aurora15KeychainWrapperC04wipeB0yyFZ">wipeKeychain()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Remove all keychain data, including data not added through keychain wrapper.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    This may remove custom keychain entries you did not add via SwiftKeychainWrapper.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">wipeKeychain</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/propertyWrappers/Keychain.swift#L556-L562">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2020 <a class="link" href="https://wesleydegroot.nl" target="_blank" rel="external">Wesley de Groot (et. al)</a>. All rights reserved. (Last updated: 2020-12-18)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
