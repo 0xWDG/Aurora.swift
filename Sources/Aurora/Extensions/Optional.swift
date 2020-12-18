@@ -52,7 +52,7 @@ public extension Optional {
         return result
     }
     
-    /// <#Description#>
+    /// Does a optional match something?
     ///
     /// Example:
     ///
@@ -60,8 +60,8 @@ public extension Optional {
     ///     // Or
     ///     myOptional.matching { $0.age > 18 }
     ///
-    /// - Parameter predicate: <#predicate description#>
-    /// - Returns: <#description#>
+    /// - Parameter predicate: what do yoy want to check
+    /// - Returns: items which match the predicate
     func matching(_ predicate: (Wrapped) -> Bool) -> Wrapped? {
         guard let value = self else {
             return nil

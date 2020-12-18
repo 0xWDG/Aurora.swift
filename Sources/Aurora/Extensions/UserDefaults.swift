@@ -18,7 +18,7 @@
 import Foundation
 
 public extension UserDefaults {
-    /// <#Description#>
+    /// Subscript from UserDefaults (Any)
     subscript(key: String) -> Any? {
         get {
             return object(forKey: key)
@@ -29,7 +29,7 @@ public extension UserDefaults {
         }
     }
     
-    /// <#Description#>
+    /// Subscript from UserDefaults (Bool)
     subscript(key: String) -> Bool {
         get {
             return bool(forKey: key)

@@ -70,15 +70,15 @@ class Promise<Value> {
         }
     }
     
-    /// <#Description#>
-    /// - Parameter onFailure: <#onFailure description#>
+    /// On error
+    /// - Parameter onFailure: block to run on error
     public func onError(_ onFailure: @escaping (Value) -> Void) {
         callbacksOnError.append(onFailure)
         triggerCallbacks()
     }
     
-    /// <#Description#>
-    /// - Parameter onFailure: <#onFailure description#>
+    /// On Failure
+    /// - Parameter onFailure: block to run on failure
     public func onFailure(_ onFailure: @escaping (Value) -> Void) {
         callbacksOnError.append(onFailure)
         triggerCallbacks()

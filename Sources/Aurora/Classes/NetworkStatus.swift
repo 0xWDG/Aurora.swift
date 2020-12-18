@@ -24,31 +24,31 @@ public class NetworkStatus {
     
     // MARK: - Properties
     
-    /// <#Description#>
+    /// Shared instance of NetworkStatus
     public static let shared = NetworkStatus()
     
-    /// <#Description#>
+    /// Initialize our network monitor
     var monitor: NWPathMonitor?
     
-    /// <#Description#>
+    /// Are we monitoring
     var isMonitoring = false
     
-    /// <#Description#>
+    /// Completion handler to execute after we start monitoring
     public var didStartMonitoringHandler: (() -> Void)?
     
-    /// <#Description#>
+    /// Completion handler to execute after we stop monitoring
     public var didStopMonitoringHandler: (() -> Void)?
     
-    /// <#Description#>
+    /// Completion handler to execute after the network status changes
     public var netStatusChangeHandler: (() -> Void)?
     
-    /// <#Description#>
+    /// Are we connected to the internet?
     public var isConnected: Bool {
         guard let monitor = monitor else { return false }
         return monitor.currentPath.status == .satisfied
     }
     
-    /// <#Description#>
+    /// Which interface type is available
     public var interfaceType: NWInterface.InterfaceType? {
         guard let monitor = monitor else { return nil }
         
@@ -57,7 +57,7 @@ public class NetworkStatus {
         }.first?.type
     }
     
-    /// <#Description#>
+    /// Which interface types are available
     public var availableInterfacesTypes: [NWInterface.InterfaceType]? {
         guard let monitor = monitor else { return nil }
         return monitor.currentPath.availableInterfaces.map { $0.type }

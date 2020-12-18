@@ -18,43 +18,43 @@
 import Foundation
 
 public extension Aurora {
-    /// <#Description#>
-    /// - Parameter background: <#background description#>
+    /// Execute block in background
+    /// - Parameter background: what to execute
     func run(background: @escaping () -> Void) {
         DispatchQueue.global().async {
             background()
         }
     }
     
-    /// <#Description#>
-    /// - Parameter main: <#main description#>
+    /// Execute block in foreground
+    /// - Parameter main: What to run in execute foreground
     func execute(main: @escaping () -> Void) {
         DispatchQueue.main.async {
             main()
         }
     }
     
-    /// <#Description#>
-    /// - Parameter background: <#background description#>
+    /// Execute block in background
+    /// - Parameter background:What to execute in the backgroud
     func execute(background: @escaping () -> Void) {
         DispatchQueue.global().async {
             background()
         }
     }
     
-    /// <#Description#>
+    /// Delay execution of block (on main)
     /// - Parameters:
-    ///   - after: <#after description#>
-    ///   - closure: <#closure description#>
+    ///   - after: For how long
+    ///   - closure: What to execute
     func delay(seconds: Double, closure: @escaping () -> Void) {
         let when = DispatchTime.now() + seconds
         DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
     }
     
-    /// <#Description#>
+    /// Delay execution of block (in background)
     /// - Parameters:
-    ///   - after: <#after description#>
-    ///   - closure: <#closure description#>
+    ///   - after: For how long
+    ///   - closure: What to execute
     func execute(after: Double, closure: @escaping () -> Void) {
         let when = DispatchTime.now() + after
         DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
