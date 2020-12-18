@@ -15,6 +15,7 @@
 //
 // Licence: Needs to be decided.
 
+// swiftlint:disable file_length
 import Foundation
 
 #if os(iOS)
@@ -99,7 +100,7 @@ public extension UIImage {
                                       space: colorSpace,
                                       bitmapInfo: bitmapInfo.rawValue)
         
-        let locations:[CGFloat] = [0.0, 1.0]
+        let locations: [CGFloat] = [0.0, 1.0]
         let bottom = UIColor(red: 1, green: 0, blue: 0, alpha: 1).cgColor
         let top = UIColor(red: 0, green: 1, blue: 0, alpha: 0).cgColor
         let colors = [top, bottom] as CFArray
@@ -108,13 +109,17 @@ public extension UIImage {
         let endPoint = CGPoint(x: width/2, y: height)
         
         bitmapContext!.clip(to: bounds, mask: maskImage!)
-        bitmapContext!.drawLinearGradient(gradient!, start: startPoint, end: endPoint, options: CGGradientDrawingOptions(rawValue: UInt32(0)))
+        bitmapContext!.drawLinearGradient(
+            gradient!,
+            start: startPoint,
+            end: endPoint,
+            options: CGGradientDrawingOptions(rawValue: UInt32(0))
+        )
         
         if let cImage = bitmapContext!.makeImage() {
             let coloredImage = UIImage(cgImage: cImage)
             return coloredImage
-        }
-        else  {
+        } else {
             return nil
         }
     }
@@ -372,32 +377,31 @@ public extension UIImage {
     var squared: UIImage? {
         let originalWidth  = size.width
         let originalHeight = size.height
-        var x: CGFloat = 0.0
-        var y: CGFloat = 0.0
+        var xPos: CGFloat = 0.0
+        var yPos: CGFloat = 0.0
         var edge: CGFloat = 0.0
         
-        if (originalWidth > originalHeight) {
+        if originalWidth > originalHeight {
             // landscape
             edge = originalHeight
-            x = (originalWidth - edge) / 2.0
-            y = 0.0
+            xPos = (originalWidth - edge) / 2.0
+            yPos = 0.0
             
-        } else if (originalHeight > originalWidth) {
+        } else if originalHeight > originalWidth {
             // portrait
             edge = originalWidth
-            x = 0.0
-            y = (originalHeight - originalWidth) / 2.0
+            xPos = 0.0
+            yPos = (originalHeight - originalWidth) / 2.0
         } else {
             // square
             edge = originalWidth
         }
         
-        let cropSquare = CGRect(x: x, y: y, width: edge, height: edge)
+        let cropSquare = CGRect(x: xPos, y: yPos, width: edge, height: edge)
         guard let imageRef = cgImage?.cropping(to: cropSquare) else { return nil }
         
         return UIImage(cgImage: imageRef, scale: scale, orientation: imageOrientation)
     }
-
     
     /// <#Description#>
     /// - Parameter maxSize: <#maxSize description#>
@@ -406,8 +410,7 @@ public extension UIImage {
         let scale: CGFloat
         if size.width > size.height {
             scale = maxSize / size.width
-        }
-        else {
+        } else {
             scale = maxSize / size.height
         }
         
@@ -421,3 +424,4 @@ public extension UIImage {
     }
 }
 #endif
+// swiftlint:enable file_length

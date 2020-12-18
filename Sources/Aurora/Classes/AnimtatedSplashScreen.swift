@@ -16,13 +16,14 @@
 // Licence: Needs to be decided.
 
 import Foundation
+
 // Original non-modified:
 // https://github.com/PiXeL16/RevealingSplashView
 // Added: .init(.... backgroundView: yourview)
 // Better handling of the onComplete.
 
+// swiftlint:disable file_length
 #if canImport(UIKit) && !os(watchOS)
-
 import UIKit
 
 public typealias SplashAnimatableCompletion = () -> Void
@@ -57,7 +58,7 @@ public protocol SplashAnimatable: class {
  
  - Twitter: The default animation type is the Twitter App animation
  */
-public enum SplashAnimationType: String{
+public enum SplashAnimationType: String {
     case twitter
     case rotateOut
     case woobleAndZoomOut
@@ -68,6 +69,7 @@ public enum SplashAnimationType: String{
     
 }
 
+// swiftlint:disable:next type_body_length
 open class AnimatedSplashScreen: UIView, SplashAnimatable {
     /// The icon image to show and reveal with
     open var iconImage: UIImage? {
@@ -87,7 +89,7 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
     
     open var useCustomIconColor: Bool = false {
         didSet {
-            if(useCustomIconColor == true) {
+            if useCustomIconColor == true {
                 if let iconImage = self.iconImage {
                     imageView?.image = iconImage.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
                 }
@@ -136,7 +138,7 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
      
      - returns: The created RevealingSplashViewObject
      */
-    public init(iconImage: UIImage, iconInitialSize:CGSize, backgroundColor: UIColor) {
+    public init(iconImage: UIImage, iconInitialSize: CGSize, backgroundColor: UIColor) {
         //Sets the initial values of the image view and icon view
         self.imageView = UIImageView()
         self.iconImage = iconImage
@@ -160,7 +162,7 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
         
     }
     
-    public init(iconImage: UIImage, iconInitialSize:CGSize, backgroundImage: UIImage) {
+    public init(iconImage: UIImage, iconInitialSize: CGSize, backgroundImage: UIImage) {
         //Sets the initial values of the image view and icon view
         self.imageView = UIImageView()
         self.iconImage = iconImage
@@ -189,7 +191,7 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
         
     }
     
-    public init(iconImage: UIImage, iconInitialSize:CGSize, backgroundView: UIView) {
+    public init(iconImage: UIImage, iconInitialSize: CGSize, backgroundView: UIView) {
         //Sets the initial values of the image view and icon view
         self.imageView = UIImageView()
         self.iconImage = iconImage
@@ -246,12 +248,10 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
         }
     }
     
-    
     /**
      Plays the twitter animation
      */
-    func playTwitterAnimation(_ completion: SplashAnimatableCompletion? = nil)
-    {
+    func playTwitterAnimation(_ completion: SplashAnimatableCompletion? = nil) {
         if let imageView = self.imageView {
             //Define the shink and grow duration based on the duration parameter
             let shrinkDuration: TimeInterval = duration * 0.3
@@ -269,7 +269,7 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
                     let scaleTransform: CGAffineTransform = CGAffineTransform(scaleX: 0.75, y: 0.75)
                     imageView.transform = scaleTransform
                 },
-                completion: { finished in
+                completion: { _ in
                     // When animation completes, grow the image
                     self.playZoomOutAnimation(completion)
                 }
@@ -277,27 +277,26 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
         }
     }
     
-    
-    /**
-     Plays the twitter animation
-     */
-    func playSqueezeAnimation(_ completion: SplashAnimatableCompletion? = nil)
-    {
-        
+    /// Plays the twitter animation
+    func playSqueezeAnimation(_ completion: SplashAnimatableCompletion? = nil) {
         if let imageView = self.imageView {
-            
             //Define the shink and grow duration based on the duration parameter
             let shrinkDuration: TimeInterval = duration * 0.5
             
             //Plays the shrink animation
-            UIView.animate(withDuration: shrinkDuration, delay: delay/3, usingSpringWithDamping: 10, initialSpringVelocity: 10, options: UIView.AnimationOptions(), animations: {
+            UIView.animate(
+                withDuration: shrinkDuration,
+                delay: delay / 3,
+                usingSpringWithDamping: 10,
+                initialSpringVelocity: 10,
+                options: UIView.AnimationOptions(),
+                animations: {
                 //Shrinks the image
-                let scaleTransform: CGAffineTransform = CGAffineTransform(scaleX: 0.30,y: 0.30)
+                let scaleTransform: CGAffineTransform = CGAffineTransform(scaleX: 0.30, y: 0.30)
                 imageView.transform = scaleTransform
                 
                 //When animation completes, grow the image
-            }, completion: { finished in
-                
+            }, completion: { _ in
                 self.playZoomOutAnimation(completion)
             })
         }
@@ -308,28 +307,27 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
      
      - parameter completion: when the animation completes
      */
-    func playRotateOutAnimation(_ completion: SplashAnimatableCompletion? = nil)
-    {
-        if let imageView = self.imageView{
-            
-            /**
-             Sets the animation with duration delay and completion
-             
-             - returns:
-             */
-            UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 0.5, initialSpringVelocity: 3, options: UIView.AnimationOptions(), animations: {
+    func playRotateOutAnimation(_ completion: SplashAnimatableCompletion? = nil) {
+        if let imageView = self.imageView {
+            /// Sets the animation with duration delay and completion
+            UIView.animate(
+                withDuration: duration,
+                delay: delay,
+                usingSpringWithDamping: 0.5,
+                initialSpringVelocity: 3,
+                options: UIView.AnimationOptions(),
+                animations: {
                 
                 //Sets a simple rotate
                 let rotateTranform = CGAffineTransform(rotationAngle: CGFloat(Double.pi * 0.99))
+                
                 //Mix the rotation with the zoom out animation
                 imageView.transform = rotateTranform.concatenating(self.getZoomOutTranform())
+                
                 //Removes the animation
                 self.alpha = 0
-                
-            }, completion: { finished in
-                
+            }, completion: { _ in
                 self.removeFromSuperview()
-                
                 completion?()
             })
             
@@ -343,7 +341,7 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
      */
     func playWoobleAnimation(_ completion: SplashAnimatableCompletion? = nil) {
         
-        if let imageView = self.imageView{
+        if let imageView = self.imageView {
             
             let woobleForce = 0.5
             
@@ -378,9 +376,8 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
      
      - parameter completion: completion
      */
-    func playSwingAnimation(_ completion: SplashAnimatableCompletion? = nil)
-    {
-        if let imageView = self.imageView{
+    func playSwingAnimation(_ completion: SplashAnimatableCompletion? = nil) {
+        if let imageView = self.imageView {
             
             let swingForce = 0.8
             
@@ -401,15 +398,13 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
         }
     }
     
-    
     /**
      Plays the pop animation with completion
      
      - parameter completion: completion
      */
-    func playPopAnimation(_ completion: SplashAnimatableCompletion? = nil)
-    {
-        if let imageView = self.imageView{
+    func playPopAnimation(_ completion: SplashAnimatableCompletion? = nil) {
+        if let imageView = self.imageView {
             
             let popForce = 0.5
             
@@ -438,35 +433,32 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
         if let imageView = imageView {
             let growDuration: TimeInterval =  duration * 0.3
             completion?()
-            
-            UIView.animate(withDuration: growDuration, animations:{
-                
+
+            UIView.animate(withDuration: growDuration, animations: {
                 imageView.transform = self.getZoomOutTranform()
                 self.alpha = 0
                 
                 //When animation completes remote self from super view
-            }, completion: { finished in
+            }, completion: { _ in
                 self.removeFromSuperview()
             })
         }
     }
-    
-    
     
     /**
      Retuns the default zoom out transform to be use mixed with other transform
      
      - returns: ZoomOut fransfork
      */
-    fileprivate func getZoomOutTranform() -> CGAffineTransform
-    {
+    fileprivate func getZoomOutTranform() -> CGAffineTransform {
         let zoomOutTranform: CGAffineTransform = CGAffineTransform(scaleX: 20, y: 20)
         return zoomOutTranform
     }
     
-    
     // MARK: - Private
-    fileprivate func animateLayer(_ animation: SplashAnimatableExecution, completion: SplashAnimatableCompletion? = nil) {
+    fileprivate func animateLayer(
+        _ animation: SplashAnimatableExecution,
+        completion: SplashAnimatableCompletion? = nil) {
         CATransaction.begin()
         if let completion = completion {
             CATransaction.setCompletionBlock { completion() }
@@ -474,7 +466,6 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
         animation()
         CATransaction.commit()
     }
-    
     
     /**
      Plays the heatbeat animation with completion
@@ -506,7 +497,6 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
         }
     }
     
-    
     /**
      Stops the heart beat animation after gracefully finishing the last beat
      
@@ -516,5 +506,5 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
         self.heartAttack = true
     }
 }
-
 #endif
+// swiftlint:enable file_length

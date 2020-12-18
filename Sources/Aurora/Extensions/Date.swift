@@ -154,8 +154,8 @@ public extension Date {
     /// - Parameter format: <#format description#>
     /// - Returns: <#description#>
     func toString(format: String) -> String {
-        let df = DateFormatter()
-        df.dateFormat = format
-        return df.string(from: self)
+        let dformatter = DateFormatter()
+        dformatter.dateFormat = format
+        return dformatter.string(from: self)
     }
 }

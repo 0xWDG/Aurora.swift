@@ -21,8 +21,8 @@ import Foundation
 
 public extension Aurora {
 @discardableResult
-func shell(_ arguments: String, show_log: Bool = false) -> String {
-    let task = Process();
+func shell(_ arguments: String, showLog: Bool = false) -> String {
+    let task = Process()
     task.launchPath = "/bin/zsh"
     var environment = ProcessInfo.processInfo.environment
     environment["PATH"] = "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
@@ -37,7 +37,7 @@ func shell(_ arguments: String, show_log: Bool = false) -> String {
     task.waitUntilExit()
     pipe.fileHandleForReading.closeFile()
     
-    if (show_log && output != "") {
+    if showLog && output != "" {
         print(output)
     }
     return output

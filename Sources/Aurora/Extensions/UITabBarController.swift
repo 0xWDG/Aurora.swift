@@ -80,11 +80,11 @@ public extension UITabBarController {
         let vcCount = viewControllers?.count ?? 0
         
         if vcCount > 1 {
-            if (oldSelected != 0) {
+            if oldSelected != 0 {
                 selectedIndex = 0
             } else {
                 if vcCount > 2 {
-                    if (oldSelected != 1) {
+                    if oldSelected != 1 {
                         selectedIndex = 1
                     }
                 }

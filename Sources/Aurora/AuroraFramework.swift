@@ -119,7 +119,11 @@ open class Aurora {
      * - parameter function: function name
      */
     @discardableResult
-    public func log(_ message: String..., file: String = #file, line: Int = #line, function: String = #function) -> Bool {
+    public func log(
+        _ message: String...,
+        file: String = #file,
+        line: Int = #line,
+        function: String = #function) -> Bool {
         if debug {
             // extract filename, without path, and without extension.
             let fileName: String = (file.split("/").last)!.split(".").first!
@@ -127,7 +131,8 @@ open class Aurora {
             let queue = Thread.isMainThread ? "Main" : "Background"
             
             // Make up the log message.
-            let logMessage: String = "[Aurora.Framework] \(fileName):\(line) \(function) @\(queue):\n \(message.joined(separator: " "))\n"
+            let logMessage: String = "[Aurora.Framework] \(fileName):\(line) \(function)" +
+                                     " @\(queue):\n \(message.joined(separator: " "))\n"
             
             // Print the "messages"
             Swift.print(logMessage)
@@ -227,7 +232,11 @@ open class Aurora {
      * - parameter function: function name
      */
     @discardableResult
-    public func print(_ message: String..., file: String = #file, line: Int = #line, function: String = #function) -> Bool {
+    public func print(
+        _ message: String...,
+        file: String = #file,
+        line: Int = #line,
+        function: String = #function) -> Bool {
         return log(message.joined(separator: " "), file: file, line: line, function: function)
     }
     

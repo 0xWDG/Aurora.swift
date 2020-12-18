@@ -23,30 +23,26 @@ import UIKit
 public extension UIButton {
     /// Set the border with
     @IBInspectable var borderWidth: CGFloat {
-        set {
-            layer.borderWidth = newValue
-        }
         get {
             return layer.borderWidth
+        }
+        set {
+            layer.borderWidth = newValue
         }
     }
     
     /// Set the corner radius
     @IBInspectable var cornerRadius: CGFloat {
-        set {
-            layer.cornerRadius = newValue
-        }
         get {
             return layer.cornerRadius
+        }
+        set {
+            layer.cornerRadius = newValue
         }
     }
     
     /// Set the border color
     @IBInspectable var borderColor: UIColor? {
-        set {
-            guard newValue != nil else { return }
-            layer.borderColor = .dinnerGreen
-        }
         get {
             guard layer.borderColor != nil else { return nil }
             if #available(iOS 13.0, *) {
@@ -58,6 +54,10 @@ public extension UIButton {
             } else {
                 return .white
             }
+        }
+        set {
+            guard newValue != nil else { return }
+            layer.borderColor = .dinnerGreen
         }
     }
     // swiftlint:enable valid_ibinspectable implicit_getter

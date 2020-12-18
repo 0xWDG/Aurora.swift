@@ -19,7 +19,6 @@
 import UIKit
 import QuartzCore
 
-
 /// UIGradient View
 ///
 /// Have a gradient background.

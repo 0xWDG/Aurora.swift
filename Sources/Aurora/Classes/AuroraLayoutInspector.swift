@@ -14,7 +14,7 @@ open class AuroraLayoutInspector {
     
     public func captureHierarchy() -> ViewDescriptionProtocol {
         guard let firstWindow = UIApplication.shared.windows.first else {
-//            return nil
+            //            return nil
             fatalError("Oops.")
         }
         
@@ -74,7 +74,8 @@ open class AuroraLayoutInspector {
         
         if view.isKind(of: UIImageView.self) || view.isKind(of: UILabel.self) || view.isKind(of: UITextView.self) {
             isTransparent = false
-        } else if view.backgroundColor == .clear || view.alpha == 0 || view.backgroundColor?.alphaValue == 0 || view.backgroundColor == nil {
+        } else if view.backgroundColor == .clear || view.alpha == 0 ||
+                    view.backgroundColor?.alphaValue == 0 || view.backgroundColor == nil {
             isTransparent = true
         } else {
             isTransparent = false
@@ -116,8 +117,11 @@ extension ViewDescription: CustomDebugStringConvertible {
         dString.append("\(tabs)\tFrame: \(frame)\n")
         dString.append("\(tabs)\tCenter point: \(center)\n")
         dString.append("\(tabs)\tParent size: (w: \(parentSize?.width), h: \(parentSize?.height))\n")
-        dString.append("\(tabs)\tBackground color: (r:\(backgroundColor?.redValue), g:\(backgroundColor?.greenValue), b:\(backgroundColor?.blueValue), a:\(backgroundColor?.alphaValue))\n")
-        dString.append("\(tabs)\tTint color: (r:\(tint?.redValue), g:\(tint?.greenValue), b:\(tint?.blueValue), a:\(tint?.alphaValue))\n")
+        dString.append("\(tabs)\tBackground color: (r:\(backgroundColor?.redValue),")
+        dString.append("g:\(backgroundColor?.greenValue), b:\(backgroundColor?.blueValue),")
+        dString.append("a:\(backgroundColor?.alphaValue))\n")
+        dString.append("\(tabs)\tTint color: (r:\(tint?.redValue), g:\(tint?.greenValue),")
+        dString.append("b:\(tint?.blueValue), a:\(tint?.alphaValue))\n")
         dString.append("\(tabs)\tclipToBounds: \(clipToBounds ? "Yes" : "No")\n")
         dString.append("\(tabs)\tfont: \(font)\n")
         
@@ -138,27 +142,32 @@ extension ViewDescription: CustomDebugStringConvertible {
     
     public var debugDescription: String {
         var dString = "View<\(className)> "
-                    + "(hidden:\(isHidden ? "Yes" : "No"),"
-                    + "transparent:\(isTransparent ? "Yes" : "No"),"
-                    + "userInteractionEnabled:\(isUserInteractionEnabled ? "Yes" : "No")):\n"
+            + "(hidden:\(isHidden ? "Yes" : "No"),"
+            + "transparent:\(isTransparent ? "Yes" : "No"),"
+            + "userInteractionEnabled:\(isUserInteractionEnabled ? "Yes" : "No")):\n"
         dString.append("Frame: \(frame)\n")
         dString.append("Center point: \(center)\n")
         dString.append("Parent size: (w: \(parentSize?.width), h: \(parentSize?.height))\n")
-        dString.append("Background color: (r:\(backgroundColor?.redValue), g:\(backgroundColor?.greenValue), b:\(backgroundColor?.blueValue), a:\(backgroundColor?.alphaValue))\n")
-        dString.append("Tint color: (r:\(tint?.redValue), g:\(tint?.greenValue), b:\(tint?.blueValue), a:\(tint?.alphaValue))\n")
+        dString.append("Background color: (r:\(backgroundColor?.redValue), ")
+        dString.append("g:\(backgroundColor?.greenValue), ")
+        dString.append("b:\(backgroundColor?.blueValue), ")
+        dString.append("a:\(backgroundColor?.alphaValue))\n")
+        dString.append("Tint color: (r:\(tint?.redValue), ")
+        dString.append("g:\(tint?.greenValue), b:\(tint?.blueValue), ")
+        dString.append("a:\(tint?.alphaValue))\n")
         dString.append("clipToBounds: \(clipToBounds ? "Yes" : "No")\n")
         dString.append("font: \(font)\n")
-
+        
         dString.append("Subviews(\(subviews?.count)):\n")
-
+        
         if let subviews = subviews {
             for subView in subviews {
                 dString.append(parseView(view: subView, numberOfTabs: 2))
             }
         }
-
+        
         return dString
-//        return parseView(view: self)
+        //        return parseView(view: self)
     }
 }
 
@@ -192,8 +201,7 @@ public class ViewDescription: ViewDescriptionProtocol {
          backgroundColor: UIColor?,
          tint: UIColor?,
          clipToBounds: Bool,
-         font: UIFont?)
-    {
+         font: UIFont?) {
         self.frame = frame
         self.snapshotImage = snapshot
         self.subviews = subviews

@@ -102,7 +102,8 @@ public extension Foundation.Bundle {
     // Since Xcode isnt fixed, we'll use this.
 
     /// The resource bundle associated with the current module..
-    /// important: When `Aurora` is distributed via Swift Package Manager, it will be synthesized automatically in the name of `Bundle.module`.
+    /// important: When `Aurora` is distributed via Swift Package Manager,
+    /// it will be synthesized automatically in the name of `Bundle.module`.
     static var resource: Bundle = {
          let moduleName = "Aurora"
          #if COCOAPODS
@@ -119,7 +120,7 @@ public extension Foundation.Bundle {
              Bundle(for: AuroraBundleFinder.self).resourceURL,
 
               // For command-line tools.
-             Bundle.main.bundleURL,
+             Bundle.main.bundleURL
          ]
 
           for candidate in candidates {

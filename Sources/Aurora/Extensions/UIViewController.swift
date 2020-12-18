@@ -25,11 +25,11 @@ public extension UIViewController {
     func canPerformSegue(withIdentifier: String) -> Bool {
         guard let segues = UIApplication.shared.delegate?.window??.rootViewController?.value(
             forKey: "storyboardSegueTemplates"
-            ) as? [NSObject] else { return false }
+        ) as? [NSObject] else { return false }
         
         return segues.first {
             $0.value(forKey: "identifier") as? String == withIdentifier
-            } != nil
+        } != nil
     }
     
     /// Open/Run a segue
@@ -38,7 +38,7 @@ public extension UIViewController {
     ///   - sender: a Sender
     func performSegueIfPossible(segueID: String?, sender: AnyObject? = nil) {
         guard let segueID = segueID,
-            canPerformSegue(withIdentifier: segueID) else { return }
+              canPerformSegue(withIdentifier: segueID) else { return }
         
         UIApplication.shared.delegate?.window??.rootViewController?.performSegue(
             withIdentifier: segueID,
@@ -90,13 +90,13 @@ public extension UIViewController {
     ///   - cancelHandler: <#cancelHandler description#>
     ///   - actionHandler: <#actionHandler description#>
     func showInputDialog(title: String? = nil,
-                                subtitle: String? = nil,
-                                actionTitle: String? = "Add",
-                                cancelTitle: String? = "Cancel",
-                                inputPlaceholder: String? = nil,
-                                inputKeyboardType: UIKeyboardType = UIKeyboardType.default,
-                                cancelHandler: ((UIAlertAction) -> Swift.Void)? = nil,
-                                actionHandler: ((_ text: String?) -> Void)? = nil) {
+                         subtitle: String? = nil,
+                         actionTitle: String? = "Add",
+                         cancelTitle: String? = "Cancel",
+                         inputPlaceholder: String? = nil,
+                         inputKeyboardType: UIKeyboardType = UIKeyboardType.default,
+                         cancelHandler: ((UIAlertAction) -> Swift.Void)? = nil,
+                         actionHandler: ((_ text: String?) -> Void)? = nil) {
         
         let alert = UIAlertController(
             title: title,
@@ -119,7 +119,7 @@ public extension UIViewController {
                         return
                     }
                     actionHandler?(textField.text)
-            }
+                }
             )
         )
         

@@ -154,7 +154,7 @@ public extension Color {
     /// Get color complementary (read-only, if applicable).
     var complementary: Color? {
         let colorSpaceRGB = CGColorSpaceCreateDeviceRGB()
-        let convertColorToRGBSpace: ((_ color: Color) -> Color?) = { color -> Color? in
+        let convertColorToRGBSpace: ((_ color: Color) -> Color?) = { _ -> Color? in
             if self.cgColor.colorSpace!.model == CGColorSpaceModel.monochrome {
                 let oldComponents = self.cgColor.components
                 let components: [CGFloat] = [
