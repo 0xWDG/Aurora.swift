@@ -118,6 +118,7 @@ public extension String {
     }
     
     var fetchAsData: Data {
+        // swiftlint:disable:next implicit_getter
         get {
             guard let unwrappedUrl = self.url else {
                 return Data.init()
@@ -128,6 +129,7 @@ public extension String {
     }
     
     var fetchAsText: String? {
+        // swiftlint:disable:next implicit_getter
         get {
             return String.init(data: self.fetchAsData, encoding: .utf8)
         }
@@ -135,6 +137,7 @@ public extension String {
     
     #if os(iOS)
     var fetchAsImage: UIImage? {
+        // swiftlint:disable:next implicit_getter
         get {
             return UIImage.init(data: self.fetchAsData)
         }
@@ -143,6 +146,7 @@ public extension String {
     
     #if os(macOS)
     var fetchAsImage: NSImage? {
+        // swiftlint:disable:next implicit_getter
         get {
             return NSImage.init(data: self.fetchAsData)
         }
@@ -251,7 +255,11 @@ public extension String {
     /// String to attributedString
     var asAttributedString: NSAttributedString? {
         guard let data = self.data(using: .utf8) else { return nil }
-        return try? NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+        return try? NSAttributedString(
+            data: data,
+            options: [.documentType: NSAttributedString.DocumentType.html],
+            documentAttributes: nil
+        )
     }
     
     /// <#Description#>
@@ -315,9 +323,9 @@ public extension String {
     /// - Parameter format: <#format description#>
     /// - Returns: <#description#>
     func toDate(format: String) -> Date? {
-        let df = DateFormatter()
-        df.dateFormat = format
-        return df.date(from: self)
+        let dFormatter = DateFormatter()
+        dFormatter.dateFormat = format
+        return dFormatter.date(from: self)
     }
     
     /// <#Description#>

@@ -27,7 +27,11 @@ public class TestObserver: NSObject, XCTestObservation {
         XCTestObservationCenter.shared.addTestObserver(observer)
     }
 
-    public func testCase(_ testCase: XCTestCase, didFailWithDescription description: String, inFile filePath: String?, atLine lineNumber: Int) {
+    public func testCase(
+        _ testCase: XCTestCase,
+        didFailWithDescription description: String,
+        inFile filePath: String?,
+        atLine lineNumber: Int) {
         print("🚫 \(description) line:\(lineNumber)")
     }
 

@@ -26,6 +26,9 @@ public extension UIView {
     /// X Axis value of UIView.
     @objc
     var x: CGFloat {
+        get {
+            return self.frame.origin.x
+        }
         set {
             self.frame = CGRect(
                 x: _pixelIntegral(newValue),
@@ -34,14 +37,14 @@ public extension UIView {
                 height: self.height
             )
         }
-        get {
-            return self.frame.origin.x
-        }
     }
 
     /// Y Axis value of UIView.
     @objc
     var y: CGFloat {
+        get {
+            return self.frame.origin.y
+        }
         set {
             self.frame = CGRect(
                 x: self.x,
@@ -50,15 +53,15 @@ public extension UIView {
                 height: self.height
             )
         }
-        get {
-            return self.frame.origin.y
-        }
     }
     // swiftlint:enable identifier_name
     
     /// Width of view.
     @objc
     var width: CGFloat {
+        get {
+            return self.frame.size.width
+        }
         set {
             self.frame = CGRect(
                 x: self.x,
@@ -67,14 +70,14 @@ public extension UIView {
                 height: self.height
             )
         }
-        get {
-            return self.frame.size.width
-        }
     }
     
     /// Height of view.
     @objc
     var height: CGFloat {
+        get {
+            return self.frame.size.height
+        }
         set {
             self.frame = CGRect(
                 x: self.x,
@@ -83,15 +86,15 @@ public extension UIView {
                 height: _pixelIntegral(newValue)
             )
         }
-        get {
-            return self.frame.size.height
-        }
     }
     
     // MARK: - Origin and Size
     /// View's Origin point.
     @objc
     var origin: CGPoint {
+        get {
+            return self.frame.origin
+        }
         set {
             self.frame = CGRect(
                 x: _pixelIntegral(newValue.x),
@@ -100,14 +103,14 @@ public extension UIView {
                 height: self.height
             )
         }
-        get {
-            return self.frame.origin
-        }
     }
     
     /// View's size.
     @objc
     var size: CGSize {
+        get {
+            return self.frame.size
+        }
         set {
             self.frame = CGRect(
                 x: self.x,
@@ -116,75 +119,72 @@ public extension UIView {
                 height: _pixelIntegral(newValue.height)
             )
         }
-        get {
-            return self.frame.size
-        }
     }
     
     // MARK: - Extra Properties
     /// View's right side (x + width).
     @objc
     var right: CGFloat {
-        set {
-            self.x = newValue - self.width
-        }
         get {
             return self.x + self.width
+        }
+        set {
+            self.x = newValue - self.width
         }
     }
     
     /// View's bottom (y + height).
     @objc
     var bottom: CGFloat {
-        set {
-            self.y = newValue - self.height
-        }
         get {
             return self.y + self.height
+        }
+        set {
+            self.y = newValue - self.height
         }
     }
     
     /// View's top (y).
     @objc
     var top: CGFloat {
-        set {
-            self.y = newValue
-        }
         get {
             return self.y
+        }
+        set {
+            self.y = newValue
         }
     }
     
     /// View's left side (x).
     @objc
     var left: CGFloat {
-        set {
-            self.x = newValue
-        }
         get {
             return self.x
+        }
+        set {
+            self.x = newValue
         }
     }
     
     /// View's center X value (center.x).
     @objc
     var centerX: CGFloat {
-        set {
-            self.center = CGPoint(x: newValue, y: self.centerY)
-        }
         get {
             return self.center.x
+        }
+        set {
+            self.center = CGPoint(x: newValue, y: self.centerY)
         }
     }
     
     /// View's center Y value (center.y).
     @objc
     var centerY: CGFloat {
-        set {
-            self.center = CGPoint(x: self.centerX, y: newValue)
-        }
         get {
             return self.center.y
+        }
+        set {
+            self.center = CGPoint(x: self.centerX, y: newValue)
         }
     }
     
@@ -208,6 +208,9 @@ public extension UIView {
     /// X value of bounds (bounds.origin.x).
     @objc
     var boundsX: CGFloat {
+        get {
+            return self.bounds.origin.x   
+        }
         set {
             self.bounds = CGRect(
                 x: _pixelIntegral(newValue),
@@ -216,15 +219,14 @@ public extension UIView {
                 height: self.boundsHeight
             )
         }
-        get {
-            return self.bounds.origin.x
-            
-        }
     }
     
     /// Y value of bounds (bounds.origin.y).
     @objc
     var boundsY: CGFloat {
+        get {
+            return self.bounds.origin.y
+        }
         set {
             self.frame = CGRect(
                 x: self.boundsX,
@@ -233,14 +235,14 @@ public extension UIView {
                 height: self.boundsHeight
             )
         }
-        get {
-            return self.bounds.origin.y
-        }
     }
     
     /// Width of bounds (bounds.size.width).
     @objc
     var boundsWidth: CGFloat {
+        get {
+            return self.bounds.size.width
+        }
         set {
             self.frame = CGRect(
                 x: self.boundsX,
@@ -249,14 +251,14 @@ public extension UIView {
                 height: self.boundsHeight
             )
         }
-        get {
-            return self.bounds.size.width
-        }
     }
     
     /// Height of bounds (bounds.size.height).
     @objc
     var boundsHeight: CGFloat {
+        get {
+            return self.bounds.size.height
+        }
         set {
             self.frame = CGRect(
                 x: self.boundsX,
@@ -264,10 +266,6 @@ public extension UIView {
                 width: self.boundsWidth,
                 height: _pixelIntegral(newValue)
             )
-        }
-        get {
-            return self.bounds.size.height
-            
         }
     }
     

@@ -33,6 +33,7 @@ public extension UIView {
     
     /// is darkmode enabled
     var isDarkModeEnabled: Bool {
+        // swiftlint:disable:next implicit_getter
         get {
             return traitCollection.userInterfaceStyle == .dark
         }
@@ -40,6 +41,7 @@ public extension UIView {
 
     /// is darkmode enabled
     var darkMode: Bool {
+        // swiftlint:disable:next implicit_getter
         get {
             return traitCollection.userInterfaceStyle == .dark
         }

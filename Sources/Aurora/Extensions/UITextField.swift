@@ -24,17 +24,18 @@ public extension UITextField {
     #if os(iOS)
     
     /// <#Description#>
+    
     @IBInspectable var doneAccessory: Bool {
         get {
             return self.doneAccessory
         }
+        // swiftlint:disable:next unused_setter_value
         set (hasDone) {
             if hasDone {
                 addDoneButtonOnKeyboard()
             }
         }
     }
-    // swiftlint:enable implicit_getter valid_ibinspectable
     
     /// <#Description#>
     func addDoneButtonOnKeyboard() {
@@ -166,11 +167,10 @@ public extension UITextField {
     ///                  in order to fit the text string into the text field’s bounding rectangle.
     @available(iOS 11.0, tvOS 11.0, *)
     func configureDynamicStyle(_ style: UIFont.TextStyle,
-                                      traits: UIFontDescriptor.SymbolicTraits? = nil,
-                                      adjustToFit: Bool = true) {
+                               traits: UIFontDescriptor.SymbolicTraits? = nil,
+                               adjustToFit: Bool = true) {
         adjustsFontForContentSizeCategory = true
         adjustsFontSizeToFitWidth = adjustToFit
-//        font = UIFont.dynamicStyle(style, traits: traits)
     }
     
 }

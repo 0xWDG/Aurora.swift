@@ -32,13 +32,13 @@ public extension Double {
     /// - Parameter currency: currency symbol (Defaults to: €)
     /// - Returns: ""
     func toPrice(currency: String = "€") -> String {
-        let nf = NumberFormatter()
-        nf.decimalSeparator = ","
-        nf.groupingSeparator = "."
-        nf.groupingSize = 3
-        nf.usesGroupingSeparator = true
-        nf.minimumFractionDigits = 2
-        nf.maximumFractionDigits = 2
-        return currency + " " + (nf.string(from: NSNumber(value: self)) ?? "?")
+        let nFormatter = NumberFormatter()
+        nFormatter.decimalSeparator = ","
+        nFormatter.groupingSeparator = "."
+        nFormatter.groupingSize = 3
+        nFormatter.usesGroupingSeparator = true
+        nFormatter.minimumFractionDigits = 2
+        nFormatter.maximumFractionDigits = 2
+        return currency + " " + (nFormatter.string(from: NSNumber(value: self)) ?? "?")
     }
 }

@@ -67,14 +67,12 @@ class AuroraCrashHandler {
     ]
     
     /// <#Description#>
-    private static let RecieveSignal : @convention(c) (Int32) -> Void = {
-        (signal) -> Void in       
+    private static let RecieveSignal : @convention(c) (Int32) -> Void = { (signal) -> Void in
         AuroraCrashHandler.createReport(from: signal)
     }
     
     /// <#Description#>
-    private static let RecieveException: @convention(c) (NSException) -> Swift.Void = {
-        (theExteption) -> Void in
+    private static let RecieveException: @convention(c) (NSException) -> Swift.Void = { (theExteption) -> Void in
         AuroraCrashHandler.createReport(from: theExteption)
     }
     

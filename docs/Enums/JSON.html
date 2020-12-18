@@ -17,7 +17,7 @@
     <a title="JSON Enumeration Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Aurora 1.0 Docs</a> (96% documented)</p>
+        <p><a href="../index.html">Aurora 1.0 Docs</a> (94% documented)</p>
         <p class="header-right"><a href="https://github.com/AuroraFramework/Aurora.swift"><img src="../img/gh.png"/>View on GitHub</a></p>
         <p class="header-right"><a href="dash-feed://https%3A%2F%2FAuroraFramework.github.io%2FAurora.swift%2Fdocsets%2FBaaS.docset"><img src="../img/dash.png"/>Install in Dash</a></p>
         <p class="header-right">
@@ -54,6 +54,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/KeyboardHandler.html">KeyboardHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/KeychainWrapper.html">KeychainWrapper</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/NSFWDetector.html">NSFWDetector</a>
@@ -101,6 +104,9 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Enums/JSON.html">JSON</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/KeychainItemAccessibility.html">KeychainItemAccessibility</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Enums/SplashAnimationType.html">SplashAnimationType</a>
@@ -241,9 +247,6 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/NSObject.html">NSObject</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Extensions.html#/c:objc(cs)NSString">NSString</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/Optional.html">Optional</a>
@@ -417,10 +420,16 @@
             <a href="../Structs.html">Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Structs/CodableKeychain.html">CodableKeychain</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/DynamicUIColor.html">DynamicUIColor</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/DynamicUIColor/Style.html">– Style</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Keychain.html">Keychain</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/NilError.html">NilError</a>
@@ -503,7 +512,7 @@
             <p>Undocumented, Help us document it!</p>
 
               <div class="slightly-smaller">
-                <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Extensions/DynamicJSON.swift#L27-L208">Show on GitHub</a>
+                <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Extensions/DynamicJSON.swift#L26-L207">Show on GitHub</a>
               </div>
           </section>
           <section class="section task-group-section">
@@ -538,7 +547,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">dictionary</span><span class="p">(</span><span class="kt">Dictionary</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span> <span class="kt">JSON</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">dictionary</span><span class="p">([</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">JSON</span><span class="p">])</span></code></pre>
 
                         </div>
                       </div>
@@ -568,7 +577,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">array</span><span class="p">(</span><span class="kt">Array</span><span class="o">&lt;</span><span class="kt">JSON</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">array</span><span class="p">([</span><span class="kt">JSON</span><span class="p">])</span></code></pre>
 
                         </div>
                       </div>
@@ -736,7 +745,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Extensions/DynamicJSON.swift#L38-L43">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Extensions/DynamicJSON.swift#L37-L42">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -766,7 +775,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Extensions/DynamicJSON.swift#L46-L51">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Extensions/DynamicJSON.swift#L45-L50">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -796,7 +805,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Extensions/DynamicJSON.swift#L54-L59">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Extensions/DynamicJSON.swift#L53-L58">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -875,7 +884,7 @@
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Extensions/DynamicJSON.swift#L68-L71">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Extensions/DynamicJSON.swift#L67-L70">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -924,7 +933,7 @@
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Extensions/DynamicJSON.swift#L75-L97">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Extensions/DynamicJSON.swift#L74-L96">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -962,12 +971,12 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">dictionary</span><span class="p">:</span> <span class="kt">Dictionary</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span> <span class="kt">JSON</span><span class="o">&gt;</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">dictionary</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">JSON</span><span class="p">]?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Extensions/DynamicJSON.swift#L102-L107">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Extensions/DynamicJSON.swift#L101-L106">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -992,12 +1001,12 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">array</span><span class="p">:</span> <span class="kt">Array</span><span class="o">&lt;</span><span class="kt">JSON</span><span class="o">&gt;</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">array</span><span class="p">:</span> <span class="p">[</span><span class="kt">JSON</span><span class="p">]?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Extensions/DynamicJSON.swift#L110-L115">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Extensions/DynamicJSON.swift#L109-L114">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1027,7 +1036,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Extensions/DynamicJSON.swift#L118-L127">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Extensions/DynamicJSON.swift#L117-L126">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1057,7 +1066,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Extensions/DynamicJSON.swift#L130-L139">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Extensions/DynamicJSON.swift#L129-L138">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1087,7 +1096,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Extensions/DynamicJSON.swift#L142-L144">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Extensions/DynamicJSON.swift#L141-L143">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1117,7 +1126,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Extensions/DynamicJSON.swift#L147-L149">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Extensions/DynamicJSON.swift#L146-L148">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1147,7 +1156,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Extensions/DynamicJSON.swift#L152-L170">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Extensions/DynamicJSON.swift#L151-L169">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1190,7 +1199,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Extensions/DynamicJSON.swift#L175-L195">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Extensions/DynamicJSON.swift#L174-L194">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1243,7 +1252,7 @@
                         <p>&lt;#description#&gt;</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Extensions/DynamicJSON.swift#L200-L207">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Extensions/DynamicJSON.swift#L199-L206">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1253,7 +1262,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="https://wesleydegroot.nl" target="_blank" rel="external">Wesley de Groot (et. al)</a>. All rights reserved. (Last updated: 2020-12-11)</p>
+          <p>&copy; 2020 <a class="link" href="https://wesleydegroot.nl" target="_blank" rel="external">Wesley de Groot (et. al)</a>. All rights reserved. (Last updated: 2020-12-18)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

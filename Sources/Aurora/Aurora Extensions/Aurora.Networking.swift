@@ -17,6 +17,7 @@
 
 import Foundation
 
+// swiftlint:disable file_length
 #if canImport(Security)
 import Security
 #endif
@@ -96,7 +97,7 @@ extension Aurora {
         }
         .resume()
         
-        while (waiting) { }
+        while waiting { }
         
         return returnData
     }
@@ -110,16 +111,20 @@ extension Aurora {
      * - parameter posting: What do you need to post
      * - returns: closure -> sucess, fail.
      */
+    // swiftlint:disable:next function_body_length
     public func networkRequest(
         url: String,
-        posting: Dictionary<String, Any>? = ["nothing": "send"],
+        posting: [String: Any]? = ["nothing": "send"],
         completionHandler: @escaping (Result<String, Error>) -> Void
     ) {
         /// Check if the URL is valid
         guard let siteURL = URL(string: url) else {
             completionHandler(
-                .failure("Error: \(url) doesn't appear to be an URL" as! Error)
+                .failure(
+                    AuroraError(message: "Error: \(url) doesn't appear to be an URL")
+                )
             )
+            
             return
         }
         
@@ -145,7 +150,12 @@ extension Aurora {
         
         /// Catch errors
         catch let error as NSError {
-            completionHandler(.failure("Error: \(error.localizedDescription)" as! Error))
+            completionHandler(
+                .failure(
+                    AuroraError(message: "Error: \(error.localizedDescription)"
+                    )
+                )
+            )
         }
         
         /// Create a URL Request
@@ -175,7 +185,9 @@ extension Aurora {
                 $0.httpMethod = "GET"
                 
                 // Log, if we are in debugmode.
-                log("HTTP (GET): \(url)\npost body (escaped): \(post)\npost body (unescaped): \(post.removingPercentEncoding!)")
+                log("HTTP (GET): \(url)\n" +
+                        "post body (escaped): \(post)\n" +
+                        "post body (unescaped): \(post.removingPercentEncoding!)")
                 
             }
         }
@@ -193,7 +205,7 @@ extension Aurora {
         )
         
         // Check if we have a public key, or certificate hash.
-        if (HTTPSCertificate.publicKeyHash.count == 0 || HTTPSCertificate.certificateHash.count == 0) {
+        if HTTPSCertificate.publicKeyHash.count == 0 || HTTPSCertificate.certificateHash.count == 0 {
             // Show a error, only on debug builds
             log(
                 "[WARNING] No Public key pinning/Certificate pinning\n" +
@@ -224,9 +236,15 @@ extension Aurora {
             /// Check if we got any useable site data
             guard let sitedata = sitedata else {
                 if post.length > 3 {
-                    self.log("HTTP (POST): \(url)\nbody (escaped): \(post)\nbody (unescaped): \(post.removingPercentEncoding!)\nError: \(theError?.localizedDescription)")
+                    self.log("HTTP (POST): \(url)\n" +
+                                "body (escaped): \(post)\n" +
+                                "body (unescaped): \(post.removingPercentEncoding!)\n" +
+                                "Error: \(theError?.localizedDescription)")
                 } else {
-                    self.log("HTTP (GET): \(url)\npost body (escaped): \(post)\npost body (unescaped): \(post.removingPercentEncoding!)\nError: \(theError?.localizedDescription)")
+                    self.log("HTTP (GET): \(url)\n" +
+                                "post body (escaped): \(post)\n" +
+                                "post body (unescaped): \(post.removingPercentEncoding!)\n" +
+                                "Error: \(theError?.localizedDescription)")
                 }
                 
                 completionHandler(.failure(theError!))
@@ -237,9 +255,18 @@ extension Aurora {
             Aurora.cookies = session.configuration.httpCookieStorage?.cookies
             
             if post.length > 3 {
-                self.log("HTTP (POST): \(url)\nbody (escaped): \(post)\nbody (unescaped): \(post.removingPercentEncoding!)\nresponse: \(String.init(data: sitedata, encoding: .utf8)?.substr(0, 120).replace("\n", withString: ""))")
+                let data = String.init(data: sitedata, encoding: .utf8)?.substr(0, 120)
+                self.log("HTTP (POST): \(url)\n" +
+                            "body (escaped): \(post)\n" +
+                            "body (unescaped): \(post.removingPercentEncoding!)\n" +
+                            "response: \(data?.replace("\n", withString: ""))")
             } else {
-                self.log("HTTP (GET): \(url)\npost body (escaped): \(post)\npost body (unescaped): \(post.removingPercentEncoding!)\nresponse: \(String.init(data: sitedata, encoding: .utf8)?.substr(0, 120).replace("\n", withString: ""))")
+                let data = String.init(data: sitedata, encoding: .utf8)?.substr(0, 120)
+                
+                self.log("HTTP (GET): \(url)\n" +
+                            "post body (escaped): \(post)\n" +
+                            "post body (unescaped): \(post.removingPercentEncoding!)\n" +
+                            "response: \(data?.replace("\n", withString: ""))")
             }
             
             completionHandler(.success(String.init(data: sitedata, encoding: .utf8)!))
@@ -255,9 +282,10 @@ extension Aurora {
      * - parameter posting: What do you need to post
      * - returns: the data we've got from the server
      */
+    // swiftlint:disable:next function_body_length
     public func dep_networkRequest(
         _ url: String,
-        _ posting: Dictionary<String, Any>? = ["nothing": "send"]
+        _ posting: [String: Any]? = ["nothing": "send"]
     ) -> Data {
         /// Check if the URL is valid
         guard let myURL = URL(string: url) else {
@@ -326,7 +354,7 @@ extension Aurora {
         )
         
         // Check if we have a public key, or certificate hash.
-        if (HTTPSCertificate.publicKeyHash.count == 0 || HTTPSCertificate.certificateHash.count == 0) {
+        if HTTPSCertificate.publicKeyHash.count == 0 || HTTPSCertificate.certificateHash.count == 0 {
             // Show a error, only on debug builds
             log(
                 "[WARNING] No Public key pinning/Certificate pinning\n" +
@@ -353,7 +381,7 @@ extension Aurora {
         }.resume()
         
         // Dirty way to create a blocking function.
-        while (waiting) { }
+        while waiting { }
         
         /// Unwrap our data
         guard let unwrappedData = data else {
@@ -378,9 +406,10 @@ extension Aurora {
      * - parameter posting: What do you need to post
      * - returns: the data we've got from the server
      */
+    // swiftlint:disable:next function_body_length
     public func networkRequest_dep(
         _ url: String,
-        _ posting: Dictionary<String, Any>? = ["nothing": "send"]
+        _ posting: [String: Any]? = ["nothing": "send"]
     ) -> Data {
         /// Check if the URL is valid
         guard let myURL = URL(string: url) else {
@@ -388,7 +417,7 @@ extension Aurora {
         }
         
         /// Create a new post dict, for the JSON String
-        var newPosting: Dictionary<String, String>?
+        var newPosting: [String: String]?
         
         // Try
         do {
@@ -418,11 +447,7 @@ extension Aurora {
         
         /// Create a URL Request
         var request = URLRequest(url: myURL)
-        
-        // With method POST
         request.httpMethod = "POST"
-        
-        // And custom Content-Type
         request.setValue(
             "application/x-www-form-urlencoded",
             forHTTPHeaderField: "Content-Type"
@@ -458,7 +483,6 @@ extension Aurora {
             idx += 1
         }
         
-        // Log, if we are in debugmode.
         self.log(""
                     + "url: \(url)\n"
                     + "post body (escaped): \(httpPostBody)\n"
@@ -481,7 +505,7 @@ extension Aurora {
         )
         
         // Check if we have a public key, or certificate hash.
-        if (HTTPSCertificate.publicKeyHash.count == 0 || HTTPSCertificate.certificateHash.count == 0) {
+        if HTTPSCertificate.publicKeyHash.count == 0 || HTTPSCertificate.certificateHash.count == 0 {
             // Show a error, only on debug builds
             log(
                 "[WARNING] No Public key pinning/Certificate pinning\n" +
@@ -508,7 +532,7 @@ extension Aurora {
         }.resume()
         
         // Dirty way to create a blocking function.
-        while (waiting) { }
+        while waiting { }
         
         /// Unwrap our data
         guard let unwrappedData = data else {
@@ -585,7 +609,7 @@ class URLSessionPinningDelegate: NSObject, URLSessionDelegate {
         didReceive challenge: URLAuthenticationChallenge,
         completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Swift.Void
     ) {
-        if (challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust) {
+        if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
             /// Server trust
             if let serverTrust = challenge.protectionSpace.serverTrust {
                 /// server trust
@@ -593,14 +617,14 @@ class URLSessionPinningDelegate: NSObject, URLSessionDelegate {
                 
                 /// status
                 let status = SecTrustEvaluate(serverTrust, &secresult)
-//                let status = SecTrustEvaluateWithError(serverTrust, &secresult)
-
-                if(errSecSuccess == status) {
+                //                let status = SecTrustEvaluateWithError(serverTrust, &secresult)
+                
+                if errSecSuccess == status {
                     // Aurora.shared.log(SecTrustGetCertificateCount(serverTrust))
                     /// Server certificate
                     if let serverCertificate = SecTrustGetCertificateAtIndex(serverTrust, 0) {
                         
-                        if (pinnedCertificateHash.count > 2) {
+                        if pinnedCertificateHash.count > 2 {
                             /// Certificate pinning
                             let serverCertificateData: NSData = SecCertificateCopyData(
                                 serverCertificate
@@ -611,7 +635,7 @@ class URLSessionPinningDelegate: NSObject, URLSessionDelegate {
                                 data: serverCertificateData as Data
                             )
                             
-                            if (certHash == pinnedCertificateHash) {
+                            if certHash == pinnedCertificateHash {
                                 // Success! This is our server
                                 completionHandler(
                                     .useCredential,
@@ -624,7 +648,7 @@ class URLSessionPinningDelegate: NSObject, URLSessionDelegate {
                         }
                         
                         if #available(tvOS 12.0, *) {
-                            if (pinnedPublicKeyHash.count > 2) {
+                            if pinnedPublicKeyHash.count > 2 {
                                 /// Public key pinning
                                 let serverPublicKey = SecCertificateCopyKey(
                                     serverCertificate
@@ -641,7 +665,7 @@ class URLSessionPinningDelegate: NSObject, URLSessionDelegate {
                                     data: serverPublicKeyData as Data
                                 )
                                 
-                                if (keyHash == pinnedPublicKeyHash) {
+                                if keyHash == pinnedPublicKeyHash {
                                     // Success! This is our server
                                     completionHandler(
                                         .useCredential,
@@ -665,3 +689,4 @@ class URLSessionPinningDelegate: NSObject, URLSessionDelegate {
         )
     }
 }
+// swiftlint:enable file_length

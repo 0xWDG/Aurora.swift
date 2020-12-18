@@ -30,7 +30,7 @@ public extension Timer {
             0,
             0,
             0) { _ in
-                block()
+            block()
         }
     }
     
@@ -54,8 +54,8 @@ public extension Timer {
     ///            corresponding to the `Timer` that has been fired.
     /// - Returns: The created Timer.
     class func every(_ interval: TimeInterval,
-                            firesImmediately: Bool = false,
-                            _ block: @escaping (Timer) -> Void) -> Timer {
+                     firesImmediately: Bool = false,
+                     _ block: @escaping (Timer) -> Void) -> Timer {
         if firesImmediately {
             let fireDate = CFAbsoluteTimeGetCurrent()
             let timer = CFRunLoopTimerCreateWithHandler(
@@ -64,7 +64,7 @@ public extension Timer {
                 interval,
                 0,
                 0) { run in
-                    block(run!)
+                block(run!)
             }
             CFRunLoopAddTimer(CFRunLoopGetCurrent(), timer, CFRunLoopMode.commonModes)
             return timer!
@@ -89,7 +89,7 @@ public extension Timer {
             interval,
             0,
             0) { _ in
-                block(timer)
+            block(timer)
         }
         return timer
     }

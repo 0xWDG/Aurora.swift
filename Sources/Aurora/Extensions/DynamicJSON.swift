@@ -21,13 +21,12 @@ import Foundation
 //     Saoud Rizwan
 //     https://github.com/saoudrizwan/DynamicJSON
 
-
 @dynamicMemberLookup
 /// <#Description#>
 public enum JSON {
     // MARK: Cases
-    case dictionary(Dictionary<String, JSON>)
-    case array(Array<JSON>)
+    case dictionary([String: JSON])
+    case array([JSON])
     case string(String)
     case number(NSNumber)
     case bool(Bool)
@@ -99,7 +98,7 @@ public enum JSON {
     // MARK: Accessors
     
     /// <#Description#>
-    public var dictionary: Dictionary<String, JSON>? {
+    public var dictionary: [String: JSON]? {
         if case .dictionary(let value) = self {
             return value
         }
@@ -107,7 +106,7 @@ public enum JSON {
     }
     
     /// <#Description#>
-    public var array: Array<JSON>? {
+    public var array: [JSON]? {
         if case .array(let value) = self {
             return value
         }
