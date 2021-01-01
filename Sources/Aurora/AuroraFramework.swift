@@ -50,6 +50,9 @@ open class Aurora {
     /// The product name
     public let product = "Aurora Framework"
     
+    /// Extra detailed logging?
+    public var detailedLogging = false
+    
     /// Should we debug right now?
     private var debug = _isDebugAssertConfiguration()
     
