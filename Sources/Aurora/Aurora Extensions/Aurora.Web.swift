@@ -124,7 +124,9 @@ public extension Aurora {
         var returnString: String = ""
         
         self.dataTaskHelper(forURL: url) { (dataTaskString) in
-            self.log("Return: \(dataTaskString)")
+            if self.detailedLogging {
+                self.log("Return: \(dataTaskString)")
+            }
             returnString = dataTaskString
         }
         
