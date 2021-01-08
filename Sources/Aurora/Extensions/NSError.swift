@@ -31,4 +31,11 @@ public extension NSError {
             userInfo: [(kCFErrorLocalizedDescriptionKey as CFString) as String: description])
     }
     
+    /// A convenience initializer for NSError to set its description.
+    ///
+    /// - Parameters:
+    ///   - message: Some description for this error.
+    convenience init(message: String) {
+        self.init(domain: message, code: 0, description: message)
+    }
 }

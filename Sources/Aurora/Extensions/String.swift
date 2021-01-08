@@ -103,6 +103,16 @@ public extension String {
         return base64String
     }
     
+    
+    /// Truncate text
+    /// - Parameters:
+    ///   - after: maximum length
+    ///   - trailing: …
+    /// - Returns: truncated string
+    func truncate(after: Int, trailing: String = "…") -> String {
+        return (self.count > after) ? self.prefix(after) + trailing : self
+    }
+    
     /// MD5 hash of string
     var md5: String {
         let data = Data(utf8)
@@ -2267,7 +2277,7 @@ public extension String {
     ///   - toLength: maximum number of characters before cutting.
     ///   - trailing: string to add at the end of truncated string (default is "...").
     @discardableResult
-    mutating func truncate(toLength length: Int, trailing: String? = "...") -> String {
+    mutating func truncate(toLength length: Int, trailing: String? = "…") -> String {
         guard length > 0 else { return self }
         if count > length {
             self = self[startIndex..<index(startIndex, offsetBy: length)] + (trailing ?? "")

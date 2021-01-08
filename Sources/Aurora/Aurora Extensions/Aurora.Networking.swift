@@ -30,7 +30,11 @@ import CommonCrypto
 
 @available(tvOS 12.0, *)
 extension Aurora {
+    /// All the cookies
     static var cookies: [HTTPCookie]? = []
+    
+    /// the full networkRequestResponse
+    static var fullResponse: String? = ""
     
     struct HTTPSCertificate {
         /// Server's public key hash
@@ -255,22 +259,37 @@ extension Aurora {
             Aurora.cookies = session.configuration.httpCookieStorage?.cookies
             
             if post.length > 3 {
-                let data = String.init(data: sitedata, encoding: .utf8)?.substr(0, 120)
+                let data = String.init(data: sitedata, encoding: .utf8)
+                
+                Aurora.fullResponse = data
+                
                 self.log("HTTP (POST): \(url)\n" +
                             "body (escaped): \(post)\n" +
                             "body (unescaped): \(post.removingPercentEncoding!)\n" +
-                            "response: \(data?.replace("\n", withString: ""))")
+                            "response: \(data?.replace("\n", withString: "").truncate(after: 120))")
             } else {
-                let data = String.init(data: sitedata, encoding: .utf8)?.substr(0, 120)
+                let data = String.init(data: sitedata, encoding: .utf8)
+                
+                Aurora.fullResponse = data
                 
                 self.log("HTTP (GET): \(url)\n" +
                             "post body (escaped): \(post)\n" +
                             "post body (unescaped): \(post.removingPercentEncoding!)\n" +
-                            "response: \(data?.replace("\n", withString: ""))")
+                            "response: \(data?.replace("\n", withString: "").truncate(after: 120))")
             }
             
-            completionHandler(.success(String.init(data: sitedata, encoding: .utf8)!))
+            completionHandler(
+                .success(
+                    String.init(data: sitedata, encoding: .utf8)!
+                )
+            )
         }.resume()
+    }
+    
+    /// Return the full networkRequestResponse
+    /// - Returns: the full networkRequestResponse
+    public func networkRequestResponse() -> String? {
+        return Aurora.fullResponse
     }
     
     /**
