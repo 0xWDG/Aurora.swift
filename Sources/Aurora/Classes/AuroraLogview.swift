@@ -44,11 +44,6 @@ public class AuroraLogView: UIViewController, UITableViewDelegate, UITableViewDa
         
         self.tableView.reloadData()
         
-        Aurora.shared.execute(after: 0.5) { [self] in
-            let indexPath: IndexPath = NSIndexPath(row: self.logMessages.count - 1, section: 0) as IndexPath
-            tableView.scrollToRow(at: indexPath, at: .top, animated: true)
-        }
-        
         Aurora.shared.execute(after: 10) {
             self.reloadLogView()
         }
