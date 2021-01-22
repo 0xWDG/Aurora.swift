@@ -27,6 +27,9 @@ import AppKit
 #if canImport(CryptoKit)
 import CryptoKit
 #endif
+#if canImport(UIKit)
+import UIKit
+#endif
 
 /// The Aurora framework for swift
 ///
@@ -336,8 +339,10 @@ open class Aurora {
     
     /// Show LogViewer
     public func showLogViewer() {
-        let logView = AuroraLogView()
-        UIApplication.shared.key?.rootViewController?.showDetailViewController(logView, sender: self)
+        #if canImport(UIKit)
+            let logView = AuroraLogView()
+            UIApplication.shared.key?.rootViewController?.showDetailViewController(logView, sender: self)
+        #endif
     }
     
     /// Get the log messages
