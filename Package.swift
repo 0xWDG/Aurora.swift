@@ -17,7 +17,10 @@ let package = Package(
     
     /// It is a framework/library
     products: [
-        .library(name: "Aurora", targets: ["Aurora"])
+        .library(
+            name: "Aurora",
+            targets: ["Aurora"]
+        )
     ],
     
     /// Hopefully this will never get bigger than 0
@@ -27,13 +30,23 @@ let package = Package(
     targets: [
         .target(
             name: "Aurora",
-            dependencies: []
+            dependencies: [],
 //            resources: [.process("Resources")]
+            exclude: [
+                "build",
+                "docs"
+            ]
         ),
         .testTarget(
             name: "AuroraTests",
-            dependencies: ["Aurora"]
+            dependencies: [
+                "Aurora"
+            ],
 //            resources: [.process("Resources")]
+            exclude: [
+                "build",
+                "docs"
+            ]
         )
     ]
 )

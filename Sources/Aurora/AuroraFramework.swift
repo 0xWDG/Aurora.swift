@@ -43,7 +43,7 @@ open class Aurora {
     
     /// Initialize crash handler
     static let crashLogger = AuroraCrashHandler.shared
-
+    
     /// the version
     public let version = "1.0"
     
@@ -64,9 +64,81 @@ open class Aurora {
     ///            to keep private data out of logs that are sent over
     ///            the Internet.
     public var logHandler: ((String) -> Void)?
-
+    
     /// Logging history
     private var logHistory: [String] = []
+    
+    /// Date format
+    /// Describe here how the date logging needs to be done
+    /// within `Aurora.shared.log(...)` log messages/functions
+    ///
+    /// If the full date is required use:
+    ///
+    /// `Aurora.shared.dateFormat = "yyyy-MM-dd HH:mm:ss"`
+    ///
+    /// Defaults to:
+    /// `Aurora.shared.dateFormat = "HH:mm:ss"`
+    public var dateFormat = "HH:mm:ss"
+    
+    /// Dateformatter
+    private var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = dateFormat
+        formatter.locale = Locale.current
+        formatter.timeZone = TimeZone.current
+        return formatter
+    }
+    
+    /// logTemplate
+    ///
+    /// This is used to send log messages with the following syntax
+    ///
+    ///     [Aurora] datatime Filename:line functionName(...) @Main/Background:
+    ///      Message
+    ///
+    /// **Want to use a custom template?**
+    ///
+    /// Put the following (preffered in your AppDelegate):
+    ///
+    ///      Aurora.shared.logTemplate = "[Aurora.Framework] $datetime $file:$line $function @$queue:\n $message"
+    ///
+    ///
+    /// **$datetime**
+    ///
+    /// _Datetime string_
+    ///
+    /// ‎
+    ///
+    /// **$file**
+    /// 
+    /// _Filename where the log function is called_
+    ///
+    /// ‎
+    ///
+    /// **$line**
+    ///
+    /// _Line where the log function is called_
+    ///
+    /// ‎
+    ///
+    /// **$function**
+    ///
+    /// _The function wherein the log function is called_
+    ///
+    /// ‎
+    ///
+    /// **$queue**
+    ///
+    /// _The queue wherein the log function is called (Main/Background)_
+    ///
+    /// ‎
+    ///
+    /// **$message**
+    ///
+    /// _Message to log_
+    ///
+    /// ‎
+    public var logTemplate = "[Aurora.Framework] $datetime $file:$line $function @$queue:\n $message"
     
     /// Is it already started?
     var isInitialized: Bool = false
@@ -134,8 +206,17 @@ open class Aurora {
             let queue = Thread.isMainThread ? "Main" : "Background"
             
             // Make up the log message.
-            let logMessage: String = "[Aurora.Framework] \(fileName):\(line) \(function)" +
-                                     " @\(queue):\n \(message.joined(separator: " "))\n"
+            let logMessage = logTemplate
+                .replace("$datetime", withString: dateFormatter.string(from: Date()))
+                .replace("$date", withString: dateFormatter.string(from: Date()))
+                .replace("$time", withString: dateFormatter.string(from: Date()))
+                .replace("$file", withString: fileName)
+                .replace("$fileName", withString: fileName)
+                .replace("$line", withString: "\(line)")
+                .replace("$function", withString: function)
+                .replace("$queue", withString: queue)
+                .replace("$message", withString: message.joined(separator: " "))
+                + "\n"
             
             // Print the "messages"
             Swift.print(logMessage)
@@ -157,7 +238,7 @@ open class Aurora {
         //    }
         return debug
     }
-
+    
     /**
      * Log
      *
@@ -190,7 +271,17 @@ open class Aurora {
             let queue = Thread.isMainThread ? "Main" : "Background"
             
             // Make up the log message.
-            let logMessage: String = "[Aurora.Framework] \(fileName):\(line) \(function) @\(queue):\n \(anyThing)\n"
+            let logMessage = logTemplate
+                .replace("$datetime", withString: dateFormatter.string(from: Date()))
+                .replace("$date", withString: dateFormatter.string(from: Date()))
+                .replace("$time", withString: dateFormatter.string(from: Date()))
+                .replace("$file", withString: fileName)
+                .replace("$fileName", withString: fileName)
+                .replace("$line", withString: "\(line)")
+                .replace("$function", withString: function)
+                .replace("$queue", withString: queue)
+                .replace("$message", withString: "\(anyThing)")
+                + "\n"
             
             // Print the "messages"
             Swift.print(logMessage)
@@ -243,6 +334,12 @@ open class Aurora {
         return log(message.joined(separator: " "), file: file, line: line, function: function)
     }
     
+    /// Show LogViewer
+    public func showLogViewer() {
+        let logView = AuroraLogView()
+        UIApplication.shared.key?.rootViewController?.showDetailViewController(logView, sender: self)
+    }
+    
     /// Get the log messages
     /// - Returns: The last crashlog
     public func getLogMessages() -> [String] {
@@ -276,7 +373,7 @@ open class Aurora {
     public func noop(_ something: Any...) {
         // Great.
     }
-
+    
     /// **No op**eration
     /// - Parameter something: Whay ever you want. (object)
     public func noop(_ something: AnyObject...) {
