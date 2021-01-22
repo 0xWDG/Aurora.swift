@@ -107,7 +107,36 @@ extension Aurora {
     }
     
     /**
-     * networkRequest
+     * networkRequest (blocking)
+     *
+     * Start a network request
+     *
+     * - parameter url: The url to be parsed
+     * - parameter posting: What do you need to post
+     * - returns: Result<String, Error>
+     */
+    public func networkRequest(
+        url: String,
+        posting: [String: Any]? = ["nothing": "send"]
+    ) -> Result<String, Error> {
+        // Ok, this is a waiter
+        var rResult: Result<String, Error>?
+        
+        self.networkRequest(url: url, posting: posting) { (res) in
+            rResult = res
+        }
+        
+        while rResult == nil {
+            // wait.
+        }
+        
+        return rResult ?? .failure(
+            AuroraError(message: "Failed to unwrap result")
+        )
+    }
+    
+    /**
+     * networkRequest (non-blocking)
      *
      * Start a network request
      *
@@ -115,7 +144,6 @@ extension Aurora {
      * - parameter posting: What do you need to post
      * - returns: closure -> sucess, fail.
      */
-    // swiftlint:disable:next function_body_length
     public func networkRequest(
         url: String,
         posting: [String: Any]? = ["nothing": "send"],
@@ -156,8 +184,7 @@ extension Aurora {
         catch let error as NSError {
             completionHandler(
                 .failure(
-                    AuroraError(message: "Error: \(error.localizedDescription)"
-                    )
+                    AuroraError(message: "Error: \(error.localizedDescription)")
                 )
             )
         }
@@ -180,7 +207,7 @@ extension Aurora {
                 $0.httpBody = post.data(using: .utf8)
                 
                 // Log, if we are in debugmode.
-                log("HTTP (POST): \(url)\nbody (escaped): \(post)\nbody (unescaped): \(post.removingPercentEncoding!)")
+                log("HTTP (POST): \(url)\n Body (escaped): \(post)\n Body (unescaped): \(post.removingPercentEncoding!)")
                 
             } else {
                 // We're getting
@@ -190,8 +217,8 @@ extension Aurora {
                 
                 // Log, if we are in debugmode.
                 log("HTTP (GET): \(url)\n" +
-                        "post body (escaped): \(post)\n" +
-                        "post body (unescaped): \(post.removingPercentEncoding!)")
+                        " Post body (escaped): \(post)\n" +
+                        " Post body (unescaped): \(post.removingPercentEncoding!)")
                 
             }
         }
@@ -241,14 +268,14 @@ extension Aurora {
             guard let sitedata = sitedata else {
                 if post.length > 3 {
                     self.log("HTTP (POST): \(url)\n" +
-                                "body (escaped): \(post)\n" +
-                                "body (unescaped): \(post.removingPercentEncoding!)\n" +
-                                "Error: \(theError?.localizedDescription)")
+                                " Body (escaped): \(post)\n" +
+                                " Body (unescaped): \(post.removingPercentEncoding!)\n" +
+                                " Error: \(theError?.localizedDescription)")
                 } else {
                     self.log("HTTP (GET): \(url)\n" +
-                                "post body (escaped): \(post)\n" +
-                                "post body (unescaped): \(post.removingPercentEncoding!)\n" +
-                                "Error: \(theError?.localizedDescription)")
+                                " Post body (escaped): \(post)\n" +
+                                " Post body (unescaped): \(post.removingPercentEncoding!)\n" +
+                                " Error: \(theError?.localizedDescription)")
                 }
                 
                 completionHandler(.failure(theError!))
@@ -264,18 +291,18 @@ extension Aurora {
                 Aurora.fullResponse = data
                 
                 self.log("HTTP (POST): \(url)\n" +
-                            "body (escaped): \(post)\n" +
-                            "body (unescaped): \(post.removingPercentEncoding!)\n" +
-                            "response: \(data?.replace("\n", withString: "").truncate(after: 120))")
+                            " Body (escaped): \(post)\n" +
+                            " Body (unescaped): \(post.removingPercentEncoding!)\n" +
+                            " Response: \(data?.replace("\n", withString: "").truncate(after: 120))")
             } else {
                 let data = String.init(data: sitedata, encoding: .utf8)
                 
                 Aurora.fullResponse = data
                 
                 self.log("HTTP (GET): \(url)\n" +
-                            "post body (escaped): \(post)\n" +
-                            "post body (unescaped): \(post.removingPercentEncoding!)\n" +
-                            "response: \(data?.replace("\n", withString: "").truncate(after: 120))")
+                            " Post body (escaped): \(post)\n" +
+                            " Post body (unescaped): \(post.removingPercentEncoding!)\n" +
+                            " Response: \(data?.replace("\n", withString: "").truncate(after: 120))")
             }
             
             completionHandler(
@@ -285,6 +312,7 @@ extension Aurora {
             )
         }.resume()
     }
+    // swiftlint:disable:last function_body_length
     
     /// Return the full networkRequestResponse
     /// - Returns: the full networkRequestResponse
