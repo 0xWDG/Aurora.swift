@@ -191,6 +191,9 @@ extension Aurora {
         
         /// Create a URL Request
         let request = URLRequest(url: siteURL).configure {
+            // 60 Seconds before timeout (default)
+            $0.timeoutInterval = 60
+            
             if post.length > 3 {
                 // We're posting
                 
