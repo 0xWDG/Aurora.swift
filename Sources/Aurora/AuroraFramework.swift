@@ -143,6 +143,9 @@ open class Aurora {
     /// ‎
     public var logTemplate = "[Aurora.Framework] $datetime $file:$line $function @$queue:\n $message"
     
+    /// Shared static settings controller.
+    public var settings: AuroraStaticSettings = AuroraStaticSettings.shared
+    
     /// Is it already started?
     var isInitialized: Bool = false
     
