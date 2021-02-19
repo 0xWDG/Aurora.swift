@@ -9,6 +9,8 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
+      - name: SwiftLint (version)
+        run: swiftlint version
       - name: SwiftLint
         run: swiftlint --reporter github-actions-logging --strict
       - name: Swift Build
