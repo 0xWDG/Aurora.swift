@@ -1,4 +1,4 @@
-- name: Swift Test & Lint
+- name: SwiftLint
   uses: norio-nomura/action-swiftlint@3.2.1
 
 on:
@@ -29,16 +29,3 @@ jobs:
         uses: norio-nomura/action-swiftlint@3.2.1
         env:
           WORKING_DIRECTORY: Source
-
-  build:
-
-    runs-on: macos-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Build
-        run: swift build -v
-
-      - name: Run tests
-        run: swift test -v
