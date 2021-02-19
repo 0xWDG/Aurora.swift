@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: SwiftLint
-        run: swiftlint --reporter github-actions-logging
+        run: swiftlint --reporter github-actions-logging --strict
       - name: Swift Build
         run: swift build -v
       - name: Swift Test
