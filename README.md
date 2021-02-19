@@ -15,3 +15,13 @@ Built-in functions:
  - .
  - .
  
+ ---
+ 
+ @IBDesignable views.
+ 
+ To use them create a proxy, since SwiftPM does not support @IBDesignables in Frameworks.
+ 
+ `@IBDesignable class UIGradientViewProxy: UIGradientView {}`
+
+- UIViewRounded
+- UIGradientView

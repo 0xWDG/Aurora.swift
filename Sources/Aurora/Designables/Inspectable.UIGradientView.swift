@@ -22,10 +22,17 @@ import QuartzCore
 /// UIGradient View
 ///
 /// Have a gradient background.
+///
+/// Fix for SwiftPM:
+///
+///     /// Proxy class to enable previews in storyboard
+///     /// use class `UIGradientViewProxy` in your `View`.
+///     @IBDesignable class UIGradientViewProxy: UIGradientView {}
+///
 @IBDesignable
 open class UIGradientView: UIView {
     /// Light color: First Gradient color
-    @IBInspectable public var lightFirstColor: UIColor = UIColor.init(
+    @IBInspectable open var lightFirstColor: UIColor = UIColor.init(
         red: 0.439216,
         green: 0.74902,
         blue: 0.254902,
@@ -33,7 +40,7 @@ open class UIGradientView: UIView {
     )
     
     /// Light color: Second Gradient color
-    @IBInspectable public var lightSecondColor: UIColor = UIColor.init(
+    @IBInspectable open var lightSecondColor: UIColor = UIColor.init(
         red: 0.0117647,
         green: 0.396078,
         blue: 0.752941,
@@ -41,7 +48,7 @@ open class UIGradientView: UIView {
     )
     
     /// Dark mode: First Gradient color
-    @IBInspectable public var darkFirstColor: UIColor = UIColor.init(
+    @IBInspectable open var darkFirstColor: UIColor = UIColor.init(
         red: 0,
         green: 204 / 255,
         blue: 68 / 255,
@@ -49,7 +56,7 @@ open class UIGradientView: UIView {
     )
     
     /// Dark mode: Second Gradient color
-    @IBInspectable public var darkSecondColor: UIColor = UIColor.init(
+    @IBInspectable open var darkSecondColor: UIColor = UIColor.init(
         red: 0,
         green: 0,
         blue: 1,
@@ -57,13 +64,13 @@ open class UIGradientView: UIView {
     )
     
     /// Start point
-    @IBInspectable public var startPoint: CGPoint = CGPoint(
+    @IBInspectable open var startPoint: CGPoint = CGPoint(
         x: 0.0,
         y: 0.0
     )
     
     /// End point
-    @IBInspectable public var endPoint: CGPoint = CGPoint(
+    @IBInspectable open var endPoint: CGPoint = CGPoint(
         x: 0.5,
         y: 1.2
     )

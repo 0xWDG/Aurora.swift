@@ -19,6 +19,28 @@
 import UIKit
 
 public extension UITabBar {
+    var selectedIndex: Int {
+        get {
+            // Tricky business.
+            
+            var currentIndex = 0
+            
+            guard let items = items else {
+                fatalError("No items in Tabbar.")
+            }
+            
+            for barItem in items {
+                if barItem == selectedItem {
+                    return currentIndex
+                }
+                
+                currentIndex += 1
+            }
+            
+            fatalError("Failed to get index")
+        }
+    }
+    
     /// <#Description#>
     /// - Parameter withName: <#withName description#>
     func select(withName: String) {
@@ -39,7 +61,7 @@ public extension UITabBar {
         
         fatalError("Could not find item \(withName).")
     }
-    
+        
     /// Execute a action after x taps
     ///
     /// Example:
