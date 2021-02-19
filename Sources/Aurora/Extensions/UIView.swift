@@ -19,18 +19,7 @@ import Foundation
 
 #if canImport(UIKit) && !os(watchOS) && !os(tvOS)
 import UIKit
-
 public extension UIView {
-    /// Ignore invert colors?
-    @IBInspectable var ignoresInvertColors: Bool {
-        get {
-            return accessibilityIgnoresInvertColors
-        }
-        set {
-            accessibilityIgnoresInvertColors = newValue
-        }
-    }
-    
     /// is darkmode enabled
     var isDarkModeEnabled: Bool {
         // swiftlint:disable:next implicit_getter

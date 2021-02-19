@@ -46,16 +46,5 @@ public extension UITableView {
             animated: animated
         )
     }
-    
-    /// Get/Set the cornerRadius
-    var cornerRadius: CGFloat {
-        get {
-            return layer.cornerRadius
-        }
-        set {
-            layer.cornerRadius = newValue
-            layer.masksToBounds = true
-        }
-    }
 }
 #endif

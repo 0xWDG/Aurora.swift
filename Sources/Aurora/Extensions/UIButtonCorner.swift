@@ -21,47 +21,6 @@ import UIKit
 /// Designable UIButton
 @IBDesignable
 public extension UIButton {
-    /// Set the border with
-    @IBInspectable var borderWidth: CGFloat {
-        get {
-            return layer.borderWidth
-        }
-        set {
-            layer.borderWidth = newValue
-        }
-    }
-    
-    /// Set the corner radius
-    @IBInspectable var cornerRadius: CGFloat {
-        get {
-            return layer.cornerRadius
-        }
-        set {
-            layer.cornerRadius = newValue
-        }
-    }
-    
-    /// Set the border color
-    @IBInspectable var borderColor: UIColor? {
-        get {
-            guard layer.borderColor != nil else { return nil }
-            if #available(iOS 13.0, *) {
-                #if os(tvOS)
-                return .white
-                #else
-                return .systemBackground
-                #endif
-            } else {
-                return .white
-            }
-        }
-        set {
-            guard newValue != nil else { return }
-            layer.borderColor = .dinnerGreen
-        }
-    }
-    // swiftlint:enable valid_ibinspectable implicit_getter
-    
     /// Is the button highlighted
     override var isHighlighted: Bool {
         didSet {
