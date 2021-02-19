@@ -101,7 +101,7 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
         }
     }
     
-    ///The initial size of the icon. Ideally it has to match with the size of the icon in your LaunchScreen Splash view
+    /// The initial size of the icon. Ideally it has to match with the size of the icon in your LaunchScreen Splash view
     open var iconInitialSize: CGSize = CGSize(width: 60, height: 60) {
         didSet {
             imageView?.frame = CGRect(x: 0, y: 0, width: iconInitialSize.width, height: iconInitialSize.height)

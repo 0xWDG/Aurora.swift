@@ -43,7 +43,7 @@ public extension UILabel {
             }
         }
     }
-    //&AssociatedKeys.padding, newValue as UIEdgeInsets!,
+    // &AssociatedKeys.padding, newValue as UIEdgeInsets!,
     
     /// <#Description#>
     /// - Parameter rect: <#rect description#>
