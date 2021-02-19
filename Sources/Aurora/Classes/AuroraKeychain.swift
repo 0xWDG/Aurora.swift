@@ -80,11 +80,11 @@ open class AuroraKeychain {
         
         let prefixedKey = keyWithPrefix(key)
         
-        var query: [String : Any] = [
-            KeychainSwiftConstants.klass       : kSecClassGenericPassword,
-            KeychainSwiftConstants.attrAccount : prefixedKey,
-            KeychainSwiftConstants.valueData   : value,
-            KeychainSwiftConstants.accessible  : accessible
+        var query: [String: Any] = [
+            KeychainSwiftConstants.klass: kSecClassGenericPassword,
+            KeychainSwiftConstants.attrAccount: prefixedKey,
+            KeychainSwiftConstants.valueData: value,
+            KeychainSwiftConstants.accessible: accessible
         ]
         
         query = addAccessGroupWhenPresent(query)
@@ -153,9 +153,9 @@ open class AuroraKeychain {
         let prefixedKey = keyWithPrefix(key)
         
         var query: [String: Any] = [
-            KeychainSwiftConstants.klass       : kSecClassGenericPassword,
-            KeychainSwiftConstants.attrAccount : prefixedKey,
-            KeychainSwiftConstants.matchLimit  : kSecMatchLimitOne
+            KeychainSwiftConstants.klass: kSecClassGenericPassword,
+            KeychainSwiftConstants.attrAccount: prefixedKey,
+            KeychainSwiftConstants.matchLimit: kSecMatchLimitOne
         ]
         
         if asReference {
@@ -219,8 +219,8 @@ open class AuroraKeychain {
      */
     public var allKeys: [String] {
         var query: [String: Any] = [
-            KeychainSwiftConstants.klass : kSecClassGenericPassword,
-            KeychainSwiftConstants.returnData : true,
+            KeychainSwiftConstants.klass: kSecClassGenericPassword,
+            KeychainSwiftConstants.returnData: true,
             KeychainSwiftConstants.returnAttributes: true,
             KeychainSwiftConstants.returnReference: true,
             KeychainSwiftConstants.matchLimit: KeychainSwiftConstants.secMatchLimitAll
@@ -256,8 +256,8 @@ open class AuroraKeychain {
         let prefixedKey = keyWithPrefix(key)
         
         var query: [String: Any] = [
-            KeychainSwiftConstants.klass       : kSecClassGenericPassword,
-            KeychainSwiftConstants.attrAccount : prefixedKey
+            KeychainSwiftConstants.klass: kSecClassGenericPassword,
+            KeychainSwiftConstants.attrAccount: prefixedKey
         ]
         
         query = addAccessGroupWhenPresent(query)
@@ -283,7 +283,7 @@ open class AuroraKeychain {
         lock.lock()
         defer { lock.unlock() }
         
-        var query: [String: Any] = [ kSecClass as String : kSecClassGenericPassword ]
+        var query: [String: Any] = [ kSecClass as String: kSecClassGenericPassword ]
         query = addAccessGroupWhenPresent(query)
         query = addSynchronizableIfRequired(query, addingItems: false)
         lastQueryParameters = query
@@ -393,10 +393,10 @@ public struct KeychainSwiftConstants {
     public static var returnReference: String { return toString(kSecReturnPersistentRef) }
     
     /// A key whose value is a Boolean indicating whether or not to return item attributes
-    public static var returnAttributes : String { return toString(kSecReturnAttributes) }
+    public static var returnAttributes: String { return toString(kSecReturnAttributes) }
     
     /// A value that corresponds to matching an unlimited number of items
-    public static var secMatchLimitAll : String { return toString(kSecMatchLimitAll) }
+    public static var secMatchLimitAll: String { return toString(kSecMatchLimitAll) }
     
     static func toString(_ value: CFString) -> String {
         return value as String

@@ -103,7 +103,6 @@ public extension String {
         return base64String
     }
     
-    
     /// Truncate text
     /// - Parameters:
     ///   - after: maximum length

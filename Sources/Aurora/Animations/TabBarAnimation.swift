@@ -12,7 +12,7 @@ public enum TabBarItemAnimation {
     case rotateRight
     case rotateLeft
     case shake
-    case custom((UIImageView) -> ())
+    case custom((UIImageView) -> Void)
 }
 
 /// Animates UITabBarItem Image View with custom animation.
