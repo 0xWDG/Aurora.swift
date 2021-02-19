@@ -14,3 +14,8 @@ swift package generate-xcodeproj
 jazzy
 
 # Restore run scrips
+
+
+
+# Github swiftlint checks for // without space:
+# use this regex " //[a-Z].*" Or "^:{0}//[a-Z]"

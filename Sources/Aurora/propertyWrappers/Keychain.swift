@@ -65,8 +65,6 @@ public struct CodableKeychain<Value: Codable> {
     let keyChainWrapper: KeychainWrapper
     fileprivate(set) var isSuccessfullySaved = true
     
-    //Property wrapper type 'LSCodableKeychain' does not contain a non-static property named 'wrappedValue'
-    
     public init(
         _ keyChainWrapper: KeychainWrapper,
         key: String,
