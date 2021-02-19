@@ -15,6 +15,7 @@
 //
 // Licence: Needs to be decided.
 
+// Does not run on watchOS
 #if !os(watchOS)
 import Foundation
 

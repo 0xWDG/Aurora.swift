@@ -80,7 +80,7 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
         }
     }
     
-    ///The icon color of the image, defaults to white
+    /// The icon color of the image, defaults to white
     open var iconColor: UIColor = UIColor.white {
         didSet {
             imageView?.tintColor = iconColor
@@ -101,7 +101,7 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
         }
     }
     
-    ///The initial size of the icon. Ideally it has to match with the size of the icon in your LaunchScreen Splash view
+    /// The initial size of the icon. Ideally it has to match with the size of the icon in your LaunchScreen Splash view
     open var iconInitialSize: CGSize = CGSize(width: 60, height: 60) {
         didSet {
             imageView?.frame = CGRect(x: 0, y: 0, width: iconInitialSize.width, height: iconInitialSize.height)
@@ -139,46 +139,46 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
      - returns: The created RevealingSplashViewObject
      */
     public init(iconImage: UIImage, iconInitialSize: CGSize, backgroundColor: UIColor) {
-        //Sets the initial values of the image view and icon view
+        // Sets the initial values of the image view and icon view
         self.imageView = UIImageView()
         self.iconImage = iconImage
         self.iconInitialSize = iconInitialSize
-        //Inits the view to the size of the screen
+        // Inits the view to the size of the screen
         super.init(frame: (UIScreen.main.bounds))
         
         imageView?.image = iconImage
         imageView?.tintColor = iconColor
-        //Set the initial size and position
+        // Set the initial size and position
         imageView?.frame = CGRect(x: 0, y: 0, width: iconInitialSize.width, height: iconInitialSize.height)
-        //Sets the content mode and set it to be centered
+        // Sets the content mode and set it to be centered
         imageView?.contentMode = UIView.ContentMode.scaleAspectFit
         imageView?.center = self.center
         
-        //Adds the icon to the view
+        // Adds the icon to the view
         self.addSubview(imageView!)
         
-        //Sets the background color
+        // Sets the background color
         self.backgroundColor = backgroundColor
         
     }
     
     public init(iconImage: UIImage, iconInitialSize: CGSize, backgroundImage: UIImage) {
-        //Sets the initial values of the image view and icon view
+        // Sets the initial values of the image view and icon view
         self.imageView = UIImageView()
         self.iconImage = iconImage
         self.iconInitialSize = iconInitialSize
-        //Inits the view to the size of the screen
+        // Inits the view to the size of the screen
         super.init(frame: (UIScreen.main.bounds))
         
         imageView?.image = iconImage
         imageView?.tintColor = iconColor
-        //Set the initial size and position
+        // Set the initial size and position
         imageView?.frame = CGRect(x: 0, y: 0, width: iconInitialSize.width, height: iconInitialSize.height)
-        //Sets the content mode and set it to be centered
+        // Sets the content mode and set it to be centered
         imageView?.contentMode = UIView.ContentMode.scaleAspectFit
         imageView?.center = self.center
         
-        //Sets the background image
+        // Sets the background image
         self.backgroundImageView = UIImageView()
         backgroundImageView?.image = backgroundImage
         backgroundImageView?.frame = UIScreen.main.bounds
@@ -186,33 +186,33 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
         
         self.addSubview(backgroundImageView!)
         
-        //Adds the icon to the view
+        // Adds the icon to the view
         self.addSubview(imageView!)
         
     }
     
     public init(iconImage: UIImage, iconInitialSize: CGSize, backgroundView: UIView) {
-        //Sets the initial values of the image view and icon view
+        // Sets the initial values of the image view and icon view
         self.imageView = UIImageView()
         self.iconImage = iconImage
         self.iconInitialSize = iconInitialSize
-        //Inits the view to the size of the screen
+        // Inits the view to the size of the screen
         super.init(frame: (UIScreen.main.bounds))
         
         imageView?.image = iconImage
         imageView?.tintColor = iconColor
-        //Set the initial size and position
+        // Set the initial size and position
         imageView?.frame = CGRect(x: 0, y: 0, width: iconInitialSize.width, height: iconInitialSize.height)
-        //Sets the content mode and set it to be centered
+        // Sets the content mode and set it to be centered
         imageView?.contentMode = UIView.ContentMode.scaleAspectFit
         imageView?.center = self.center
         
-        //Sets the background view
+        // Sets the background view
         backgroundView.contentMode = UIView.ContentMode.scaleAspectFill
         
         self.addSubview(backgroundView)
         
-        //Adds the icon to the view
+        // Adds the icon to the view
         self.addSubview(imageView!)
     }
     
@@ -248,15 +248,13 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
         }
     }
     
-    /**
-     Plays the twitter animation
-     */
+    /// Plays the twitter animation
     func playTwitterAnimation(_ completion: SplashAnimatableCompletion? = nil) {
         if let imageView = self.imageView {
-            //Define the shink and grow duration based on the duration parameter
+            // Define the shink and grow duration based on the duration parameter
             let shrinkDuration: TimeInterval = duration * 0.3
             
-            //Plays the shrink animation
+            // Plays the shrink animation
             UIView.animate(
                 withDuration: shrinkDuration,
                 delay: delay,
@@ -264,8 +262,7 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
                 initialSpringVelocity: 10,
                 options: UIView.AnimationOptions(),
                 animations: {
-                    
-                    //Shrinks the image
+                    // Shrinks the image
                     let scaleTransform: CGAffineTransform = CGAffineTransform(scaleX: 0.75, y: 0.75)
                     imageView.transform = scaleTransform
                 },
@@ -277,13 +274,13 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
         }
     }
     
-    /// Plays the twitter animation
+    /// Plays the Squeeze animation
     func playSqueezeAnimation(_ completion: SplashAnimatableCompletion? = nil) {
         if let imageView = self.imageView {
-            //Define the shink and grow duration based on the duration parameter
+            // Define the shink and grow duration based on the duration parameter
             let shrinkDuration: TimeInterval = duration * 0.5
             
-            //Plays the shrink animation
+            // Plays the shrink animation
             UIView.animate(
                 withDuration: shrinkDuration,
                 delay: delay / 3,
@@ -291,11 +288,11 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
                 initialSpringVelocity: 10,
                 options: UIView.AnimationOptions(),
                 animations: {
-                //Shrinks the image
+                // Shrinks the image
                 let scaleTransform: CGAffineTransform = CGAffineTransform(scaleX: 0.30, y: 0.30)
                 imageView.transform = scaleTransform
                 
-                //When animation completes, grow the image
+                // When animation completes, grow the image
             }, completion: { _ in
                 self.playZoomOutAnimation(completion)
             })
@@ -318,13 +315,13 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
                 options: UIView.AnimationOptions(),
                 animations: {
                 
-                //Sets a simple rotate
+                // Sets a simple rotate
                 let rotateTranform = CGAffineTransform(rotationAngle: CGFloat(Double.pi * 0.99))
                 
-                //Mix the rotation with the zoom out animation
+                // Mix the rotation with the zoom out animation
                 imageView.transform = rotateTranform.concatenating(self.getZoomOutTranform())
                 
-                //Removes the animation
+                // Removes the animation
                 self.alpha = 0
             }, completion: { _ in
                 self.removeFromSuperview()
@@ -438,7 +435,7 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
                 imageView.transform = self.getZoomOutTranform()
                 self.alpha = 0
                 
-                //When animation completes remote self from super view
+                // When animation completes remote self from super view
             }, completion: { _ in
                 self.removeFromSuperview()
             })

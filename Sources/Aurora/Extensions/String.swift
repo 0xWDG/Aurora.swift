@@ -1087,7 +1087,6 @@ public extension String {
      */
     fileprivate func decode(_ entity: String) -> Character? {
         if entity.hasPrefix("&#x") || entity.hasPrefix("&#X") {
-            //index(startIndex, offsetBy: from)
             return decodeNumeric(String(entity[entity.index(entity.startIndex, offsetBy: 3)...]), base: 16)
         } else if entity.hasPrefix("&#") {
             return decodeNumeric(String(entity[entity.index(entity.startIndex, offsetBy: 2)...]), base: 10)

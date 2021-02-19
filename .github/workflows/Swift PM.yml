@@ -1,4 +1,4 @@
-name: Swift Build & Test
+name: Swift Lint, Build & Test
 on:
   push:
     branches: [ master ]
@@ -9,7 +9,11 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Build
+      - name: SwiftLint (version)
+        run: swiftlint version
+      - name: SwiftLint
+        run: swiftlint --reporter github-actions-logging --strict
+      - name: Swift Build
         run: swift build -v
-      - name: Run tests
+      - name: Swift Test
         run: swift test -v

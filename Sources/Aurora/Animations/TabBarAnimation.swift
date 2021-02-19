@@ -27,7 +27,6 @@ public enum TabBarItemAnimation {
 ///         }
 ///     }
 ///
-/// /
 public protocol TabBarAnimation: UITabBarController {
     /// Animates UITabBarItem Image View with custom animation.
     ///
@@ -47,9 +46,6 @@ public protocol TabBarAnimation: UITabBarController {
 public extension TabBarAnimation {
     func playAnimation(type: TabBarItemAnimation, for item: UITabBarItem) {
         // Classic TabBar
-        // Black or white tabbar
-        // 0              -> 1 = map = imageView
-        // UITabBarButton -> UITabbarSwappableImageView
         if let idx = tabBar.items?.firstIndex(of: item),
               tabBar.subviews.count > idx + 1,
               let imageView = tabBar.subviews[idx + 1].subviews.compactMap({ $0 as? UIImageView }).first {
@@ -58,8 +54,6 @@ public extension TabBarAnimation {
         }
         
         // Transculent TabBar
-        // 0              -> 1 (visualEffectView) -> 2 (visualContentView)      -> 3 = map = imageView
-        // UITabBarButton -> UIVisualEffectView   -> _UIVisualEffectContentView -> UITabbarSwappableImageView
         if let idx = tabBar.items?.firstIndex(of: item),
            tabBar.subviews.count > idx + 1,
            let visualEffectView = tabBar.subviews[idx + 1].subviews.first,
