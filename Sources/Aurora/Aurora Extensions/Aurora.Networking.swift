@@ -144,6 +144,7 @@ extension Aurora {
      * - parameter posting: What do you need to post
      * - returns: closure -> sucess, fail.
      */
+    // swiftlint:disable:next function_body_length
     public func networkRequest(
         url: String,
         posting: [String: Any]? = ["nothing": "send"],
@@ -210,7 +211,8 @@ extension Aurora {
                 $0.httpBody = post.data(using: .utf8)
                 
                 // Log, if we are in debugmode.
-                log("HTTP (POST): \(url)\n Body (escaped): \(post)\n Body (unescaped): \(post.removingPercentEncoding!)")
+                log("HTTP (POST): \(url)\n Body (escaped): \(post)" +
+                    "\n Body (unescaped): \(post.removingPercentEncoding!)")
                 
             } else {
                 // We're getting

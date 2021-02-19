@@ -15,9 +15,7 @@ public extension UITextField {
     }
     
     var padding: UIEdgeInsets {
-        get {
-            return UIEdgeInsets(top: 0, left: paddingValue, bottom: 0, right: paddingValue)
-        }
+        return UIEdgeInsets(top: 0, left: paddingValue, bottom: 0, right: paddingValue)
     }
 }
 #endif
