@@ -4,11 +4,8 @@
 import Foundation
 import Security
 
-/**
- A collection of helper functions for saving text and data in the keychain.
- */
+/// A collection of helper functions for saving text and data in the keychain.
 open class AuroraKeychain {
-    
     var lastQueryParameters: [String: Any]? // Used by the unit tests
     
     /// Contains result code from the last operation. Value is noErr (0) for a successful result.
@@ -17,7 +14,10 @@ open class AuroraKeychain {
     /// Can be useful in test.
     var keyPrefix = ""
     
-    /// Specify an access group that will be used to access keychain items. Access groups can be used to share keychain items between applications. When access group value is nil all application access groups are being accessed. Access group name is used by all functions: set, get, delete and clear.
+    /// Specify an access group that will be used to access keychain items.
+    /// Access groups can be used to share keychain items between applications.
+    /// When access group value is nil all application access groups are being accessed.
+    /// Access group name is used by all functions: set, get, delete and clear.
     open var accessGroup: String?
     
     /// Specifies whether the items can be synchronized with other devices through iCloud
@@ -29,18 +29,20 @@ open class AuroraKeychain {
     public init() { }
     
     /// Init
-    /// - parameter keyPrefix: a prefix that is added before the key in get/set methods. Note that `clear` method still clears everything from the Keychain.
+    /// - parameter keyPrefix: a prefix that is added before the key in get/set methods.
+    /// Note that `clear` method still clears everything from the Keychain.
     public init(keyPrefix: String) {
         self.keyPrefix = keyPrefix
     }
     
     /**
-     
      Stores the text value in the keychain item under the given key.
      
      - parameter key: Key under which the text value is stored in the keychain.
      - parameter value: Text string to be written to the keychain.
-     - parameter withAccess: Value that indicates when your app needs access to the text in the keychain item. By default the .AccessibleWhenUnlocked option is used that permits the data to be accessed only while the device is unlocked by the user.
+     - parameter withAccess: Value that indicates when your app needs access to the text in the keychain item.
+     By default the .AccessibleWhenUnlocked option is used that permits the data to be
+     accessed only while the device is unlocked by the user.
      
      - returns: True if the text was successfully written to the keychain.
      */
@@ -56,20 +58,19 @@ open class AuroraKeychain {
     }
     
     /**
-     
      Stores the data in the keychain item under the given key.
      
      - parameter key: Key under which the data is stored in the keychain.
      - parameter value: Data to be written to the keychain.
-     - parameter withAccess: Value that indicates when your app needs access to the text in the keychain item. By default the .AccessibleWhenUnlocked option is used that permits the data to be accessed only while the device is unlocked by the user.
+     - parameter withAccess: Value that indicates when your app needs access to the text in the keychain item.
+     By default the .AccessibleWhenUnlocked option is used that permits the data to be accessed
+     only while the device is unlocked by the user.
      
      - returns: True if the text was successfully written to the keychain.
-     
      */
     @discardableResult
     open func set(_ value: Data, forKey key: String,
                   withAccess access: KeychainSwiftAccessOptions? = nil) -> Bool {
-        
         // The lock prevents the code to be run simultaneously
         // from multiple threads which may result in crashing
         lock.lock()
@@ -80,11 +81,11 @@ open class AuroraKeychain {
         
         let prefixedKey = keyWithPrefix(key)
         
-        var query: [String : Any] = [
-            KeychainSwiftConstants.klass       : kSecClassGenericPassword,
-            KeychainSwiftConstants.attrAccount : prefixedKey,
-            KeychainSwiftConstants.valueData   : value,
-            KeychainSwiftConstants.accessible  : accessible
+        var query: [String: Any] = [
+            KeychainSwiftConstants.klass: kSecClassGenericPassword,
+            KeychainSwiftConstants.attrAccount: prefixedKey,
+            KeychainSwiftConstants.valueData: value,
+            KeychainSwiftConstants.accessible: accessible
         ]
         
         query = addAccessGroupWhenPresent(query)
@@ -101,7 +102,10 @@ open class AuroraKeychain {
      Stores the boolean value in the keychain item under the given key.
      - parameter key: Key under which the value is stored in the keychain.
      - parameter value: Boolean to be written to the keychain.
-     - parameter withAccess: Value that indicates when your app needs access to the value in the keychain item. By default the .AccessibleWhenUnlocked option is used that permits the data to be accessed only while the device is unlocked by the user.
+     - parameter withAccess: Value that indicates when your app needs access to
+     the value in the keychain item.
+     By default the .AccessibleWhenUnlocked option is used that permits the data to
+     be accessed only while the device is unlocked by the user.
      - returns: True if the value was successfully written to the keychain.
      */
     @discardableResult
@@ -115,12 +119,10 @@ open class AuroraKeychain {
     }
     
     /**
-     
      Retrieves the text value from the keychain that corresponds to the given key.
      
      - parameter key: The key that is used to read the keychain item.
      - returns: The text value from the keychain. Returns nil if unable to read the item.
-     
      */
     open func get(_ key: String) -> String? {
         if let data = getData(key) {
@@ -136,13 +138,11 @@ open class AuroraKeychain {
     }
     
     /**
-     
      Retrieves the data from the keychain that corresponds to the given key.
      
      - parameter key: The key that is used to read the keychain item.
      - parameter asReference: If true, returns the data as reference (needed for things like NEVPNProtocol).
      - returns: The text value from the keychain. Returns nil if unable to read the item.
-     
      */
     open func getData(_ key: String, asReference: Bool = false) -> Data? {
         // The lock prevents the code to be run simultaneously
@@ -153,9 +153,9 @@ open class AuroraKeychain {
         let prefixedKey = keyWithPrefix(key)
         
         var query: [String: Any] = [
-            KeychainSwiftConstants.klass       : kSecClassGenericPassword,
-            KeychainSwiftConstants.attrAccount : prefixedKey,
-            KeychainSwiftConstants.matchLimit  : kSecMatchLimitOne
+            KeychainSwiftConstants.klass: kSecClassGenericPassword,
+            KeychainSwiftConstants.attrAccount: prefixedKey,
+            KeychainSwiftConstants.matchLimit: kSecMatchLimitOne
         ]
         
         if asReference {
@@ -199,7 +199,6 @@ open class AuroraKeychain {
      
      - parameter key: The key that is used to delete the keychain item.
      - returns: True if the item was successfully deleted.
-     
      */
     @discardableResult
     open func delete(_ key: String) -> Bool {
@@ -215,12 +214,11 @@ open class AuroraKeychain {
      Return all keys from keychain
      
      - returns: An string array with all keys from the keychain.
-     
      */
     public var allKeys: [String] {
         var query: [String: Any] = [
-            KeychainSwiftConstants.klass : kSecClassGenericPassword,
-            KeychainSwiftConstants.returnData : true,
+            KeychainSwiftConstants.klass: kSecClassGenericPassword,
+            KeychainSwiftConstants.returnData: true,
             KeychainSwiftConstants.returnAttributes: true,
             KeychainSwiftConstants.returnReference: true,
             KeychainSwiftConstants.matchLimit: KeychainSwiftConstants.secMatchLimitAll
@@ -244,20 +242,18 @@ open class AuroraKeychain {
     }
     
     /**
-     
      Same as `delete` but is only accessed internally, since it is not thread safe.
      
      - parameter key: The key that is used to delete the keychain item.
      - returns: True if the item was successfully deleted.
-     
      */
     @discardableResult
     func deleteNoLock(_ key: String) -> Bool {
         let prefixedKey = keyWithPrefix(key)
         
         var query: [String: Any] = [
-            KeychainSwiftConstants.klass       : kSecClassGenericPassword,
-            KeychainSwiftConstants.attrAccount : prefixedKey
+            KeychainSwiftConstants.klass: kSecClassGenericPassword,
+            KeychainSwiftConstants.attrAccount: prefixedKey
         ]
         
         query = addAccessGroupWhenPresent(query)
@@ -270,11 +266,10 @@ open class AuroraKeychain {
     }
     
     /**
-     
-     Deletes all Keychain items used by the app. Note that this method deletes all items regardless of the prefix settings used for initializing the class.
+     Deletes all Keychain items used by the app.
+     Note that this method deletes all items regardless of the prefix settings used for initializing the class.
      
      - returns: True if the keychain items were successfully deleted.
-     
      */
     @discardableResult
     open func clear() -> Bool {
@@ -283,7 +278,7 @@ open class AuroraKeychain {
         lock.lock()
         defer { lock.unlock() }
         
-        var query: [String: Any] = [ kSecClass as String : kSecClassGenericPassword ]
+        var query: [String: Any] = [ kSecClass as String: kSecClassGenericPassword ]
         query = addAccessGroupWhenPresent(query)
         query = addSynchronizableIfRequired(query, addingItems: false)
         lastQueryParameters = query
@@ -307,14 +302,14 @@ open class AuroraKeychain {
     }
     
     /**
-     
-     Adds kSecAttrSynchronizable: kSecAttrSynchronizableAny` item to the dictionary when the `synchronizable` property is true.
+     Adds kSecAttrSynchronizable: kSecAttrSynchronizableAny` item to the dictionary
+     when the `synchronizable` property is true.
      
      - parameter items: The dictionary where the kSecAttrSynchronizable items will be added when requested.
-     - parameter addingItems: Use `true` when the dictionary will be used with `SecItemAdd` method (adding a keychain item). For getting and deleting items, use `false`.
-     
-     - returns: the dictionary with kSecAttrSynchronizable item added if it was requested. Otherwise, it returns the original dictionary.
-     
+     - parameter addingItems: Use `true` when the dictionary will be used with
+     `SecItemAdd` method (adding a keychain item).For getting and deleting items, use `false`.
+     - returns: the dictionary with kSecAttrSynchronizable item added if it was requested.
+     Otherwise, it returns the original dictionary.
      */
     func addSynchronizableIfRequired(_ items: [String: Any], addingItems: Bool) -> [String: Any] {
         if !synchronizable { return items }
@@ -324,7 +319,8 @@ open class AuroraKeychain {
     }
 }
 
-/// These options are used to determine when a keychain item should be readable. The default value is AccessibleWhenUnlocked.
+/// These options are used to determine when a keychain item should be readable.
+/// The default value is AccessibleWhenUnlocked.
 public enum KeychainSwiftAccessOptions {
     case accessibleWhenUnlocked
     case accessibleWhenUnlockedThisDeviceOnly
@@ -364,11 +360,8 @@ public struct KeychainSwiftConstants {
     /// Specifies a Keychain access group. Used for sharing Keychain items between apps.
     public static var accessGroup: String { return toString(kSecAttrAccessGroup) }
     
-    /**
-     
-     A value that indicates when your app needs access to the data in a keychain item. The default value is AccessibleWhenUnlocked. For a list of possible values, see KeychainSwiftAccessOptions.
-     
-     */
+    /// A value that indicates when your app needs access to the data in a keychain item.
+    /// The default value is AccessibleWhenUnlocked. For a list of possible values, see KeychainSwiftAccessOptions.
     public static var accessible: String { return toString(kSecAttrAccessible) }
     
     /// Used for specifying a String key when setting/getting a Keychain value.
@@ -393,10 +386,10 @@ public struct KeychainSwiftConstants {
     public static var returnReference: String { return toString(kSecReturnPersistentRef) }
     
     /// A key whose value is a Boolean indicating whether or not to return item attributes
-    public static var returnAttributes : String { return toString(kSecReturnAttributes) }
+    public static var returnAttributes: String { return toString(kSecReturnAttributes) }
     
     /// A value that corresponds to matching an unlimited number of items
-    public static var secMatchLimitAll : String { return toString(kSecMatchLimitAll) }
+    public static var secMatchLimitAll: String { return toString(kSecMatchLimitAll) }
     
     static func toString(_ value: CFString) -> String {
         return value as String

@@ -1,3 +1,7 @@
+// $$HEADER$$
+
+#if canImport(UIKit)
+import Foundation
 import UIKit
 
 /// Available animations for UITabBarItems
@@ -5,8 +9,10 @@ public enum TabBarItemAnimation {
     case bounce
     case jump
     case rotate
+    case rotateRight
+    case rotateLeft
     case shake
-    case custom((UIImageView) -> ())
+    case custom((UIImageView) -> Void)
 }
 
 /// Animates UITabBarItem Image View with custom animation.
@@ -70,8 +76,10 @@ public extension TabBarAnimation {
             bounceAnimation(for: imageView)
         case .jump:
             jumpAnimation(for: imageView)
-        case .rotate:
-            rotateAnimation(for: imageView)
+        case .rotateRight, .rotate:
+            rotateRightAnimation(for: imageView)
+        case .rotateLeft:
+            rotateLeftAnimation(for: imageView)
         case .shake:
             shakeAnimation(for: imageView)
         case .custom(let animation):
@@ -98,10 +106,19 @@ public extension TabBarAnimation {
         item.layer.add(jumpAnimation, forKey: "move")
     }
     
-    private func rotateAnimation(for item: UIImageView) {
+    private func rotateRightAnimation(for item: UIImageView) {
         let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
         rotateAnimation.fromValue = 0.0
         rotateAnimation.toValue = CGFloat.pi * 2
+        rotateAnimation.duration = 1.0
+        
+        item.layer.add(rotateAnimation, forKey: nil)
+    }
+    
+    private func rotateLeftAnimation(for item: UIImageView) {
+        let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
+        rotateAnimation.fromValue = CGFloat.pi * 2
+        rotateAnimation.toValue = 0.0
         rotateAnimation.duration = 1.0
         
         item.layer.add(rotateAnimation, forKey: nil)
@@ -126,3 +143,4 @@ public extension TabBarAnimation {
         item.layer.add(animation, forKey: "position")
     }
 }
+#endif

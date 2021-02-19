@@ -24,7 +24,7 @@ import QuartzCore
 @IBDesignable
 open class UIViewRounded: UIView {
     /// Radius for the UIViewRounded
-    @IBInspectable public var xborderRadius: CGFloat = 24
+    @IBInspectable public var radius: CGFloat = 24
     
     /// Draw a rounded view
     /// - Parameter rect: The portion of the view’s bounds that needs to be updated.\
@@ -35,7 +35,7 @@ open class UIViewRounded: UIView {
 
         self.roundCorners(
             corners: [.allCorners],
-            radius: xborderRadius
+            radius: radius
         )
     }
 }

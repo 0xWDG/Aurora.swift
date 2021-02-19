@@ -16,7 +16,7 @@ public class AuroraLogView: UIViewController, UITableViewDelegate, UITableViewDa
     public override func viewDidLoad() {
         logMessages.append("END OF REPORT\r\n\r\n")
         
-        /// Setup UITableView
+        // Setup UITableView
         tableView = UITableView(frame: UIApplication.shared.key!.frame).configure { [self] in
             $0.delegate = self
             $0.dataSource = self
