@@ -15,6 +15,7 @@ public class AuroraLogView: UIViewController, UITableViewDelegate, UITableViewDa
     
     public override func viewDidLoad() {
         logMessages.append("END OF REPORT\r\n\r\n")
+        logMessages.append("AuroraExitLogViewButton")
         
         // Setup UITableView
         tableView = UITableView(frame: UIApplication.shared.key!.frame).configure { [self] in
@@ -41,6 +42,7 @@ public class AuroraLogView: UIViewController, UITableViewDelegate, UITableViewDa
     private func reloadLogView() {
         logMessages = Aurora.shared.getLogMessages()
         logMessages.append("END OF REPORT\r\n\r\n")
+        logMessages.append("AuroraExitLogViewButton")
         
         self.tableView.reloadData()
         
@@ -53,9 +55,26 @@ public class AuroraLogView: UIViewController, UITableViewDelegate, UITableViewDa
         return logMessages.count
     }
     
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if logMessages[indexPath.row] == "AuroraExitLogViewButton" {
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            UIPasteboard.general.string = logMessages[indexPath.row]
+        }
+    }
+    
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell.init().configure {
-            $0.textLabel!.text = logMessages[indexPath.row]
+            if logMessages[indexPath.row] != "AuroraExitLogViewButton" {
+                $0.textLabel!.text = logMessages[indexPath.row]
+            } else {
+                $0.textLabel!.text = NSLocalizedString(
+                    "Close window",
+                    comment: "Close window"
+                ) + "\n\n\n"
+                $0.textLabel?.textAlignment = .center
+            }
+            
             $0.textLabel!.numberOfLines = 0
             $0.textLabel!.lineBreakMode = .byWordWrapping
             $0.textLabel!.sizeToFit()
