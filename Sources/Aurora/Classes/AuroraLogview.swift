@@ -56,7 +56,7 @@ public class AuroraLogView: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (logMessages[indexPath.row] == "AuroraExitLogViewButton") {
+        if logMessages[indexPath.row] == "AuroraExitLogViewButton" {
             self.dismiss(animated: true, completion: nil)
         } else {
             UIPasteboard.general.string = logMessages[indexPath.row]
@@ -65,7 +65,7 @@ public class AuroraLogView: UIViewController, UITableViewDelegate, UITableViewDa
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell.init().configure {
-            if (logMessages[indexPath.row] != "AuroraExitLogViewButton") {
+            if logMessages[indexPath.row] != "AuroraExitLogViewButton" {
                 $0.textLabel!.text = logMessages[indexPath.row]
             } else {
                 $0.textLabel!.text = NSLocalizedString(
