@@ -118,6 +118,12 @@ open class Aurora {
     ///
     /// ‎
     ///
+    /// **$extension**
+    ///
+    /// _File extension_
+    ///
+    /// ‎
+    ///
     /// **$line**
     ///
     /// _Line where the log function is called_
@@ -209,6 +215,10 @@ open class Aurora {
             // extract filename, without path, and without extension.
             let fileName: String = (file.split("/").last)!.split(".").first!
             
+            // extract extension.
+            let fileExtension: String = file.split(".").last!
+            
+            // On which Queue are we running
             let queue = Thread.isMainThread ? "Main" : "Background"
             
             // Make up the log message.
@@ -218,6 +228,8 @@ open class Aurora {
                 .replace("$time", withString: dateFormatter.string(from: Date()))
                 .replace("$file", withString: fileName)
                 .replace("$fileName", withString: fileName)
+                .replace("$extension", withString: fileExtension)
+                .replace("$fileExtension", withString: fileExtension)
                 .replace("$line", withString: "\(line)")
                 .replace("$function", withString: function)
                 .replace("$queue", withString: queue)
@@ -273,7 +285,11 @@ open class Aurora {
             
             // extract filename, without path, and without extension.
             let fileName: String = (file.split("/").last)!.split(".").first!
+
+            // extract extension.
+            let fileExtension: String = file.split(".").last!
             
+            // On which Queue are we running
             let queue = Thread.isMainThread ? "Main" : "Background"
             
             // Make up the log message.
@@ -283,6 +299,8 @@ open class Aurora {
                 .replace("$time", withString: dateFormatter.string(from: Date()))
                 .replace("$file", withString: fileName)
                 .replace("$fileName", withString: fileName)
+                .replace("$extension", withString: fileExtension)
+                .replace("$fileExtension", withString: fileExtension)
                 .replace("$line", withString: "\(line)")
                 .replace("$function", withString: function)
                 .replace("$queue", withString: queue)
