@@ -127,8 +127,6 @@ public class UIControlHelper {
 #endif
 
 #if canImport(AppKit)
-// Temporary off, swift > 10.
-#if swift(>=10)
 import AppKit
 
 // Thanks @sindresorhus
@@ -176,5 +174,4 @@ public extension NSControl {
         }
     }
 }
-#endif
 #endif
