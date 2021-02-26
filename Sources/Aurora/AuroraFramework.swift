@@ -45,7 +45,7 @@ open class Aurora {
     public static let shared = Aurora()
     
     /// Initialize crash handler
-    static let crashLogger = AuroraCrashHandler.shared
+    internal static let crashLogger = AuroraCrashHandler.shared
     
     /// the version
     public let version = "1.0"
@@ -54,10 +54,10 @@ open class Aurora {
     public let product = "Aurora Framework"
     
     /// Extra detailed logging?
-    public var detailedLogging = false
+    internal var detailedLogging = false
     
     /// Should we debug right now?
-    private var debug = _isDebugAssertConfiguration()
+    internal var debug = _isDebugAssertConfiguration()
     
     /// If this is non-nil, we will call it with the same string that we
     /// are going to print to the console. You can use this to pass log
@@ -69,7 +69,7 @@ open class Aurora {
     public var logHandler: ((String) -> Void)?
     
     /// Logging history
-    private var logHistory: [String] = []
+    internal var logHistory: [String] = []
     
     /// Date format
     /// Describe here how the date logging needs to be done
@@ -81,10 +81,10 @@ open class Aurora {
     ///
     /// Defaults to:
     /// `Aurora.shared.dateFormat = "HH:mm:ss"`
-    public var dateFormat = "HH:mm:ss"
+    internal var dateFormat = "HH:mm:ss"
     
     /// Dateformatter
-    private var dateFormatter: DateFormatter {
+    internal var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = dateFormat
         formatter.locale = Locale.current
@@ -115,6 +115,12 @@ open class Aurora {
     /// **$file**
     /// 
     /// _Filename where the log function is called_
+    ///
+    /// ‎
+    ///
+    /// **$extension**
+    ///
+    /// _File extension_
     ///
     /// ‎
     ///
@@ -176,182 +182,6 @@ open class Aurora {
         #endif
         
         isInitialized = true
-    }
-    
-    /**
-     * Log
-     *
-     * This is used to send log messages with the following syntax
-     *
-     *     [Aurora] Filename:line functionName(...) @Main/Background:
-     *      Message
-     *
-     * _want to use a callback/loghandler?_
-     *
-     * Put the following (preffered in your AppDelegate):
-     *
-     *      Aurora.shared.logHandler { message in
-     *          // Do something with the message
-     *      }
-     *
-     * - parameter message: the message to send
-     * - parameter file: the filename
-     * - parameter line: the line
-     * - parameter function: function name
-     */
-    @discardableResult
-    public func log(
-        _ message: String...,
-        file: String = #file,
-        line: Int = #line,
-        function: String = #function) -> Bool {
-        if debug {
-            // extract filename, without path, and without extension.
-            let fileName: String = (file.split("/").last)!.split(".").first!
-            
-            let queue = Thread.isMainThread ? "Main" : "Background"
-            
-            // Make up the log message.
-            let logMessage = logTemplate
-                .replace("$datetime", withString: dateFormatter.string(from: Date()))
-                .replace("$date", withString: dateFormatter.string(from: Date()))
-                .replace("$time", withString: dateFormatter.string(from: Date()))
-                .replace("$file", withString: fileName)
-                .replace("$fileName", withString: fileName)
-                .replace("$line", withString: "\(line)")
-                .replace("$function", withString: function)
-                .replace("$queue", withString: queue)
-                .replace("$message", withString: message.joined(separator: " "))
-                + "\n"
-            
-            // Print the "messages"
-            Swift.print(logMessage)
-            
-            // Append to the history
-            logHistory.append(logMessage)
-            
-            if isInitialized {
-                Aurora.shared.logHandler?(logMessage)
-            }
-        }
-        
-        // return the debug value, if wanted you can use
-        //
-        //    if (log("myMessage")) {
-        //       // My message is logged
-        //    } else {
-        //       // My message is not logged
-        //    }
-        return debug
-    }
-    
-    /**
-     * Log
-     *
-     * This is used to send log messages with the following syntax
-     *
-     *     [Aurora] Filename:line functionName(...) @Main/Background:
-     *      Message
-     *
-     * _want to use a callback/loghandler?_
-     *
-     * Put the following (preffered in your AppDelegate):
-     *
-     *      Aurora.shared.logHandler { message in
-     *          // Do something with the message
-     *      }
-     *
-     * - parameter message: the message to send
-     * - parameter file: the filename
-     * - parameter line: the line
-     * - parameter function: function name
-     */
-    @discardableResult
-    public func log(_ anyThing: Any..., file: String = #file, line: Int = #line, function: String = #function) -> Bool {
-        if debug {
-            // Any... = [Any]
-            
-            // extract filename, without path, and without extension.
-            let fileName: String = (file.split("/").last)!.split(".").first!
-            
-            let queue = Thread.isMainThread ? "Main" : "Background"
-            
-            // Make up the log message.
-            let logMessage = logTemplate
-                .replace("$datetime", withString: dateFormatter.string(from: Date()))
-                .replace("$date", withString: dateFormatter.string(from: Date()))
-                .replace("$time", withString: dateFormatter.string(from: Date()))
-                .replace("$file", withString: fileName)
-                .replace("$fileName", withString: fileName)
-                .replace("$line", withString: "\(line)")
-                .replace("$function", withString: function)
-                .replace("$queue", withString: queue)
-                .replace("$message", withString: "\(anyThing)")
-                + "\n"
-            
-            // Print the "messages"
-            Swift.print(logMessage)
-            
-            // Append to the history
-            logHistory.append(logMessage)
-            
-            if isInitialized {
-                Aurora.shared.logHandler?(logMessage)
-            }
-        }
-        
-        // return the debug value, if wanted you can use
-        //
-        //    if (log("myMessage")) {
-        //       // My message is logged
-        //    } else {
-        //       // My message is not logged
-        //    }
-        return debug
-    }
-    
-    /**
-     * print (alias for log)
-     *
-     * This is used to send log messages with the following syntax
-     *
-     *     [Aurora] Filename:line functionName(...) @Main/Background:
-     *      Message
-     *
-     * _want to use a callback/loghandler?_
-     *
-     * Put the following (preffered in your AppDelegate):
-     *
-     *      Aurora.shared.logHandler { message in
-     *          // Do something with the message
-     *      }
-     *
-     * - parameter message: the message to send
-     * - parameter file: the filename
-     * - parameter line: the line
-     * - parameter function: function name
-     */
-    @discardableResult
-    public func print(
-        _ message: String...,
-        file: String = #file,
-        line: Int = #line,
-        function: String = #function) -> Bool {
-        return log(message.joined(separator: " "), file: file, line: line, function: function)
-    }
-    
-    /// Show LogViewer
-    public func showLogViewer() {
-        #if canImport(UIKit)
-            let logView = AuroraLogView()
-            UIApplication.shared.key?.rootViewController?.showDetailViewController(logView, sender: self)
-        #endif
-    }
-    
-    /// Get the log messages
-    /// - Returns: The last crashlog
-    public func getLogMessages() -> [String] {
-        return logHistory
     }
     
     /// Get the last crash log
