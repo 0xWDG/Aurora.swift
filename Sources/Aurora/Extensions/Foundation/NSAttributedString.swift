@@ -17,13 +17,25 @@
 
 #if canImport(Foundation)
 import Foundation
-#endif
 
-#if os(iOS)
 #if canImport(UIKit)
 import UIKit
+#endif
 
 public extension NSMutableAttributedString {
+    /// Make a string "normal"
+    /// - Parameter text: The text what needs to be "normal"
+    /// - Returns: a bold NSAttributedString
+    @discardableResult
+    func normal(_ text: String) -> NSMutableAttributedString {
+        let normal = NSAttributedString(string: text)
+        self.append(normal)
+        return self
+    }
+}
+
+#if canImport(UIKit)
+extension NSMutableAttributedString {
     /// Make a string **bold**
     /// - Parameter text: The text what needs to be bold
     /// - Returns: a bold NSAttributedString
@@ -44,16 +56,6 @@ public extension NSMutableAttributedString {
         return self
     }
     
-    /// Make a string "normal"
-    /// - Parameter text: The text what needs to be "normal"
-    /// - Returns: a bold NSAttributedString
-    @discardableResult
-    func normal(_ text: String) -> NSMutableAttributedString {
-        let normal = NSAttributedString(string: text)
-        self.append(normal)
-        return self
-    }
-
     /// Make a string **colored**
     ///   - toColor: text color
     ///   - backgroundColor: background color
@@ -109,6 +111,7 @@ public extension NSMutableAttributedString {
         return ceil(boundingBox.width)
     }
 }
+#endif
 
 public extension NSAttributedString {
     /// Add a NSAttributedString to another NSAttributedString.
@@ -121,7 +124,7 @@ public extension NSAttributedString {
         string.append(rhs)
         lhs = string
     }
-
+    
     /// Add a NSAttributedString to another NSAttributedString and return a new NSAttributedString instance.
     ///
     /// - Parameters:
@@ -133,7 +136,7 @@ public extension NSAttributedString {
         string.append(rhs)
         return NSAttributedString(attributedString: string)
     }
-
+    
     /// Add a NSAttributedString to another NSAttributedString.
     ///
     /// - Parameters:
@@ -142,7 +145,7 @@ public extension NSAttributedString {
     static func += (lhs: inout NSAttributedString, rhs: String) {
         lhs += NSAttributedString(string: rhs)
     }
-
+    
     /// Add a NSAttributedString to another NSAttributedString and return a new NSAttributedString instance.
     ///
     /// - Parameters:
@@ -153,5 +156,4 @@ public extension NSAttributedString {
         return lhs + NSAttributedString(string: rhs)
     }
 }
-#endif
 #endif

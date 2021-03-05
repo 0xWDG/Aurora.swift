@@ -206,35 +206,35 @@
     {
       "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/iCloudSync.swift",
       "line": 25,
-      "symbol": "WDGFrameworkiCloudSync",
+      "symbol": "AuroraFrameworkiCloudSync",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
       "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/iCloudSync.swift",
       "line": 26,
-      "symbol": "WDGFrameworkiCloudSync.shared",
+      "symbol": "AuroraFrameworkiCloudSync.shared",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/iCloudSync.swift",
       "line": 30,
-      "symbol": "WDGFrameworkiCloudSync.init()",
+      "symbol": "AuroraFrameworkiCloudSync.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/iCloudSync.swift",
       "line": 37,
-      "symbol": "WDGFrameworkiCloudSync.startSync()",
+      "symbol": "AuroraFrameworkiCloudSync.startSync()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/wes/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/iCloudSync.swift",
       "line": 154,
-      "symbol": "WDGFrameworkiCloudSync.sync()",
+      "symbol": "AuroraFrameworkiCloudSync.sync()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },

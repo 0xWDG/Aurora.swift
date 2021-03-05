@@ -177,7 +177,7 @@ open class Aurora {
         #endif
         
         #if os(iOS)
-        let iCloud: WDGFrameworkiCloudSync = WDGFrameworkiCloudSync()
+        let iCloud: AuroraFrameworkiCloudSync = AuroraFrameworkiCloudSync()
         iCloud.startSync()
         #endif
         

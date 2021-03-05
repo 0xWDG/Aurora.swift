@@ -20,15 +20,15 @@ import Foundation
 #if !os(watchOS)
 import CloudKit
 
-private var WDGIiCloudSyncInProgress: Bool = false
+private var isAuroraiCloudSyncInProgress: Bool = false
 
-open class WDGFrameworkiCloudSync {
-    public static let shared = WDGFrameworkiCloudSync()
+open class AuroraFrameworkiCloudSync {
+    public static let shared = AuroraFrameworkiCloudSync()
     private let keyValueStore = NSUbiquitousKeyValueStore.default
     private let notificationCenter = NotificationCenter.default
     
     public init() {
-        if WDGIiCloudSyncInProgress == false {
+        if isAuroraiCloudSyncInProgress == false {
             // Start the sync!
             self.startSync()
         }
@@ -38,14 +38,14 @@ open class WDGFrameworkiCloudSync {
         if keyValueStore.isKind(of: NSUbiquitousKeyValueStore.self) {
             notificationCenter.addObserver(
                 self,
-                selector: #selector(WDGFrameworkiCloudSync.fromCloud),
+                selector: #selector(AuroraFrameworkiCloudSync.fromCloud),
                 name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
                 object: nil
             )
             
             notificationCenter.addObserver(
                 self,
-                selector: #selector(WDGFrameworkiCloudSync.toCloud),
+                selector: #selector(AuroraFrameworkiCloudSync.toCloud),
                 name: UserDefaults.didChangeNotification,
                 object: nil
             )
@@ -56,10 +56,10 @@ open class WDGFrameworkiCloudSync {
             self.fromCloud()
             
             // Say i'm syncing
-            WDGIiCloudSyncInProgress = true
+            isAuroraiCloudSyncInProgress = true
         } else {
             // Say i'm not syncing :'(
-            WDGIiCloudSyncInProgress = false
+            isAuroraiCloudSyncInProgress = false
             Aurora.shared.log("Can't start sync!")
         }
     }
@@ -89,7 +89,7 @@ open class WDGFrameworkiCloudSync {
         // Enable ObServer
         notificationCenter.addObserver(
             self,
-            selector: #selector(WDGFrameworkiCloudSync.toCloud),
+            selector: #selector(AuroraFrameworkiCloudSync.toCloud),
             name: UserDefaults.didChangeNotification,
             object: nil
         )
@@ -127,7 +127,7 @@ open class WDGFrameworkiCloudSync {
         // Enable ObServer
         notificationCenter.addObserver(
             self,
-            selector: #selector(WDGFrameworkiCloudSync.fromCloud),
+            selector: #selector(AuroraFrameworkiCloudSync.fromCloud),
             name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
             object: nil
         )
@@ -135,7 +135,7 @@ open class WDGFrameworkiCloudSync {
     
     fileprivate func unset() {
         // Say i'm not syncing anymore
-        WDGIiCloudSyncInProgress = false
+        isAuroraiCloudSyncInProgress = false
         
         // Disable ObServers
         notificationCenter.removeObserver(
@@ -153,7 +153,7 @@ open class WDGFrameworkiCloudSync {
     
     open func sync() {
         // If not started (impossible, but ok)
-        if WDGIiCloudSyncInProgress == false {
+        if isAuroraiCloudSyncInProgress == false {
             // Just for starting.
             self.startSync()
         } else {
