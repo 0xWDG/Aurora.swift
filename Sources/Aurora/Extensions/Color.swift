@@ -22,7 +22,12 @@ import CoreImage
 // MARK: - Properties
 public extension Color {
     /// Aurora color
-    static let Aurora = Color.init(red: 0, green: 212/255, blue: 255/255, alpha: 1.0)
+    static let Aurora = Color.init(
+        red: 0,
+        green: 212/255,
+        blue: 255/255,
+        alpha: 1.0
+    )
     
     /// Random color.
     static var random: Color {
@@ -49,9 +54,15 @@ public extension Color {
         let red = components[0]
         let green = components[1]
         let blue = components[2]
-        return (red: Int(red * 255.0), green: Int(green * 255.0), blue: Int(blue * 255.0))
+        
+        return (
+            red: Int(red * 255.0),
+            green: Int(green * 255.0),
+            blue: Int(blue * 255.0)
+        )
     }
     // swiftlint:enable large_tuple
+    
     // swiftlint:disable large_tuple
     /// RGB components for a Color represented as CGFloat numbers (between 0 and 1)
     ///
@@ -72,6 +83,7 @@ public extension Color {
         return (red: red, green: green, blue: blue)
     }
     // swiftlint:enable large_tuple
+    
     // swiftlint:disable large_tuple
     /// Get components of hue, saturation, and brightness, and alpha (read-only).
     var hsbaComponents: (hue: CGFloat, saturation: CGFloat, brightness: CGFloat, alpha: CGFloat) {
@@ -80,10 +92,22 @@ public extension Color {
         var brightness: CGFloat = 0.0
         var alpha: CGFloat = 0.0
         
-        getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
-        return (hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
+        getHue(
+            &hue,
+            saturation: &saturation,
+            brightness: &brightness,
+            alpha: &alpha
+        )
+        
+        return (
+            hue: hue,
+            saturation: saturation,
+            brightness: brightness,
+            alpha: alpha
+        )
     }
     // swiftlint:enable large_tuple
+    
     /// Hexadecimal value string (read-only).
     var hexString: String {
         let components: [Int] = {
@@ -91,14 +115,27 @@ public extension Color {
             let components = comps.count == 4 ? comps: [comps[0], comps[0], comps[0], comps[1]]
             return components.map { Int($0 * 255.0) }
         }()
-        return String(format: "#%02X%02X%02X", components[0], components[1], components[2])
+        
+        return String(
+            format: "#%02X%02X%02X",
+            components[0],
+            components[1],
+            components[2]
+        )
     }
     
     /// Short hexadecimal value string (read-only, if applicable).
     var shortHexString: String? {
-        let string = hexString.replacingOccurrences(of: "#", with: "")
+        let string = hexString.replacingOccurrences(
+            of: "#",
+            with: ""
+        )
+        
         let chrs = Array(string)
-        guard chrs[0] == chrs[1], chrs[2] == chrs[3], chrs[4] == chrs[5] else { return nil }
+        guard chrs[0] == chrs[1],
+              chrs[2] == chrs[3],
+              chrs[4] == chrs[5] else { return nil }
+        
         return "#\(chrs[0])\(chrs[2])\(chrs[4])"
     }
     
@@ -106,7 +143,10 @@ public extension Color {
     var shortHexOrHexString: String {
         let components: [Int] = {
             let comps = cgColor.components!
-            let components = comps.count == 4 ? comps: [comps[0], comps[0], comps[0], comps[1]]
+            let components = comps.count == 4 ? comps: [
+                comps[0], comps[0], comps[0], comps[1]
+            ]
+            
             return components.map { Int($0 * 255.0) }
         }()
         
@@ -117,11 +157,15 @@ public extension Color {
             components[2]
         )
         
-        let string = hexString.replacingOccurrences(of: "#", with: "")
+        let string = hexString.replacingOccurrences(
+            of: "#",
+            with: ""
+        )
+        
         let chrs = Array(string)
         guard chrs[0] == chrs[1],
-            chrs[2] == chrs[3],
-            chrs[4] == chrs[5] else { return hexString }
+              chrs[2] == chrs[3],
+              chrs[4] == chrs[5] else { return hexString }
         
         return "#\(chrs[0])\(chrs[2])\(chrs[4])"
     }

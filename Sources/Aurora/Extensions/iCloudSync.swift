@@ -20,7 +20,7 @@ import Foundation
 #if !os(watchOS)
 import CloudKit
 
-private var WDGIiCloudSyncInProgress: Bool = false
+private var AuroraiCloudSyncInProgress: Bool = false
 
 open class WDGFrameworkiCloudSync {
     public static let shared = WDGFrameworkiCloudSync()
@@ -28,7 +28,7 @@ open class WDGFrameworkiCloudSync {
     private let notificationCenter = NotificationCenter.default
     
     public init() {
-        if WDGIiCloudSyncInProgress == false {
+        if AuroraiCloudSyncInProgress == false {
             // Start the sync!
             self.startSync()
         }
@@ -56,10 +56,10 @@ open class WDGFrameworkiCloudSync {
             self.fromCloud()
             
             // Say i'm syncing
-            WDGIiCloudSyncInProgress = true
+            AuroraiCloudSyncInProgress = true
         } else {
             // Say i'm not syncing :'(
-            WDGIiCloudSyncInProgress = false
+            AuroraiCloudSyncInProgress = false
             Aurora.shared.log("Can't start sync!")
         }
     }
@@ -135,7 +135,7 @@ open class WDGFrameworkiCloudSync {
     
     fileprivate func unset() {
         // Say i'm not syncing anymore
-        WDGIiCloudSyncInProgress = false
+        AuroraiCloudSyncInProgress = false
         
         // Disable ObServers
         notificationCenter.removeObserver(
@@ -153,7 +153,7 @@ open class WDGFrameworkiCloudSync {
     
     open func sync() {
         // If not started (impossible, but ok)
-        if WDGIiCloudSyncInProgress == false {
+        if AuroraiCloudSyncInProgress == false {
             // Just for starting.
             self.startSync()
         } else {
