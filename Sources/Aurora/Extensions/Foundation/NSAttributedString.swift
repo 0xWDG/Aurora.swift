@@ -36,6 +36,7 @@ public extension NSMutableAttributedString {
 
 #if canImport(UIKit)
 extension NSMutableAttributedString {
+    #if !os(tvOS)
     /// Make a string **bold**
     /// - Parameter text: The text what needs to be bold
     /// - Returns: a bold NSAttributedString
@@ -55,6 +56,7 @@ extension NSMutableAttributedString {
         self.append(boldString)
         return self
     }
+    #endif
     
     /// Make a string **colored**
     ///   - toColor: text color
