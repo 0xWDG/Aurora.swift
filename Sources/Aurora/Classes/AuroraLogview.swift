@@ -59,7 +59,9 @@ public class AuroraLogView: UIViewController, UITableViewDelegate, UITableViewDa
         if logMessages[indexPath.row] == "AuroraExitLogViewButton" {
             self.dismiss(animated: true, completion: nil)
         } else {
+            #if !os(tvOS)
             UIPasteboard.general.string = logMessages[indexPath.row]
+            #endif
         }
     }
     

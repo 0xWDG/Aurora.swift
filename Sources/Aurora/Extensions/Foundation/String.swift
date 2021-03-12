@@ -261,6 +261,7 @@ public extension String {
         return try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [Any]
     }
     
+    
     /// String to attributedString
     var asAttributedString: NSAttributedString? {
         guard let data = self.data(using: .utf8) else { return nil }
