@@ -55,7 +55,7 @@
 		OBJ_165 /* onInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* onInteraction.swift */; };
 		OBJ_166 /* validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_45 /* validators.swift */; };
 		OBJ_167 /* Designable.UIViewRounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_47 /* Designable.UIViewRounded.swift */; };
-		OBJ_168 /* Inspectable.UIGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_48 /* Inspectable.UIGradientView.swift */; };
+		OBJ_168 /* Designable.UIGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_48 /* Designable.UIGradientView.swift */; };
 		OBJ_169 /* Inspectable.UITabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_49 /* Inspectable.UITabbar.swift */; };
 		OBJ_170 /* Inspectable.UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_50 /* Inspectable.UITextField.swift */; };
 		OBJ_171 /* Inspectable.UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_51 /* Inspectable.UIView.swift */; };
@@ -202,7 +202,7 @@
 		OBJ_44 /* onInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onInteraction.swift; sourceTree = "<group>"; };
 		OBJ_45 /* validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = validators.swift; sourceTree = "<group>"; };
 		OBJ_47 /* Designable.UIViewRounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Designable.UIViewRounded.swift; sourceTree = "<group>"; };
-		OBJ_48 /* Inspectable.UIGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inspectable.UIGradientView.swift; sourceTree = "<group>"; };
+		OBJ_48 /* Designable.UIGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Designable.UIGradientView.swift; sourceTree = "<group>"; };
 		OBJ_49 /* Inspectable.UITabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inspectable.UITabbar.swift; sourceTree = "<group>"; };
 		OBJ_50 /* Inspectable.UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inspectable.UITextField.swift; sourceTree = "<group>"; };
 		OBJ_51 /* Inspectable.UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inspectable.UIView.swift; sourceTree = "<group>"; };
@@ -380,7 +380,7 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_47 /* Designable.UIViewRounded.swift */,
-				OBJ_48 /* Inspectable.UIGradientView.swift */,
+				OBJ_48 /* Designable.UIGradientView.swift */,
 				OBJ_49 /* Inspectable.UITabbar.swift */,
 				OBJ_50 /* Inspectable.UITextField.swift */,
 				OBJ_51 /* Inspectable.UIView.swift */,
@@ -631,7 +631,7 @@
 				OBJ_165 /* onInteraction.swift in Sources */,
 				OBJ_166 /* validators.swift in Sources */,
 				OBJ_167 /* Designable.UIViewRounded.swift in Sources */,
-				OBJ_168 /* Inspectable.UIGradientView.swift in Sources */,
+				OBJ_168 /* Designable.UIGradientView.swift in Sources */,
 				OBJ_169 /* Inspectable.UITabbar.swift in Sources */,
 				OBJ_170 /* Inspectable.UITextField.swift in Sources */,
 				OBJ_171 /* Inspectable.UIView.swift in Sources */,
