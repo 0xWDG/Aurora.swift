@@ -23,7 +23,16 @@ enum AuroraOS {
     case windows
     case freeBSD
     case openBSD
-    
+    case unknown
+}
+
+enum AuroraUserInterface {
+    case carPley
+    case mac
+    case pad
+    case phone
+    case tv
+    case window
     case unknown
 }
 
@@ -165,53 +174,53 @@ class AuroraDevice {
     
     func getOperatingSystem() -> AuroraOS {
         #if os(macOS)
-            return .macOS
+        return .macOS
+        #elseif os(iOS)
+        return .iOS
+        #elseif os(tvOS)
+        return .tvOS
+//        #elseif os(HomePod)
+//        return .homePod
+//        #elseif os(bridgeOS)
+//        return .bridgeOS
+        #elseif os(Android)
+        return .android
+        #elseif os(Linux)
+        return .linux
+        #elseif os(Windows)
+        return .windows
+        #elseif os(FreeBSD)
+        return .freeBSD
+        #elseif os(OpenBSD)
+        return .openBSD
+        #else
+        return .unknown
         #endif
-        
-        #if os(iOS)
-            return .iOS
-        #endif
-        
-        #if os(tvOS)
-            return .tvOS
-        #endif
-        
-//        #if os(HomePod)
-//            return .homePod
-//        #endif
-//
-//        #if os(bridgeOS)
-//            return .bridgeOS
-//        #endif
+}
 
-        #if os(Android)
-            return .android
-        #endif
+func getUserInterface() -> AuroraUserInterface {
+    #if canImport(UIKit)
+    switch UIDevice.current.userInterfaceIdiom {
+    case .carPlay:
+        return .carPley
         
-        #if os(Linux)
-            return .linux
-        #endif
+    case .mac:
+        return .mac
         
-        #if os(Windows)
-            return .windows
-        #endif
+    case .pad:
+        return .pad
         
-        #if os(FreeBSD)
-            return .freeBSD
-        #endif
+    case .phone:
+        return .phone
         
-        #if os(OpenBSD)
-            return .openBSD
-        #endif
+    case .tv:
+        return .tv
         
+    default:
         return .unknown
     }
-    
-    func getUserInterface() {
-        #if canImport(UIKit)
-
-        #else
-            return .unknown
-        #endif
-    }
+    #else
+    return .unknown
+    #endif
+}
 }
