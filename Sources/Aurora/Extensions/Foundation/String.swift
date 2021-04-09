@@ -261,6 +261,33 @@ public extension String {
         return try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [Any]
     }
     
+    func messageBox(_ viewController: UIViewController?, style: UIAlertController.Style = .alert) {
+        #if canImport(UIKit)
+        let alertView = UIAlertController.init(
+            title: nil,
+            message: self,
+            preferredStyle: style
+        )
+        
+        alertView.addAction(
+            .init(
+                title: NSLocalizedString("Ok", comment: "Ok"),
+                style: .default,
+                handler: { (_) in
+                    
+                }
+            )
+        )
+        
+        // active view controller
+        let activeVC = viewController ?? UIApplication.shared.key?.rootViewController
+        
+        alertView.popoverPresentationController?.sourceView = activeVC?.view
+        
+        activeVC?.present(alertView, animated: true, completion: nil)
+        #endif
+    }
+    
     /// String to attributedString
     var asAttributedString: NSAttributedString? {
         guard let data = self.data(using: .utf8) else { return nil }
