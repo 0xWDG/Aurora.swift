@@ -159,6 +159,8 @@ class AuroraDevice {
         "Watch5,2": "Apple Watch Series 5 44mm case (GPS)",
         "Watch5,3": "Apple Watch Series 5 40mm case (GPS+Cellular)",
         "Watch5,4": "Apple Watch Series 5 44mm case (GPS+Cellular)",
+        
+        "XeofList": "X"
     ]
     
     func getOperatingSystem() -> AuroraOS {
