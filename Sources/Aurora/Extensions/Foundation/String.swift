@@ -261,8 +261,8 @@ public extension String {
         return try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [Any]
     }
     
+    #if canImport(UIKit)
     func messageBox(_ viewController: UIViewController?, style: UIAlertController.Style = .alert) {
-        #if canImport(UIKit)
         let alertView = UIAlertController.init(
             title: nil,
             message: self,
@@ -285,8 +285,8 @@ public extension String {
         alertView.popoverPresentationController?.sourceView = activeVC?.view
         
         activeVC?.present(alertView, animated: true, completion: nil)
-        #endif
     }
+    #endif
     
     /// String to attributedString
     var asAttributedString: NSAttributedString? {

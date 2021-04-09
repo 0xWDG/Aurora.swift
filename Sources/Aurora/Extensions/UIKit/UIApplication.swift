@@ -38,10 +38,6 @@ public extension UIApplication {
         }
     }
     #endif
-    
-    var topView: UIView {
-        
-    }
 }
 
 @available(iOS 10.0, tvOS 10.0, *)
