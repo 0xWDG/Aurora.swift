@@ -31,6 +31,7 @@ enum AuroraUserInterface {
     case mac
     case pad
     case phone
+    // swiftlint:disable:next identifier_name
     case tv
     case window
     case unknown
