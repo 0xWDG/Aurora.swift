@@ -117,6 +117,8 @@ extension Aurora {
             
             // Make up the log message.
             let logMessage = logTemplate
+                .replace("$product", withString: product)
+                .replace("$version", withString: version)
                 .replace("$datetime", withString: dateFormatter.string(from: Date()))
                 .replace("$date", withString: dateFormatter.string(from: Date()))
                 .replace("$time", withString: dateFormatter.string(from: Date()))

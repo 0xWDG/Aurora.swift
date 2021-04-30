@@ -25,6 +25,20 @@ import UIKit
 // #if canImport(CoreTelephony)
 // import CoreTelephony
 // #endif
+extension Aurora {
+    /// Get the last crash log
+    /// - Returns: The last crashlog
+    public func getLastCrashLog() -> String? {
+        return Aurora.crashLogger.getLastCrashLog()
+    }
+    
+    /// Delete the last crash log
+    /// - Returns: Bool if deleted
+    @discardableResult
+    public func deleteLastCrashLog() -> Bool {
+        return Aurora.crashLogger.deleteLastCrashLog()
+    }
+}
 
 /// <#Description#>
 class AuroraCrashHandler {
