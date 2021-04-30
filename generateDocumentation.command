@@ -1,6 +1,6 @@
 # update Xcode project
 
-swift package generate-xcodeproj
+# swift package generate-xcodeproj
 
 #if which swiftlint >/dev/null; then
 #  swiftlint
