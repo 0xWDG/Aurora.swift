@@ -32,8 +32,13 @@ import CommonCrypto
 #endif
 
 public protocol AuroraNetworkLoggerConfigurationType {
+    /// <#Description#>
     var bodyTrimLength: Int { get }
-    func AuroraNetworkLogger(_ string: String)
+    /// <#Description#>
+    /// - Parameter string: <#string description#>
+    func auroraNetworkLogger(_ string: String)
+    /// <#Description#>
+    /// - Parameter request: <#request description#>
     func enableCapture(_ request: URLRequest) -> Bool
 }
 
@@ -42,7 +47,7 @@ extension AuroraNetworkLoggerConfigurationType {
         return 10000
     }
     
-    public func AuroraNetworkLogger(_ string: String) {
+    public func auroraNetworkLogger(_ string: String) {
         Aurora.shared.log(string)
     }
     
@@ -62,24 +67,30 @@ public struct AuroraNetworkLoggerDefaultConfiguration: AuroraNetworkLoggerConfig
 public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
     // MARK: - Public
     
+    /// <#Description#>
     public static var configuration: AuroraNetworkLoggerConfigurationType = AuroraNetworkLoggerDefaultConfiguration()
     
+    /// <#Description#>
     public class func register() {
         URLProtocol.registerClass(self)
     }
     
+    /// <#Description#>
     public class func unregister() {
         URLProtocol.unregisterClass(self)
     }
     
+    /// <#Description#>
+    /// - Returns: <#description#>
     public class func defaultSessionConfiguration() -> URLSessionConfiguration {
         let config = URLSessionConfiguration.default
         config.protocolClasses?.insert(AuroraNetworkLogger.self, at: 0)
         return config
     }
     
-    //MARK: - NSURLProtocol
+    // MARK: - NSURLProtocol
     
+    /// <#Description#>
     public override class func canInit(with request: URLRequest) -> Bool {
         guard AuroraNetworkLogger.configuration.enableCapture(request) == true else {
             return false
@@ -92,17 +103,20 @@ public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
         return true
     }
     
-    
+    /// <#Description#>
     public override class func canonicalRequest(for request: URLRequest) -> URLRequest {
         return request
     }
     
-    public override class func requestIsCacheEquivalent(_ a: URLRequest, to b: URLRequest) -> Bool {
-        return super.requestIsCacheEquivalent(a, to: b)
+    /// <#Description#>
+    public override class func requestIsCacheEquivalent(_ testA: URLRequest, to testB: URLRequest) -> Bool {
+        return super.requestIsCacheEquivalent(testA, to: testB)
     }
     
+    /// <#Description#>
     public override func startLoading() {
-        guard let req = (request as NSURLRequest).mutableCopy() as? NSMutableURLRequest, newRequest == nil else { return }
+        guard let req = (request as NSURLRequest).mutableCopy() as? NSMutableURLRequest,
+              newRequest == nil else { return }
         
         self.newRequest = req
         
@@ -149,6 +163,7 @@ public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
         logRequest(newRequest! as URLRequest)
     }
     
+    /// <#Description#>
     public override func stopLoading() {
     }
     
@@ -161,8 +176,9 @@ public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
         self.client?.urlProtocol(self, wasRedirectedTo: request, redirectResponse: response)
     }
     
-    
-    //MARK: - Logging
+    // MARK: - Logging
+    /// <#Description#>
+    /// - Parameter error: <#error description#>
     public func logError(_ error: NSError) {
         self.log += "⚠️\n"
         self.log += "  Error: \n\(error.localizedDescription)\n"
@@ -174,9 +190,11 @@ public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
         if let suggestion = error.localizedRecoverySuggestion {
             self.log += "  Suggestion: \(suggestion)\n"
         }
-        AuroraNetworkLogger.configuration.AuroraNetworkLogger(self.log)
+        AuroraNetworkLogger.configuration.auroraNetworkLogger(self.log)
     }
     
+    /// <#Description#>
+    /// - Parameter request: <#request description#>
     public func logRequest(_ request: URLRequest) {
         self.log = "Networklog\n"
         if let url = request.url?.absoluteString {
@@ -185,14 +203,17 @@ public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
         
         if let headers = request.allHTTPHeaderFields {
             self.log += "  Header:"
-            self.log += logHeaders(headers as [String : AnyObject]) + "\n"
+            self.log += logHeaders(headers as [String: AnyObject]) + "\n"
         }
         
         if let data = request.httpBody,
            let bodyString = NSString(data: data, encoding: String.Encoding.utf8.rawValue) {
             
             self.log += "  Body:\n"
-            self.log += trimTextOverflow(bodyString as String, length: AuroraNetworkLogger.configuration.bodyTrimLength)
+            self.log += trimTextOverflow(
+                bodyString as String,
+                length: AuroraNetworkLogger.configuration.bodyTrimLength
+            )
         }
         
         if let dataStream = request.httpBodyStream {
@@ -206,49 +227,55 @@ public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
                 data.append(buffer, length: bytesRead)
             }
             
-            do {
-                let rawData = data as Data
-                let rawString = String.init(data: rawData, encoding: .utf8)
-                let cleanData = (rawString?.removingPercentEncoding!.data(using: .utf8))!
-                let json = try JSONSerialization.jsonObject(
-                    with: cleanData,
-                    options: .mutableContainers
-                )
-                
-                let pretty = try JSONSerialization.data(
-                    withJSONObject: json,
-                    options: .prettyPrinted
-                )
-                
-                if let string = NSString(
-                    data: pretty,
-                    encoding: String.Encoding.utf8.rawValue
-                ) {
-                    self.log += "  POST JSON:\n"
-                    for line in string.components(separatedBy: "\n") {
-                        self.log += "    " + line.replace("\" :", withString: "\":") + "\n"
-                    }
-                }
-                
-                self.log += "  POST DATA:\n"
-                self.log += "    " + (rawString ?? "Unable to decode.")
-            }
-            catch {
-                if let string = NSString(
-                    data: data as Data,
-                    encoding: String.Encoding.utf8.rawValue
-                )?.removingPercentEncoding! {
-                    self.log += "  Data:\n"
-                    for line in string.components(separatedBy: "\n") {
-                        self.log += "    " + line + "\n"
-                    }
-                }
-            }
-            
-            self.log += "\n"
+            logDataParser(data: data as Data)
         }
     }
     
+    /// <#Description#>
+    /// - Parameter data: <#data description#>
+    private func logDataParser(data: Data) {
+        do {
+            let rawString = String.init(data: data, encoding: .utf8)
+            let cleanData = (rawString?.removingPercentEncoding!.data(using: .utf8))!
+            let json = try JSONSerialization.jsonObject(
+                with: cleanData,
+                options: .mutableContainers
+            )
+            
+            let pretty = try JSONSerialization.data(
+                withJSONObject: json,
+                options: .prettyPrinted
+            )
+            
+            if let string = NSString(
+                data: pretty,
+                encoding: String.Encoding.utf8.rawValue
+            ) {
+                self.log += "  POST JSON:\n"
+                for line in string.components(separatedBy: "\n") {
+                    self.log += "    " + line.replace("\" :", withString: "\":") + "\n"
+                }
+            }
+            
+            self.log += "  POST DATA:\n"
+            self.log += "    " + (rawString ?? "Unable to decode.")
+        } catch {
+            if let string = NSString(
+                data: data,
+                encoding: String.Encoding.utf8.rawValue
+            )?.removingPercentEncoding! {
+                self.log += "  Data:\n"
+                for line in string.components(separatedBy: "\n") {
+                    self.log += "    " + line + "\n"
+                }
+            }
+        }
+    }
+    
+    /// <#Description#>
+    /// - Parameters:
+    ///   - response: <#response description#>
+    ///   - data: <#data description#>
     public func logResponse(_ response: URLResponse, data: Data? = nil) {
         if let url = response.url?.absoluteString {
             self.log += "  Response: \(url)\n"
@@ -284,8 +311,7 @@ public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
                     self.log += "    " + line.replace("\" :", withString: "\":") + "\n"
                 }
             }
-        }
-        catch {
+        } catch {
             if let string = NSString(data: data, encoding: String.Encoding.utf8.rawValue) {
                 self.log += "  Data:\n"
                 for line in string.components(separatedBy: "\n") {
@@ -294,9 +320,12 @@ public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
             }
         }
         
-        AuroraNetworkLogger.configuration.AuroraNetworkLogger(self.log)
+        AuroraNetworkLogger.configuration.auroraNetworkLogger(self.log)
     }
     
+    /// <#Description#>
+    /// - Parameter headers: <#headers description#>
+    /// - Returns: <#description#>
     public func logHeaders(_ headers: [String: AnyObject]) -> String {
         let string = headers.reduce(String()) { str, header in
             let string = "      \(header.0): \(header.1)"
@@ -307,14 +336,25 @@ public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
     
     // MARK: - Private
     
+    /// <#Description#>
     fileprivate static let requestHandledKey = "RequestLumberjackHandleKey"
+    /// <#Description#>
     fileprivate static let requestTimeKey = "RequestLumberjackRequestTime"
     
+    /// <#Description#>
     fileprivate var data: NSMutableData?
+    /// <#Description#>
     fileprivate var response: URLResponse?
+    /// <#Description#>
     fileprivate var newRequest: NSMutableURLRequest?
+    /// <#Description#>
     fileprivate var log = ""
     
+    /// <#Description#>
+    /// - Parameters:
+    ///   - string: <#string description#>
+    ///   - length: <#length description#>
+    /// - Returns: <#description#>
     fileprivate func trimTextOverflow(_ string: String, length: Int) -> String {
         guard string.count > length else {
             return string

@@ -221,9 +221,13 @@ open class Aurora {
                 withString: UIDevice.current.systemVersion
             )
             #elseif os(macOS)
+            let version = "\(ProcessInfo.processInfo.operatingSystemVersion.majorVersion)"
+                + ".\(ProcessInfo.processInfo.operatingSystemVersion.minorVersion)"
+                + ".\(ProcessInfo.processInfo.operatingSystemVersion.patchVersion)"
+            
             returnValue = returnValue.replace(
                 "$osVersion",
-                withString: NSProcessInfo.processInfo().operatingSystemVersion
+                withString: version
             )
             #else
             returnValue = returnValue.replace(
@@ -310,31 +314,31 @@ open class Aurora {
     var isInitialized: Bool = false
     
     /// Which os we are running on?
-    var os: AuroraOS = .unknown
+    var operatingSystem: AuroraOS = .unknown
     
     /// Initialize
     public init(_ silent: Bool = true) {
         #if os(iOS)
         self.log("Aurora Framework for iOS \(self.version) loaded")
-        self.os = .iOS
+        self.operatingSystem = .iOS
         #elseif os(macOS)
         self.log("Aurora Framework for Mac OS \(self.version) loaded")
-        self.os = .macOS
+        self.operatingSystem = .macOS
         #elseif os(watchOS)
         self.log("Aurora Framework for WachtOS \(self.version) loaded")
-        self.os = .watchOS
+        self.operatingSystem = .watchOS
         #elseif os(tvOS)
         self.log("Aurora Framework for tvOS \(self.version) loaded")
-        self.os = .tvOS
+        self.operatingSystem = .tvOS
         #elseif os(Android)
         self.log("Aurora Framework for Android \(self.version) loaded")
-        self.os = .android
+        self.operatingSystem = .android
         #elseif os(Windows)
         self.log("Aurora Framework for Windows \(self.version) loaded")
-        self.os = .windows
+        self.operatingSystem = .windows
         #elseif os(Linux)
         self.log("Aurora Framework for Linux \(self.version) loaded")
-        self.os = .linux
+        self.operatingSystem = .linux
         #else
         self.log("Aurora Framework \(self.version) loaded")
         self.log("Unknown platform")
@@ -348,50 +352,6 @@ open class Aurora {
         AuroraNetworkLogger.register()
         
         isInitialized = true
-    }
-    
-    /// Get the last crash log
-    /// - Returns: The last crashlog
-    public func getLastCrashLog() -> String? {
-        return Aurora.crashLogger.getLastCrashLog()
-    }
-    
-    /// Delete the last crash log
-    /// - Returns: Bool if deleted
-    @discardableResult
-    public func deleteLastCrashLog() -> Bool {
-        return Aurora.crashLogger.deleteLastCrashLog()
-    }
-    
-    #if canImport(CryptoKit)
-    /// Create a MD5 string
-    /// - Parameter phrase: The phrase which needs to be converted into MD5
-    /// - Returns: MD5 Hash
-    public func md5(phrase: String) -> String {
-        return phrase.md5
-    }
-    #endif
-    
-    /// **No op**eration
-    /// - Parameter something: Whay ever you want.
-    public func noop(_ something: Any...) {
-        // Great.
-    }
-    
-    /// **No op**eration
-    /// - Parameter something: Whay ever you want. (object)
-    public func noop(_ something: AnyObject...) {
-        // Great.
-    }
-    
-    /// This is a demo func, thing for unavailable things.
-    /// - Returns: Void
-    @available(*, unavailable)
-    func unavailableFunc() {
-    }
-    
-    func auroraGenerateUseragent() {
-        
     }
 }
 
