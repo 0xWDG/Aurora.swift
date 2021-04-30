@@ -15,20 +15,24 @@
 //
 // Licence: Needs to be decided.
 
+#if canImport(Foundation)
 import Foundation
-import CommonCrypto
+#endif
 
-#if os(iOS)
+#if canImport(UIKit)
 import UIKit
 #endif
-#if os(OSX)
+
+#if canImport(AppKit)
 import AppKit
 #endif
+
 #if canImport(CryptoKit)
 import CryptoKit
 #endif
-#if canImport(UIKit)
-import UIKit
+
+#if canImport(CommonCrypto)
+import CommonCrypto
 #endif
 
 /// The Aurora framework for swift
@@ -51,7 +55,7 @@ open class Aurora {
     public let version = "1.0"
     
     /// The product name
-    public let product = "Aurora Framework"
+    public let product = "Aurora.Framework"
     
     /// Extra detailed logging?
     internal var detailedLogging = false
@@ -96,14 +100,14 @@ open class Aurora {
     ///
     /// This is used to send log messages with the following syntax
     ///
-    ///     [Aurora] datatime Filename:line functionName(...) @Main/Background:
+    ///     [Aurora.Framework] datetime Filename:line functionName(...) @Main/Background:
     ///      Message
     ///
     /// **Want to use a custom template?**
     ///
     /// Put the following (preffered in your AppDelegate):
     ///
-    ///      Aurora.shared.logTemplate = "[Aurora.Framework] $datetime $file:$line $function @$queue:\n $message"
+    ///      Aurora.shared.logTemplate = "[$product] $datetime $file:$line $function @$queue:\n $message"
     ///
     ///
     /// **$datetime**
@@ -147,7 +151,157 @@ open class Aurora {
     /// _Message to log_
     ///
     /// ‎
-    public var logTemplate = "[Aurora.Framework] $datetime $file:$line $function @$queue:\n $message"
+    public var logTemplate = "[$product] $datetime $file:$line $function @$queue:\n $message"
+    
+    /// userAgent
+    ///
+    /// This is used to generate the user agent
+    ///
+    ///     Mozilla/5.0 (Aurora/1.0; MyAppName/appVersion; iOS/15.0)
+    ///
+    /// **Want to use a custom template?**
+    ///
+    /// Put the following (preffered in your AppDelegate):
+    ///
+    ///      Aurora.shared.userAgentTemplate = "Mozilla/5.0 ($product/$version; $appName/$appVersion; $os/$osVersion)"
+    ///
+    ///
+    /// **$product**
+    ///
+    /// _Aurora.framework_
+    ///
+    /// ‎
+    ///
+    /// **$version**
+    ///
+    /// _Aurora Framework version_
+    ///
+    /// ‎
+    ///
+    /// **$appName**
+    ///
+    /// _Your app's name_
+    ///
+    /// ‎
+    ///
+    /// **$version**
+    ///
+    /// _Your app's version_
+    ///
+    /// ‎
+    ///
+    /// **$os**
+    ///
+    /// _Current OS_
+    ///
+    /// ‎
+    ///
+    /// **$osVersion**
+    ///
+    /// _Current OS Version_
+    ///
+    /// ‎
+    ///
+    /// **$deviceType**
+    ///
+    /// _Device type_
+    ///
+    /// ‎
+    ///
+    public var userAgent: String {
+        get {
+            var returnValue = userAgentTemplate
+                .replace("$product", withString: self.product)
+                .replace("$auroraVersion", withString: self.version)
+                .replace("$version", withString: self.version)
+            
+            #if os(iOS)
+            returnValue = returnValue.replace(
+                "$osVersion",
+                withString: UIDevice.current.systemVersion
+            )
+            #elseif os(macOS)
+            returnValue = returnValue.replace(
+                "$osVersion",
+                withString: NSProcessInfo.processInfo().operatingSystemVersion
+            )
+            #else
+            returnValue = returnValue.replace(
+                "$osVersion",
+                withString: "1.0"
+            )
+            #endif
+            
+            #if canImport(UIKit) && !os(watchOS)
+            var utsnameInstance = utsname()
+            uname(&utsnameInstance)
+            let optionalString: String? = withUnsafePointer(to: &utsnameInstance.machine) {
+                $0.withMemoryRebound(to: CChar.self, capacity: 1) {
+                    String.init(validatingUTF8: $0)
+                }
+            }
+            
+            returnValue = returnValue
+                .replace(
+                    "$appName",
+                    withString:
+                        Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String
+                        ?? ""
+                )
+                .replace(
+                    "$deviceType",
+                    withString: optionalString ?? "N/A"
+                )
+                .replace(
+                    "$appVersion",
+                    withString:
+                        Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+                        ?? ""
+                )
+                .replace(
+                    "$appBuild",
+                    withString:
+                        Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
+                        ?? ""
+                )
+            #else
+            returnValue = returnValue
+                .replace("$appName", withString: "")
+                .replace("$appVersion", withString: "")
+                .replace("$appBuild", withString: "")
+            #endif
+            
+            #if os(Android)
+            returnValue = returnValue.replace("$os", withString: "Android")
+            #elseif os(iOS)
+            returnValue = returnValue.replace("$os", withString: "iOS")
+            #elseif os(Linux)
+            returnValue = returnValue.replace("$os", withString: "Linux")
+            #elseif os(macOS)
+            returnValue = returnValue.replace("$os", withString: "macOS")
+            #elseif os(tvOS)
+            returnValue = returnValue.replace("$os", withString: "tvOS")
+            #elseif os(watchOS)
+            returnValue = returnValue.replace("$os", withString: "watchOS")
+            #elseif os(Windows)
+            returnValue = returnValue.replace("$os", withString: "Windows")
+            #else
+            returnValue = returnValue.replace("$os", withString: "Aurora")
+            #endif
+            
+            return returnValue
+        }
+        set {
+            userAgentTemplate = newValue
+        }
+    }
+    
+    /// userAgentTemplate
+    ///
+    /// This is used to generate the user agent
+    ///
+    ///     Mozilla/5.0 (Aurora/1.0; MyAppName/appVersion; iOS/15.0)
+    private var userAgentTemplate = "Mozilla/5.0 ($product/$version; $appName/$appVersion; $os/$osVersion)"
     
     /// Shared static settings controller.
     public var settings: AuroraStaticSettings = AuroraStaticSettings.shared
@@ -155,22 +309,32 @@ open class Aurora {
     /// Is it already started?
     var isInitialized: Bool = false
     
+    /// Which os we are running on?
+    var os: AuroraOS = .unknown
+    
     /// Initialize
     public init(_ silent: Bool = true) {
         #if os(iOS)
         self.log("Aurora Framework for iOS \(self.version) loaded")
+        self.os = .iOS
         #elseif os(macOS)
         self.log("Aurora Framework for Mac OS \(self.version) loaded")
+        self.os = .macOS
         #elseif os(watchOS)
         self.log("Aurora Framework for WachtOS \(self.version) loaded")
+        self.os = .watchOS
         #elseif os(tvOS)
         self.log("Aurora Framework for tvOS \(self.version) loaded")
+        self.os = .tvOS
         #elseif os(Android)
         self.log("Aurora Framework for Android \(self.version) loaded")
+        self.os = .android
         #elseif os(Windows)
         self.log("Aurora Framework for Windows \(self.version) loaded")
+        self.os = .windows
         #elseif os(Linux)
         self.log("Aurora Framework for Linux \(self.version) loaded")
+        self.os = .linux
         #else
         self.log("Aurora Framework \(self.version) loaded")
         self.log("Unknown platform")
@@ -180,6 +344,8 @@ open class Aurora {
         let iCloud: AuroraFrameworkiCloudSync = AuroraFrameworkiCloudSync()
         iCloud.startSync()
         #endif
+        
+        AuroraNetworkLogger.register()
         
         isInitialized = true
     }
@@ -222,6 +388,10 @@ open class Aurora {
     /// - Returns: Void
     @available(*, unavailable)
     func unavailableFunc() {
+    }
+    
+    func auroraGenerateUseragent() {
+        
     }
 }
 

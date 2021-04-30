@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  AuroraDevice.swift
 //  
 //
 //  Created by Wesley de Groot on 09/04/2021.
@@ -16,8 +16,8 @@ enum AuroraOS {
     case iOS, iPadOS, iPhoneOS
     case tvOS
     case watchOS
-    case homePod
-    case bridgeOS
+    case audioOS, homePod
+    case bridgeOS, touchBar
     case android
     case linux
     case windows
@@ -38,7 +38,18 @@ enum AuroraUserInterface {
 }
 
 class AuroraDevice {
+    /// Apple model names
     let modelNames: [String: String] = [
+        // MARK: iPod
+        "iPod1,1": "1st Gen iPod",
+        "iPod2,1": "2nd Gen iPod",
+        "iPod3,1": "3rd Gen iPod",
+        "iPod4,1": "4th Gen iPod",
+        "iPod5,1": "5th Gen iPod",
+        "iPod7,1": "6th Gen iPod",
+        "iPod9,1": "7th Gen iPod",
+        
+        // MARK: iPhone
         "iPhone1,1": "iPhone",
         "iPhone1,2": "iPhone 3G",
         "iPhone2,1": "iPhone 3GS",
@@ -80,14 +91,7 @@ class AuroraDevice {
         "iPhone13,3": "iPhone 12 Pro",
         "iPhone13,4": "iPhone 12 Pro Max",
         
-        "iPod1,1": "1st Gen iPod",
-        "iPod2,1": "2nd Gen iPod",
-        "iPod3,1": "3rd Gen iPod",
-        "iPod4,1": "4th Gen iPod",
-        "iPod5,1": "5th Gen iPod",
-        "iPod7,1": "6th Gen iPod",
-        "iPod9,1": "7th Gen iPod",
-        
+        // MARK: iPad
         "iPad1,1": "iPad",
         "iPad1,2": "iPad 3G",
         "iPad2,1": "2nd Gen iPad",
@@ -143,14 +147,15 @@ class AuroraDevice {
         "iPad8,11": "iPad Pro 12.9 inch 4th Gen (WiFi)",
         "iPad8,12": "iPad Pro 12.9 inch 4th Gen (WiFi+Cellular)",
         "iPad11,1": "iPad mini 5th Gen (WiFi)",
-        "iPad11,2": "iPad mini 5th Gen",
+        "iPad11,2": "iPad mini 5th Gen (WiFi+Cellular)",
         "iPad11,3": "iPad Air 3rd Gen (WiFi)",
-        "iPad11,4": "iPad Air 3rd Gen",
+        "iPad11,4": "iPad Air 3rd Gen (WiFi+Cellular)",
         "iPad11,6": "iPad 8th Gen (WiFi)",
         "iPad11,7": "iPad 8th Gen (WiFi+Cellular)",
         "iPad13,1": "iPad air 4th Gen (WiFi)",
         "iPad13,2": "iPad air 4th Gen (WiFi+Celular)",
         
+        // MARK:  Watch
         "Watch1,1": "Apple Watch 38mm case",
         "Watch1,2": "Apple Watch 42mm case",
         "Watch2,6": "Apple Watch Series 1 38mm case",
@@ -169,10 +174,55 @@ class AuroraDevice {
         "Watch5,2": "Apple Watch Series 5 44mm case (GPS)",
         "Watch5,3": "Apple Watch Series 5 40mm case (GPS+Cellular)",
         "Watch5,4": "Apple Watch Series 5 44mm case (GPS+Cellular)",
+        "Watch6,1": "Apple Watch Series 6 40mm case (GPS)",
+        "Watch6,2": "Apple Watch Series 6 44mm case (GPS)",
+        "Watch6,3": "Apple Watch Series 6 40mm case (GPS+Cellular)",
+        "Watch6,4": "Apple Watch Series 6 44mm case (GPS+Cellular)",
         
-        "XeofList": "X"
+        // MARK: Apple TV
+        "AppleTV1,1": "Apple TV (1st generation)",
+        "AppleTV2,1": "Apple TV (2nd generation)",
+        "AppleTV3,1": "Apple TV (3rd generation)",
+        "AppleTV3,2": "Apple TV (3rd generation)",
+        "AppleTV5,3": "Apple TV HD",
+        "AppleTV6,2": "Apple TV 4K",
+        "AppleTV7,1": "Apple TV 8K?",
+        
+        // MARK: HomePod
+        "AudioAccessory1,1": "HomePod",
+        "AudioAccessory1,2": "HomePod",
+        "AudioAccessory5,1": "HomePod mini",
+        
+        // MARK: AirPods
+        "AirPods1,1": "AirPods (1st generation)",
+        "AirPods2,1": "AirPods (2nd generation)",
+        "iProd8,1": "AirPods Pro",
+        "iProd8,6": "AirPods Max",
+        
+        "i386": "Simulator",
+        "x86_64": "Simulator"
     ]
     
+    /// <#Description#>
+    /// - Returns: <#description#>
+    func getDeviceName() -> String {
+        var systemInfo = utsname()
+        uname(&systemInfo)
+        let machineMirror = Mirror(reflecting: systemInfo.machine)
+        let identifier = machineMirror.children.reduce("") { identifier, element in
+            guard let value = element.value as? Int8, value != 0 else { return identifier }
+            return identifier + String(UnicodeScalar(UInt8(value)))
+        }
+        
+        if let model = self.modelNames[identifier] {
+            return model
+        } else {
+            return "Unknown <\(identifier)>"
+        }
+    }
+    
+    /// <#Description#>
+    /// - Returns: <#description#>
     func getOperatingSystem() -> AuroraOS {
         #if os(macOS)
         return .macOS
