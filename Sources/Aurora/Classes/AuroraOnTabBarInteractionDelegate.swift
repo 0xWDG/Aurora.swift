@@ -24,11 +24,13 @@ import UIKit
 class AuroraOnTabBarInteractionDelegate: NSObject, UITabBarControllerDelegate, UITabBarDelegate {
     /// onInteraction closute
     public var onInteractionClosure: ((String) -> Void)?
+    
     /// On x times
     public var onTimes: Int = 10
     
     /// old ViewController
     private var oldVC: ViewController?
+    
     /// old UITabBarItem
     private var oldItem: UITabBarItem?
     
@@ -38,6 +40,10 @@ class AuroraOnTabBarInteractionDelegate: NSObject, UITabBarControllerDelegate, U
     /// The shared instance, otherwise it will deinit direct
     static let sharedInstance: AuroraOnTabBarInteractionDelegate = AuroraOnTabBarInteractionDelegate()
     
+    /// <#Description#>
+    /// - Parameters:
+    ///   - tabBar: <#tabBar description#>
+    ///   - item: <#item description#>
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         if oldItem != nil {
             if oldItem == item {
@@ -67,6 +73,10 @@ class AuroraOnTabBarInteractionDelegate: NSObject, UITabBarControllerDelegate, U
         oldItem = item
     }
     
+    /// <#Description#>
+    /// - Parameters:
+    ///   - tabBarController: <#tabBarController description#>
+    ///   - viewController: <#viewController description#>
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if oldVC != nil {
             if oldVC == viewController {

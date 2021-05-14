@@ -1,4 +1,4 @@
-// swift-tools-version:5.2
+// swift-tools-version:5.3
 
 import PackageDescription
 
@@ -31,10 +31,12 @@ let package = Package(
         .target(
             name: "Aurora",
             dependencies: [],
-//            resources: [.process("Resources")]
             exclude: [
                 "build",
                 "docs"
+            ],
+            resources: [
+                .process("Resources/NSFW.mlmodel")
             ]
         ),
         .testTarget(
@@ -42,10 +44,12 @@ let package = Package(
             dependencies: [
                 "Aurora"
             ],
-//            resources: [.process("Resources")]
             exclude: [
                 "build",
                 "docs"
+            ],
+            resources: [
+                .process("Resources/NSFW.mlmodel")
             ]
         )
     ]

@@ -9,15 +9,20 @@
 import Foundation
 import UIKit
 
+/// <#Description#>
 public class AuroraLogView: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    /// <#Description#>
     var logMessages = Aurora.shared.getLogMessages()
+    
+    /// <#Description#>
     var tableView: UITableView = UITableView()
     
+    /// <#Description#>
     public override func viewDidLoad() {
         logMessages.append("END OF REPORT\r\n\r\n")
         logMessages.append("AuroraExitLogViewButton")
         
-        // Setup UITableView
+        /// Setup UITableView
         tableView = UITableView(frame: UIApplication.shared.key!.frame).configure { [self] in
             $0.delegate = self
             $0.dataSource = self
@@ -39,6 +44,7 @@ public class AuroraLogView: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+    /// <#Description#>
     private func reloadLogView() {
         logMessages = Aurora.shared.getLogMessages()
         logMessages.append("END OF REPORT\r\n\r\n")
