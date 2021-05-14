@@ -36,6 +36,15 @@ public extension UIView {
         }
     }
     
+    /// Safe area
+    var safeArea: UILayoutGuide {
+        if #available(iOS 11.0, *) {
+            return safeAreaLayoutGuide
+        } else {
+            return layoutMarginsGuide
+        }
+    }
+    
     /// set the corner radius
     /// - Parameter radius: which radius
     func roundedCorners(radius: CGFloat? = 45) {
