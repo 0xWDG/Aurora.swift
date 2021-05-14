@@ -68,14 +68,19 @@ public extension TabBarAnimation {
         switch type {
         case .bounce:
             bounceAnimation(for: imageView)
+
         case .jump:
             jumpAnimation(for: imageView)
+
         case .rotateRight, .rotate:
             rotateRightAnimation(for: imageView)
+
         case .rotateLeft:
             rotateLeftAnimation(for: imageView)
+
         case .shake:
             shakeAnimation(for: imageView)
+
         case .custom(let animation):
             animation(imageView)
         }

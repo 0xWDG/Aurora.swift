@@ -63,17 +63,24 @@ public struct DynamicUIColor {
     
     public var wrappedValue: UIColor {
         switch styleProvider() {
-        case .dark: return dark
-        case .light: return light
+        case .dark:
+            return dark
+            
+        case .light:
+            return light
+            
         case .none:
             // UIColor(dynamicProvider:) only available on iOS >=13+ & tvOS >=13
             #if os(iOS) || os(tvOS)
             if #available(iOS 13.0, tvOS 13.0, *) {
                 return UIColor { traitCollection -> UIColor in
                     switch traitCollection.userInterfaceStyle {
-                    case .dark: return self.dark
-                    case .light, .unspecified: return self.light
-                    @unknown default: return self.light
+                    case .dark:
+                        return self.dark
+                    case .light, .unspecified:
+                        return self.light
+                    @unknown default:
+                        return self.light
                     }
                 }
             } else {
