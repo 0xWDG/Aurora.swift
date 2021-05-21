@@ -145,7 +145,7 @@ public extension UIView {
         return nil
     }
     
-    //MARK: - placehodlerView
+    // MARK: - placehodlerView
     func placeholderView() {
         // Remove old ones, if present
         placehodlerViewRemove()
@@ -155,8 +155,7 @@ public extension UIView {
     }
     
     /// Add placeholderview
-    /// - Parameter useScale: use UIScreen scale (default off)
-    func addPlaceholderView(_ useScale: Bool = false) {
+    func addPlaceholderView() {
         DispatchQueue.main.async {
             let gradientBackground: CGColor = #colorLiteral(red: 0.8381932378, green: 0.8472757339, blue: 0.879475534, alpha: 1).cgColor
             let gradientBackgroundMove: CGColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor
@@ -164,22 +163,8 @@ public extension UIView {
             let shimmerEndLocation: [NSNumber] = [1.0, 1.5, 2.0]
             var shimmerGradienLayer: CAGradientLayer!
             
-            let scale = UIScreen.main.scale
-            
             let gradientLayered = CAGradientLayer().configure {
                 $0.frame = self.bounds
-                
-                if useScale {
-                    $0.frame = CGRect.init(
-                        x: self.boundsX,
-                        y: self.boundsY,
-                        width: self.bounds.width * scale,
-                        height: self.bounds.height * scale
-                    )
-                } else {
-                    $0.frame = self.bounds
-                }
-                
                 $0.startPoint = CGPoint(x: 0, y: 1)
                 $0.endPoint = CGPoint(x: 1, y: 1)
                 $0.colors = [
@@ -194,7 +179,7 @@ public extension UIView {
             self.layer.addSublayer(gradientLayered)
             shimmerGradienLayer = gradientLayered
             
-            //Start Animating
+            // Start Animating
             let animation = CABasicAnimation(keyPath: "locations").configure {
                 $0.fromValue = shimmerStartLocation
                 $0.toValue = shimmerEndLocation
@@ -218,11 +203,9 @@ public extension UIView {
     /// Remove placeholder view
     func placehodlerViewRemove() {
         if let layers = self.layer.sublayers {
-            for layer in layers {
-                if layer.name == "placehodlerViewLayer" {
-                    DispatchQueue.main.async {
-                        layer.removeFromSuperlayer()
-                    }
+            for layer in layers where layer.name == "placehodlerViewLayer" {
+                DispatchQueue.main.async {
+                    layer.removeFromSuperlayer()
                 }
             }
         }
