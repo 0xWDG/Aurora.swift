@@ -21,10 +21,8 @@ import Foundation
 import UIKit
 
 public extension UITextField {
-    #if os(iOS)
-    
+    #if !os(tvOS)
     /// <#Description#>
-    
     @IBInspectable var doneAccessory: Bool {
         get {
             return self.doneAccessory
@@ -70,13 +68,11 @@ public extension UITextField {
         self.inputAccessoryView = doneToolbar
     }
     
-    #endif
-    
-    /// <#Description#>
-    @objc
-    func doneButtonAction() {
+    /// Done button actio (resign)
+    @objc func doneButtonAction() {
         self.resignFirstResponder()
     }
+    #endif
     
     /// <#Description#>
     /// - Parameter icon: <#icon description#>
@@ -114,15 +110,13 @@ public extension UITextField {
     }
     
     /// <#Description#>
-    @objc
-    func showPasswordView() {
+    @objc func showPasswordView() {
         isSecureTextEntry = false
         isUserInteractionEnabled = false
     }
     
     /// <#Description#>
-    @objc
-    func hidePasswordView() {
+    @objc func hidePasswordView() {
         isSecureTextEntry = true
         isUserInteractionEnabled = true
     }
@@ -142,8 +136,7 @@ public extension UITextField {
     }
     
     /// <#Description#>
-    @objc
-    func clear() {
+    @objc func clear() {
         text = ""
         sendActions(for: .editingChanged)
     }
@@ -172,7 +165,5 @@ public extension UITextField {
         adjustsFontForContentSizeCategory = true
         adjustsFontSizeToFitWidth = adjustToFit
     }
-    
 }
-
 #endif
