@@ -27,7 +27,7 @@ public extension UIView {
             return traitCollection.userInterfaceStyle == .dark
         }
     }
-
+    
     /// is darkmode enabled
     var darkMode: Bool {
         // swiftlint:disable:next implicit_getter
@@ -144,6 +144,96 @@ public extension UIView {
         
         return nil
     }
+    
+    //MARK: - placehodlerView
+    func placeholderView() {
+        // Remove old ones, if present
+        placehodlerViewRemove()
+        
+        // Add placeholderView.
+        addPlaceholderView()
+    }
+    
+    /// Add placeholderview
+    /// - Parameter useScale: use UIScreen scale (default off)
+    func addPlaceholderView(_ useScale: Bool = false) {
+        DispatchQueue.main.async {
+            let gradientBackground: CGColor = #colorLiteral(red: 0.8381932378, green: 0.8472757339, blue: 0.879475534, alpha: 1).cgColor
+            let gradientBackgroundMove: CGColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor
+            let shimmerStartLocation: [NSNumber] = [-1.0, -0.5, 0.0]
+            let shimmerEndLocation: [NSNumber] = [1.0, 1.5, 2.0]
+            var shimmerGradienLayer: CAGradientLayer!
+            
+            let scale = UIScreen.main.scale
+            
+            let gradientLayered = CAGradientLayer().configure {
+                $0.frame = self.bounds
+                
+                if useScale {
+                    $0.frame = CGRect.init(
+                        x: self.boundsX,
+                        y: self.boundsY,
+                        width: self.bounds.width * scale,
+                        height: self.bounds.height * scale
+                    )
+                } else {
+                    $0.frame = self.bounds
+                }
+                
+                $0.startPoint = CGPoint(x: 0, y: 1)
+                $0.endPoint = CGPoint(x: 1, y: 1)
+                $0.colors = [
+                    gradientBackground,
+                    gradientBackgroundMove,
+                    gradientBackground
+                ]
+                $0.locations = shimmerStartLocation
+                $0.name = "placehodlerViewLayer"
+            }
+            
+            self.layer.addSublayer(gradientLayered)
+            shimmerGradienLayer = gradientLayered
+            
+            //Start Animating
+            let animation = CABasicAnimation(keyPath: "locations").configure {
+                $0.fromValue = shimmerStartLocation
+                $0.toValue = shimmerEndLocation
+                $0.duration = 0.8
+                $0.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+            }
+            
+            let animationGroup = CAAnimationGroup().configure {
+                $0.duration = 1.8
+                $0.animations = [animation]
+                $0.repeatCount = .infinity
+            }
+            
+            shimmerGradienLayer?.add(
+                animationGroup,
+                forKey: animation.keyPath
+            )
+        }
+    }
+    
+    /// Remove placeholder view
+    func placehodlerViewRemove() {
+        if let layers = self.layer.sublayers {
+            for layer in layers {
+                if layer.name == "placehodlerViewLayer" {
+                    DispatchQueue.main.async {
+                        layer.removeFromSuperlayer()
+                    }
+                }
+            }
+        }
+    }
+    
+    /// Alias to placehodlerViewRemove
+    func removePlaceholderView() {
+        self.placehodlerViewRemove()
+    }
+    
+    // MARK: -
     
     // Animate a view, adding effect of "something went wrong". Useful for login button for example.
     /// - Parameter repeatAnimation: Repeat the animation?

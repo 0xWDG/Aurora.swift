@@ -258,7 +258,7 @@ public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
             }
             
             self.log += "  POST DATA:\n"
-            self.log += "    " + (rawString ?? "Unable to decode.")
+            self.log += "    " + (rawString ?? "Unable to decode.") + "\n"
         } catch {
             if let string = NSString(
                 data: data,

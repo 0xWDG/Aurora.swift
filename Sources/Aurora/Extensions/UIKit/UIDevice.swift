@@ -75,6 +75,15 @@ public extension UIDevice {
         return UIDevice.current.userInterfaceIdiom == .carPlay
     }
     
+    /// Check if the we're running on an Simulator.
+    static var isSimulator: Bool = {
+        #if targetEnvironment(simulator)
+        return true
+        #else
+        return false
+        #endif
+    }()
+
     #if canImport(AudioToolbox)
     /// Vibrate the device
     static func vibrate() {
