@@ -50,7 +50,7 @@ public class ToastView: UIView {
     }
     
     /// What to execute on TAP
-    private var onTap: (() -> ())?
+    private var onTap: (() -> Void)?
     
     /// Hide the view automatically after showing ?
     public var autoHide = true
@@ -67,7 +67,7 @@ public class ToastView: UIView {
                 icon: UIImage? = nil,
                 iconColor: UIColor? = .label,
                 haptic: UINotificationFeedbackGenerator.FeedbackType?,
-                onTap: (() -> ())? = nil
+                onTap: (() -> Void)? = nil
     ) {
         let titleFont: UIFont = .systemFont(ofSize: 13, weight: .regular)
         let subtitleFont: UIFont = .systemFont(ofSize: 11, weight: .light)
@@ -112,7 +112,6 @@ public class ToastView: UIView {
         
         if let subtitle = subtitle {
             let subtitleLabel = UILabel.init().configure {
-//                $0.frame = CGRect.zero
                 $0.textColor = .secondaryLabel
                 $0.numberOfLines = 1
                 $0.font = subtitleFont
@@ -144,34 +143,13 @@ public class ToastView: UIView {
         
         UIView.animate(withDuration: 0.4, delay: 0.0, options: .curveEaseOut, animations: {
             self.transform = .identity
-        }) { [self] (completed) in
+        }) { [self] _ in
             if autoHide {
                 hide(after: displayTime)
             }
         }
     }
     
-//    /// Show toast with haptic feedback
-//    /// - Parameter haptic: <#haptic description#>
-//    @available(iOS 10.0, *)
-//    private func show(haptic: UINotificationFeedbackGenerator.FeedbackType? = nil) {
-//        if let hapticType = haptic {
-//            UINotificationFeedbackGenerator().notificationOccurred(hapticType)
-//        }
-//        show()
-//    }
-//
-//    /// Show toast
-//    private func show() {
-//        UIView.animate(withDuration: 0.4, delay: 0.0, options: .curveEaseOut, animations: {
-//            self.transform = .identity
-//        }) { [self] (completed) in
-//            if autoHide {
-//                hide(after: displayTime)
-//            }
-//        }
-//    }
-//
     public func hide(after time: TimeInterval) {
         DispatchQueue.main.asyncAfter(deadline: .now() + time, execute: {
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
@@ -189,17 +167,22 @@ public class ToastView: UIView {
     
     private func getTopViewController() -> UIViewController? {
          let windows = UIApplication.shared.windows
-         let keyWindow = windows.count == 1 ? windows.first : windows.filter { $0.isKeyWindow }.first
+         let keyWindow = windows.count == 1 ? windows.first : windows.filter {
+            $0.isKeyWindow
+         }.first
+        
         if var topController = keyWindow?.rootViewController {
             while let presentedViewController = topController.presentedViewController {
                 topController = presentedViewController
             }
+            
             return topController
         } else {
             return nil
         }
     }
     
+    // swiftlint:disable:next function_body_length
     private func setupConstraints() {
         translatesAutoresizingMaskIntoConstraints = false
         
@@ -255,11 +238,11 @@ public class ToastView: UIView {
         clipsToBounds = true
         layer.cornerRadius = toastHeight / 2
         superview?.addConstraints([
-                                    heightConstraint,
-                                    leadingConstraint,
-                                    trailingConstraint,
-                                    centerConstraint,
-                                    topConstraint
+            heightConstraint,
+            leadingConstraint,
+            trailingConstraint,
+            centerConstraint,
+            topConstraint
         ])
     }
     
@@ -307,10 +290,10 @@ public class ToastView: UIView {
         )
         
         addConstraints([
-                        leadingConstraint,
-                        trailingConstraint,
-                        topConstraint,
-                        bottomConstraint
+            leadingConstraint,
+            trailingConstraint,
+            topConstraint,
+            bottomConstraint
         ])
     }
     
