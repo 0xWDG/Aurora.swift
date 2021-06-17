@@ -58,10 +58,10 @@ public func < (lhs: WatchDeviceType, rhs: WatchDeviceType) -> Bool {
     
     /// Returns a current Apple Watch device type based on a case size.
     var device: WatchDeviceType {
-        let watch38mm = CGRect(origin: .zero, size: CGSize(width: 136.0, height: 170.0))
-        let watch40mm = CGRect(origin: .zero, size: CGSize(width: 162.0, height: 197.0))
-        let watch42mm = CGRect(origin: .zero, size: CGSize(width: 156.0, height: 195.0))
-        let watch44mm = CGRect(origin: .zero, size: CGSize(width: 184.0, height: 224.0))
+        let watch38mm = CGRect(origin: .zero, size: CGSize(width: 136.0, toastHeight: 170.0))
+        let watch40mm = CGRect(origin: .zero, size: CGSize(width: 162.0, toastHeight: 197.0))
+        let watch42mm = CGRect(origin: .zero, size: CGSize(width: 156.0, toastHeight: 195.0))
+        let watch44mm = CGRect(origin: .zero, size: CGSize(width: 184.0, toastHeight: 224.0))
         
         let currentBounds = WKInterfaceDevice.current().screenBounds
         
