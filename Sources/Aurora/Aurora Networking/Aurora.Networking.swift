@@ -196,7 +196,7 @@ extension Aurora {
         /// Create a URL Request
         let request = URLRequest(url: siteURL).configure {
             // 60 Seconds before timeout (default)
-            $0.timeoutInterval = 60
+            $0.timeoutInterval = 15
             // Set Content-Type to FORM
             $0.setValue("close", forHTTPHeaderField: "Connection")
             $0.setValue(self.userAgent, forHTTPHeaderField: "User-Agent")
@@ -254,16 +254,8 @@ extension Aurora {
             )
         }
         
-        //        #if os(iOS)
-        //        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        //        #endif
-        
         // Start our datatask
         session.dataTask(with: request) { (sitedata, _, theError) in
-            //            #if os(iOS)
-            //            UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            //            #endif
-            
             /// Check if we got any useable site data
             guard let sitedata = sitedata else {
                 if post.length > 3 {
