@@ -1,11 +1,7 @@
 //
-//  File.swift
-//  
-//
-//  Created by Wesley de Groot on 17/06/2021.
-//
 
-#if canImport(QuartzCore)
+#if canImport(QuartzCore) && canImport(UIKit)
+
 import UIKit
 import QuartzCore
 
@@ -66,7 +62,7 @@ public class ToastView: UIView {
                 subtitle: String? = nil,
                 icon: UIImage? = nil,
                 iconColor: UIColor? = .label,
-                haptic: UINotificationFeedbackGenerator.FeedbackType?,
+                haptic: UINotificationFeedbackGenerator.FeedbackType,
                 onTap: (() -> Void)? = nil
     ) {
         super.init(frame: CGRect.zero)
@@ -87,8 +83,8 @@ public class ToastView: UIView {
         
         let titleLabel = UILabel(frame: CGRect.zero).configure {
             $0.numberOfLines = 1
-            $0..font = .systemFont(ofSize: 13, weight: .regular)
-            $0..text = title
+            $0.font = .systemFont(ofSize: 13, weight: .regular)
+            $0.text = title
         }
         
         vStack.addArrangedSubview(titleLabel)
@@ -131,7 +127,7 @@ public class ToastView: UIView {
         
         transform = CGAffineTransform(translationX: 0, y: -100)
         
-        UINotificationFeedbackGenerator().notificationOccurred(haptic ?? .none)
+        UINotificationFeedbackGenerator().notificationOccurred(haptic)
         
         addAnimation()
     }
@@ -149,6 +145,7 @@ public class ToastView: UIView {
                     hide(after: displayTime)
                 }
             }
+        )
     }
     
     public func hide(after time: TimeInterval) {
