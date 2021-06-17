@@ -69,42 +69,36 @@ public class ToastView: UIView {
                 haptic: UINotificationFeedbackGenerator.FeedbackType?,
                 onTap: (() -> Void)? = nil
     ) {
-        let titleFont: UIFont = .systemFont(ofSize: 13, weight: .regular)
-        let subtitleFont: UIFont = .systemFont(ofSize: 11, weight: .light)
-        let iconSpacing: CGFloat = 16
-        hStack = UIStackView(frame: CGRect.zero)
         super.init(frame: CGRect.zero)
         
         backgroundColor = viewBackgroundColor
         
         getTopViewController()?.view.addSubview(self)
-        hStack.spacing = iconSpacing
-        hStack.axis = .horizontal
-        hStack.alignment = .center
+        hStack = UIStackView(frame: CGRect.zero).configure {
+            $0.spacing = 16
+            $0.axis = .horizontal
+            $0.alignment = .center
+        }
         
-        let vStack = UIStackView(frame: CGRect.zero)
-        vStack.axis = .vertical
-        vStack.alignment = .center
+        let vStack = UIStackView(frame: CGRect.zero).configure {
+            $0.axis = .vertical
+            $0.alignment = .center
+        }
         
-        let titleLabel = UILabel(frame: CGRect.zero)
-        titleLabel.numberOfLines = 1
-        titleLabel.font = titleFont
-        titleLabel.text = title
+        let titleLabel = UILabel(frame: CGRect.zero).configure {
+            $0.numberOfLines = 1
+            $0..font = .systemFont(ofSize: 13, weight: .regular)
+            $0..text = title
+        }
         
         vStack.addArrangedSubview(titleLabel)
         
         if let icon = icon {
             let iconImageView = UIImageView(
-                frame: CGRect(
-                    x: 0, y: 0, width: 28, height: 28
-                )
+                frame: CGRect(x: 0, y: 0, width: 28, height: 28)
             )
             
-            if let iconColor = iconColor {
-                iconImageView.tintColor = iconColor
-            } else {
-                iconImageView.tintColor = .label
-            }
+            iconImageView.tintColor = iconColor ?? .label
             
             iconImageView.image = icon.withRenderingMode(.alwaysTemplate)
             hStack.addArrangedSubview(iconImageView)
@@ -114,7 +108,7 @@ public class ToastView: UIView {
             let subtitleLabel = UILabel.init().configure {
                 $0.textColor = .secondaryLabel
                 $0.numberOfLines = 1
-                $0.font = subtitleFont
+                $0.font = .systemFont(ofSize: 11, weight: .light)
                 $0.text = subtitle
             }
             
@@ -137,26 +131,37 @@ public class ToastView: UIView {
         
         transform = CGAffineTransform(translationX: 0, y: -100)
         
-        if let hapticType = haptic {
-            UINotificationFeedbackGenerator().notificationOccurred(hapticType)
-        }
+        UINotificationFeedbackGenerator().notificationOccurred(haptic ?? .none)
         
-        UIView.animate(withDuration: 0.4, delay: 0.0, options: .curveEaseOut, animations: {
-            self.transform = .identity
-        }) { [self] _ in
-            if autoHide {
-                hide(after: displayTime)
+        addAnimation()
+    }
+    
+    private func addAnimation() {
+        UIView.animate(
+            withDuration: 0.4,
+            delay: 0.0,
+            options: .curveEaseOut,
+            animations: {
+                self.transform = .identity
+            },
+            completion: { [self] _ in
+                if autoHide {
+                    hide(after: displayTime)
+                }
             }
-        }
     }
     
     public func hide(after time: TimeInterval) {
         DispatchQueue.main.asyncAfter(deadline: .now() + time, execute: {
-            UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-                self.transform = CGAffineTransform(translationX: 0, y: -100)
-            }) { (completed) in
+            UIView.animate(
+                withDuration: 0.2,
+                delay: 0,
+                options: .curveEaseOut,
+                animations: { self.transform = CGAffineTransform(translationX: 0, y: -100) },
+                completion: { _ in
                 self.removeFromSuperview()
-            }
+                }
+            )
         })
     }
     
