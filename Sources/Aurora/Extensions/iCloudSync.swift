@@ -78,7 +78,8 @@ open class AuroraFrameworkiCloudSync {
         
         // Enumerate & Duplicate
         dict.enumerateKeysAndObjects(options: []) { (key, value, _) -> Void in
-            guard let key: String = key as? String else { return }
+            guard let key: String = key as? String,
+                  key.length < 60 else { return }
             
             UserDefaults.standard.set(value, forKey: key)
         }
@@ -116,7 +117,8 @@ open class AuroraFrameworkiCloudSync {
         
         // Enumerate & Duplicate
         dict.enumerateKeysAndObjects { (key, value, _) -> Void in
-            guard let key: String = key as? String else { return }
+            guard let key: String = key as? String,
+                  key.length < 60 else { return }
 
             keyValueStore.set(value, forKey: key as String)
         }
