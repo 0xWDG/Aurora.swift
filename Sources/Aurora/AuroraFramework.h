@@ -16,7 +16,7 @@
 // Licence: Needs to be decided.
 
 #import <Foundation/Foundation.h>
-#import <CommonCrypto/CommonCrypto.h>
+//#import <CommonCrypto/CommonCrypto.h>
 
 //! Project version number for AuroraFramework.
 FOUNDATION_EXPORT double AuroraFrameworkVersionNumber;

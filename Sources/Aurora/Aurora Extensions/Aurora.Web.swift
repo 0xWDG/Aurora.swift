@@ -74,6 +74,7 @@ public extension Aurora {
     ///   - completion: <#completion description#>
     func dataTaskHelper(forURL: URL?, completion: @escaping (String) -> Void) {
         let session = URLSession.shared
+        
         let request = URLRequest.init(
             url: forURL ?? URL.init(string: "")!,
             cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
@@ -104,7 +105,7 @@ public extension Aurora {
                 
                 DispatchQueue.main.async {
                     if let myString = String(data: data, encoding: usedEncoding) {
-                        self.log("Unwrapped and returning")
+                        self.log("Unwrapped and returning \(forURL?.absoluteString)")
                         completion(myString)
                     } else {
                         self.log("Failed to use the proper encoding")
@@ -119,9 +120,17 @@ public extension Aurora {
     /// <#Description#>
     /// - Parameter url: <#url description#>
     /// - Returns: <#description#>
-    func getSiteAsText(url: URL) -> String {
+    @available(*, deprecated)
+    func getSiteAsText(url: URL, file: String = #file, line: Int = #line, function: String = #function) -> String {
+        log("WARNING: DO NOT USE THIS COMMAND ANYMORE\n"
+        + "IT'S VERY UNSTABLE, PLEASE USE: Aurora.shared.networkRequest(...) instead\n"
+        + "CALLED FROM:\n    file:\(file)\n    line: \(line)\n"
+        + "    function: \(function).")
+        
         log("getSiteAsText init(url: \"\(url)\")")
         var returnString: String = ""
+        
+        // start waitting
         
         self.dataTaskHelper(forURL: url) { (dataTaskString) in
             if self.detailedLogging {
@@ -130,7 +139,7 @@ public extension Aurora {
             returnString = dataTaskString
         }
         
-        //        while(returnString==""){}
+                while(returnString==""){}
         
         log("After the datatask = \(returnString)")
         
@@ -196,7 +205,12 @@ public extension Aurora {
      
      - Returns: the contents of the file
      */
-    func getDataAsText(_ url: String, _ post: [String: String]? = ["nothing": "send"]) -> String {
+    @available(*, deprecated)
+    func getDataAsText(_ url: String, _ post: [String: String]? = ["nothing": "send"], file: String = #file, line: Int = #line, function: String = #function) -> String {
+        log("WARNING: DO NOT USE THIS COMMAND ANYMORE\n"
+        + "IT'S VERY UNSTABLE, PLEASE USE: Aurora.shared.networkRequest(...) instead\n"
+        + "CALLED FROM:\n    file:\(file)\n    line: \(line)\n"
+        + "    function: \(function).")
         log("Init.")
         if let myURL = URL(string: url) {
             if post == ["nothing": "send"] {
@@ -254,10 +268,18 @@ public extension Aurora {
      
      - Returns: the contents of the file
      */
+    @available(*, deprecated)
     func getDataAsData(
         _ url: String,
-        _ post: [String: String]? = ["nothing": "send"]
+        _ post: [String: String]? = ["nothing": "send"],
+        file: String = #file,
+        line: Int = #line,
+        function: String = #function
     ) -> Data {
+        log("WARNING: DO NOT USE THIS COMMAND ANYMORE\n"
+        + "IT'S VERY UNSTABLE, PLEASE USE: Aurora.shared.networkRequest(...) instead\n"
+        + "CALLED FROM:\n    file:\(file)\n    line: \(line)\n"
+        + "    function: \(function).")
         if let myURL = URL(string: url) {
             if post == ["nothing": "send"] {
                 return getSiteAsText(url: myURL).data(using: .utf8)!

@@ -24,7 +24,7 @@ public class ToastView: UIView {
     }
     
     private let toastHeight: CGFloat = 50
-    private var hStack: UIStackView
+    private var hStack: UIStackView = UIStackView(frame: CGRect.zero)
     
     private let darkBackgroundColor = UIColor(
         red: 0.13,

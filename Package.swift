@@ -33,7 +33,10 @@ let package = Package(
             dependencies: [],
             exclude: [
                 "build",
-                "docs"
+                "docs",
+                "checkFirstRows.php",
+                "generateDocumentation.command",
+                "README.md"
             ],
             resources: [
                 .process("Resources/NSFW.mlmodel")
@@ -46,7 +49,10 @@ let package = Package(
             ],
             exclude: [
                 "build",
-                "docs"
+                "docs",
+                "checkFirstRows.php",
+                "generateDocumentation.command",
+                "README.md"
             ],
             resources: [
                 .process("Resources/NSFW.mlmodel")

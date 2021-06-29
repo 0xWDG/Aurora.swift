@@ -58,7 +58,7 @@ open class Aurora {
     public let product = "Aurora.Framework"
     
     /// Extra detailed logging?
-    internal var detailedLogging = false
+    internal var detailedLogging = true
     
     /// Should we debug right now?
     internal var debug = _isDebugAssertConfiguration()
@@ -349,7 +349,7 @@ open class Aurora {
         iCloud.startSync()
         #endif
         
-        AuroraNetworkLogger.register()
+//        AuroraNetworkLogger.register()
         
         isInitialized = true
     }
