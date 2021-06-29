@@ -1361,26 +1361,72 @@ public extension String {
         )
     }
     
+    static let group = DispatchGroup()
+    
     /// <#Description#>
     /// - Returns: <#description#>
     func load() -> String {
-        DispatchQueue.main.async {
-            #if os(iOS)
-            UIApplication.shared.isNetworkActivityIndicatorVisible = true
-            #endif
+        var waiting = true
+        var inGroup = true
+        var result: String = "Error: No data fetched"
+        
+        Aurora.shared.log("Entering group for \(self)")
+        String.group.enter()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
+            if waiting {
+                Aurora.shared.log("Timeout, killing request")
+                result = "Error: Timeout (15 sec)"
+                
+                if inGroup {
+                    Aurora.shared.log("Leaving group for \(self)")
+                    String.group.leave()
+                } else {
+                    Aurora.shared.log("Group is already gone for \(self)")
+                }
+            }
         }
         
-        let returnValue = Aurora().getDataAsText(self) as String
-        
-        DispatchQueue.main.async {
-            #if os(iOS)
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            #endif
+        Aurora.shared.networkRequest(url: self, posting: nil) { response in
+            waiting = false
+
+            switch response {
+               case .success(let data):
+                result = data
+               case .failure(let error):
+                Aurora.shared.log(error.localizedDescription)
+                result = "Error: \(error.localizedDescription)"
+            }
+
+            if inGroup {
+                Aurora.shared.log("Leaving group for \(self)")
+                String.group.leave()
+            } else {
+                Aurora.shared.log("Group is already gone for \(self)")
+            }
         }
+
+        Aurora.shared.log("Waiting in group for \(self)")
+        String.group.wait()
         
-        return returnValue
+        inGroup = false
+        Aurora.shared.log("Returning result for \(self):\r\n\(result.trimmed.truncate(after: 25))")
+        return result
     }
-    
+
+    /// <#Description#>
+    /// - Returns: <#description#>
+    func load(completion: @escaping (String) -> Void) {
+        Aurora.shared.networkRequest(url: self, posting: nil) { result in
+            switch result {
+               case .success(let data):
+                   completion(data)
+               case .failure(let error):
+                    completion(error.localizedDescription)
+            }
+        }
+    }
+
     /// <#Description#>
     subscript (idx: Int) -> String {
         return String(self[idx] as Character)

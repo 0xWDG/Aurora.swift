@@ -63,7 +63,7 @@ extension NSMutableAttributedString {
     ///   - backgroundColor: background color
     /// - Returns: a bold NSAttributedString
     @discardableResult
-    func changeColor(toColor: UIColor, backgroundColor: UIColor?) -> NSMutableAttributedString {
+    public func changeColor(toColor: UIColor, backgroundColor: UIColor?) -> NSMutableAttributedString {
         let attrs: [NSAttributedString.Key: Any] = [
             .foregroundColor: toColor,
             .backgroundColor: backgroundColor ?? UIColor.clear

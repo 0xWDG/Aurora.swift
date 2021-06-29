@@ -28,6 +28,12 @@ extension Aurora {
     public func noop(_ something: AnyObject...) {
         // Great.
     }
+
+    /// This is a demo func, thing for deprecation things.
+    /// - Returns: Void
+    @available(*, deprecated)
+    func deprecatedFunc() {
+    }
     
     /// This is a demo func, thing for unavailable things.
     /// - Returns: Void

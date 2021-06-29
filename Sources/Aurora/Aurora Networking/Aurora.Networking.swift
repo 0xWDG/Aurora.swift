@@ -47,6 +47,19 @@ extension Aurora {
         static var certificateHash = ""
     }
     
+    /// <#Description#>
+    public enum HTTPMethod {
+        /// POST
+        ///
+        /// Post a file or form
+        case post
+        
+        /// GET
+        ///
+        /// Just a regular request to a webserver
+        case get
+    }
+    
     /**
      * Set hash of the server's certificate
      *
@@ -138,19 +151,17 @@ extension Aurora {
         )
     }
     
-    /**
-     * networkRequest (non-blocking)
-     *
-     * Start a network request
-     *
-     * - parameter url: The url to be parsed
-     * - parameter posting: What do you need to post
-     * - returns: closure -> sucess, fail.
-     */
-    // swiftlint:disable:next function_body_length
+    
+    /// [Unfinished]
+    /// - Parameters:
+    ///   - url: <#url description#>
+    ///   - method: <#method description#>
+    ///   - values: <#values description#>
+    ///   - completionHandler: <#completionHandler description#>
     public func networkRequest(
         url: String,
-        posting: [String: Any]? = ["nothing": "send"],
+        method: HTTPMethod,
+        values: [String: Any]?,
         completionHandler: @escaping (Result<String, Error>) -> Void
     ) {
         /// Check if the URL is valid
@@ -171,7 +182,7 @@ extension Aurora {
         do {
             /// Create JSON
             let JSON = try JSONSerialization.data(
-                withJSONObject: posting as Any,
+                withJSONObject: values as Any,
                 options: .sortedKeys
             )
             
@@ -191,6 +202,166 @@ extension Aurora {
                     AuroraError(message: "Error: \(error.localizedDescription)")
                 )
             )
+        }
+        
+        /// Create a URL Request
+        let request = URLRequest(url: siteURL).configure {
+            // 60 Seconds before timeout (default)
+            $0.timeoutInterval = 15
+            // Set Content-Type to FORM
+            $0.setValue("close", forHTTPHeaderField: "Connection")
+            $0.setValue(self.userAgent, forHTTPHeaderField: "User-Agent")
+            
+            if method == .post {
+                // We're posting
+                
+                // Set the HTTP Method to POST
+                $0.httpMethod = "POST"
+                
+                // Set Content-Type to FORM
+                $0.setValue(
+                    "application/x-www-form-urlencoded",
+                    forHTTPHeaderField: "Content-Type"
+                )
+                
+                // Set the httpBody
+                $0.httpBody = post.data(using: .utf8)
+            } else if method == .get {
+                // We're getting
+                
+                // Set the HTTP Method to GET
+                $0.httpMethod = "GET"
+            } else {
+                completionHandler(
+                    .failure(
+                        AuroraError(message: "Unknown method: \(method)")
+                    )
+                )
+            }
+        }
+        
+        /// Create a pinned URLSession
+        var session = URLSession.init(
+            // With default configuration
+            configuration: .default,
+            
+            // With our pinning delegate
+            delegate: AuroraURLSessionPinningDelegate(),
+            
+            // with no queue
+            delegateQueue: nil
+        )
+        
+        // Check if we have a public key, or certificate hash.
+        if HTTPSCertificate.publicKeyHash.count == 0 || HTTPSCertificate.certificateHash.count == 0 {
+            // Show a error, only on debug builds
+            log(
+                "[WARNING] No Public key pinning/Certificate pinning\n" +
+                    "           Improve your security to enable this!\n"
+            )
+            // Use a non-pinned URLSession
+            session = URLSession.shared
+        }
+        
+        if let cookieData = Aurora.cookies {
+            session.configuration.httpCookieStorage?.setCookies(
+                cookieData,
+                for: siteURL,
+                mainDocumentURL: nil
+            )
+        }
+        
+        // Start our datatask
+        session.dataTask(with: request) { (sitedata, _, theError) in
+            /// Check if we got any useable site data
+            guard let sitedata = sitedata else {
+                if post.length > 3 {
+                    self.log("Error: \(theError?.localizedDescription)")
+                } else {
+                    self.log("Error: \(theError?.localizedDescription)")
+                }
+                
+                completionHandler(.failure(theError!))
+                return
+            }
+            
+            // Save our cookies
+            Aurora.cookies = session.configuration.httpCookieStorage?.cookies
+            
+            if post.length > 3 {
+                let data = String.init(data: sitedata, encoding: .utf8)
+                
+                Aurora.fullResponse = data
+            } else {
+                let data = String.init(data: sitedata, encoding: .utf8)
+                
+                Aurora.fullResponse = data
+            }
+            
+            completionHandler(
+                .success(
+                    String.init(data: sitedata, encoding: .utf8)!
+                )
+            )
+        }.resume()
+    }
+    
+    /**
+     * networkRequest (non-blocking)
+     *
+     * Start a network request
+     *
+     * - parameter url: The url to be parsed
+     * - parameter posting: What do you need to post
+     * - returns: closure -> sucess, fail.
+     */
+    // swiftlint:disable:next function_body_length
+    public func networkRequest(
+        url: String,
+        posting: [String: Any]?,
+        completionHandler: @escaping (Result<String, Error>) -> Void
+    ) {
+        
+        /// Check if the URL is valid
+        guard let siteURL = URL(string: url) else {
+            completionHandler(
+                .failure(
+                    AuroraError(message: "Error: \(url) doesn't appear to be an URL")
+                )
+            )
+            
+            return
+        }
+        
+        /// Create a new post dict, for the JSON String
+        var post: String = ""
+        
+        if posting != nil {
+            // Try
+            do {
+                /// Create JSON
+                let JSON = try JSONSerialization.data(
+                    withJSONObject: posting as Any,
+                    options: .sortedKeys
+                )
+                
+                // set NewPosting
+                post = String.init(
+                    data: JSON,
+                    encoding: .utf8
+                )!.addingPercentEncoding(
+                    withAllowedCharacters: .urlHostAllowed
+                )!
+            }
+            
+            /// Catch errors
+            catch let error as NSError {
+                completionHandler(
+                    .failure(
+                        AuroraError(message: "Error: \(error.localizedDescription)")
+                    )
+                )
+            }
         }
         
         /// Create a URL Request
