@@ -22,11 +22,15 @@ import Foundation
 private var auroraFrameworkWebDebug: Bool = false
 
 /// <#Description#>
-open class SimpleTimer {/*<--was named Timer, but since swift 3, NSTimer is now Timer*/
+open class SimpleTimer {
     typealias Tick = () -> Void
+    /// <#Description#>
     var timer: Timer?
-    var interval: TimeInterval /*in seconds*/
+    /// <#Description#>
+    var interval: TimeInterval
+    /// <#Description#>
     var repeats: Bool
+    /// <#Description#>
     var tick: Tick
     
     /// <#Description#>
@@ -58,11 +62,8 @@ open class SimpleTimer {/*<--was named Timer, but since swift 3, NSTimer is now 
         }
     }
     
-    /**
-     * This method must be in the public or scope
-     */
-    @objc
-    func update() {
+    /// This method must be in the public or scope
+    @objc func update() {
         tick()
     }
 }
@@ -121,7 +122,12 @@ public extension Aurora {
     /// - Parameter url: <#url description#>
     /// - Returns: <#description#>
     @available(*, deprecated)
-    func getSiteAsText(url: URL, file: String = #file, line: Int = #line, function: String = #function) -> String {
+    func getSiteAsText(
+        url: URL,
+        file: String = #file,
+        line: Int = #line,
+        function: String = #function
+    ) -> String {
         log("WARNING: DO NOT USE THIS COMMAND ANYMORE\n"
         + "IT'S VERY UNSTABLE, PLEASE USE: Aurora.shared.networkRequest(...) instead\n"
         + "CALLED FROM:\n    file:\(file)\n    line: \(line)\n"
@@ -143,9 +149,6 @@ public extension Aurora {
         
         log("After the datatask = \(returnString)")
         
-        //        if (returnString != "Error") {
-        //            return returnString
-        //        } else {
         do {
             let myHTMLString = try NSString(
                 contentsOf: url,
@@ -196,17 +199,19 @@ public extension Aurora {
                 }
             }
         }
-        //        }
     }
-    /**
-     Get data as (plain) text
-     
-     - Parameter url: the URL of the file
-     
-     - Returns: the contents of the file
-     */
+    
+    /// Get data as (plain) text
+    ///
+    /// - Parameter url: the URL of the file
+    /// - Returns: the contents of the file
     @available(*, deprecated)
-    func getDataAsText(_ url: String, _ post: [String: String]? = ["nothing": "send"], file: String = #file, line: Int = #line, function: String = #function) -> String {
+    func getDataAsText(
+        _ url: String,
+        _ post: [String: String]? = ["nothing": "send"],
+        file: String = #file,
+        line: Int = #line,
+        function: String = #function) -> String {
         log("WARNING: DO NOT USE THIS COMMAND ANYMORE\n"
         + "IT'S VERY UNSTABLE, PLEASE USE: Aurora.shared.networkRequest(...) instead\n"
         + "CALLED FROM:\n    file:\(file)\n    line: \(line)\n"
@@ -261,13 +266,10 @@ public extension Aurora {
         }
     }
     
-    /**
-     Get data as Data
-     
-     - Parameter url: the URL of the file
-     
-     - Returns: the contents of the file
-     */
+    /// Get data as Data
+    ///
+    /// - Parameter url: the URL of the file
+    /// - Returns: the contents of the file
     @available(*, deprecated)
     func getDataAsData(
         _ url: String,
@@ -334,13 +336,10 @@ public extension Aurora {
         }
     }
     
-    /**
-     Remove all html elements from a string
-     
-     - Parameter html: The HTML String
-     
-     - Returns: the plain HTML String
-     */
+    /// Remove all html elements from a string
+    ///
+    /// - Parameter html: The HTML String
+    /// - Returns: the plain HTML String
     func removeHTML(_ html: String) -> String {
         do {
             let regex: NSRegularExpression = try NSRegularExpression(
@@ -361,24 +360,19 @@ public extension Aurora {
         }
     }
     
-    /**
-     Newline to Break (br) [like-php]
-     
-     - Parameter html: the string
-     
-     - Returns: the string with <br /> tags
-     */
+    /// Newline to Break (br) [like-php]
+    ///
+    /// Parameter html: the string
+    ///
+    /// Returns: the string with `<br />` tags
     func nl2br(_ html: String) -> String {
         return html.replacingOccurrences(of: "\n", with: "<br />")
     }
     
-    /**
-     Break (br) to Newline [like-php (reversed)]
-     
-     - Parameter html: the html string to convert to a string
-     
-     - Returns: the string with line-breaks
-     */
+    /// Break (br) to Newline [like-php (reversed)]
+    ///
+    /// - Parameter html: the html string to convert to a string
+    /// - Returns: the string with line-breaks
     func br2nl(_ html: String) -> String {
         return html.replacingOccurrences(of: "<br />", with: "\n") // html 4
             .replacingOccurrences(of: "<br/>", with: "\n") // invalid html
@@ -387,11 +381,8 @@ public extension Aurora {
         // \<(b|B)(r|R)( )?(\/)?\>
     }
     
-    /**
-     Set debug
-     
-     - Parameter debugVal: Debugmode on/off
-     */
+    /// Set debug
+    ///  - Parameter debugVal: Debugmode on/off
     func setDebug(_ debugVal: Bool) {
         auroraFrameworkWebDebug = debugVal
     }

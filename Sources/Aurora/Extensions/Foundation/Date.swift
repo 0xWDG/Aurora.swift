@@ -126,11 +126,8 @@ public extension Date {
         return Calendar.current.date(byAdding: components, to: self)
     }
     
-    /**
-     Returns a weekday or count of weekdays.
-     
-     - note: This value is interpreted in the context of the current calendar.
-     */
+    /// Returns a weekday or count of weekdays.
+    /// - note: This value is interpreted in the context of the current calendar.
     var weekday: Int? {
         let calendar = Calendar.current
         let components = calendar.dateComponents([.weekday], from: self)

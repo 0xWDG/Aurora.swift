@@ -155,6 +155,7 @@ extension ViewDescription: CustomDebugStringConvertible {
         return dString
     }
     
+    /// <#Description#>
     public var debugDescription: String {
         var dString = "View<\(className)> "
             + "(hidden:\(isHidden ? "Yes" : "No"),"
@@ -186,6 +187,7 @@ extension ViewDescription: CustomDebugStringConvertible {
     }
 }
 
+/// <#Description#>
 public class ViewDescription: ViewDescriptionProtocol {
     public let frame: CGRect
     public let snapshotImage: UIImage?

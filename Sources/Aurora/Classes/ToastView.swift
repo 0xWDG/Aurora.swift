@@ -1,4 +1,4 @@
-//
+// $$HEADER$$
 
 #if canImport(QuartzCore) && canImport(UIKit)
 
@@ -17,15 +17,20 @@ import QuartzCore
 ///     )
 @available(iOS 13.0, *)
 public class ToastView: UIView {
+    /// <#Description#>
     public override var bounds: CGRect {
         didSet {
             setupShadow()
         }
     }
     
+    /// <#Description#>
     private let toastHeight: CGFloat = 50
+    
+    /// <#Description#>
     private var hStack: UIStackView = UIStackView(frame: CGRect.zero)
     
+    /// <#Description#>
     private let darkBackgroundColor = UIColor(
         red: 0.13,
         green: 0.13,
@@ -33,6 +38,7 @@ public class ToastView: UIView {
         alpha: 1.00
     )
     
+    /// <#Description#>
     private let lightBackgroundColor = UIColor(
         red: 0.99,
         green: 0.99,
@@ -57,12 +63,20 @@ public class ToastView: UIView {
     /// Hide the view automatically on tap ?
     public var hideOnTap = true
     
+    /// <#Description#>
+    /// - Parameters:
+    ///   - title: <#title description#>
+    ///   - subtitle: <#subtitle description#>
+    ///   - icon: <#icon description#>
+    ///   - iconColor: <#iconColor description#>
+    ///   - haptic: <#haptic description#>
+    ///   - onTap: <#onTap description#>
     @discardableResult
     public init(title: String,
                 subtitle: String? = nil,
                 icon: UIImage? = nil,
                 iconColor: UIColor? = .label,
-                haptic: UINotificationFeedbackGenerator.FeedbackType,
+                haptic: UINotificationFeedbackGenerator.FeedbackType?,
                 onTap: (() -> Void)? = nil
     ) {
         super.init(frame: CGRect.zero)
@@ -70,6 +84,7 @@ public class ToastView: UIView {
         backgroundColor = viewBackgroundColor
         
         getTopViewController()?.view.addSubview(self)
+        
         hStack = UIStackView(frame: CGRect.zero).configure {
             $0.spacing = 16
             $0.axis = .horizontal
@@ -127,11 +142,14 @@ public class ToastView: UIView {
         
         transform = CGAffineTransform(translationX: 0, y: -100)
         
-        UINotificationFeedbackGenerator().notificationOccurred(haptic)
+        if let hapticType = haptic {
+            UINotificationFeedbackGenerator().notificationOccurred(hapticType)
+        }
         
         addAnimation()
     }
     
+    /// <#Description#>
     private func addAnimation() {
         UIView.animate(
             withDuration: 0.4,
@@ -148,6 +166,8 @@ public class ToastView: UIView {
         )
     }
     
+    /// <#Description#>
+    /// - Parameter time: <#time description#>
     public func hide(after time: TimeInterval) {
         DispatchQueue.main.asyncAfter(deadline: .now() + time, execute: {
             UIView.animate(
@@ -162,11 +182,15 @@ public class ToastView: UIView {
         })
     }
     
+    /// <#Description#>
+    /// - Parameter previousTraitCollection: <#previousTraitCollection description#>
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         backgroundColor = viewBackgroundColor
     }
     
+    /// <#Description#>
+    /// - Returns: <#description#>
     private func getTopViewController() -> UIViewController? {
          let windows = UIApplication.shared.windows
          let keyWindow = windows.count == 1 ? windows.first : windows.filter {
@@ -185,6 +209,7 @@ public class ToastView: UIView {
     }
     
     // swiftlint:disable:next function_body_length
+    /// <#Description#>
     private func setupConstraints() {
         translatesAutoresizingMaskIntoConstraints = false
         
@@ -248,6 +273,7 @@ public class ToastView: UIView {
         ])
     }
     
+    /// <#Description#>
     private func setupStackViewConstraints() {
         hStack.translatesAutoresizingMaskIntoConstraints = false
         
@@ -299,6 +325,7 @@ public class ToastView: UIView {
         ])
     }
     
+    /// <#Description#>
     private func setupShadow() {
         layer.masksToBounds = false
         layer.shadowOffset = CGSize(width: 0, height: 4)
@@ -307,6 +334,7 @@ public class ToastView: UIView {
         layer.shadowOpacity = 1
     }
     
+    /// <#Description#>
     @objc private func didTap() {
         if hideOnTap {
             hide(after: 0)
@@ -314,6 +342,8 @@ public class ToastView: UIView {
         onTap?()
     }
     
+    /// <#Description#>
+    /// - Parameter coder: <#coder description#>
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

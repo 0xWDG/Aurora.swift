@@ -31,6 +31,7 @@ import CommonCrypto
 #endif
 #endif
 
+/// <#Description#>
 public protocol AuroraNetworkLoggerConfigurationType {
     /// <#Description#>
     var bodyTrimLength: Int { get }
@@ -302,17 +303,30 @@ public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
         guard let data = data else { return }
         
         do {
-            let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-            let pretty = try JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+            let json = try JSONSerialization.jsonObject(
+                with: data,
+                options: .mutableContainers
+            )
             
-            if let string = NSString(data: pretty, encoding: String.Encoding.utf8.rawValue) {
+            let pretty = try JSONSerialization.data(
+                withJSONObject: json,
+                options: .prettyPrinted
+            )
+            
+            if let string = NSString(
+                data: pretty,
+                encoding: String.Encoding.utf8.rawValue
+            ) {
                 self.log += "  JSON:\n"
                 for line in string.components(separatedBy: "\n") {
                     self.log += "    " + line.replace("\" :", withString: "\":") + "\n"
                 }
             }
         } catch {
-            if let string = NSString(data: data, encoding: String.Encoding.utf8.rawValue) {
+            if let string = NSString(
+                data: data,
+                encoding: String.Encoding.utf8.rawValue
+            ) {
                 self.log += "  Data:\n"
                 for line in string.components(separatedBy: "\n") {
                     self.log += "    " + line + "\n"

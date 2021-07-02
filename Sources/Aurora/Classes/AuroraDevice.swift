@@ -11,6 +11,7 @@ import Foundation
 import UIKit
 #endif
 
+/// <#Description#>
 enum AuroraOS {
     case macOS
     case iOS, iPadOS, iPhoneOS
@@ -26,6 +27,7 @@ enum AuroraOS {
     case unknown
 }
 
+/// <#Description#>
 enum AuroraUserInterface {
     case carPley
     case mac

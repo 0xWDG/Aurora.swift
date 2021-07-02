@@ -19,25 +19,27 @@ import Foundation
 
 /// <#Description#>
 public class Run {
+    /// Alias for closire
     typealias Action = () -> Void
-    /// <#Description#>
+    
+    /// The queue
     var queue: [Action] = [Action]()
     
-    /// <#Description#>
-    /// - Parameter act: <#act description#>
-    init(act: @escaping Action) {
-        queue.append(act)
+    /// Initialize the first action
+    /// - Parameter act: Action closure
+    init(action: @escaping Action) {
+        queue.append(action)
     }
     
-    /// <#Description#>
-    /// - Parameter act: <#act description#>
-    /// - Returns: <#description#>
-    func then(act: @escaping Action) -> Self {
-        queue.append(act)
+    /// Append execution in the queue
+    /// - Parameter action: Action closure
+    /// - Returns: Self (for appending)
+    func then(action: @escaping Action) -> Self {
+        queue.append(action)
         return self
     }
     
-    /// <#Description#>
+    /// Run all the queue items.
     deinit {
         for item in queue {
             item()

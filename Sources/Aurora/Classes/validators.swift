@@ -17,17 +17,17 @@
 
 import Foundation
 
-/// <#Description#>
+/// Validate input
 open class Validator {
-    /// <#Description#>
+    /// Shared instance
     public static let shared = Validator.init()
     
-    /// <#Description#>
+    /// initialize
     public init() {}
     
-    /// <#Description#>
-    /// - Parameter str: <#str description#>
-    /// - Returns: <#description#>
+    /// Contains banned words?
+    /// - Parameter str: String to be checked.
+    /// - Returns: Contains banned words?
     public func containsBannedWord(str: String) -> Bool {
         let bannedWords = [
             "neuken",
@@ -40,9 +40,9 @@ open class Validator {
         return bannedWords.filter { str.contains($0) }.count > 0
     }
     
-    /// <#Description#>
-    /// - Parameter str: <#str description#>
-    /// - Returns: <#description#>
+    /// Does the string contains a phone number
+    /// - Parameter str: String to be checked.
+    /// - Returns: Contains phone number?
     public func containsPhoneNumber(str: String) -> Bool {
         do {
             let detector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.phoneNumber.rawValue)
@@ -60,9 +60,9 @@ open class Validator {
         }
     }
     
-    /// <#Description#>
-    /// - Parameter str: <#str description#>
-    /// - Returns: <#description#>
+    /// Does the string contains a email adress
+    /// - Parameter str: String to be checked.
+    /// - Returns: Contains email adress?
     public func containsEmailaddress(str: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
         do {
@@ -74,17 +74,13 @@ open class Validator {
                 range: NSRange(location: 0, length: nsString.length)
             )
             
-//            results.map {
-//                Aurora.shared.log("\"\(nsString.substring(with: $0.range))\" is an email adress!")
-//            }
-            
             return (results?.count ?? 0) > 0
         }
     }
     
-    /// <#Description#>
-    /// - Parameter str: <#str description#>
-    /// - Returns: <#description#>
+    /// Does the string contains a adress
+    /// - Parameter str: String to be checked.
+    /// - Returns: Contains adress?
     public func containsAddress(str: String) -> Bool {
         do {
             let detector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.address.rawValue)

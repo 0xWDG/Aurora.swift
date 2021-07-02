@@ -688,39 +688,29 @@ public extension String {
         ]
     }
     
-    /**
-     get lowercased string
-     */
+    /// get lowercased string
     var lowercased: String {
         return self.lowercased()
     }
     
-    /**
-     get string length
-     */
+    /// get string length
     var length: Int {
         return self.count
     }
     
-    /**
-     contains
-     
-     - Parameter str: String to check
-     
-     - Returns: true/false
-     */
+    /// contains
+    ///
+    /// - Parameter str: String to check
+    /// - Returns: true/false
     func contains(_ str: String) -> Bool {
         return self.range(of: str) != nil ? true: false
     }
     
-    /**
-     Replace
-     
-     - Parameter target: String
-     - Parameter withString: Replacement
-     
-     - Returns: Replaced string
-     */
+    /// Replace
+    ///
+    /// - Parameter target: String
+    /// - Parameter withString: Replacement
+    /// - Returns: Replaced string
     func replace(_ target: String, withString: String) -> String {
         return self.replacingOccurrences(
             of: target,
@@ -730,14 +720,11 @@ public extension String {
         )
     }
     
-    /**
-     Replace (Case Insensitive)
-     
-     - Parameter target: String
-     - Parameter withString: Replacement
-     
-     - Returns: Replaced string
-     */
+    /// Replace (Case Insensitive)
+    ///
+    /// - Parameter target: String
+    /// - Parameter withString: Replacement
+    /// - Returns: Replaced string
     func ireplace(_ target: String, withString: String) -> String {
         return self.replacingOccurrences(
             of: target,
@@ -747,13 +734,10 @@ public extension String {
         )
     }
     
-    /**
-     Character At Index
-     
-     - Parameter index: The index
-     
-     - Returns Character
-     */
+    /// Character At Index
+    ///
+    /// - Parameter index: The index
+    /// - Returns Character
     func characterAtIndex(_ index: Int) -> Character! {
         var cur = 0
         for char in self {
@@ -765,26 +749,20 @@ public extension String {
         return nil
     }
     
-    /**
-     Character Code At Index
-     
-     - Parameter index: The index
-     
-     - Returns Character
-     */
+    /// Character Code At Index
+    /// - Parameter index: The index
+    /// - Returns Character
     func charCodeAtindex(_ index: Int) -> Int! {
         return self.charCodeAt(index)
     }
 
-    /**
-     Finds the string between two bookend strings if it can be found.
-     
-     - parameter left:  The left bookend
-     - parameter right: The right bookend
-     
-     - returns: The string between the two bookends, or nil if the bookends cannot be found,\
-     the bookends are the same or appear contiguously.
-     */
+    /// Finds the string between two bookend strings if it can be found.
+    ///
+    /// - parameter left:  The left bookend
+    /// - parameter right: The right bookend
+    ///
+    /// - returns: The string between the two bookends, or nil if the bookends cannot be found,\
+    /// the bookends are the same or appear contiguously.
     func between(_ left: String, _ right: String) -> String? {
         guard let leftRange = range(of: left),
             let rightRange = range(of: right, options: .backwards),
@@ -1053,11 +1031,9 @@ public extension String {
         return nil
     }
     
-    /**
-     Convert anything to bool...
-     
-     - Returns: Bool
-     */
+    /// Convert anything to bool...
+    ///
+    /// - Returns: Bool
     func toBool() -> Bool? {
         let trimmed = self.trimmed.lowercased
         if trimmed == "true" || trimmed == "false" {
@@ -1082,36 +1058,34 @@ public extension String {
         return toDate(format)
     }
     
-    /**
-     Convert the number in the string to the corresponding\
-     Unicode character, e.g.\
-     <pre>
-     decodeNumeric("64", 10)   --> "@"
-     decodeNumeric("20ac", 16) --> "€"
-     </pre>
-     
-     - Parameter string
-     - Parameter base
-     - Returns: Character
-     */
+    /// Convert the number in the string to the corresponding\
+    /// Unicode character
+    ///
+    /// e.g.
+    ///
+    ///     decodeNumeric("64", 10)   → "@"
+    ///     decodeNumeric("20ac", 16) → "€"
+    ///
+    /// - Parameter string
+    /// - Parameter base
+    /// - Returns: Character
     fileprivate func decodeNumeric(_ string: String, base: Int32) -> Character? {
         let code = UInt32(strtoul(string, nil, base))
         return Character(UnicodeScalar(code)!)
     }
     
-    /**
-     Decode the HTML character entity to the corresponding\
-     Unicode character, return `nil` for invalid input.\
-     <pre>
-     decode("&amp;#64;")    --> "@"
-     decode("&amp;#x20ac;") --> "€"
-     decode("&amp;lt;")     --> "<"
-     decode("&amp;foo;")    --> nil
-     </pre>
-     
-     - Parameter entity: The entities
-     - Returns: Character
-     */
+    /// Decode the HTML character entity to the corresponding\
+    /// Unicode character, return `nil` for invalid input.
+    ///
+    /// e.g.
+    ///
+    ///     decode("&amp;#64;")    → "@"
+    ///     decode("&amp;#x20ac;") → "€"
+    ///     decode("&amp;lt;")     → "<"
+    ///     decode("&amp;foo;")    → nil
+    ///
+    /// - Parameter entity: The entities
+    /// - Returns: Character
     fileprivate func decode(_ entity: String) -> Character? {
         if entity.hasPrefix("&#x") || entity.hasPrefix("&#X") {
             return decodeNumeric(String(entity[entity.index(entity.startIndex, offsetBy: 3)...]), base: 16)
@@ -1122,12 +1096,10 @@ public extension String {
         }
     }
     
-    /**
-     Returns a new string made by replacing in the `String` all HTML \
-     character entity references with the corresponding character.
-     
-     - Returns: the decoded HTML
-     */
+    /// Returns a new string made by replacing in the `String` all HTML \
+    /// character entity references with the corresponding character.
+    ///
+    /// - Returns: the decoded HTML
     func decodeHTML() -> String {
         var result = ""
         var position = startIndex
@@ -1159,11 +1131,8 @@ public extension String {
         return result
     }
     
-    /**
-     Encode the HTML
-     
-     - Returns: the encoded HTML
-     */
+    /// Encode the HTML
+    /// - Returns: the encoded HTML
     func encodeHTML() -> String {
         // Ok, this feels weird.
         var tempString = self
@@ -1184,23 +1153,17 @@ public extension String {
         return tempString
     }
     
-    /**
-     getHTMLEntities
-     
-     - Returns: the HTMLEntities.
-     */
+    /// getHTMLEntities
+    /// - Returns: the HTMLEntities.
     func getHTMLEntities() -> [String: Character] {
         // PHP, Shame on you. but here you'll go.
         return HTMLEntities.characterEntities
     }
     
-    /**
-     Charcode for the character at index x
-     
-     - Parameter Char: the character index
-     
-     - Returns: charcode (int)
-     */
+    /// Charcode for the character at index x
+    ///
+    /// - Parameter Char: the character index
+    /// - Returns: charcode (int)
     func charCodeAt(_ character: Int) -> Int {
         if self.length > character {
             let character = String(self.characterAtIndex(character))
@@ -1210,14 +1173,12 @@ public extension String {
         }
     }
     
-    /**
-     Substring a string.
-     
-     - Parameter start: the start
-     - Parameter length: the length
-     
-     - Returns: the substring
-     */
+    /// Substring a string.
+    ///
+    /// - Parameter start: the start
+    /// - Parameter length: the length
+    ///
+    /// - Returns: the substring
     func substr(_ start: Int, _ length: Int = 0) -> String {
         let str = self
         if length == 0 {
@@ -1431,17 +1392,7 @@ public extension String {
     subscript (idx: Int) -> String {
         return String(self[idx] as Character)
     }
-    
-    //    /**
-    //     Make a sha1 Hash for the string.
-    //     - Returns: sha1 hashed string
-    //     */
-    //    public var sha1: String {
-    //        get {
-    //            return SHA1Hashing().hash(self)
-    //        }
-    //    }
-    
+
     /// <#Description#>
     /// - Returns: <#description#>
     func convertHtml() -> NSAttributedString {

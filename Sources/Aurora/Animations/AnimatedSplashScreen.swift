@@ -29,9 +29,7 @@ import UIKit
 public typealias SplashAnimatableCompletion = () -> Void
 public typealias SplashAnimatableExecution = () -> Void
 
-/**
- *  Protocol that represents splash animatable functionality
- */
+/// Protocol that represents splash animatable functionality
 public protocol SplashAnimatable: AnyObject {
     
     /// The image view that shows the icon
@@ -53,11 +51,8 @@ public protocol SplashAnimatable: AnyObject {
     var minimumBeats: Int { get set }
 }
 
-/**
- The types of animation supported
- 
- - Twitter: The default animation type is the Twitter App animation
- */
+/// The types of animation supported
+/// - Twitter: The default animation type is the Twitter App animation
 public enum SplashAnimationType: String {
     case twitter
     case rotateOut
@@ -129,15 +124,13 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
     /// The repeat counter for heart beat animation, default to 1
     open var minimumBeats: Int = 1
     
-    /**
-     Default constructor of the class
-     
-     - parameter iconImage:       The Icon image to show the animation
-     - parameter iconInitialSize: The initial size of the icon image
-     - parameter backgroundColor: The background color of the image, ideally this should match your Splash view
-     
-     - returns: The created RevealingSplashViewObject
-     */
+    /// Default constructor of the class
+    ///
+    ///  - parameter iconImage:       The Icon image to show the animation
+    ///      - parameter iconInitialSize: The initial size of the icon image
+    ///      - parameter backgroundColor: The background color of the image, ideally this should match your Splash view
+    ///
+    /// - returns: The created RevealingSplashViewObject
     public init(iconImage: UIImage, iconInitialSize: CGSize, backgroundColor: UIColor) {
         // Sets the initial values of the image view and icon view
         self.imageView = UIImageView()
@@ -220,9 +213,7 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
         fatalError("init(coder:) has not been implemented")
     }
     
-    /**
-     Starts the animation depending on the type
-     */
+    /// Starts the animation depending on the type
     public func startAnimation(_ completion: SplashAnimatableCompletion? = nil) {
         switch animationType {
         case .twitter:
@@ -299,11 +290,9 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
         }
     }
     
-    /**
-     Plays the rotate out animation
-     
-     - parameter completion: when the animation completes
-     */
+    /// Plays the rotate out animation
+    ///
+    /// - parameter completion: when the animation completes
     func playRotateOutAnimation(_ completion: SplashAnimatableCompletion? = nil) {
         if let imageView = self.imageView {
             /// Sets the animation with duration delay and completion
@@ -331,11 +320,9 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
         }
     }
     
-    /**
-     Plays a wobble animtion and then zoom out
-     
-     - parameter completion: completion
-     */
+    /// Plays a wobble animtion and then zoom out
+    ///
+    /// - parameter completion: completion
     func playWoobleAnimation(_ completion: SplashAnimatableCompletion? = nil) {
         
         if let imageView = self.imageView {
@@ -368,11 +355,8 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
         }
     }
     
-    /**
-     Plays the swing animation and zoom out
-     
-     - parameter completion: completion
-     */
+    /// Plays the swing animation and zoom out
+    /// - parameter completion: completion
     func playSwingAnimation(_ completion: SplashAnimatableCompletion? = nil) {
         if let imageView = self.imageView {
             
@@ -395,11 +379,8 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
         }
     }
     
-    /**
-     Plays the pop animation with completion
-     
-     - parameter completion: completion
-     */
+    /// Plays the pop animation with completion
+    /// - parameter completion: completion
     func playPopAnimation(_ completion: SplashAnimatableCompletion? = nil) {
         if let imageView = self.imageView {
             
@@ -421,11 +402,8 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
         }
     }
     
-    /**
-     Plays the zoom out animation with completion
-     
-     - parameter completion: completion
-     */
+    /// Plays the zoom out animation with completion
+    /// - parameter completion: completion
     func playZoomOutAnimation(_ completion: SplashAnimatableCompletion? = nil) {
         if let imageView = imageView {
             let growDuration: TimeInterval =  duration * 0.3
@@ -442,11 +420,8 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
         }
     }
     
-    /**
-     Retuns the default zoom out transform to be use mixed with other transform
-     
-     - returns: ZoomOut fransfork
-     */
+    /// Retuns the default zoom out transform to be use mixed with other transform
+    /// - returns: ZoomOut fransfork
     fileprivate func getZoomOutTranform() -> CGAffineTransform {
         let zoomOutTranform: CGAffineTransform = CGAffineTransform(scaleX: 20, y: 20)
         return zoomOutTranform
@@ -464,11 +439,8 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
         CATransaction.commit()
     }
     
-    /**
-     Plays the heatbeat animation with completion
-     
-     - parameter completion: completion
-     */
+    /// Plays the heatbeat animation with completion
+    /// - parameter completion: completion
     func playHeartBeatAnimation(_ completion: SplashAnimatableCompletion? = nil) {
         if let imageView = self.imageView {
             
@@ -494,11 +466,9 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
         }
     }
     
-    /**
-     Stops the heart beat animation after gracefully finishing the last beat
-     
-     This function will not stop the original completion block from getting called
-     */
+    /// Stops the heart beat animation after gracefully finishing the last beat
+    ///
+    /// This function will not stop the original completion block from getting called
     func finishHeartBeatAnimation() {
         self.heartAttack = true
     }

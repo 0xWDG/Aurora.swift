@@ -39,6 +39,9 @@ extension Aurora {
     /// the full networkRequestResponse
     static var fullResponse: String? = ""
     
+    /// The dispatch group
+    static let group: DispatchGroup = .init()
+    
     struct HTTPSCertificate {
         /// Server's public key hash
         static var publicKeyHash = ""
@@ -60,50 +63,46 @@ extension Aurora {
         case get
     }
     
-    /**
-     * Set hash of the server's certificate
-     *
-     * This saves the hash of the server's certificate
-     *
-     * - parameter certificateHash: Server's certificate hash
-     */
+    /// Set hash of the server's certificate
+    ///
+    /// This saves the hash of the server's certificate
+    ///
+    /// - parameter certificateHash: Server's certificate hash
     public func set(certificateHash: String) {
         HTTPSCertificate.certificateHash = certificateHash
     }
     
-    /**
-     * Set hash of the server's public key
-     *
-     * This saves the hash of the server's public key
-     *
-     * - parameter publicKeyHash: Server's public key hash
-     */
+    /// Set hash of the server's public key
+    ///
+    /// This saves the hash of the server's public key
+    ///
+    /// - parameter publicKeyHash: Server's public key hash
     public func set(publicKeyHash: String) {
         HTTPSCertificate.publicKeyHash = publicKeyHash
     }
     
-    /**
-     * Get hash of the server's certificate
-     *
-     * This gets the hash of the server's certificate
-     *
-     * - returns Server's certificate hash
-     */
+    /// Get hash of the server's certificate
+    ///
+    /// This gets the hash of the server's certificate
+    ///
+    /// - returns Server's certificate hash
     public func getCertificateHash() -> String {
         return HTTPSCertificate.certificateHash
     }
     
-    /**
-     * Get hash of the server's public key
-     *
-     * This gets the hash of the server's public key
-     *
-     * - returns Server's public key hash
-     */
+    /// Get hash of the server's public key
+    ///
+    /// This gets the hash of the server's public key
+    ///
+    /// - returns Server's public key hash
     public func getPublicKeyHash() -> String {
         return HTTPSCertificate.publicKeyHash
     }
     
+    /// <#Description#>
+    /// - Parameter fromURL: <#fromURL description#>
+    /// - Returns: <#description#>
+    @available(*, deprecated)
     func networkFetch(fromURL: URL) -> Data {
         var waiting = true
         var returnData: Data = Data.init()
@@ -122,15 +121,14 @@ extension Aurora {
         return returnData
     }
     
-    /**
-     * networkRequest (blocking)
-     *
-     * Start a network request
-     *
-     * - parameter url: The url to be parsed
-     * - parameter posting: What do you need to post
-     * - returns: Result<String, Error>
-     */
+    /// networkRequest (blocking)
+    ///
+    /// Start a network request
+    ///
+    /// - parameter url: The url to be parsed
+    /// - parameter posting: What do you need to post
+    /// - returns: Result<String, Error>
+    @available(*, deprecated)
     public func networkRequest(
         url: String,
         posting: [String: Any]? = ["nothing": "send"]
@@ -151,6 +149,59 @@ extension Aurora {
         )
     }
     
+    /// NOT DONE YET (Blocking)
+    /// - Parameters:
+    ///   - url: <#url description#>
+    ///   - method: <#method description#>
+    ///   - values: <#values description#>
+    /// - Returns: <#description#>
+    public func networkRequest(
+        url: String,
+        method: HTTPMethod,
+        values: [String: Any]?
+    ) -> Data? {
+        var result: Data?
+        var inGroup = true
+        var waiting = true
+        
+        Aurora.group.enter()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 30) {
+            if waiting {
+                Aurora.shared.log(
+                    AuroraError(message: "Timeout, killing request")
+                )
+                
+                
+                if inGroup {
+                    Aurora.group.leave()
+                }
+            }
+        }
+        
+        Aurora.shared.networkRequest(
+            url: url,
+            method: method,
+            values: values) { response in
+            waiting = false
+            
+            switch response {
+            case .success(let data):
+                result = data.data(using: .utf8)
+            case .failure(let error):
+                Aurora.shared.log(error.localizedDescription)
+            }
+            
+            if inGroup {
+                String.group.leave()
+            }
+        }
+        
+        String.group.wait()
+        
+        inGroup = false
+        return result
+    }
     
     /// [Unfinished]
     /// - Parameters:
@@ -306,15 +357,13 @@ extension Aurora {
         }.resume()
     }
     
-    /**
-     * networkRequest (non-blocking)
-     *
-     * Start a network request
-     *
-     * - parameter url: The url to be parsed
-     * - parameter posting: What do you need to post
-     * - returns: closure -> sucess, fail.
-     */
+    /// networkRequest (non-blocking)
+    ///
+    /// Start a network request
+    ///
+    /// - parameter url: The url to be parsed
+    /// - parameter posting: What do you need to post
+    /// - returns: closure -> sucess, fail.
     // swiftlint:disable:next function_body_length
     public func networkRequest(
         url: String,

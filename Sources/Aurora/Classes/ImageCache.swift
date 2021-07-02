@@ -24,6 +24,9 @@ import UIKit
 let TMP: String = NSTemporaryDirectory()
 
 public extension UIImage {
+    /// <#Description#>
+    /// - Parameter url: <#url description#>
+    /// - Returns: <#description#>
     func from(url: URL) -> UIImage? {
         guard let data = try? Data(contentsOf: url) else {
             return nil

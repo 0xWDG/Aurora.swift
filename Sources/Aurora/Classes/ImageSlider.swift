@@ -35,7 +35,17 @@ open class ImageSlider {
     var scrollView: UIScrollView
     
     /// <#Description#>
-    var colors: [UIColor] = [.red, .orange, .green, .yellow, .gray, .cyan, .clear, .brown, .black]
+    var colors: [UIColor] = [
+        .red,
+        .orange,
+        .green,
+        .yellow,
+        .gray,
+        .cyan,
+        .clear,
+        .brown,
+        .black
+    ]
     
     /// <#Description#>
     /// - Parameters:

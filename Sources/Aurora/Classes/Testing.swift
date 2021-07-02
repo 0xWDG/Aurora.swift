@@ -22,6 +22,9 @@ import UIKit
 import Cocoa
 #endif
 
+/// UITest
+///
+/// Great additions for UITesting
 public enum UITest {
     /// Check if interface tests are running or not.
     public static var isRunning: Bool {
@@ -29,6 +32,9 @@ public enum UITest {
     }
 }
 
+/// UnitTest
+///
+/// Great additions for UnitTesting
 public enum UnitTest {
     /// Check if unit tests are running or not.
     public static var isRunning: Bool {
@@ -36,6 +42,9 @@ public enum UnitTest {
     }
     
     #if !os(watchOS)
+    /// Count time for action
+    /// - Parameter closure: item to be performed
+    /// - Returns: execution time in Float
     public static func measure(closure: () -> Void) -> Float {
         let start = CACurrentMediaTime()
         closure()
