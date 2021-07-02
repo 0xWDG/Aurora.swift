@@ -17,7 +17,7 @@
     <a title="Extensions  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">Aurora 1.0 Docs</a> (93% documented)</p>
+        <p><a href="index.html">Aurora 1.0 Docs</a> (90% documented)</p>
         <p class="header-right"><a href="https://github.com/AuroraFramework/Aurora.swift"><img src="img/gh.png"/>View on GitHub</a></p>
         <p class="header-right"><a href="dash-feed://https%3A%2F%2FAuroraFramework.github.io%2FAurora.swift%2Fdocsets%2FBaaS.docset"><img src="img/dash.png"/>Install in Dash</a></p>
         <p class="header-right">
@@ -45,6 +45,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="Classes/Aurora.html">Aurora</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Aurora/HTTPMethod.html">– HTTPMethod</a>
               </li>
               <li class="nav-group-task">
                 <a href="Classes/AuroraFrameworkiCloudSync.html">AuroraFrameworkiCloudSync</a>
@@ -189,15 +192,6 @@
                 <a href="Extensions/Color/Social.html">– Social</a>
               </li>
               <li class="nav-group-task">
-                <a href="Extensions/Color/Material.html">– Material</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Extensions/Color/CSS.html">– CSS</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Extensions/Color/FlatUI.html">– FlatUI</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="Extensions/Data.html">Data</a>
               </li>
               <li class="nav-group-task">
@@ -240,6 +234,9 @@
                 <a href="Extensions.html#/s:s4Int8V">Int8</a>
               </li>
               <li class="nav-group-task">
+                <a href="Extensions/Locale.html">Locale</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Extensions/MKMapView.html">MKMapView</a>
               </li>
               <li class="nav-group-task">
@@ -256,6 +253,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="Extensions/NSError.html">NSError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/NSMutableAttributedString.html">NSMutableAttributedString</a>
               </li>
               <li class="nav-group-task">
                 <a href="Extensions/NSMutableAttributedString.html">NSMutableAttributedString</a>
@@ -328,6 +328,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="Extensions/UIScreen.html">UIScreen</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UIScrollView.html">UIScrollView</a>
               </li>
               <li class="nav-group-task">
                 <a href="Extensions/UIStoryboard.html">UIStoryboard</a>
@@ -412,6 +415,9 @@
             <a href="Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Protocols/AuroraNetworkLoggerConfigurationType.html">AuroraNetworkLoggerConfigurationType</a>
               </li>
               <li class="nav-group-task">
@@ -444,6 +450,9 @@
             <a href="Structs.html">Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="Structs/AuroraConfig.html">AuroraConfig</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Structs.html#/s:6Aurora0A33NetworkLoggerDefaultConfigurationV">AuroraNetworkLoggerDefaultConfiguration</a>
               </li>
               <li class="nav-group-task">
@@ -472,6 +481,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="Structs/Regex/Match.html">– Match</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ShakeEffect.html">ShakeEffect</a>
               </li>
               <li class="nav-group-task">
                 <a href="Structs/UserDefault.html">UserDefault</a>
@@ -783,6 +795,7 @@
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">extension</span> <span class="kt">Array</span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Array</span><span class="p">:</span> <span class="kt"><a href="Protocols/Configure.html">Configure</a></span></code></pre>
 <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">extension</span> <span class="kt">Array</span> <span class="k">where</span> <span class="kt">Element</span><span class="p">:</span> <span class="kt">Equatable</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Array</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></span> <span class="k">where</span> <span class="kt">Element</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Array</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span> <span class="k">where</span> <span class="kt">Element</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span></code></pre>
 
                         </div>
@@ -811,6 +824,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">extension</span> <span class="kt">Bool</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Bool</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Bool</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span></code></pre>
 
                         </div>
@@ -895,6 +909,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Double</span><span class="p">:</span> <span class="kt"><a href="Protocols/DivisibleArithmetic.html">DivisibleArithmetic</a></span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Double</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Double</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span></code></pre>
 
                         </div>
@@ -923,6 +938,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Float</span><span class="p">:</span> <span class="kt"><a href="Protocols/DivisibleArithmetic.html">DivisibleArithmetic</a></span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Float</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Float</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span></code></pre>
 
                         </div>
@@ -977,6 +993,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">extension</span> <span class="kt">Data</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Data</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Data</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span></code></pre>
 
                         </div>
@@ -1005,6 +1022,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">extension</span> <span class="kt">Date</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Date</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Date</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span></code></pre>
 
                         </div>
@@ -1033,6 +1051,7 @@
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Dictionary</span><span class="p">:</span> <span class="kt"><a href="Protocols/DictionaryDynamicLookup.html">DictionaryDynamicLookup</a></span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Dictionary</span><span class="p">:</span> <span class="kt"><a href="Protocols/Configure.html">Configure</a></span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Dictionary</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></span> <span class="k">where</span> <span class="kt">Key</span> <span class="o">==</span> <span class="kt">String</span><span class="p">,</span> <span class="kt">Value</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Dictionary</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span> <span class="k">where</span> <span class="kt">Key</span> <span class="o">==</span> <span class="kt">String</span><span class="p">,</span> <span class="kt">Value</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span></code></pre>
 
                         </div>
@@ -1141,7 +1160,35 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">extension</span> <span class="kt">Int</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Int</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Int</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10Foundation6LocaleV"></a>
+                    <a name="//apple_ref/swift/Extension/Locale" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10Foundation6LocaleV">Locale</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                        <a href="Extensions/Locale.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">extension</span> <span class="kt">Locale</span></code></pre>
 
                         </div>
                       </div>
@@ -1171,6 +1218,25 @@
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">extension</span> <span class="kt">NSMutableAttributedString</span></code></pre>
 
                         </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/"></a>
+                    <a name="//apple_ref/swift/Extension/NSMutableAttributedString" class="dashAnchor"></a>
+                    <a class="token" href="#/">NSMutableAttributedString</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                        <a href="Extensions/NSMutableAttributedString.html" class="slightly-smaller">See more</a>
                       </div>
                     </section>
                   </div>
@@ -1516,6 +1582,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">extension</span> <span class="kt">String</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">String</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">String</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span></code></pre>
 
                         </div>
@@ -1571,6 +1638,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">extension</span> <span class="kt">UInt</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">UInt</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">UInt</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span></code></pre>
 
                         </div>
@@ -1892,6 +1960,25 @@
                   <div>
                     <code>
                     <a name="/"></a>
+                    <a name="//apple_ref/swift/Extension/UIScrollView" class="dashAnchor"></a>
+                    <a class="token" href="#/">UIScrollView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                        <a href="Extensions/UIScrollView.html" class="slightly-smaller">See more</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Extension/UIStoryboard" class="dashAnchor"></a>
                     <a class="token" href="#/">UIStoryboard</a>
                     </code>
@@ -2034,14 +2121,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Make <code>NSData</code> compliant to <code><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></code></p>
+                        <p>Make <code>NSData</code> compliant to <code><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></code></p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">NSData</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">NSData</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">NSData</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span></code></pre>
 
                         </div>
                       </div>
@@ -2061,14 +2149,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Make <code>NSDate</code> compliant to <code><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></code></p>
+                        <p>Make <code>NSDate</code> compliant to <code><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></code></p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">NSDate</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">NSDate</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">NSDate</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span></code></pre>
 
                         </div>
                       </div>
@@ -2088,14 +2177,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Make <code>NSNumber</code> compliant to <code><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></code></p>
+                        <p>Make <code>NSNumber</code> compliant to <code><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></code></p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">NSNumber</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">NSNumber</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">NSNumber</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span></code></pre>
 
                         </div>
                       </div>
@@ -2115,14 +2205,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Make <code>Int8</code> compliant to <code><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></code></p>
+                        <p>Make <code>Int8</code> compliant to <code><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></code></p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Int8</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Int8</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Int8</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span></code></pre>
 
                         </div>
                       </div>
@@ -2142,14 +2233,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Make <code>Int16</code> compliant to <code><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></code></p>
+                        <p>Make <code>Int16</code> compliant to <code><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></code></p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Int16</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Int16</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Int16</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span></code></pre>
 
                         </div>
                       </div>
@@ -2169,14 +2261,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Make <code>Int32</code> compliant to <code><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></code></p>
+                        <p>Make <code>Int32</code> compliant to <code><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></code></p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Int32</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Int32</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Int32</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span></code></pre>
 
                         </div>
                       </div>
@@ -2196,14 +2289,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Make <code>Int64</code> compliant to <code><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></code></p>
+                        <p>Make <code>Int64</code> compliant to <code><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></code></p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Int64</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Int64</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Int64</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span></code></pre>
 
                         </div>
                       </div>
@@ -2223,14 +2317,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Make <code>UInt8</code> compliant to <code><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></code></p>
+                        <p>Make <code>UInt8</code> compliant to <code><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></code></p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">UInt8</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">UInt8</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">UInt8</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span></code></pre>
 
                         </div>
                       </div>
@@ -2250,14 +2345,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Make <code>UInt16</code> compliant to <code><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></code></p>
+                        <p>Make <code>UInt16</code> compliant to <code><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></code></p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">UInt16</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">UInt16</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">UInt16</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span></code></pre>
 
                         </div>
                       </div>
@@ -2277,14 +2373,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Make <code>UInt32</code> compliant to <code><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></code></p>
+                        <p>Make <code>UInt32</code> compliant to <code><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></code></p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">UInt32</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">UInt32</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">UInt32</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span></code></pre>
 
                         </div>
                       </div>
@@ -2304,14 +2401,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Make <code>UInt64</code> compliant to <code><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></code></p>
+                        <p>Make <code>UInt64</code> compliant to <code><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></code></p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">UInt64</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">UInt64</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora0A16ConfigStoreValueP">AuroraConfigStoreValue</a></span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">UInt64</span><span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:6Aurora17PropertyListValueP">PropertyListValue</a></span></code></pre>
 
                         </div>
                       </div>
@@ -2323,8 +2421,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2021 <a class="link" href="https://wesleydegroot.nl" target="_blank" rel="external">Wesley de Groot (et. al)</a>. All rights reserved. (Last updated: 2021-04-30)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2021 <a class="link" href="https://wesleydegroot.nl" target="_blank" rel="external">Wesley de Groot (et. al)</a>. All rights reserved. (Last updated: 2021-07-02)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.7</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

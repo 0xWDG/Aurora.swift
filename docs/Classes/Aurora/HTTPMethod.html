@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Options Structure Reference</title>
+    <title>HTTPMethod Enumeration Reference</title>
     <link rel="stylesheet" type="text/css" href="../../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../../css/highlight.css" />
     <meta charset='utf-8'>
@@ -13,8 +13,8 @@
     <script src="../../js/jazzy.search.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/swift/Struct/Options" class="dashAnchor"></a>
-    <a title="Options Structure Reference"></a>
+    <a name="//apple_ref/swift/Enum/HTTPMethod" class="dashAnchor"></a>
+    <a title="HTTPMethod Enumeration Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../../index.html">Aurora 1.0 Docs</a> (90% documented)</p>
@@ -31,7 +31,7 @@
       <p id="breadcrumbs">
         <a href="../../index.html">Aurora Reference</a>
         <img id="carat" src="../../img/carat.png" />
-        Options Structure Reference
+        HTTPMethod Enumeration Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -542,38 +542,29 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Options</h1>
+            <h1>HTTPMethod</h1>
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">Options</span> <span class="p">:</span> <span class="kt">OptionSet</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">HTTPMethod</span></code></pre>
 
                 </div>
               </div>
-            <p><code>Options</code> defines alternate behaviours of regular expressions when matching.</p>
+            <p>&lt;#Description#&gt;</p>
 
               <div class="slightly-smaller">
-                <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Regex.swift#L186-L236">Show on GitHub</a>
+                <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Aurora Networking/Aurora.Networking.swift#L56-L66">Show on GitHub</a>
               </div>
           </section>
           <section class="section task-group-section">
             <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Properties"></a>
-                <a name="//apple_ref/swift/Section/Properties" class="dashAnchor"></a>
-                <div class="section-name-container">
-                  <a class="section-name-link" href="#/Properties"></a>
-                  <h3 class="section-name"><p>Properties</p>
-</h3>
-                </div>
-              </div>
               <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6Aurora5RegexV7OptionsV10ignoreCaseAEvpZ"></a>
-                    <a name="//apple_ref/swift/Variable/ignoreCase" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6Aurora5RegexV7OptionsV10ignoreCaseAEvpZ">ignoreCase</a>
+                    <a name="/s:6AuroraAAC10HTTPMethodO4postyA2DmF"></a>
+                    <a name="//apple_ref/swift/Element/post" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6AuroraAAC10HTTPMethodO4postyA2DmF">post</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -581,19 +572,21 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Ignores the case of letters when matching.</p>
+                        <p>POST</p>
+
+<p>Post a file or form</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">ignoreCase</span><span class="p">:</span> <span class="kt"><a href="../../Structs/Regex.html">Regex</a></span><span class="o">.</span><span class="kt">Options</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">post</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Regex.swift#L189">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Aurora Networking/Aurora.Networking.swift#L60">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -601,9 +594,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6Aurora5RegexV7OptionsV20ignoreMetacharactersAEvpZ"></a>
-                    <a name="//apple_ref/swift/Variable/ignoreMetacharacters" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6Aurora5RegexV7OptionsV20ignoreMetacharactersAEvpZ">ignoreMetacharacters</a>
+                    <a name="/s:6AuroraAAC10HTTPMethodO3getyA2DmF"></a>
+                    <a name="//apple_ref/swift/Element/get" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6AuroraAAC10HTTPMethodO3getyA2DmF">get</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -611,156 +604,21 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Ignore any metacharacters in the pattern, treating every character as
-a literal.</p>
+                        <p>GET</p>
+
+<p>Just a regular request to a webserver</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">ignoreMetacharacters</span><span class="p">:</span> <span class="kt"><a href="../../Structs/Regex.html">Regex</a></span><span class="o">.</span><span class="kt">Options</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="k">get</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Regex.swift#L193">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:6Aurora5RegexV7OptionsV17anchorsMatchLinesAEvpZ"></a>
-                    <a name="//apple_ref/swift/Variable/anchorsMatchLines" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6Aurora5RegexV7OptionsV17anchorsMatchLinesAEvpZ">anchorsMatchLines</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>By default, &ldquo;^&rdquo; matches the beginning of the string and &ldquo;$&rdquo; matches the
-end of the string, ignoring any newlines. With this option, &ldquo;^&rdquo; will
-the beginning of each line, and &ldquo;$&rdquo; will match the end of each line.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">anchorsMatchLines</span><span class="p">:</span> <span class="kt"><a href="../../Structs/Regex.html">Regex</a></span><span class="o">.</span><span class="kt">Options</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Regex.swift#L198">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:6Aurora5RegexV7OptionsV24dotMatchesLineSeparatorsAEvpZ"></a>
-                    <a name="//apple_ref/swift/Variable/dotMatchesLineSeparators" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6Aurora5RegexV7OptionsV24dotMatchesLineSeparatorsAEvpZ">dotMatchesLineSeparators</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Usually, &ldquo;.&rdquo; matches all characters except newlines (\n). Using this,
-options will allow &ldquo;.&rdquo; to match newLines</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">dotMatchesLineSeparators</span><span class="p">:</span> <span class="kt"><a href="../../Structs/Regex.html">Regex</a></span><span class="o">.</span><span class="kt">Options</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Regex.swift#L202">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:6Aurora5RegexV7OptionsV8rawValueSivp"></a>
-                    <a name="//apple_ref/swift/Property/rawValue" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6Aurora5RegexV7OptionsV8rawValueSivp">rawValue</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The raw value of the <code>OptionSet</code></p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">rawValue</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Regex.swift#L205">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Initializers"></a>
-                <a name="//apple_ref/swift/Section/Initializers" class="dashAnchor"></a>
-                <div class="section-name-container">
-                  <a class="section-name-link" href="#/Initializers"></a>
-                  <h3 class="section-name"><p>Initializers</p>
-</h3>
-                </div>
-              </div>
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:6Aurora5RegexV7OptionsV8rawValueAESi_tcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(rawValue:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6Aurora5RegexV7OptionsV8rawValueAESi_tcfc">init(rawValue:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The raw value init for the <code>OptionSet</code></p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">rawValue</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Regex.swift#L233-L235">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Aurora Networking/Aurora.Networking.swift#L65">Show on GitHub</a>
                       </div>
                     </section>
                   </div>

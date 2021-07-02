@@ -44,7 +44,8 @@ public extension UIImage {
     ///
     /// - parameter color: The color to fill the image.
     /// - parameter size: The size of the created image. \
-    /// When function requires `size` and is called without this parameter, then `(1.0, 1.0)` is used as a default value.
+    /// When function requires `size` and is called without this parameter, then `(1.0, 1.0)`\
+    ///  is used as a default value.
     /// - returns: An initialized `UIImage` object, or `nil`\
     /// if the method could not initialize the image from the specified data.
     convenience init?(color: UIColor, size: CGSize = CGSize(width: 1.0, height: 1.0)) {

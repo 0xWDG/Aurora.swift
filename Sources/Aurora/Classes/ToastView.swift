@@ -16,6 +16,7 @@ import QuartzCore
 ///       onTap: nil
 ///     )
 @available(iOS 13.0, *)
+// swiftlint:disable:next type_body_length
 public class ToastView: UIView {
     /// <#Description#>
     public override var bounds: CGRect {
@@ -208,8 +209,8 @@ public class ToastView: UIView {
         }
     }
     
-    // swiftlint:disable:next function_body_length
     /// <#Description#>
+    // swiftlint:disable:next function_body_length
     private func setupConstraints() {
         translatesAutoresizingMaskIntoConstraints = false
         
@@ -348,4 +349,5 @@ public class ToastView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+// swiftlint:disable:last type_body_length
 #endif

@@ -51,12 +51,14 @@ final class ObjectAssociation<T: Any> {
     
     subscript(index: AnyObject) -> T? {
         get {
-            // Force-cast is fine here as we want it to fail loudly if we don't use the correct type.
-            // swiftlint:disable:next force_cast
-            objc_getAssociatedObject(
+            guard let associatedObject = objc_getAssociatedObject(
                 index,
                 Unmanaged.passUnretained(self).toOpaque()
-            ) as! T?
+            ) as? T? else {
+                fatalError("Could not cast to \(T.Type.self)")
+            }
+            
+            return associatedObject
         }
         set {
             objc_setAssociatedObject(

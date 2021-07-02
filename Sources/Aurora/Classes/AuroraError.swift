@@ -45,8 +45,6 @@ extension AuroraError: LocalizedError {
 
 extension String {
     var auroraError: AuroraError {
-        get {
-            return AuroraError(message: self)
-        }
+        return AuroraError(message: self)
     }
 }

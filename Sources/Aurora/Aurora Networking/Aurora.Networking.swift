@@ -17,6 +17,8 @@
 
 import Foundation
 
+// swiftlint:disable file_length
+
 #if canImport(Security)
 import Security
 #endif
@@ -172,7 +174,6 @@ extension Aurora {
                     AuroraError(message: "Timeout, killing request")
                 )
                 
-                
                 if inGroup {
                     Aurora.group.leave()
                 }
@@ -209,6 +210,7 @@ extension Aurora {
     ///   - method: <#method description#>
     ///   - values: <#values description#>
     ///   - completionHandler: <#completionHandler description#>
+    // swiftlint:disable:next function_body_length
     public func networkRequest(
         url: String,
         method: HTTPMethod,
