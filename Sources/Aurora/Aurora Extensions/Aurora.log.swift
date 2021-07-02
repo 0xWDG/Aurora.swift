@@ -7,27 +7,25 @@ import UIKit
 #endif
 
 extension Aurora {
-    /**
-     * Log
-     *
-     * This is used to send log messages with the following syntax
-     *
-     *     [Aurora] Filename:line functionName(...) @Main/Background:
-     *      Message
-     *
-     * _want to use a callback/loghandler?_
-     *
-     * Put the following (preffered in your AppDelegate):
-     *
-     *      Aurora.shared.logHandler { message in
-     *          // Do something with the message
-     *      }
-     *
-     * - parameter message: the message to send
-     * - parameter file: the filename
-     * - parameter line: the line
-     * - parameter function: function name
-     */
+    ///  Log
+    ///
+    ///  This is used to send log messages with the following syntax
+    ///
+    ///      [Aurora] Filename:line functionName(...) @Main/Background:
+    ///       Message
+    ///
+    ///  _want to use a callback/loghandler?_
+    ///
+    ///  Put the following (preffered in your AppDelegate):
+    ///
+    ///       Aurora.shared.logHandler { message in
+    ///           // Do something with the message
+    ///       }
+    ///
+    ///  - parameter message: the message to send
+    ///  - parameter file: the filename
+    ///  - parameter line: the line
+    ///  - parameter function: function name
     @discardableResult
     public func log(
         _ message: String...,
@@ -72,37 +70,29 @@ extension Aurora {
             }
         }
         
-        // return the debug value, if wanted you can use
-        //
-        //    if (log("myMessage")) {
-        //       // My message is logged
-        //    } else {
-        //       // My message is not logged
-        //    }
         return debug
     }
     
-    /**
-     * Log
-     *
-     * This is used to send log messages with the following syntax
-     *
-     *     [Aurora] Filename:line functionName(...) @Main/Background:
-     *      Message
-     *
-     * _want to use a callback/loghandler?_
-     *
-     * Put the following (preffered in your AppDelegate):
-     *
-     *      Aurora.shared.logHandler { message in
-     *          // Do something with the message
-     *      }
-     *
-     * - parameter message: the message to send
-     * - parameter file: the filename
-     * - parameter line: the line
-     * - parameter function: function name
-     */
+    /// Log
+    ///
+    /// This is used to send log messages with the following syntax
+    ///
+    ///     [Aurora] Filename:line functionName(...) @Main/Background:
+    ///      Message
+    ///
+    /// _want to use a callback/loghandler?_
+    ///
+    /// Put the following (preffered in your AppDelegate):
+    ///
+    ///      Aurora.shared.logHandler { message in
+    ///          // Do something with the message
+    ///      }
+    ///
+    /// - parameter message: the message to send
+    /// - parameter file: the filename
+    /// - parameter line: the line
+    /// - parameter function: function name
+    ///
     @discardableResult
     public func log(_ anyThing: Any..., file: String = #file, line: Int = #line, function: String = #function) -> Bool {
         if debug {
@@ -145,51 +135,50 @@ extension Aurora {
             }
         }
         
-        // return the debug value, if wanted you can use
-        //
-        //    if (log("myMessage")) {
-        //       // My message is logged
-        //    } else {
-        //       // My message is not logged
-        //    }
         return debug
     }
     
-    /**
-     * print (alias for log)
-     *
-     * This is used to send log messages with the following syntax
-     *
-     *     [Aurora] Filename:line functionName(...) @Main/Background:
-     *      Message
-     *
-     * _want to use a callback/loghandler?_
-     *
-     * Put the following (preffered in your AppDelegate):
-     *
-     *      Aurora.shared.logHandler { message in
-     *          // Do something with the message
-     *      }
-     *
-     * - parameter message: the message to send
-     * - parameter file: the filename
-     * - parameter line: the line
-     * - parameter function: function name
-     */
+    /// print (alias for log)
+    ///
+    /// This is used to send log messages with the following syntax
+    ///
+    ///     [Aurora] Filename:line functionName(...) @Main/Background:
+    ///      Message
+    ///
+    /// _want to use a callback/loghandler?_
+    ///
+    /// Put the following (preffered in your AppDelegate):
+    ///
+    ///      Aurora.shared.logHandler { message in
+    ///          // Do something with the message
+    ///      }
+    ///
+    /// - parameter message: the message to send
+    /// - parameter file: the filename
+    /// - parameter line: the line
+    /// - parameter function: function name
     @discardableResult
     public func print(
         _ message: String...,
         file: String = #file,
         line: Int = #line,
         function: String = #function) -> Bool {
-        return log(message.joined(separator: " "), file: file, line: line, function: function)
+        return log(
+            message.joined(separator: " "),
+            file: file,
+            line: line,
+            function: function
+        )
     }
     
     /// Show LogViewer
     public func showLogViewer() {
         #if canImport(UIKit)
         let logView = AuroraLogView()
-        UIApplication.shared.key?.rootViewController?.showDetailViewController(logView, sender: self)
+        UIApplication.shared.key?.rootViewController?.showDetailViewController(
+            logView,
+            sender: self
+        )
         #endif
     }
     

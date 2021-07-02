@@ -158,7 +158,9 @@ class AuroraURLSessionPinningDelegate: NSObject, URLSessionDelegate {
                                 }
                             }
                         } else {
-                            fatalError("SSL Pinning is not available on this version of tvOS")
+                            fatalError(
+                                "SSL Pinning is not available on this version of tvOS"
+                            )
                         }
                     }
                 }

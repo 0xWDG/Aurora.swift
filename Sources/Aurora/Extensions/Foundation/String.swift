@@ -47,7 +47,7 @@ public extension String {
             startIndex,
             offsetBy: (self.length <= bounds.upperBound ? bounds.upperBound : self.length) - 1
         )
-
+        
         // If self is empty, then do nothing with it.
         if self == "" {
             return self
@@ -64,7 +64,7 @@ public extension String {
         let end = index(startIndex, offsetBy: bounds.upperBound)
         return String(self[start..<end])
     }
-
+    
     /// A subscript to get a substring at a specified range.
     /// - Parameter bounds: The range that will be used to find the substring.
     /// - Returns: The substring corresponding to the specified range.
@@ -80,7 +80,7 @@ public extension String {
         let end = index(startIndex, offsetBy: bounds.upperBound)
         return String(self[startIndex...end])
     }
-
+    
     /// A subscript to get a substring at a specified range.
     /// - Parameter bounds: The range that will be used to find the substring.
     /// - Returns: The substring corresponding to the specified range.
@@ -95,7 +95,7 @@ public extension String {
     subscript(integerIndex: Int) -> Character {
         self[index(startIndex, offsetBy: integerIndex)]
     }
-
+    
     /// base64 encoded of string
     var base64: String {
         let plainData = self.data(using: .utf8)
@@ -205,7 +205,7 @@ public extension String {
                                         if let result = result, let url = result.url {
                                             urls.append(url)
                                         }
-            })
+                                      })
         }
         
         return urls
@@ -688,39 +688,29 @@ public extension String {
         ]
     }
     
-    /**
-     get lowercased string
-     */
+    /// get lowercased string
     var lowercased: String {
         return self.lowercased()
     }
     
-    /**
-     get string length
-     */
+    /// get string length
     var length: Int {
         return self.count
     }
     
-    /**
-     contains
-     
-     - Parameter str: String to check
-     
-     - Returns: true/false
-     */
+    /// contains
+    ///
+    /// - Parameter str: String to check
+    /// - Returns: true/false
     func contains(_ str: String) -> Bool {
         return self.range(of: str) != nil ? true: false
     }
     
-    /**
-     Replace
-     
-     - Parameter target: String
-     - Parameter withString: Replacement
-     
-     - Returns: Replaced string
-     */
+    /// Replace
+    ///
+    /// - Parameter target: String
+    /// - Parameter withString: Replacement
+    /// - Returns: Replaced string
     func replace(_ target: String, withString: String) -> String {
         return self.replacingOccurrences(
             of: target,
@@ -730,14 +720,11 @@ public extension String {
         )
     }
     
-    /**
-     Replace (Case Insensitive)
-     
-     - Parameter target: String
-     - Parameter withString: Replacement
-     
-     - Returns: Replaced string
-     */
+    /// Replace (Case Insensitive)
+    ///
+    /// - Parameter target: String
+    /// - Parameter withString: Replacement
+    /// - Returns: Replaced string
     func ireplace(_ target: String, withString: String) -> String {
         return self.replacingOccurrences(
             of: target,
@@ -747,13 +734,10 @@ public extension String {
         )
     }
     
-    /**
-     Character At Index
-     
-     - Parameter index: The index
-     
-     - Returns Character
-     */
+    /// Character At Index
+    ///
+    /// - Parameter index: The index
+    /// - Returns Character
     func characterAtIndex(_ index: Int) -> Character! {
         var cur = 0
         for char in self {
@@ -765,32 +749,26 @@ public extension String {
         return nil
     }
     
-    /**
-     Character Code At Index
-     
-     - Parameter index: The index
-     
-     - Returns Character
-     */
+    /// Character Code At Index
+    /// - Parameter index: The index
+    /// - Returns Character
     func charCodeAtindex(_ index: Int) -> Int! {
         return self.charCodeAt(index)
     }
-
-    /**
-     Finds the string between two bookend strings if it can be found.
-     
-     - parameter left:  The left bookend
-     - parameter right: The right bookend
-     
-     - returns: The string between the two bookends, or nil if the bookends cannot be found,\
-     the bookends are the same or appear contiguously.
-     */
+    
+    /// Finds the string between two bookend strings if it can be found.
+    ///
+    /// - parameter left:  The left bookend
+    /// - parameter right: The right bookend
+    ///
+    /// - returns: The string between the two bookends, or nil if the bookends cannot be found,\
+    /// the bookends are the same or appear contiguously.
     func between(_ left: String, _ right: String) -> String? {
         guard let leftRange = range(of: left),
-            let rightRange = range(of: right, options: .backwards),
-            left != right && leftRange.upperBound != rightRange.lowerBound
-            else {
-                return nil
+              let rightRange = range(of: right, options: .backwards),
+              left != right && leftRange.upperBound != rightRange.lowerBound
+        else {
+            return nil
         }
         
         //        return self[leftRange.upperBound...(before: rightRange.lowerBound)]
@@ -1053,11 +1031,9 @@ public extension String {
         return nil
     }
     
-    /**
-     Convert anything to bool...
-     
-     - Returns: Bool
-     */
+    /// Convert anything to bool...
+    ///
+    /// - Returns: Bool
     func toBool() -> Bool? {
         let trimmed = self.trimmed.lowercased
         if trimmed == "true" || trimmed == "false" {
@@ -1082,36 +1058,34 @@ public extension String {
         return toDate(format)
     }
     
-    /**
-     Convert the number in the string to the corresponding\
-     Unicode character, e.g.\
-     <pre>
-     decodeNumeric("64", 10)   --> "@"
-     decodeNumeric("20ac", 16) --> "€"
-     </pre>
-     
-     - Parameter string
-     - Parameter base
-     - Returns: Character
-     */
+    /// Convert the number in the string to the corresponding\
+    /// Unicode character
+    ///
+    /// e.g.
+    ///
+    ///     decodeNumeric("64", 10)   → "@"
+    ///     decodeNumeric("20ac", 16) → "€"
+    ///
+    /// - Parameter string
+    /// - Parameter base
+    /// - Returns: Character
     fileprivate func decodeNumeric(_ string: String, base: Int32) -> Character? {
         let code = UInt32(strtoul(string, nil, base))
         return Character(UnicodeScalar(code)!)
     }
     
-    /**
-     Decode the HTML character entity to the corresponding\
-     Unicode character, return `nil` for invalid input.\
-     <pre>
-     decode("&amp;#64;")    --> "@"
-     decode("&amp;#x20ac;") --> "€"
-     decode("&amp;lt;")     --> "<"
-     decode("&amp;foo;")    --> nil
-     </pre>
-     
-     - Parameter entity: The entities
-     - Returns: Character
-     */
+    /// Decode the HTML character entity to the corresponding\
+    /// Unicode character, return `nil` for invalid input.
+    ///
+    /// e.g.
+    ///
+    ///     decode("&amp;#64;")    → "@"
+    ///     decode("&amp;#x20ac;") → "€"
+    ///     decode("&amp;lt;")     → "<"
+    ///     decode("&amp;foo;")    → nil
+    ///
+    /// - Parameter entity: The entities
+    /// - Returns: Character
     fileprivate func decode(_ entity: String) -> Character? {
         if entity.hasPrefix("&#x") || entity.hasPrefix("&#X") {
             return decodeNumeric(String(entity[entity.index(entity.startIndex, offsetBy: 3)...]), base: 16)
@@ -1122,12 +1096,10 @@ public extension String {
         }
     }
     
-    /**
-     Returns a new string made by replacing in the `String` all HTML \
-     character entity references with the corresponding character.
-     
-     - Returns: the decoded HTML
-     */
+    /// Returns a new string made by replacing in the `String` all HTML \
+    /// character entity references with the corresponding character.
+    ///
+    /// - Returns: the decoded HTML
     func decodeHTML() -> String {
         var result = ""
         var position = startIndex
@@ -1159,11 +1131,8 @@ public extension String {
         return result
     }
     
-    /**
-     Encode the HTML
-     
-     - Returns: the encoded HTML
-     */
+    /// Encode the HTML
+    /// - Returns: the encoded HTML
     func encodeHTML() -> String {
         // Ok, this feels weird.
         var tempString = self
@@ -1184,23 +1153,17 @@ public extension String {
         return tempString
     }
     
-    /**
-     getHTMLEntities
-     
-     - Returns: the HTMLEntities.
-     */
+    /// getHTMLEntities
+    /// - Returns: the HTMLEntities.
     func getHTMLEntities() -> [String: Character] {
         // PHP, Shame on you. but here you'll go.
         return HTMLEntities.characterEntities
     }
     
-    /**
-     Charcode for the character at index x
-     
-     - Parameter Char: the character index
-     
-     - Returns: charcode (int)
-     */
+    /// Charcode for the character at index x
+    ///
+    /// - Parameter Char: the character index
+    /// - Returns: charcode (int)
     func charCodeAt(_ character: Int) -> Int {
         if self.length > character {
             let character = String(self.characterAtIndex(character))
@@ -1210,14 +1173,12 @@ public extension String {
         }
     }
     
-    /**
-     Substring a string.
-     
-     - Parameter start: the start
-     - Parameter length: the length
-     
-     - Returns: the substring
-     */
+    /// Substring a string.
+    ///
+    /// - Parameter start: the start
+    /// - Parameter length: the length
+    ///
+    /// - Returns: the substring
     func substr(_ start: Int, _ length: Int = 0) -> String {
         let str = self
         if length == 0 {
@@ -1389,15 +1350,15 @@ public extension String {
         
         Aurora.shared.networkRequest(url: self, posting: nil) { response in
             waiting = false
-
+            
             switch response {
-               case .success(let data):
+            case .success(let data):
                 result = data
-               case .failure(let error):
+            case .failure(let error):
                 Aurora.shared.log(error.localizedDescription)
                 result = "Error: \(error.localizedDescription)"
             }
-
+            
             if inGroup {
                 Aurora.shared.log("Leaving group for \(self)")
                 String.group.leave()
@@ -1405,7 +1366,7 @@ public extension String {
                 Aurora.shared.log("Group is already gone for \(self)")
             }
         }
-
+        
         Aurora.shared.log("Waiting in group for \(self)")
         String.group.wait()
         
@@ -1413,34 +1374,24 @@ public extension String {
         Aurora.shared.log("Returning result for \(self):\r\n\(result.trimmed.truncate(after: 25))")
         return result
     }
-
+    
     /// <#Description#>
     /// - Returns: <#description#>
     func load(completion: @escaping (String) -> Void) {
         Aurora.shared.networkRequest(url: self, posting: nil) { result in
             switch result {
-               case .success(let data):
-                   completion(data)
-               case .failure(let error):
-                    completion(error.localizedDescription)
+            case .success(let data):
+                completion(data)
+            case .failure(let error):
+                completion(error.localizedDescription)
             }
         }
     }
-
+    
     /// <#Description#>
     subscript (idx: Int) -> String {
         return String(self[idx] as Character)
     }
-    
-    //    /**
-    //     Make a sha1 Hash for the string.
-    //     - Returns: sha1 hashed string
-    //     */
-    //    public var sha1: String {
-    //        get {
-    //            return SHA1Hashing().hash(self)
-    //        }
-    //    }
     
     /// <#Description#>
     /// - Returns: <#description#>
@@ -1470,11 +1421,11 @@ public extension String {
         
         var padding = ""
         if remainder > 0 {
-        padding = String(repeating: "=", count: 4 - remainder)
+            padding = String(repeating: "=", count: 4 - remainder)
         }
         
         guard let data = Data(base64Encoded: self + padding,
-        options: .ignoreUnknownCharacters) else { return nil }
+                              options: .ignoreUnknownCharacters) else { return nil }
         
         return String(data: data, encoding: .utf8)
     }
@@ -1506,10 +1457,10 @@ public extension String {
         let source = lowercased()
         let first = source[..<source.index(after: source.startIndex)]
         if source.contains(" ") {
-        let connected = source.capitalized.replacingOccurrences(of: " ", with: "")
-        let camel = connected.replacingOccurrences(of: "\n", with: "")
-        let rest = String(camel.dropFirst())
-        return first + rest
+            let connected = source.capitalized.replacingOccurrences(of: " ", with: "")
+            let camel = connected.replacingOccurrences(of: "\n", with: "")
+            let rest = String(camel.dropFirst())
+            return first + rest
         }
         let rest = String(source.dropFirst())
         return first + rest
@@ -1525,18 +1476,18 @@ public extension String {
         for scalar in unicodeScalars {
             switch scalar.value {
             case 0x1F600...0x1F64F, // Emoticons
-            0x1F300...0x1F5FF, // Misc Symbols and Pictographs
-            0x1F680...0x1F6FF, // Transport and Map
-            0x1F1E6...0x1F1FF, // Regional country flags
-            0x2600...0x26FF, // Misc symbols
-            0x2700...0x27BF, // Dingbats
-            0xE0020...0xE007F, // Tags
-            0xFE00...0xFE0F, // Variation Selectors
-            0x1F900...0x1F9FF, // Supplemental Symbols and Pictographs
-            127000...127600, // Various asian characters
-            65024...65039, // Variation selector
-            9100...9300, // Misc items
-            8400...8447: // Combining Diacritical Marks for Symbols
+                 0x1F300...0x1F5FF, // Misc Symbols and Pictographs
+                 0x1F680...0x1F6FF, // Transport and Map
+                 0x1F1E6...0x1F1FF, // Regional country flags
+                 0x2600...0x26FF, // Misc symbols
+                 0x2700...0x27BF, // Dingbats
+                 0xE0020...0xE007F, // Tags
+                 0xFE00...0xFE0F, // Variation Selectors
+                 0x1F900...0x1F9FF, // Supplemental Symbols and Pictographs
+                 127000...127600, // Various asian characters
+                 65024...65039, // Variation selector
+                 9100...9300, // Misc items
+                 8400...8447: // Combining Diacritical Marks for Symbols
                 return true
             default:
                 continue
@@ -1755,11 +1706,11 @@ public extension String {
         let selfLowercased = trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
         switch selfLowercased {
         case "true", "yes", "1":
-        return true
+            return true
         case "false", "no", "0":
-        return false
+            return false
         default:
-        return nil
+            return nil
         }
     }
     #endif
@@ -1882,11 +1833,11 @@ public extension String {
         let range = NSRange(location: 0, length: utf16.count)
         
         let misspelledRange = checker.rangeOfMisspelledWord(
-        in: self,
-        range: range,
-        startingAt: 0,
-        wrap: false,
-        language: Locale.preferredLanguages.first ?? "en"
+            in: self,
+            range: range,
+            startingAt: 0,
+            wrap: false,
+            language: Locale.preferredLanguages.first ?? "en"
         )
         return misspelledRange.location == NSNotFound
     }
@@ -2066,9 +2017,9 @@ public extension String {
     subscript<R>(safe range: R) -> String? where R: RangeExpression, R.Bound == Int {
         let range = range.relative(to: Int.min..<Int.max)
         guard range.lowerBound >= 0,
-            let lowerIndex = index(startIndex, offsetBy: range.lowerBound, limitedBy: endIndex),
-            let upperIndex = index(startIndex, offsetBy: range.upperBound, limitedBy: endIndex) else {
-                return nil
+              let lowerIndex = index(startIndex, offsetBy: range.lowerBound, limitedBy: endIndex),
+              let upperIndex = index(startIndex, offsetBy: range.upperBound, limitedBy: endIndex) else {
+            return nil
         }
         
         return String(self[lowerIndex..<upperIndex])
@@ -2574,10 +2525,10 @@ public extension String {
     /// Bold string.
     var bold: NSAttributedString {
         return NSMutableAttributedString(
-        string: self,
-        attributes: [
-        .font: Font.boldSystemFont(ofSize: Font.systemFontSize)
-        ]
+            string: self,
+            attributes: [
+                .font: Font.boldSystemFont(ofSize: Font.systemFontSize)
+            ]
         )
     }
     #endif
@@ -2586,10 +2537,10 @@ public extension String {
     /// Underlined string
     var underline: NSAttributedString {
         return NSAttributedString(
-        string: self,
-        attributes: [
-        .underlineStyle: NSUnderlineStyle.single.rawValue
-        ]
+            string: self,
+            attributes: [
+                .underlineStyle: NSUnderlineStyle.single.rawValue
+            ]
         )
     }
     #endif
@@ -2598,10 +2549,10 @@ public extension String {
     /// Strikethrough string.
     var strikethrough: NSAttributedString {
         return NSAttributedString(
-        string: self,
-        attributes: [
-        .strikethroughStyle: NSNumber(value: NSUnderlineStyle.single.rawValue as Int)
-        ]
+            string: self,
+            attributes: [
+                .strikethroughStyle: NSNumber(value: NSUnderlineStyle.single.rawValue as Int)
+            ]
         )
     }
     #endif
@@ -2610,10 +2561,10 @@ public extension String {
     /// Italic string.
     var italic: NSAttributedString {
         return NSMutableAttributedString(
-        string: self,
-        attributes: [
-        .font: UIFont.italicSystemFont(ofSize: UIFont.systemFontSize)
-        ]
+            string: self,
+            attributes: [
+                .font: UIFont.italicSystemFont(ofSize: UIFont.systemFontSize)
+            ]
         )
     }
     #endif

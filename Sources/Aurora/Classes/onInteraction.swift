@@ -17,7 +17,7 @@
 
 import Foundation
 
-/// <#Description#>
+/// AssociationPolicy
 enum AssociationPolicy {
     case assign
     case retainNonatomic
@@ -41,7 +41,7 @@ enum AssociationPolicy {
     }
 }
 
-/// <#Description#>
+/// ObjectAssociation (private use)
 final class ObjectAssociation<T: Any> {
     private let policy: AssociationPolicy
     
@@ -51,12 +51,22 @@ final class ObjectAssociation<T: Any> {
     
     subscript(index: AnyObject) -> T? {
         get {
-            // Force-cast is fine here as we want it to fail loudly if we don't use the correct type.
-            // swiftlint:disable:next force_cast
-            objc_getAssociatedObject(index, Unmanaged.passUnretained(self).toOpaque()) as! T?
+            guard let associatedObject = objc_getAssociatedObject(
+                index,
+                Unmanaged.passUnretained(self).toOpaque()
+            ) as? T? else {
+                fatalError("Could not cast to \(T.Type.self)")
+            }
+            
+            return associatedObject
         }
         set {
-            objc_setAssociatedObject(index, Unmanaged.passUnretained(self).toOpaque(), newValue, policy.rawValue)
+            objc_setAssociatedObject(
+                index,
+                Unmanaged.passUnretained(self).toOpaque(),
+                newValue,
+                policy.rawValue
+            )
         }
     }
 }

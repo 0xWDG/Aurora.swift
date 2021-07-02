@@ -126,6 +126,8 @@ class AuroraCrashHandler {
         crashReport += "\t\tModel: \(deviceType)\n"
         crashReport += "\t\tSoftware: \(device.systemName) \(device.systemVersion)\n"
         
+        // For some weird reason this will crash,
+        // Even if canImport says true.
 //        #if canImport(CoreTelephony)
 //        let networkInfo = CTTelephonyNetworkInfo()
 //        if let carrier = networkInfo.serviceSubscriberCellularProviders?.first?.value {

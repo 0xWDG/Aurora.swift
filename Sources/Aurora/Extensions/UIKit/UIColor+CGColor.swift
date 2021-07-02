@@ -84,19 +84,17 @@ public extension UIColor {
         )
     }
     
-    /**
-     Initializes and returns a color object using the specified hexadecimal code and an optional alpha.
-     
-     - parameter hex: The hexadecimal code starting with or without `#` with 3 or 6 signs \
-     (no alpha channel information) and 4 or 8 signs (w/ alpha channel information)
-     - parameter alpha: The opacity value of the color object, specified as a value from 0.0 to 1.0. \
-     Alpha values below 0.0 are interpreted as 0.0, and values above 1.0 are interpreted as 1.0. When `hex`\
-     contains information about alpha channel this parameter is unused. When function requires `alpha` \
-     and is called without this parameter, then 1.0 is used as a default value.
-     - returns: The color object. The color information represented by this object is in an RGB colorspace. \
-     On applications linked for iOS 10 or later, the color is specified in an extended range sRGB color space. \
-     On earlier versions of iOS, the color is specified in a device RGB colorspace.
-     */
+    /// Initializes and returns a color object using the specified hexadecimal code and an optional alpha.
+    ///
+    /// - parameter hex: The hexadecimal code starting with or without `#` with 3 or 6 signs \
+    /// (no alpha channel information) and 4 or 8 signs (w/ alpha channel information)
+    /// - parameter alpha: The opacity value of the color object, specified as a value from 0.0 to 1.0. \
+    /// Alpha values below 0.0 are interpreted as 0.0, and values above 1.0 are interpreted as 1.0. When `hex`\
+    /// contains information about alpha channel this parameter is unused. When function requires `alpha` \
+    /// and is called without this parameter, then 1.0 is used as a default value.
+    /// - returns: The color object. The color information represented by this object is in an RGB colorspace. \
+    /// On applications linked for iOS 10 or later, the color is specified in an extended range sRGB color space. \
+    /// On earlier versions of iOS, the color is specified in a device RGB colorspace.
     convenience init?(hex: String, alpha: CGFloat = 1.0) {
         var hexCode = hex.trimmed
         while hexCode.contains("#") {

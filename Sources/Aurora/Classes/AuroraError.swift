@@ -42,3 +42,9 @@ extension AuroraError: LocalizedError {
     /// <#Description#>
     var helpAnchor: String? { return message }
 }
+
+extension String {
+    var auroraError: AuroraError {
+        return AuroraError(message: self)
+    }
+}

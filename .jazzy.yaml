@@ -28,4 +28,4 @@ readme: ../README.md
 dash_url: https://AuroraFramework.github.io/Aurora.swift/docsets/BaaS.docset
 
 # Set a nice text for undocumented.
-undocumented_text: Undocumented, Help us document it!
+undocumented_text: Undocumented, Please help us document it!

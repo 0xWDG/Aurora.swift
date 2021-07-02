@@ -20,6 +20,11 @@ import Foundation
 #if os(macOS)
 
 public extension Aurora {
+    /// <#Description#>
+    /// - Parameters:
+    ///   - arguments: <#arguments description#>
+    ///   - showLog: <#showLog description#>
+    /// - Returns: <#description#>
 @discardableResult
 func shell(_ arguments: String, showLog: Bool = false) -> String {
     let task = Process()
@@ -44,6 +49,7 @@ func shell(_ arguments: String, showLog: Bool = false) -> String {
 }
 }
 
+/// <#Description#>
 enum ANSIColors: String {
     case black = "\u{001B}[0;30m"
     case red = "\u{001B}[0;31m"
@@ -55,9 +61,21 @@ enum ANSIColors: String {
     case white = "\u{001B}[0;37m"
     case `default` = "\u{001B}[0;0m"
 }
+
+/// <#Description#>
+/// - Parameters:
+///   - left: <#left description#>
+///   - right: <#right description#>
+/// - Returns: <#description#>
 func + (left: ANSIColors, right: String) -> String {
     return left.rawValue + right
 }
+
+/// <#Description#>
+/// - Parameters:
+///   - left: <#left description#>
+///   - right: <#right description#>
+/// - Returns: <#description#>
 func + (left: String, right: ANSIColors) -> String {
     return left + right.rawValue
 }

@@ -101,11 +101,9 @@ public extension Data {
         }
     }
     
-    /**
-     * Compresses the data using the zlib deflate algorithm.
-     * - returns: raw deflated data according to [RFC-1951](https://tools.ietf.org/html/rfc1951).
-     * - note: Fixed at compression level 5 (best trade off between speed and time)
-     */
+    /// Compresses the data using the zlib deflate algorithm.
+    /// - returns: raw deflated data according to [RFC-1951](https://tools.ietf.org/html/rfc1951).
+    /// - note: Fixed at compression level 5 (best trade off between speed and time)
     func deflate() -> Data? {
         return self.withUnsafeBytes { (sourcePtr: UnsafePointer<UInt8>) -> Data? in
             let configuration = (
@@ -121,12 +119,10 @@ public extension Data {
         }
     }
     
-    /**
-     * Decompresses the data using the zlib deflate algorithm.
-     * Self is expected to be a raw deflate
-     * stream according to [RFC-1951](https://tools.ietf.org/html/rfc1951).
-     * - returns: uncompressed data
-     */
+    /// Decompresses the data using the zlib deflate algorithm.
+    /// Self is expected to be a raw deflate
+    /// stream according to [RFC-1951](https://tools.ietf.org/html/rfc1951).
+    /// - returns: uncompressed data
     func inflate() -> Data? {
         return self.withUnsafeBytes { (sourcePtr: UnsafePointer<UInt8>) -> Data? in
             let configuration = (

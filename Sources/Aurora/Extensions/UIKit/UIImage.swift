@@ -40,15 +40,14 @@ public extension UIImage {
         return scaledImage!
     }
     
-    /**
-     Initializes and returns an image object filled with the specified color
-     
-     - parameter color: The color to fill the image.
-     - parameter size: The size of the created image. \
-     When function requires `size` and is called without this parameter, then `(1.0, 1.0)` is used as a default value.
-     - returns: An initialized `UIImage` object, or `nil`\
-     if the method could not initialize the image from the specified data.
-     */
+    /// Initializes and returns an image object filled with the specified color
+    ///
+    /// - parameter color: The color to fill the image.
+    /// - parameter size: The size of the created image. \
+    /// When function requires `size` and is called without this parameter, then `(1.0, 1.0)`\
+    ///  is used as a default value.
+    /// - returns: An initialized `UIImage` object, or `nil`\
+    /// if the method could not initialize the image from the specified data.
     convenience init?(color: UIColor, size: CGSize = CGSize(width: 1.0, height: 1.0)) {
         let rect = CGRect(origin: .zero, size: size)
         UIGraphicsBeginImageContext(size)
@@ -134,16 +133,14 @@ public extension UIImage {
         #endif
     }
     
-    /**
-     Returns the data for the image in JPEG format.
-     
-     - parameter quality: The quality of the resulting JPEG image, expressed as a value from 0.0 to 1.0. \
-     The value 0.0 represents the maximum compression (or lowest quality) while the value 1.0 \
-     represents the least compression (or best quality).
-     - returns: A data object containing the JPEG data, or `nil` if there was a problem generating the data. \
-     This function may return `nil` if the image has no data or if the underlying `CGImageRef` \
-     contains data in an unsupported bitmap format.
-     */
+    /// Returns the data for the image in JPEG format.
+    ///
+    /// - parameter quality: The quality of the resulting JPEG image, expressed as a value from 0.0 to 1.0. \
+    /// The value 0.0 represents the maximum compression (or lowest quality) while the value 1.0 \
+    /// represents the least compression (or best quality).
+    /// - returns: A data object containing the JPEG data, or `nil` if there was a problem generating the data. \
+    /// This function may return `nil` if the image has no data or if the underlying `CGImageRef` \
+    /// contains data in an unsupported bitmap format.
     @available(swift, deprecated: 4.2, message: "Deprecated in favor of UIImage.jpegData(compressionQuality:).")
     func jpeg(quality: CGFloat = 1.0) -> Data? {
         #if swift(>=4.2)
@@ -154,16 +151,14 @@ public extension UIImage {
     }
     
     #if canImport(AVFoundation)
-    /**
-     Returns the data for the image in HEIC format.
-     
-     - parameter quality: The quality of the resulting HEIC image, expressed as a value from 0.0 to 1.0. \
-     The value 0.0 represents the maximum compression (or lowest quality) while the value \
-     1.0 represents the least compression (or best quality).
-     - returns: A data object containing the HEIC data, or `nil` if there was a problem generating the data. \
-     This function may return `nil` if the image has no data, if the underlying `CGImageRef` contains data in\
-     an unsupported bitmap format or if the function is executed on iOS simulator.
-     */
+    /// Returns the data for the image in HEIC format.
+    ///
+    /// - parameter quality: The quality of the resulting HEIC image, expressed as a value from 0.0 to 1.0. \
+    /// The value 0.0 represents the maximum compression (or lowest quality) while the value \
+    /// 1.0 represents the least compression (or best quality).
+    /// - returns: A data object containing the HEIC data, or `nil` if there was a problem generating the data. \
+    /// This function may return `nil` if the image has no data, if the underlying `CGImageRef` contains data in\
+    /// an unsupported bitmap format or if the function is executed on iOS simulator.
     @available(iOS 11.0, tvOS 11.0, *)
     func heic(quality: CGFloat = 1.0) -> Data? {
         let destinationData = NSMutableData()
@@ -182,13 +177,11 @@ public extension UIImage {
     }
     #endif
     
-    /**
-     Creates a bitmap image using the data contained within a subregion of an existing bitmap image.
-     
-     - parameter bounds: A rectangle whose coordinates specify the area to create an image from.
-     - returns: A UIImage object that specifies a subimage of the image.\
-     If the `rect` parameter defines an area that is not in the image, returns `nil`.
-     */
+    /// Creates a bitmap image using the data contained within a subregion of an existing bitmap image.
+    ///
+    /// - parameter bounds: A rectangle whose coordinates specify the area to create an image from.
+    /// - returns: A UIImage object that specifies a subimage of the image.\
+    /// If the `rect` parameter defines an area that is not in the image, returns `nil`.
     func crop(to bounds: CGRect) -> UIImage? {
         guard let cgImage = normalizedImage?.cgImage, bounds.contains(bounds) else { return nil }
         return UIImage(cgImage: cgImage.cropping(to: bounds)!)
@@ -220,12 +213,10 @@ public extension UIImage {
     }
     #endif
     
-    /**
-     Returns a resized non-stretched copy of the image.
-     
-     - parameter size: The desired size of the image.
-     - returns: A resized non-stretched UIImage object.
-     */
+    /// Returns a resized non-stretched copy of the image.
+    ///
+    /// - parameter size: The desired size of the image.
+    /// - returns: A resized non-stretched UIImage object.
     func resize(to size: CGSize) -> UIImage? {
         guard let cgImage = cgImage else { return nil }
         guard min(self.size.width, self.size.height) > 0.0 else { return nil }
@@ -258,12 +249,10 @@ public extension UIImage {
         return UIImage(cgImage: coreImage, scale: scale, orientation: imageOrientation)
     }
     
-    /**
-     Returns a resized non-stretched copy of the image.
-     
-     - parameter shorterSide: The desired shorter side length of the image.
-     - returns: A resized non-stretched UIImage object.
-     */
+    /// Returns a resized non-stretched copy of the image.
+    ///
+    /// - parameter shorterSide: The desired shorter side length of the image.
+    /// - returns: A resized non-stretched UIImage object.
     func resize(to shorterSide: CGFloat) -> UIImage? {
         let currentShorterSide = min(self.size.height, self.size.width)
         guard currentShorterSide > 0.0 else { return nil }
@@ -273,13 +262,11 @@ public extension UIImage {
         return resize(to: size)
     }
     
-    /**
-     Returns a copy of the image with a border.
-     
-     - parameter borderWidth: The desired width of the border.
-     - parameter borderColor: The desired color of the border.
-     - returns: A bordered UIImage object.
-     */
+    /// Returns a copy of the image with a border.
+    ///
+    /// - parameter borderWidth: The desired width of the border.
+    /// - parameter borderColor: The desired color of the border.
+    /// - returns: A bordered UIImage object.
     func border(width borderWidth: CGFloat, color borderColor: UIColor) -> UIImage? {
         guard let cgImage = cgImage else { return nil }
         
@@ -318,12 +305,10 @@ public extension UIImage {
         return UIImage(cgImage: coreImage)
     }
     
-    /**
-     Returns a color of the given point.
-     
-     - parameter point: The point to get color with.
-     - returns: A UIColor object.
-     */
+    /// Returns a color of the given point.
+    ///
+    /// - parameter point: The point to get color with.
+    /// - returns: A UIColor object.
     func color(at point: CGPoint) -> UIColor? {
         guard let dataProvider = cgImage?.dataProvider,
               let data = CFDataGetBytePtr(dataProvider.data) else {
@@ -345,20 +330,18 @@ public extension UIImage {
         )
     }
     
-    /**
-     Gets an image in asynchronous way using the `URLSession` for downloading the content.
-     
-     If the request completes successfully and the request's data is formatted to match the file format of\
-     one of the system’s supported image types, the `image` \
-     parameter of the completion handler block contains the image.\
-     If the request fails or the request's data is not formatted to\
-     match the file format of one of the system’s supported image types,\
-     the `image` parameter is nil.
-     
-     - parameter url: The URL to be retrieved.
-     - parameter completion: The completion handler to call when the load request is complete. \
-     This handler is executed on the main queue.
-     */
+    /// Gets an image in asynchronous way using the `URLSession` for downloading the content.
+    ///
+    /// If the request completes successfully and the request's data is formatted to match the file format of\
+    /// one of the system’s supported image types, the `image` \
+    /// parameter of the completion handler block contains the image.\
+    /// If the request fails or the request's data is not formatted to\
+    /// match the file format of one of the system’s supported image types,\
+    /// the `image` parameter is nil.
+    ///
+    /// - parameter url: The URL to be retrieved.
+    /// - parameter completion: The completion handler to call when the load request is complete. \
+    /// This handler is executed on the main queue.
     static func get(from url: URL, completion: @escaping (UIImage?) -> Void) {
         URLSession.shared.dataTask(with: url) { data, _, _ in
             var image: UIImage?

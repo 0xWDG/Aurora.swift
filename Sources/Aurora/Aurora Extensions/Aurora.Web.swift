@@ -22,11 +22,15 @@ import Foundation
 private var auroraFrameworkWebDebug: Bool = false
 
 /// <#Description#>
-open class SimpleTimer {/*<--was named Timer, but since swift 3, NSTimer is now Timer*/
+open class SimpleTimer {
     typealias Tick = () -> Void
+    /// <#Description#>
     var timer: Timer?
-    var interval: TimeInterval /*in seconds*/
+    /// <#Description#>
+    var interval: TimeInterval
+    /// <#Description#>
     var repeats: Bool
+    /// <#Description#>
     var tick: Tick
     
     /// <#Description#>
@@ -58,11 +62,8 @@ open class SimpleTimer {/*<--was named Timer, but since swift 3, NSTimer is now 
         }
     }
     
-    /**
-     * This method must be in the public or scope
-     */
-    @objc
-    func update() {
+    /// This method must be in the public or scope
+    @objc func update() {
         tick()
     }
 }
@@ -117,230 +118,10 @@ public extension Aurora {
         task.resume()
     }
     
-    /// <#Description#>
-    /// - Parameter url: <#url description#>
-    /// - Returns: <#description#>
-    @available(*, deprecated)
-    func getSiteAsText(url: URL, file: String = #file, line: Int = #line, function: String = #function) -> String {
-        log("WARNING: DO NOT USE THIS COMMAND ANYMORE\n"
-        + "IT'S VERY UNSTABLE, PLEASE USE: Aurora.shared.networkRequest(...) instead\n"
-        + "CALLED FROM:\n    file:\(file)\n    line: \(line)\n"
-        + "    function: \(function).")
-        
-        log("getSiteAsText init(url: \"\(url)\")")
-        var returnString: String = ""
-        
-        // start waitting
-        
-        self.dataTaskHelper(forURL: url) { (dataTaskString) in
-            if self.detailedLogging {
-                self.log("Return: \(dataTaskString)")
-            }
-            returnString = dataTaskString
-        }
-        
-                while(returnString==""){}
-        
-        log("After the datatask = \(returnString)")
-        
-        //        if (returnString != "Error") {
-        //            return returnString
-        //        } else {
-        do {
-            let myHTMLString = try NSString(
-                contentsOf: url,
-                encoding: String.Encoding.utf8.rawValue
-            )
-            
-            return myHTMLString as String
-        } catch _ {
-            do {
-                let myHTMLString = try NSString(
-                    contentsOf: url,
-                    encoding: String.Encoding.utf16.rawValue
-                )
-                
-                return myHTMLString as String
-            } catch _ {
-                do {
-                    let myHTMLString = try NSString(
-                        contentsOf: url,
-                        encoding: String.Encoding.isoLatin1.rawValue
-                    )
-                    
-                    return myHTMLString as String
-                } catch _ {
-                    do {
-                        let myHTMLString = try NSString(
-                            contentsOf: url,
-                            encoding: String.Encoding.isoLatin2.rawValue
-                        )
-                        
-                        return myHTMLString as String
-                    } catch {
-                        do {
-                            let myHTMLString = try NSString(
-                                contentsOf: url,
-                                encoding: String.Encoding.utf32.rawValue
-                            )
-                            
-                            return myHTMLString as String
-                        } catch let error {
-                            if returnString != "" {
-                                return returnString
-                            }
-                            
-                            return "Decoding Error: \(error.localizedDescription)"
-                        }
-                    }
-                }
-            }
-        }
-        //        }
-    }
-    /**
-     Get data as (plain) text
-     
-     - Parameter url: the URL of the file
-     
-     - Returns: the contents of the file
-     */
-    @available(*, deprecated)
-    func getDataAsText(_ url: String, _ post: [String: String]? = ["nothing": "send"], file: String = #file, line: Int = #line, function: String = #function) -> String {
-        log("WARNING: DO NOT USE THIS COMMAND ANYMORE\n"
-        + "IT'S VERY UNSTABLE, PLEASE USE: Aurora.shared.networkRequest(...) instead\n"
-        + "CALLED FROM:\n    file:\(file)\n    line: \(line)\n"
-        + "    function: \(function).")
-        log("Init.")
-        if let myURL = URL(string: url) {
-            if post == ["nothing": "send"] {
-                log("get site as text")
-                return getSiteAsText(url: myURL)
-            } else {
-                var waiting = true
-                var data = ""
-                var request = URLRequest(url: myURL)
-                request.httpMethod = "POST"
-                request.setValue("application/x-www-form-urlencoded",
-                                 forHTTPHeaderField: "Content-Type")
-                
-                var httpBody = ""
-                var idx = 0
-                for (key, val) in post! {
-                    if idx == 0 {
-                        httpBody.append(contentsOf:
-                            "\(key)=\(val.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)")
-                    } else {
-                        httpBody.append(contentsOf:
-                            "&\(key)=\(val.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)")
-                    }
-                    idx += 1
-                }
-                request.httpBody = httpBody.data(using: .utf8)
-                
-                let session = URLSession.shared
-                session.dataTask(with: request) { (sitedata, _, _) in
-                    if let sitedata = sitedata {
-                        data = String(data: sitedata, encoding: .utf8)!
-                        waiting = false
-                    } else {
-                        data = "Error"
-                        waiting = false
-                    }
-                    
-                }.resume()
-                
-                while waiting {
-                    Aurora.shared.log("Waiting...")
-                }
-                
-                return data
-            }
-        } else {
-            return "Error: \(url) doesn't appear to be a URL"
-        }
-    }
-    
-    /**
-     Get data as Data
-     
-     - Parameter url: the URL of the file
-     
-     - Returns: the contents of the file
-     */
-    @available(*, deprecated)
-    func getDataAsData(
-        _ url: String,
-        _ post: [String: String]? = ["nothing": "send"],
-        file: String = #file,
-        line: Int = #line,
-        function: String = #function
-    ) -> Data {
-        log("WARNING: DO NOT USE THIS COMMAND ANYMORE\n"
-        + "IT'S VERY UNSTABLE, PLEASE USE: Aurora.shared.networkRequest(...) instead\n"
-        + "CALLED FROM:\n    file:\(file)\n    line: \(line)\n"
-        + "    function: \(function).")
-        if let myURL = URL(string: url) {
-            if post == ["nothing": "send"] {
-                return getSiteAsText(url: myURL).data(using: .utf8)!
-            } else {
-                var waiting = true
-                var data = "".data(using: .utf8)
-                var request = URLRequest(url: myURL)
-                request.httpMethod = "POST"
-                request.setValue(
-                    "application/x-www-form-urlencoded",
-                    forHTTPHeaderField: "Content-Type"
-                )
-                
-                var httpBody = ""
-                var idx = 0
-                for (key, val) in post! {
-                    if idx == 0 {
-                        httpBody.append(
-                            contentsOf:
-                            "\(key)=\(val.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)"
-                        )
-                    } else {
-                        httpBody.append(
-                            contentsOf:
-                            "&\(key)=\(val.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!)"
-                        )
-                    }
-                    idx += 1
-                }
-                request.httpBody = httpBody.data(using: .utf8)
-                
-                let session = URLSession.shared
-                session.dataTask(with: request) { (sitedata, _, _) in
-                    if let sitedata = sitedata {
-                        data = sitedata
-                        waiting = false
-                    } else {
-                        data = "Error".data(using: .utf8)
-                        waiting = false
-                    }
-                    
-                }.resume()
-                
-                while waiting {
-                    //                    Aurora.shared.log("Waiting...")
-                }
-                
-                return data!
-            }
-        } else {
-            return "Error: \(url) doesn't  URL".data(using: String.Encoding.utf8)!
-        }
-    }
-    
-    /**
-     Remove all html elements from a string
-     
-     - Parameter html: The HTML String
-     
-     - Returns: the plain HTML String
-     */
+    /// Remove all html elements from a string
+    ///
+    /// - Parameter html: The HTML String
+    /// - Returns: the plain HTML String
     func removeHTML(_ html: String) -> String {
         do {
             let regex: NSRegularExpression = try NSRegularExpression(
@@ -361,24 +142,19 @@ public extension Aurora {
         }
     }
     
-    /**
-     Newline to Break (br) [like-php]
-     
-     - Parameter html: the string
-     
-     - Returns: the string with <br /> tags
-     */
+    /// Newline to Break (br) [like-php]
+    ///
+    /// Parameter html: the string
+    ///
+    /// Returns: the string with `<br />` tags
     func nl2br(_ html: String) -> String {
         return html.replacingOccurrences(of: "\n", with: "<br />")
     }
     
-    /**
-     Break (br) to Newline [like-php (reversed)]
-     
-     - Parameter html: the html string to convert to a string
-     
-     - Returns: the string with line-breaks
-     */
+    /// Break (br) to Newline [like-php (reversed)]
+    ///
+    /// - Parameter html: the html string to convert to a string
+    /// - Returns: the string with line-breaks
     func br2nl(_ html: String) -> String {
         return html.replacingOccurrences(of: "<br />", with: "\n") // html 4
             .replacingOccurrences(of: "<br/>", with: "\n") // invalid html
@@ -387,11 +163,8 @@ public extension Aurora {
         // \<(b|B)(r|R)( )?(\/)?\>
     }
     
-    /**
-     Set debug
-     
-     - Parameter debugVal: Debugmode on/off
-     */
+    /// Set debug
+    ///  - Parameter debugVal: Debugmode on/off
     func setDebug(_ debugVal: Bool) {
         auroraFrameworkWebDebug = debugVal
     }
