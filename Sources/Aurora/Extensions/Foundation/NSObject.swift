@@ -100,7 +100,7 @@ public extension NSObject {
         
     /// <#Description#>
     @objc
-    private class CallbackHolder: NSObject {
+    private class deinitCallbackHolder: NSObject {
         var callbacks = [() -> Void]()
         
         deinit {
@@ -113,11 +113,11 @@ public extension NSObject {
     /// <#Description#>
     /// - Parameter object: <#object description#>
     /// - Returns: <#description#>
-    private static func getHolder(of object: NSObject) -> CallbackHolder {
-        if let existing = objc_getAssociatedObject(object, &callbackKey) as? NSObject.CallbackHolder {
+    private static func getHolder(of object: NSObject) -> deinitCallbackHolder {
+        if let existing = objc_getAssociatedObject(object, &callbackKey) as? NSObject.deinitCallbackHolder {
             return existing
         } else {
-            let new = CallbackHolder()
+            let new = deinitCallbackHolder()
             objc_setAssociatedObject(object, &callbackKey, new, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             return new
         }
@@ -143,4 +143,60 @@ public extension NSObject {
         getHolder(of: object).callbacks.append(block)
     }
 }
+
+
+/// Save properties to the Objective-C runtime of a object.
+///
+/// This is used to save things when it's not possible, like in extensions
+///
+/// **Extension Example:**
+///
+///     extension UIBarItem {
+///         struct properties {
+///             static var identifier = "identifier"
+///         }
+///
+///         @IBInspectable public var identifier: String? {
+///             get {
+///                 return self.property(forKey: &properties.identifier) as? String
+///             }
+///             set {
+///                 self.property(newValue as Any, forKey: &properties.identifier)
+///             }
+///         }
+///     }
+///
+public protocol AssociatedProperties { }
+
+public extension AssociatedProperties {
+    /// Returns the value for the property identified by a given key.
+    ///
+    /// wrapper around `objc_getAssociatedObject`
+    ///
+    /// - Parameter forKey: The key for the association.
+    /// - Returns: The value associated with the key key for object.
+    func property(forKey key: UnsafeRawPointer) -> Any? {
+        return objc_getAssociatedObject(self, key)
+    }
+    
+    /// Sets an associated value for a current object using a given key.
+    ///
+    /// wrapper around `objc_setAssociatedObject`
+    ///
+    /// - Parameters:
+    ///   - value: The value to associate with the key key for object. Pass nil to clear an existing association.
+    ///   - forKey: The key for the association.
+    func property(_ value: Any, forKey key: UnsafeRawPointer) {
+        objc_setAssociatedObject(self, key, value, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+    }
+    
+    /// Removes all associations for the current object.
+    ///
+    /// wrapper around `objc_removeAssociatedObjects`
+    func removeAllProperties() {
+        objc_removeAssociatedObjects(self)
+    }
+}
+
+extension NSObject: AssociatedProperties {}
 #endif

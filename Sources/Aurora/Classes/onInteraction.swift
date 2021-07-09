@@ -24,7 +24,7 @@ enum AssociationPolicy {
     case copyNonatomic
     case retain
     case copy
-    
+        
     var rawValue: objc_AssociationPolicy {
         switch self {
         case .assign:

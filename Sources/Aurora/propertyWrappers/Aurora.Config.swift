@@ -11,7 +11,7 @@ import Foundation
 ///
 /// Usage:
 /// ```
-/// @AuroraConfig("isReady", defaultValue: false)
+/// @AuroraConfig("isReady", default: false)
 /// static var isReady: Bool
 /// ```
 ///
