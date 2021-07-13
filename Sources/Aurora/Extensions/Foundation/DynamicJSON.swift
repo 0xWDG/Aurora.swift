@@ -21,15 +21,20 @@ import Foundation
 //     Saoud Rizwan
 //     https://github.com/saoudrizwan/DynamicJSON
 
-@dynamicMemberLookup
-/// <#Description#>
-public enum JSON {
+/// JSON
+@dynamicMemberLookup public enum JSON {
     // MARK: Cases
+    /// Dictionary
     case dictionary([String: JSON])
+    /// Array
     case array([JSON])
+    /// String
     case string(String)
+    /// Number
     case number(NSNumber)
+    /// Bool
     case bool(Bool)
+    /// Null
     case null
     
     // MARK: Dynamic Member Lookup

@@ -18,7 +18,7 @@
 import Foundation
 
 public extension Bool {
-    // is it a boolean?
+    /// is it a boolean?
     var isBool: Bool {
         return true
     }

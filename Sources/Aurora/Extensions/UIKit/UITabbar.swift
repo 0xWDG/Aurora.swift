@@ -19,6 +19,7 @@
 import UIKit
 
 public extension UITabBar {
+    /// Selected index
     var selectedIndex: Int {
         // Tricky business.
         

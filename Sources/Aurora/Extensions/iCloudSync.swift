@@ -22,11 +22,14 @@ import CloudKit
 
 private var isAuroraiCloudSyncInProgress: Bool = false
 
+/// AuroraFramework iCloudSync
 open class AuroraFrameworkiCloudSync {
+    /// Shared instance of `AuroraFrameworkiCloudSync`
     public static let shared = AuroraFrameworkiCloudSync()
     private let keyValueStore = NSUbiquitousKeyValueStore.default
     private let notificationCenter = NotificationCenter.default
     
+    /// Initialize
     public init() {
         if isAuroraiCloudSyncInProgress == false {
             // Start the sync!
@@ -34,6 +37,7 @@ open class AuroraFrameworkiCloudSync {
         }
     }
     
+    /// <#Description#>
     open func startSync() {
         if keyValueStore.isKind(of: NSUbiquitousKeyValueStore.self) {
             notificationCenter.addObserver(
@@ -153,6 +157,7 @@ open class AuroraFrameworkiCloudSync {
         )
     }
     
+    /// <#Description#>
     open func sync() {
         // If not started (impossible, but ok)
         if isAuroraiCloudSyncInProgress == false {

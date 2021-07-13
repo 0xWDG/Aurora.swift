@@ -204,13 +204,13 @@ extension Aurora {
         return result
     }
     
+    // swiftlint:disable function_body_length
     /// [Unfinished]
     /// - Parameters:
     ///   - url: <#url description#>
     ///   - method: <#method description#>
     ///   - values: <#values description#>
     ///   - completionHandler: <#completionHandler description#>
-    // swiftlint:disable:next function_body_length
     public func networkRequest(
         url: String,
         method: HTTPMethod,
@@ -358,7 +358,9 @@ extension Aurora {
             )
         }.resume()
     }
+    // swiftlint:enable function_body_length
     
+    // swiftlint:disable function_body_length
     /// networkRequest (non-blocking)
     ///
     /// Start a network request
@@ -366,7 +368,6 @@ extension Aurora {
     /// - parameter url: The url to be parsed
     /// - parameter posting: What do you need to post
     /// - returns: closure -> sucess, fail.
-    // swiftlint:disable:next function_body_length
     public func networkRequest(
         url: String,
         posting: [String: Any]?,
@@ -510,7 +511,7 @@ extension Aurora {
             )
         }.resume()
     }
-    // swiftlint:disable:last function_body_length
+    // swiftlint:enable function_body_length
     
     /// Return the full networkRequestResponse
     /// - Returns: the full networkRequestResponse

@@ -126,6 +126,7 @@ public extension String {
         }.joined()
     }
     
+    /// Fetch as data
     var fetchAsData: Data {
         // swiftlint:disable:next implicit_getter
         get {
@@ -137,6 +138,7 @@ public extension String {
         }
     }
     
+    /// Fetch as text
     var fetchAsText: String? {
         // swiftlint:disable:next implicit_getter
         get {
@@ -145,6 +147,7 @@ public extension String {
     }
     
     #if os(iOS)
+    /// Fetch as image
     var fetchAsImage: UIImage? {
         // swiftlint:disable:next implicit_getter
         get {
@@ -154,6 +157,7 @@ public extension String {
     #endif
     
     #if os(macOS)
+    /// Fetch as image
     var fetchAsImage: NSImage? {
         // swiftlint:disable:next implicit_getter
         get {
@@ -262,6 +266,10 @@ public extension String {
     }
     
     #if canImport(UIKit)
+    /// Messagebox
+    /// - Parameters:
+    ///   - viewController: onViewcontroller?
+    ///   - style: style?
     func messageBox(_ viewController: UIViewController?, style: UIAlertController.Style = .alert) {
         let alertView = UIAlertController.init(
             title: nil,
@@ -1322,6 +1330,7 @@ public extension String {
         )
     }
     
+    /// Dispatch group
     static let group = DispatchGroup()
     
     /// <#Description#>
@@ -2514,10 +2523,12 @@ public extension String {
 public extension String {
     
     #if canImport(UIKit)
+    /// Font (UIFont)
     typealias Font = UIFont
     #endif
     
     #if canImport(AppKit) && !targetEnvironment(macCatalyst)
+    /// Font (NSFont)
     typealias Font = NSFont
     #endif
     
@@ -2681,10 +2692,14 @@ public extension String.StringInterpolation {
         appendInterpolation(value ?? "nil" as CustomStringConvertible)
     }
     
+    /// Pretty print an URLRequest
+    /// - Parameter request: url request
     mutating func appendInterpolation(_ request: URLRequest) {
         appendInterpolation("\(request.url) | \(request.httpMethod) | Headers: \(request.allHTTPHeaderFields)")
     }
     
+    /// Pretty print an HTMLLink
+    /// - Parameter link: htmllink
     mutating func appendInterpolation(HTMLLink link: String) {
         guard let url = URL(string: link) else {
             assertionFailure("An invalid URL has been passed.")
@@ -2693,6 +2708,8 @@ public extension String.StringInterpolation {
         appendInterpolation("<a href=\"\(url.absoluteString)\">\(url.absoluteString)</a>")
     }
     
+    /// Pretty print JSONData
+    /// - Parameter JSONData: json data
     mutating func appendInterpolation(json JSONData: Data) {
         guard
             let JSONObject = try? JSONSerialization.jsonObject(with: JSONData, options: []),

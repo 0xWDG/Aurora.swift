@@ -44,14 +44,20 @@ public protocol AuroraNetworkLoggerConfigurationType {
 }
 
 extension AuroraNetworkLoggerConfigurationType {
+    /// body trim length
     public var bodyTrimLength: Int {
         return 10000
     }
     
+    /// networkLogger
+    /// - Parameter string: log
     public func auroraNetworkLogger(_ string: String) {
         Aurora.shared.log(string)
     }
     
+    /// Enable capture?
+    /// - Parameter request: for request
+    /// - Returns: bool
     public func enableCapture(_ request: URLRequest) -> Bool {
         #if DEBUG
         return true

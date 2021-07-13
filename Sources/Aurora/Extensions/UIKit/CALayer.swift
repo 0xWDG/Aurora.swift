@@ -5,6 +5,7 @@ import Foundation
 import UIKit
 
 public extension CALayer {
+    /// xCornerRadius
     @IBInspectable var xcornerRadius: CGFloat {
         get {
             return self.cornerRadius 

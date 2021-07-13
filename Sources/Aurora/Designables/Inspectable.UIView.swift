@@ -17,7 +17,7 @@ public extension UIView {
     }
     
     // MARK: - Corner
-    // Corner radius
+    /// Corner radius
     @IBInspectable var cornerRadius: CGFloat {
         get {
             return layer.cornerRadius
@@ -40,8 +40,8 @@ public extension UIView {
         }
     }
     
-    @IBInspectable
-    var borderColor: UIColor? {
+    /// Gorder color
+    @IBInspectable var borderColor: UIColor? {
         get {
             if let color = layer.borderColor {
                 return UIColor(cgColor: color)
@@ -58,8 +58,8 @@ public extension UIView {
     }
     
     // MARK: - Shadow
-    @IBInspectable
-    var shadowRadius: CGFloat {
+    /// Shadow Radius
+    @IBInspectable var shadowRadius: CGFloat {
         get {
             return layer.shadowRadius
         }
@@ -68,8 +68,8 @@ public extension UIView {
         }
     }
     
-    @IBInspectable
-    var shadowOpacity: Float {
+    /// Shadow Opacity
+    @IBInspectable var shadowOpacity: Float {
         get {
             return layer.shadowOpacity
         }
@@ -78,8 +78,8 @@ public extension UIView {
         }
     }
     
-    @IBInspectable
-    var shadowOffset: CGSize {
+    /// Shadow Offset
+    @IBInspectable var shadowOffset: CGSize {
         get {
             return layer.shadowOffset
         }
@@ -88,8 +88,8 @@ public extension UIView {
         }
     }
     
-    @IBInspectable
-    var shadowColor: UIColor? {
+    /// Shadow color
+    @IBInspectable var shadowColor: UIColor? {
         get {
             if let color = layer.shadowColor {
                 return UIColor(cgColor: color)

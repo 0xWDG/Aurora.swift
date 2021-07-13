@@ -6,12 +6,25 @@ import UIKit
 
 /// Available animations for UITabBarItems
 public enum TabBarItemAnimation {
+    /// Bounce
     case bounce
+    
+    /// Jump
     case jump
-    case rotate
+    
+    /// Rotate
+    case rotate (Right)
+    
+    /// Rotate (Right)
     case rotateRight
+    
+    /// Rotate (Left)
     case rotateLeft
+    
+    /// Shake
     case shake
+    
+    /// Custom
     case custom((UIImageView) -> Void)
 }
 
@@ -44,6 +57,10 @@ public protocol TabBarAnimation: UITabBarController {
 
 /// Implementation of SimpleTabBarAnimation
 public extension TabBarAnimation {
+    /// Play an animaton
+    /// - Parameters:
+    ///   - type: Type of animation
+    ///   - item: on which item?
     func playAnimation(type: TabBarItemAnimation, for item: UITabBarItem) {
         // Classic TabBar
         if let idx = tabBar.items?.firstIndex(of: item),

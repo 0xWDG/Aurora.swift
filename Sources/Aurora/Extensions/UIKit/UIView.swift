@@ -146,6 +146,7 @@ public extension UIView {
     }
     
     // MARK: - placehodlerView
+    /// add Placeholderview
     func placeholderView() {
         // Remove old ones, if present
         placehodlerViewRemove()
