@@ -26,7 +26,9 @@ import Foundation
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
 
+/// SplashAnimatableCompletion
 public typealias SplashAnimatableCompletion = () -> Void
+/// SplashAnimatableExecution
 public typealias SplashAnimatableExecution = () -> Void
 
 /// Protocol that represents splash animatable functionality

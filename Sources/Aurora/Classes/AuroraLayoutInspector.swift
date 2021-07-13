@@ -19,14 +19,18 @@
 import Foundation
 import UIKit
 
+/// Not done Layout inspector?
 open class AuroraLayoutInspector {
     /// Description
     static public let shared: AuroraLayoutInspector = AuroraLayoutInspector.init()
     
+    /// Start inspecting
     public func startInspecting() {
         // Start.
     }
     
+    /// captureHierarchy
+    /// - Returns: Viewhierarchy
     public func captureHierarchy() -> ViewDescriptionProtocol {
         guard let firstWindow = UIApplication.shared.windows.first else {
             //            return nil
@@ -43,6 +47,9 @@ open class AuroraLayoutInspector {
         }
     }
     
+    /// <#Description#>
+    /// - Parameter view: <#view description#>
+    /// - Returns: <#description#>
     public func buildHierarchy(view: UIView) -> ViewDescriptionProtocol {
         let children = view.subviews.map {
             buildHierarchy(view: $0)
@@ -100,20 +107,35 @@ open class AuroraLayoutInspector {
     }
 }
 
+/// View data
 public protocol ViewDescriptionProtocol {
+    /// Frame of the view
     var frame: CGRect { get }
+    /// Snapshot image  of the view
     var snapshotImage: UIImage? { get }
+    /// Subviews of the view
     var subviews: [ViewDescriptionProtocol]? { get }
+    /// Parent's size  of the view
     var parentSize: CGSize? { get }
+    /// Centerpoint  of the view
     var center: CGPoint { get }
+    /// Is the view hidden?
     var isHidden: Bool { get }
+    /// Is the view transparent?
     var isTransparent: Bool { get }
+    /// What is the classname  of the view
     var className: String { get }
+    /// Is userinteraction enabled on this view?
     var isUserInteractionEnabled: Bool { get }
+    /// What is the alpha value of the view
     var alpha: Float { get }
+    /// Background color  of the view
     var backgroundColor: UIColor? { get }
+    /// Tint color  of the view
     var tint: UIColor? { get }
+    /// Does the view clip to bounds?
     var clipToBounds: Bool { get }
+    /// What font is this view using
     var font: UIFont? { get }
 }
 

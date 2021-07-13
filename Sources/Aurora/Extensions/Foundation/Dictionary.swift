@@ -35,6 +35,9 @@ public protocol DictionaryDynamicLookup {
 // Extend, if key equals the string (so dict["Key"] exists.
 public extension DictionaryDynamicLookup where Key == String {
     // then return the value (optional, conform Dictionary protocol, not needed, but still required)
+    /// Get the dynamic member of the dictionary
+    /// - Parameters:
+    ///     dynamicMember: member
     subscript(dynamicMember member: String) -> Value? {
         // return our member
         return self[member]

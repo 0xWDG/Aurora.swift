@@ -307,9 +307,6 @@ open class Aurora {
     ///     Mozilla/5.0 (Aurora/1.0; MyAppName/appVersion; iOS/15.0)
     private var userAgentTemplate = "Mozilla/5.0 ($product/$version; $appName/$appVersion; $os/$osVersion)"
     
-    /// Shared static settings controller.
-    public var settings: AuroraStaticSettings = AuroraStaticSettings.shared
-    
     /// Is it already started?
     var isInitialized: Bool = false
     

@@ -20,6 +20,7 @@ import Foundation
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
 public extension UIWindow {
+    /// Keywindow
     static var key: UIWindow? {
         if #available(iOS 13, *) {
             return UIApplication.shared.windows.first { $0.isKeyWindow }

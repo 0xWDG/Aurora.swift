@@ -44,13 +44,21 @@ public struct DynamicUIColor {
     
     /// Backwards compatible wrapper arround UIUserInterfaceStyle
     public enum Style {
-        case light, dark
+        /// Light color
+        case light
+        /// Dark color
+        case dark
     }
     
     let light: UIColor
     let dark: UIColor
     let styleProvider: () -> Style?
     
+    /// <#Description#>
+    /// - Parameters:
+    ///   - light: <#light description#>
+    ///   - dark: <#dark description#>
+    ///   - style: <#style description#>
     public init(
         light: UIColor,
         dark: UIColor,
@@ -61,6 +69,7 @@ public struct DynamicUIColor {
         self.styleProvider = style
     }
     
+    /// <#Description#>
     public var wrappedValue: UIColor {
         switch styleProvider() {
         case .dark:

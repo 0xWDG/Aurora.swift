@@ -40,6 +40,7 @@ public extension UIApplication {
     }
     
     #if !os(watchOS)
+    /// Get the top most (key) window
     var key: UIWindow? {
         if #available(iOS 13, *) {
             return UIApplication.shared.windows.first { $0.isKeyWindow }

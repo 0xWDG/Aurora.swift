@@ -86,7 +86,10 @@ public class NSFWDetector {
     /// - error: Detection was not successful
     /// - success: Detection was successful. `nsfwConfidence`: 0.0 for safe content - 1.0 for hardcore porn ;)
     public enum DetectionResult {
+        /// error: Detection was not successful
         case error(Error)
+        
+        /// success: Detection was successful. `nsfwConfidence`: 0.0 for safe content - 1.0 for hardcore porn ;)
         case success(nsfwConfidence: Float)
     }
     

@@ -38,7 +38,6 @@
 		OBJ_162 /* AuroraNetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* AuroraNetworkLogger.swift */; };
 		OBJ_163 /* AuroraURLSessionPinningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* AuroraURLSessionPinningDelegate.swift */; };
 		OBJ_164 /* AuroraFramework.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* AuroraFramework.swift */; };
-		OBJ_165 /* AuroraSharedSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* AuroraSharedSettings.swift */; };
 		OBJ_166 /* AuroraCrashHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_31 /* AuroraCrashHandler.swift */; };
 		OBJ_167 /* AuroraDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_32 /* AuroraDevice.swift */; };
 		OBJ_168 /* AuroraError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* AuroraError.swift */; };
@@ -126,7 +125,6 @@
 		OBJ_250 /* ShakeEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_122 /* ShakeEffect.swift */; };
 		OBJ_251 /* Aurora.Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_124 /* Aurora.Config.swift */; };
 		OBJ_252 /* DynamicUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_125 /* DynamicUIColor.swift */; };
-		OBJ_253 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_126 /* Keychain.swift */; };
 		OBJ_254 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_127 /* UserDefault.swift */; };
 		OBJ_261 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_272 /* AuroraFrameworkTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_130 /* AuroraFrameworkTest.swift */; };
@@ -183,7 +181,6 @@
 		OBJ_122 /* ShakeEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeEffect.swift; sourceTree = "<group>"; };
 		OBJ_124 /* Aurora.Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aurora.Config.swift; sourceTree = "<group>"; };
 		OBJ_125 /* DynamicUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicUIColor.swift; sourceTree = "<group>"; };
-		OBJ_126 /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		OBJ_127 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		OBJ_130 /* AuroraFrameworkTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraFrameworkTest.swift; sourceTree = "<group>"; };
 		OBJ_131 /* DictionaryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTest.swift; sourceTree = "<group>"; };
@@ -210,7 +207,6 @@
 		OBJ_26 /* AuroraNetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraNetworkLogger.swift; sourceTree = "<group>"; };
 		OBJ_27 /* AuroraURLSessionPinningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraURLSessionPinningDelegate.swift; sourceTree = "<group>"; };
 		OBJ_28 /* AuroraFramework.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraFramework.swift; sourceTree = "<group>"; };
-		OBJ_29 /* AuroraSharedSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraSharedSettings.swift; sourceTree = "<group>"; };
 		OBJ_31 /* AuroraCrashHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraCrashHandler.swift; sourceTree = "<group>"; };
 		OBJ_32 /* AuroraDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraDevice.swift; sourceTree = "<group>"; };
 		OBJ_33 /* AuroraError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraError.swift; sourceTree = "<group>"; };
@@ -336,7 +332,6 @@
 			children = (
 				OBJ_124 /* Aurora.Config.swift */,
 				OBJ_125 /* DynamicUIColor.swift */,
-				OBJ_126 /* Keychain.swift */,
 				OBJ_127 /* UserDefault.swift */,
 			);
 			path = propertyWrappers;
@@ -526,7 +521,6 @@
 				OBJ_13 /* Aurora Extensions */,
 				OBJ_24 /* Aurora Networking */,
 				OBJ_28 /* AuroraFramework.swift */,
-				OBJ_29 /* AuroraSharedSettings.swift */,
 				OBJ_30 /* Classes */,
 				OBJ_52 /* Designables */,
 				OBJ_58 /* Extensions */,
@@ -694,7 +688,6 @@
 				OBJ_163 /* AuroraURLSessionPinningDelegate.swift in Sources */,
 				OBJ_164 /* AuroraFramework.swift in Sources */,
 				2B80F057269E0D7900EF3061 /* UnsafeUnwap.swift in Sources */,
-				OBJ_165 /* AuroraSharedSettings.swift in Sources */,
 				OBJ_166 /* AuroraCrashHandler.swift in Sources */,
 				OBJ_167 /* AuroraDevice.swift in Sources */,
 				OBJ_168 /* AuroraError.swift in Sources */,
@@ -782,7 +775,6 @@
 				OBJ_250 /* ShakeEffect.swift in Sources */,
 				OBJ_251 /* Aurora.Config.swift in Sources */,
 				OBJ_252 /* DynamicUIColor.swift in Sources */,
-				OBJ_253 /* Keychain.swift in Sources */,
 				OBJ_254 /* UserDefault.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

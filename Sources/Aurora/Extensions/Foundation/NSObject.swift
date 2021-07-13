@@ -34,6 +34,20 @@ import CoreGraphics
 #endif
 
 #if canImport(Foundation)
+/// Configurable protocol.
+/// Makes it available to set properties with closures just after initializing.
+///
+/// iOS/WatchOS/tvOS
+///
+///     let frame = UIView().configure {
+///       $0.backgroundColor = .red
+///     }
+///
+/// Or MacOS
+///
+///     let frame = NSView().configure {
+///       $0.backgroundColor = .red
+///     }
 public protocol Configure {}
 
 public extension Configure {

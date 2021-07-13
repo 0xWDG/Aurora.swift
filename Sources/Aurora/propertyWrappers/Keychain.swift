@@ -13,15 +13,27 @@ private let kcSecAttrAccount: String! = kSecAttrAccount as String
 private let kcSecAttrAccessGroup: String! = kSecAttrAccessGroup as String
 private let kcSecReturnAttributes: String = kSecReturnAttributes as String
 
-@available(iOS 11, *)
-@propertyWrapper
-public struct Keychain<Value> {
+/// Keychain wrapper
+///
+/// This struct defines the keychainwrapper
+@available(iOS 11, *) @propertyWrapper public struct Keychain<Value> {
+    /// Key
     public let key: String
+    /// Default value
     public let defaultValue: Value
+    /// Accessibility
     public let accessibility: KeychainItemAccessibility?
+    /// is Saved?
     public fileprivate(set) var isSuccessfullySaved = true
+    /// Keychain wrapper
     public let keyChainWrapper: KeychainWrapper
     
+    /// Keychain wrapper
+    /// - Parameters:
+    ///   - keyChainWrapper: Wrapper
+    ///   - key: key
+    ///   - defaultValue: default
+    ///   - accessibility: accessibility
     public init(
         _ keyChainWrapper: KeychainWrapper,
         key: String,
@@ -33,6 +45,7 @@ public struct Keychain<Value> {
         self.accessibility = accessibility
     }
     
+    /// Wrapped value (if any)
     public var wrappedValue: Value {
         get {
             guard let data = keyChainWrapper.data(forKey: key, withAccessibility: accessibility) else {
@@ -54,9 +67,8 @@ public struct Keychain<Value> {
     }
 }
 
-@available(iOS 11, *)
-@propertyWrapper
-public struct CodableKeychain<Value: Codable> {
+/// Codable keychain
+@available(iOS 11, *) @propertyWrapper public struct CodableKeychain<Value: Codable> {
     let key: String
     let decoder: JSONDecoder
     let encoder: JSONEncoder
@@ -65,6 +77,14 @@ public struct CodableKeychain<Value: Codable> {
     let keyChainWrapper: KeychainWrapper
     fileprivate(set) var isSuccessfullySaved = true
     
+    /// Codable keychain
+    /// - Parameters:
+    ///   - keyChainWrapper: wrapper
+    ///   - key: key
+    ///   - defaultValue: default value
+    ///   - decoder: encoder
+    ///   - encoder: decoder
+    ///   - accessibility: accessibility
     public init(
         _ keyChainWrapper: KeychainWrapper,
         key: String,
@@ -79,7 +99,8 @@ public struct CodableKeychain<Value: Codable> {
         self.encoder = encoder
         self.accessibility = accessibility
     }
-
+    
+    /// Unwrapped value if any
     public var wrappedValue: Value {
         get {
             guard let data = keyChainWrapper.data(forKey: key, withAccessibility: accessibility) else {
@@ -107,6 +128,7 @@ protocol KeychainAttrRepresentable {
 }
 
 // MARK: - KeychainItemAccessibility
+/// Accessibility options
 public enum KeychainItemAccessibility {
     /// The data in the keychain item cannot be accessed after a restart
     /// until the device has been unlocked once by the user.
@@ -238,6 +260,9 @@ open class KeychainWrapper {
         }
     }
     
+    /// accessibilityOfKey
+    /// - Parameter key: key
+    /// - Returns: KeychainItemAccessibility
     open func accessibilityOfKey(_ key: String) -> KeychainItemAccessibility? {
         var keychainQueryDictionary = setupKeychainQueryDictionary(forKey: key)
         var result: AnyObject?
@@ -268,6 +293,11 @@ open class KeychainWrapper {
     
     // MARK: Public Getters
     
+    /// Integer
+    /// - Parameters:
+    ///   - key: for key
+    ///   - accessibility: accessibility
+    /// - Returns: Int?
     open func integer(forKey key: String, withAccessibility accessibility: KeychainItemAccessibility? = nil) -> Int? {
         guard let numberValue = object(forKey: key, withAccessibility: accessibility) as? NSNumber else {
             return nil
@@ -276,6 +306,11 @@ open class KeychainWrapper {
         return numberValue.intValue
     }
     
+    /// Float
+    /// - Parameters:
+    ///   - key: for key
+    ///   - accessibility: accessibility
+    /// - Returns: Float?
     open func float(forKey key: String, withAccessibility accessibility: KeychainItemAccessibility? = nil) -> Float? {
         guard let numberValue = object(forKey: key, withAccessibility: accessibility) as? NSNumber else {
             return nil
@@ -284,6 +319,11 @@ open class KeychainWrapper {
         return numberValue.floatValue
     }
     
+    /// Double
+    /// - Parameters:
+    ///   - key: for key
+    ///   - accessibility: accessibility
+    /// - Returns: Double?
     open func double(forKey key: String, withAccessibility accessibility: KeychainItemAccessibility? = nil) -> Double? {
         guard let numberValue = object(forKey: key, withAccessibility: accessibility) as? NSNumber else {
             return nil
@@ -292,6 +332,11 @@ open class KeychainWrapper {
         return numberValue.doubleValue
     }
     
+    /// Bool
+    /// - Parameters:
+    ///   - key: for key
+    ///   - accessibility: accessibility
+    /// - Returns: Bool?
     open func bool(forKey key: String, withAccessibility accessibility: KeychainItemAccessibility? = nil) -> Bool? {
         guard let numberValue = object(forKey: key, withAccessibility: accessibility) as? NSNumber else {
             return nil
@@ -384,6 +429,12 @@ open class KeychainWrapper {
     
     // MARK: Public Setters
     
+    /// Set `Int` value
+    /// - Parameters:
+    ///   - value: value
+    ///   - key: for key
+    ///   - accessibility: accessibility
+    /// - Returns: Boolean saved?
     @discardableResult open func set(
         _ value: Int,
         forKey key: String,
@@ -391,6 +442,12 @@ open class KeychainWrapper {
         return set(NSNumber(value: value), forKey: key, withAccessibility: accessibility)
     }
     
+    /// Set `Float` value
+    /// - Parameters:
+    ///   - value: value
+    ///   - key: for key
+    ///   - accessibility: accessibility
+    /// - Returns: Boolean saved?
     @discardableResult open func set(
         _ value: Float,
         forKey key: String,
@@ -398,6 +455,12 @@ open class KeychainWrapper {
         return set(NSNumber(value: value), forKey: key, withAccessibility: accessibility)
     }
     
+    /// Set `Double` value
+    /// - Parameters:
+    ///   - value: value
+    ///   - key: for key
+    ///   - accessibility: accessibility
+    /// - Returns: Boolean saved?
     @discardableResult open func set(
         _ value: Double,
         forKey key: String,
@@ -405,6 +468,12 @@ open class KeychainWrapper {
         return set(NSNumber(value: value), forKey: key, withAccessibility: accessibility)
     }
     
+    /// Set `Bool` value
+    /// - Parameters:
+    ///   - value: value
+    ///   - key: for key
+    ///   - accessibility: accessibility
+    /// - Returns: Boolean saved?
     @discardableResult open func set(
         _ value: Bool,
         forKey key: String,
