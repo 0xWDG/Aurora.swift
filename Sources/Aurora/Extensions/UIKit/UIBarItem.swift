@@ -19,17 +19,17 @@
 import UIKit
 
 extension UIBarItem {
-    struct properties {
+    struct Properties {
         static var identifier = "identifier"
     }
     
     /// Identifier
     @IBInspectable public var identifier: String? {
         get {
-            return self.property(forKey: &properties.identifier) as? String
+            return self.property(forKey: &Properties.identifier) as? String
         }
         set {
-            self.property(newValue as Any, forKey: &properties.identifier)
+            self.property(newValue as Any, forKey: &Properties.identifier)
         }
     }
 }

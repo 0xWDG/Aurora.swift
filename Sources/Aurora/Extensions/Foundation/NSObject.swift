@@ -100,7 +100,7 @@ public extension NSObject {
         
     /// <#Description#>
     @objc
-    private class deinitCallbackHolder: NSObject {
+    private class DeinitCallbackHolder: NSObject {
         var callbacks = [() -> Void]()
         
         deinit {
@@ -113,11 +113,11 @@ public extension NSObject {
     /// <#Description#>
     /// - Parameter object: <#object description#>
     /// - Returns: <#description#>
-    private static func getHolder(of object: NSObject) -> deinitCallbackHolder {
-        if let existing = objc_getAssociatedObject(object, &callbackKey) as? NSObject.deinitCallbackHolder {
+    private static func getHolder(of object: NSObject) -> DeinitCallbackHolder {
+        if let existing = objc_getAssociatedObject(object, &callbackKey) as? NSObject.DeinitCallbackHolder {
             return existing
         } else {
-            let new = deinitCallbackHolder()
+            let new = DeinitCallbackHolder()
             objc_setAssociatedObject(object, &callbackKey, new, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             return new
         }
@@ -143,7 +143,6 @@ public extension NSObject {
         getHolder(of: object).callbacks.append(block)
     }
 }
-
 
 /// Save properties to the Objective-C runtime of a object.
 ///

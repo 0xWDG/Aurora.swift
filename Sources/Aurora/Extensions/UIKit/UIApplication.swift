@@ -23,10 +23,16 @@ public extension UIApplication {
     /// Clear the cache of the launchscreen
     func clearLaunchScreenCache() {
         do {
-            try FileManager.default.removeItem(atPath: NSHomeDirectory() + "/Library/SplashBoard")
+            try FileManager.default.removeItem(
+                atPath: NSHomeDirectory() + "/Library/SplashBoard"
+            )
         } catch {
             Aurora.shared.log("Failed to delete launch screen cache with error: \(error)")
         }
+    }
+    
+    var userInterfaceRightToLeft: Bool {
+        return UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft
     }
     
     #if !os(watchOS)
