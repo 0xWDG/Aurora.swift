@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		2B80F057269E0D7900EF3061 /* UnsafeUnwap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B80F056269E0D7900EF3061 /* UnsafeUnwap.swift */; };
 		OBJ_149 /* AnimatedSplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* AnimatedSplashScreen.swift */; };
 		OBJ_150 /* TabBarAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* TabBarAnimation.swift */; };
 		OBJ_151 /* Aurora.Compression.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* Aurora.Compression.swift */; };
@@ -154,6 +155,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B80F056269E0D7900EF3061 /* UnsafeUnwap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsafeUnwap.swift; sourceTree = "<group>"; };
 		"Aurora::Aurora::Product" /* Aurora.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Aurora.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Aurora::AuroraTests::Product" /* AuroraTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = AuroraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_100 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
@@ -296,6 +298,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B80F055269E0D6900EF3061 /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				2B80F056269E0D7900EF3061 /* UnsafeUnwap.swift */,
+			);
+			path = Functions;
+			sourceTree = "<group>";
+		};
 		OBJ_10 /* Animations */ = {
 			isa = PBXGroup;
 			children = (
@@ -510,6 +520,7 @@
 		OBJ_8 /* Aurora */ = {
 			isa = PBXGroup;
 			children = (
+				2B80F055269E0D6900EF3061 /* Functions */,
 				OBJ_9 /* AuroraFramework.h */,
 				OBJ_10 /* Animations */,
 				OBJ_13 /* Aurora Extensions */,
@@ -682,6 +693,7 @@
 				OBJ_162 /* AuroraNetworkLogger.swift in Sources */,
 				OBJ_163 /* AuroraURLSessionPinningDelegate.swift in Sources */,
 				OBJ_164 /* AuroraFramework.swift in Sources */,
+				2B80F057269E0D7900EF3061 /* UnsafeUnwap.swift in Sources */,
 				OBJ_165 /* AuroraSharedSettings.swift in Sources */,
 				OBJ_166 /* AuroraCrashHandler.swift in Sources */,
 				OBJ_167 /* AuroraDevice.swift in Sources */,

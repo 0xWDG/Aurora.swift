@@ -23,10 +23,20 @@ public extension UIApplication {
     /// Clear the cache of the launchscreen
     func clearLaunchScreenCache() {
         do {
-            try FileManager.default.removeItem(atPath: NSHomeDirectory() + "/Library/SplashBoard")
+            try FileManager.default.removeItem(
+                atPath: NSHomeDirectory() + "/Library/SplashBoard"
+            )
         } catch {
             Aurora.shared.log("Failed to delete launch screen cache with error: \(error)")
         }
+    }
+    
+    /// The layout direction of the user interface.
+    ///
+    /// This method specifies the general user interface layout flow direction. \
+    /// See UIUserInterfaceLayoutDirection for a description of the constants returned by this property.
+    var userInterfaceRightToLeft: Bool {
+        return UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft
     }
     
     #if !os(watchOS)

@@ -4,7 +4,7 @@ import Foundation
 ///
 /// Usage:
 /// ```
-/// @UserDefault("has_seen_app_introduction", defaultValue: false)
+/// @UserDefault("has_seen_app_introduction", default: false)
 /// static var hasSeenAppIntroduction: Bool
 /// ```
 ///
@@ -23,11 +23,11 @@ public struct UserDefault<Value: PropertyListValue> {
     /// <#Description#>
     /// - Parameters:
     ///   - key: <#key description#>
-    ///   - defaultValue: <#defaultValue description#>
+    ///   - default: <#defaultValue description#>
     ///   - userDefaults: <#userDefaults description#>
-    public init(_ key: String, defaultValue: Value, userDefaults: UserDefaults = .standard) {
+    public init(_ key: String, `default`: Value, userDefaults: UserDefaults = .standard) {
         self.key = key
-        self.defaultValue = defaultValue
+        self.defaultValue = `default`
         self.userDefaults = userDefaults
     }
     
