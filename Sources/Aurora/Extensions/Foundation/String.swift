@@ -350,17 +350,17 @@ public extension String {
     
     /// Check if the string contains an IP4 address.
     var isIP4Address: Bool {
-        confirmIP4isValid(ip4: self)
+        confirmIPisValid(ip4: self)
     }
     
     /// Check if the string contains an IP6 address.
     var isIP6Address: Bool {
-        confirmIP6isValid(ip6: self)
+        confirmIPisValid(ip6: self)
     }
     
     /// Check if the string contains an IP4 or an IP6 address.
     var isIPAddress: Bool {
-        confirmIP4isValid(ip4: self) || confirmIP6isValid(ip6: self)
+        confirmIPisValid(ip4: self) || confirmIPisValid(ip6: self)
     }
     
     /// To date
