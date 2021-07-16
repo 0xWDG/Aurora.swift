@@ -107,14 +107,13 @@ public extension NSObject {
         String(describing: self)
     }
     
-    /// <#Description#>
+    /// The class name
     var className: String {
         return type(of: self).className
     }
         
-    /// <#Description#>
-    @objc
-    private class DeinitCallbackHolder: NSObject {
+    /// Deinitialization callback holder
+    @objc private class DeinitCallbackHolder: NSObject {
         var callbacks = [() -> Void]()
         
         deinit {
@@ -124,9 +123,9 @@ public extension NSObject {
         }
     }
     
-    /// <#Description#>
-    /// - Parameter object: <#object description#>
-    /// - Returns: <#description#>
+    /// Get hoider of deinit object
+    /// - Parameter object: the object
+    /// - Returns: the callback/holder
     private static func getHolder(of object: NSObject) -> DeinitCallbackHolder {
         if let existing = objc_getAssociatedObject(object, &callbackKey) as? NSObject.DeinitCallbackHolder {
             return existing

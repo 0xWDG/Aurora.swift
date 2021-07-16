@@ -40,12 +40,12 @@ extension Aurora {
     }
 }
 
-/// <#Description#>
+/// Aurora Crash Handler
 class AuroraCrashHandler {
-    /// <#Description#>
+    /// Shared Instance
     static public let shared: AuroraCrashHandler = AuroraCrashHandler.init()
     
-    /// <#Description#>
+    /// Signal codes
     private let signalCodes = [
         SIGABRT: "SIGABRT: abort()",
         SIGILL: "SIGILL: illegal instruction (not reset when caught)",
@@ -80,18 +80,18 @@ class AuroraCrashHandler {
         SIGUSR2: "SIGUSR2: user defined signal 2"
     ]
     
-    /// <#Description#>
-    private static let RecieveSignal : @convention(c) (Int32) -> Void = { (signal) -> Void in
+    /// Receive signal (C Bridge)
+    private static let RecieveSignal: @convention(c) (Int32) -> Void = { (signal) -> Void in
         AuroraCrashHandler.createReport(from: signal)
     }
     
-    /// <#Description#>
+    /// Receive exception (C Bridge)
     private static let RecieveException: @convention(c) (NSException) -> Swift.Void = { (theExteption) -> Void in
         AuroraCrashHandler.createReport(from: theExteption)
     }
     
-    /// <#Description#>
-    /// - Parameter from: <#from description#>
+    /// Create crash/exception report
+    /// - Parameter from: from data
     // swiftlint:disable:next function_body_length
     private class func createReport(from: Any) {
         var crashReport = ""
@@ -174,8 +174,8 @@ class AuroraCrashHandler {
         }
     }
     
-    /// <#Description#>
-    /// - Returns: <#description#>
+    /// Get last crash log
+    /// - Returns: last crash log
     public func getLastCrashLog() -> String? {
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             let fileURL = dir.appendingPathComponent("AuroraCrashDump")
@@ -187,8 +187,8 @@ class AuroraCrashHandler {
         return nil
     }
     
-    /// <#Description#>
-    /// - Returns: <#description#>
+    /// Delete last crash log
+    /// - Returns: succeed?
     @discardableResult
     public func deleteLastCrashLog() -> Bool {
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
@@ -209,7 +209,7 @@ class AuroraCrashHandler {
     /// Did we already register?
     private var didRegister = false
     
-    /// <#Description#>
+    /// Initialize
     init() {
         // Ok.
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -217,7 +217,7 @@ class AuroraCrashHandler {
         }
     }
     
-    /// <#Description#>
+    /// Register for signals
     func registerForSignals() {
         if !didRegister {
             NSSetUncaughtExceptionHandler(AuroraCrashHandler.RecieveException)

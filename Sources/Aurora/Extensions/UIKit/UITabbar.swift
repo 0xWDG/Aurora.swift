@@ -40,8 +40,8 @@ public extension UITabBar {
         fatalError("Failed to get index")
     }
     
-    /// <#Description#>
-    /// - Parameter withName: <#withName description#>
+    /// Select item with name
+    /// - Parameter withName: name
     func select(withName: String) {
         var currentIndex = 0
         

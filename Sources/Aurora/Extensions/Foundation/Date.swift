@@ -147,9 +147,9 @@ public extension Date {
         self < Date()
     }
     
-    /// <#Description#>
-    /// - Parameter format: <#format description#>
-    /// - Returns: <#description#>
+    /// To string
+    /// - Parameter format: With format
+    /// - Returns: Date/Time as String
     func toString(format: String) -> String {
         let dformatter = DateFormatter()
         dformatter.dateFormat = format

@@ -39,6 +39,7 @@ import UIKit
 /// ```
 ///
 /// [Courtesy of @bardonadam](https://twitter.com/bardonadam)
+/// Editted by Wesley de groot, removed pre-ios 13 stuff.
 @propertyWrapper
 public struct DynamicUIColor {
     
@@ -52,53 +53,39 @@ public struct DynamicUIColor {
     
     let light: UIColor
     let dark: UIColor
-    let styleProvider: () -> Style?
     
-    /// <#Description#>
+    /// A property wrapper arround UIColor to support dark mode.
     /// - Parameters:
-    ///   - light: <#light description#>
-    ///   - dark: <#dark description#>
-    ///   - style: <#style description#>
+    ///   - light: color when using an light interface
+    ///   - dark: color when using an dark interface
     public init(
         light: UIColor,
-        dark: UIColor,
-        style: @autoclosure @escaping () -> Style? = nil
+        dark: UIColor
     ) {
         self.light = light
         self.dark = dark
-        self.styleProvider = style
     }
     
-    /// <#Description#>
+    /// wrapped Color
     public var wrappedValue: UIColor {
-        switch styleProvider() {
-        case .dark:
-            return dark
-            
-        case .light:
-            return light
-            
-        case .none:
-            // UIColor(dynamicProvider:) only available on iOS >=13+ & tvOS >=13
-            #if os(iOS) || os(tvOS)
-            if #available(iOS 13.0, tvOS 13.0, *) {
-                return UIColor { traitCollection -> UIColor in
-                    switch traitCollection.userInterfaceStyle {
-                    case .dark:
-                        return self.dark
-                    case .light, .unspecified:
-                        return self.light
-                    @unknown default:
-                        return self.light
-                    }
+        #if os(iOS) || os(tvOS)
+        if #available(iOS 13.0, tvOS 13.0, *) {
+            return UIColor { traitCollection -> UIColor in
+                switch traitCollection.userInterfaceStyle {
+                case .dark:
+                    return self.dark
+                case .light, .unspecified:
+                    return self.light
+                @unknown default:
+                    return self.light
                 }
-            } else {
-                return light
             }
-            #else
+        } else {
             return light
-            #endif
         }
+        #else
+        return light
+        #endif
     }
 }
 

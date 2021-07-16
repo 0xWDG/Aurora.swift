@@ -42,14 +42,14 @@ public extension Sequence where Element: Numeric {
 }
 
 public protocol DivisibleArithmetic: Numeric {
-    /// <#Description#>
-    /// - Parameter value: <#value description#>
+    /// DivisibleArithmetic
+    /// - Parameter value: values
     init(_ value: Int)
     
-    /// <#Description#>
+    /// Divide
     /// - Parameters:
-    ///   - lhs: <#lhs description#>
-    ///   - rhs: <#rhs description#>
+    ///   - lhs: Number 1
+    ///   - rhs: Number 2
     static func / (lhs: Self, rhs: Self) -> Self
 }
 

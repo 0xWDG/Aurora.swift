@@ -17,9 +17,9 @@
 
 import Foundation
 
-/// <#Description#>
+/// Promise sometthing
 class Promise<Value> {
-    /// <#Description#>
+    /// Promise state
     enum State<T> {
         case pending
         case resolved(T)
@@ -35,22 +35,22 @@ class Promise<Value> {
     /// What (error) callbacks are waiting
     private var callbacksOnError: [(Value) -> Void] = []
     
-    /// <#Description#>
-    /// - Parameter executor: <#executor description#>
+    /// Initialize executor
+    /// - Parameter executor: executor
     init(executor: (_ resolve: @escaping (Value) -> Void) -> Void) {
         executor(resolve)
     }
     
     /// Observe
-    /// - Parameter onResolved: <#onResolved description#>
+    /// - Parameter onResolved: on promise resolved
     public func then(_ onResolved: @escaping (Value) -> Void) {
         callbacksOnResolved.append(onResolved)
         triggerCallbacks()
     }
     
     /// flatMap
-    /// - Parameter onResolved: <#onResolved description#>
-    /// - Returns: <#description#>
+    /// - Parameter onResolved: on promise resolved
+    /// - Returns: Promise
     public func then<NewValue>(_ onResolved: @escaping (Value) -> Promise<NewValue>) -> Promise<NewValue> {
         return Promise<NewValue> { resolve in
             then { value in
@@ -60,8 +60,8 @@ class Promise<Value> {
     }
     
     /// map
-    /// - Parameter onResolved: <#onResolved description#>
-    /// - Returns: <#description#>
+    /// - Parameter onResolved: on promise resolved
+    /// - Returns: Promise
     public func then<NewValue>(_ onResolved: @escaping (Value) -> NewValue) -> Promise<NewValue> {
         return then { value in
             return Promise<NewValue> { resolve in
@@ -84,39 +84,39 @@ class Promise<Value> {
         triggerCallbacks()
     }
     
-    /// <#Description#>
-    /// - Parameter expression: <#expression description#>
+    /// Validate expression
+    /// - Parameter expression: expression
     public func validate(_ expression: @escaping (Value) -> Bool) {
         
     }
     
-    /// <#Description#>
-    /// - Parameter value: <#value description#>
+    /// Resolve
+    /// - Parameter value: value
     private func resolve(value: Value) {
         updateState(to: .resolved(value))
     }
     
-    /// <#Description#>
-    /// - Parameter value: <#value description#>
+    /// Fail
+    /// - Parameter value: Failed
     private func fail(value: Value) {
         updateState(to: .failed(value))
     }
     
-    /// <#Description#>
-    /// - Parameter newState: <#newState description#>
+    /// Update state
+    /// - Parameter newState: new state
     private func updateState(to newState: State<Value>) {
         guard case .pending = state else { return }
         state = newState
         triggerCallbacks()
     }
     
-    /// <#Description#>
+    /// Trigger all the callbacks
     private func triggerCallbacks() {
         callbacksForResolved()
         callbacksForFailed()
     }
     
-    /// <#Description#>
+    /// Execute callbacks for resolved
     private func callbacksForResolved() {
         guard case let .resolved(value) = state else { return }
         
@@ -127,7 +127,7 @@ class Promise<Value> {
         callbacksOnResolved.removeAll()
     }
     
-    /// <#Description#>
+    /// Execute callbacks for failed promises
     private func callbacksForFailed() {
         guard case let .failed(value) = state else { return }
         

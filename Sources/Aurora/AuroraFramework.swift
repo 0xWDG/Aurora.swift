@@ -37,15 +37,21 @@ import CommonCrypto
 
 /// The Aurora framework for swift
 ///
-/// The **Aurora.framework** contains a base for your project.
+/// **Aurora.framework** contains a base for your project.
 ///
-/// It has a lot of extensions built-in to make development easier
+/// It has a lot of extensions, functions and classes built-in to make development easier.
 ///
+/// See the [Online documentation](https://github.com/AuroraFramework/Aurora.swift/wiki) \
+/// for more information about all the built-in extensions, functions and classes.
+///
+/// - Experiment: to start experimental functions use the following code in your app(delegate):
+///
+/// `Aurora.shared.startExperimentalFunctions()`
 /// - Version: 1.0
 /// - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 ///  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 open class Aurora {
-    /// The shared instance of the "AuroraFramework"
+    /// The shared instance of **Aurora.framework**
     public static let shared = Aurora()
     
     /// Initialize crash handler
@@ -314,7 +320,7 @@ open class Aurora {
     var operatingSystem: AuroraOS = .unknown
     
     /// Initialize
-    public init(_ silent: Bool = true) {
+    public init(experimentalFunctions: Bool = false) {
         #if os(iOS)
         self.log("Aurora Framework for iOS \(self.version) loaded")
         self.operatingSystem = .iOS
@@ -341,14 +347,20 @@ open class Aurora {
         self.log("Unknown platform")
         #endif
         
-        #if os(iOS)
-        let iCloud: AuroraFrameworkiCloudSync = AuroraFrameworkiCloudSync()
-        iCloud.startSync()
-        #endif
-        
-//        AuroraNetworkLogger.register()
-        
         isInitialized = true
+    }
+    
+    /// Start Aurora classes/functions
+    private func startAuroraFunctions() {
+        #if os(iOS)
+        let iCloudSync: AuroraFrameworkiCloudSync = AuroraFrameworkiCloudSync()
+        iCloudSync.start()
+        #endif
+    }
+    
+    /// Start experimental functions
+    public func startExperimentalFunctions() {
+        AuroraNetworkLogger.register()
     }
 }
 

@@ -21,7 +21,7 @@ import Foundation
 import CoreML
 import Vision
 
-/// <#Description#>
+/// NSFW Detector
 ///
 /// Example
 ///
@@ -95,13 +95,12 @@ public class NSFWDetector {
     
     /// Check the image
     /// - Parameters:
-    ///   - image: <#image description#>
-    ///   - completion: <#completion description#>
+    ///   - image: Image
+    ///   - completion: Detection result
     public func check(image: Image, completion: @escaping (_ result: DetectionResult) -> Void) {
         // Create a requestHandler for the image
         let requestHandler: VNImageRequestHandler?
         
-        /// <#Description#>
         #if os(iOS)
         if let cgImage = image.cgImage {
             requestHandler = VNImageRequestHandler(cgImage: cgImage, options: [:])
@@ -126,10 +125,10 @@ public class NSFWDetector {
     
     /// Check the image (using pixels)
     /// - Parameters:
-    ///   - cvPixelbuffer: <#cvPixelbuffer description#>
-    ///   - completion: <#completion description#>
+    ///   - cvPixelbuffer: Pixel buffer
+    ///   - completion: On completion
     public func check(cvPixelbuffer: CVPixelBuffer, completion: @escaping (_ result: DetectionResult) -> Void) {
-        /// <#Description#>
+        /// VN Request handler
         let requestHandler = VNImageRequestHandler(
             cvPixelBuffer: cvPixelbuffer,
             options: [:]
@@ -138,10 +137,10 @@ public class NSFWDetector {
         self.check(requestHandler, completion: completion)
     }
     
-    /// <#Description#>
+    /// Check
     /// - Parameters:
-    ///   - requestHandler: <#requestHandler description#>
-    ///   - completion: <#completion description#>
+    ///   - requestHandler: VN Request handler
+    ///   - completion: Completion
     func check(_ requestHandler: VNImageRequestHandler?, completion: @escaping (_ result: DetectionResult) -> Void) {
         guard let requestHandler = requestHandler else {
             completion(

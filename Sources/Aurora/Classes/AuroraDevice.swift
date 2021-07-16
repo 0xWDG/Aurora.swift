@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 #endif
 
-/// <#Description#>
+/// Operating Systems
 enum AuroraOS {
     case macOS
     case iOS, iPadOS, iPhoneOS
@@ -27,7 +27,7 @@ enum AuroraOS {
     case unknown
 }
 
-/// <#Description#>
+/// User Interfaces
 enum AuroraUserInterface {
     case carPley
     case mac
@@ -205,8 +205,8 @@ class AuroraDevice {
         "x86_64": "Simulator"
     ]
     
-    /// <#Description#>
-    /// - Returns: <#description#>
+    /// Get device name
+    /// - Returns: Devicename
     func getDeviceName() -> String {
         var systemInfo = utsname()
         uname(&systemInfo)
@@ -223,8 +223,8 @@ class AuroraDevice {
         }
     }
     
-    /// <#Description#>
-    /// - Returns: <#description#>
+    /// Get the current operating system
+    /// - Returns: current operating system
     func getOperatingSystem() -> AuroraOS {
         #if os(macOS)
         return .macOS

@@ -36,11 +36,11 @@ public enum WatchDeviceType: Int, Equatable, Comparable {
 public extension WatchDeviceType: CaseIterable {}
 #endif
 
-/// <#Description#>
+/// Compare 2 watch types
 /// - Parameters:
-///   - lhs: <#lhs description#>
-///   - rhs: <#rhs description#>
-/// - Returns: <#description#>
+///   - lhs: Watch 1
+///   - rhs: Watch 2
+/// - Returns: Comparisation
 public func < (lhs: WatchDeviceType, rhs: WatchDeviceType) -> Bool {
     return lhs.rawValue < rhs.rawValue
 }

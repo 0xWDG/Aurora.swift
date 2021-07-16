@@ -28,23 +28,28 @@ public extension Data {
             return String(format: "%02hhx", $0)
         }).joined()
     }
+    
+    /// Data as string (utf8)
+    var stringValue: String? {
+        return String.init(data: self, encoding: .utf8)
+    }
 }
 
 #if canImport(Compression)
 public extension Data {
-    /// <#Description#>
+    /// Config (for (de)compression)
     fileprivate typealias Config = (
         operation: compression_stream_operation,
         algorithm: compression_algorithm
     )
     
-    /// <#Description#>
+    /// (de)compression)
     /// - Parameters:
-    ///   - config: <#config description#>
-    ///   - source: <#source description#>
-    ///   - sourceSize: <#sourceSize description#>
-    ///   - preload: <#preload description#>
-    /// - Returns: <#description#>
+    ///   - config: Configuration
+    ///   - source: Source ponter
+    ///   - sourceSize: Source size
+    ///   - preload: Data (leave empty)
+    /// - Returns: (de)Compress data
     fileprivate func perform(
         config: Config,
         source: UnsafePointer<UInt8>,
@@ -120,7 +125,7 @@ public extension Data {
     }
     
     /// Decompresses the data using the zlib deflate algorithm.
-    /// Self is expected to be a raw deflate
+    /// - note: Self is expected to be a raw deflate, \
     /// stream according to [RFC-1951](https://tools.ietf.org/html/rfc1951).
     /// - returns: uncompressed data
     func inflate() -> Data? {
@@ -138,10 +143,10 @@ public extension Data {
         }
     }
     
-    /// <#Description#>
-    /// - Parameter body: <#body description#>
-    /// - Throws: <#description#>
-    /// - Returns: <#description#>
+    /// withUnsafeBytes
+    /// - Parameter body: Unsafe pointer
+    /// - Throws: ResultType
+    /// - Returns: ResultType
     func withUnsafeBytes<ResultType, ContentType>(
         _ body: (UnsafePointer<ContentType>) throws -> ResultType
     ) rethrows -> ResultType {

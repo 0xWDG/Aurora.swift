@@ -18,33 +18,33 @@
 #if canImport(Foundation)
 import Foundation
 
-/// <#Description#>
+/// NilError
 public struct NilError: Error, CustomStringConvertible {
     let file: String
     let line: Int
     
-    /// <#Description#>
+    /// Nil
     /// - Parameters:
-    ///   - file: <#file description#>
-    ///   - line: <#line description#>
+    ///   - file: File
+    ///   - line: Line
     public init(file: String = #file, line: Int = #line) {
         self.file = file
         self.line = line
     }
     
-    /// <#Description#>
+    /// Description
     public var description: String {
         return "Nil returned at " + (file) + ":\(line)"
     }
 }
 
 public extension Optional {
-    /// <#Description#>
+    /// Unwrap optional
     /// - Parameters:
-    ///   - file: <#file description#>
-    ///   - line: <#line description#>
-    /// - Throws: <#description#>
-    /// - Returns: <#description#>
+    ///   - file: file
+    ///   - line: line
+    /// - Throws: Error if cannot unwrap
+    /// - Returns: Result
     func unwrap(file: String = #file, line: Int = #line) throws -> Wrapped {
         guard let result = self else {
             throw NilError(file: file, line: line)
@@ -74,10 +74,10 @@ public extension Optional {
         return value
     }
     
-    /// <#Description#>
-    /// - Parameter errorExpression: <#errorExpression description#>
-    /// - Throws: <#description#>
-    /// - Returns: <#description#>
+    /// unwrap or throw
+    /// - Parameter errorExpression: Unwrap to error
+    /// - Throws: Error if cannot unwrap
+    /// - Returns: Result
     func unwrapOrThrow(_ errorExpression: @autoclosure () -> Error) throws -> Wrapped {
         guard let value = self else {
             throw errorExpression()

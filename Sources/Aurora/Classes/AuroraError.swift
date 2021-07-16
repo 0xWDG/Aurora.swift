@@ -17,13 +17,13 @@
 
 import Foundation
 
-/// <#Description#>
+/// Aurora error
 struct AuroraError {
-    /// <#Description#>
+    /// The error message
     let message: String
     
-    /// <#Description#>
-    /// - Parameter message: <#message description#>
+    /// Create an error message
+    /// - Parameter message: the error description
     init(message: String) {
         self.message = message
     }
@@ -33,17 +33,18 @@ extension AuroraError: LocalizedError {
     /// the Error description
     var errorDescription: String? { return message }
     
-    /// <#Description#>
+    /// Failure reaseon
     var failureReason: String? { return message }
     
-    /// <#Description#>
+    /// Recovery suggestion
     var recoverySuggestion: String? { return message }
     
-    /// <#Description#>
+    /// Help anchor
     var helpAnchor: String? { return message }
 }
 
 extension String {
+    /// Create an `Error` of the current string
     var auroraError: AuroraError {
         return AuroraError(message: self)
     }

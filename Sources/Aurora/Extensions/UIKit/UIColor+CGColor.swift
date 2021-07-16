@@ -67,9 +67,9 @@ public extension UIColor {
         }
     }
     
-    /// <#Description#>
-    /// - Parameter randomApha: <#randomApha description#>
-    /// - Returns: <#description#>
+    /// random color
+    /// - Parameter randomApha: Random alpha?
+    /// - Returns: Random UIColor
     class func random(randomAlpha randomApha: Bool = false) -> UIColor {
         let redValue = CGFloat.random(in: 0...255) / 255.0
         let greenValue = CGFloat.random(in: 0...255) / 255.0

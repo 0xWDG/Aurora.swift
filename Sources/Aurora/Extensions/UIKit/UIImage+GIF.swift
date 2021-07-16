@@ -21,8 +21,8 @@ import ImageIO
 
 // Got this from https://github.com/hasnine/iOSUtilitiesSource/blob/master/iOSUtilitiesSource/GifImageLoader.swift
 public extension UIImageView {
-    /// <#Description#>
-    /// - Parameter name: <#name description#>
+    /// load GIF
+    /// - Parameter name: name
     func loadGif(name: String) {
         DispatchQueue.global().async {
             let image = UIImage.gif(name: name)
@@ -32,8 +32,8 @@ public extension UIImageView {
         }
     }
     
-    /// <#Description#>
-    /// - Parameter asset: <#asset description#>
+    /// load GIF
+    /// - Parameter asset: asset name
     @available(iOS 9.0, *)
     func loadGif(asset: String) {
         DispatchQueue.global().async {
@@ -47,9 +47,9 @@ public extension UIImageView {
 }
 
 public extension UIImage {
-    /// <#Description#>
-    /// - Parameter data: <#data description#>
-    /// - Returns: <#description#>
+    /// GIF from DATA
+    /// - Parameter data: GIF Data
+    /// - Returns: Animated GIF
     class func gif(data: Data) -> UIImage? {
         // Create source from data
         guard let source = CGImageSourceCreateWithData(data as CFData, nil) else {
@@ -60,9 +60,9 @@ public extension UIImage {
         return UIImage.animatedImageWithSource(source)
     }
     
-    /// <#Description#>
-    /// - Parameter url: <#url description#>
-    /// - Returns: <#description#>
+    /// GIF from URL
+    /// - Parameter url: GIF URL
+    /// - Returns: Animated GIF
     class func gif(url: String) -> UIImage? {
         // Validate URL
         guard let bundleURL = URL(string: url) else {
@@ -79,9 +79,9 @@ public extension UIImage {
         return gif(data: imageData)
     }
     
-    /// <#Description#>
-    /// - Parameter name: <#name description#>
-    /// - Returns: <#description#>
+    /// GIF from name
+    /// - Parameter name: GIF Name
+    /// - Returns: Animated GIF
     class func gif(name: String) -> UIImage? {
         // Check for existance of gif
         guard let bundleURL = Bundle.main
@@ -99,9 +99,9 @@ public extension UIImage {
         return gif(data: imageData)
     }
     
-    /// <#Description#>
-    /// - Parameter asset: <#asset description#>
-    /// - Returns: <#description#>
+    /// GIF from Asset
+    /// - Parameter asset: Asset name
+    /// - Returns: Animated GIF
     @available(iOS 9.0, *)
     class func gif(asset: String) -> UIImage? {
         // Create source from assets catalog
@@ -113,11 +113,11 @@ public extension UIImage {
         return gif(data: dataAsset.data)
     }
     
-    /// <#Description#>
+    /// Delay for image at index
     /// - Parameters:
-    ///   - index: <#index description#>
-    ///   - source: <#source description#>
-    /// - Returns: <#description#>
+    ///   - index: image index
+    ///   - source: Source
+    /// - Returns: Animated GIF Frames
     internal class func delayForImageAtIndex(_ index: Int, source: CGImageSource!) -> Double {
         var delay = 0.1
         
@@ -155,11 +155,11 @@ public extension UIImage {
         return delay
     }
     
-    /// <#Description#>
+    /// greatest common divisor (GCD)
     /// - Parameters:
-    ///   - valueA: <#valueA description#>
-    ///   - valueB: <#valueB description#>
-    /// - Returns: <#description#>
+    ///   - valueA: Int 1
+    ///   - valueB: Int 2
+    /// - Returns:Greatest common divisor
     internal class func gcdForPair(_ valueA: Int?, _ valueB: Int?) -> Int {
         var valueA = valueA
         var valueB = valueB
@@ -195,9 +195,9 @@ public extension UIImage {
         }
     }
     
-    /// <#Description#>
-    /// - Parameter array: <#array description#>
-    /// - Returns: <#description#>
+    /// GDC for array
+    /// - Parameter array: Ints
+    /// - Returns: GDC
     internal class func gcdForArray(_ array: [Int]) -> Int {
         if array.isEmpty {
             return 1
@@ -212,9 +212,9 @@ public extension UIImage {
         return gcd
     }
     
-    /// <#Description#>
-    /// - Parameter source: <#source description#>
-    /// - Returns: <#description#>
+    /// Animated image with source
+    /// - Parameter source: source
+    /// - Returns: Animated GIF Frames
     internal class func animatedImageWithSource(_ source: CGImageSource) -> UIImage? {
         let count = CGImageSourceGetCount(source)
         var images = [CGImage]()

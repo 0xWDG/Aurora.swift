@@ -26,10 +26,10 @@ import AVFoundation
 #endif
 
 public extension UIImage {
-    /// <#Description#>
-    /// - Parameter sizeChange: <#sizeChange description#>
-    /// - Returns: <#description#>
-    func imageResize (sizeChange: CGSize) -> UIImage {
+    /// Resize image
+    /// - Parameter sizeChange: to Size
+    /// - Returns: Image
+    func imageResize(sizeChange: CGSize) -> UIImage {
         let hasAlpha = true
         let scale: CGFloat = 0.0 // Use scale factor of main screen
         
@@ -79,25 +79,30 @@ public extension UIImage {
         return normalizedImage
     }
     
-    /// <#Description#>
-    /// - Parameter color: <#color description#>
-    /// - Returns: <#description#>
+    /// Mask image with gradient color
+    /// - Parameter color: color
+    /// - Returns: UIImage
     func maskWithGradientColor(color: UIColor) -> UIImage? {
-        
         let maskImage = self.cgImage
         let width = self.size.width
         let height = self.size.height
         let bounds = CGRect(x: 0, y: 0, width: width, height: height)
         
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
-        let bitmapContext = CGContext(data: nil,
-                                      width: Int(width),
-                                      height: Int(height),
-                                      bitsPerComponent: 8,
-                                      bytesPerRow: 0,
-                                      space: colorSpace,
-                                      bitmapInfo: bitmapInfo.rawValue)
+        
+        let bitmapInfo = CGBitmapInfo(
+            rawValue: CGImageAlphaInfo.premultipliedLast.rawValue
+        )
+        
+        let bitmapContext = CGContext(
+            data: nil,
+            width: Int(width),
+            height: Int(height),
+            bitsPerComponent: 8,
+            bytesPerRow: 0,
+            space: colorSpace,
+            bitmapInfo: bitmapInfo.rawValue
+        )
         
         let locations: [CGFloat] = [0.0, 1.0]
         let bottom = UIColor(red: 1, green: 0, blue: 0, alpha: 1).cgColor
@@ -225,9 +230,19 @@ public extension UIImage {
         let verticalRatio = size.height / self.size.height
         let ratio = min(horizontalRatio, verticalRatio)
         
-        let rect = CGRect(x: 0, y: 0, width: self.size.width * ratio, height: self.size.height * ratio)
+        let rect = CGRect(
+            x: 0,
+            y: 0,
+            width: self.size.width * ratio,
+            height: self.size.height * ratio
+        )
+        
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
+        
+        let bitmapInfo = CGBitmapInfo(
+            rawValue: CGImageAlphaInfo.premultipliedLast.rawValue
+        )
+        
         guard let context = CGContext(
             data: nil,
             width: Int(rect.size.width),
@@ -285,9 +300,12 @@ public extension UIImage {
             bytesPerRow: 0,
             space: colorSpace!,
             bitmapInfo: bitmapInfo.rawValue
-            ) else { return nil }
+        ) else { return nil }
         
-        var red: CGFloat = 0.0, green: CGFloat = 0.0, blue: CGFloat = 0.0, alpha: CGFloat = 0.0
+        var red: CGFloat = 0.0
+        var green: CGFloat = 0.0
+        var blue: CGFloat = 0.0
+        var alpha: CGFloat = 0.0
         
         borderColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
         context.setStrokeColor(red: red, green: green, blue: blue, alpha: alpha)
@@ -312,7 +330,7 @@ public extension UIImage {
     func color(at point: CGPoint) -> UIColor? {
         guard let dataProvider = cgImage?.dataProvider,
               let data = CFDataGetBytePtr(dataProvider.data) else {
-                return nil
+            return nil
         }
         
         let pixelInfo = ((Int(self.size.width) * Int(point.y)) + Int(point.x)) * 4
@@ -386,9 +404,9 @@ public extension UIImage {
         return UIImage(cgImage: imageRef, scale: scale, orientation: imageOrientation)
     }
     
-    /// <#Description#>
-    /// - Parameter maxSize: <#maxSize description#>
-    /// - Returns: <#description#>
+    /// Resize
+    /// - Parameter maxSize: Maximum size
+    /// - Returns: UIImage
     func resized(maxSize: CGFloat) -> UIImage? {
         let scale: CGFloat
         if size.width > size.height {

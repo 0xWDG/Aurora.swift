@@ -223,7 +223,7 @@ public extension String {
         self.range(of: text, options: compareOption) != nil
     }
     
-    /// <#Description#>
+    /// Is it an email adress
     var isEmail: Bool {
         let dataDetector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
         
@@ -306,11 +306,11 @@ public extension String {
         )
     }
     
-    /// <#Description#>
+    /// height for string
     /// - Parameters:
-    ///   - width: <#width description#>
-    ///   - font: <#font description#>
-    /// - Returns: <#description#>
+    ///   - width: width of the frame
+    ///   - font: font
+    /// - Returns: string height
     func height(withConstrainedWidth width: CGFloat, font: Font) -> CGFloat {
         let constraintRect = CGSize(
             width: width,
@@ -327,11 +327,11 @@ public extension String {
         return ceil(boundingBox.height)
     }
     
-    /// <#Description#>
+    /// width for string
     /// - Parameters:
-    ///   - height: <#height description#>
-    ///   - font: <#font description#>
-    /// - Returns: <#description#>
+    ///   - height: height of the frame
+    ///   - font: font
+    /// - Returns: string width
     func width(withConstrainedHeight height: CGFloat, font: Font) -> CGFloat {
         let constraintRect = CGSize(
             width: .greatestFiniteMagnitude,
@@ -350,40 +350,40 @@ public extension String {
     
     /// Check if the string contains an IP4 address.
     var isIP4Address: Bool {
-        confirmIP4isValid(ip4: self)
+        confirmIPisValid(ip4: self)
     }
     
     /// Check if the string contains an IP6 address.
     var isIP6Address: Bool {
-        confirmIP6isValid(ip6: self)
+        confirmIPisValid(ip6: self)
     }
     
     /// Check if the string contains an IP4 or an IP6 address.
     var isIPAddress: Bool {
-        confirmIP4isValid(ip4: self) || confirmIP6isValid(ip6: self)
+        confirmIPisValid(ip4: self) || confirmIPisValid(ip6: self)
     }
     
-    /// <#Description#>
-    /// - Parameter format: <#format description#>
-    /// - Returns: <#description#>
+    /// To date
+    /// - Parameter format: Date format
+    /// - Returns: Data as format
     func toDate(format: String) -> Date? {
         let dFormatter = DateFormatter()
         dFormatter.dateFormat = format
         return dFormatter.date(from: self)
     }
     
-    /// <#Description#>
-    /// - Parameter ip4: <#ip4 description#>
-    /// - Returns: <#description#>
-    private func confirmIP4isValid(ip4: String) -> Bool {
+    /// Is it a valid IPv4 IP-Adress
+    /// - Parameter ip4: IP-Address
+    /// - Returns: Boolean
+    private func confirmIPisValid(ip4: String) -> Bool {
         var sin = sockaddr_in()
         return ip4.withCString { cstring in inet_pton(AF_INET, cstring, &sin.sin_addr) } == 1
     }
     
-    /// <#Description#>
-    /// - Parameter ip6: <#ip6 description#>
-    /// - Returns: <#description#>
-    private func confirmIP6isValid(ip6: String) -> Bool {
+    /// Is it a valid IPv6 IP-Adress
+    /// - Parameter ip6: IP-Address
+    /// - Returns: Boolean
+    private func confirmIPisValid(ip6: String) -> Bool {
         var sin6 = sockaddr_in6()
         return ip6.withCString { cstring in inet_pton(AF_INET6, cstring, &sin6.sin6_addr) } == 1
     }
@@ -432,7 +432,7 @@ public extension String {
         return output
     }
     
-    /// <#Description#>
+    /// HTMLEntities
     // swiftlint:disable:next type_body_length
     fileprivate struct HTMLEntities {
         static let characterEntities: [String: Character] = [
@@ -784,15 +784,15 @@ public extension String {
         
     }
     
-    /// <#Description#>
-    /// - Returns: <#description#>
+    /// Capitalize string
+    /// - Returns: capitalized string
     func capitalize() -> String {
         return self.capitalized
     }
     
-    /// <#Description#>
-    /// - Parameter prefix: <#prefix description#>
-    /// - Returns: <#description#>
+    /// Chomp left
+    /// - Parameter prefix: Prefix
+    /// - Returns: chomped string
     func chompLeft(_ prefix: String) -> String {
         if let prefixRange = range(of: prefix) {
             if prefixRange.upperBound >= endIndex {
@@ -804,9 +804,9 @@ public extension String {
         return self
     }
     
-    /// <#Description#>
-    /// - Parameter suffix: <#suffix description#>
-    /// - Returns: <#description#>
+    /// Chomp right
+    /// - Parameter prefix: Prefix
+    /// - Returns: chomped string
     func chompRight(_ suffix: String) -> String {
         if let suffixRange = range(of: suffix, options: .backwards) {
             if suffixRange.upperBound >= endIndex {
@@ -818,43 +818,33 @@ public extension String {
         return self
     }
     
-    /// <#Description#>
-    /// - Returns: <#description#>
+    /// Collapse whitespace
+    /// - Returns: string without whitespaces?
     func collapseWhitespace() -> String {
-        let components = self.components(separatedBy: CharacterSet.whitespacesAndNewlines).filter {!$0.isEmpty}
+        let components = self.components(
+            separatedBy: CharacterSet.whitespacesAndNewlines
+        ).filter { !$0.isEmpty }
+        
         return components.joined(separator: " ")
     }
     
-    /// <#Description#>
-    /// - Parameters:
-    ///   - with: <#with description#>
-    ///   - allOf: <#allOf description#>
-    /// - Returns: <#description#>
-    func clean(_ with: String, allOf: String...) -> String {
-        var string = self
-        for target in allOf {
-            string = string.replacingOccurrences(of: target, with: with)
-        }
-        return string
+    /// count
+    /// - Parameter split: items to count
+    /// - Returns: Components (split by)
+    func count(_ split: String) -> Int {
+        return components(separatedBy: split).count - 1
     }
     
-    /// <#Description#>
-    /// - Parameter substring: <#substring description#>
-    /// - Returns: <#description#>
-    func count(_ substring: String) -> Int {
-        return components(separatedBy: substring).count - 1
-    }
-    
-    /// <#Description#>
-    /// - Parameter suffix: <#suffix description#>
-    /// - Returns: <#description#>
+    /// Does a string end with
+    /// - Parameter suffix: this suffix?
+    /// - Returns: Boolean
     func endsWith(_ suffix: String) -> Bool {
         return hasSuffix(suffix)
     }
     
-    /// <#Description#>
-    /// - Parameter prefix: <#prefix description#>
-    /// - Returns: <#description#>
+    /// Does a string begins with
+    /// - Parameter prefix: this prefix
+    /// - Returns: String with the prefix
     func ensureLeft(_ prefix: String) -> String {
         if startsWith(prefix) {
             return self
@@ -863,9 +853,9 @@ public extension String {
         }
     }
     
-    /// <#Description#>
-    /// - Parameter suffix: <#suffix description#>
-    /// - Returns: <#description#>
+    /// Does a string end with
+    /// - Parameter suffix: this suffix
+    /// - Returns: String with the suffix
     func ensureRight(_ suffix: String) -> String {
         if endsWith(suffix) {
             return self
@@ -874,9 +864,9 @@ public extension String {
         }
     }
     
-    /// <#Description#>
-    /// - Parameter substring: <#substring description#>
-    /// - Returns: <#description#>
+    /// indexOf
+    /// - Parameter substring: substring
+    /// - Returns: Returns the distance between two indices.
     func indexOf(_ substring: String) -> Int? {
         if let range = range(of: substring) {
             return self.distance(from: startIndex, to: range.lowerBound)
@@ -884,22 +874,26 @@ public extension String {
         return nil
     }
     
-    /// <#Description#>
-    /// - Returns: <#description#>
+    /// initials
+    /// - Returns: initials
     func initials() -> String {
         let words = self.components(separatedBy: " ")
-        return words.reduce("") {$0 + $1[0...0]}
+        return words.reduce("") {
+            $0 + $1[0...0]
+        }
     }
     
-    /// <#Description#>
-    /// - Returns: <#description#>
+    /// initialsFirstAndLast
+    /// - Returns: initialsFirstAndLast
     func initialsFirstAndLast() -> String {
         let words = self.components(separatedBy: " ")
-        return words.reduce("") {($0 == "" ? "": $0[0...0]) + $1[0...0]}
+        return words.reduce("") {
+            ($0 == "" ? "": $0[0...0]) + $1[0...0]
+        }
     }
     
-    /// <#Description#>
-    /// - Returns: <#description#>
+    /// Is Alphabetical
+    /// - Returns: is Alphabetical?
     func isAlpha() -> Bool {
         for chr in self {
             if !(chr >= "a" && chr <= "z") && !(chr >= "A" && chr <= "Z") {
@@ -909,87 +903,91 @@ public extension String {
         return true
     }
     
-    /// <#Description#>
-    /// - Returns: <#description#>
+    /// Is Alphabetical + Numeric
+    /// - Returns: is Alpha+Numeric?l
     func isAlphaNumeric() -> Bool {
         let alphaNumeric = CharacterSet.alphanumerics
         return components(separatedBy: alphaNumeric).joined(separator: "").length == 0
     }
     
-    /// <#Description#>
-    /// - Returns: <#description#>
+    /// Is Empty?
+    /// - Returns: Is Empty?
     func isEmpty() -> Bool {
         let nonWhitespaceSet = CharacterSet.whitespacesAndNewlines
         return components(separatedBy: nonWhitespaceSet).joined(separator: "").length != 0
     }
     
-    /// <#Description#>
-    /// - Parameter elements: <#elements description#>
-    /// - Returns: <#description#>
+    /// join
+    /// - Parameter elements: Elements
+    /// - Returns: Joined elements
     func join<S: Sequence>(_ elements: S) -> String {
-        return elements.map {String(describing: $0)}.joined(separator: self)
+        return elements.map {
+            String(describing: $0)
+        }.joined(separator: self)
     }
     
-    /// <#Description#>
+    /// Add padding
     /// - Parameters:
-    ///   - num: <#num description#>
-    ///   - string: <#string description#>
-    /// - Returns: <#description#>
+    ///   - num: Number of pads
+    ///   - string: What to pad
+    /// - Returns: Padded string
     func pad(_ num: Int, _ string: String = " ") -> String {
         return "".join([string.times(num), self, string.times(num)])
     }
     
-    /// <#Description#>
+    /// Add padding
     /// - Parameters:
-    ///   - num: <#num description#>
-    ///   - string: <#string description#>
-    /// - Returns: <#description#>
+    ///   - num: Number of pads
+    ///   - string: What to pad
+    /// - Returns: Padded string
     func padLeft(_ num: Int, _ string: String = " ") -> String {
         return "".join([string.times(num), self])
     }
     
-    /// <#Description#>
+    /// Add padding
     /// - Parameters:
-    ///   - num: <#num description#>
-    ///   - string: <#string description#>
-    /// - Returns: <#description#>
+    ///   - num: Number of pads
+    ///   - string: What to pad
+    /// - Returns: Padded string
     func padRight(_ num: Int, _ string: String = " ") -> String {
         return "".join([self, string.times(num)])
     }
     
-    /// <#Description#>
-    /// - Returns: <#description#>
+    /// slugify
+    /// - Returns: Slug
     mutating func slugify() -> String {
         let slugCharacterSet = CharacterSet.init(
             charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
         )
         return latinize().lowercased()
             .components(separatedBy: slugCharacterSet.inverted)
-            .filter {$0 != ""}
+            .filter { $0 != "" }
             .joined(separator: "-")
     }
     
-    /// <#Description#>
-    /// - Parameter separator: <#separator description#>
-    /// - Returns: <#description#>
+    /// split
+    /// - Parameter separator: seporator
+    /// - Returns: Splitted string
     func split(_ separator: Character) -> [String] {
-        return self.split {$0 == separator}.map(String.init)
+        return self.split {
+            $0 == separator
+        }.map(String.init)
     }
     
-    /// <#Description#>
+    /// Text lines
     var textLines: [String] {
         return split("\n")
     }
     
-    /// <#Description#>
-    /// - Parameter prefix: <#prefix description#>
-    /// - Returns: <#description#>
+    /// Does a string start with (hadPrefix)
+    /// - Parameter prefix: Prefix
+    /// - Returns: Boolean
     func startsWith(_ prefix: String) -> Bool {
         return hasPrefix(prefix)
     }
     
-    /// <#Description#>
-    /// - Returns: <#description#>
+    /// Strip punctuation
+    /// - Returns: String without punctuation
     func stripPunctuation() -> String {
         return components(separatedBy: .punctuationCharacters)
             .joined(separator: "")
@@ -998,9 +996,9 @@ public extension String {
             .joined(separator: " ")
     }
     
-    /// <#Description#>
-    /// - Parameter num: <#num description#>
-    /// - Returns: <#description#>
+    /// The amount of times to repeat the string
+    /// - Parameter num: numbers
+    /// - Returns: string * num
     func times(_ num: Int) -> String {
         var returnString = ""
         for _ in stride(from: 0, to: num, by: 1) {
@@ -1009,17 +1007,18 @@ public extension String {
         return returnString
     }
     
-    /// <#Description#>
-    /// - Returns: <#description#>
+    /// Convert to `Float`
+    /// - Returns: Float
     func toFloat() -> Float? {
         if let number = NumberFormatter().number(from: self) {
             return number.floatValue
         }
+        
         return nil
     }
     
-    /// <#Description#>
-    /// - Returns: <#description#>
+    /// Convert to `Int`
+    /// - Returns: Int
     func toInt() -> Int? {
         if let number = NumberFormatter().number(from: self) {
             return number.intValue
@@ -1027,9 +1026,9 @@ public extension String {
         return nil
     }
     
-    /// <#Description#>
-    /// - Parameter locale: <#locale description#>
-    /// - Returns: <#description#>
+    /// Convert to `Double`
+    /// - Parameter locale: Locale
+    /// - Returns: Double
     func toDouble(_ locale: Locale = Locale.current) -> Double? {
         let numberFormatter = NumberFormatter()
         numberFormatter.locale = locale as Locale
@@ -1039,7 +1038,7 @@ public extension String {
         return nil
     }
     
-    /// Convert anything to bool...
+    /// Convert to bool...
     ///
     /// - Returns: Bool
     func toBool() -> Bool? {
@@ -1050,18 +1049,18 @@ public extension String {
         return nil
     }
     
-    /// <#Description#>
-    /// - Parameter format: <#format description#>
-    /// - Returns: <#description#>
+    /// Convert to Date
+    /// - Parameter format: Dateformat
+    /// - Returns: Date
     func toDate(_ format: String = "yyyy-MM-dd") -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
         return dateFormatter.date(from: self)
     }
     
-    /// <#Description#>
-    /// - Parameter format: <#format description#>
-    /// - Returns: <#description#>
+    /// Convert to date & time
+    /// - Parameter format: Format
+    /// - Returns: Date & Time
     func toDateTime(_ format: String = "yyyy-MM-dd HH:mm:ss") -> Date? {
         return toDate(format)
     }
@@ -1283,14 +1282,14 @@ public extension String {
         // And it's done.
     }
     
-    /// <#Description#>
-    /// - Returns: <#description#>
+    /// Add smilies (emoji)
+    /// - Returns: String with smilies (emoji)
     func smile() -> String {
         return self.smilie()
     }
     
-    /// <#Description#>
-    /// - Returns: <#description#>
+    /// Add smilies (emoji)
+    /// - Returns: String with smilies (emoji)
     func smilie() -> String {
         return self.replaceLC(":@", withString: "😡")
             .replaceLC(":)", withString: "😊")
@@ -1303,11 +1302,11 @@ public extension String {
             .replaceLC("(bl)", withString: "💙")
     }
     
-    /// <#Description#>
+    /// Does a string contains
     /// - Parameters:
-    ///   - search: <#search description#>
-    ///   - caseSentive: <#caseSentive description#>
-    /// - Returns: <#description#>
+    ///   - search: What to find
+    ///   - caseSentive: Case sensitive?
+    /// - Returns: Found?
     func contains(search: String, caseSentive: Bool = false) -> Bool {
         if caseSentive {
             return (self.range(of: search) != nil)
@@ -1316,11 +1315,11 @@ public extension String {
         }
     }
     
-    /// <#Description#>
+    /// Replace (Lowercase)
     /// - Parameters:
-    ///   - target: <#target description#>
-    ///   - withString: <#withString description#>
-    /// - Returns: <#description#>
+    ///   - target: Target
+    ///   - withString: With string
+    /// - Returns: Replaced string
     func replaceLC(_ target: String, withString: String) -> String {
         return (self.lowercased()).replacingOccurrences(
             of: target,
@@ -1333,8 +1332,8 @@ public extension String {
     /// Dispatch group
     static let group = DispatchGroup()
     
-    /// <#Description#>
-    /// - Returns: <#description#>
+    /// Load URL
+    /// - Returns: String with URL Contents
     func load() -> String {
         var waiting = true
         var inGroup = true
@@ -1384,8 +1383,8 @@ public extension String {
         return result
     }
     
-    /// <#Description#>
-    /// - Returns: <#description#>
+    /// Load URL Contents
+    /// - Parameter completion: Completion
     func load(completion: @escaping (String) -> Void) {
         Aurora.shared.networkRequest(url: self, posting: nil) { result in
             switch result {
@@ -1397,13 +1396,13 @@ public extension String {
         }
     }
     
-    /// <#Description#>
+    /// Get character at index
     subscript (idx: Int) -> String {
         return String(self[idx] as Character)
     }
     
-    /// <#Description#>
-    /// - Returns: <#description#>
+    /// Convert HTML to NSAttributedString
+    /// - Returns: NSAttributedString
     func convertHtml() -> NSAttributedString {
         guard let data = data(using: .utf8) else { return NSAttributedString() }
         do {
@@ -1560,7 +1559,7 @@ public extension String {
         return !zip(firstHalf, secondHalf).contains(where: { $0.lowercased() != $1.lowercased() })
     }
     
-    /// <#Description#>
+    /// Decode Emoji
     var decodeEmoji: String {
         let data = self.data(using: String.Encoding.utf8)
         let decodedStr = NSString(data: data!, encoding: String.Encoding.nonLossyASCII.rawValue)
@@ -1570,7 +1569,7 @@ public extension String {
         return self
     }
     
-    /// <#Description#>
+    /// Encode Emoji
     var encodeEmoji: String {
         if let encodeStr = NSString(
             cString: self.cString(using: .nonLossyASCII)!,

@@ -20,11 +20,11 @@ import Foundation
 #if os(macOS)
 
 public extension Aurora {
-    /// <#Description#>
+    /// Run a shell command.
     /// - Parameters:
-    ///   - arguments: <#arguments description#>
-    ///   - showLog: <#showLog description#>
-    /// - Returns: <#description#>
+    ///   - arguments: Arguments
+    ///   - showLog: Show the log?
+    /// - Returns: Shell return
 @discardableResult
 func shell(_ arguments: String, showLog: Bool = false) -> String {
     let task = Process()
@@ -49,7 +49,7 @@ func shell(_ arguments: String, showLog: Bool = false) -> String {
 }
 }
 
-/// <#Description#>
+/// ANSI Colors
 enum ANSIColors: String {
     case black = "\u{001B}[0;30m"
     case red = "\u{001B}[0;31m"
@@ -62,20 +62,20 @@ enum ANSIColors: String {
     case `default` = "\u{001B}[0;0m"
 }
 
-/// <#Description#>
+/// Add colors to a string
 /// - Parameters:
-///   - left: <#left description#>
-///   - right: <#right description#>
-/// - Returns: <#description#>
+///   - left: ANSI Color
+///   - right: String
+/// - Returns: Colored String
 func + (left: ANSIColors, right: String) -> String {
     return left.rawValue + right
 }
 
-/// <#Description#>
+/// Add colors to a string
 /// - Parameters:
-///   - left: <#left description#>
-///   - right: <#right description#>
-/// - Returns: <#description#>
+///   - left: String
+///   - right: ANSI Color
+/// - Returns: Colored String
 func + (left: String, right: ANSIColors) -> String {
     return left + right.rawValue
 }

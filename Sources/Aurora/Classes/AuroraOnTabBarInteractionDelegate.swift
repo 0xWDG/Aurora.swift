@@ -20,7 +20,9 @@ import Foundation
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
 
-/// <#Description#>
+/// Aurora's onTabBarInteraction Delegate
+///
+/// respond to tabBar interactions
 class AuroraOnTabBarInteractionDelegate: NSObject, UITabBarControllerDelegate, UITabBarDelegate {
     /// onInteraction closute
     public var onInteractionClosure: ((String) -> Void)?
@@ -40,10 +42,10 @@ class AuroraOnTabBarInteractionDelegate: NSObject, UITabBarControllerDelegate, U
     /// The shared instance, otherwise it will deinit direct
     static let sharedInstance: AuroraOnTabBarInteractionDelegate = AuroraOnTabBarInteractionDelegate()
     
-    /// <#Description#>
+    /// Tabbar did select
     /// - Parameters:
-    ///   - tabBar: <#tabBar description#>
-    ///   - item: <#item description#>
+    ///   - tabBar: tabBar
+    ///   - item: Item
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         if oldItem != nil {
             if oldItem == item {
@@ -73,10 +75,10 @@ class AuroraOnTabBarInteractionDelegate: NSObject, UITabBarControllerDelegate, U
         oldItem = item
     }
     
-    /// <#Description#>
+    /// tabBarController did select
     /// - Parameters:
-    ///   - tabBarController: <#tabBarController description#>
-    ///   - viewController: <#viewController description#>
+    ///   - tabBarController: tabBarController
+    ///   - viewController: viewController
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if oldVC != nil {
             if oldVC == viewController {

@@ -20,15 +20,14 @@ import Foundation
 import UIKit
 
 /// A Designable UIGreenButton
-@IBDesignable
-open class UIGreenButton: UIButton {
-    /// <#Description#>
-    /// - Parameter frame: <#frame description#>
+@IBDesignable open class UIGreenButton: UIButton {
+    /// A Designable UIGreenButton
+    /// - Parameter frame: button frame
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
-    /// <#Description#>
+    /// Awake from nib
     public override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -43,8 +42,8 @@ open class UIGreenButton: UIButton {
         updateFocusIfNeeded()
     }
     
-    /// <#Description#>
-    /// - Parameter coder: <#coder description#>
+    /// Init (coder)
+    /// - Parameter coder: coder
     required public init?(coder: NSCoder) {
         super.init(coder: coder)
     }

@@ -22,7 +22,7 @@ import UIKit
 
 public extension UITextField {
     #if !os(tvOS)
-    /// <#Description#>
+    /// done accessory
     @IBInspectable var doneAccessory: Bool {
         get {
             return self.doneAccessory
@@ -35,7 +35,7 @@ public extension UITextField {
         }
     }
     
-    /// <#Description#>
+    /// add "Done" button on keyboard
     func addDoneButtonOnKeyboard() {
         let doneToolbar: UIToolbar = UIToolbar().configure {
             $0.frame = CGRect.init(
@@ -55,7 +55,7 @@ public extension UITextField {
         )
         
         let done: UIBarButtonItem = UIBarButtonItem(
-            title: "Done",
+            title: NSLocalizedString("Done", comment: "Done"),
             style: .done,
             target: self,
             action: #selector(self.doneButtonAction)
@@ -74,8 +74,8 @@ public extension UITextField {
     }
     #endif
     
-    /// <#Description#>
-    /// - Parameter icon: <#icon description#>
+    /// Add show password button
+    /// - Parameter icon: 👁️
     func addShowPasswordButton(with icon: String? = "👁️") {
         let rightButton = UIButton(type: .custom)
         rightButton.setTitle(icon, for: .normal)
@@ -109,13 +109,13 @@ public extension UITextField {
         )
     }
     
-    /// <#Description#>
+    /// show password
     @objc func showPasswordView() {
         isSecureTextEntry = false
         isUserInteractionEnabled = false
     }
     
-    /// <#Description#>
+    /// hide password
     @objc func hidePasswordView() {
         isSecureTextEntry = true
         isUserInteractionEnabled = true
@@ -135,7 +135,7 @@ public extension UITextField {
         rightViewMode = .whileEditing
     }
     
-    /// <#Description#>
+    /// Clear text
     @objc func clear() {
         text = ""
         sendActions(for: .editingChanged)

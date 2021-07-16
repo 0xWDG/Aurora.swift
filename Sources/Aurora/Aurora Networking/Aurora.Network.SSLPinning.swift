@@ -60,9 +60,9 @@ class AuroraURLSessionPinningDelegate: NSObject, URLSessionDelegate {
         0x00, 0x03, 0x82, 0x01, 0x0f, 0x00
     ]
     
-    /// <#Description#>
-    /// - Parameter data: <#data description#>
-    /// - Returns: <#description#>
+    /// SHA256 Encode data
+    /// - Parameter data: the data which needs to be encoded
+    /// - Returns: encoded data
     private func sha256(data: Data) -> String {
         #if !targetEnvironment(simulator)
         /// Key header
@@ -82,11 +82,6 @@ class AuroraURLSessionPinningDelegate: NSObject, URLSessionDelegate {
         #endif
     }
     
-    /// <#Description#>
-    /// - Parameters:
-    ///   - session: <#session description#>
-    ///   - challenge: <#challenge description#>
-    ///   - completionHandler: <#completionHandler description#>
     func urlSession(
         _ session: URLSession,
         didReceive challenge: URLAuthenticationChallenge,

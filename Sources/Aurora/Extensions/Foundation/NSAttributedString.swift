@@ -77,9 +77,9 @@ extension NSMutableAttributedString {
         return self
     }
     
-    /// <#Description#>
-    /// - Parameter width: <#width description#>
-    /// - Returns: <#description#>
+    /// Height for NSAttributedString text
+    /// - Parameter width: width of NSAttributedString
+    /// - Returns: Height for NSAttributedString
     func height(withConstrainedWidth width: CGFloat) -> CGFloat {
         let constraintRect = CGSize(
             width: width,
@@ -95,9 +95,9 @@ extension NSMutableAttributedString {
         return ceil(boundingBox.height)
     }
     
-    /// <#Description#>
-    /// - Parameter height: <#height description#>
-    /// - Returns: <#description#>
+    /// Width for NSAttributedString text
+    /// - Parameter height: height of NSAttributedString
+    /// - Returns: Height for NSAttributedString
     func width(withConstrainedHeight height: CGFloat) -> CGFloat {
         let constraintRect = CGSize(
             width: .greatestFiniteMagnitude,

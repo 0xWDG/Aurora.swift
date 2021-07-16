@@ -23,10 +23,10 @@ import XCTest
 @testable import Aurora
 
 extension AuroraTest {
-    /// <#Description#>
+    /// Run after
     /// - Parameters:
-    ///   - timeInterval: <#timeInterval description#>
-    ///   - work: <#work description#>
+    ///   - timeInterval: interfal
+    ///   - work: workish
     func after(_ timeInterval: TimeInterval = 0.1, work: @escaping () -> Void) {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + timeInterval, execute: work)
     }
