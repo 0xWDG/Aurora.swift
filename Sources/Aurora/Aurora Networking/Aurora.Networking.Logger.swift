@@ -31,15 +31,17 @@ import CommonCrypto
 #endif
 #endif
 
-/// <#Description#>
+/// AuroraNetworkLogger ConfigurationType
 public protocol AuroraNetworkLoggerConfigurationType {
-    /// <#Description#>
+    /// trim body at
     var bodyTrimLength: Int { get }
-    /// <#Description#>
-    /// - Parameter string: <#string description#>
+    
+    /// NetworkLogger
+    /// - Parameter string: String
     func auroraNetworkLogger(_ string: String)
-    /// <#Description#>
-    /// - Parameter request: <#request description#>
+    
+    /// Enable capture for request?
+    /// - Parameter request: request
     func enableCapture(_ request: URLRequest) -> Bool
 }
 

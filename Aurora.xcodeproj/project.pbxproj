@@ -44,7 +44,6 @@
 		OBJ_174 /* AuroraError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_34 /* AuroraError.swift */; };
 		OBJ_175 /* AuroraKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* AuroraKeychain.swift */; };
 		OBJ_176 /* AuroraKeychainConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_36 /* AuroraKeychainConstants.swift */; };
-		OBJ_177 /* AuroraLayoutInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_37 /* AuroraLayoutInspector.swift */; };
 		OBJ_178 /* AuroraLogview.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* AuroraLogview.swift */; };
 		OBJ_179 /* AuroraOnTabBarInteractionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* AuroraOnTabBarInteractionDelegate.swift */; };
 		OBJ_180 /* CrossPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_40 /* CrossPlatform.swift */; };
@@ -223,7 +222,6 @@
 		OBJ_34 /* AuroraError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraError.swift; sourceTree = "<group>"; };
 		OBJ_35 /* AuroraKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraKeychain.swift; sourceTree = "<group>"; };
 		OBJ_36 /* AuroraKeychainConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraKeychainConstants.swift; sourceTree = "<group>"; };
-		OBJ_37 /* AuroraLayoutInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraLayoutInspector.swift; sourceTree = "<group>"; };
 		OBJ_38 /* AuroraLogview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraLogview.swift; sourceTree = "<group>"; };
 		OBJ_39 /* AuroraOnTabBarInteractionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraOnTabBarInteractionDelegate.swift; sourceTree = "<group>"; };
 		OBJ_40 /* CrossPlatform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossPlatform.swift; sourceTree = "<group>"; };
@@ -415,7 +413,6 @@
 				OBJ_34 /* AuroraError.swift */,
 				OBJ_35 /* AuroraKeychain.swift */,
 				OBJ_36 /* AuroraKeychainConstants.swift */,
-				OBJ_37 /* AuroraLayoutInspector.swift */,
 				OBJ_38 /* AuroraLogview.swift */,
 				OBJ_39 /* AuroraOnTabBarInteractionDelegate.swift */,
 				OBJ_40 /* CrossPlatform.swift */,
@@ -710,7 +707,6 @@
 				OBJ_174 /* AuroraError.swift in Sources */,
 				OBJ_175 /* AuroraKeychain.swift in Sources */,
 				OBJ_176 /* AuroraKeychainConstants.swift in Sources */,
-				OBJ_177 /* AuroraLayoutInspector.swift in Sources */,
 				OBJ_178 /* AuroraLogview.swift in Sources */,
 				OBJ_179 /* AuroraOnTabBarInteractionDelegate.swift in Sources */,
 				OBJ_180 /* CrossPlatform.swift in Sources */,
