@@ -15,6 +15,7 @@
 //
 // Licence: Needs to be decided.
 
+// swiftlint:disable file_length
 import Foundation
 
 #if canImport(Security)
@@ -420,3 +421,4 @@ public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
         return string[..<length] + "…"
     }
 }
+// swiftlint:enable file_length
