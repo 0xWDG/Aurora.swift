@@ -94,7 +94,7 @@ public extension UIControl {
         for controlEvents: UIControl.Event = .primaryActionTriggered,
         action: @escaping (AnyObject) -> Void
     ) {
-        /// <#Description#>
+        /// UIControl Helper
         let helper = UIControlHelper(
             attachTo: self,
             closure: action
@@ -108,15 +108,15 @@ public extension UIControl {
     }
 }
 
-/// <#Description#>
+/// UI Control helper
 public class UIControlHelper {
-    /// <#Description#>
+    /// Closure to run
     let closure: (AnyObject) -> Void
     
-    /// <#Description#>
+    /// Init helper
     /// - Parameters:
-    ///   - attachTo: <#attachTo description#>
-    ///   - closure: <#closure description#>
+    ///   - attachTo: to UIControl
+    ///   - closure: what to run?
     public init(attachTo: AnyObject, closure: @escaping (AnyObject) -> Void) {
         self.closure = closure
         objc_setAssociatedObject(
@@ -127,10 +127,9 @@ public class UIControlHelper {
         )
     }
     
-    /// <#Description#>
-    /// - Parameter sender: <#sender description#>
-    @objc
-    func invoke(sender: AnyObject) {
+    /// Invoke
+    /// - Parameter sender: from sender
+    @objc func invoke(sender: AnyObject) {
         closure(sender)
     }
 }
@@ -143,18 +142,17 @@ import AppKit
 // see https://gist.github.com/sindresorhus/3580ce9426fff8fafb1677341fca4815
 // renamed onAction to onInteraction
 public extension NSControl {
-    /// <#Description#>
+    /// Action closure
     typealias ActionClosure = ((NSControl) -> Void)
     
-    /// <#Description#>
+    /// AssociatedKeys
     private struct AssociatedKeys {
         static let onActionClosure = ObjectAssociation<ActionClosure>()
     }
     
-    /// <#Description#>
-    /// - Parameter sender: <#sender description#>
-    @objc
-    private func callClosure(_ sender: NSControl) {
+    /// call Closure
+    /// - Parameter sender: sender
+    @objc private func callClosure(_ sender: NSControl) {
         onInteraction?(sender)
     }
     
