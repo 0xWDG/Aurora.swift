@@ -38,7 +38,8 @@ import Foundation
     case null
     
     // MARK: Dynamic Member Lookup
-    /// <#Description#>
+    /// Subscript (index)
+    /// - Returns: JSON
     public subscript(index: Int) -> JSON? {
         if case .array(let arr) = self {
             return index < arr.count ? arr[index]: nil
@@ -46,7 +47,8 @@ import Foundation
         return nil
     }
     
-    /// <#Description#>
+    /// Subscript (key)
+    /// - Returns: JSON
     public subscript(key: String) -> JSON? {
         if case .dictionary(let dict) = self {
             return dict[key]
@@ -54,7 +56,8 @@ import Foundation
         return nil
     }
     
-    /// <#Description#>
+    /// Subscript (dynamic member)
+    /// - Returns: JSON
     public subscript(dynamicMember member: String) -> JSON? {
         if case .dictionary(let dict) = self {
             return dict[member]
@@ -64,18 +67,18 @@ import Foundation
     
     // MARK: Initializers
     
-    /// <#Description#>
+    /// Init with DATA
     /// - Parameters:
-    ///   - data: <#data description#>
-    ///   - options: <#options description#>
-    /// - Throws: <#description#>
+    ///   - data: JSON Data
+    ///   - options: JSONSerialization options
+    /// - Throws: Error if invalid JSON
     public init(data: Data, options: JSONSerialization.ReadingOptions = []) throws {
         let object = try JSONSerialization.jsonObject(with: data, options: options)
         self = JSON(object)
     }
     
-    /// <#Description#>
-    /// - Parameter object: <#object description#>
+    /// Init objects
+    /// - Parameter object: objects (Data: (JSON, nil), Array, Any, Bool, Number, String)
     public init(_ object: Any) {
         if let data = object as? Data {
             if let converted = try? JSON(data: data) {
@@ -102,7 +105,7 @@ import Foundation
     
     // MARK: Accessors
     
-    /// <#Description#>
+    /// Dictionary value
     public var dictionary: [String: JSON]? {
         if case .dictionary(let value) = self {
             return value
@@ -110,7 +113,7 @@ import Foundation
         return nil
     }
     
-    /// <#Description#>
+    /// Array value
     public var array: [JSON]? {
         if case .array(let value) = self {
             return value
@@ -118,7 +121,7 @@ import Foundation
         return nil
     }
     
-    /// <#Description#>
+    /// String value
     public var string: String? {
         if case .string(let value) = self {
             return value
@@ -130,7 +133,7 @@ import Foundation
         return nil
     }
     
-    /// <#Description#>
+    /// Number value
     public var number: NSNumber? {
         if case .number(let value) = self {
             return value
@@ -142,17 +145,17 @@ import Foundation
         return nil
     }
     
-    /// <#Description#>
+    /// Double value
     public var double: Double? {
         return number?.doubleValue
     }
     
-    /// <#Description#>
+    /// Int value
     public var int: Int? {
         return number?.intValue
     }
     
-    /// <#Description#>
+    /// Boolean value
     public var bool: Bool? {
         if case .bool(let value) = self {
             return value
@@ -175,7 +178,7 @@ import Foundation
     
     // MARK: Helpers
     
-    /// <#Description#>
+    /// Objects
     public var object: Any {
         switch self {
         case .dictionary(let value):
@@ -198,9 +201,9 @@ import Foundation
         }
     }
     
-    /// <#Description#>
-    /// - Parameter options: <#options description#>
-    /// - Returns: <#description#>
+    /// JSON to Data
+    /// - Parameter options: JSON Options
+    /// - Returns: Data
     public func data(options: JSONSerialization.WritingOptions = []) -> Data {
         return (
             try? JSONSerialization.data(

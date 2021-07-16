@@ -981,15 +981,15 @@ public extension String {
         return split("\n")
     }
     
-    /// <#Description#>
-    /// - Parameter prefix: <#prefix description#>
-    /// - Returns: <#description#>
+    /// Does a string start with (hadPrefix)
+    /// - Parameter prefix: Prefix
+    /// - Returns: Boolean
     func startsWith(_ prefix: String) -> Bool {
         return hasPrefix(prefix)
     }
     
-    /// <#Description#>
-    /// - Returns: <#description#>
+    /// Strip punctuation
+    /// - Returns: String without punctuation
     func stripPunctuation() -> String {
         return components(separatedBy: .punctuationCharacters)
             .joined(separator: "")
@@ -998,9 +998,9 @@ public extension String {
             .joined(separator: " ")
     }
     
-    /// <#Description#>
-    /// - Parameter num: <#num description#>
-    /// - Returns: <#description#>
+    /// The amount of times to repeat the string
+    /// - Parameter num: numbers
+    /// - Returns: string * num
     func times(_ num: Int) -> String {
         var returnString = ""
         for _ in stride(from: 0, to: num, by: 1) {
@@ -1009,17 +1009,18 @@ public extension String {
         return returnString
     }
     
-    /// <#Description#>
-    /// - Returns: <#description#>
+    /// Convert to `Float`
+    /// - Returns: Float
     func toFloat() -> Float? {
         if let number = NumberFormatter().number(from: self) {
             return number.floatValue
         }
+        
         return nil
     }
     
-    /// <#Description#>
-    /// - Returns: <#description#>
+    /// Convert to `Int`
+    /// - Returns: Int
     func toInt() -> Int? {
         if let number = NumberFormatter().number(from: self) {
             return number.intValue
@@ -1027,9 +1028,9 @@ public extension String {
         return nil
     }
     
-    /// <#Description#>
-    /// - Parameter locale: <#locale description#>
-    /// - Returns: <#description#>
+    /// Convert to `Double`
+    /// - Parameter locale: Locale
+    /// - Returns: Double
     func toDouble(_ locale: Locale = Locale.current) -> Double? {
         let numberFormatter = NumberFormatter()
         numberFormatter.locale = locale as Locale
@@ -1039,7 +1040,7 @@ public extension String {
         return nil
     }
     
-    /// Convert anything to bool...
+    /// Convert to bool...
     ///
     /// - Returns: Bool
     func toBool() -> Bool? {
@@ -1050,18 +1051,18 @@ public extension String {
         return nil
     }
     
-    /// <#Description#>
-    /// - Parameter format: <#format description#>
-    /// - Returns: <#description#>
+    /// Convert to Date
+    /// - Parameter format: Dateformat
+    /// - Returns: Date
     func toDate(_ format: String = "yyyy-MM-dd") -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
         return dateFormatter.date(from: self)
     }
     
-    /// <#Description#>
-    /// - Parameter format: <#format description#>
-    /// - Returns: <#description#>
+    /// Convert to date & time
+    /// - Parameter format: Format
+    /// - Returns: Date & Time
     func toDateTime(_ format: String = "yyyy-MM-dd HH:mm:ss") -> Date? {
         return toDate(format)
     }
