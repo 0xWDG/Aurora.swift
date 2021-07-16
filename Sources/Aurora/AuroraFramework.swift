@@ -41,7 +41,8 @@ import CommonCrypto
 ///
 /// It has a lot of extensions, functions and classes built-in to make development easier.
 ///
-/// See the [Online documentation](https://github.com/AuroraFramework/Aurora.swift/wiki) for more information about all the built-in extensions, functions and classes.
+/// See the [Online documentation](https://github.com/AuroraFramework/Aurora.swift/wiki) \
+/// for more information about all the built-in extensions, functions and classes.
 ///
 /// - Experiment: to start experimental functions use the following code in your app(delegate):
 ///
@@ -349,6 +350,7 @@ open class Aurora {
         isInitialized = true
     }
     
+    /// Start Aurora classes/functions
     private func startAuroraFunctions() {
         #if os(iOS)
         let iCloudSync: AuroraFrameworkiCloudSync = AuroraFrameworkiCloudSync()
@@ -356,6 +358,7 @@ open class Aurora {
         #endif
     }
     
+    /// Start experimental functions
     public func startExperimentalFunctions() {
         AuroraNetworkLogger.register()
     }

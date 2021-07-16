@@ -17,8 +17,6 @@
 
 import Foundation
 
-// swiftlint:disable file_length
-
 #if canImport(Security)
 import Security
 #endif
@@ -326,8 +324,7 @@ extension Aurora {
         // Release the session from memory
         session = nil
     }
-    // swiftlint:enable function_body_length
-    
+    // swiftlint:enable function_body_length    
     
     /// Return the full networkRequestResponse
     /// - Returns: the full networkRequestResponse

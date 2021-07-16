@@ -21,53 +21,6 @@ import Foundation
 // MARK: ...
 private var auroraFrameworkWebDebug: Bool = false
 
-/// <#Description#>
-open class SimpleTimer {
-    typealias Tick = () -> Void
-    /// <#Description#>
-    var timer: Timer?
-    /// <#Description#>
-    var interval: TimeInterval
-    /// <#Description#>
-    var repeats: Bool
-    /// <#Description#>
-    var tick: Tick
-    
-    /// <#Description#>
-    /// - Parameters:
-    ///   - interval: <#interval description#>
-    ///   - repeats: <#repeats description#>
-    ///   - onTick: <#onTick description#>
-    init(interval: TimeInterval, repeats: Bool = false, onTick: @escaping Tick) {
-        self.interval = interval
-        self.repeats = repeats
-        self.tick = onTick
-    }
-    
-    /// <#Description#>
-    func start() {
-        timer = Timer.scheduledTimer(
-            timeInterval: interval,
-            target: self,
-            selector: #selector(update),
-            userInfo: nil,
-            repeats: true
-        )
-    }
-    
-    /// <#Description#>
-    func stop() {
-        if timer != nil {
-            timer!.invalidate()
-        }
-    }
-    
-    /// This method must be in the public or scope
-    @objc func update() {
-        tick()
-    }
-}
-
 public extension Aurora {
     /// <#Description#>
     /// - Parameters:

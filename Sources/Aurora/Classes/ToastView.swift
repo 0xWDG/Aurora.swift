@@ -345,7 +345,8 @@ public class ToastView: UIView {
     }
     
     /// Init
-    /// - Parameter coder: An abstract class that serves as the basis for objects that enable archiving and distribution of other objects.
+    /// - Parameter coder: An abstract class that serves as the basis for objects that\
+    ///  enable archiving and distribution of other objects.
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
