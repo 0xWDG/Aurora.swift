@@ -50,7 +50,7 @@ extension Aurora {
         static var certificateHash = ""
     }
     
-    /// <#Description#>
+    /// HTTP Method
     public enum HTTPMethod {
         /// POST
         ///
