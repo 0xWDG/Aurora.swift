@@ -19,12 +19,12 @@
 import UIKit
 
 public extension UILabel {
-    /// <#Description#>
+    /// AssociatedKeys
     private struct AssociatedKeys {
         static var padding = UIEdgeInsets()
     }
     
-    /// <#Description#>
+    /// Padding
     var padding: UIEdgeInsets? {
         get {
             return objc_getAssociatedObject(
@@ -44,8 +44,8 @@ public extension UILabel {
         }
     }
     
-    /// <#Description#>
-    /// - Parameter rect: <#rect description#>
+    /// Draw rect
+    /// - Parameter rect: rect size
     override func draw(_ rect: CGRect) {
         if let insets = padding {
             self.drawText(in: rect.inset(by: insets))
@@ -54,7 +54,7 @@ public extension UILabel {
         }
     }
     
-    /// <#Description#>
+    /// intrinsicContentSize
     override var intrinsicContentSize: CGSize {
         var contentSize = super.intrinsicContentSize
         if let insets = padding {
@@ -64,14 +64,14 @@ public extension UILabel {
         return contentSize
     }
     
-    /// <#Description#>
-    /// - Parameter text: <#text description#>
+    /// HTMLString (HTML)
+    /// - Parameter text: Text
     func HTMLString(_ text: String) {
         self.HTML(text)
     }
     
-    /// <#Description#>
-    /// - Parameter text: <#text description#>
+    /// HTMLString
+    /// - Parameter text: Text
     func HTML(_ text: String) {
         // swiftlint:disable:next force_try
         let attrStr = try! NSAttributedString(
