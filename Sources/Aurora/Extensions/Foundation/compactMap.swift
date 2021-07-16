@@ -20,10 +20,10 @@ import Foundation
 #if swift(>=4.1)
 #else
 public extension Collection {
-    /// <#Description#>
-    /// - Parameter transform: <#transform description#>
-    /// - Throws: <#description#>
-    /// - Returns: <#description#>
+    /// Compact map
+    /// - Parameter transform: transform element
+    /// - Throws: Element
+    /// - Returns: Element
     func compactMap<ElementOfResult>(_ transform: (Element) throws -> ElementOfResult?) rethrows -> [ElementOfResult] {
         return try flatMap(transform)
     }

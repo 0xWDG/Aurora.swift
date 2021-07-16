@@ -21,7 +21,7 @@ import Foundation
 import UIKit
 
 public extension UIBarButtonItem {
-    /// <#Description#>
+    /// Frame
     var frame: CGRect? {
         guard let view = self.value(forKey: "view") as? UIView else {
             return nil
@@ -29,7 +29,7 @@ public extension UIBarButtonItem {
         return view.frame
     }
     
-    /// <#Description#>
+    /// View
     var view: UIView? {
         guard let view = self.value(forKey: "view") as? UIView else {
             return nil
