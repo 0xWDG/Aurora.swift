@@ -46,7 +46,7 @@ public protocol DivisibleArithmetic: Numeric {
     /// - Parameter value: values
     init(_ value: Int)
     
-    /// Diverse
+    /// Divide
     /// - Parameters:
     ///   - lhs: Number 1
     ///   - rhs: Number 2
