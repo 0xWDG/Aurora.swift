@@ -24,9 +24,9 @@ import UIKit
 let TMP: String = NSTemporaryDirectory()
 
 public extension UIImage {
-    /// <#Description#>
-    /// - Parameter url: <#url description#>
-    /// - Returns: <#description#>
+    /// Get image from url
+    /// - Parameter url: url
+    /// - Returns: image
     func from(url: URL) -> UIImage? {
         guard let data = try? Data(contentsOf: url) else {
             return nil
@@ -35,8 +35,8 @@ public extension UIImage {
         return UIImage.init(data: data)
     }
     
-    /// <#Description#>
-    /// - Parameter image: <#image description#>
+    /// Cache image
+    /// - Parameter image: image name
     func cacheImage(_ image: String) {
         let imageURL: URL = URL(string: image)!
         let filename: String = String(describing: imageURL).md5
@@ -52,8 +52,8 @@ public extension UIImage {
         ) as ()??)
     }
     
-    /// <#Description#>
-    /// - Parameter image: <#image description#>
+    /// Reset image cache for image
+    /// - Parameter image: image name
     func resetImage(_ image: String) {
         let imageURL: URL = URL(string: image)!
         let filename: String = String(describing: imageURL).md5
@@ -68,9 +68,9 @@ public extension UIImage {
         }
     }
     
-    /// <#Description#>
-    /// - Parameter image: <#image description#>
-    /// - Returns: <#description#>
+    /// Image exists?
+    /// - Parameter image: Image name
+    /// - Returns: Image
     func imageExists(_ image: String) -> Any {
         let imageURL: URL = URL(string: image)!
         let filename: String = String(describing: imageURL).md5
@@ -103,9 +103,9 @@ public extension UIImage {
         return rimage
     }
     
-    /// <#Description#>
-    /// - Parameter image: <#image description#>
-    /// - Returns: <#description#>
+    /// Get image
+    /// - Parameter image: image name
+    /// - Returns: Image
     func getImage(_ image: String) -> UIImage {
         let imageURL: URL = URL(string: image)!
         let filename: String = String(describing: imageURL).md5
