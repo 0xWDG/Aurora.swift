@@ -287,10 +287,10 @@ public extension Regex {
             }
         }()
         
-        /// <#Description#>
+        /// Result
         private let result: NSTextCheckingResult
         
-        /// <#Description#>
+        /// Base string
         private let baseString: String
         
         // MARK: - Initializers
