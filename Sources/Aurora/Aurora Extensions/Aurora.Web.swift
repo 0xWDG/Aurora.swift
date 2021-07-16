@@ -22,10 +22,11 @@ import Foundation
 private var auroraFrameworkWebDebug: Bool = false
 
 public extension Aurora {
-    /// <#Description#>
+    /// Datatask helper (DEPRECATED)
     /// - Parameters:
-    ///   - forURL: <#forURL description#>
-    ///   - completion: <#completion description#>
+    ///   - forURL: for URL
+    ///   - completion: Completion
+    @available(*, deprecated)
     func dataTaskHelper(forURL: URL?, completion: @escaping (String) -> Void) {
         let session = URLSession.shared
         

@@ -18,7 +18,7 @@
 import Foundation
 import Network
 
-/// <#Description#>
+/// Network status (monitor)
 @available(tvOS 12.0, *)
 public class NetworkStatus {
     
@@ -63,25 +63,25 @@ public class NetworkStatus {
         return monitor.currentPath.availableInterfaces.map { $0.type }
     }
     
-    /// <#Description#>
+    /// isExpensive (on mobile internet)
     public var isExpensive: Bool {
         return monitor?.currentPath.isExpensive ?? false
     }
     
     // MARK: - Init & Deinit
     
-    /// <#Description#>
+    /// Initialize
     private init() {
         startMonitoring()
     }
     
-    /// <#Description#>
+    /// Deinitialize
     deinit {
         stopMonitoring()
     }
     
     // MARK: - Method Implementation
-    /// <#Description#>
+    /// Start monitoring
     public func startMonitoring() {
         guard !isMonitoring else { return }
         
@@ -97,7 +97,7 @@ public class NetworkStatus {
         didStartMonitoringHandler?()
     }
     
-    /// <#Description#>
+    /// Stop monitoring
     public func stopMonitoring() {
         guard isMonitoring, let monitor = monitor else { return }
         monitor.cancel()
