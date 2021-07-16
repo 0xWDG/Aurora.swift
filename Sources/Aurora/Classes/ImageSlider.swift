@@ -20,21 +20,23 @@ import Foundation
 #if canImport(UIKit)
 import UIKit
 
-/// <#Description#>
+/// Image Slider
+///
+/// Warning EXPERIMENTAL
 open class ImageSlider {
-    /// <#Description#>
+    /// Images
     var images: [UIImage] = []
     
-    /// <#Description#>
+    /// Image height
     var imageHeight: Int
     
-    /// <#Description#>
+    /// Page control element
     var pageControl: UIPageControl
     
-    /// <#Description#>
+    /// ScrollView element
     var scrollView: UIScrollView
     
-    /// <#Description#>
+    /// (Semi) random Colors
     var colors: [UIColor] = [
         .red,
         .orange,
@@ -47,13 +49,13 @@ open class ImageSlider {
         .black
     ]
     
-    /// <#Description#>
+    /// Initialize Slider
     /// - Parameters:
-    ///   - images: <#images description#>
-    ///   - view: <#view description#>
-    ///   - pageControl: <#pageControl description#>
-    ///   - scrollView: <#scrollView description#>
-    ///   - height: <#height description#>
+    ///   - images: Images
+    ///   - view: Viewcontroller
+    ///   - pageControl: PageControl
+    ///   - scrollView: ScrollView
+    ///   - height: Image height
     public init(
         images: [UIImage],
         view: UIViewController,
@@ -111,11 +113,11 @@ open class ImageSlider {
         )
     }
     
-    /// <#Description#>
+    /// Scroll
     /// - Parameters:
-    ///   - scrollView: <#scrollView description#>
-    ///   - view: <#view description#>
-    ///   - pageControl: <#pageControl description#>
+    ///   - scrollView: ScrollView
+    ///   - view: UIViewController
+    ///   - pageControl: Pagecontrol
     public func scroll(scrollView: UIScrollView, view: UIViewController, pageControl: UIPageControl) {
         let currentPage: Int = Int.init(
             floor(
