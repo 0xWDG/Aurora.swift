@@ -76,21 +76,21 @@ public struct AuroraNetworkLoggerDefaultConfiguration: AuroraNetworkLoggerConfig
 public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
     // MARK: - Public
     
-    /// <#Description#>
+    /// AuroraNetworkLogger Configuration
     public static var configuration: AuroraNetworkLoggerConfigurationType = AuroraNetworkLoggerDefaultConfiguration()
     
-    /// <#Description#>
+    /// AuroraNetworkLogger Registration
     public class func register() {
         URLProtocol.registerClass(self)
     }
     
-    /// <#Description#>
+    /// AuroraNetworkLogger Deregistration
     public class func unregister() {
         URLProtocol.unregisterClass(self)
     }
     
-    /// <#Description#>
-    /// - Returns: <#description#>
+    /// defaultSessionConfiguration
+    /// - Returns: A configuration object that defines behavior and policies for a URL session.
     public class func defaultSessionConfiguration() -> URLSessionConfiguration {
         let config = URLSessionConfiguration.default
         config.protocolClasses?.insert(AuroraNetworkLogger.self, at: 0)
@@ -99,7 +99,9 @@ public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
     
     // MARK: - NSURLProtocol
     
-    /// <#Description#>
+    /// Can we init with request?
+    /// - Parameter request: The request to be handled.
+    /// - Returns: true if the protocol subclass can handle request, otherwise false.
     public override class func canInit(with request: URLRequest) -> Bool {
         guard AuroraNetworkLogger.configuration.enableCapture(request) == true else {
             return false
@@ -112,17 +114,32 @@ public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
         return true
     }
     
-    /// <#Description#>
+    /// Returns a canonical version of the specified request.
+    /// - Parameter request: The request whose canonical version is desired.
+    /// - Returns: The canonical form of request.
     public override class func canonicalRequest(for request: URLRequest) -> URLRequest {
         return request
     }
     
-    /// <#Description#>
+    /// requestIsCacheEquivalent:toRequest:
+    ///
+    /// discussion Requests are considered euqivalent for cache purposes\
+    /// if and only if they would be handled by the same protocol AND that
+    /// protocol declares them equivalent after performing
+    /// implementation-specific checks.
+    ///
+    /// - Parameters:
+    ///   - testA: The request to compare with bRequest.
+    ///   - testB: The request to compare with aRequest.
+    /// - Returns: true if aRequest and bRequest are equivalent for cache purposes, false otherwise.
     public override class func requestIsCacheEquivalent(_ testA: URLRequest, to testB: URLRequest) -> Bool {
         return super.requestIsCacheEquivalent(testA, to: testB)
     }
     
-    /// <#Description#>
+    /// Starts protocol-specific loading of the request.
+    ///
+    /// When this method is called, the subclass implementation should start loading the request, \
+    /// providing feedback to the URL loading system via the URLProtocolClient protocol.
     public override func startLoading() {
         guard let req = (request as NSURLRequest).mutableCopy() as? NSMutableURLRequest,
               newRequest == nil else { return }
@@ -172,22 +189,36 @@ public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
         logRequest(newRequest! as URLRequest)
     }
     
-    /// <#Description#>
+    /// Stop Loading
     public override func stopLoading() {
     }
     
+    /// URL Session
+    ///
+    /// Tells the client that the protocol implementation has been redirected.
+    ///
+    /// - Parameters:
+    ///   - session: Session
+    ///   - task: URLSessionTask
+    ///   - response: URLResponse
+    ///   - request: request
+    ///   - completionHandler: Completion handler (not used)
     func URLSession(
         _ session: Foundation.URLSession,
         task: URLSessionTask,
         willPerformHTTPRedirection response: HTTPURLResponse,
         newRequest request: URLRequest,
         completionHandler: (URLRequest?) -> Void) {
-        self.client?.urlProtocol(self, wasRedirectedTo: request, redirectResponse: response)
+        self.client?.urlProtocol(
+            self,
+            wasRedirectedTo: request,
+            redirectResponse: response
+        )
     }
     
     // MARK: - Logging
-    /// <#Description#>
-    /// - Parameter error: <#error description#>
+    /// Log error
+    /// - Parameter error: error
     public func logError(_ error: NSError) {
         self.log += "⚠️\n"
         self.log += "  Error: \n\(error.localizedDescription)\n"
@@ -202,8 +233,8 @@ public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
         AuroraNetworkLogger.configuration.auroraNetworkLogger(self.log)
     }
     
-    /// <#Description#>
-    /// - Parameter request: <#request description#>
+    /// Log request
+    /// - Parameter request: URL Request
     public func logRequest(_ request: URLRequest) {
         self.log = "Networklog\n"
         if let url = request.url?.absoluteString {
@@ -240,8 +271,8 @@ public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
         }
     }
     
-    /// <#Description#>
-    /// - Parameter data: <#data description#>
+    /// Dataparser fopr logger
+    /// - Parameter data: data to be parsed
     private func logDataParser(data: Data) {
         do {
             let rawString = String.init(data: data, encoding: .utf8)
@@ -281,10 +312,10 @@ public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
         }
     }
     
-    /// <#Description#>
+    /// Log response
     /// - Parameters:
-    ///   - response: <#response description#>
-    ///   - data: <#data description#>
+    ///   - response: URL Response
+    ///   - data: URL Response Data
     public func logResponse(_ response: URLResponse, data: Data? = nil) {
         if let url = response.url?.absoluteString {
             self.log += "  Response: \(url)\n"
@@ -345,9 +376,9 @@ public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
         AuroraNetworkLogger.configuration.auroraNetworkLogger(self.log)
     }
     
-    /// <#Description#>
-    /// - Parameter headers: <#headers description#>
-    /// - Returns: <#description#>
+    /// Log headers
+    /// - Parameter headers: Headers
+    /// - Returns: Log
     public func logHeaders(_ headers: [String: AnyObject]) -> String {
         let string = headers.reduce(String()) { str, header in
             let string = "      \(header.0): \(header.1)"
@@ -358,25 +389,29 @@ public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
     
     // MARK: - Private
     
-    /// <#Description#>
+    /// requestHandledKey
     fileprivate static let requestHandledKey = "RequestLumberjackHandleKey"
-    /// <#Description#>
+    
+    /// requestTimeKey
     fileprivate static let requestTimeKey = "RequestLumberjackRequestTime"
     
-    /// <#Description#>
+    /// Data container (for logs)
     fileprivate var data: NSMutableData?
-    /// <#Description#>
+    
+    /// Response container (for logs)
     fileprivate var response: URLResponse?
-    /// <#Description#>
+    
+    /// new Request container (for logs)
     fileprivate var newRequest: NSMutableURLRequest?
-    /// <#Description#>
+    
+    /// Log container
     fileprivate var log = ""
     
-    /// <#Description#>
+    /// trimTextOverflow
     /// - Parameters:
-    ///   - string: <#string description#>
-    ///   - length: <#length description#>
-    /// - Returns: <#description#>
+    ///   - string: Log message
+    ///   - length: Trim at.
+    /// - Returns: Trimmed text
     fileprivate func trimTextOverflow(_ string: String, length: Int) -> String {
         guard string.count > length else {
             return string
