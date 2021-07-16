@@ -19,11 +19,11 @@ import Foundation
 
 infix operator =~
 
-/// <#Description#>
+/// Regular expression infix operator (MATCH)
 /// - Parameters:
-///   - string: <#string description#>
-///   - regex: <#regex description#>
-/// - Returns: <#description#>
+///   - string: String to be checked
+///   - regex: against regex
+/// - Returns: Found?
 public func =~ (string: String, regex: String) -> Bool {
     return string.range(
         of: regex,
@@ -35,11 +35,11 @@ public func =~ (string: String, regex: String) -> Bool {
 
 infix operator !~
 
-/// <#Description#>
+/// Regular expression infix operator (NO MATCH)
 /// - Parameters:
-///   - source: <#source description#>
-///   - pattern: <#pattern description#>
-/// - Returns: <#description#>
+///   - string: String to be checked
+///   - regex: against regex
+/// - Returns: Found?
 public func !~ (source: String, pattern: String) -> Bool {
     return !(source =~ pattern)
 }
