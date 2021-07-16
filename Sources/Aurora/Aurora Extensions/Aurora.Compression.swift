@@ -19,25 +19,17 @@ import Foundation
 import Compression
 
 public extension Aurora {
-    /// <#Description#>
-    /// - Parameter data: <#data description#>
-    /// - Returns: <#description#>
-    func compress(data: Data) -> Data {
-        guard let compressed = data.deflate() else {
-            return "".data(using: .utf8)!
-        }
-        
-        return compressed
+    /// Compresses the data using the zlib deflate algorithm.
+    /// - Parameter data: data to be compressed
+    /// - Returns: compressed data
+    func compress(data: Data) -> Data? {
+        return data.deflate()
     }
     
-    /// <#Description#>
-    /// - Parameter data: <#data description#>
-    /// - Returns: <#description#>
-    func decompress(data: Data) -> Data {
-        guard let decompressed = data.inflate() else {
-            return "".data(using: .utf8)!
-        }
-        
-        return decompressed
+    /// Decompresses the data using the zlib deflate algorithm.
+    /// - Parameter data: data to be decompressed
+    /// - Returns: uncompressed data
+    func decompress(data: Data) -> Data? {
+        return data.inflate()
     }
 }

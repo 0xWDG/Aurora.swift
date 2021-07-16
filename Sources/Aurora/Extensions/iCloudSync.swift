@@ -33,12 +33,12 @@ open class AuroraFrameworkiCloudSync {
     public init() {
         if isAuroraiCloudSyncInProgress == false {
             // Start the sync!
-            self.startSync()
+            self.start()
         }
     }
     
-    /// <#Description#>
-    open func startSync() {
+    /// Start iCloud synchronization, and Observe changes.
+    open func start() {
         if keyValueStore.isKind(of: NSUbiquitousKeyValueStore.self) {
             notificationCenter.addObserver(
                 self,
@@ -157,12 +157,12 @@ open class AuroraFrameworkiCloudSync {
         )
     }
     
-    /// <#Description#>
+    /// Force a sync
     open func sync() {
         // If not started (impossible, but ok)
         if isAuroraiCloudSyncInProgress == false {
             // Just for starting.
-            self.startSync()
+            self.start()
         } else {
             // Sync!
             keyValueStore.synchronize()

@@ -18,26 +18,26 @@ import Foundation
 /// [Apple documentation on UserDefaults](https://developer.apple.com/documentation/foundation/userdefaults)
 @propertyWrapper
 public struct AuroraConfig<Value: AuroraConfigStoreValue> {
-    /// <#Description#>
+    /// A key in the current user‘s defaults database.
     let key: String
     
-    /// <#Description#>
+    /// A default value for the key in the current user‘s defaults database.
     let defaultValue: Value
     
-    /// <#Description#>
+    /// Current user's defaults database
     var userDefaults: UserDefaults
     
-    /// <#Description#>
+    /// Returns/set the object associated with the specified key.
     /// - Parameters:
-    ///   - key: Configuration Key
-    ///   - default: Default value
+    ///   - key: A key in the current user‘s defaults database.
+    ///   - default: A default value for the key in the current user‘s defaults database.
     public init(_ key: String, `default`: Value) {
         self.key = "Aurora." + key
         self.defaultValue = `default`
         self.userDefaults = .standard
     }
     
-    /// <#Description#>
+    /// Wrapped userdefault
     public var wrappedValue: Value {
         get {
             return userDefaults.object(forKey: key) as? Value ?? defaultValue

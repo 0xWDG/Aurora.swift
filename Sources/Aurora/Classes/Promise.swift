@@ -17,7 +17,7 @@
 
 import Foundation
 
-/// <#Description#>
+/// Promise sometthing
 class Promise<Value> {
     /// <#Description#>
     enum State<T> {

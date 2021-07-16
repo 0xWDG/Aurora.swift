@@ -5,7 +5,7 @@
 import UIKit
 import QuartzCore
 
-/// <#Description#>
+/// Create a toast view (like  Watch unlocked, Paired AirPods)
 ///
 ///     ToastView(
 ///       title: "Warning",
@@ -18,20 +18,20 @@ import QuartzCore
 @available(iOS 13.0, *)
 // swiftlint:disable:next type_body_length
 public class ToastView: UIView {
-    /// <#Description#>
+    /// Toast bounds
     public override var bounds: CGRect {
         didSet {
             setupShadow()
         }
     }
     
-    /// <#Description#>
+    /// Set the toast height
     private let toastHeight: CGFloat = 50
     
-    /// <#Description#>
+    /// Create a horizontal stack
     private var hStack: UIStackView = UIStackView(frame: CGRect.zero)
     
-    /// <#Description#>
+    /// Default dark background color
     private let darkBackgroundColor = UIColor(
         red: 0.13,
         green: 0.13,
@@ -39,7 +39,7 @@ public class ToastView: UIView {
         alpha: 1.00
     )
     
-    /// <#Description#>
+    /// Default light background color
     private let lightBackgroundColor = UIColor(
         red: 0.99,
         green: 0.99,
@@ -64,14 +64,15 @@ public class ToastView: UIView {
     /// Hide the view automatically on tap ?
     public var hideOnTap = true
     
-    /// <#Description#>
+    /// Create a toast view (like  Watch unlocked, Paired AirPods)
+    ///
     /// - Parameters:
-    ///   - title: <#title description#>
-    ///   - subtitle: <#subtitle description#>
-    ///   - icon: <#icon description#>
-    ///   - iconColor: <#iconColor description#>
-    ///   - haptic: <#haptic description#>
-    ///   - onTap: <#onTap description#>
+    ///   - title: Title to display
+    ///   - subtitle: Subtitle to display
+    ///   - icon: Icon (if any)
+    ///   - iconColor: Icon color (if an icon)
+    ///   - haptic: Haptic feedback
+    ///   - onTap: What to do on tap?
     @discardableResult
     public init(title: String,
                 subtitle: String? = nil,
@@ -150,7 +151,7 @@ public class ToastView: UIView {
         addAnimation()
     }
     
-    /// <#Description#>
+    /// Add the animations
     private func addAnimation() {
         UIView.animate(
             withDuration: 0.4,
@@ -167,8 +168,8 @@ public class ToastView: UIView {
         )
     }
     
-    /// <#Description#>
-    /// - Parameter time: <#time description#>
+    /// Hide toast after some time
+    /// - Parameter time: time
     public func hide(after time: TimeInterval) {
         DispatchQueue.main.asyncAfter(deadline: .now() + time, execute: {
             UIView.animate(
@@ -183,15 +184,15 @@ public class ToastView: UIView {
         })
     }
     
-    /// <#Description#>
-    /// - Parameter previousTraitCollection: <#previousTraitCollection description#>
+    /// Called when the iOS interface environment changes.
+    /// - Parameter previousTraitCollection: The UITraitCollection object before the interface environment changed.
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         backgroundColor = viewBackgroundColor
     }
     
-    /// <#Description#>
-    /// - Returns: <#description#>
+    /// Get the top most UIViewController
+    /// - Returns: UIViewController
     private func getTopViewController() -> UIViewController? {
          let windows = UIApplication.shared.windows
          let keyWindow = windows.count == 1 ? windows.first : windows.filter {
@@ -209,7 +210,7 @@ public class ToastView: UIView {
         }
     }
     
-    /// <#Description#>
+    /// Setup constraints
     // swiftlint:disable:next function_body_length
     private func setupConstraints() {
         translatesAutoresizingMaskIntoConstraints = false
@@ -274,7 +275,7 @@ public class ToastView: UIView {
         ])
     }
     
-    /// <#Description#>
+    /// Setup StackView constraints
     private func setupStackViewConstraints() {
         hStack.translatesAutoresizingMaskIntoConstraints = false
         
@@ -326,7 +327,7 @@ public class ToastView: UIView {
         ])
     }
     
-    /// <#Description#>
+    /// Setup shadow
     private func setupShadow() {
         layer.masksToBounds = false
         layer.shadowOffset = CGSize(width: 0, height: 4)
@@ -335,7 +336,7 @@ public class ToastView: UIView {
         layer.shadowOpacity = 1
     }
     
-    /// <#Description#>
+    /// Did tap on toast
     @objc private func didTap() {
         if hideOnTap {
             hide(after: 0)
@@ -343,8 +344,8 @@ public class ToastView: UIView {
         onTap?()
     }
     
-    /// <#Description#>
-    /// - Parameter coder: <#coder description#>
+    /// Init
+    /// - Parameter coder: An abstract class that serves as the basis for objects that enable archiving and distribution of other objects.
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -223,8 +223,8 @@ class AuroraDevice {
         }
     }
     
-    /// <#Description#>
-    /// - Returns: <#description#>
+    /// Get the current operating system
+    /// - Returns: current operating system
     func getOperatingSystem() -> AuroraOS {
         #if os(macOS)
         return .macOS

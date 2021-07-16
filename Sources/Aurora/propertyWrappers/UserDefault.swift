@@ -11,27 +11,27 @@ import Foundation
 /// [Apple documentation on UserDefaults](https://developer.apple.com/documentation/foundation/userdefaults)
 @propertyWrapper
 public struct UserDefault<Value: PropertyListValue> {
-    /// <#Description#>
+    /// A key in the current user‘s defaults database.
     let key: String
     
-    /// <#Description#>
+    /// A default value for the key in the current user‘s defaults database.
     let defaultValue: Value
     
-    /// <#Description#>
+    /// Which userdefaults
     var userDefaults: UserDefaults
     
     /// <#Description#>
     /// - Parameters:
-    ///   - key: <#key description#>
-    ///   - default: <#defaultValue description#>
-    ///   - userDefaults: <#userDefaults description#>
+    ///   - key: A key in the current user‘s defaults database.
+    ///   - default: A default value for the key in the current user‘s defaults database.
+    ///   - userDefaults: Which userdefaults (defaults to `.standard`)
     public init(_ key: String, `default`: Value, userDefaults: UserDefaults = .standard) {
         self.key = key
         self.defaultValue = `default`
         self.userDefaults = userDefaults
     }
     
-    /// <#Description#>
+    /// Wrapped value
     public var wrappedValue: Value {
         get {
             return userDefaults.object(forKey: key) as? Value ?? defaultValue

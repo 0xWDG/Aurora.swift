@@ -28,6 +28,11 @@ public extension Data {
             return String(format: "%02hhx", $0)
         }).joined()
     }
+    
+    /// Data as string (utf8)
+    var stringValue: String? {
+        return String.init(data: self, encoding: .utf8)
+    }
 }
 
 #if canImport(Compression)
@@ -120,7 +125,7 @@ public extension Data {
     }
     
     /// Decompresses the data using the zlib deflate algorithm.
-    /// Self is expected to be a raw deflate
+    /// - note: Self is expected to be a raw deflate, \
     /// stream according to [RFC-1951](https://tools.ietf.org/html/rfc1951).
     /// - returns: uncompressed data
     func inflate() -> Data? {

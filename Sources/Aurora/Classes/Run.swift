@@ -17,7 +17,7 @@
 
 import Foundation
 
-/// <#Description#>
+/// Run actions after another
 public class Run {
     /// Alias for closire
     typealias Action = () -> Void

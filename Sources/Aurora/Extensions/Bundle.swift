@@ -66,9 +66,9 @@ public extension Bundle {
         return ProcessInfo.processInfo.systemUptime
     }
     
-    /// <#Description#>
-    /// - Parameter key: <#key description#>
-    /// - Returns: <#description#>
+    /// String for infoDictionary
+    /// - Parameter key: key to be fetched
+    /// - Returns: key value
     private func string(for key: String) -> String {
         guard let infoDictionary = Bundle.main.infoDictionary,
             let value = infoDictionary[key] as? String else {
@@ -77,7 +77,7 @@ public extension Bundle {
         return value
     }
     
-    /// <#Description#>
+    /// URL Schemes
     var schemes: [String] {
         guard let infoDictionary = Bundle.main.infoDictionary,
             let urlTypes = infoDictionary["CFBundleURLTypes"] as? [AnyObject],
@@ -88,7 +88,7 @@ public extension Bundle {
         return urlSchemes
     }
     
-    /// <#Description#>
+    /// Main URL scheme
     var mainScheme: String? {
         return schemes.first
     }
