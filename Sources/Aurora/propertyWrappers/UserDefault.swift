@@ -20,7 +20,7 @@ public struct UserDefault<Value: PropertyListValue> {
     /// Which userdefaults
     var userDefaults: UserDefaults
     
-    /// <#Description#>
+    /// A type safe property wrapper to set and get values from UserDefaults with support for defaults values.
     /// - Parameters:
     ///   - key: A key in the current user‘s defaults database.
     ///   - default: A default value for the key in the current user‘s defaults database.

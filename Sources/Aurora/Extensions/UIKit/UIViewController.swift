@@ -79,16 +79,16 @@ public extension UIViewController {
         view.endEditing(true)
     }
     
-    /// <#Description#>
+    /// show InputDialog
     /// - Parameters:
-    ///   - title: <#title description#>
-    ///   - subtitle: <#subtitle description#>
-    ///   - actionTitle: <#actionTitle description#>
-    ///   - cancelTitle: <#cancelTitle description#>
-    ///   - inputPlaceholder: <#inputPlaceholder description#>
-    ///   - inputKeyboardType: <#inputKeyboardType description#>
-    ///   - cancelHandler: <#cancelHandler description#>
-    ///   - actionHandler: <#actionHandler description#>
+    ///   - title: Title
+    ///   - subtitle: Subtitle
+    ///   - actionTitle: Action title
+    ///   - cancelTitle: Cancel title
+    ///   - inputPlaceholder: Input placeholder text
+    ///   - inputKeyboardType: Keyboard type
+    ///   - cancelHandler: Cancel handler
+    ///   - actionHandler: Action handler
     func showInputDialog(title: String? = nil,
                          subtitle: String? = nil,
                          actionTitle: String? = "Add",
