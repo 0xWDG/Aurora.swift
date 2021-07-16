@@ -51,10 +51,10 @@ public extension UIView {
         self.layer.cornerRadius = radius ?? 46
     }
     
-    /// <#Description#>
+    /// Round corners
     /// - Parameters:
-    ///   - corners: <#corners description#>
-    ///   - radius: <#radius description#>
+    ///   - corners: which corners
+    ///   - radius: which radius
     func roundCorners(corners: UIRectCorner, radius: CGFloat) {
         let path = UIBezierPath(
             roundedRect: bounds,
@@ -71,10 +71,10 @@ public extension UIView {
         layer.masksToBounds = true
     }
     
-    /// <#Description#>
+    /// Gradient background
     /// - Parameters:
-    ///   - colorOne: <#colorOne description#>
-    ///   - colorTwo: <#colorTwo description#>
+    ///   - colorOne: First color
+    ///   - colorTwo: Second color
     func gradientBackground(colorOne: UIColor, colorTwo: UIColor) {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds
@@ -85,10 +85,10 @@ public extension UIView {
         layer.insertSublayer(gradientLayer, at: 0)
     }
     
-    /// <#Description#>
+    /// Gradient background (on top)
     /// - Parameters:
-    ///   - colorOne: <#colorOne description#>
-    ///   - colorTwo: <#colorTwo description#>
+    ///   - colorOne: First color
+    ///   - colorTwo: Second color
     func addGradientOnForeground(colorOne: UIColor, colorTwo: UIColor) {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds
@@ -264,7 +264,7 @@ public extension UIView {
         self.layer.add(wiggleAnimation, forKey: "transform")
     }
     
-    /// <#Description#>
+    /// GestureClosures
     struct GestureClosures {
         // swiftlint:disable:next identifier_name
         static var up: (() -> Void)?
@@ -273,15 +273,18 @@ public extension UIView {
         static var right: (() -> Void)?
     }
     
-    /// <#Description#>
+    /// Action to peform on Swipe
     /// - Parameters:
-    ///   - swipeDirection: <#swipeDirection description#>
-    ///   - completionHandler: <#completionHandler description#>
+    ///   - swipeDirection: Swipe direction
+    ///   - completionHandler: Action to do
     func swipeAction(
         swipeDirection: UISwipeGestureRecognizer.Direction,
         completionHandler: @escaping () -> Void
     ) {
-        let swiper = UISwipeGestureRecognizer(target: self, action: #selector(self.invokeTarget(_:)))
+        let swiper = UISwipeGestureRecognizer(
+            target: self,
+            action: #selector(self.invokeTarget(_:))
+        )
         
         swiper.direction = swipeDirection
         self.addGestureRecognizer(swiper)
@@ -304,8 +307,8 @@ public extension UIView {
         }
     }
     
-    /// <#Description#>
-    /// - Parameter gesture: <#gesture description#>
+    /// [SwipeAction] invokeTarget (do not call yourself)
+    /// - Parameter gesture: for gesture
     @objc func invokeTarget(_ gesture: UIGestureRecognizer?) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
@@ -340,16 +343,16 @@ public extension UIView {
     }
 }
 
-/// <#Description#>
+/// Blurable Protocol
 public protocol Blurable {
-    /// <#Description#>
-    /// - Parameter alpha: <#alpha description#>
+    /// Add Blur
+    /// - Parameter alpha: alpha value
     func addBlur(_ alpha: CGFloat)
 }
 
 public extension Blurable where Self: UIView {
-    /// <#Description#>
-    /// - Parameter alpha: <#alpha description#>
+    /// Add Blur
+    /// - Parameter alpha: alpha value
     func addBlur(_ alpha: CGFloat = 0.5) {
         // create effect
         let effect = UIBlurEffect(style: .dark)
