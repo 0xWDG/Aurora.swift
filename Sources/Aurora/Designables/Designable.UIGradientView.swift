@@ -137,8 +137,8 @@ open class UIGradientView: UIView {
         )
     }
     
-    /// <#Description#>
-    /// - Parameter rect: <#rect description#>
+    /// Update background color
+    /// - Parameter rect: rect size
     func updateBackground(rect: CGRect) {
         let oldLayer = self._layer
         self._layer = getLayer(rect: rect)
