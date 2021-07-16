@@ -12,8 +12,8 @@ public enum TabBarItemAnimation {
     /// Jump
     case jump
     
-    /// Rotate
-    case rotate (Right)
+    /// Rotate (Right)
+    case rotate
     
     /// Rotate (Right)
     case rotateRight
