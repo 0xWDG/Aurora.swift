@@ -432,6 +432,7 @@ public extension String {
         return output
     }
     
+    #if canImport(UIKit)
     /// As Image
     var asImage: UIImage? {
         return self.textToImage()
@@ -472,7 +473,8 @@ public extension String {
         UIGraphicsEndImageContext()
         return image
     }
-
+    #endif
+    
     /// HTMLEntities
     // swiftlint:disable:next type_body_length
     fileprivate struct HTMLEntities {

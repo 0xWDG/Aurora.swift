@@ -13,7 +13,6 @@ import UIKit
     func carouselDidScroll()
 }
 
-
 /// <#Description#>
 ///
 /// <#SuperDuperDescription#>
@@ -44,12 +43,15 @@ import UIKit
 ///       // Finally where needed:
 ///       view.addSubView(carousel)
 ///
-final public class AuroraCarousel: UIView, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
+final public class AuroraCarousel: UIView,
+                                   UICollectionViewDelegateFlowLayout,
+                                   UICollectionViewDelegate,
+                                   UICollectionViewDataSource {
     
     // MARK: - Properties
     private var timer: Timer = Timer()
     public var interval: Double = 1.0
-    public var delegate: AuroraCarouselDelegate?
+    public weak var delegate: AuroraCarouselDelegate?
     
     public var slides: [AuroraCarouselSlide] = [] {
         didSet {
@@ -158,7 +160,9 @@ final public class AuroraCarousel: UIView, UICollectionViewDelegateFlowLayout, U
         visibleRect.origin = collectionView.contentOffset
         visibleRect.size = collectionView.bounds.size
         let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
-        let visibleIndexPath: IndexPath = collectionView.indexPathForItem(at: visiblePoint) ?? IndexPath(item: 0, section: 0)
+        let visibleIndexPath: IndexPath = collectionView.indexPathForItem(
+            at: visiblePoint
+        ) ?? IndexPath(item: 0, section: 0)
         let index = visibleIndexPath.item
 
         let indexPathToShow = IndexPath(item: index == slides.count - 1 ? 0 : index + 1, section: 0)
@@ -196,11 +200,14 @@ final public class AuroraCarousel: UIView, UICollectionViewDelegateFlowLayout, U
     }
     
     // MARK: - UICollectionViewDelegate & DataSource
-    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(
+    public func collectionView(_ collectionView: UICollectionView,
+                               cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: AuroraCarouselCell.identifier,
             for: indexPath
-        ) as! AuroraCarouselCell
+        ) as AuroraCarouselCell else {
+            fatalError("Can not load AuroraCarouselCell")
+        }
         cell.slide = slides[indexPath.item]
         return cell
     }
@@ -213,11 +220,15 @@ final public class AuroraCarousel: UIView, UICollectionViewDelegateFlowLayout, U
         return 1
     }
     
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    public func collectionView(_ collectionView: UICollectionView,
+                               layout collectionViewLayout: UICollectionViewLayout,
+                               sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
     }
     
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    public func collectionView(_ collectionView: UICollectionView,
+                               layout collectionViewLayout: UICollectionViewLayout,
+                               minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
     
@@ -344,11 +355,20 @@ public class AuroraCarouselCell: UICollectionViewCell {
     }
 }
 
+/// Aurora Carousel Slide
 public struct AuroraCarouselSlide {
+    /// Slide Image
     public var image: UIImage?
+    /// Slide Title
     public var title: String?
+    /// Slide Description
     public var description: String?
     
+    /// Aurora Carousel Slide
+    /// - Parameters:
+    ///   - image: Slide Image
+    ///   - title: Slide Title
+    ///   - description: Slide Description
     public init(image: UIImage?, title: String?, description: String?) {
         self.image = image
         self.title = title
