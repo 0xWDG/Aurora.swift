@@ -432,6 +432,49 @@ public extension String {
         return output
     }
     
+    #if canImport(UIKit)
+    /// As Image
+    var asImage: UIImage? {
+        return self.textToImage()
+    }
+    
+    /// As Image
+    var emojiToImage: UIImage? {
+        let size = CGSize(width: 30, height: 35)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        UIColor.white.set()
+    
+        let rect = CGRect(origin: CGPoint(), size: size)
+        UIRectFill(rect)
+        
+        (self as AnyObject).draw(
+            in: rect,
+            withAttributes: [
+                .font: UIFont.systemFont(ofSize: 30)
+            ]
+        )
+    
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+    
+        return image
+    }
+    
+    /// Text to image
+    /// - Returns: IMage
+    private func textToImage() -> UIImage? {
+        let size = CGSize(width: 40, height: 40)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        UIColor.white.set()
+        let rect = CGRect(origin: .zero, size: size)
+        UIRectFill(CGRect(origin: .zero, size: size))
+        (self as AnyObject).draw(in: rect, withAttributes: [.font: UIFont.systemFont(ofSize: 40)])
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
+    #endif
+    
     /// HTMLEntities
     // swiftlint:disable:next type_body_length
     fileprivate struct HTMLEntities {
