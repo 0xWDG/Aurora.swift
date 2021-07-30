@@ -109,6 +109,7 @@ public extension UIView {
     /// Same size as parent
     func sameSizeAsParent() {
         guard let superview = self.superview else { return }
+        
         translatesAutoresizingMaskIntoConstraints = superview.translatesAutoresizingMaskIntoConstraints
         if translatesAutoresizingMaskIntoConstraints {
             autoresizingMask = [.flexibleWidth, .flexibleHeight]
