@@ -205,7 +205,7 @@ final public class AuroraCarousel: UIView,
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: AuroraCarouselCell.identifier,
             for: indexPath
-        ) as AuroraCarouselCell else {
+        ) as? AuroraCarouselCell else {
             fatalError("Can not load AuroraCarouselCell")
         }
         cell.slide = slides[indexPath.item]
