@@ -7,6 +7,10 @@ Aurora Framework for Swift
 
 ---
 
+Last update: 07-AUG-2021
+
+---
+
 Built-in functions:
  - ...
  - ...
