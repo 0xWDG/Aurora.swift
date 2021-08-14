@@ -21,7 +21,7 @@ $expectedHeader = <<<HEADER
 //
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT.
 HEADER;
 
 echo $expectedHeader . PHP_EOL;
