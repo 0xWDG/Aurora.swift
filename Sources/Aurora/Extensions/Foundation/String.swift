@@ -56,7 +56,7 @@ public extension String {
         )
 
         // If self is empty, then do nothing with it.
-        if self == "" {
+        if self.isBlank {
             return self
         }
 
@@ -938,7 +938,7 @@ public extension String {
     func initialsFirstAndLast() -> String {
         let words = self.components(separatedBy: " ")
         return words.reduce("") {
-            ($0 == "" ? "": $0[0...0]) + $1[0...0]
+            ($0.isBlank ? "": $0[0...0]) + $1[0...0]
         }
     }
 
@@ -1011,7 +1011,7 @@ public extension String {
         )
         return latinize().lowercased()
             .components(separatedBy: slugCharacterSet.inverted)
-            .filter { $0 != "" }
+            .filter { !$0.isBlank }
             .joined(separator: "-")
     }
 
@@ -1042,7 +1042,7 @@ public extension String {
         return components(separatedBy: .punctuationCharacters)
             .joined(separator: "")
             .components(separatedBy: " ")
-            .filter {$0 != ""}
+            .filter { !$0.isBlank }
             .joined(separator: " ")
     }
 

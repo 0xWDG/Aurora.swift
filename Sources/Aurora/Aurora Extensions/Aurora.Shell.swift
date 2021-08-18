@@ -39,7 +39,7 @@ func shell(_ arguments: String, showLog: Bool = false) -> String {
     task.waitUntilExit()
     pipe.fileHandleForReading.closeFile()
 
-    if showLog && output != "" {
+    if showLog && !output.isBlank {
         print(output)
     }
     return output
