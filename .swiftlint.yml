@@ -4,3 +4,4 @@ opt_in_rules: # some rules are only opt-in
    - empty_string
    - toggle_bool
    - unused_optional_binding
+   - valid_ibinspectable
