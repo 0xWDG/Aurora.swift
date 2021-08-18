@@ -34,14 +34,16 @@ extension Aurora {
         function: String = #function) -> Bool {
         if debug {
             // extract filename, without path, and without extension.
-            let fileName: String = (file.split("/").last)!.split(".").first!
-            
+            let fileName: String = (file.split("/").last).unwrap(
+                orError: "Failed to get file name"
+            ).split(".").first.unwrap(orError: "Failed to get file name")
+
             // extract extension.
-            let fileExtension: String = file.split(".").last!
-            
+            let fileExtension: String = file.split(".").last.unwrap(orError: "Invalid file extension")
+
             // On which Queue are we running
             let queue = Thread.isMainThread ? "Main" : "Background"
-            
+
             // Make up the log message.
             let logMessage = logTemplate
                 .replace("$product", withString: product)
@@ -58,21 +60,21 @@ extension Aurora {
                 .replace("$queue", withString: queue)
                 .replace("$message", withString: message.joined(separator: " "))
                 + "\n"
-            
+
             // Print the "messages"
             Swift.print(logMessage)
-            
+
             // Append to the history
             logHistory.append(logMessage)
-            
+
             if isInitialized {
                 Aurora.shared.logHandler?(logMessage)
             }
         }
-        
+
         return debug
     }
-    
+
     /// Log
     ///
     /// This is used to send log messages with the following syntax
@@ -97,16 +99,20 @@ extension Aurora {
     public func log(_ anyThing: Any..., file: String = #file, line: Int = #line, function: String = #function) -> Bool {
         if debug {
             // Any... = [Any]
-            
+
             // extract filename, without path, and without extension.
-            let fileName: String = (file.split("/").last)!.split(".").first!
-            
+            let fileName: String = (file.split("/").last).unwrap(
+                    orError: "Failed to get file name"
+            ).split(".").first.unwrap(
+                orError: "Failed to get file name"
+            )
+
             // extract extension.
-            let fileExtension: String = file.split(".").last!
-            
+            let fileExtension: String = file.split(".").last.unwrap(orError: "Invalid name")
+
             // On which Queue are we running
             let queue = Thread.isMainThread ? "Main" : "Background"
-            
+
             // Make up the log message.
             let logMessage = logTemplate
                 .replace("$product", withString: product)
@@ -123,21 +129,21 @@ extension Aurora {
                 .replace("$queue", withString: queue)
                 .replace("$message", withString: "\(anyThing)")
                 + "\n"
-            
+
             // Print the "messages"
             Swift.print(logMessage)
-            
+
             // Append to the history
             logHistory.append(logMessage)
-            
+
             if isInitialized {
                 Aurora.shared.logHandler?(logMessage)
             }
         }
-        
+
         return debug
     }
-    
+
     /// print (alias for log)
     ///
     /// This is used to send log messages with the following syntax
@@ -170,7 +176,7 @@ extension Aurora {
             function: function
         )
     }
-    
+
     /// Show LogViewer
     public func showLogViewer() {
         #if canImport(UIKit)
@@ -181,7 +187,7 @@ extension Aurora {
         )
         #endif
     }
-    
+
     /// Get the log messages
     /// - Returns: The last crashlog
     public func getLogMessages() -> [String] {

@@ -13,12 +13,12 @@ import SwiftUI
 @available(iOS 13.0, OSX 10.15, tvOS 13.0, watchOS 6.0, *)
 public struct ShakeEffect: GeometryEffect {
     var position: CGFloat = 0
-    
+
     public var animatableData: CGFloat {
         get { position }
         set { position = newValue }
     }
-    
+
     public func effectValue(size: CGSize) -> ProjectionTransform {
         return ProjectionTransform(
             CGAffineTransform(translationX: sin(position * 2 * .pi), y: 0)

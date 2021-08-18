@@ -8,12 +8,9 @@
 // - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 //  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 //
-// Please note: this is a beta version.
-// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
-//
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT
 
 import Foundation
 import Compression
@@ -25,7 +22,7 @@ public extension Aurora {
     func compress(data: Data) -> Data? {
         return data.deflate()
     }
-    
+
     /// Decompresses the data using the zlib deflate algorithm.
     /// - Parameter data: data to be decompressed
     /// - Returns: uncompressed data

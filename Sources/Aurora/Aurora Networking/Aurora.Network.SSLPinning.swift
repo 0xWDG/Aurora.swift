@@ -8,12 +8,9 @@
 // - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 //  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 //
-// Please note: this is a beta version.
-// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
-//
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT
 
 import Foundation
 
@@ -36,10 +33,10 @@ import CommonCrypto
 class AuroraURLSessionPinningDelegate: NSObject, URLSessionDelegate {
     /// Hash of the pinned certificate
     let pinnedCertificateHash: String
-    
+
     /// Hash of the pinned public key
     let pinnedPublicKeyHash: String
-    
+
     override init() {
         if #available(tvOS 12.0, *) {
             pinnedCertificateHash = Aurora.shared.getCertificateHash()
@@ -48,10 +45,10 @@ class AuroraURLSessionPinningDelegate: NSObject, URLSessionDelegate {
             pinnedCertificateHash = ""
             pinnedPublicKeyHash = ""
         }
-        
+
         super.init()
     }
-    
+
     /// RSA2048 Asn1 Header
     let rsa2048Asn1Header: [UInt8] = [
         0x30, 0x82, 0x01, 0x22, 0x30, 0x0d,
@@ -59,7 +56,7 @@ class AuroraURLSessionPinningDelegate: NSObject, URLSessionDelegate {
         0xf7, 0x0d, 0x01, 0x01, 0x01, 0x05,
         0x00, 0x03, 0x82, 0x01, 0x0f, 0x00
     ]
-    
+
     /// SHA256 Encode data
     /// - Parameter data: the data which needs to be encoded
     /// - Returns: encoded data
@@ -68,20 +65,20 @@ class AuroraURLSessionPinningDelegate: NSObject, URLSessionDelegate {
         /// Key header
         var keyWithHeader = Data(rsa2048Asn1Header)
         keyWithHeader.append(data)
-        
+
         /// Hash
         var hash = [UInt8](repeating: 0, count: Int(CC_SHA256_DIGEST_LENGTH))
-        
+
         keyWithHeader.withUnsafeBytes {
             _ = CC_SHA256($0, CC_LONG(keyWithHeader.count), &hash)
         }
-        
+
         return Data(hash).base64EncodedString()
         #else
         return data.base64EncodedString()
         #endif
     }
-    
+
     func urlSession(
         _ session: URLSession,
         didReceive challenge: URLAuthenticationChallenge,
@@ -92,27 +89,27 @@ class AuroraURLSessionPinningDelegate: NSObject, URLSessionDelegate {
             if let serverTrust = challenge.protectionSpace.serverTrust {
                 /// server trust
                 var secresult = SecTrustResultType.invalid
-                
+
                 /// status
                 let status = SecTrustEvaluate(serverTrust, &secresult)
                 //                let status = SecTrustEvaluateWithError(serverTrust, &secresult)
-                
+
                 if errSecSuccess == status {
                     // Aurora.shared.log(SecTrustGetCertificateCount(serverTrust))
                     /// Server certificate
                     if let serverCertificate = SecTrustGetCertificateAtIndex(serverTrust, 0) {
-                        
+
                         if pinnedCertificateHash.count > 2 {
                             /// Certificate pinning
                             let serverCertificateData: NSData = SecCertificateCopyData(
                                 serverCertificate
                             )
-                            
+
                             /// Get hash
                             let certHash = sha256(
                                 data: serverCertificateData as Data
                             )
-                            
+
                             if certHash == pinnedCertificateHash {
                                 // Success! This is our server
                                 completionHandler(
@@ -124,25 +121,31 @@ class AuroraURLSessionPinningDelegate: NSObject, URLSessionDelegate {
                                 return
                             }
                         }
-                        
+
                         if #available(tvOS 12.0, *) {
                             if pinnedPublicKeyHash.count > 2 {
                                 /// Public key pinning
                                 let serverPublicKey = SecCertificateCopyKey(
                                     serverCertificate
                                 )
-                                
+
+                                // Disable this lint,
+                                // It will let us not build, if we change
+                                // it to guard/if let.
+                                // Error: error: Abort trap: 6
+                                // swiftlint:disable force_unwrapping
                                 /// Public key data
                                 let serverPublicKeyData: NSData = SecKeyCopyExternalRepresentation(
                                     serverPublicKey!,
                                     nil
                                 )!
-                                
+                                // swiftlint:enable force_unwrapping
+
                                 /// Key hash
                                 let keyHash = sha256(
                                     data: serverPublicKeyData as Data
                                 )
-                                
+
                                 if keyHash == pinnedPublicKeyHash {
                                     // Success! This is our server
                                     completionHandler(
@@ -161,7 +164,7 @@ class AuroraURLSessionPinningDelegate: NSObject, URLSessionDelegate {
                 }
             }
         }
-        
+
         // Pinning failed
         completionHandler(
             .cancelAuthenticationChallenge,

@@ -8,18 +8,16 @@
 // - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 //  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 //
-// Please note: this is a beta version.
-// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
-//
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT
 
 import Foundation
 
-#if canImport(CoreML) && canImport(Vision) && !os(tvOS)
+#if canImport(CoreML) && canImport(Vision) && !os(tvOS) && canImport(UIKit)
 import CoreML
 import Vision
+import UIKit
 
 /// NSFW Detector
 ///
@@ -38,14 +36,14 @@ import Vision
 public class NSFWDetector {
     /// Singleton for NSFWDetector
     public static let shared = NSFWDetector()
-    
+
     /// Core ML model used with Vision requests.
     private let model: VNCoreMLModel
-    
+
     /// Initialize
     public required init() {
         var NSFWModel: MLModel?
-        
+
         #if swift(>=6)
         guard let modelURL = Bundle.module.url(forResource: "NSFW", withExtension: "mlmodel") else {
             fatalError("No model found.")
@@ -63,24 +61,24 @@ public class NSFWDetector {
         }
         #endif
         #endif
-        
+
         do {
             let config = MLModelConfiguration().configure {
                 $0.computeUnits = .all
             }
-            
+
             NSFWModel = try MLModel(contentsOf: modelURL, configuration: config)
         } catch {
             fatalError("Error loading model: \(error)")
         }
-        
+
         guard let model = try? VNCoreMLModel(for: NSFWModel.unwrap()) else {
             fatalError("NSFW should always be a valid model")
         }
-        
+
         self.model = model
     }
-    
+
     /// The Result of an NSFW Detection
     ///
     /// - error: Detection was not successful
@@ -88,19 +86,19 @@ public class NSFWDetector {
     public enum DetectionResult {
         /// error: Detection was not successful
         case error(Error)
-        
+
         /// success: Detection was successful. `nsfwConfidence`: 0.0 for safe content - 1.0 for hardcore porn ;)
         case success(nsfwConfidence: Float)
     }
-    
+
     /// Check the image
     /// - Parameters:
     ///   - image: Image
     ///   - completion: Detection result
-    public func check(image: Image, completion: @escaping (_ result: DetectionResult) -> Void) {
+    public func check(image: UIImage, completion: @escaping (_ result: DetectionResult) -> Void) {
         // Create a requestHandler for the image
         let requestHandler: VNImageRequestHandler?
-        
+
         #if os(iOS)
         if let cgImage = image.cgImage {
             requestHandler = VNImageRequestHandler(cgImage: cgImage, options: [:])
@@ -110,19 +108,19 @@ public class NSFWDetector {
             requestHandler = nil
         }
         #endif
-        
+
         #if os(macOS)
         // swiftlint:disable:next force_cast
         let cgImage = image.cgImage as! CGImage
-        
+
         requestHandler = VNImageRequestHandler(cgImage: cgImage, options: [:])
         #endif
-        
+
         #if os(iOS) || os(macOS)
         self.check(requestHandler, completion: completion)
         #endif
     }
-    
+
     /// Check the image (using pixels)
     /// - Parameters:
     ///   - cvPixelbuffer: Pixel buffer
@@ -133,10 +131,10 @@ public class NSFWDetector {
             cvPixelBuffer: cvPixelbuffer,
             options: [:]
         )
-        
+
         self.check(requestHandler, completion: completion)
     }
-    
+
     /// Check
     /// - Parameters:
     ///   - requestHandler: VN Request handler
@@ -154,7 +152,7 @@ public class NSFWDetector {
             )
             return
         }
-        
+
         /// The request that handles the detection completion
         let request = VNCoreMLRequest(
             model: self.model,
@@ -170,17 +168,17 @@ public class NSFWDetector {
                                 )
                             )
                         )
-                        
+
                         return
                 }
-                
+
                 completion(
                     .success(
                         nsfwConfidence: observation.confidence
                     )
                 )
         })
-        
+
         /// Start the actual detection
         do {
             try requestHandler.perform([request])

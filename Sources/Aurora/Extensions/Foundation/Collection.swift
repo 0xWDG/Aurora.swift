@@ -8,12 +8,9 @@
 // - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 //  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 //
-// Please note: this is a beta version.
-// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
-//
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT
 
 import Foundation
 
@@ -26,7 +23,7 @@ public extension Collection {
     subscript(try index: Index) -> Element? {
         indices.contains(index) ? self[index]: nil
     }
-    
+
     /// Returns the element at the specified index if it is within bounds, otherwise nil.
     subscript (safe index: Index) -> Element? {
         return indices.contains(index) ? self[index] : nil
@@ -45,7 +42,7 @@ public protocol DivisibleArithmetic: Numeric {
     /// DivisibleArithmetic
     /// - Parameter value: values
     init(_ value: Int)
-    
+
     /// Divide
     /// - Parameters:
     ///   - lhs: Number 1

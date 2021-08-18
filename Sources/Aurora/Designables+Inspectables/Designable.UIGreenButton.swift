@@ -8,12 +8,9 @@
 // - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 //  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 //
-// Please note: this is a beta version.
-// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
-//
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT
 
 import Foundation
 #if canImport(UIKit) && !os(watchOS)
@@ -26,25 +23,25 @@ import UIKit
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
-    
+
     /// Awake from nib
-    public override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
-        
+
         setTitleColor(.white, for: .normal)
-        
+
         backgroundColor = .button
-        
+
         layer.cornerRadius = 20
         layer.borderWidth = 1
         layer.borderColor = UIColor.white.cgColor
-        
+
         updateFocusIfNeeded()
     }
-    
+
     /// Init (coder)
     /// - Parameter coder: coder
-    required public init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
 }

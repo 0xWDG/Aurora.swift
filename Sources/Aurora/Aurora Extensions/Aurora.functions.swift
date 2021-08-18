@@ -16,13 +16,13 @@ extension Aurora {
         return phrase.md5
     }
     #endif
-    
+
     /// **No op**eration
     /// - Parameter something: Whay ever you want.
     public func noop(_ something: Any...) {
         // Great.
     }
-    
+
     /// **No op**eration
     /// - Parameter something: Whay ever you want. (object)
     public func noop(_ something: AnyObject...) {
@@ -34,7 +34,7 @@ extension Aurora {
     @available(*, deprecated)
     func deprecatedFunc() {
     }
-    
+
     /// This is a demo func, thing for unavailable things.
     /// - Returns: Void
     @available(*, unavailable)

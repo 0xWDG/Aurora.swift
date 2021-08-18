@@ -8,12 +8,9 @@
 // - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 //  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 //
-// Please note: this is a beta version.
-// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
-//
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT
 
 import Foundation
 
@@ -55,7 +52,7 @@ public extension UIView {
         }
     }
     // swiftlint:enable identifier_name
-    
+
     /// Width of view.
     @objc
     var width: CGFloat {
@@ -71,7 +68,7 @@ public extension UIView {
             )
         }
     }
-    
+
     /// Height of view.
     @objc
     var height: CGFloat {
@@ -87,7 +84,7 @@ public extension UIView {
             )
         }
     }
-    
+
     // MARK: - Origin and Size
     /// View's Origin point.
     @objc
@@ -104,7 +101,7 @@ public extension UIView {
             )
         }
     }
-    
+
     /// View's size.
     @objc
     var size: CGSize {
@@ -120,7 +117,7 @@ public extension UIView {
             )
         }
     }
-    
+
     // MARK: - Extra Properties
     /// View's right side (x + width).
     @objc
@@ -132,7 +129,7 @@ public extension UIView {
             self.x = newValue - self.width
         }
     }
-    
+
     /// View's bottom (y + height).
     @objc
     var bottom: CGFloat {
@@ -143,7 +140,7 @@ public extension UIView {
             self.y = newValue - self.height
         }
     }
-    
+
     /// View's top (y).
     @objc
     var top: CGFloat {
@@ -154,7 +151,7 @@ public extension UIView {
             self.y = newValue
         }
     }
-    
+
     /// View's left side (x).
     @objc
     var left: CGFloat {
@@ -165,7 +162,7 @@ public extension UIView {
             self.x = newValue
         }
     }
-    
+
     /// View's center X value (center.x).
     @objc
     var centerX: CGFloat {
@@ -176,7 +173,7 @@ public extension UIView {
             self.center = CGPoint(x: newValue, y: self.centerY)
         }
     }
-    
+
     /// View's center Y value (center.y).
     @objc
     var centerY: CGFloat {
@@ -187,7 +184,7 @@ public extension UIView {
             self.center = CGPoint(x: self.centerX, y: newValue)
         }
     }
-    
+
     /// Last subview on X Axis.
     @objc
     var lastSubviewOnX: UIView? {
@@ -195,7 +192,7 @@ public extension UIView {
             return $1.x > $0.x ? $1: $0
         }
     }
-    
+
     /// Last subview on Y Axis.
     @objc
     var lastSubviewOnY: UIView? {
@@ -203,13 +200,13 @@ public extension UIView {
             return $1.y > $0.y ? $1: $0
         }
     }
-    
+
     // MARK: - Bounds Methods
     /// X value of bounds (bounds.origin.x).
     @objc
     var boundsX: CGFloat {
         get {
-            return self.bounds.origin.x   
+            return self.bounds.origin.x
         }
         set {
             self.bounds = CGRect(
@@ -220,7 +217,7 @@ public extension UIView {
             )
         }
     }
-    
+
     /// Y value of bounds (bounds.origin.y).
     @objc
     var boundsY: CGFloat {
@@ -236,7 +233,7 @@ public extension UIView {
             )
         }
     }
-    
+
     /// Width of bounds (bounds.size.width).
     @objc
     var boundsWidth: CGFloat {
@@ -252,7 +249,7 @@ public extension UIView {
             )
         }
     }
-    
+
     /// Height of bounds (bounds.size.height).
     @objc
     var boundsHeight: CGFloat {
@@ -268,7 +265,7 @@ public extension UIView {
             )
         }
     }
-    
+
     // MARK: - Useful Methods
     /// Center view to it's parent view.
     @available(iOS 10, *)
@@ -283,24 +280,24 @@ public extension UIView {
                 x: (superview.height / 2) - (self.width / 2),
                 y: (superview.width / 2) - (self.height / 2)
             )
-            
+
         case .portrait, .portraitUpsideDown:
             self.origin = CGPoint(
                 x: (superview.width / 2) - (self.width / 2),
                 y: (superview.height / 2) - (self.height / 2)
             )
-            
+
         case .unknown:
             return
-            
+
         @unknown default:
             return
         }
         #endif
     }
-    
+
     // MARK: - Private Methods
-    
+
     /// _pixelIntegral
     /// - Parameter pointValue: point
     /// - Returns: CGFloat

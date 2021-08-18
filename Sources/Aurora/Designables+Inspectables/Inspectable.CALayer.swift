@@ -8,7 +8,7 @@ public extension CALayer {
     /// xCornerRadius
     @IBInspectable var xcornerRadius: CGFloat {
         get {
-            return self.cornerRadius 
+            return self.cornerRadius
         }
         set {
             self.cornerRadius = newValue

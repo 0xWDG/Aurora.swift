@@ -8,19 +8,16 @@
 // - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 //  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 //
-// Please note: this is a beta version.
-// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
-//
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT
 
 import Foundation
 
 public extension UInt {
     /// Convert UInt to Int
     var toInt: Int { return Int(self) }
-    
+
     /// Greatest common divisor of two integers using the Euclid's algorithm.
     /// Time complexity of this in O(log(n))
     static func gcd(_ firstNum: UInt, _ secondNum: UInt) -> UInt {
@@ -31,7 +28,7 @@ public extension UInt {
             return secondNum
         }
     }
-    
+
     /// Least common multiple of two numbers. LCM = n * m / gcd(n, m)
     static func lcm(_ firstNum: UInt, _ secondNum: UInt) -> UInt {
         return firstNum * secondNum / UInt.gcd(firstNum, secondNum)

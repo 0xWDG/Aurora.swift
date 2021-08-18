@@ -8,12 +8,9 @@
 // - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 //  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 //
-// Please note: this is a beta version.
-// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
-//
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT
 
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
@@ -23,7 +20,7 @@ public extension UILabel {
     private struct AssociatedKeys {
         static var padding = UIEdgeInsets()
     }
-    
+
     /// Padding
     var padding: UIEdgeInsets? {
         get {
@@ -43,7 +40,7 @@ public extension UILabel {
             }
         }
     }
-    
+
     /// Draw rect
     /// - Parameter rect: rect size
     override func draw(_ rect: CGRect) {
@@ -53,7 +50,7 @@ public extension UILabel {
             self.drawText(in: rect)
         }
     }
-    
+
     /// intrinsicContentSize
     override var intrinsicContentSize: CGSize {
         var contentSize = super.intrinsicContentSize
@@ -63,13 +60,13 @@ public extension UILabel {
         }
         return contentSize
     }
-    
+
     /// HTMLString (HTML)
     /// - Parameter text: Text
     func HTMLString(_ text: String) {
         self.HTML(text)
     }
-    
+
     /// HTMLString
     /// - Parameter text: Text
     func HTML(_ text: String) {
@@ -80,13 +77,13 @@ public extension UILabel {
                     rawValue: String.Encoding.unicode.rawValue
                 ),
                 allowLossyConversion: true
-                )!,
+                ).unwrap(orError: "Failed to convert HTML to NSAttributedString (Input is not a string)"),
             options: [
                 NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html,
                 NSAttributedString.DocumentReadingOptionKey.characterEncoding: String.Encoding.utf8.rawValue
             ],
             documentAttributes: nil)
-        
+
         self.attributedText = attrStr
     }
 }

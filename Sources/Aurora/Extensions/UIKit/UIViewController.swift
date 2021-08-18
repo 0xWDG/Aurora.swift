@@ -8,12 +8,9 @@
 // - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 //  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 //
-// Please note: this is a beta version.
-// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
-//
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT
 
 #if os(iOS)
 import UIKit
@@ -26,12 +23,12 @@ public extension UIViewController {
         guard let segues = UIApplication.shared.delegate?.window??.rootViewController?.value(
             forKey: "storyboardSegueTemplates"
         ) as? [NSObject] else { return false }
-        
+
         return segues.first {
             $0.value(forKey: "identifier") as? String == withIdentifier
         } != nil
     }
-    
+
     /// Open/Run a segue
     /// - Parameters:
     ///   - name: Segue name
@@ -39,13 +36,13 @@ public extension UIViewController {
     func performSegueIfPossible(segueID: String?, sender: AnyObject? = nil) {
         guard let segueID = segueID,
               canPerformSegue(withIdentifier: segueID) else { return }
-        
+
         UIApplication.shared.delegate?.window??.rootViewController?.performSegue(
             withIdentifier: segueID,
             sender: sender
         )
     }
-    
+
     /// Open/Run a segue
     /// - Parameters:
     ///   - name: Segue name
@@ -54,15 +51,15 @@ public extension UIViewController {
         guard let name = name else {
             return
         }
-        
+
         if !canPerformSegue(withIdentifier: name) {
             return
         }
-        
+
         UIApplication.shared.delegate?.window??.rootViewController?.performSegue(withIdentifier: name, sender: sender)
-        
+
     }
-    
+
     /// Hide the keyboard when tapped around it
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(
@@ -72,13 +69,13 @@ public extension UIViewController {
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
-    
+
     /// dismiss the Keyboard
     @objc
     func dismissKeyboard() {
         view.endEditing(true)
     }
-    
+
     /// show InputDialog
     /// - Parameters:
     ///   - title: Title
@@ -97,18 +94,18 @@ public extension UIViewController {
                          inputKeyboardType: UIKeyboardType = UIKeyboardType.default,
                          cancelHandler: ((UIAlertAction) -> Swift.Void)? = nil,
                          actionHandler: ((_ text: String?) -> Void)? = nil) {
-        
+
         let alert = UIAlertController(
             title: title,
             message: subtitle,
             preferredStyle: .alert
         )
-        
+
         alert.addTextField { (textField: UITextField) in
             textField.placeholder = inputPlaceholder
             textField.keyboardType = inputKeyboardType
         }
-        
+
         alert.addAction(
             UIAlertAction(
                 title: actionTitle,
@@ -122,7 +119,7 @@ public extension UIViewController {
                 }
             )
         )
-        
+
         alert.addAction(
             UIAlertAction(
                 title: cancelTitle,
@@ -130,7 +127,7 @@ public extension UIViewController {
                 handler: cancelHandler
             )
         )
-        
+
         self.present(alert, animated: true, completion: nil)
     }
 }
@@ -146,15 +143,15 @@ extension UIViewController {
         guard #available(iOS 13.0, *) else {
             fatalError("hostingController is only available from ios 13 or later")
         }
-        
+
         let hostingController = UIHostingController(rootView: swiftUIView)
-        
+
         /// Add as a child of the current view controller.
         addChild(hostingController)
-        
+
         /// Add the SwiftUI view to the view controller view hierarchy.
         view.addSubview(hostingController.view)
-        
+
         /// Setup the contraints to update the SwiftUI view boundaries.
         hostingController.view.translatesAutoresizingMaskIntoConstraints = false
         let constraints = [
@@ -163,9 +160,9 @@ extension UIViewController {
             view.bottomAnchor.constraint(equalTo: hostingController.view.bottomAnchor),
             view.rightAnchor.constraint(equalTo: hostingController.view.rightAnchor)
         ]
-        
+
         NSLayoutConstraint.activate(constraints)
-        
+
         /// Notify the hosting controller that it has been moved to the current view controller.
         hostingController.didMove(toParent: self)
     }

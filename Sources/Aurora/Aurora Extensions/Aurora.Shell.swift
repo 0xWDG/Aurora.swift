@@ -8,12 +8,9 @@
 // - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 //  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 //
-// Please note: this is a beta version.
-// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
-//
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT
 
 import Foundation
 
@@ -33,16 +30,16 @@ func shell(_ arguments: String, showLog: Bool = false) -> String {
     environment["PATH"] = "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
     task.environment = environment
     task.arguments = ["-c", arguments]
-        
+
     let pipe = Pipe()
     task.standardOutput = pipe
     task.launch()
     let data = pipe.fileHandleForReading.readDataToEndOfFile()
-    let output: String = String(data: data, encoding: String.Encoding.utf8)!
+    let output: String = String(data: data, encoding: .utf8).unwrap(orError: "Cannot convert output")
     task.waitUntilExit()
     pipe.fileHandleForReading.closeFile()
-    
-    if showLog && output != "" {
+
+    if showLog && !output.isBlank {
         print(output)
     }
     return output

@@ -8,12 +8,9 @@
 // - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 //  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 //
-// Please note: this is a beta version.
-// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
-//
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT
 
 import Foundation
 #if canImport(UIKit) && !os(watchOS)
@@ -35,12 +32,12 @@ public extension Aurora {
     ///     }
     func measure<T>(tag: String = #function, work: () -> T) -> T {
         let begin = CACurrentMediaTime()
-        
+
         defer {
             let time = CACurrentMediaTime() - begin
             self.log("[Measure] \(tag) = \(time)")
         }
-        
+
         return work()
     }
 }

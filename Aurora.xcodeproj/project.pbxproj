@@ -37,8 +37,8 @@
 		OBJ_166 /* Aurora.Network.SSLPinning.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* Aurora.Network.SSLPinning.swift */; };
 		OBJ_167 /* Aurora.Networking.Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* Aurora.Networking.Logger.swift */; };
 		OBJ_168 /* Aurora.Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* Aurora.Networking.swift */; };
-		OBJ_169 /* Aurora.Ntwk.Deprecated.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* Aurora.Ntwk.Deprecated.swift */; };
-		OBJ_170 /* Aurora.Ntwk.Legacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* Aurora.Ntwk.Legacy.swift */; };
+		OBJ_169 /* Aurora.Networking.Deprecated.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* Aurora.Networking.Deprecated.swift */; };
+		OBJ_170 /* Aurora.Networking.Legacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* Aurora.Networking.Legacy.swift */; };
 		OBJ_171 /* AuroraFramework.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* AuroraFramework.swift */; };
 		OBJ_172 /* AuroraCrashHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_32 /* AuroraCrashHandler.swift */; };
 		OBJ_173 /* AuroraDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* AuroraDevice.swift */; };
@@ -47,7 +47,6 @@
 		OBJ_176 /* AuroraKeychainConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_36 /* AuroraKeychainConstants.swift */; };
 		OBJ_178 /* AuroraLogview.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* AuroraLogview.swift */; };
 		OBJ_179 /* AuroraOnTabBarInteractionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* AuroraOnTabBarInteractionDelegate.swift */; };
-		OBJ_180 /* CrossPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_40 /* CrossPlatform.swift */; };
 		OBJ_181 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_41 /* ImageCache.swift */; };
 		OBJ_183 /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_43 /* KeyboardHandler.swift */; };
 		OBJ_184 /* NSFWDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* NSFWDetector.swift */; };
@@ -67,7 +66,6 @@
 		OBJ_198 /* Inspectable.UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_59 /* Inspectable.UIView.swift */; };
 		OBJ_199 /* NSWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_62 /* NSWindow.swift */; };
 		OBJ_200 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_63 /* Bundle.swift */; };
-		OBJ_201 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_64 /* Color.swift */; };
 		OBJ_202 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_66 /* Array.swift */; };
 		OBJ_203 /* Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_67 /* Bool.swift */; };
 		OBJ_204 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_68 /* Collection.swift */; };
@@ -92,17 +90,17 @@
 		OBJ_223 /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_87 /* URLRequest.swift */; };
 		OBJ_224 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_88 /* UserDefaults.swift */; };
 		OBJ_225 /* compactMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_89 /* compactMap.swift */; };
-		OBJ_226 /* CALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_91 /* CALayer.swift */; };
+		OBJ_226 /* Inspectable.CALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_91 /* Inspectable.CALayer.swift */; };
 		OBJ_227 /* CGColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_92 /* CGColor.swift */; };
 		OBJ_228 /* MKMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_93 /* MKMapView.swift */; };
 		OBJ_229 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_94 /* UIApplication.swift */; };
 		OBJ_230 /* UIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_95 /* UIBarButtonItem.swift */; };
-		OBJ_231 /* UIBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_96 /* UIBarItem.swift */; };
+		OBJ_231 /* Inspectable.UIBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_96 /* Inspectable.UIBarItem.swift */; };
 		OBJ_232 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_97 /* UIButton.swift */; };
-		OBJ_233 /* UIButtonCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_98 /* UIButtonCorner.swift */; };
-		OBJ_234 /* UIColor+CGColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_99 /* UIColor+CGColor.swift */; };
+		OBJ_233 /* Designable.UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_98 /* Designable.UIButton.swift */; };
+		OBJ_234 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_99 /* UIColor.swift */; };
 		OBJ_235 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_100 /* UIDevice.swift */; };
-		OBJ_236 /* UIGreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_101 /* UIGreenButton.swift */; };
+		OBJ_236 /* Designable.UIGreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_101 /* Designable.UIGreenButton.swift */; };
 		OBJ_237 /* UIImage+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_102 /* UIImage+GIF.swift */; };
 		OBJ_238 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_103 /* UIImage.swift */; };
 		OBJ_239 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_104 /* UIImageView.swift */; };
@@ -128,7 +126,6 @@
 		OBJ_259 /* ShakeEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_127 /* ShakeEffect.swift */; };
 		OBJ_260 /* Aurora.Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_129 /* Aurora.Config.swift */; };
 		OBJ_261 /* DynamicUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_130 /* DynamicUIColor.swift */; };
-		OBJ_262 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_131 /* Keychain.swift */; };
 		OBJ_263 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_132 /* UserDefault.swift */; };
 		OBJ_270 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_281 /* AuroraFrameworkTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_135 /* AuroraFrameworkTest.swift */; };
@@ -161,7 +158,7 @@
 		"Aurora::Aurora::Product" /* Aurora.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Aurora.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Aurora::AuroraTests::Product" /* AuroraTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = AuroraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_100 /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
-		OBJ_101 /* UIGreenButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGreenButton.swift; sourceTree = "<group>"; };
+		OBJ_101 /* Designable.UIGreenButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Designable.UIGreenButton.swift; sourceTree = "<group>"; };
 		OBJ_102 /* UIImage+GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+GIF.swift"; sourceTree = "<group>"; };
 		OBJ_103 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		OBJ_104 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
@@ -189,7 +186,6 @@
 		OBJ_127 /* ShakeEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeEffect.swift; sourceTree = "<group>"; };
 		OBJ_129 /* Aurora.Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aurora.Config.swift; sourceTree = "<group>"; };
 		OBJ_130 /* DynamicUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicUIColor.swift; sourceTree = "<group>"; };
-		OBJ_131 /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		OBJ_132 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		OBJ_135 /* AuroraFrameworkTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraFrameworkTest.swift; sourceTree = "<group>"; };
 		OBJ_136 /* DictionaryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTest.swift; sourceTree = "<group>"; };
@@ -215,8 +211,8 @@
 		OBJ_25 /* Aurora.Network.SSLPinning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aurora.Network.SSLPinning.swift; sourceTree = "<group>"; };
 		OBJ_26 /* Aurora.Networking.Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aurora.Networking.Logger.swift; sourceTree = "<group>"; };
 		OBJ_27 /* Aurora.Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aurora.Networking.swift; sourceTree = "<group>"; };
-		OBJ_28 /* Aurora.Ntwk.Deprecated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aurora.Ntwk.Deprecated.swift; sourceTree = "<group>"; };
-		OBJ_29 /* Aurora.Ntwk.Legacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aurora.Ntwk.Legacy.swift; sourceTree = "<group>"; };
+		OBJ_28 /* Aurora.Networking.Deprecated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aurora.Networking.Deprecated.swift; sourceTree = "<group>"; };
+		OBJ_29 /* Aurora.Networking.Legacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aurora.Networking.Legacy.swift; sourceTree = "<group>"; };
 		OBJ_30 /* AuroraFramework.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraFramework.swift; sourceTree = "<group>"; };
 		OBJ_32 /* AuroraCrashHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraCrashHandler.swift; sourceTree = "<group>"; };
 		OBJ_33 /* AuroraDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraDevice.swift; sourceTree = "<group>"; };
@@ -225,7 +221,6 @@
 		OBJ_36 /* AuroraKeychainConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraKeychainConstants.swift; sourceTree = "<group>"; };
 		OBJ_38 /* AuroraLogview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraLogview.swift; sourceTree = "<group>"; };
 		OBJ_39 /* AuroraOnTabBarInteractionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraOnTabBarInteractionDelegate.swift; sourceTree = "<group>"; };
-		OBJ_40 /* CrossPlatform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossPlatform.swift; sourceTree = "<group>"; };
 		OBJ_41 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		OBJ_43 /* KeyboardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandler.swift; sourceTree = "<group>"; };
 		OBJ_44 /* NSFWDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSFWDetector.swift; sourceTree = "<group>"; };
@@ -246,7 +241,6 @@
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		OBJ_62 /* NSWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSWindow.swift; sourceTree = "<group>"; };
 		OBJ_63 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
-		OBJ_64 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		OBJ_66 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		OBJ_67 /* Bool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bool.swift; sourceTree = "<group>"; };
 		OBJ_68 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
@@ -272,15 +266,15 @@
 		OBJ_88 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		OBJ_89 /* compactMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = compactMap.swift; sourceTree = "<group>"; };
 		OBJ_9 /* AuroraFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuroraFramework.h; sourceTree = "<group>"; };
-		OBJ_91 /* CALayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayer.swift; sourceTree = "<group>"; };
+		OBJ_91 /* Inspectable.CALayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inspectable.CALayer.swift; sourceTree = "<group>"; };
 		OBJ_92 /* CGColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGColor.swift; sourceTree = "<group>"; };
 		OBJ_93 /* MKMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMapView.swift; sourceTree = "<group>"; };
 		OBJ_94 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		OBJ_95 /* UIBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem.swift; sourceTree = "<group>"; };
-		OBJ_96 /* UIBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarItem.swift; sourceTree = "<group>"; };
+		OBJ_96 /* Inspectable.UIBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inspectable.UIBarItem.swift; sourceTree = "<group>"; };
 		OBJ_97 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
-		OBJ_98 /* UIButtonCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonCorner.swift; sourceTree = "<group>"; };
-		OBJ_99 /* UIColor+CGColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+CGColor.swift"; sourceTree = "<group>"; };
+		OBJ_98 /* Designable.UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Designable.UIButton.swift; sourceTree = "<group>"; };
+		OBJ_99 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -340,7 +334,6 @@
 			children = (
 				OBJ_129 /* Aurora.Config.swift */,
 				OBJ_130 /* DynamicUIColor.swift */,
-				OBJ_131 /* Keychain.swift */,
 				OBJ_132 /* UserDefault.swift */,
 			);
 			path = propertyWrappers;
@@ -399,8 +392,8 @@
 				OBJ_25 /* Aurora.Network.SSLPinning.swift */,
 				OBJ_26 /* Aurora.Networking.Logger.swift */,
 				OBJ_27 /* Aurora.Networking.swift */,
-				OBJ_28 /* Aurora.Ntwk.Deprecated.swift */,
-				OBJ_29 /* Aurora.Ntwk.Legacy.swift */,
+				OBJ_28 /* Aurora.Networking.Deprecated.swift */,
+				OBJ_29 /* Aurora.Networking.Legacy.swift */,
 			);
 			path = "Aurora Networking";
 			sourceTree = "<group>";
@@ -416,7 +409,6 @@
 				OBJ_36 /* AuroraKeychainConstants.swift */,
 				OBJ_38 /* AuroraLogview.swift */,
 				OBJ_39 /* AuroraOnTabBarInteractionDelegate.swift */,
-				OBJ_40 /* CrossPlatform.swift */,
 				OBJ_41 /* ImageCache.swift */,
 				OBJ_43 /* KeyboardHandler.swift */,
 				OBJ_44 /* NSFWDetector.swift */,
@@ -449,16 +441,20 @@
 			);
 			sourceTree = "<group>";
 		};
-		OBJ_54 /* Designables */ = {
+		OBJ_54 /* Designables+Inspectables */ = {
 			isa = PBXGroup;
 			children = (
+				OBJ_98 /* Designable.UIButton.swift */,
 				OBJ_55 /* Designable.UIGradientView.swift */,
 				OBJ_56 /* Designable.UIViewRounded.swift */,
+				OBJ_101 /* Designable.UIGreenButton.swift */,
 				OBJ_57 /* Inspectable.UITabbar.swift */,
+				OBJ_91 /* Inspectable.CALayer.swift */,
 				OBJ_58 /* Inspectable.UITextField.swift */,
+				OBJ_96 /* Inspectable.UIBarItem.swift */,
 				OBJ_59 /* Inspectable.UIView.swift */,
 			);
-			path = Designables;
+			path = "Designables+Inspectables";
 			sourceTree = "<group>";
 		};
 		OBJ_60 /* Extensions */ = {
@@ -466,7 +462,6 @@
 			children = (
 				OBJ_61 /* AppKit */,
 				OBJ_63 /* Bundle.swift */,
-				OBJ_64 /* Color.swift */,
 				OBJ_65 /* Foundation */,
 				OBJ_90 /* UIKit */,
 				OBJ_119 /* WKInterfaceDevice.swift */,
@@ -532,7 +527,7 @@
 				OBJ_24 /* Aurora Networking */,
 				OBJ_30 /* AuroraFramework.swift */,
 				OBJ_31 /* Classes */,
-				OBJ_54 /* Designables */,
+				OBJ_54 /* Designables+Inspectables */,
 				OBJ_60 /* Extensions */,
 				OBJ_122 /* Functions */,
 				OBJ_124 /* Postfix */,
@@ -546,17 +541,13 @@
 		OBJ_90 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_91 /* CALayer.swift */,
 				OBJ_92 /* CGColor.swift */,
 				OBJ_93 /* MKMapView.swift */,
 				OBJ_94 /* UIApplication.swift */,
 				OBJ_95 /* UIBarButtonItem.swift */,
-				OBJ_96 /* UIBarItem.swift */,
 				OBJ_97 /* UIButton.swift */,
-				OBJ_98 /* UIButtonCorner.swift */,
-				OBJ_99 /* UIColor+CGColor.swift */,
+				OBJ_99 /* UIColor.swift */,
 				OBJ_100 /* UIDevice.swift */,
-				OBJ_101 /* UIGreenButton.swift */,
 				OBJ_102 /* UIImage+GIF.swift */,
 				OBJ_103 /* UIImage.swift */,
 				OBJ_104 /* UIImageView.swift */,
@@ -698,8 +689,8 @@
 				OBJ_166 /* Aurora.Network.SSLPinning.swift in Sources */,
 				OBJ_167 /* Aurora.Networking.Logger.swift in Sources */,
 				OBJ_168 /* Aurora.Networking.swift in Sources */,
-				OBJ_169 /* Aurora.Ntwk.Deprecated.swift in Sources */,
-				OBJ_170 /* Aurora.Ntwk.Legacy.swift in Sources */,
+				OBJ_169 /* Aurora.Networking.Deprecated.swift in Sources */,
+				OBJ_170 /* Aurora.Networking.Legacy.swift in Sources */,
 				OBJ_171 /* AuroraFramework.swift in Sources */,
 				OBJ_172 /* AuroraCrashHandler.swift in Sources */,
 				OBJ_173 /* AuroraDevice.swift in Sources */,
@@ -708,7 +699,6 @@
 				OBJ_176 /* AuroraKeychainConstants.swift in Sources */,
 				OBJ_178 /* AuroraLogview.swift in Sources */,
 				OBJ_179 /* AuroraOnTabBarInteractionDelegate.swift in Sources */,
-				OBJ_180 /* CrossPlatform.swift in Sources */,
 				OBJ_181 /* ImageCache.swift in Sources */,
 				OBJ_183 /* KeyboardHandler.swift in Sources */,
 				OBJ_184 /* NSFWDetector.swift in Sources */,
@@ -728,7 +718,6 @@
 				OBJ_198 /* Inspectable.UIView.swift in Sources */,
 				OBJ_199 /* NSWindow.swift in Sources */,
 				OBJ_200 /* Bundle.swift in Sources */,
-				OBJ_201 /* Color.swift in Sources */,
 				OBJ_202 /* Array.swift in Sources */,
 				OBJ_203 /* Bool.swift in Sources */,
 				OBJ_204 /* Collection.swift in Sources */,
@@ -753,17 +742,17 @@
 				OBJ_223 /* URLRequest.swift in Sources */,
 				OBJ_224 /* UserDefaults.swift in Sources */,
 				OBJ_225 /* compactMap.swift in Sources */,
-				OBJ_226 /* CALayer.swift in Sources */,
+				OBJ_226 /* Inspectable.CALayer.swift in Sources */,
 				OBJ_227 /* CGColor.swift in Sources */,
 				OBJ_228 /* MKMapView.swift in Sources */,
 				OBJ_229 /* UIApplication.swift in Sources */,
 				OBJ_230 /* UIBarButtonItem.swift in Sources */,
-				OBJ_231 /* UIBarItem.swift in Sources */,
+				OBJ_231 /* Inspectable.UIBarItem.swift in Sources */,
 				OBJ_232 /* UIButton.swift in Sources */,
-				OBJ_233 /* UIButtonCorner.swift in Sources */,
-				OBJ_234 /* UIColor+CGColor.swift in Sources */,
+				OBJ_233 /* Designable.UIButton.swift in Sources */,
+				OBJ_234 /* UIColor.swift in Sources */,
 				OBJ_235 /* UIDevice.swift in Sources */,
-				OBJ_236 /* UIGreenButton.swift in Sources */,
+				OBJ_236 /* Designable.UIGreenButton.swift in Sources */,
 				OBJ_237 /* UIImage+GIF.swift in Sources */,
 				OBJ_238 /* UIImage.swift in Sources */,
 				OBJ_239 /* UIImageView.swift in Sources */,
@@ -790,7 +779,6 @@
 				OBJ_259 /* ShakeEffect.swift in Sources */,
 				OBJ_260 /* Aurora.Config.swift in Sources */,
 				OBJ_261 /* DynamicUIColor.swift in Sources */,
-				OBJ_262 /* Keychain.swift in Sources */,
 				OBJ_263 /* UserDefault.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

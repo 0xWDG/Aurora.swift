@@ -8,12 +8,9 @@
 // - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 //  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 //
-// Please note: this is a beta version.
-// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
-//
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT
 
 import Foundation
 
@@ -25,12 +22,12 @@ import QuartzCore
 open class UIViewRounded: UIView {
     /// Radius for the UIViewRounded
     @IBInspectable public var radius: CGFloat = 24
-    
+
     /// Draw a rounded view
     /// - Parameter rect: The portion of the view’s bounds that needs to be updated.\
     /// The first time your view is drawn, this rectangle is typically the entire visible bounds of your view.\
     /// However, during subsequent drawing operations, the rectangle may specify only part of your view.
-    public override func draw(_ rect: CGRect) {
+    override public func draw(_ rect: CGRect) {
         super.draw(rect)
 
         self.roundCorners(

@@ -8,12 +8,9 @@
 // - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 //  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 //
-// Please note: this is a beta version.
-// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
-//
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT
 
 import Foundation
 #if os(iOS) || os(tvOS)
@@ -40,7 +37,7 @@ public enum UnitTest {
     public static var isRunning: Bool {
         ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
     }
-    
+
     #if !os(watchOS)
     /// Count time for action
     /// - Parameter closure: item to be performed
@@ -48,7 +45,7 @@ public enum UnitTest {
     public static func measure(closure: () -> Void) -> Float {
         let start = CACurrentMediaTime()
         closure()
-        
+
         let end = CACurrentMediaTime()
         return Float(end - start)
     }

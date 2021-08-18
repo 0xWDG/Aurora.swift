@@ -8,12 +8,9 @@
 // - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 //  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 //
-// Please note: this is a beta version.
-// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
-//
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT
 
 import Foundation
 
@@ -21,16 +18,16 @@ import Foundation
 public class Run {
     /// Alias for closire
     typealias Action = () -> Void
-    
+
     /// The queue
     var queue: [Action] = [Action]()
-    
+
     /// Initialize the first action
     /// - Parameter act: Action closure
     init(action: @escaping Action) {
         queue.append(action)
     }
-    
+
     /// Append execution in the queue
     /// - Parameter action: Action closure
     /// - Returns: Self (for appending)
@@ -38,7 +35,7 @@ public class Run {
         queue.append(action)
         return self
     }
-    
+
     /// Run all the queue items.
     deinit {
         for item in queue {

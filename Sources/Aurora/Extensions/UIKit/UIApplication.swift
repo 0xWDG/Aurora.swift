@@ -8,12 +8,9 @@
 // - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 //  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 //
-// Please note: this is a beta version.
-// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
-//
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT
 
 import Foundation
 #if canImport(UIKit) && !os(watchOS)
@@ -27,10 +24,12 @@ public extension UIApplication {
                 atPath: NSHomeDirectory() + "/Library/SplashBoard"
             )
         } catch {
-            Aurora.shared.log("Failed to delete launch screen cache with error: \(error)")
+            Aurora.shared.log(
+                "Failed to delete launch screen cache with error: \(error)"
+            )
         }
     }
-    
+
     /// The layout direction of the user interface.
     ///
     /// This method specifies the general user interface layout flow direction. \
@@ -38,7 +37,7 @@ public extension UIApplication {
     var userInterfaceRightToLeft: Bool {
         return UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft
     }
-    
+
     #if !os(watchOS)
     /// Get the top most (key) window
     var key: UIWindow? {
@@ -60,7 +59,7 @@ public extension UIApplication {
         }
         open(url, options: [:], completionHandler: nil)
     }
-    
+
     /// Open app review page
     /// - Parameter url: `URL` App page url finishing with `write-review`
     func openAppStoreReviewPage(_ url: URL) {
@@ -68,7 +67,7 @@ public extension UIApplication {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
-    
+
 }
 
 #if os(iOS)
@@ -79,7 +78,7 @@ public extension UIApplication {
     static func delegate<T: UIApplicationDelegate>(_ type: T.Type) -> T? {
         UIApplication.shared.delegate as? T
     }
-    
+
 }
 #endif
 #endif

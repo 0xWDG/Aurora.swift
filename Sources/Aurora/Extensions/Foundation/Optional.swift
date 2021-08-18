@@ -8,12 +8,9 @@
 // - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 //  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 //
-// Please note: this is a beta version.
-// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
-//
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT
 
 #if canImport(Foundation)
 import Foundation
@@ -22,7 +19,7 @@ import Foundation
 public struct NilError: Error, CustomStringConvertible {
     let file: String
     let line: Int
-    
+
     /// Nil
     /// - Parameters:
     ///   - file: File
@@ -31,7 +28,7 @@ public struct NilError: Error, CustomStringConvertible {
         self.file = file
         self.line = line
     }
-    
+
     /// Description
     public var description: String {
         return "Nil returned at " + (file) + ":\(line)"
@@ -51,7 +48,7 @@ public extension Optional {
         }
         return result
     }
-    
+
     /// Does a optional match something?
     ///
     /// Example:
@@ -66,14 +63,14 @@ public extension Optional {
         guard let value = self else {
             return nil
         }
-        
+
         guard predicate(value) else {
             return nil
         }
-        
+
         return value
     }
-    
+
     /// unwrap or throw
     /// - Parameter errorExpression: Unwrap to error
     /// - Throws: Error if cannot unwrap
@@ -82,7 +79,29 @@ public extension Optional {
         guard let value = self else {
             throw errorExpression()
         }
-        
+
+        return value
+    }
+
+    /// unwrap or error
+    /// - Parameter errorExpression: Unwrap to error
+    /// - Throws: Error if cannot unwrap
+    /// - Returns: Result
+    func unwrap(orError: String,
+                file: StaticString = #file,
+                line: Int = #line,
+                function: String = #function) -> Wrapped {
+        guard let value = self else {
+            Aurora.shared.log(
+                "Failed to unwrap value\nError: \(orError)",
+                file,
+                line,
+                function
+            )
+
+            fatalError(orError, file: file, line: UInt(line))
+        }
+
         return value
     }
 }

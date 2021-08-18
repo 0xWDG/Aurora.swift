@@ -13,13 +13,13 @@ import Foundation
 public struct UserDefault<Value: PropertyListValue> {
     /// A key in the current user‘s defaults database.
     let key: String
-    
+
     /// A default value for the key in the current user‘s defaults database.
     let defaultValue: Value
-    
+
     /// Which userdefaults
     var userDefaults: UserDefaults
-    
+
     /// A type safe property wrapper to set and get values from UserDefaults with support for defaults values.
     /// - Parameters:
     ///   - key: A key in the current user‘s defaults database.
@@ -30,7 +30,7 @@ public struct UserDefault<Value: PropertyListValue> {
         self.defaultValue = `default`
         self.userDefaults = userDefaults
     }
-    
+
     /// Wrapped value
     public var wrappedValue: Value {
         get {

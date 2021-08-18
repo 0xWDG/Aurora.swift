@@ -8,12 +8,9 @@
 // - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 //  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 //
-// Please note: this is a beta version.
-// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
-//
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT
 
 #if canImport(Foundation)
 import Foundation
@@ -46,29 +43,29 @@ import CommonCrypto
 ///
 /// - Experiment: to start experimental functions use the following code in your app(delegate):
 ///
-/// `Aurora.shared.startExperimentalFunctions()`
+/// ``Aurora.shared.startExperimentalFunctions()``
 /// - Version: 1.0
 /// - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 ///  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 open class Aurora {
     /// The shared instance of **Aurora.framework**
     public static let shared = Aurora()
-    
+
     /// Initialize crash handler
     internal static let crashLogger = AuroraCrashHandler.shared
-    
+
     /// the version
     public let version = "1.0"
-    
+
     /// The product name
     public let product = "Aurora.Framework"
-    
+
     /// Extra detailed logging?
     internal var detailedLogging = true
-    
+
     /// Should we debug right now?
     internal var debug = _isDebugAssertConfiguration()
-    
+
     /// If this is non-nil, we will call it with the same string that we
     /// are going to print to the console. You can use this to pass log
     /// messages along to your crash reporter, analytics service, etc.
@@ -77,10 +74,10 @@ open class Aurora {
     ///            to keep private data out of logs that are sent over
     ///            the Internet.
     public var logHandler: ((String) -> Void)?
-    
+
     /// Logging history
     internal var logHistory: [String] = []
-    
+
     /// Date format
     /// Describe here how the date logging needs to be done
     /// within `Aurora.shared.log(...)` log messages/functions
@@ -92,7 +89,7 @@ open class Aurora {
     /// Defaults to:
     /// `Aurora.shared.dateFormat = "HH:mm:ss"`
     internal var dateFormat = "HH:mm:ss"
-    
+
     /// Dateformatter
     internal var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -101,7 +98,7 @@ open class Aurora {
         formatter.timeZone = TimeZone.current
         return formatter
     }
-    
+
     /// logTemplate
     ///
     /// This is used to send log messages with the following syntax
@@ -158,7 +155,7 @@ open class Aurora {
     ///
     /// ‎
     public var logTemplate = "[$product] $datetime $file:$line $function @$queue:\n $message"
-    
+
     /// userAgent
     ///
     /// This is used to generate the user agent
@@ -220,7 +217,7 @@ open class Aurora {
                 .replace("$product", withString: self.product)
                 .replace("$auroraVersion", withString: self.version)
                 .replace("$version", withString: self.version)
-            
+
             #if os(iOS)
             returnValue = returnValue.replace(
                 "$osVersion",
@@ -230,7 +227,7 @@ open class Aurora {
             let version = "\(ProcessInfo.processInfo.operatingSystemVersion.majorVersion)"
                 + ".\(ProcessInfo.processInfo.operatingSystemVersion.minorVersion)"
                 + ".\(ProcessInfo.processInfo.operatingSystemVersion.patchVersion)"
-            
+
             returnValue = returnValue.replace(
                 "$osVersion",
                 withString: version
@@ -241,7 +238,7 @@ open class Aurora {
                 withString: "1.0"
             )
             #endif
-            
+
             #if canImport(UIKit) && !os(watchOS)
             var utsnameInstance = utsname()
             uname(&utsnameInstance)
@@ -250,7 +247,7 @@ open class Aurora {
                     String.init(validatingUTF8: $0)
                 }
             }
-            
+
             returnValue = returnValue
                 .replace(
                     "$appName",
@@ -280,7 +277,7 @@ open class Aurora {
                 .replace("$appVersion", withString: "")
                 .replace("$appBuild", withString: "")
             #endif
-            
+
             #if os(Android)
             returnValue = returnValue.replace("$os", withString: "Android")
             #elseif os(iOS)
@@ -298,27 +295,27 @@ open class Aurora {
             #else
             returnValue = returnValue.replace("$os", withString: "Aurora")
             #endif
-            
+
             return returnValue
         }
         set {
             userAgentTemplate = newValue
         }
     }
-    
+
     /// userAgentTemplate
     ///
     /// This is used to generate the user agent
     ///
     ///     Mozilla/5.0 (Aurora/1.0; MyAppName/appVersion; iOS/15.0)
     private var userAgentTemplate = "Mozilla/5.0 ($product/$version; $appName/$appVersion; $os/$osVersion)"
-    
+
     /// Is it already started?
     var isInitialized: Bool = false
-    
+
     /// Which os we are running on?
     var operatingSystem: AuroraOS = .unknown
-    
+
     /// Initialize
     public init(experimentalFunctions: Bool = false) {
         #if os(iOS)
@@ -346,10 +343,10 @@ open class Aurora {
         self.log("Aurora Framework \(self.version) loaded")
         self.log("Unknown platform")
         #endif
-        
+
         isInitialized = true
     }
-    
+
     /// Start Aurora classes/functions
     private func startAuroraFunctions() {
         #if os(iOS)
@@ -357,7 +354,7 @@ open class Aurora {
         iCloudSync.start()
         #endif
     }
-    
+
     /// Start experimental functions
     public func startExperimentalFunctions() {
         AuroraNetworkLogger.register()

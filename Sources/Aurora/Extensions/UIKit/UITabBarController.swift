@@ -8,12 +8,9 @@
 // - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 //  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 //
-// Please note: this is a beta version.
-// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
-//
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT
 
 import Foundation
 
@@ -25,23 +22,23 @@ public extension UITabBarController {
     /// - Parameter withName: name
     func select(withName: String) {
         var currentIndex = 0
-        
+
         guard let items = tabBar.items else {
             return
         }
-        
+
         for barItem in items {
             if barItem.title == withName {
                 selectedIndex = currentIndex
                 return
             }
-            
+
             currentIndex += 1
         }
-        
+
         fatalError("Could not find item \(withName).")
     }
-    
+
     /// Execute a action after x taps
     ///
     /// Example:
@@ -58,10 +55,10 @@ public extension UITabBarController {
         let runner = AuroraOnTabBarInteractionDelegate.sharedInstance
         runner.onInteractionClosure = execute
         runner.onTimes = times ?? 10
-        
+
         self.delegate = runner
     }
-    
+
     /// Reload the current selected view
     ///
     /// It resets the loading of the current view.
@@ -75,10 +72,10 @@ public extension UITabBarController {
     func reloadCurrentView() {
         // save the selected index
         let oldSelected = selectedIndex
-        
+
         // Count the number of viewControllers
         let vcCount = viewControllers?.count ?? 0
-        
+
         if vcCount > 1 {
             if oldSelected != 0 {
                 selectedIndex = 0

@@ -15,7 +15,7 @@ public extension UIView {
             accessibilityIgnoresInvertColors = newValue
         }
     }
-    
+
     // MARK: - Corner
     /// Corner radius
     @IBInspectable var cornerRadius: CGFloat {
@@ -28,7 +28,7 @@ public extension UIView {
             setNeedsLayout()
         }
     }
-    
+
     // MARK: - Border
     /// Set the border with
     @IBInspectable var borderWidth: CGFloat {
@@ -39,7 +39,7 @@ public extension UIView {
             layer.borderWidth = newValue
         }
     }
-    
+
     /// Gorder color
     @IBInspectable var borderColor: UIColor? {
         get {
@@ -56,7 +56,7 @@ public extension UIView {
             }
         }
     }
-    
+
     // MARK: - Shadow
     /// Shadow Radius
     @IBInspectable var shadowRadius: CGFloat {
@@ -67,7 +67,7 @@ public extension UIView {
             layer.shadowRadius = newValue
         }
     }
-    
+
     /// Shadow Opacity
     @IBInspectable var shadowOpacity: Float {
         get {
@@ -77,7 +77,7 @@ public extension UIView {
             layer.shadowOpacity = newValue
         }
     }
-    
+
     /// Shadow Offset
     @IBInspectable var shadowOffset: CGSize {
         get {
@@ -87,7 +87,7 @@ public extension UIView {
             layer.shadowOffset = newValue
         }
     }
-    
+
     /// Shadow color
     @IBInspectable var shadowColor: UIColor? {
         get {
@@ -104,6 +104,6 @@ public extension UIView {
             }
         }
     }
-    
+
 }
 #endif

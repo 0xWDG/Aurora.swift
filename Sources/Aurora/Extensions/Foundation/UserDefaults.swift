@@ -8,12 +8,9 @@
 // - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 //  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 //
-// Please note: this is a beta version.
-// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
-//
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT
 
 import Foundation
 
@@ -23,23 +20,23 @@ public extension UserDefaults {
         get {
             return object(forKey: key)
         }
-        
+
         set {
             set(newValue, forKey: key)
         }
     }
-    
+
     /// Subscript from UserDefaults (Bool)
     subscript(key: String) -> Bool {
         get {
             return bool(forKey: key)
         }
-        
+
         set {
             set(newValue, forKey: key)
         }
     }
-    
+
     /// Remove all the keys and their values stored in the user's defaults database.
     func removeAll() {
         for (key, _) in dictionaryRepresentation() {

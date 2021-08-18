@@ -8,12 +8,9 @@
 // - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 //  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 //
-// Please note: this is a beta version.
-// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
-//
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT
 
 import Foundation
 
@@ -25,7 +22,7 @@ public extension Aurora {
             background()
         }
     }
-    
+
     /// Execute block in foreground
     /// - Parameter main: What to run in execute foreground
     func execute(main: @escaping () -> Void) {
@@ -33,7 +30,7 @@ public extension Aurora {
             main()
         }
     }
-    
+
     /// Execute block in background
     /// - Parameter background:What to execute in the backgroud
     func execute(background: @escaping () -> Void) {
@@ -41,7 +38,7 @@ public extension Aurora {
             background()
         }
     }
-    
+
     /// Delay execution of block (on main)
     /// - Parameters:
     ///   - after: For how long
@@ -50,7 +47,7 @@ public extension Aurora {
         let when = DispatchTime.now() + seconds
         DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
     }
-    
+
     /// Delay execution of block (in background)
     /// - Parameters:
     ///   - after: For how long

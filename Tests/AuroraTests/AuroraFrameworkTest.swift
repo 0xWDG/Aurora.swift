@@ -8,12 +8,9 @@
 // - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 //  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 //
-// Please note: this is a beta version.
-// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
-//
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT
 
 #if !os(watchOS)
 import Foundation
@@ -47,7 +44,7 @@ class AuroraTest: XCTestCase {
     func testAAAStartObserver() {
         TestObserver.observe()
     }
-    
+
     func testAuroraLog() {
         Aurora.shared.log("This is a test")
     }
@@ -61,7 +58,7 @@ class AuroraTest: XCTestCase {
         let regexMatch = "qqqqlxldddd" =~ "l(o|O)l"
         XCTAssert(regexMatch != true, "Regex must fail")
     }
-    
+
     func testLocalLog() {
         XCTAssert(Aurora.shared.log("This is a test"), "Should be true")
     }

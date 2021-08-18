@@ -14,7 +14,7 @@ public extension UITextField {
             self.paddingValue = newValue
         }
     }
-    
+
     /// Get the padding value
     var padding: UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: paddingValue, bottom: 0, right: paddingValue)

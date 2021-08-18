@@ -8,12 +8,9 @@
 // - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 //  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 //
-// Please note: this is a beta version.
-// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
-//
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT
 
 import Foundation
 
@@ -25,7 +22,7 @@ public extension Aurora {
             block()
         }
     }
-    
+
     /// run on main thread (foreground)
     /// - Parameter block: what to run
     func runInForeground(block: @escaping () -> Void) {
@@ -33,7 +30,7 @@ public extension Aurora {
             block()
         }
     }
-    
+
     /// Run every
     /// - Parameters:
     ///   - every: time interval
@@ -41,7 +38,7 @@ public extension Aurora {
     func run(every: TimeInterval, block: @escaping (Timer) -> Void) {
         Timer.scheduledTimer(withTimeInterval: every, repeats: true, block: block)
     }
-    
+
     /// Run
     /// - Parameters:
     ///   - background: what to run in background
@@ -50,13 +47,13 @@ public extension Aurora {
              foreground: @escaping (_ returning: String) -> Void) {
         DispatchQueue.global(qos: .background).async {
             let result = background()
-        
+
             DispatchQueue.main.async(execute: {
                 foreground(result)
             })
         }
     }
-    
+
     /// Run
     /// - Parameters:
     ///   - background: what to run in background
@@ -65,14 +62,14 @@ public extension Aurora {
              foreground: @escaping (_ returning: Bool) -> Void) {
         DispatchQueue.global(qos: .background).async {
             let result = background()
-            
+
             DispatchQueue.main.async {
                 foreground(result)
-                
+
             }
         }
     }
-    
+
     /// Run
     /// - Parameters:
     ///   - background: what to run in background
@@ -81,7 +78,7 @@ public extension Aurora {
              foreground: @escaping (_ returning: Any) -> Void) {
         DispatchQueue.global(qos: .background).async {
             let result = background()
-            
+
             DispatchQueue.main.async {
                 foreground(result)
             }

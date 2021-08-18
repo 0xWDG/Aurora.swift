@@ -8,12 +8,9 @@
 // - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 //  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 //
-// Please note: this is a beta version.
-// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
-//
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT
 
 import Foundation
 #if canImport(UIKit) && !os(watchOS)
@@ -32,7 +29,7 @@ public extension UITableView {
         }
         return cell
     }
-    
+
     /// Scroll tableview to bottom
     ///
     /// - Parameters:
@@ -40,7 +37,7 @@ public extension UITableView {
     func scrollToBottom_(animated: Bool) {
         let yPosition = (contentSize.height - frame.size.height) + 250
         if yPosition < 0 { return }
-        
+
         setContentOffset(
             CGPoint(x: 0, y: yPosition),
             animated: animated

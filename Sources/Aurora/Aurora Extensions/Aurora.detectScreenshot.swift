@@ -8,12 +8,9 @@
 // - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 //  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 //
-// Please note: this is a beta version.
-// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
-//
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT
 
 #if os(iOS)
 #if canImport(UIKit)
@@ -33,10 +30,10 @@ public extension Aurora {
             action()
         }
     }
-    
+
     /// Is the screen currently being recorded?
     var isScreenRecording: Bool {
-        return UIScreen.screens.filter { $0.isCaptured }.count > 0
+        return UIScreen.screens.filter { $0.isCaptured }.count >= 1
     }
 }
 #endif

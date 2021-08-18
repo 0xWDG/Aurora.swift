@@ -8,12 +8,9 @@
 // - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 //  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 //
-// Please note: this is a beta version.
-// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
-//
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT
 
 import Foundation
 //  Modified for usage within BaaS
@@ -36,7 +33,7 @@ import Foundation
     case bool(Bool)
     /// Null
     case null
-    
+
     // MARK: Dynamic Member Lookup
     /// Subscript (index)
     /// - Returns: JSON
@@ -46,7 +43,7 @@ import Foundation
         }
         return nil
     }
-    
+
     /// Subscript (key)
     /// - Returns: JSON
     public subscript(key: String) -> JSON? {
@@ -55,7 +52,7 @@ import Foundation
         }
         return nil
     }
-    
+
     /// Subscript (dynamic member)
     /// - Returns: JSON
     public subscript(dynamicMember member: String) -> JSON? {
@@ -64,9 +61,9 @@ import Foundation
         }
         return nil
     }
-    
+
     // MARK: Initializers
-    
+
     /// Init with DATA
     /// - Parameters:
     ///   - data: JSON Data
@@ -76,7 +73,7 @@ import Foundation
         let object = try JSONSerialization.jsonObject(with: data, options: options)
         self = JSON(object)
     }
-    
+
     /// Init objects
     /// - Parameter object: objects (Data: (JSON, nil), Array, Any, Bool, Number, String)
     public init(_ object: Any) {
@@ -102,9 +99,9 @@ import Foundation
             self = JSON.null
         }
     }
-    
+
     // MARK: Accessors
-    
+
     /// Dictionary value
     public var dictionary: [String: JSON]? {
         if case .dictionary(let value) = self {
@@ -112,7 +109,7 @@ import Foundation
         }
         return nil
     }
-    
+
     /// Array value
     public var array: [JSON]? {
         if case .array(let value) = self {
@@ -120,7 +117,7 @@ import Foundation
         }
         return nil
     }
-    
+
     /// String value
     public var string: String? {
         if case .string(let value) = self {
@@ -132,7 +129,7 @@ import Foundation
         }
         return nil
     }
-    
+
     /// Number value
     public var number: NSNumber? {
         if case .number(let value) = self {
@@ -144,17 +141,17 @@ import Foundation
         }
         return nil
     }
-    
+
     /// Double value
     public var double: Double? {
         return number?.doubleValue
     }
-    
+
     /// Int value
     public var int: Int? {
         return number?.intValue
     }
-    
+
     /// Boolean value
     public var bool: Bool? {
         if case .bool(let value) = self {
@@ -175,32 +172,32 @@ import Foundation
         }
         return nil
     }
-    
+
     // MARK: Helpers
-    
+
     /// Objects
     public var object: Any {
         switch self {
         case .dictionary(let value):
             return value.mapValues { $0.object }
-            
+
         case .array(let value):
             return value.map { $0.object }
-            
+
         case .string(let value):
             return value
-            
+
         case .number(let value):
             return value
-            
+
         case .bool(let value):
             return value
-            
+
         case .null:
             return NSNull()
         }
     }
-    
+
     /// JSON to Data
     /// - Parameter options: JSON Options
     /// - Returns: Data

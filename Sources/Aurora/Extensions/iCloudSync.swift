@@ -8,12 +8,9 @@
 // - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 //  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 //
-// Please note: this is a beta version.
-// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
-//
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT
 
 import Foundation
 
@@ -28,7 +25,7 @@ open class AuroraFrameworkiCloudSync {
     public static let shared = AuroraFrameworkiCloudSync()
     private let keyValueStore = NSUbiquitousKeyValueStore.default
     private let notificationCenter = NotificationCenter.default
-    
+
     /// Initialize
     public init() {
         if isAuroraiCloudSyncInProgress == false {
@@ -36,7 +33,7 @@ open class AuroraFrameworkiCloudSync {
             self.start()
         }
     }
-    
+
     /// Start iCloud synchronization, and Observe changes.
     open func start() {
         if keyValueStore.isKind(of: NSUbiquitousKeyValueStore.self) {
@@ -46,19 +43,20 @@ open class AuroraFrameworkiCloudSync {
                 name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
                 object: nil
             )
-            
+
             notificationCenter.addObserver(
                 self,
                 selector: #selector(AuroraFrameworkiCloudSync.toCloud),
                 name: UserDefaults.didChangeNotification,
                 object: nil
             )
-            
-            if keyValueStore.dictionaryRepresentation.count == 0 {
+
+            if keyValueStore.dictionaryRepresentation.count >= 1 {
                 self.toCloud()
             }
+
             self.fromCloud()
-            
+
             // Say i'm syncing
             isAuroraiCloudSyncInProgress = true
         } else {
@@ -67,30 +65,30 @@ open class AuroraFrameworkiCloudSync {
             Aurora.shared.log("Can't start sync!")
         }
     }
-    
+
     @objc
     private func fromCloud() {
         // iCloud to a Dictionary
         let dict: NSDictionary = keyValueStore.dictionaryRepresentation as NSDictionary
-        
+
         // Disable ObServer temporary...
         notificationCenter.removeObserver(
             self,
             name: UserDefaults.didChangeNotification,
             object: nil
         )
-        
+
         // Enumerate & Duplicate
         dict.enumerateKeysAndObjects(options: []) { (key, value, _) -> Void in
             guard let key: String = key as? String,
                   key.length < 60 else { return }
-            
+
             UserDefaults.standard.set(value, forKey: key)
         }
-        
+
         // Sync!
         UserDefaults.standard.synchronize()
-        
+
         // Enable ObServer
         notificationCenter.addObserver(
             self,
@@ -98,27 +96,27 @@ open class AuroraFrameworkiCloudSync {
             name: UserDefaults.didChangeNotification,
             object: nil
         )
-        
+
         // Post a super cool notification.
         notificationCenter.post(
             name: Notification.Name(rawValue: "iCloudSyncDidUpdateToLatest"),
             object: nil
         )
     }
-    
+
     @objc
     private func toCloud() {
         //        Aurora.shared.log("Going to iCloud")
         // NSUserDefaults to a dictionary
         let dict: NSDictionary = UserDefaults.standard.dictionaryRepresentation() as NSDictionary
-        
+
         // Disable ObServer temporary...
         notificationCenter.removeObserver(
             self,
             name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
             object: nil
         )
-        
+
         // Enumerate & Duplicate
         dict.enumerateKeysAndObjects { (key, value, _) -> Void in
             guard let key: String = key as? String,
@@ -126,10 +124,10 @@ open class AuroraFrameworkiCloudSync {
 
             keyValueStore.set(value, forKey: key as String)
         }
-        
+
         // Sync!
         keyValueStore.synchronize()
-        
+
         // Enable ObServer
         notificationCenter.addObserver(
             self,
@@ -138,25 +136,25 @@ open class AuroraFrameworkiCloudSync {
             object: nil
         )
     }
-    
+
     fileprivate func unset() {
         // Say i'm not syncing anymore
         isAuroraiCloudSyncInProgress = false
-        
+
         // Disable ObServers
         notificationCenter.removeObserver(
             self,
             name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
             object: nil
         )
-        
+
         notificationCenter.removeObserver(
             self,
             name: UserDefaults.didChangeNotification,
             object: nil
         )
     }
-    
+
     /// Force a sync
     open func sync() {
         // If not started (impossible, but ok)
@@ -168,7 +166,7 @@ open class AuroraFrameworkiCloudSync {
             keyValueStore.synchronize()
         }
     }
-    
+
     deinit {
         // Remove it all
         self.unset()

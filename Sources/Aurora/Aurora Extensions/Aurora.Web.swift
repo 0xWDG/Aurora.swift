@@ -8,12 +8,9 @@
 // - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 //  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 //
-// Please note: this is a beta version.
-// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
-//
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT
 
 // MARK: Imports
 import Foundation
@@ -29,25 +26,25 @@ public extension Aurora {
     @available(*, deprecated)
     func dataTaskHelper(forURL: URL?, completion: @escaping (String) -> Void) {
         let session = URLSession.shared
-        
+
         let request = URLRequest.init(
-            url: forURL ?? URL.init(string: "")!,
+            url: forURL ?? URL.init(string: "").unwrap(orError: "No URL"),
             cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
             timeoutInterval: 10
         )
-        
+
         let task = session.dataTask(
             with: request,
             completionHandler: { (data, response, _) -> Void in
-                
+
                 self.log("Got response")
-                
+
                 guard let data = data else {
                     self.log("Failed to decode data")
                     completion("Error")
                     return
                 }
-                
+
                 var usedEncoding = String.Encoding.utf8 // Some fallback value
                 if let encodingName = response?.textEncodingName {
                     let encoding = CFStringConvertEncodingToNSStringEncoding(
@@ -57,7 +54,7 @@ public extension Aurora {
                         usedEncoding = String.Encoding(rawValue: encoding)
                     }
                 }
-                
+
                 DispatchQueue.main.async {
                     if let myString = String(data: data, encoding: usedEncoding) {
                         self.log("Unwrapped and returning \(forURL?.absoluteString)")
@@ -71,7 +68,7 @@ public extension Aurora {
         })
         task.resume()
     }
-    
+
     /// Remove all html elements from a string
     ///
     /// - Parameter html: The HTML String
@@ -95,7 +92,7 @@ public extension Aurora {
             return html
         }
     }
-    
+
     /// Newline to Break (br) [like-php]
     ///
     /// Parameter html: the string
@@ -104,7 +101,7 @@ public extension Aurora {
     func nl2br(_ html: String) -> String {
         return html.replacingOccurrences(of: "\n", with: "<br />")
     }
-    
+
     /// Break (br) to Newline [like-php (reversed)]
     ///
     /// - Parameter html: the html string to convert to a string
@@ -116,7 +113,7 @@ public extension Aurora {
         // should be regex.
         // \<(b|B)(r|R)( )?(\/)?\>
     }
-    
+
     /// Set debug
     ///  - Parameter debugVal: Debugmode on/off
     func setDebug(_ debugVal: Bool) {

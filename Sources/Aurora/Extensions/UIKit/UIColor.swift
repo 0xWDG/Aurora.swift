@@ -8,12 +8,9 @@
 // - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 //  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 //
-// Please note: this is a beta version.
-// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
-//
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT
 
 #if canImport(UIKit)
 import UIKit
@@ -26,7 +23,7 @@ public extension UIColor {
         blue: 0.254902,
         alpha: 1
     )
-    
+
     /// DiCo Blue
     static let dinnerBlue = UIColor.init(
         red: 0.0117647,
@@ -34,7 +31,7 @@ public extension UIColor {
         blue: 0.752941,
         alpha: 1
     )
-    
+
     /// BaaS Color
     static let BaaS = UIColor.init(
         red: 0.0,
@@ -42,7 +39,7 @@ public extension UIColor {
         blue: 1.0,
         alpha: 1.0
     )
-    
+
     /// Default Button Color
     static let button = UIColor.init(
         red: 0,
@@ -50,10 +47,26 @@ public extension UIColor {
         blue: 0,
         alpha: 1.0
     )
-    
+
+    /// Aurora color
+    static let Aurora = Color.init(
+        red: 0,
+        green: 212/255,
+        blue: 255/255,
+        alpha: 1.0
+    )
+
+    /// Random color.
+    static var random: UIColor {
+        let red = Int.random(in: 0...255)
+        let green = Int.random(in: 0...255)
+        let blue = Int.random(in: 0...255)
+        return UIColor(red: red, green: green, blue: blue).unwrap(orError: "Failed to generate random color.")
+    }
+
     /// A color object with grayscale and alpha values that are both 0.0.
     static let transparent = UIColor.clear
-    
+
     /// default Cell background color
     static var cellBackgroundcolor: UIColor {
         if #available(iOS 13.0, *) {
@@ -66,24 +79,7 @@ public extension UIColor {
             return .white
         }
     }
-    
-    /// random color
-    /// - Parameter randomApha: Random alpha?
-    /// - Returns: Random UIColor
-    class func random(randomAlpha randomApha: Bool = false) -> UIColor {
-        let redValue = CGFloat.random(in: 0...255) / 255.0
-        let greenValue = CGFloat.random(in: 0...255) / 255.0
-        let blueValue = CGFloat.random(in: 0...255) / 255.0
-        let alphaValue = randomApha ? CGFloat.random(in: 0...255) / 255.0: 1
-        
-        return UIColor(
-            red: redValue,
-            green: greenValue,
-            blue: blueValue,
-            alpha: alphaValue
-        )
-    }
-    
+
     /// Initializes and returns a color object using the specified hexadecimal code and an optional alpha.
     ///
     /// - parameter hex: The hexadecimal code starting with or without `#` with 3 or 6 signs \
@@ -98,19 +94,19 @@ public extension UIColor {
     convenience init?(hex: String, alpha: CGFloat = 1.0) {
         var hexCode = hex.trimmed
         while hexCode.contains("#") {
-            hexCode.remove(at: hexCode.range(of: "#")!.lowerBound)
+            hexCode.remove(at: hexCode.range(of: "#").unwrap(orError: "Failed to get range").lowerBound)
         }
-        
+
         var hexInt: UInt64 = 0
         let scanner = Scanner(string: hexCode)
         if !scanner.scanHexInt64(&hexInt) {
             return nil
         }
-        
+
         var divisor: CGFloat!
         var red, green, blue: CGFloat!
         var alphaChannel: CGFloat?
-        
+
         switch hexCode.count {
         case 3, 4:
             divisor = 15
@@ -119,7 +115,7 @@ public extension UIColor {
         default:
             return nil
         }
-        
+
         switch hexCode.count {
         case 3:
             red = CGFloat((UInt16(hexInt) & 0xF00) >> 8) / divisor
@@ -141,35 +137,35 @@ public extension UIColor {
             alphaChannel = CGFloat(hexInt & 0x000000FF) / divisor
         default: ()
         }
-        
+
         self.init(red: red, green: green, blue: blue, alpha: alphaChannel ?? alpha)
     }
-    
+
     /// Returns the color's hexadecimal code starting with `#` and followed
     /// by 6 or 8 signs (depending on the alpha channel information).
     var hex: String {
         var red: CGFloat = 0.0, green: CGFloat = 0.0, blue: CGFloat = 0.0, alpha: CGFloat = 0.0
         getRed(&red, green: &green, blue: &blue, alpha: &alpha)
         let hex = String(format: "#%02X%02X%02X", Int(red * 255.0), Int(green * 255.0), Int(blue * 255.0))
-        
+
         return alpha == 1.0 ? hex : hex.appendingFormat("%02X", Int(alpha * 255.0))
     }
-    
+
     /// Returns the value of the value of red in the color.
     var redValue: CGFloat {
         return CIColor(color: self).red
     }
-    
+
     /// Returns the value of the value of green in the color.
     var greenValue: CGFloat {
         return CIColor(color: self).green
     }
-    
+
     /// Returns the value of the value of blue in the color.
     var blueValue: CGFloat {
         return CIColor(color: self).blue
     }
-    
+
     /// Returns the value of the value of alpha/transparency in the color.
     var alphaValue: CGFloat {
         return CIColor(color: self).alpha
