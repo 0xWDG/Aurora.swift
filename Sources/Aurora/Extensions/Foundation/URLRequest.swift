@@ -31,7 +31,11 @@ public extension URLRequest {
         }
 
         for (key, _) in allHTTPHeaderFields?.sorted(by: { $0.key < $1.key }) ?? [] {
-            curlCommand.append(" -H '\(key): \(self.value(forHTTPHeaderField: key)!)' \\\n")
+            let HTTPheader = self.value(forHTTPHeaderField: key).unwrap(
+                orError: "Failed to unwrap HTTPHeaderField"
+            )
+
+            curlCommand.append(" -H '\(key): \(HTTPheader)' \\\n")
         }
 
         if let httpBody = httpBody,

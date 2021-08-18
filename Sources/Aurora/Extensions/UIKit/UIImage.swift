@@ -34,7 +34,7 @@ public extension UIImage {
         self.draw(in: CGRect(origin: CGPoint.zero, size: sizeChange))
 
         let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
-        return scaledImage!
+        return scaledImage.unwrap(orError: "Failed to scale image")
     }
 
     /// Initializes and returns an image object filled with the specified color
@@ -109,15 +109,20 @@ public extension UIImage {
         let startPoint = CGPoint(x: width/2, y: 0)
         let endPoint = CGPoint(x: width/2, y: height)
 
-        bitmapContext!.clip(to: bounds, mask: maskImage!)
-        bitmapContext!.drawLinearGradient(
-            gradient!,
+        guard let bitmapContext = bitmapContext,
+              let gradient = gradient,
+              let maskImage = maskImage else {
+            return nil
+        }
+        bitmapContext.clip(to: bounds, mask: maskImage)
+        bitmapContext.drawLinearGradient(
+            gradient,
             start: startPoint,
             end: endPoint,
             options: CGGradientDrawingOptions(rawValue: UInt32(0))
         )
 
-        if let cImage = bitmapContext!.makeImage() {
+        if let cImage = bitmapContext.makeImage() {
             let coloredImage = UIImage(cgImage: cImage)
             return coloredImage
         } else {
@@ -185,8 +190,12 @@ public extension UIImage {
     /// - returns: A UIImage object that specifies a subimage of the image.\
     /// If the `rect` parameter defines an area that is not in the image, returns `nil`.
     func crop(to bounds: CGRect) -> UIImage? {
-        guard let cgImage = normalizedImage?.cgImage, bounds.contains(bounds) else { return nil }
-        return UIImage(cgImage: cgImage.cropping(to: bounds)!)
+        guard let cgImage = normalizedImage?.cgImage,
+              bounds.contains(bounds) else { return nil }
+
+        return UIImage(
+            cgImage: cgImage.cropping(to: bounds).unwrap(orError: "Failed to crop Image")
+        )
     }
 
     /// Returns a square bitmap image cropping the sides.
@@ -289,13 +298,14 @@ public extension UIImage {
         let bits = cgImage.bitsPerComponent
         let colorSpace = cgImage.colorSpace
         let bitmapInfo = cgImage.bitmapInfo
-        guard let context = CGContext(
+        guard let colorSpace = colorSpace,
+              let context = CGContext(
             data: nil,
             width: width,
             height: height,
             bitsPerComponent: bits,
             bytesPerRow: 0,
-            space: colorSpace!,
+            space: colorSpace,
             bitmapInfo: bitmapInfo.rawValue
         ) else { return nil }
 

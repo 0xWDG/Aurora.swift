@@ -25,7 +25,10 @@ public class AuroraLogView: UIViewController, UITableViewDelegate, UITableViewDa
         logMessages.append("AuroraExitLogViewButton")
 
         /// Setup UITableView
-        tableView = UITableView(frame: UIApplication.shared.key!.frame).configure { [self] in
+        tableView = UITableView().configure { [self] in
+            $0.frame = UIApplication.shared.key.unwrap(
+                orError: "Failed to get key window"
+            ).frame
             $0.delegate = self
             $0.dataSource = self
             $0.rowHeight = UITableView.automaticDimension
@@ -76,18 +79,18 @@ public class AuroraLogView: UIViewController, UITableViewDelegate, UITableViewDa
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell.init().configure {
             if logMessages[indexPath.row] != "AuroraExitLogViewButton" {
-                $0.textLabel!.text = logMessages[indexPath.row]
+                $0.textLabel?.text = logMessages[indexPath.row]
             } else {
-                $0.textLabel!.text = NSLocalizedString(
+                $0.textLabel?.text = NSLocalizedString(
                     "Close window",
                     comment: "Close window"
                 ) + "\n\n\n"
                 $0.textLabel?.textAlignment = .center
             }
 
-            $0.textLabel!.numberOfLines = 0
-            $0.textLabel!.lineBreakMode = .byWordWrapping
-            $0.textLabel!.sizeToFit()
+            $0.textLabel?.numberOfLines = 0
+            $0.textLabel?.lineBreakMode = .byWordWrapping
+            $0.textLabel?.sizeToFit()
         }
     }
 }

@@ -77,7 +77,7 @@ public extension UILabel {
                     rawValue: String.Encoding.unicode.rawValue
                 ),
                 allowLossyConversion: true
-                )!,
+                ).unwrap(orError: "Failed to convert HTML to NSAttributedString (Input is not a string)"),
             options: [
                 NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html,
                 NSAttributedString.DocumentReadingOptionKey.characterEncoding: String.Encoding.utf8.rawValue

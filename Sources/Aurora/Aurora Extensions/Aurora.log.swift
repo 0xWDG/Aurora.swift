@@ -34,10 +34,12 @@ extension Aurora {
         function: String = #function) -> Bool {
         if debug {
             // extract filename, without path, and without extension.
-            let fileName: String = (file.split("/").last)!.split(".").first!
+            let fileName: String = (file.split("/").last).unwrap(
+                orError: "Failed to get file name"
+            ).split(".").first.unwrap(orError: "Failed to get file name")
 
             // extract extension.
-            let fileExtension: String = file.split(".").last!
+            let fileExtension: String = file.split(".").last.unwrap(orError: "Invalid file extension")
 
             // On which Queue are we running
             let queue = Thread.isMainThread ? "Main" : "Background"
@@ -99,10 +101,14 @@ extension Aurora {
             // Any... = [Any]
 
             // extract filename, without path, and without extension.
-            let fileName: String = (file.split("/").last)!.split(".").first!
+            let fileName: String = (file.split("/").last).unwrap(
+                    orError: "Failed to get file name"
+            ).split(".").first.unwrap(
+                orError: "Failed to get file name"
+            )
 
             // extract extension.
-            let fileExtension: String = file.split(".").last!
+            let fileExtension: String = file.split(".").last.unwrap(orError: "Invalid name")
 
             // On which Queue are we running
             let queue = Thread.isMainThread ? "Main" : "Background"

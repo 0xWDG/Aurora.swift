@@ -8,3 +8,4 @@ opt_in_rules:
    - modifier_order
    - first_where
    - fatal_error_message
+   - force_unwrapping

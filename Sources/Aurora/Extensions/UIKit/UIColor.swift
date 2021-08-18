@@ -61,7 +61,7 @@ public extension UIColor {
         let red = Int.random(in: 0...255)
         let green = Int.random(in: 0...255)
         let blue = Int.random(in: 0...255)
-        return Color(red: red, green: green, blue: blue)!
+        return UIColor(red: red, green: green, blue: blue).unwrap(orError: "Failed to generate random color.")
     }
 
     /// A color object with grayscale and alpha values that are both 0.0.
@@ -94,7 +94,7 @@ public extension UIColor {
     convenience init?(hex: String, alpha: CGFloat = 1.0) {
         var hexCode = hex.trimmed
         while hexCode.contains("#") {
-            hexCode.remove(at: hexCode.range(of: "#")!.lowerBound)
+            hexCode.remove(at: hexCode.range(of: "#").unwrap(orError: "Failed to get range").lowerBound)
         }
 
         var hexInt: UInt64 = 0

@@ -247,7 +247,7 @@ public extension Regex {
 
         /// The range of the matched string.
         public lazy var range: Range<String.Index> = {
-            Range(self.result.range, in: self.baseString)!
+            Range(self.result.range, in: self.baseString).unwrap(orError: "Invalid range")
         }()
 
         /// The matching string for each capture group in the regular expression
@@ -317,7 +317,9 @@ public extension Regex {
         ///
         /// - returns: A string with `template` applied to the matched string.
         public func string(applyingTemplate template: String) -> String {
-            let replacement = result.regularExpression!.replacementString(
+            let replacement = result.regularExpression.unwrap(
+                orError: "Invalid regular expression"
+            ).replacementString(
                 for: result,
                 in: baseString,
                 offset: 0,

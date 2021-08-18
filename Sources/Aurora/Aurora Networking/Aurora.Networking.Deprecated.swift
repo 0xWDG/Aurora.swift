@@ -75,7 +75,9 @@ extension Aurora {
         guard let siteURL = URL(string: url) else {
             completionHandler(
                 .failure(
-                    AuroraError(message: "Error: \(url) doesn't appear to be an URL")
+                    AuroraError(
+                        message: "Error: \(url) doesn't appear to be an URL"
+                    )
                 )
             )
 
@@ -98,9 +100,14 @@ extension Aurora {
                 post = String.init(
                     data: JSON,
                     encoding: .utf8
-                )!.addingPercentEncoding(
+                ).unwrap(
+                    orError: "can not make POST object"
+                )
+                .addingPercentEncoding(
                     withAllowedCharacters: .urlHostAllowed
-                )!
+                ).unwrap(
+                    orError: "Cannot add Percent Encoding"
+                )
             }
 
             /// Catch errors
@@ -184,7 +191,11 @@ extension Aurora {
                     self.log("Error: \(theError?.localizedDescription)")
                 }
 
-                completionHandler(.failure(theError!))
+                guard let theError = theError else {
+                    fatalError("Failed to get the error message.")
+                }
+
+                completionHandler(.failure(theError))
                 return
             }
 
@@ -203,7 +214,12 @@ extension Aurora {
 
             completionHandler(
                 .success(
-                    String.init(data: sitedata, encoding: .utf8)!
+                    String.init(
+                        data: sitedata,
+                        encoding: .utf8
+                    ).unwrap(
+                        orError: "Failed to decode website data."
+                    )
                 )
             )
         }.resume()

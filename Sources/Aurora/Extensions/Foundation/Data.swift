@@ -149,7 +149,11 @@ public extension Data {
     ) rethrows -> ResultType {
         return try self.withUnsafeBytes({ (rawBufferPointer: UnsafeRawBufferPointer) -> ResultType in
             return try body(
-                rawBufferPointer.bindMemory(to: ContentType.self).baseAddress!
+                rawBufferPointer.bindMemory(
+                    to: ContentType.self
+                ).baseAddress.unwrap(
+                    orError: "Failed to read memory address"
+                )
             )
         })
     }

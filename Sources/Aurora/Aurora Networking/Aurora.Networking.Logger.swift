@@ -144,20 +144,20 @@ public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
 
         self.newRequest = req
 
-        guard newRequest != nil else {
-            return
+        guard let newRequest = newRequest else {
+            fatalError("Failed to get the request.")
         }
 
         AuroraNetworkLogger.setProperty(
             true,
             forKey: AuroraNetworkLogger.requestHandledKey,
-            in: newRequest!
+            in: newRequest
         )
 
         AuroraNetworkLogger.setProperty(
             Date(),
             forKey: AuroraNetworkLogger.requestTimeKey,
-            in: newRequest!
+            in: newRequest
         )
 
         let session = Foundation.URLSession(
@@ -184,7 +184,7 @@ public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
             self.logResponse(response, data: data)
         }) .resume()
 
-        logRequest(newRequest! as URLRequest)
+        logRequest(newRequest as URLRequest)
     }
 
     /// Stop Loading
@@ -235,8 +235,9 @@ public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
     /// - Parameter request: URL Request
     public func logRequest(_ request: URLRequest) {
         self.log = "Networklog\n"
-        if let url = request.url?.absoluteString {
-            self.log += "  \(request.httpMethod!) \(url)\n"
+        if let url = request.url?.absoluteString,
+           let method = request.httpMethod {
+            self.log += "  \(method) \(url)\n"
         }
 
         if let headers = request.allHTTPHeaderFields {
@@ -274,7 +275,12 @@ public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
     private func logDataParser(data: Data) {
         do {
             let rawString = String.init(data: data, encoding: .utf8)
-            let cleanData = (rawString?.removingPercentEncoding!.data(using: .utf8))!
+
+            guard let decoded = rawString?.removingPercentEncoding,
+                  let cleanData = decoded.data(using: .utf8) else {
+                fatalError("Failed to parse log data")
+            }
+
             let json = try JSONSerialization.jsonObject(
                 with: cleanData,
                 options: .mutableContainers
@@ -298,10 +304,11 @@ public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
             self.log += "  POST DATA:\n"
             self.log += "    " + (rawString ?? "Unable to decode.") + "\n"
         } catch {
-            if let string = NSString(
+            if let sString = NSString(
                 data: data,
                 encoding: String.Encoding.utf8.rawValue
-            )?.removingPercentEncoding! {
+            ),
+            let string = sString.removingPercentEncoding {
                 self.log += "  Data:\n"
                 for line in string.components(separatedBy: "\n") {
                     self.log += "    " + line + "\n"
@@ -331,7 +338,7 @@ public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
 
         if let startDate = AuroraNetworkLogger.property(
             forKey: AuroraNetworkLogger.requestTimeKey,
-            in: newRequest! as URLRequest
+            in: newRequest.unwrap(orError: "Invalid URLRequest") as URLRequest
         ) as? Date {
             let difference = fabs(startDate.timeIntervalSinceNow)
             self.log += "  Duration: \(difference)s\n"

@@ -93,13 +93,22 @@ public extension UIView {
         gradientLayer.locations = [0.0, 1.0]
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.2)
 
-        let intVal = layer.sublayers?.count
-        layer.insertSublayer(gradientLayer, at: UInt32(truncating: intVal! as NSNumber))
+        guard let intVal = layer.sublayers?.count,
+              let numVal = intVal as NSNumber else {
+            fatalError("Failed to get sublayers")
+        }
+
+        layer.insertSublayer(
+            gradientLayer,
+            at: UInt32(truncating: numVal))
     }
 
     /// Remove the last Subview
     func removeLastSubview() {
-        let intVal = (layer.sublayers?.count)! - 1
+        guard let intVal = (layer.sublayers?.count) - 1 else {
+            return
+        }
+
         layer.sublayers?.remove(at: intVal)
     }
 

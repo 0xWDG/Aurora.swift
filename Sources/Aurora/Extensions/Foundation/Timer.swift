@@ -61,10 +61,10 @@ public extension Timer {
                 interval,
                 0,
                 0) { run in
-                block(run!)
+                block(run.unwrap(orError: "Failed to execute"))
             }
             CFRunLoopAddTimer(CFRunLoopGetCurrent(), timer, CFRunLoopMode.commonModes)
-            return timer!
+            return timer.unwrap(orError: "Failed to create timer")
         } else {
             let timer = Timer.new(every: interval, block)
             timer.start()

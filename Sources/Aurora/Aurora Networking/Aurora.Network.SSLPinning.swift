@@ -129,11 +129,17 @@ class AuroraURLSessionPinningDelegate: NSObject, URLSessionDelegate {
                                     serverCertificate
                                 )
 
+                                // Disable this lint,
+                                // It will let us not build, if we change
+                                // it to guard/if let.
+                                // Error: error: Abort trap: 6
+                                // swiftlint:disable force_unwrapping
                                 /// Public key data
                                 let serverPublicKeyData: NSData = SecKeyCopyExternalRepresentation(
                                     serverPublicKey!,
                                     nil
                                 )!
+                                // swiftlint:enable force_unwrapping
 
                                 /// Key hash
                                 let keyHash = sha256(

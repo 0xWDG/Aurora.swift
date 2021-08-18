@@ -35,7 +35,9 @@ public extension UIImage {
     /// Cache image
     /// - Parameter image: image name
     func cacheImage(_ image: String) {
-        let imageURL: URL = URL(string: image)!
+        guard let imageURL: URL = URL(string: image) else {
+            fatalError("Invalid URL")
+        }
         let filename: String = String(describing: imageURL).md5
         let fileStore: String = TMP + filename
 
@@ -52,7 +54,9 @@ public extension UIImage {
     /// Reset image cache for image
     /// - Parameter image: image name
     func resetImage(_ image: String) {
-        let imageURL: URL = URL(string: image)!
+        guard let imageURL: URL = URL(string: image) else {
+            fatalError("Invalid URL")
+        }
         let filename: String = String(describing: imageURL).md5
         let fileStore: String = TMP + filename
 
@@ -69,7 +73,9 @@ public extension UIImage {
     /// - Parameter image: Image name
     /// - Returns: Image
     func imageExists(_ image: String) -> Any {
-        let imageURL: URL = URL(string: image)!
+        guard let imageURL: URL = URL(string: image) else {
+            fatalError("Invalid URL")
+        }
         let filename: String = String(describing: imageURL).md5
         let fileStore: String = TMP + filename
         var rimage: Any
@@ -82,7 +88,7 @@ public extension UIImage {
                 let ourTime  = Date().addingTimeInterval(0)
 
                 if fileTime?.timeIntervalSince(ourTime) ?? 99999 < Double(86400) {
-                    rimage = UIImage(contentsOfFile: fileStore)!
+                    rimage = UIImage(contentsOfFile: fileStore).unwrap(orError: "Invalid file data")
                 } else {
                     rimage = false
                 }
@@ -104,7 +110,9 @@ public extension UIImage {
     /// - Parameter image: image name
     /// - Returns: Image
     func getImage(_ image: String) -> UIImage {
-        let imageURL: URL = URL(string: image)!
+        guard let imageURL: URL = URL(string: image) else {
+            fatalError("Invalid URL")
+        }
         let filename: String = String(describing: imageURL).md5
         let fileStore: String = TMP + filename
         var rimage: UIImage = UIImage()
@@ -117,25 +125,25 @@ public extension UIImage {
                 let ourTime  = Date().addingTimeInterval(0)
 
                 if fileTime?.timeIntervalSince(ourTime) ?? 99999 < Double(86400) {
-                    rimage = UIImage(contentsOfFile: fileStore)!
+                    rimage = UIImage(contentsOfFile: fileStore).unwrap(orError: "Invalid file data")
                 } else {
                     // Download & Cache image
                     do {
                         try FileManager().removeItem(atPath: fileStore)
 
                         UIImage().cacheImage(image)
-                        rimage = UIImage(contentsOfFile: image)!
+                        rimage = UIImage(contentsOfFile: image).unwrap(orError: "Invalid file data")
                     } catch {
                         fatalError("Something happend, this is terrible wrong!\nError: \(error)")
                     }
                 }
             } catch {
                 UIImage().cacheImage(image)
-                rimage = UIImage(contentsOfFile: image)!
+                rimage = UIImage(contentsOfFile: image).unwrap(orError: "Invalid file data")
             }
         } else {
             UIImage().cacheImage(image)
-            rimage = UIImage(contentsOfFile: image)!
+            rimage = UIImage(contentsOfFile: image).unwrap(orError: "Invalid file data")
         }
 
         return rimage

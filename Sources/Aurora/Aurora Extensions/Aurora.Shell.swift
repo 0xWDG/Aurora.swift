@@ -35,7 +35,7 @@ func shell(_ arguments: String, showLog: Bool = false) -> String {
     task.standardOutput = pipe
     task.launch()
     let data = pipe.fileHandleForReading.readDataToEndOfFile()
-    let output: String = String(data: data, encoding: String.Encoding.utf8)!
+    let output: String = String(data: data, encoding: .utf8).unwrap(orError: "Cannot convert output")
     task.waitUntilExit()
     pipe.fileHandleForReading.closeFile()
 

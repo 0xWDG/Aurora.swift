@@ -28,7 +28,7 @@ public extension Aurora {
         let session = URLSession.shared
 
         let request = URLRequest.init(
-            url: forURL ?? URL.init(string: "")!,
+            url: forURL ?? URL.init(string: "").unwrap(orError: "No URL"),
             cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
             timeoutInterval: 10
         )

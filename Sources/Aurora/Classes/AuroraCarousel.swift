@@ -131,7 +131,9 @@ public final class AuroraCarousel: UIView,
 
     override public func layoutSubviews() {
         if frame == .init(x: 0, y: 0, width: 0, height: 0) {
-            self.frame = (self.superview?.bounds)!
+            self.frame = (self.superview?.bounds).unwrap(
+                orError: "Failed to get frame size"
+            )
         }
     }
 

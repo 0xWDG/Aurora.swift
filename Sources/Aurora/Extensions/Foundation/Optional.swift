@@ -82,6 +82,28 @@ public extension Optional {
 
         return value
     }
+
+    /// unwrap or error
+    /// - Parameter errorExpression: Unwrap to error
+    /// - Throws: Error if cannot unwrap
+    /// - Returns: Result
+    func unwrap(orError: String,
+                file: StaticString = #file,
+                line: Int = #line,
+                function: String = #function) -> Wrapped {
+        guard let value = self else {
+            Aurora.shared.log(
+                "Failed to unwrap value\nError: \(orError)",
+                file,
+                line,
+                function
+            )
+
+            fatalError(orError, file: file, line: UInt(line))
+        }
+
+        return value
+    }
 }
 
 // From: https://www.instagram.com/p/Bi46gJjD8i2/

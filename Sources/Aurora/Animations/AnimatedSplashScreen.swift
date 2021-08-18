@@ -147,7 +147,11 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
         imageView?.center = self.center
 
         // Adds the icon to the view
-        self.addSubview(imageView!)
+        guard let imageView = imageView else {
+            fatalError("No image view to process.")
+        }
+
+        self.addSubview(imageView)
 
         // Sets the background color
         self.backgroundColor = backgroundColor
@@ -176,10 +180,10 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
         backgroundImageView?.frame = UIScreen.main.bounds
         backgroundImageView?.contentMode = UIView.ContentMode.scaleAspectFill
 
-        self.addSubview(backgroundImageView!)
+        self.addSubview(backgroundImageView.unwrap(orError: "No backgroundView provided"))
 
         // Adds the icon to the view
-        self.addSubview(imageView!)
+        self.addSubview(imageView.unwrap(orError: "No imageView provided"))
 
     }
 
@@ -205,7 +209,8 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
         self.addSubview(backgroundView)
 
         // Adds the icon to the view
-        self.addSubview(imageView!)
+
+        self.addSubview(imageView.unwrap(orError: "No image view"))
     }
 
     public required init?(coder aDecoder: NSCoder) {

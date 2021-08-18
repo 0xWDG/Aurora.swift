@@ -47,8 +47,8 @@ open class SimpleTimer {
 
     /// Stop the timer
     func stop() {
-        if timer != nil {
-            timer!.invalidate()
+        if let timer = timer {
+            timer.invalidate()
         }
     }
 

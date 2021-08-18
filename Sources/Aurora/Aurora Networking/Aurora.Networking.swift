@@ -201,9 +201,9 @@ extension Aurora {
                 post = String.init(
                     data: JSON,
                     encoding: .utf8
-                )!.addingPercentEncoding(
-                    withAllowedCharacters: .urlHostAllowed
-                )!
+                ).unwrap(orError: "Failed to generate POST")
+                .addingPercentEncoding(withAllowedCharacters: .urlHostAllowed
+                ).unwrap(orError: "Failed to add Percent encoding")
             }
         }
 
@@ -293,7 +293,7 @@ extension Aurora {
                     self.log("Error: \(theError?.localizedDescription)")
                 }
 
-                completionHandler(.failure(theError!))
+                completionHandler(.failure(theError.unwrap(orError: "Failed to decode error")))
                 return
             }
 

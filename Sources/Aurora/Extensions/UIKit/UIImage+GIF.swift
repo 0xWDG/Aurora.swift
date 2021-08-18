@@ -163,16 +163,20 @@ public extension UIImage {
         // Check if one of them is nil
         if valueB == nil || valueA == nil {
             if valueB != nil {
-                return valueB!
+                return valueB.unwrap(orError: "Failed to unwrap")
             } else if valueA != nil {
-                return valueA!
+                return valueA.unwrap(orError: "Failed to unwrap")
             } else {
                 return 0
             }
         }
 
+        guard let valueA = valueA, let valueB = valueB else {
+            fatalError("Invalid values")
+        }
+
         // Swap for modulo
-        if valueA! < valueB! {
+        if valueA < valueB {
             let valueC = valueA
             valueA = valueB
             valueB = valueC
@@ -181,10 +185,10 @@ public extension UIImage {
         // Get greatest common divisor
         var rest: Int
         while true {
-            rest = valueA! % valueB!
+            rest = valueA % valueB
 
             if rest == 0 {
-                return valueB! // Found it
+                return valueB // Found it
             } else {
                 valueA = valueB
                 valueB = rest

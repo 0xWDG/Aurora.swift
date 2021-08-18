@@ -106,7 +106,9 @@ public extension String {
     /// base64 encoded of string
     var base64: String {
         let plainData = self.data(using: .utf8)
-        let base64String = plainData!.base64EncodedString(options: .init(rawValue: 0))
+        let base64String = plainData.unwrap(
+            orError: "Invalid data"
+        ).base64EncodedString(options: .init(rawValue: 0))
         return base64String
     }
 
@@ -1128,7 +1130,7 @@ public extension String {
     /// - Returns: Character
     fileprivate func decodeNumeric(_ string: String, base: Int32) -> Character? {
         let code = UInt32(strtoul(string, nil, base))
-        return Character(UnicodeScalar(code)!)
+        return Character(UnicodeScalar(code).unwrap(orError: "Failed to get Unicode Scalar"))
     }
 
     /// Decode the HTML character entity to the corresponding\
@@ -1224,7 +1226,12 @@ public extension String {
     func charCodeAt(_ character: Int) -> Int {
         if self.length > character {
             let character = String(self.characterAtIndex(character))
-            return Int(String(character.unicodeScalars.first!.value))!
+            return Int(
+                String(
+                    character.unicodeScalars.first.unwrap(
+                        orError: "Failed to get the first unicode scalar").value
+                )
+            ).unwrap(orError: "Failed to convert to Int")
         } else {
             return 0
         }
@@ -1611,8 +1618,11 @@ public extension String {
 
     /// Decode Emoji
     var decodeEmoji: String {
-        let data = self.data(using: String.Encoding.utf8)
-        let decodedStr = NSString(data: data!, encoding: String.Encoding.nonLossyASCII.rawValue)
+        let data = self.data(using: .utf8)
+        let decodedStr = NSString(data:
+                                    data.unwrap(
+                                        orError: "Failed to decode data"
+                                    ), encoding: String.Encoding.nonLossyASCII.rawValue)
         if let str = decodedStr {
             return str as String
         }
@@ -1622,7 +1632,7 @@ public extension String {
     /// Encode Emoji
     var encodeEmoji: String {
         if let encodeStr = NSString(
-            cString: self.cString(using: .nonLossyASCII)!,
+            cString: self.cString(using: .nonLossyASCII).unwrap(orError: "Failed to convert C-String"),
             encoding: String.Encoding.utf8.rawValue
         ) {
             return encodeStr as String
@@ -2220,7 +2230,9 @@ public extension String {
         let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         var randomString = ""
         for _ in 1...length {
-            randomString.append(base.randomElement()!)
+            randomString.append(
+                base.randomElement().unwrap(orError: "Failed to get random character")
+            )
         }
         return randomString
     }
@@ -2559,7 +2571,11 @@ public extension String {
         let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         var randomString = ""
         for _ in 1...length {
-            randomString.append(base.randomElement()!)
+            guard let element = base.randomElement() else {
+                fatalError("Cannot create a random string")
+            }
+
+            randomString.append(element)
         }
         self = randomString
     }
