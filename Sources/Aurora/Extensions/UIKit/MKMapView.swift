@@ -8,9 +8,6 @@
 // - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 //  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 //
-// Please note: this is a beta version.
-// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
-//
 // Thanks for using!
 //
 // Licence: MIT
@@ -23,30 +20,32 @@ import Foundation
 import MapKit
 
 public extension MKMapView {
-    /// New Annotation
+    /// A string-based annotation that you apply to a specific map point.
+    ///
+    /// This is a alias for ``addAnnotation``
     /// - Parameters:
-    ///   - coordinate: the coordinate
-    ///   - title: the title
-    ///   - subtitle: the subtitle
+    ///   - coordinate: The coordinate point of the annotation, specified as a latitude and longitude.
+    ///   - title: The title of the shape annotation.
+    ///   - subtitle: The subtitle of the shape annotation.
     func newAnnotation(coordinate: CLLocationCoordinate2D, title: String, subtitle: String) {
-        let point = MKPointAnnotation.init()
-        point.title = title
-        point.subtitle = subtitle
-        point.coordinate = coordinate
-        self.addAnnotation(point)
+        self.addAnnotation(
+            coordinate: coordinate,
+            title: title,
+            subtitle: subtitle
+        )
     }
     
-    /// Add Annotation
+    /// A string-based annotation that you apply to a specific map point.
     /// - Parameters:
-    ///   - coordinate: the coordinate
-    ///   - title: the title
-    ///   - subtitle: the subtitle
+    ///   - coordinate: The coordinate point of the annotation, specified as a latitude and longitude.
+    ///   - title: The title of the shape annotation.
+    ///   - subtitle: The subtitle of the shape annotation.
     func addAnnotation(coordinate: CLLocationCoordinate2D, title: String, subtitle: String) {
-        let point = MKPointAnnotation.init()
-        point.title = title
-        point.subtitle = subtitle
-        point.coordinate = coordinate
-        self.addAnnotation(point)
+        self.addAnnotation(MKPointAnnotation.init().configure {
+            $0.title = title
+            $0.subtitle = subtitle
+            $0.coordinate = coordinate
+        })
     }
 }
 #endif

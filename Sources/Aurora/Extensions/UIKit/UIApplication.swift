@@ -8,9 +8,6 @@
 // - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 //  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 //
-// Please note: this is a beta version.
-// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
-//
 // Thanks for using!
 //
 // Licence: MIT
@@ -27,7 +24,9 @@ public extension UIApplication {
                 atPath: NSHomeDirectory() + "/Library/SplashBoard"
             )
         } catch {
-            Aurora.shared.log("Failed to delete launch screen cache with error: \(error)")
+            Aurora.shared.log(
+                "Failed to delete launch screen cache with error: \(error)"
+            )
         }
     }
     

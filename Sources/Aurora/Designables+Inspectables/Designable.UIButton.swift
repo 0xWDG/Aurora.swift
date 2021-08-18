@@ -8,9 +8,6 @@
 // - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 //  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
 //
-// Please note: this is a beta version.
-// It can contain bugs, please report all bugs to https://github.com/AuroraFramework/Aurora.swift
-//
 // Thanks for using!
 //
 // Licence: MIT
@@ -19,8 +16,7 @@
 import UIKit
 
 /// Designable UIButton
-@IBDesignable
-public extension UIButton {
+@IBDesignable public extension UIButton {
     /// Is the button highlighted
     override var isHighlighted: Bool {
         didSet {
@@ -33,7 +29,6 @@ public extension UIButton {
             if isHighlighted {
                 layer.borderColor = fadedColor
             } else {
-                
                 self.layer.borderColor = currentBorderColor.cgColor
                 
                 let animation = CABasicAnimation(keyPath: "borderColor")
