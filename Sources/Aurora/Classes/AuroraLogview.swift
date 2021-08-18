@@ -20,7 +20,7 @@ public class AuroraLogView: UIViewController, UITableViewDelegate, UITableViewDa
     var tableView: UITableView = UITableView()
 
     /// View did load
-    public override func viewDidLoad() {
+    override public func viewDidLoad() {
         logMessages.append("END OF REPORT\r\n\r\n")
         logMessages.append("AuroraExitLogViewButton")
 

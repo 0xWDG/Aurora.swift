@@ -25,7 +25,7 @@ import UIKit
     }
 
     /// Awake from nib
-    public override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
 
         setTitleColor(.white, for: .normal)
@@ -41,7 +41,7 @@ import UIKit
 
     /// Init (coder)
     /// - Parameter coder: coder
-    required public init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
 }

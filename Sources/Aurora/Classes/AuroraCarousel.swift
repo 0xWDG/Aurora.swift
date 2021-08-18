@@ -43,7 +43,7 @@ import UIKit
 ///       // Finally where needed:
 ///       view.addSubView(carousel)
 ///
-final public class AuroraCarousel: UIView,
+public final class AuroraCarousel: UIView,
                                    UICollectionViewDelegateFlowLayout,
                                    UICollectionViewDelegate,
                                    UICollectionViewDataSource {
@@ -118,18 +118,18 @@ final public class AuroraCarousel: UIView,
         setupCarousel()
     }
 
-    public override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
 
         setupCarousel()
     }
 
-    required public init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupCarousel()
     }
 
-    public override func layoutSubviews() {
+    override public func layoutSubviews() {
         if frame == .init(x: 0, y: 0, width: 0, height: 0) {
             self.frame = (self.superview?.bounds)!
         }

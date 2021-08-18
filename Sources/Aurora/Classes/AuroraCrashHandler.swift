@@ -40,7 +40,7 @@ extension Aurora {
 /// Aurora Crash Handler
 class AuroraCrashHandler {
     /// Shared Instance
-    static public let shared: AuroraCrashHandler = AuroraCrashHandler.init()
+    public static let shared: AuroraCrashHandler = AuroraCrashHandler.init()
 
     /// Signal codes
     private let signalCodes = [

@@ -83,14 +83,14 @@ open class UIGradientView: UIView {
     }
 
     /// Somethings have changed, if it is the orientation, then update
-    public override func layoutSubviews() {
+    override public func layoutSubviews() {
         if _oldOrientation != UIDevice.current.orientation {
             updateBackground(rect: frame)
         }
     }
 
     /// Draw the background
-    public override func draw(_ rect: CGRect) {
+    override public func draw(_ rect: CGRect) {
         super.draw(rect)
 
         // Create our gradient layer
@@ -190,7 +190,7 @@ open class UIGradientView: UIView {
 
     /// The trait collection did change
     /// - Parameter previousTraitCollection: UITraitCollection
-    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
 
         if #available(iOS 13, *), traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {

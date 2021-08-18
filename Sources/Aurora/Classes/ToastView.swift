@@ -19,7 +19,7 @@ import QuartzCore
 // swiftlint:disable:next type_body_length
 public class ToastView: UIView {
     /// Toast bounds
-    public override var bounds: CGRect {
+    override public var bounds: CGRect {
         didSet {
             setupShadow()
         }
@@ -186,7 +186,7 @@ public class ToastView: UIView {
 
     /// Called when the iOS interface environment changes.
     /// - Parameter previousTraitCollection: The UITraitCollection object before the interface environment changed.
-    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         backgroundColor = viewBackgroundColor
     }

@@ -5,3 +5,4 @@ opt_in_rules: # some rules are only opt-in
    - toggle_bool
    - unused_optional_binding
    - valid_ibinspectable
+   - modifier_order

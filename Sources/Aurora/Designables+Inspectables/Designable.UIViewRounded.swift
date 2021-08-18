@@ -27,7 +27,7 @@ open class UIViewRounded: UIView {
     /// - Parameter rect: The portion of the view’s bounds that needs to be updated.\
     /// The first time your view is drawn, this rectangle is typically the entire visible bounds of your view.\
     /// However, during subsequent drawing operations, the rectangle may specify only part of your view.
-    public override func draw(_ rect: CGRect) {
+    override public func draw(_ rect: CGRect) {
         super.draw(rect)
 
         self.roundCorners(

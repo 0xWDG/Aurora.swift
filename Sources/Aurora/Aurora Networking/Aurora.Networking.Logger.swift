@@ -100,7 +100,7 @@ public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
     /// Can we init with request?
     /// - Parameter request: The request to be handled.
     /// - Returns: true if the protocol subclass can handle request, otherwise false.
-    public override class func canInit(with request: URLRequest) -> Bool {
+    override public class func canInit(with request: URLRequest) -> Bool {
         guard AuroraNetworkLogger.configuration.enableCapture(request) == true else {
             return false
         }
@@ -115,7 +115,7 @@ public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
     /// Returns a canonical version of the specified request.
     /// - Parameter request: The request whose canonical version is desired.
     /// - Returns: The canonical form of request.
-    public override class func canonicalRequest(for request: URLRequest) -> URLRequest {
+    override public class func canonicalRequest(for request: URLRequest) -> URLRequest {
         return request
     }
 
@@ -130,7 +130,7 @@ public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
     ///   - testA: The request to compare with bRequest.
     ///   - testB: The request to compare with aRequest.
     /// - Returns: true if aRequest and bRequest are equivalent for cache purposes, false otherwise.
-    public override class func requestIsCacheEquivalent(_ testA: URLRequest, to testB: URLRequest) -> Bool {
+    override public class func requestIsCacheEquivalent(_ testA: URLRequest, to testB: URLRequest) -> Bool {
         return super.requestIsCacheEquivalent(testA, to: testB)
     }
 
@@ -138,7 +138,7 @@ public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
     ///
     /// When this method is called, the subclass implementation should start loading the request, \
     /// providing feedback to the URL loading system via the URLProtocolClient protocol.
-    public override func startLoading() {
+    override public func startLoading() {
         guard let req = (request as NSURLRequest).mutableCopy() as? NSMutableURLRequest,
               newRequest == nil else { return }
 
@@ -188,7 +188,7 @@ public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
     }
 
     /// Stop Loading
-    public override func stopLoading() {
+    override public func stopLoading() {
     }
 
     /// URL Session

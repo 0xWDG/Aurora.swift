@@ -221,12 +221,12 @@ open class KeychainWrapper {
 
     /// ServiceName is used for the kSecAttrService property to uniquely identify this keychain accessor.
     /// If no service name is specified, KeychainWrapper will default to using the bundleIdentifier.
-    private (set) public var serviceName: String
+    public private (set) var serviceName: String
 
     /// AccessGroup is used for the kSecAttrAccessGroup property to identify
     /// which Keychain Access Group this entry belongs to.
     /// This allows you to use the KeychainWrapper with shared keychain access between different applications.
-    private (set) public var accessGroup: String?
+    public private (set) var accessGroup: String?
 
     private static let defaultServiceName: String = {
         return Bundle.main.bundleIdentifier ?? "SwiftKeychainWrapper"
