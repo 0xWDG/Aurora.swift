@@ -37,8 +37,8 @@
 		OBJ_166 /* Aurora.Network.SSLPinning.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* Aurora.Network.SSLPinning.swift */; };
 		OBJ_167 /* Aurora.Networking.Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* Aurora.Networking.Logger.swift */; };
 		OBJ_168 /* Aurora.Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* Aurora.Networking.swift */; };
-		OBJ_169 /* Aurora.Ntwk.Deprecated.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* Aurora.Ntwk.Deprecated.swift */; };
-		OBJ_170 /* Aurora.Ntwk.Legacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* Aurora.Ntwk.Legacy.swift */; };
+		OBJ_169 /* Aurora.Networking.Deprecated.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* Aurora.Networking.Deprecated.swift */; };
+		OBJ_170 /* Aurora.Networking.Legacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* Aurora.Networking.Legacy.swift */; };
 		OBJ_171 /* AuroraFramework.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* AuroraFramework.swift */; };
 		OBJ_172 /* AuroraCrashHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_32 /* AuroraCrashHandler.swift */; };
 		OBJ_173 /* AuroraDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* AuroraDevice.swift */; };
@@ -212,8 +212,8 @@
 		OBJ_25 /* Aurora.Network.SSLPinning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aurora.Network.SSLPinning.swift; sourceTree = "<group>"; };
 		OBJ_26 /* Aurora.Networking.Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aurora.Networking.Logger.swift; sourceTree = "<group>"; };
 		OBJ_27 /* Aurora.Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aurora.Networking.swift; sourceTree = "<group>"; };
-		OBJ_28 /* Aurora.Ntwk.Deprecated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aurora.Ntwk.Deprecated.swift; sourceTree = "<group>"; };
-		OBJ_29 /* Aurora.Ntwk.Legacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aurora.Ntwk.Legacy.swift; sourceTree = "<group>"; };
+		OBJ_28 /* Aurora.Networking.Deprecated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aurora.Networking.Deprecated.swift; sourceTree = "<group>"; };
+		OBJ_29 /* Aurora.Networking.Legacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aurora.Networking.Legacy.swift; sourceTree = "<group>"; };
 		OBJ_30 /* AuroraFramework.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraFramework.swift; sourceTree = "<group>"; };
 		OBJ_32 /* AuroraCrashHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraCrashHandler.swift; sourceTree = "<group>"; };
 		OBJ_33 /* AuroraDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraDevice.swift; sourceTree = "<group>"; };
@@ -394,8 +394,8 @@
 				OBJ_25 /* Aurora.Network.SSLPinning.swift */,
 				OBJ_26 /* Aurora.Networking.Logger.swift */,
 				OBJ_27 /* Aurora.Networking.swift */,
-				OBJ_28 /* Aurora.Ntwk.Deprecated.swift */,
-				OBJ_29 /* Aurora.Ntwk.Legacy.swift */,
+				OBJ_28 /* Aurora.Networking.Deprecated.swift */,
+				OBJ_29 /* Aurora.Networking.Legacy.swift */,
 			);
 			path = "Aurora Networking";
 			sourceTree = "<group>";
@@ -692,8 +692,8 @@
 				OBJ_166 /* Aurora.Network.SSLPinning.swift in Sources */,
 				OBJ_167 /* Aurora.Networking.Logger.swift in Sources */,
 				OBJ_168 /* Aurora.Networking.swift in Sources */,
-				OBJ_169 /* Aurora.Ntwk.Deprecated.swift in Sources */,
-				OBJ_170 /* Aurora.Ntwk.Legacy.swift in Sources */,
+				OBJ_169 /* Aurora.Networking.Deprecated.swift in Sources */,
+				OBJ_170 /* Aurora.Networking.Legacy.swift in Sources */,
 				OBJ_171 /* AuroraFramework.swift in Sources */,
 				OBJ_172 /* AuroraCrashHandler.swift in Sources */,
 				OBJ_173 /* AuroraDevice.swift in Sources */,
