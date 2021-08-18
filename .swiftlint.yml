@@ -2,3 +2,4 @@ opt_in_rules: # some rules are only opt-in
    - missing_docs
    - empty_count
    - empty_string
+   - toggle_bool
