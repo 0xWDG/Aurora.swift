@@ -66,7 +66,6 @@
 		OBJ_198 /* Inspectable.UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_59 /* Inspectable.UIView.swift */; };
 		OBJ_199 /* NSWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_62 /* NSWindow.swift */; };
 		OBJ_200 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_63 /* Bundle.swift */; };
-		OBJ_201 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_64 /* Color.swift */; };
 		OBJ_202 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_66 /* Array.swift */; };
 		OBJ_203 /* Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_67 /* Bool.swift */; };
 		OBJ_204 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_68 /* Collection.swift */; };
@@ -99,7 +98,7 @@
 		OBJ_231 /* UIBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_96 /* UIBarItem.swift */; };
 		OBJ_232 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_97 /* UIButton.swift */; };
 		OBJ_233 /* UIButtonCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_98 /* UIButtonCorner.swift */; };
-		OBJ_234 /* UIColor+CGColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_99 /* UIColor+CGColor.swift */; };
+		OBJ_234 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_99 /* UIColor.swift */; };
 		OBJ_235 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_100 /* UIDevice.swift */; };
 		OBJ_236 /* UIGreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_101 /* UIGreenButton.swift */; };
 		OBJ_237 /* UIImage+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_102 /* UIImage+GIF.swift */; };
@@ -242,7 +241,6 @@
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		OBJ_62 /* NSWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSWindow.swift; sourceTree = "<group>"; };
 		OBJ_63 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
-		OBJ_64 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		OBJ_66 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		OBJ_67 /* Bool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bool.swift; sourceTree = "<group>"; };
 		OBJ_68 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
@@ -276,7 +274,7 @@
 		OBJ_96 /* UIBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarItem.swift; sourceTree = "<group>"; };
 		OBJ_97 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		OBJ_98 /* UIButtonCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonCorner.swift; sourceTree = "<group>"; };
-		OBJ_99 /* UIColor+CGColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+CGColor.swift"; sourceTree = "<group>"; };
+		OBJ_99 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -460,7 +458,6 @@
 			children = (
 				OBJ_61 /* AppKit */,
 				OBJ_63 /* Bundle.swift */,
-				OBJ_64 /* Color.swift */,
 				OBJ_65 /* Foundation */,
 				OBJ_90 /* UIKit */,
 				OBJ_119 /* WKInterfaceDevice.swift */,
@@ -548,7 +545,7 @@
 				OBJ_96 /* UIBarItem.swift */,
 				OBJ_97 /* UIButton.swift */,
 				OBJ_98 /* UIButtonCorner.swift */,
-				OBJ_99 /* UIColor+CGColor.swift */,
+				OBJ_99 /* UIColor.swift */,
 				OBJ_100 /* UIDevice.swift */,
 				OBJ_101 /* UIGreenButton.swift */,
 				OBJ_102 /* UIImage+GIF.swift */,
@@ -721,7 +718,6 @@
 				OBJ_198 /* Inspectable.UIView.swift in Sources */,
 				OBJ_199 /* NSWindow.swift in Sources */,
 				OBJ_200 /* Bundle.swift in Sources */,
-				OBJ_201 /* Color.swift in Sources */,
 				OBJ_202 /* Array.swift in Sources */,
 				OBJ_203 /* Bool.swift in Sources */,
 				OBJ_204 /* Collection.swift in Sources */,
@@ -754,7 +750,7 @@
 				OBJ_231 /* UIBarItem.swift in Sources */,
 				OBJ_232 /* UIButton.swift in Sources */,
 				OBJ_233 /* UIButtonCorner.swift in Sources */,
-				OBJ_234 /* UIColor+CGColor.swift in Sources */,
+				OBJ_234 /* UIColor.swift in Sources */,
 				OBJ_235 /* UIDevice.swift in Sources */,
 				OBJ_236 /* UIGreenButton.swift in Sources */,
 				OBJ_237 /* UIImage+GIF.swift in Sources */,

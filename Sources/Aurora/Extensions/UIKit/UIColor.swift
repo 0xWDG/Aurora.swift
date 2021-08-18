@@ -51,6 +51,22 @@ public extension UIColor {
         alpha: 1.0
     )
     
+    /// Aurora color
+    static let Aurora = Color.init(
+        red: 0,
+        green: 212/255,
+        blue: 255/255,
+        alpha: 1.0
+    )
+    
+    /// Random color.
+    static var random: UIColor {
+        let red = Int.random(in: 0...255)
+        let green = Int.random(in: 0...255)
+        let blue = Int.random(in: 0...255)
+        return Color(red: red, green: green, blue: blue)!
+    }
+    
     /// A color object with grayscale and alpha values that are both 0.0.
     static let transparent = UIColor.clear
     
@@ -65,23 +81,6 @@ public extension UIColor {
         } else {
             return .white
         }
-    }
-    
-    /// random color
-    /// - Parameter randomApha: Random alpha?
-    /// - Returns: Random UIColor
-    class func random(randomAlpha randomApha: Bool = false) -> UIColor {
-        let redValue = CGFloat.random(in: 0...255) / 255.0
-        let greenValue = CGFloat.random(in: 0...255) / 255.0
-        let blueValue = CGFloat.random(in: 0...255) / 255.0
-        let alphaValue = randomApha ? CGFloat.random(in: 0...255) / 255.0: 1
-        
-        return UIColor(
-            red: redValue,
-            green: greenValue,
-            blue: blueValue,
-            alpha: alphaValue
-        )
     }
     
     /// Initializes and returns a color object using the specified hexadecimal code and an optional alpha.
