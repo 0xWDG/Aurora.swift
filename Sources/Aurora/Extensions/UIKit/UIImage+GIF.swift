@@ -157,7 +157,7 @@ public extension UIImage {
     ///   - valueA: Int 1
     ///   - valueB: Int 2
     /// - Returns:Greatest common divisor
-    internal class func gcdForPair(_ valueA: Int?, _ valueB: Int?) -> Int {
+    internal class func gcdForPair(_ valueA: Int, _ valueB: Int) -> Int {
         var valueA = valueA
         var valueB = valueB
         // Check if one of them is nil
@@ -169,10 +169,6 @@ public extension UIImage {
             } else {
                 return 0
             }
-        }
-
-        guard let valueA = valueA, let valueB = valueB else {
-            fatalError("Invalid values")
         }
 
         // Swap for modulo

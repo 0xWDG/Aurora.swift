@@ -80,7 +80,6 @@ public extension UIImage {
     /// - Parameter color: color
     /// - Returns: UIImage
     func maskWithGradientColor(color: UIColor) -> UIImage? {
-        let maskImage = self.cgImage
         let width = self.size.width
         let height = self.size.height
         let bounds = CGRect(x: 0, y: 0, width: width, height: height)
@@ -91,7 +90,14 @@ public extension UIImage {
             rawValue: CGImageAlphaInfo.premultipliedLast.rawValue
         )
 
-        let bitmapContext = CGContext(
+        let locations: [CGFloat] = [0.0, 1.0]
+        let bottom = UIColor(red: 1, green: 0, blue: 0, alpha: 1).cgColor
+        let top = UIColor(red: 0, green: 1, blue: 0, alpha: 0).cgColor
+        let colors = [top, bottom] as CFArray
+        let startPoint = CGPoint(x: width/2, y: 0)
+        let endPoint = CGPoint(x: width/2, y: height)
+
+        guard let bitmapContext = CGContext(
             data: nil,
             width: Int(width),
             height: Int(height),
@@ -99,19 +105,9 @@ public extension UIImage {
             bytesPerRow: 0,
             space: colorSpace,
             bitmapInfo: bitmapInfo.rawValue
-        )
-
-        let locations: [CGFloat] = [0.0, 1.0]
-        let bottom = UIColor(red: 1, green: 0, blue: 0, alpha: 1).cgColor
-        let top = UIColor(red: 0, green: 1, blue: 0, alpha: 0).cgColor
-        let colors = [top, bottom] as CFArray
-        let gradient = CGGradient(colorsSpace: colorSpace, colors: colors, locations: locations)
-        let startPoint = CGPoint(x: width/2, y: 0)
-        let endPoint = CGPoint(x: width/2, y: height)
-
-        guard let bitmapContext = bitmapContext,
-              let gradient = gradient,
-              let maskImage = maskImage else {
+        ),
+        let gradient = CGGradient(colorsSpace: colorSpace, colors: colors, locations: locations),
+        let maskImage = self.cgImage else {
             return nil
         }
         bitmapContext.clip(to: bounds, mask: maskImage)
@@ -296,18 +292,17 @@ public extension UIImage {
         let width = cgImage.width
         let height = cgImage.height
         let bits = cgImage.bitsPerComponent
-        let colorSpace = cgImage.colorSpace
         let bitmapInfo = cgImage.bitmapInfo
-        guard let colorSpace = colorSpace,
+        guard let colorSpace = cgImage.colorSpace,
               let context = CGContext(
-            data: nil,
-            width: width,
-            height: height,
-            bitsPerComponent: bits,
-            bytesPerRow: 0,
-            space: colorSpace,
-            bitmapInfo: bitmapInfo.rawValue
-        ) else { return nil }
+                data: nil,
+                width: width,
+                height: height,
+                bitsPerComponent: bits,
+                bytesPerRow: 0,
+                space: colorSpace,
+                bitmapInfo: bitmapInfo.rawValue
+              ) else { return nil }
 
         var red: CGFloat = 0.0
         var green: CGFloat = 0.0
