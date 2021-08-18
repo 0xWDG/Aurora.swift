@@ -2134,7 +2134,7 @@ public extension String {
     /// Check if string contains only unique characters.
     ///
     func hasUniqueCharacters() -> Bool {
-        guard count > 0 else { return false }
+        guard !self.isBlank else { return false }
         var uniqueChars = Set<String>()
         for char in self {
             if uniqueChars.contains(String(char)) { return false }

@@ -265,7 +265,7 @@ extension Aurora {
         )
 
         // Check if we have a public key, or certificate hash.
-        if HTTPSCertificate.publicKeyHash.count == 0 || HTTPSCertificate.certificateHash.count == 0 {
+        if HTTPSCertificate.publicKeyHash.isBlank || HTTPSCertificate.certificateHash.isBlank {
             // Show a error, only on debug builds
             log(
                 "[WARNING] No Public key pinning/Certificate pinning\n" +

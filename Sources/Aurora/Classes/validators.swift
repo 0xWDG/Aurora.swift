@@ -34,7 +34,9 @@ open class Validator {
             "i hate this app"
         ]
 
-        return bannedWords.filter { str.contains($0) }.count > 0
+        return bannedWords.filter {
+            str.contains($0)
+        }.count >= 1
     }
 
     /// Does the string contains a phone number

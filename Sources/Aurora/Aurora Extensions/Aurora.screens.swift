@@ -9,7 +9,7 @@ extension Aurora {
     var isCarplay: Bool {
         return UIScreen.screens.filter {
             $0.traitCollection.userInterfaceIdiom == .carPlay
-        }.count > 0
+        }.count >= 1
     }
 
     /// Are we running on a Mac?
@@ -17,7 +17,7 @@ extension Aurora {
         if #available(iOS 14.0, *, tvOS 14.0, *) {
             return UIScreen.screens.filter {
                 $0.traitCollection.userInterfaceIdiom == .mac
-            }.count > 0
+            }.count >= 1
         }
 
         return false
@@ -27,28 +27,28 @@ extension Aurora {
     var isiPad: Bool {
         return UIScreen.screens.filter {
             $0.traitCollection.userInterfaceIdiom == .pad
-        }.count > 0
+        }.count >= 1
     }
 
     /// Are we running on a iPhone?
     var isiPhone: Bool {
         return UIScreen.screens.filter {
             $0.traitCollection.userInterfaceIdiom == .phone
-        }.count > 0
+        }.count >= 1
     }
 
     /// Are we running on a TV?
     var isTV: Bool {
         return UIScreen.screens.filter {
             $0.traitCollection.userInterfaceIdiom == .tv
-        }.count > 0
+        }.count >= 1
     }
 
     /// Are we running on something unspecified??
     var isUnspecified: Bool {
         return UIScreen.screens.filter {
             $0.traitCollection.userInterfaceIdiom == .unspecified
-        }.count > 0
+        }.count >= 1
     }
 
     /// Get the first (active) carPlay screen.

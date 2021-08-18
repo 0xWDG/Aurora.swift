@@ -1,2 +1,3 @@
 opt_in_rules: # some rules are only opt-in
    - missing_docs
+   - empty_count

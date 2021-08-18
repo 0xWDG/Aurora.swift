@@ -51,9 +51,10 @@ open class AuroraFrameworkiCloudSync {
                 object: nil
             )
 
-            if keyValueStore.dictionaryRepresentation.count == 0 {
+            if keyValueStore.dictionaryRepresentation.count >= 1 {
                 self.toCloud()
             }
+
             self.fromCloud()
 
             // Say i'm syncing
