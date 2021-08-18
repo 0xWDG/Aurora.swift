@@ -6,3 +6,4 @@ opt_in_rules: # some rules are only opt-in
    - unused_optional_binding
    - valid_ibinspectable
    - modifier_order
+   - first_where

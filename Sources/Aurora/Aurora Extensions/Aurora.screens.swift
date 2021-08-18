@@ -53,17 +53,17 @@ extension Aurora {
 
     /// Get the first (active) carPlay screen.
     var getCarplayScreen: UIScreen? {
-        return UIScreen.screens.filter {
+        return UIScreen.screens.first(where: {
             $0.traitCollection.userInterfaceIdiom == .carPlay
-        }.first
+        })
     }
 
     /// Get the first (active) Mac screen.
     var getMacScreen: UIScreen? {
         if #available(iOS 14.0, *, tvOS 14.0, *) {
-            return UIScreen.screens.filter {
+            return UIScreen.screens.first(where: {
                 $0.traitCollection.userInterfaceIdiom == .mac
-            }.first
+            })
         }
 
         // Not supported (yet)
@@ -72,30 +72,30 @@ extension Aurora {
 
     /// Get the first (active) iPad screen.
     var getiPadScreen: UIScreen? {
-        return UIScreen.screens.filter {
+        return UIScreen.screens.first(where: {
             $0.traitCollection.userInterfaceIdiom == .pad
-        }.first
+        })
     }
 
     /// Get the first (active) iPhone screen.
     var getiPhoneScreen: UIScreen? {
-        return UIScreen.screens.filter {
+        return UIScreen.screens.first(where: {
             $0.traitCollection.userInterfaceIdiom == .phone
-        }.first
+        })
     }
 
     /// Get the first (active) TV screen.
     var getTVScreen: UIScreen? {
-        return UIScreen.screens.filter {
+        return UIScreen.screens.first(where: {
             $0.traitCollection.userInterfaceIdiom == .tv
-        }.first
+        })
     }
 
     /// Get the first (active) unspecified screen.
     var getScreen: UIScreen? {
-        return UIScreen.screens.filter {
+        return UIScreen.screens.first(where: {
             $0.traitCollection.userInterfaceIdiom == .unspecified
-        }.first
+        })
     }
 }
 #endif

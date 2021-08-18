@@ -49,9 +49,9 @@ public class NetworkStatus {
     public var interfaceType: NWInterface.InterfaceType? {
         guard let monitor = monitor else { return nil }
 
-        return monitor.currentPath.availableInterfaces.filter {
+        return monitor.currentPath.availableInterfaces.first(where: {
             monitor.currentPath.usesInterfaceType($0.type)
-        }.first?.type
+        })?.type
     }
 
     /// Which interface types are available

@@ -178,7 +178,7 @@ public class ToastView: UIView {
                 options: .curveEaseOut,
                 animations: { self.transform = CGAffineTransform(translationX: 0, y: -100) },
                 completion: { _ in
-                self.removeFromSuperview()
+                    self.removeFromSuperview()
                 }
             )
         })
@@ -194,10 +194,12 @@ public class ToastView: UIView {
     /// Get the top most UIViewController
     /// - Returns: UIViewController
     private func getTopViewController() -> UIViewController? {
-         let windows = UIApplication.shared.windows
-         let keyWindow = windows.count == 1 ? windows.first : windows.filter {
-            $0.isKeyWindow
-         }.first
+        let windows = UIApplication.shared.windows
+        let keyWindow = windows.count == 1
+            ? windows.first
+            : windows.first(where: {
+                $0.isKeyWindow
+            })
 
         if var topController = keyWindow?.rootViewController {
             while let presentedViewController = topController.presentedViewController {
