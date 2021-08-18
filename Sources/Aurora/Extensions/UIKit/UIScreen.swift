@@ -13,7 +13,7 @@
 //
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT
 
 #if os(iOS) || os(tvOS)
 

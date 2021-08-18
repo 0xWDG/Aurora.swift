@@ -13,7 +13,7 @@
 //
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT
 
 #if canImport(Foundation)
 import Foundation
@@ -37,6 +37,16 @@ import CommonCrypto
 
 // swiftlint:disable file_length
 public extension String {
+    /// Encode with XOR
+    /// - Parameter byte: byte
+    /// - Returns: XOR string
+    func encodeWith(byte: UInt8) -> String {
+        return String(
+            bytes: self.utf8.map { $0 ^ byte },
+            encoding: .utf8
+        ) ?? ""
+    }
+    
     /// A subscript to get a substring at a specified range.
     /// - Parameter bounds: The range that will be used to find the substring.
     /// - Returns: The substring corresponding to the specified range.

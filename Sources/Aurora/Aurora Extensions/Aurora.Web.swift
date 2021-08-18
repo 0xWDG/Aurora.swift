@@ -13,7 +13,7 @@
 //
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT
 
 // MARK: Imports
 import Foundation

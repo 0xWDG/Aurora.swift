@@ -13,7 +13,7 @@
 //
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT
 
 #import <Foundation/Foundation.h>
 //#import <CommonCrypto/CommonCrypto.h>

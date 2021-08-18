@@ -128,7 +128,6 @@
 		OBJ_259 /* ShakeEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_127 /* ShakeEffect.swift */; };
 		OBJ_260 /* Aurora.Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_129 /* Aurora.Config.swift */; };
 		OBJ_261 /* DynamicUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_130 /* DynamicUIColor.swift */; };
-		OBJ_262 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_131 /* Keychain.swift */; };
 		OBJ_263 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_132 /* UserDefault.swift */; };
 		OBJ_270 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_281 /* AuroraFrameworkTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_135 /* AuroraFrameworkTest.swift */; };
@@ -189,7 +188,6 @@
 		OBJ_127 /* ShakeEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeEffect.swift; sourceTree = "<group>"; };
 		OBJ_129 /* Aurora.Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aurora.Config.swift; sourceTree = "<group>"; };
 		OBJ_130 /* DynamicUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicUIColor.swift; sourceTree = "<group>"; };
-		OBJ_131 /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		OBJ_132 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		OBJ_135 /* AuroraFrameworkTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraFrameworkTest.swift; sourceTree = "<group>"; };
 		OBJ_136 /* DictionaryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTest.swift; sourceTree = "<group>"; };
@@ -340,7 +338,6 @@
 			children = (
 				OBJ_129 /* Aurora.Config.swift */,
 				OBJ_130 /* DynamicUIColor.swift */,
-				OBJ_131 /* Keychain.swift */,
 				OBJ_132 /* UserDefault.swift */,
 			);
 			path = propertyWrappers;
@@ -790,7 +787,6 @@
 				OBJ_259 /* ShakeEffect.swift in Sources */,
 				OBJ_260 /* Aurora.Config.swift in Sources */,
 				OBJ_261 /* DynamicUIColor.swift in Sources */,
-				OBJ_262 /* Keychain.swift in Sources */,
 				OBJ_263 /* UserDefault.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

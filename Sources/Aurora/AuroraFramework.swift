@@ -13,7 +13,7 @@
 //
 // Thanks for using!
 //
-// Licence: Needs to be decided.
+// Licence: MIT
 
 #if canImport(Foundation)
 import Foundation
@@ -46,7 +46,7 @@ import CommonCrypto
 ///
 /// - Experiment: to start experimental functions use the following code in your app(delegate):
 ///
-/// `Aurora.shared.startExperimentalFunctions()`
+/// ``Aurora.shared.startExperimentalFunctions()``
 /// - Version: 1.0
 /// - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
 ///  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
