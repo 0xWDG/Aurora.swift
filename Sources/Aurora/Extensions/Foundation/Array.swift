@@ -19,19 +19,16 @@ import Foundation
 
 // MARK: - Subscript
 public extension Array {
-    
     /// An subscript to access at an index safely.
     /// - Parameter index: The element index that we want to get.
     /// - Returns: The element found at the index, if the index is out of bounds then it will return nil.
     subscript(safe index: Int) -> Element? {
         indices.contains(index) ? self[index] : nil
     }
-    
 }
 
 // MARK: - Remove
 public extension Array where Element: Equatable {
-    
     /// Remove all duplicates elements in the Array.
     mutating func removeDuplicates() {
         // swiftlint:disable:next reduce_into
@@ -44,12 +41,10 @@ public extension Array where Element: Equatable {
         // swiftlint:disable:next reduce_into
         return reduce([]) { $0.contains($1) ? $0 : $0 + [$1] }
     }
-    
 }
 
 // MARK: - Index Getter
 public extension Array where Element: Equatable {
-    
     /// Get all the indexes of a specified element.
     /// - Parameter item: The specified element to search for.
     /// - Returns: An array containing all the indexes found for the specified element.
@@ -84,7 +79,6 @@ public extension Array where Element: Equatable {
 
 // MARK: - Equatable Transform
 public extension Array where Element: Equatable {
-    
     /// Get all the elements diffing between this array and others.
     /// - Parameter values: All the arrays that will be compared with the current one.
     /// - Returns: An array containing all the elements diffing between this array and the others.
@@ -147,5 +141,4 @@ public extension Array where Element: Equatable {
             return Array(self[$0..<$0.advanced(by: endIndex)])
         }
     }
-    
 }

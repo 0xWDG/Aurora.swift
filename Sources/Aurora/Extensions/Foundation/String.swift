@@ -2632,12 +2632,12 @@ public extension String {
     }
     #endif
     
-    #if canImport(AppKit) || canImport(UIKit)
+    #if canImport(UIKit)
     /// Add color to string.
     ///
     /// - Parameter color: text color.
     /// - Returns: a NSAttributedString versions of string colored with given color.
-    func colored(with color: Color) -> NSAttributedString {
+    func colored(with color: UIColor) -> NSAttributedString {
         return NSMutableAttributedString(string: self, attributes: [.foregroundColor: color])
     }
     #endif

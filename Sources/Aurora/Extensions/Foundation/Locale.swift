@@ -12,7 +12,10 @@ public extension Locale {
         guard isoRegionCodes.contains(isoRegionCode) else { return nil }
         
         return isoRegionCode.unicodeScalars.reduce(into: String()) {
-            guard let flagScalar = UnicodeScalar(UInt32(127397) + $1.value) else { return }
+            guard let flagScalar = UnicodeScalar(
+                    UInt32(127397) + $1.value
+            ) else { return }
+            
             $0.unicodeScalars.append(flagScalar)
         }
     }

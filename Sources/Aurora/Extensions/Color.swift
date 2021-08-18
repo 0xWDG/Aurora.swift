@@ -15,12 +15,13 @@
 //
 // Licence: MIT
 
-#if !os(Linux) && !os(watchOS)
+#if !os(Linux) && !os(watchOS) && canImport(UIKit)
 import CoreImage
+import UIKit
 
 // swiftlint:disable file_length
 // MARK: - Properties
-public extension Color {
+public extension UIColor {
     /// Aurora color
     static let Aurora = Color.init(
         red: 0,
@@ -30,7 +31,7 @@ public extension Color {
     )
     
     /// Random color.
-    static var random: Color {
+    static var random: UIColor {
         let red = Int.random(in: 0...255)
         let green = Int.random(in: 0...255)
         let blue = Int.random(in: 0...255)
@@ -196,7 +197,7 @@ public extension Color {
     }
 
     /// Get color complementary (read-only, if applicable).
-    var complementary: Color? {
+    var complementary: UIColor? {
         let colorSpaceRGB = CGColorSpaceCreateDeviceRGB()
         let convertColorToRGBSpace: ((_ color: Color) -> Color?) = { _ -> Color? in
             if self.cgColor.colorSpace!.model == CGColorSpaceModel.monochrome {
@@ -225,7 +226,7 @@ public extension Color {
 }
 
 // MARK: - Methods
-public extension Color {
+public extension UIColor {
     /// Blend two Colors
     ///
     /// - Parameters:
@@ -235,10 +236,10 @@ public extension Color {
     ///   - intensity2: intensity of second color (default is 0.5)
     /// - Returns: Color created by blending first and seond colors.
     static func blend(
-        _ color1: Color,
+        _ color1: UIColor,
         intensity1: CGFloat = 0.5,
-        with color2: Color,
-        intensity2: CGFloat = 0.5) -> Color {
+        with color2: UIColor,
+        intensity2: CGFloat = 0.5) -> UIColor {
         // http://stackoverflow.com/questions/27342715/blend-uicolors-in-swift
         let total = intensity1 + intensity2
         let level1 = intensity1/total
@@ -284,7 +285,7 @@ public extension Color {
     ///
     /// - Parameter percentage: Percentage by which to lighten the color
     /// - Returns: A lightened color
-    func lighten(by percentage: CGFloat = 0.2) -> Color {
+    func lighten(by percentage: CGFloat = 0.2) -> UIColor {
         var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
         getRed(&red, green: &green, blue: &blue, alpha: &alpha)
         return Color(red: min(red + percentage, 1.0),
@@ -300,7 +301,7 @@ public extension Color {
     ///
     /// - Parameter percentage: Percentage by which to darken the color
     /// - Returns: A darkened color
-    func darken(by percentage: CGFloat = 0.2) -> Color {
+    func darken(by percentage: CGFloat = 0.2) -> UIColor {
         var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
         getRed(&red, green: &green, blue: &blue, alpha: &alpha)
         return Color(red: max(red - percentage, 0),
@@ -312,7 +313,7 @@ public extension Color {
 }
 
 // MARK: - Initializers
-public extension Color {
+public extension UIColor {
     
     /// Create Color from RGB values with optional transparency.
     ///
@@ -385,7 +386,7 @@ public extension Color {
     /// Create Color from a complementary of a Color (if applicable).
     ///
     /// - Parameter color: color of which opposite color is desired.
-    convenience init?(complementaryFor color: Color) {
+    convenience init?(complementaryFor color: UIColor) {
         let colorSpaceRGB = CGColorSpaceCreateDeviceRGB()
         let convertColorToRGBSpace: ((_ color: Color) -> Color?) = { color -> Color? in
             if color.cgColor.colorSpace!.model == CGColorSpaceModel.monochrome {
@@ -410,97 +411,5 @@ public extension Color {
         let blue: CGFloat = sqrt(pow(255.0, 2.0) - pow((componentColors[2]*255), 2.0))/255
         self.init(red: red, green: green, blue: blue, alpha: 1.0)
     }
-}
-
-// MARK: - Social
-public extension Color {
-    
-    /// Brand identity color of popular social media platform.
-    struct Social {
-        // https://www.lockedowndesign.com/social-media-colors/
-        private init() {}
-        
-        /// red: 59, green: 89, blue: 152
-        public static let facebook = Color(red: 59, green: 89, blue: 152)!
-        
-        /// red: 0, green: 182, blue: 241
-        public static let twitter = Color(red: 0, green: 182, blue: 241)!
-        
-        /// red: 223, green: 74, blue: 50
-        public static let googlePlus = Color(red: 223, green: 74, blue: 50)!
-        
-        /// red: 0, green: 123, blue: 182
-        public static let linkedIn = Color(red: 0, green: 123, blue: 182)!
-        
-        /// red: 69, green: 187, blue: 255
-        public static let vimeo = Color(red: 69, green: 187, blue: 255)!
-        
-        /// red: 179, green: 18, blue: 23
-        public static let youtube = Color(red: 179, green: 18, blue: 23)!
-        
-        /// red: 195, green: 42, blue: 163
-        public static let instagram = Color(red: 195, green: 42, blue: 163)!
-        
-        /// red: 203, green: 32, blue: 39
-        public static let pinterest = Color(red: 203, green: 32, blue: 39)!
-        
-        /// red: 244, green: 0, blue: 131
-        public static let flickr = Color(red: 244, green: 0, blue: 131)!
-        
-        /// red: 67, green: 2, blue: 151
-        public static let yahoo = Color(red: 67, green: 2, blue: 151)!
-        
-        /// red: 67, green: 2, blue: 151
-        public static let soundCloud = Color(red: 67, green: 2, blue: 151)!
-        
-        /// red: 44, green: 71, blue: 98
-        public static let tumblr = Color(red: 44, green: 71, blue: 98)!
-        
-        /// red: 252, green: 69, blue: 117
-        public static let foursquare = Color(red: 252, green: 69, blue: 117)!
-        
-        /// red: 255, green: 176, blue: 0
-        public static let swarm = Color(red: 255, green: 176, blue: 0)!
-        
-        /// red: 234, green: 76, blue: 137
-        public static let dribbble = Color(red: 234, green: 76, blue: 137)!
-        
-        /// red: 255, green: 87, blue: 0
-        public static let reddit = Color(red: 255, green: 87, blue: 0)!
-        
-        /// red: 74, green: 93, blue: 78
-        public static let devianArt = Color(red: 74, green: 93, blue: 78)!
-        
-        /// red: 238, green: 64, blue: 86
-        public static let pocket = Color(red: 238, green: 64, blue: 86)!
-        
-        /// red: 170, green: 34, blue: 182
-        public static let quora = Color(red: 170, green: 34, blue: 182)!
-        
-        /// red: 247, green: 146, blue: 30
-        public static let slideShare = Color(red: 247, green: 146, blue: 30)!
-        
-        /// red: 0, green: 153, blue: 229
-        public static let px500 = Color(red: 0, green: 153, blue: 229)!
-        
-        /// red: 223, green: 109, blue: 70
-        public static let listly = Color(red: 223, green: 109, blue: 70)!
-        
-        /// red: 0, green: 180, blue: 137
-        public static let vine = Color(red: 0, green: 180, blue: 137)!
-        
-        /// red: 0, green: 175, blue: 240
-        public static let skype = Color(red: 0, green: 175, blue: 240)!
-        
-        /// red: 235, green: 73, blue: 36
-        public static let stumbleUpon = Color(red: 235, green: 73, blue: 36)!
-        
-        /// red: 255, green: 252, blue: 0
-        public static let snapchat = Color(red: 255, green: 252, blue: 0)!
-        
-        /// red: 37, green: 211, blue: 102
-        public static let whatsApp = Color(red: 37, green: 211, blue: 102)!
-    }
-    
 }
 #endif

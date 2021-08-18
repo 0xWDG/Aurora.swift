@@ -17,9 +17,10 @@
 
 import Foundation
 
-#if canImport(CoreML) && canImport(Vision) && !os(tvOS)
+#if canImport(CoreML) && canImport(Vision) && !os(tvOS) && canImport(UIKit)
 import CoreML
 import Vision
+import UIKit
 
 /// NSFW Detector
 ///
@@ -97,7 +98,7 @@ public class NSFWDetector {
     /// - Parameters:
     ///   - image: Image
     ///   - completion: Detection result
-    public func check(image: Image, completion: @escaping (_ result: DetectionResult) -> Void) {
+    public func check(image: UIImage, completion: @escaping (_ result: DetectionResult) -> Void) {
         // Create a requestHandler for the image
         let requestHandler: VNImageRequestHandler?
         

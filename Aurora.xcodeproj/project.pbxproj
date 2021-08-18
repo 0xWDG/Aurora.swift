@@ -47,7 +47,6 @@
 		OBJ_176 /* AuroraKeychainConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_36 /* AuroraKeychainConstants.swift */; };
 		OBJ_178 /* AuroraLogview.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* AuroraLogview.swift */; };
 		OBJ_179 /* AuroraOnTabBarInteractionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* AuroraOnTabBarInteractionDelegate.swift */; };
-		OBJ_180 /* CrossPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_40 /* CrossPlatform.swift */; };
 		OBJ_181 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_41 /* ImageCache.swift */; };
 		OBJ_183 /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_43 /* KeyboardHandler.swift */; };
 		OBJ_184 /* NSFWDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* NSFWDetector.swift */; };
@@ -223,7 +222,6 @@
 		OBJ_36 /* AuroraKeychainConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraKeychainConstants.swift; sourceTree = "<group>"; };
 		OBJ_38 /* AuroraLogview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraLogview.swift; sourceTree = "<group>"; };
 		OBJ_39 /* AuroraOnTabBarInteractionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuroraOnTabBarInteractionDelegate.swift; sourceTree = "<group>"; };
-		OBJ_40 /* CrossPlatform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossPlatform.swift; sourceTree = "<group>"; };
 		OBJ_41 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		OBJ_43 /* KeyboardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandler.swift; sourceTree = "<group>"; };
 		OBJ_44 /* NSFWDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSFWDetector.swift; sourceTree = "<group>"; };
@@ -413,7 +411,6 @@
 				OBJ_36 /* AuroraKeychainConstants.swift */,
 				OBJ_38 /* AuroraLogview.swift */,
 				OBJ_39 /* AuroraOnTabBarInteractionDelegate.swift */,
-				OBJ_40 /* CrossPlatform.swift */,
 				OBJ_41 /* ImageCache.swift */,
 				OBJ_43 /* KeyboardHandler.swift */,
 				OBJ_44 /* NSFWDetector.swift */,
@@ -705,7 +702,6 @@
 				OBJ_176 /* AuroraKeychainConstants.swift in Sources */,
 				OBJ_178 /* AuroraLogview.swift in Sources */,
 				OBJ_179 /* AuroraOnTabBarInteractionDelegate.swift in Sources */,
-				OBJ_180 /* CrossPlatform.swift in Sources */,
 				OBJ_181 /* ImageCache.swift in Sources */,
 				OBJ_183 /* KeyboardHandler.swift in Sources */,
 				OBJ_184 /* NSFWDetector.swift in Sources */,

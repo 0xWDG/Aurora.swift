@@ -74,6 +74,7 @@ public extension Bundle {
             let value = infoDictionary[key] as? String else {
                 return ""
         }
+        
         return value
     }
     
@@ -85,6 +86,7 @@ public extension Bundle {
             let urlSchemes = urlType["CFBundleURLSchemes"] as? [String] else {
                 return []
         }
+        
         return urlSchemes
     }
     

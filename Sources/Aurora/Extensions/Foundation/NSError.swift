@@ -28,7 +28,10 @@ public extension NSError {
         self.init(
             domain: domain,
             code: code,
-            userInfo: [(kCFErrorLocalizedDescriptionKey as CFString) as String: description])
+            userInfo: [
+                (kCFErrorLocalizedDescriptionKey as CFString) as String: description
+            ]
+        )
     }
     
     /// A convenience initializer for NSError to set its description.
