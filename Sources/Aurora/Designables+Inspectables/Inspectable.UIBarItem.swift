@@ -19,7 +19,7 @@ extension UIBarItem {
     struct Properties {
         static var identifier = "identifier"
     }
-    
+
     /// Identifier
     @IBInspectable public var identifier: String? {
         get {

@@ -19,12 +19,12 @@ public extension Double {
     var toPositive: Double {
         return fabs(self)
     }
-    
+
     /// To string
     var toString: String {
         return String(format: "%.02f", self)
     }
-    
+
     /// Double to price
     /// - Parameter currency: currency symbol (Defaults to: €)
     /// - Returns: ""

@@ -60,7 +60,7 @@ class AuroraIntTest: XCTestCase {
     /// This number is a 'CGFloat'
     let iAmACGFloat: CGFloat = 6
     #endif
-    
+
     /// Test for function toString(...).
     /// toString is the same as the JavaScript equivallent
     func test_func_toString() {
@@ -69,59 +69,59 @@ class AuroraIntTest: XCTestCase {
             convertMe.toString(16) == "d",
             "[JS] The value should be d"
         )
-        
+
         // This is a valid value
         XCTAssert(
             convertMe.toString(8) == "15",
             "[JS] The value should be 15"
         )
-        
+
         // This is a valid value
         XCTAssert(
             convertMe.toString(2) == "1101",
             "[JS] The value should be 1101"
         )
-        
+
         // This is a invalid value
         XCTAssert(
             convertMe.toString(12345) == "13",
             "[JS] The value should be 13"
         )
     }
-    
+
     /// Test for "var isOdd"
     func test_isOdd() {
         XCTAssertTrue(
             myOddNumber.isOdd,
             "This number should be odd"
         )
-        
+
         XCTAssertFalse(
             myEvenNumber.isOdd,
             "This number should be even"
         )
     }
-        
+
     /// Test for "var isEven"
     func test_isEven() {
         XCTAssertFalse(
             myOddNumber.isEven,
             "This number should be odd"
         )
-        
+
         XCTAssertTrue(
             myEvenNumber.isEven,
             "This number should be even"
         )
     }
-    
+
     /// Test for "var isNegative"
     func test_isNegative() {
         XCTAssert(
             iAmNegative.isNegative,
             "This number should be negative"
         )
-        
+
         XCTAssertFalse(
             iAmPositive.isNegative,
             "This number should be positive"
@@ -134,7 +134,7 @@ class AuroraIntTest: XCTestCase {
             iAmPositive.isPositive,
             "This number should be positive"
         )
-        
+
         XCTAssertFalse(
             iAmNegative.isPositive,
             "This number should be negative"
@@ -150,14 +150,14 @@ class AuroraIntTest: XCTestCase {
             iAmNegative.isNegative,
             "This number should be negative"
         )
-        
+
         // The actual test.
         XCTAssert(
             iAmNegative.toPositive.isPositive,
             "It number should be positive"
         )
     }
-    
+
     /// Test for "var toDouble"
     func test_toDouble() {
         XCTAssert(
@@ -165,7 +165,7 @@ class AuroraIntTest: XCTestCase {
             "This number should be a Double"
         )
     }
-    
+
     /// Test for "var toFloat"
     func test_toFloat() {
         XCTAssert(
@@ -189,7 +189,7 @@ class AuroraIntTest: XCTestCase {
             "This number should be a UInt"
         )
     }
-    
+
     /// Test for "var toInt32"
     func test_toInt32() {
         XCTAssert(
@@ -197,7 +197,7 @@ class AuroraIntTest: XCTestCase {
             "This number should be a Int32"
         )
     }
-    
+
     /// Test for "var range"
     func test_range() {
         XCTAssert(
@@ -205,7 +205,7 @@ class AuroraIntTest: XCTestCase {
             "This should be a range from 0<10"
         )
     }
-    
+
     /// Test for "var toCGFloat"
     func test_toCGFloat() {
         #if canImport(UIKit)
@@ -217,28 +217,28 @@ class AuroraIntTest: XCTestCase {
         print("Test Case '-[AuroraTests.AuroraIntTest test_toCGFloat]' skipped. (not supported on this platform)")
         #endif
     }
-    
+
     /// Test for "func times"
     func test_func_times() {
         var counter = 0
-        
+
         10.times {
             counter += 1
         }
-        
+
         XCTAssert(
             counter == 10,
             "it should have happend 10 times"
         )
     }
-    
+
     /// Test for "func timesMake"
     func test_func_timesMake() {
         // This returns [5, 5, 5, 5, 5]
         let timesMake = 5.timesMake({ () -> Int in
             return 5
         })
-        
+
         XCTAssert(
             timesMake == [5, 5, 5, 5, 5],
             "It should be an array with 5 times the number 5 in it"

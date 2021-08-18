@@ -15,7 +15,7 @@ extension Aurora {
     public func getDataAsData(_ url: String) -> Data? {
         return self.networkRequest(url: url, method: .get, values: nil)
     }
-    
+
     /// [Legacy] getDataAsText
     ///
     /// - Parameter url: The url to be loaded
@@ -24,7 +24,7 @@ extension Aurora {
         guard let URLData = self.networkRequest(url: url, method: .get, values: nil) else {
             return nil
         }
-        
+
         return String.init(data: URLData, encoding: .utf8)
     }
 }

@@ -22,7 +22,7 @@ public extension Aurora {
             background()
         }
     }
-    
+
     /// Execute block in foreground
     /// - Parameter main: What to run in execute foreground
     func execute(main: @escaping () -> Void) {
@@ -30,7 +30,7 @@ public extension Aurora {
             main()
         }
     }
-    
+
     /// Execute block in background
     /// - Parameter background:What to execute in the backgroud
     func execute(background: @escaping () -> Void) {
@@ -38,7 +38,7 @@ public extension Aurora {
             background()
         }
     }
-    
+
     /// Delay execution of block (on main)
     /// - Parameters:
     ///   - after: For how long
@@ -47,7 +47,7 @@ public extension Aurora {
         let when = DispatchTime.now() + seconds
         DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
     }
-    
+
     /// Delay execution of block (in background)
     /// - Parameters:
     ///   - after: For how long

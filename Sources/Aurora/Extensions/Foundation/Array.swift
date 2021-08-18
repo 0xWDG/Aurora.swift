@@ -31,7 +31,7 @@ public extension Array where Element: Equatable {
         // swiftlint:disable:next reduce_into
         self = reduce([]) { $0.contains($1) ? $0 : $0 + [$1] }
     }
-    
+
     /// Remove all duplicates elements in the Array.
     /// - Returns: The array without the duplicates element.
     func removedDuplicates() -> [Element] {
@@ -52,7 +52,7 @@ public extension Array where Element: Equatable {
         }
         return indexes
     }
-    
+
     /// Get the first index of a specified element.
     /// - Parameter item: The specified element to search for.
     /// - Returns: The index corresponding at the first occurrence of a specified element.
@@ -63,7 +63,7 @@ public extension Array where Element: Equatable {
         }
         return nil
     }
-    
+
     /// Get the last index of a specified element.
     /// - Parameter item: The specified element to search for.
     /// - Returns: The index corresponding at the last occurrence of a specified element.
@@ -71,7 +71,7 @@ public extension Array where Element: Equatable {
     func lastIndex(of item: Element) -> Int? {
         indexes(of: item).last
     }
-    
+
 }
 
 // MARK: - Equatable Transform
@@ -91,20 +91,20 @@ public extension Array where Element: Equatable {
         }
         return result
     }
-    
+
     /// Computes the intersection of arrays.
     /// - Parameter values: all the array that will be intersected with this one.
     /// - Returns: An array containing all the values of this array that are present in all the arguments.
     func intersection(for values: [Element]...) -> Array {
         var result = self
         var intersection = Array()
-        
+
         for (index, value) in values.enumerated() {
             if index > 0 {
                 result = intersection
                 intersection = Array()
             }
-            
+
             value.forEach {
                 if result.contains($0) {
                     intersection.append($0)
@@ -113,7 +113,7 @@ public extension Array where Element: Equatable {
         }
         return intersection
     }
-    
+
     /// Add each array's unique elements in this one.
     /// - Parameter values: all the array that will be merged in this one.
     /// - Returns: An array containing all the values of this array plus all the unique ones from the others array.
@@ -128,7 +128,7 @@ public extension Array where Element: Equatable {
         }
         return result
     }
-    
+
     /// Split the array in several subarrays of a specified size.
     /// - Parameter chunkSize: The size of each subarray.
     /// - Returns: An array containing others arrays containing a maximum of `chunkSize`.

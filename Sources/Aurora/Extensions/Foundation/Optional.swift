@@ -19,7 +19,7 @@ import Foundation
 public struct NilError: Error, CustomStringConvertible {
     let file: String
     let line: Int
-    
+
     /// Nil
     /// - Parameters:
     ///   - file: File
@@ -28,7 +28,7 @@ public struct NilError: Error, CustomStringConvertible {
         self.file = file
         self.line = line
     }
-    
+
     /// Description
     public var description: String {
         return "Nil returned at " + (file) + ":\(line)"
@@ -48,7 +48,7 @@ public extension Optional {
         }
         return result
     }
-    
+
     /// Does a optional match something?
     ///
     /// Example:
@@ -63,14 +63,14 @@ public extension Optional {
         guard let value = self else {
             return nil
         }
-        
+
         guard predicate(value) else {
             return nil
         }
-        
+
         return value
     }
-    
+
     /// unwrap or throw
     /// - Parameter errorExpression: Unwrap to error
     /// - Throws: Error if cannot unwrap
@@ -79,7 +79,7 @@ public extension Optional {
         guard let value = self else {
             throw errorExpression()
         }
-        
+
         return value
     }
 }

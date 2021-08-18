@@ -42,7 +42,7 @@ import UIKit
 /// Editted by Wesley de groot, removed pre-ios 13 stuff.
 @propertyWrapper
 public struct DynamicUIColor {
-    
+
     /// Backwards compatible wrapper arround UIUserInterfaceStyle
     public enum Style {
         /// Light color
@@ -50,10 +50,10 @@ public struct DynamicUIColor {
         /// Dark color
         case dark
     }
-    
+
     let light: UIColor
     let dark: UIColor
-    
+
     /// A property wrapper arround UIColor to support dark mode.
     /// - Parameters:
     ///   - light: color when using an light interface
@@ -65,7 +65,7 @@ public struct DynamicUIColor {
         self.light = light
         self.dark = dark
     }
-    
+
     /// wrapped Color
     public var wrappedValue: UIColor {
         #if os(iOS) || os(tvOS)

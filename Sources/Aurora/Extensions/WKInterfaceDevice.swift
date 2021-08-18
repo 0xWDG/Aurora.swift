@@ -47,21 +47,21 @@ public func < (lhs: WatchDeviceType, rhs: WatchDeviceType) -> Bool {
     var isSmaller: Bool {
         return device == .watch38mm || device == .watch40mm
     }
-    
+
     /// A Boolean value that determines whether the Apple watch case size equals 42 or 44 mm.
     var isLarger: Bool {
         return device == .watch42mm || device == .watch44mm
     }
-    
+
     /// Returns a current Apple Watch device type based on a case size.
     var device: WatchDeviceType {
         let watch38mm = CGRect(origin: .zero, size: CGSize(width: 136.0, height: 170.0))
         let watch40mm = CGRect(origin: .zero, size: CGSize(width: 162.0, height: 197.0))
         let watch42mm = CGRect(origin: .zero, size: CGSize(width: 156.0, height: 195.0))
         let watch44mm = CGRect(origin: .zero, size: CGSize(width: 184.0, height: 224.0))
-        
+
         let currentBounds = WKInterfaceDevice.current().screenBounds
-        
+
         switch currentBounds {
         case watch38mm:
             return .watch38mm
@@ -71,7 +71,7 @@ public func < (lhs: WatchDeviceType, rhs: WatchDeviceType) -> Bool {
             return .watch42mm
         case watch44mm:
             return .watch44mm
-            
+
         default:
             return .unknown
         }

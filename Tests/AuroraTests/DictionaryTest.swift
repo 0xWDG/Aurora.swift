@@ -26,7 +26,7 @@ class AuroraDictionaryTest: XCTestCase {
             "a": "test",
             "Dictionary": "!"
         ]
-        
+
         XCTAssert(dict["Dictionary"] == "!", "Should be \"!\"")
     }
 }

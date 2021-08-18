@@ -19,45 +19,45 @@ public extension UITabBar {
     /// Selected index
     var selectedIndex: Int {
         // Tricky business.
-        
+
         var currentIndex = 0
-        
+
         guard let items = items else {
             fatalError("No items in Tabbar.")
         }
-        
+
         for barItem in items {
             if barItem == selectedItem {
                 return currentIndex
             }
-            
+
             currentIndex += 1
         }
-        
+
         fatalError("Failed to get index")
     }
-    
+
     /// Select item with name
     /// - Parameter withName: name
     func select(withName: String) {
         var currentIndex = 0
-        
+
         guard let items = items else {
             return
         }
-        
+
         for barItem in items {
             if barItem.title == withName {
                 selectedItem = barItem
                 return
             }
-            
+
             currentIndex += 1
         }
-        
+
         fatalError("Could not find item \(withName).")
     }
-    
+
     /// Execute a action after x taps
     ///
     /// Example:
@@ -74,7 +74,7 @@ public extension UITabBar {
         let runner = AuroraOnTabBarInteractionDelegate.sharedInstance
         runner.onInteractionClosure = execute
         runner.onTimes = times ?? 10
-        
+
         self.delegate = runner
     }
 }

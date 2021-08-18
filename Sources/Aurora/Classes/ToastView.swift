@@ -24,13 +24,13 @@ public class ToastView: UIView {
             setupShadow()
         }
     }
-    
+
     /// Set the toast height
     private let toastHeight: CGFloat = 50
-    
+
     /// Create a horizontal stack
     private var hStack: UIStackView = UIStackView(frame: CGRect.zero)
-    
+
     /// Default dark background color
     private let darkBackgroundColor = UIColor(
         red: 0.13,
@@ -38,7 +38,7 @@ public class ToastView: UIView {
         blue: 0.13,
         alpha: 1.00
     )
-    
+
     /// Default light background color
     private let lightBackgroundColor = UIColor(
         red: 0.99,
@@ -46,24 +46,24 @@ public class ToastView: UIView {
         blue: 0.99,
         alpha: 1.00
     )
-    
+
     // Background color of toast?
     private var viewBackgroundColor: UIColor? {
         return traitCollection.userInterfaceStyle == .dark ? darkBackgroundColor : lightBackgroundColor
     }
-    
+
     /// What to execute on TAP
     private var onTap: (() -> Void)?
-    
+
     /// Hide the view automatically after showing ?
     public var autoHide = true
-    
+
     /// Display time for the notification view in seconds
     public var displayTime: TimeInterval = 5
-    
+
     /// Hide the view automatically on tap ?
     public var hideOnTap = true
-    
+
     /// Create a toast view (like  Watch unlocked, Paired AirPods)
     ///
     /// - Parameters:
@@ -82,41 +82,41 @@ public class ToastView: UIView {
                 onTap: (() -> Void)? = nil
     ) {
         super.init(frame: CGRect.zero)
-        
+
         backgroundColor = viewBackgroundColor
-        
+
         getTopViewController()?.view.addSubview(self)
-        
+
         hStack = UIStackView(frame: CGRect.zero).configure {
             $0.spacing = 16
             $0.axis = .horizontal
             $0.alignment = .center
         }
-        
+
         let vStack = UIStackView(frame: CGRect.zero).configure {
             $0.axis = .vertical
             $0.alignment = .center
         }
-        
+
         let titleLabel = UILabel(frame: CGRect.zero).configure {
             $0.numberOfLines = 1
             $0.font = .systemFont(ofSize: 13, weight: .regular)
             $0.text = title
         }
-        
+
         vStack.addArrangedSubview(titleLabel)
-        
+
         if let icon = icon {
             let iconImageView = UIImageView(
                 frame: CGRect(x: 0, y: 0, width: 28, height: 28)
             )
-            
+
             iconImageView.tintColor = iconColor ?? .label
-            
+
             iconImageView.image = icon.withRenderingMode(.alwaysTemplate)
             hStack.addArrangedSubview(iconImageView)
         }
-        
+
         if let subtitle = subtitle {
             let subtitleLabel = UILabel.init().configure {
                 $0.textColor = .secondaryLabel
@@ -124,33 +124,33 @@ public class ToastView: UIView {
                 $0.font = .systemFont(ofSize: 11, weight: .light)
                 $0.text = subtitle
             }
-            
+
             vStack.addArrangedSubview(subtitleLabel)
         }
-        
+
         self.onTap = onTap
         let tapGestureRecognizer = UITapGestureRecognizer(
             target: self,
             action: #selector(didTap)
         )
-        
+
         addGestureRecognizer(tapGestureRecognizer)
-        
+
         hStack.addArrangedSubview(vStack)
         addSubview(hStack)
-        
+
         setupConstraints()
         setupStackViewConstraints()
-        
+
         transform = CGAffineTransform(translationX: 0, y: -100)
-        
+
         if let hapticType = haptic {
             UINotificationFeedbackGenerator().notificationOccurred(hapticType)
         }
-        
+
         addAnimation()
     }
-    
+
     /// Add the animations
     private func addAnimation() {
         UIView.animate(
@@ -167,7 +167,7 @@ public class ToastView: UIView {
             }
         )
     }
-    
+
     /// Hide toast after some time
     /// - Parameter time: time
     public func hide(after time: TimeInterval) {
@@ -183,14 +183,14 @@ public class ToastView: UIView {
             )
         })
     }
-    
+
     /// Called when the iOS interface environment changes.
     /// - Parameter previousTraitCollection: The UITraitCollection object before the interface environment changed.
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         backgroundColor = viewBackgroundColor
     }
-    
+
     /// Get the top most UIViewController
     /// - Returns: UIViewController
     private func getTopViewController() -> UIViewController? {
@@ -198,23 +198,23 @@ public class ToastView: UIView {
          let keyWindow = windows.count == 1 ? windows.first : windows.filter {
             $0.isKeyWindow
          }.first
-        
+
         if var topController = keyWindow?.rootViewController {
             while let presentedViewController = topController.presentedViewController {
                 topController = presentedViewController
             }
-            
+
             return topController
         } else {
             return nil
         }
     }
-    
+
     /// Setup constraints
     // swiftlint:disable:next function_body_length
     private func setupConstraints() {
         translatesAutoresizingMaskIntoConstraints = false
-        
+
         let heightConstraint = NSLayoutConstraint(
             item: self,
             attribute: .height,
@@ -224,7 +224,7 @@ public class ToastView: UIView {
             multiplier: 1,
             constant: toastHeight
         )
-        
+
         let centerConstraint = NSLayoutConstraint(
             item: self,
             attribute: .centerX,
@@ -234,7 +234,7 @@ public class ToastView: UIView {
             multiplier: 1,
             constant: 0
         )
-        
+
         // Height from top defaults to 10
         let topConstraint = NSLayoutConstraint(
             item: self,
@@ -245,7 +245,7 @@ public class ToastView: UIView {
             multiplier: 1,
             constant: 10
         )
-        
+
         let leadingConstraint = NSLayoutConstraint(
             item: self, attribute: .leading,
             relatedBy: .greaterThanOrEqual,
@@ -253,7 +253,7 @@ public class ToastView: UIView {
             attribute: .leadingMargin,
             multiplier: 1, constant: 8
         )
-        
+
         let trailingConstraint = NSLayoutConstraint(
             item: self,
             attribute: .trailing,
@@ -263,7 +263,7 @@ public class ToastView: UIView {
             multiplier: 1,
             constant: -8
         )
-        
+
         clipsToBounds = true
         layer.cornerRadius = toastHeight / 2
         superview?.addConstraints([
@@ -274,11 +274,11 @@ public class ToastView: UIView {
             topConstraint
         ])
     }
-    
+
     /// Setup StackView constraints
     private func setupStackViewConstraints() {
         hStack.translatesAutoresizingMaskIntoConstraints = false
-        
+
         let leadingConstraint = NSLayoutConstraint(
             item: hStack,
             attribute: .leading,
@@ -288,7 +288,7 @@ public class ToastView: UIView {
             multiplier: 1,
             constant: 24
         )
-        
+
         let trailingConstraint = NSLayoutConstraint(
             item: hStack,
             attribute: .trailing,
@@ -298,7 +298,7 @@ public class ToastView: UIView {
             multiplier: 1,
             constant: -24
         )
-        
+
         let topConstraint = NSLayoutConstraint(
             item: hStack,
             attribute: .top,
@@ -308,7 +308,7 @@ public class ToastView: UIView {
             multiplier: 1,
             constant: 0
         )
-        
+
         let bottomConstraint = NSLayoutConstraint(
             item: hStack,
             attribute: .bottom,
@@ -318,7 +318,7 @@ public class ToastView: UIView {
             multiplier: 1,
             constant: 0
         )
-        
+
         addConstraints([
             leadingConstraint,
             trailingConstraint,
@@ -326,7 +326,7 @@ public class ToastView: UIView {
             bottomConstraint
         ])
     }
-    
+
     /// Setup shadow
     private func setupShadow() {
         layer.masksToBounds = false
@@ -335,7 +335,7 @@ public class ToastView: UIView {
         layer.shadowRadius = 8
         layer.shadowOpacity = 1
     }
-    
+
     /// Did tap on toast
     @objc private func didTap() {
         if hideOnTap {
@@ -343,7 +343,7 @@ public class ToastView: UIView {
         }
         onTap?()
     }
-    
+
     /// Init
     /// - Parameter coder: An abstract class that serves as the basis for objects that\
     ///  enable archiving and distribution of other objects.

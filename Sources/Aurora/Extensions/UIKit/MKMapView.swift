@@ -34,7 +34,7 @@ public extension MKMapView {
             subtitle: subtitle
         )
     }
-    
+
     /// A string-based annotation that you apply to a specific map point.
     /// - Parameters:
     ///   - coordinate: The coordinate point of the annotation, specified as a latitude and longitude.

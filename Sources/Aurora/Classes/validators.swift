@@ -18,10 +18,10 @@ import Foundation
 open class Validator {
     /// Shared instance
     public static let shared = Validator.init()
-    
+
     /// initialize
     public init() {}
-    
+
     /// Contains banned words?
     /// - Parameter str: String to be checked.
     /// - Returns: Contains banned words?
@@ -33,10 +33,10 @@ open class Validator {
             "hoer",
             "i hate this app"
         ]
-        
+
         return bannedWords.filter { str.contains($0) }.count > 0
     }
-    
+
     /// Does the string contains a phone number
     /// - Parameter str: String to be checked.
     /// - Returns: Contains phone number?
@@ -48,7 +48,7 @@ open class Validator {
                 options: [],
                 range: NSRange(str.startIndex..., in: str)
             )
-            
+
             if let res = matches?.first {
                 return (res.resultType == .phoneNumber && res.range.length > 0)
             } else {
@@ -56,7 +56,7 @@ open class Validator {
             }
         }
     }
-    
+
     /// Does the string contains a email adress
     /// - Parameter str: String to be checked.
     /// - Returns: Contains email adress?
@@ -70,11 +70,11 @@ open class Validator {
                 options: [],
                 range: NSRange(location: 0, length: nsString.length)
             )
-            
+
             return (results?.count ?? 0) > 0
         }
     }
-    
+
     /// Does the string contains a adress
     /// - Parameter str: String to be checked.
     /// - Returns: Contains adress?
@@ -86,7 +86,7 @@ open class Validator {
                 options: [],
                 range: NSRange(str.startIndex..., in: str)
             )
-            
+
             if let res = matches?.first {
                 return (res.resultType == .address && res.range.length > 0)
             } else {

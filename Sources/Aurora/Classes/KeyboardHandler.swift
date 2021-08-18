@@ -49,10 +49,10 @@ public class KeyboardHandler {
             // force set viewcontroller frame to 0
             // (needed if a previous keyboard was smaller)
             forViewController.view.frame.origin.y = 0
-            
+
             // get frame key
             let key = UIResponder.keyboardFrameEndUserInfoKey
-            
+
             // Extract the keyboard size
             if let keyboardSize = (notification.userInfo?[key] as? NSValue)?.cgRectValue {
                 // Check if the frame is 0
@@ -64,13 +64,13 @@ public class KeyboardHandler {
                             // - Safe area insets (bottom)
                             - forViewController.view.safeAreaInsets.bottom
                     )
-                    
+
                     // Ask to renew the layout (if needed)
                     forViewController.view.layoutIfNeeded()
                 }
             }
         }
-        
+
         // Add a notification handler for 'keyboard will hide'
         _ = NotificationCenter.default.addObserver(
             forName: UIResponder.keyboardWillHideNotification,
@@ -79,7 +79,7 @@ public class KeyboardHandler {
         ) { (notification) in
             // get the frame
             let key = UIResponder.keyboardFrameEndUserInfoKey
-            
+
             // Extract the keyboard size
             if let keyboardSize = (notification.userInfo?[key] as? NSValue)?.cgRectValue {
                 // Check if the frame is not 0
@@ -91,7 +91,7 @@ public class KeyboardHandler {
                             // - Safe area insets (bottom)
                             - forViewController.view.safeAreaInsets.bottom
                     )
-                    
+
                     // Ask to renew the layout (if needed)
                     forViewController.view.layoutIfNeeded()
                 }

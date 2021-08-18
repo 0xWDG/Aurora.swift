@@ -30,7 +30,7 @@ public extension Aurora {
             action()
         }
     }
-    
+
     /// Is the screen currently being recorded?
     var isScreenRecording: Bool {
         return UIScreen.screens.filter { $0.isCaptured }.count > 0

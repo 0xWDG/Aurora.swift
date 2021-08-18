@@ -37,7 +37,7 @@ public enum UnitTest {
     public static var isRunning: Bool {
         ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
     }
-    
+
     #if !os(watchOS)
     /// Count time for action
     /// - Parameter closure: item to be performed
@@ -45,7 +45,7 @@ public enum UnitTest {
     public static func measure(closure: () -> Void) -> Float {
         let start = CACurrentMediaTime()
         closure()
-        
+
         let end = CACurrentMediaTime()
         return Float(end - start)
     }

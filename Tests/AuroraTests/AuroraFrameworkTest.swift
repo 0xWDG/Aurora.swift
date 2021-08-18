@@ -44,7 +44,7 @@ class AuroraTest: XCTestCase {
     func testAAAStartObserver() {
         TestObserver.observe()
     }
-    
+
     func testAuroraLog() {
         Aurora.shared.log("This is a test")
     }
@@ -58,7 +58,7 @@ class AuroraTest: XCTestCase {
         let regexMatch = "qqqqlxldddd" =~ "l(o|O)l"
         XCTAssert(regexMatch != true, "Regex must fail")
     }
-    
+
     func testLocalLog() {
         XCTAssert(Aurora.shared.log("This is a test"), "Should be true")
     }

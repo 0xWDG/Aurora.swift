@@ -8,22 +8,22 @@ import UIKit
 public enum TabBarItemAnimation {
     /// Bounce
     case bounce
-    
+
     /// Jump
     case jump
-    
+
     /// Rotate (Right)
     case rotate
-    
+
     /// Rotate (Right)
     case rotateRight
-    
+
     /// Rotate (Left)
     case rotateLeft
-    
+
     /// Shake
     case shake
-    
+
     /// Custom
     case custom((UIImageView) -> Void)
 }
@@ -66,10 +66,10 @@ public extension TabBarAnimation {
         if let idx = tabBar.items?.firstIndex(of: item),
               tabBar.subviews.count > idx + 1,
               let imageView = tabBar.subviews[idx + 1].subviews.compactMap({ $0 as? UIImageView }).first {
-            
+
             playAnimation(type: type, imageView: imageView)
         }
-        
+
         // Transculent TabBar
         if let idx = tabBar.items?.firstIndex(of: item),
            tabBar.subviews.count > idx + 1,
@@ -80,7 +80,7 @@ public extension TabBarAnimation {
             playAnimation(type: type, imageView: imageView)
         }
     }
-    
+
     private func playAnimation(type: TabBarItemAnimation, imageView: UIImageView) {
         switch type {
         case .bounce:
@@ -102,55 +102,55 @@ public extension TabBarAnimation {
             animation(imageView)
         }
     }
-    
+
     private func bounceAnimation(for item: UIImageView) {
         let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
         bounceAnimation.values = [1.0, 1.4, 0.9, 1.15, 0.95, 1.02, 1.0]
         bounceAnimation.duration = 0.5
         bounceAnimation.calculationMode = .cubic
-        
+
         item.layer.add(bounceAnimation, forKey: nil)
     }
-    
+
     private func jumpAnimation(for item: UIImageView) {
         let jumpAnimation = CAKeyframeAnimation(keyPath: "position.y")
         jumpAnimation.values = [1.05, 1.1, 1.15, 1.1, 1.05]
         jumpAnimation.keyTimes = [0.0, 0.25, 0.5, 0.75, 1.0]
         jumpAnimation.duration = 0.25
         jumpAnimation.isAdditive = true
-        
+
         item.layer.add(jumpAnimation, forKey: "move")
     }
-    
+
     private func rotateRightAnimation(for item: UIImageView) {
         let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
         rotateAnimation.fromValue = 0.0
         rotateAnimation.toValue = CGFloat.pi * 2
         rotateAnimation.duration = 1.0
-        
+
         item.layer.add(rotateAnimation, forKey: nil)
     }
-    
+
     private func rotateLeftAnimation(for item: UIImageView) {
         let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
         rotateAnimation.fromValue = CGFloat.pi * 2
         rotateAnimation.toValue = 0.0
         rotateAnimation.duration = 1.0
-        
+
         item.layer.add(rotateAnimation, forKey: nil)
     }
-    
+
     private func shakeAnimation(for item: UIImageView) {
         let animation = CABasicAnimation(keyPath: "position")
         animation.duration = 0.5
         animation.repeatCount = 2
         animation.autoreverses = true
-        
+
         animation.fromValue = CGPoint.init(
             x: item.center.x - 10,
             y: item.center.y
         )
-        
+
         animation.toValue = CGPoint.init(
             x: item.center.x + 10,
             y: item.center.y

@@ -32,12 +32,12 @@ public extension Aurora {
     ///     }
     func measure<T>(tag: String = #function, work: () -> T) -> T {
         let begin = CACurrentMediaTime()
-        
+
         defer {
             let time = CACurrentMediaTime() - begin
             self.log("[Measure] \(tag) = \(time)")
         }
-        
+
         return work()
     }
 }

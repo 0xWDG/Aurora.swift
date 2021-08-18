@@ -66,7 +66,7 @@ public extension Configure {
         block(&copy)
         return copy
     }
-    
+
     /// Makes it available to execute something with closures.
     ///
     ///     UserDefaults.standard.do {
@@ -103,23 +103,23 @@ public extension NSObject {
     static var className: String {
         String(describing: self)
     }
-    
+
     /// The class name
     var className: String {
         return type(of: self).className
     }
-        
+
     /// Deinitialization callback holder
     @objc private class DeinitCallbackHolder: NSObject {
         var callbacks = [() -> Void]()
-        
+
         deinit {
             callbacks.forEach {
                 $0()
             }
         }
     }
-    
+
     /// Get hoider of deinit object
     /// - Parameter object: the object
     /// - Returns: the callback/holder
@@ -132,7 +132,7 @@ public extension NSObject {
             return new
         }
     }
-    
+
     /// Run on Deinit
     /// - Parameters:
     ///   - object: Object class.
@@ -187,7 +187,7 @@ public extension AssociatedProperties {
     func property(forKey key: UnsafeRawPointer) -> Any? {
         return objc_getAssociatedObject(self, key)
     }
-    
+
     /// Sets an associated value for a current object using a given key.
     ///
     /// wrapper around `objc_setAssociatedObject`
@@ -198,7 +198,7 @@ public extension AssociatedProperties {
     func property(_ value: Any, forKey key: UnsafeRawPointer) {
         objc_setAssociatedObject(self, key, value, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
-    
+
     /// Removes all associations for the current object.
     ///
     /// wrapper around `objc_removeAssociatedObjects`

@@ -22,47 +22,47 @@ public extension Bundle {
     var appName: String {
         return string(for: kCFBundleNameKey as String)
     }
-    
+
     /// The app version
     @objc var appVersion: String {
         return string(for: "CFBundleShortVersionString")
     }
-    
+
     /// The display name
     var displayName: String {
         return string(for: "CFBundleDisplayName")
     }
-    
+
     /// The app build number
     var appBuild: String {
         return string(for: kCFBundleVersionKey as String)
     }
-    
+
     /// The app bundle identifier
     var bundleId: String {
         return string(for: "CFBundleIdentifier")
     }
-    
+
     /// Check either the app has been installed using TestFlight.
     var isInTestFlight: Bool {
         return appStoreReceiptURL?.path.contains("sandboxReceipt") == true
     }
-    
+
     /// Runtime code to check if the code runs in an app extension
     var isAppExtension: Bool {
         return executablePath?.contains(".appex/") ?? false
     }
-    
+
     /// Is the device running with "Low Power Mode" enabled?
     var isOnLowPowerMode: Bool {
         return ProcessInfo.processInfo.isLowPowerModeEnabled
     }
-    
+
     /// Get the system uptime
     var uptime: TimeInterval {
         return ProcessInfo.processInfo.systemUptime
     }
-    
+
     /// String for infoDictionary
     /// - Parameter key: key to be fetched
     /// - Returns: key value
@@ -71,10 +71,10 @@ public extension Bundle {
             let value = infoDictionary[key] as? String else {
                 return ""
         }
-        
+
         return value
     }
-    
+
     /// URL Schemes
     var schemes: [String] {
         guard let infoDictionary = Bundle.main.infoDictionary,
@@ -83,10 +83,10 @@ public extension Bundle {
             let urlSchemes = urlType["CFBundleURLSchemes"] as? [String] else {
                 return []
         }
-        
+
         return urlSchemes
     }
-    
+
     /// Main URL scheme
     var mainScheme: String? {
         return schemes.first

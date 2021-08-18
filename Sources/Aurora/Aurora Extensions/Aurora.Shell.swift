@@ -30,7 +30,7 @@ func shell(_ arguments: String, showLog: Bool = false) -> String {
     environment["PATH"] = "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
     task.environment = environment
     task.arguments = ["-c", arguments]
-        
+
     let pipe = Pipe()
     task.standardOutput = pipe
     task.launch()
@@ -38,7 +38,7 @@ func shell(_ arguments: String, showLog: Bool = false) -> String {
     let output: String = String(data: data, encoding: String.Encoding.utf8)!
     task.waitUntilExit()
     pipe.fileHandleForReading.closeFile()
-    
+
     if showLog && output != "" {
         print(output)
     }

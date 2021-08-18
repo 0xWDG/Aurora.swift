@@ -20,23 +20,23 @@ public extension UserDefaults {
         get {
             return object(forKey: key)
         }
-        
+
         set {
             set(newValue, forKey: key)
         }
     }
-    
+
     /// Subscript from UserDefaults (Bool)
     subscript(key: String) -> Bool {
         get {
             return bool(forKey: key)
         }
-        
+
         set {
             set(newValue, forKey: key)
         }
     }
-    
+
     /// Remove all the keys and their values stored in the user's defaults database.
     func removeAll() {
         for (key, _) in dictionaryRepresentation() {

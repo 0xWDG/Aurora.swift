@@ -18,16 +18,16 @@ import Foundation
 public class Run {
     /// Alias for closire
     typealias Action = () -> Void
-    
+
     /// The queue
     var queue: [Action] = [Action]()
-    
+
     /// Initialize the first action
     /// - Parameter act: Action closure
     init(action: @escaping Action) {
         queue.append(action)
     }
-    
+
     /// Append execution in the queue
     /// - Parameter action: Action closure
     /// - Returns: Self (for appending)
@@ -35,7 +35,7 @@ public class Run {
         queue.append(action)
         return self
     }
-    
+
     /// Run all the queue items.
     deinit {
         for item in queue {

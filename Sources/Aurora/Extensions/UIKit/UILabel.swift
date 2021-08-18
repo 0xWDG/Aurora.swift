@@ -20,7 +20,7 @@ public extension UILabel {
     private struct AssociatedKeys {
         static var padding = UIEdgeInsets()
     }
-    
+
     /// Padding
     var padding: UIEdgeInsets? {
         get {
@@ -40,7 +40,7 @@ public extension UILabel {
             }
         }
     }
-    
+
     /// Draw rect
     /// - Parameter rect: rect size
     override func draw(_ rect: CGRect) {
@@ -50,7 +50,7 @@ public extension UILabel {
             self.drawText(in: rect)
         }
     }
-    
+
     /// intrinsicContentSize
     override var intrinsicContentSize: CGSize {
         var contentSize = super.intrinsicContentSize
@@ -60,13 +60,13 @@ public extension UILabel {
         }
         return contentSize
     }
-    
+
     /// HTMLString (HTML)
     /// - Parameter text: Text
     func HTMLString(_ text: String) {
         self.HTML(text)
     }
-    
+
     /// HTMLString
     /// - Parameter text: Text
     func HTML(_ text: String) {
@@ -83,7 +83,7 @@ public extension UILabel {
                 NSAttributedString.DocumentReadingOptionKey.characterEncoding: String.Encoding.utf8.rawValue
             ],
             documentAttributes: nil)
-        
+
         self.attributedText = attrStr
     }
 }

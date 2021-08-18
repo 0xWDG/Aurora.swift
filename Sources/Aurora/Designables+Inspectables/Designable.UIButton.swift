@@ -23,14 +23,14 @@ import UIKit
             guard let currentBorderColor = borderColor else {
                 return
             }
-            
+
             let fadedColor = currentBorderColor.withAlphaComponent(0.2).cgColor
-            
+
             if isHighlighted {
                 layer.borderColor = fadedColor
             } else {
                 self.layer.borderColor = currentBorderColor.cgColor
-                
+
                 let animation = CABasicAnimation(keyPath: "borderColor")
                 animation.fromValue = fadedColor
                 animation.toValue = currentBorderColor.cgColor

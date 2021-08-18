@@ -20,13 +20,13 @@ import Foundation
 public struct AuroraConfig<Value: AuroraConfigStoreValue> {
     /// A key in the current user‘s defaults database.
     let key: String
-    
+
     /// A default value for the key in the current user‘s defaults database.
     let defaultValue: Value
-    
+
     /// Current user's defaults database
     var userDefaults: UserDefaults
-    
+
     /// Returns/set the object associated with the specified key.
     /// - Parameters:
     ///   - key: A key in the current user‘s defaults database.
@@ -36,7 +36,7 @@ public struct AuroraConfig<Value: AuroraConfigStoreValue> {
         self.defaultValue = `default`
         self.userDefaults = .standard
     }
-    
+
     /// Wrapped userdefault
     public var wrappedValue: Value {
         get {

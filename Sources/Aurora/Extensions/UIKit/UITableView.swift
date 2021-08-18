@@ -29,7 +29,7 @@ public extension UITableView {
         }
         return cell
     }
-    
+
     /// Scroll tableview to bottom
     ///
     /// - Parameters:
@@ -37,7 +37,7 @@ public extension UITableView {
     func scrollToBottom_(animated: Bool) {
         let yPosition = (contentSize.height - frame.size.height) + 250
         if yPosition < 0 { return }
-        
+
         setContentOffset(
             CGPoint(x: 0, y: yPosition),
             animated: animated

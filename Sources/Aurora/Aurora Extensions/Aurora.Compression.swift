@@ -22,7 +22,7 @@ public extension Aurora {
     func compress(data: Data) -> Data? {
         return data.deflate()
     }
-    
+
     /// Decompresses the data using the zlib deflate algorithm.
     /// - Parameter data: data to be decompressed
     /// - Returns: uncompressed data

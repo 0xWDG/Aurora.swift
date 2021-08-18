@@ -44,17 +44,17 @@ extension NSMutableAttributedString {
                 ofSize: UIFont.systemFontSize
             )
         ]
-        
+
         let boldString = NSMutableAttributedString(
             string: "\(text)",
             attributes: attrs
         )
-        
+
         self.append(boldString)
         return self
     }
     #endif
-    
+
     /// Make a string **colored**
     ///   - toColor: text color
     ///   - backgroundColor: background color
@@ -65,15 +65,15 @@ extension NSMutableAttributedString {
             .foregroundColor: toColor,
             .backgroundColor: backgroundColor ?? UIColor.clear
         ]
-        
+
         self.addAttributes(
             attrs,
             range: NSRange(location: 0, length: self.string.count)
         )
-        
+
         return self
     }
-    
+
     /// Height for NSAttributedString text
     /// - Parameter width: width of NSAttributedString
     /// - Returns: Height for NSAttributedString
@@ -82,16 +82,16 @@ extension NSMutableAttributedString {
             width: width,
             height: .greatestFiniteMagnitude
         )
-        
+
         let boundingBox = boundingRect(
             with: constraintRect,
             options: .usesLineFragmentOrigin,
             context: nil
         )
-        
+
         return ceil(boundingBox.height)
     }
-    
+
     /// Width for NSAttributedString text
     /// - Parameter height: height of NSAttributedString
     /// - Returns: Height for NSAttributedString
@@ -100,13 +100,13 @@ extension NSMutableAttributedString {
             width: .greatestFiniteMagnitude,
             height: height
         )
-        
+
         let boundingBox = boundingRect(
             with: constraintRect,
             options: .usesLineFragmentOrigin,
             context: nil
         )
-        
+
         return ceil(boundingBox.width)
     }
 }
@@ -123,7 +123,7 @@ public extension NSAttributedString {
         string.append(rhs)
         lhs = string
     }
-    
+
     /// Add a NSAttributedString to another NSAttributedString and return a new NSAttributedString instance.
     ///
     /// - Parameters:
@@ -135,7 +135,7 @@ public extension NSAttributedString {
         string.append(rhs)
         return NSAttributedString(attributedString: string)
     }
-    
+
     /// Add a NSAttributedString to another NSAttributedString.
     ///
     /// - Parameters:
@@ -144,7 +144,7 @@ public extension NSAttributedString {
     static func += (lhs: inout NSAttributedString, rhs: String) {
         lhs += NSAttributedString(string: rhs)
     }
-    
+
     /// Add a NSAttributedString to another NSAttributedString and return a new NSAttributedString instance.
     ///
     /// - Parameters:

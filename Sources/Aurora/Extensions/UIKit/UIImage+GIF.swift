@@ -28,7 +28,7 @@ public extension UIImageView {
             }
         }
     }
-    
+
     /// load GIF
     /// - Parameter asset: asset name
     @available(iOS 9.0, *)
@@ -40,7 +40,7 @@ public extension UIImageView {
             }
         }
     }
-    
+
 }
 
 public extension UIImage {
@@ -53,10 +53,10 @@ public extension UIImage {
             Aurora.shared.log("SwiftGif: Source for the image does not exist")
             return nil
         }
-        
+
         return UIImage.animatedImageWithSource(source)
     }
-    
+
     /// GIF from URL
     /// - Parameter url: GIF URL
     /// - Returns: Animated GIF
@@ -66,16 +66,16 @@ public extension UIImage {
             Aurora.shared.log("SwiftGif: This image named \"\(url)\" does not exist")
             return nil
         }
-        
+
         // Validate data
         guard let imageData = try? Data(contentsOf: bundleURL) else {
             Aurora.shared.log("SwiftGif: Cannot turn image named \"\(url)\" into NSData")
             return nil
         }
-        
+
         return gif(data: imageData)
     }
-    
+
     /// GIF from name
     /// - Parameter name: GIF Name
     /// - Returns: Animated GIF
@@ -86,16 +86,16 @@ public extension UIImage {
             Aurora.shared.log("SwiftGif: This image named \"\(name)\" does not exist")
                 return nil
         }
-        
+
         // Validate data
         guard let imageData = try? Data(contentsOf: bundleURL) else {
             Aurora.shared.log("SwiftGif: Cannot turn image named \"\(name)\" into NSData")
             return nil
         }
-        
+
         return gif(data: imageData)
     }
-    
+
     /// GIF from Asset
     /// - Parameter asset: Asset name
     /// - Returns: Animated GIF
@@ -106,10 +106,10 @@ public extension UIImage {
             Aurora.shared.log("SwiftGif: Cannot turn image named \"\(asset)\" into NSDataAsset")
             return nil
         }
-        
+
         return gif(data: dataAsset.data)
     }
-    
+
     /// Delay for image at index
     /// - Parameters:
     ///   - index: image index
@@ -117,7 +117,7 @@ public extension UIImage {
     /// - Returns: Animated GIF Frames
     internal class func delayForImageAtIndex(_ index: Int, source: CGImageSource!) -> Double {
         var delay = 0.1
-        
+
         // Get dictionaries
         let cfProperties = CGImageSourceCopyPropertiesAtIndex(source, index, nil)
         let gifPropertiesPointer = UnsafeMutablePointer<UnsafeRawPointer?>.allocate(capacity: 0)
@@ -127,9 +127,9 @@ public extension UIImage {
             ).toOpaque(), gifPropertiesPointer) == false {
             return delay
         }
-        
+
         let gifProperties: CFDictionary = unsafeBitCast(gifPropertiesPointer.pointee, to: CFDictionary.self)
-        
+
         // Get delay time
         var delayObject: AnyObject = unsafeBitCast(
             CFDictionaryGetValue(gifProperties,
@@ -142,16 +142,16 @@ public extension UIImage {
                     Unmanaged.passUnretained(kCGImagePropertyGIFDelayTime).toOpaque()), to: AnyObject.self
             )
         }
-        
+
         delay = delayObject as? Double ?? 0
-        
+
         if delay < 0.1 {
             delay = 0.1 // Make sure they're not too fast
         }
-        
+
         return delay
     }
-    
+
     /// greatest common divisor (GCD)
     /// - Parameters:
     ///   - valueA: Int 1
@@ -170,19 +170,19 @@ public extension UIImage {
                 return 0
             }
         }
-        
+
         // Swap for modulo
         if valueA! < valueB! {
             let valueC = valueA
             valueA = valueB
             valueB = valueC
         }
-        
+
         // Get greatest common divisor
         var rest: Int
         while true {
             rest = valueA! % valueB!
-            
+
             if rest == 0 {
                 return valueB! // Found it
             } else {
@@ -191,7 +191,7 @@ public extension UIImage {
             }
         }
     }
-    
+
     /// GDC for array
     /// - Parameter array: Ints
     /// - Returns: GDC
@@ -199,16 +199,16 @@ public extension UIImage {
         if array.isEmpty {
             return 1
         }
-        
+
         var gcd = array[0]
-        
+
         for val in array {
             gcd = UIImage.gcdForPair(val, gcd)
         }
-        
+
         return gcd
     }
-    
+
     /// Animated image with source
     /// - Parameter source: source
     /// - Returns: Animated GIF Frames
@@ -216,52 +216,52 @@ public extension UIImage {
         let count = CGImageSourceGetCount(source)
         var images = [CGImage]()
         var delays = [Int]()
-        
+
         // Fill arrays
         for ctr in 0..<count {
             // Add image
             if let image = CGImageSourceCreateImageAtIndex(source, ctr, nil) {
                 images.append(image)
             }
-            
+
             // At it's delay in cs
             let delaySeconds = UIImage.delayForImageAtIndex(Int(ctr),
                                                             source: source)
             delays.append(Int(delaySeconds * 1000.0)) // Seconds to ms
         }
-        
+
         // Calculate full duration
         let duration: Int = {
             var sum = 0
-            
+
             for val: Int in delays {
                 sum += val
             }
-            
+
             return sum
         }()
-        
+
         // Get frames
         let gcd = gcdForArray(delays)
         var frames = [UIImage]()
-        
+
         var frame: UIImage
         var frameCount: Int
         for ctr in 0..<count {
             frame = UIImage(cgImage: images[Int(ctr)])
             frameCount = Int(delays[Int(ctr)] / gcd)
-            
+
             for _ in 0..<frameCount {
                 frames.append(frame)
             }
         }
-        
+
         // Heyhey
         let animation = UIImage.animatedImage(
             with: frames,
             duration: Double(duration) / 1000.0
         )
-        
+
         return animation
     }
 }

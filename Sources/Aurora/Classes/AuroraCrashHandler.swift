@@ -28,7 +28,7 @@ extension Aurora {
     public func getLastCrashLog() -> String? {
         return Aurora.crashLogger.getLastCrashLog()
     }
-    
+
     /// Delete the last crash log
     /// - Returns: Bool if deleted
     @discardableResult
@@ -41,7 +41,7 @@ extension Aurora {
 class AuroraCrashHandler {
     /// Shared Instance
     static public let shared: AuroraCrashHandler = AuroraCrashHandler.init()
-    
+
     /// Signal codes
     private let signalCodes = [
         SIGABRT: "SIGABRT: abort()",
@@ -76,24 +76,24 @@ class AuroraCrashHandler {
         SIGUSR1: "SIGUSR1: user defined signal 1",
         SIGUSR2: "SIGUSR2: user defined signal 2"
     ]
-    
+
     /// Receive signal (C Bridge)
     private static let RecieveSignal: @convention(c) (Int32) -> Void = { (signal) -> Void in
         AuroraCrashHandler.createReport(from: signal)
     }
-    
+
     /// Receive exception (C Bridge)
     private static let RecieveException: @convention(c) (NSException) -> Swift.Void = { (theExteption) -> Void in
         AuroraCrashHandler.createReport(from: theExteption)
     }
-    
+
     /// Create crash/exception report
     /// - Parameter from: from data
     // swiftlint:disable:next function_body_length
     private class func createReport(from: Any) {
         var crashReport = ""
         crashReport += "Aurora Framework (v\(Aurora.shared.version)) crash report\n\n"
-        
+
         #if canImport(UIKit) && !os(watchOS)
         let device = UIDevice.current
         var deviceType: String {
@@ -104,25 +104,25 @@ class AuroraCrashHandler {
                     String.init(validatingUTF8: $0)
                 }
             }
-            
+
             return optionalString ?? "N/A"
         }
-        
+
         let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") ?? ""
         let appVersion = (Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") ?? "")
         let appBuild = (Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") ?? "")
-        
+
         crashReport += "\tApp:\n"
         crashReport += "\t\tName: \(appName)\n"
         crashReport += "\t\tVersion: \(appVersion)\n"
         crashReport += "\t\tBuild: \(appBuild)\n"
-        
+
         crashReport += "\n"
         crashReport += "\tDevice:\n"
         crashReport += "\t\tName: \(device.name)\n"
         crashReport += "\t\tModel: \(deviceType)\n"
         crashReport += "\t\tSoftware: \(device.systemName) \(device.systemVersion)\n"
-        
+
         // For some weird reason this will crash,
         // Even if canImport says true.
 //        #if canImport(CoreTelephony)
@@ -134,7 +134,7 @@ class AuroraCrashHandler {
 //        }
 //        #endif
         #endif
-        
+
         if let fromException = from as? NSException {
             crashReport += "\n"
             crashReport += "\tException:\n"
@@ -142,27 +142,27 @@ class AuroraCrashHandler {
             crashReport += "\t\tReason: \(fromException.reason ?? "Unknown")\n"
             crashReport += "\t\tStack trace:\n\t\t\t\(fromException.callStackSymbols.joined(separator: "\n\t\t\t"))\n"
         }
-        
+
         if let signal = from as? Int32 {
             var stack = Thread.callStackSymbols
             stack.removeFirst(2)
-            
+
             crashReport += "\n"
             crashReport += "\tSignal:\n"
             crashReport += "\t\tName: Signal (\(signal)) was raised.\n"
             crashReport += "\t\tStack trace:\n\t\t\t\(stack.joined(separator: "\n\t\t\t"))\n"
         }
-        
+
         crashReport += "\nEnd of Aurora crash report\n\n"
         Aurora.shared.log(crashReport)
-        
+
         // Try to save to the disk
-        
+
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             let fileURL = dir.appendingPathComponent("AuroraCrashDump")
             do {
                 try Data(crashReport.utf8).write(to: fileURL)
-                
+
                 Aurora.shared.log("Saved crash report to: \(fileURL)")
             } catch let error as NSError {
                 Aurora.shared.log("Failed to write to \(fileURL)")
@@ -170,7 +170,7 @@ class AuroraCrashHandler {
             }
         }
     }
-    
+
     /// Get last crash log
     /// - Returns: last crash log
     public func getLastCrashLog() -> String? {
@@ -180,10 +180,10 @@ class AuroraCrashHandler {
                 return crashLog
             }
         }
-        
+
         return nil
     }
-    
+
     /// Delete last crash log
     /// - Returns: succeed?
     @discardableResult
@@ -192,20 +192,20 @@ class AuroraCrashHandler {
             let fileURL = dir.appendingPathComponent("AuroraCrashDump")
             do {
                 try FileManager.default.removeItem(at: fileURL)
-                
+
                 return true
             } catch let error as NSError {
                 Aurora.shared.log("Failed to remove \(fileURL)")
                 Aurora.shared.log(error.description)
             }
         }
-        
+
         return false
     }
 
     /// Did we already register?
     private var didRegister = false
-    
+
     /// Initialize
     init() {
         // Ok.
@@ -213,16 +213,16 @@ class AuroraCrashHandler {
             AuroraCrashHandler.shared.registerForSignals()
         }
     }
-    
+
     /// Register for signals
     func registerForSignals() {
         if !didRegister {
             NSSetUncaughtExceptionHandler(AuroraCrashHandler.RecieveException)
-            
+
             for (signalCode, _) in signalCodes {
                 signal(signalCode, AuroraCrashHandler.RecieveSignal)
             }
-            
+
             didRegister = true
         }
     }

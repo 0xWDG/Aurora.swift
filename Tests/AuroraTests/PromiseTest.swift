@@ -27,18 +27,18 @@ extension AuroraTest {
     func after(_ timeInterval: TimeInterval = 0.1, work: @escaping () -> Void) {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + timeInterval, execute: work)
     }
-    
+
     struct User {
         let userID: Int
         let name: String
     }
-    
+
     func fetchIds() -> Promise<[Int]> {
         return Promise { xxx in
             xxx([0, 1, 2])
         }
     }
-    
+
     func fetchUser(userID: Int) -> Promise<User> {
         return Promise { resolve in
         after(0.1) {
@@ -46,7 +46,7 @@ extension AuroraTest {
             }
         }
     }
-    
+
     func testBasicPromise() {
         fetchIds().then { ids in // flatMap
                 return self.fetchUser(userID: ids[0])

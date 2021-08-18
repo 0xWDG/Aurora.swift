@@ -25,7 +25,7 @@ public extension UIBarButtonItem {
         }
         return view.frame
     }
-    
+
     /// View
     var view: UIView? {
         guard let view = self.value(forKey: "view") as? UIView else {

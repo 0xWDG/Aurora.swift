@@ -23,13 +23,13 @@ extension URL: ExpressibleByStringLiteral {
         }
         self = url
     }
-    
+
     /// URL String literal
     /// - Parameter value: string
     public init(extendedGraphemeClusterLiteral value: String) {
         self.init(stringLiteral: value)
     }
-    
+
     /// URL String literal
     /// - Parameter value: string
     public init(unicodeScalarLiteral value: String) {
@@ -45,14 +45,14 @@ public extension URL {
             let queryItems = components.queryItems else {
                 return nil
         }
-        
+
         var parameters = [String: String]()
         queryItems.forEach {
             parameters[$0.name] = $0.value
         }
         return parameters
     }
-    
+
     /// Add the `URLResourceKey.isExcludedFromBackupKey` attribute to the URL.
     ///
     /// This key is used to determine whether the resource is excluded from all backups of app data.

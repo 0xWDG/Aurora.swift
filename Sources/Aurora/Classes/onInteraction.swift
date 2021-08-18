@@ -21,7 +21,7 @@ enum AssociationPolicy {
     case copyNonatomic
     case retain
     case copy
-        
+
     var rawValue: objc_AssociationPolicy {
         switch self {
         case .assign:
@@ -41,11 +41,11 @@ enum AssociationPolicy {
 /// ObjectAssociation (private use)
 final class ObjectAssociation<T: Any> {
     private let policy: AssociationPolicy
-    
+
     init(policy: AssociationPolicy = .retainNonatomic) {
         self.policy = policy
     }
-    
+
     subscript(index: AnyObject) -> T? {
         get {
             guard let associatedObject = objc_getAssociatedObject(
@@ -54,7 +54,7 @@ final class ObjectAssociation<T: Any> {
             ) as? T? else {
                 fatalError("Could not cast to \(T.Type.self)")
             }
-            
+
             return associatedObject
         }
         set {
@@ -96,7 +96,7 @@ public extension UIControl {
             attachTo: self,
             closure: action
         )
-        
+
         addTarget(
             helper,
             action: #selector(UIControlHelper.invoke),
@@ -109,7 +109,7 @@ public extension UIControl {
 public class UIControlHelper {
     /// Closure to run
     let closure: (AnyObject) -> Void
-    
+
     /// Init helper
     /// - Parameters:
     ///   - attachTo: to UIControl
@@ -123,7 +123,7 @@ public class UIControlHelper {
             .OBJC_ASSOCIATION_RETAIN
         )
     }
-    
+
     /// Invoke
     /// - Parameter sender: from sender
     @objc func invoke(sender: AnyObject) {
@@ -141,18 +141,18 @@ import AppKit
 public extension NSControl {
     /// Action closure
     typealias ActionClosure = ((NSControl) -> Void)
-    
+
     /// AssociatedKeys
     private struct AssociatedKeys {
         static let onActionClosure = ObjectAssociation<ActionClosure>()
     }
-    
+
     /// call Closure
     /// - Parameter sender: sender
     @objc private func callClosure(_ sender: NSControl) {
         onInteraction?(sender)
     }
-    
+
     /// .onInteraction
     ///
     /// Do something on interaction

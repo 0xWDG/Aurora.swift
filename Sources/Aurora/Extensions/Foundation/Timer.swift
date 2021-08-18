@@ -30,7 +30,7 @@ public extension Timer {
             block()
         }
     }
-    
+
     /// Create and schedule a timer that will call `block` once after the specified time.
     /// - Parameters:
     ///   - interval: The time interval to wait before schedule the `Timer`.
@@ -41,7 +41,7 @@ public extension Timer {
         timer.start()
         return timer
     }
-    
+
     /// Create and schedule a timer that will call `block` repeatedly in specified time intervals.
     /// - Parameters:
     ///   - interval: The firing interval of the timer.
@@ -71,7 +71,7 @@ public extension Timer {
             return timer
         }
     }
-    
+
     /// Create and schedule a timer that will call `block` once after the specified time.
     /// - Parameters:
     ///   - interval: The time interval to wait before schedule the `Timer`.
@@ -90,7 +90,7 @@ public extension Timer {
         }
         return timer
     }
-    
+
     /// Schedule this timer on the run loop.
     /// - Parameters:
     ///     - runLoop: The run loop where the Timer is scheduled. The default value is `RunLoop.current`
@@ -102,5 +102,5 @@ public extension Timer {
             runLoop.add(self, forMode: $0)
         }
     }
-    
+
 }

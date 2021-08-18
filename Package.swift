@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     /// Aurora Framework
     name: "Aurora",
-    
+
     /// It is created for:
     platforms: [
         .macOS(.v10_14),
@@ -14,7 +14,7 @@ let package = Package(
         .tvOS(.v12),
         .watchOS(.v6)
     ],
-    
+
     /// It is a framework/library
     products: [
         .library(
@@ -22,10 +22,10 @@ let package = Package(
             targets: ["Aurora"]
         )
     ],
-    
+
     /// Hopefully this will never get bigger than 0
     dependencies: [],
-    
+
     /// The targets are:
     targets: [
         .target(

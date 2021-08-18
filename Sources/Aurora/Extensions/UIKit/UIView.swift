@@ -24,7 +24,7 @@ public extension UIView {
             return traitCollection.userInterfaceStyle == .dark
         }
     }
-    
+
     /// is darkmode enabled
     var darkMode: Bool {
         // swiftlint:disable:next implicit_getter
@@ -32,7 +32,7 @@ public extension UIView {
             return traitCollection.userInterfaceStyle == .dark
         }
     }
-    
+
     /// Safe area
     var safeArea: UILayoutGuide {
         if #available(iOS 11.0, *) {
@@ -41,13 +41,13 @@ public extension UIView {
             return layoutMarginsGuide
         }
     }
-    
+
     /// set the corner radius
     /// - Parameter radius: which radius
     func roundedCorners(radius: CGFloat? = 45) {
         self.layer.cornerRadius = radius ?? 46
     }
-    
+
     /// Round corners
     /// - Parameters:
     ///   - corners: which corners
@@ -61,13 +61,13 @@ public extension UIView {
                 height: radius
             )
         )
-        
+
         let mask = CAShapeLayer()
         mask.path = path.cgPath
         layer.mask = mask
         layer.masksToBounds = true
     }
-    
+
     /// Gradient background
     /// - Parameters:
     ///   - colorOne: First color
@@ -78,10 +78,10 @@ public extension UIView {
         gradientLayer.colors = [colorOne.cgColor, colorTwo.cgColor]
         gradientLayer.locations = [0.0, 1.0]
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.2)
-        
+
         layer.insertSublayer(gradientLayer, at: 0)
     }
-    
+
     /// Gradient background (on top)
     /// - Parameters:
     ///   - colorOne: First color
@@ -92,21 +92,21 @@ public extension UIView {
         gradientLayer.colors = [colorOne.cgColor, colorTwo.cgColor]
         gradientLayer.locations = [0.0, 1.0]
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.2)
-        
+
         let intVal = layer.sublayers?.count
         layer.insertSublayer(gradientLayer, at: UInt32(truncating: intVal! as NSNumber))
     }
-    
+
     /// Remove the last Subview
     func removeLastSubview() {
         let intVal = (layer.sublayers?.count)! - 1
         layer.sublayers?.remove(at: intVal)
     }
-    
+
     /// Same size as parent
     func sameSizeAsParent() {
         guard let superview = self.superview else { return }
-        
+
         translatesAutoresizingMaskIntoConstraints = superview.translatesAutoresizingMaskIntoConstraints
         if translatesAutoresizingMaskIntoConstraints {
             autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -118,7 +118,7 @@ public extension UIView {
             rightAnchor.constraint(equalTo: superview.rightAnchor).isActive = true
         }
     }
-    
+
     /// Return view as Image
     /// - Returns: View as Image
     func asImage() -> UIImage {
@@ -127,7 +127,7 @@ public extension UIView {
             layer.render(in: rendererContext.cgContext)
         }
     }
-    
+
     /// Is the font visible?
     var visibleFont: UIFont? {
         if let textView = self as? UITextView {
@@ -139,20 +139,20 @@ public extension UIView {
         } else if let textField = self as? UITextField {
             return textField.font
         }
-        
+
         return nil
     }
-    
+
     // MARK: - placehodlerView
     /// add Placeholderview
     func placeholderView() {
         // Remove old ones, if present
         placehodlerViewRemove()
-        
+
         // Add placeholderView.
         addPlaceholderView()
     }
-    
+
     /// Add placeholderview
     func addPlaceholderView() {
         DispatchQueue.main.async {
@@ -161,7 +161,7 @@ public extension UIView {
             let shimmerStartLocation: [NSNumber] = [-1.0, -0.5, 0.0]
             let shimmerEndLocation: [NSNumber] = [1.0, 1.5, 2.0]
             var shimmerGradienLayer: CAGradientLayer!
-            
+
             let gradientLayered = CAGradientLayer().configure {
                 $0.frame = self.bounds
                 $0.startPoint = CGPoint(x: 0, y: 1)
@@ -174,10 +174,10 @@ public extension UIView {
                 $0.locations = shimmerStartLocation
                 $0.name = "placehodlerViewLayer"
             }
-            
+
             self.layer.addSublayer(gradientLayered)
             shimmerGradienLayer = gradientLayered
-            
+
             // Start Animating
             let animation = CABasicAnimation(keyPath: "locations").configure {
                 $0.fromValue = shimmerStartLocation
@@ -185,20 +185,20 @@ public extension UIView {
                 $0.duration = 0.8
                 $0.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
             }
-            
+
             let animationGroup = CAAnimationGroup().configure {
                 $0.duration = 1.8
                 $0.animations = [animation]
                 $0.repeatCount = .infinity
             }
-            
+
             shimmerGradienLayer?.add(
                 animationGroup,
                 forKey: animation.keyPath
             )
         }
     }
-    
+
     /// Remove placeholder view
     func placehodlerViewRemove() {
         if let layers = self.layer.sublayers {
@@ -209,14 +209,14 @@ public extension UIView {
             }
         }
     }
-    
+
     /// Alias to placehodlerViewRemove
     func removePlaceholderView() {
         self.placehodlerViewRemove()
     }
-    
+
     // MARK: -
-    
+
     // Animate a view, adding effect of "something went wrong". Useful for login button for example.
     /// - Parameter repeatAnimation: Repeat the animation?
     func shakeWrong(_ repeatAnimation: Bool? = false) {
@@ -234,14 +234,14 @@ public extension UIView {
                 y: self.center.y
             )
         }
-        
+
         if let repeatAnimation = repeatAnimation, repeatAnimation == true {
             shakeAnimation.repeatCount = Float.infinity
         }
-        
+
         self.layer.add(shakeAnimation, forKey: "position")
     }
-    
+
     /// Wiggle
     /// - Parameter repeatAnimation: repeat?
     func wiggle(_ repeatAnimation: Bool? = true) {
@@ -254,14 +254,14 @@ public extension UIView {
             $0.autoreverses = true
             $0.duration = 0.115
         }
-        
+
         if let repeatAnimation = repeatAnimation, repeatAnimation == true {
             wiggleAnimation.repeatCount = Float.infinity
         }
-        
+
         self.layer.add(wiggleAnimation, forKey: "transform")
     }
-    
+
     /// GestureClosures
     struct GestureClosures {
         // swiftlint:disable:next identifier_name
@@ -270,7 +270,7 @@ public extension UIView {
         static var left: (() -> Void)?
         static var right: (() -> Void)?
     }
-    
+
     /// Action to peform on Swipe
     /// - Parameters:
     ///   - swipeDirection: Swipe direction
@@ -283,28 +283,28 @@ public extension UIView {
             target: self,
             action: #selector(self.invokeTarget(_:))
         )
-        
+
         swiper.direction = swipeDirection
         self.addGestureRecognizer(swiper)
-        
+
         switch swipeDirection {
         case .up:
             GestureClosures.up = completionHandler
-            
+
         case .down:
             GestureClosures.down = completionHandler
-            
+
         case .left:
             GestureClosures.left = completionHandler
-            
+
         case .right:
             GestureClosures.right = completionHandler
-            
+
         default:
             return
         }
     }
-    
+
     /// [SwipeAction] invokeTarget (do not call yourself)
     /// - Parameter gesture: for gesture
     @objc func invokeTarget(_ gesture: UIGestureRecognizer?) {
@@ -315,25 +315,25 @@ public extension UIView {
                     return
                 }
                 execute()
-                
+
             case .down:
                 guard let execute = GestureClosures.down else {
                     return
                 }
                 execute()
-                
+
             case .left:
                 guard let execute = GestureClosures.left else {
                     return
                 }
                 execute()
-                
+
             case .right:
                 guard let execute = GestureClosures.right else {
                     return
                 }
                 execute()
-                
+
             default:
                 return
             }
@@ -355,12 +355,12 @@ public extension Blurable where Self: UIView {
         // create effect
         let effect = UIBlurEffect(style: .dark)
         let effectView = UIVisualEffectView(effect: effect)
-        
+
         // set boundry and alpha
         effectView.frame = self.bounds
         effectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         effectView.alpha = alpha
-        
+
         self.addSubview(effectView)
     }
 }

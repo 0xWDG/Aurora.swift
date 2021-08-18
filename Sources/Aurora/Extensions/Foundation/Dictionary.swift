@@ -20,10 +20,10 @@ import Foundation
 public protocol DictionaryDynamicLookup {
     /// We have a  "Key"
     associatedtype Key
-    
+
     /// and a "Value"
     associatedtype Value
-    
+
     /// We want to subscript at our "Key"
     /// like dict["Key"]
     subscript(key: Key) -> Value? { get }
