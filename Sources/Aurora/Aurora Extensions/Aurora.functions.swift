@@ -1,9 +1,16 @@
+// Aurora framework for Swift
 //
-//  Aurora.init.swift
-//  Aurora
+// The **Aurora.framework** contains a base for your project.
 //
-//  Created by Wesley de Groot on 30/04/2021.
+// It has a lot of extensions built-in to make development easier.
 //
+// - Version: 1.0
+// - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
+//  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
+//
+// Thanks for using!
+//
+// Licence: MIT
 
 import Foundation
 

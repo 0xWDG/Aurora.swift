@@ -288,7 +288,7 @@ public extension String {
 
         alertView.addAction(
             .init(
-                title: NSLocalizedString("Ok", comment: "Ok"),
+                title: NSLocalizedString("Aurora.general.ok", bundle: Bundle.module, comment: "Aurora.general.ok"),
                 style: .default,
                 handler: { (_) in
 

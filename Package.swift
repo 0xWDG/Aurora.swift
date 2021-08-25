@@ -7,6 +7,8 @@ let package = Package(
     /// Aurora Framework
     name: "Aurora",
 
+    defaultLocalization: "en",
+    
     /// It is created for:
     platforms: [
         .macOS(.v10_14),
@@ -31,7 +33,10 @@ let package = Package(
         .target(
             name: "Aurora",
             dependencies: [],
-            exclude: [],
+            exclude: [
+                "../../docs",
+                "../../build"
+            ],
             resources: [
                 .process("Resources")
             ]

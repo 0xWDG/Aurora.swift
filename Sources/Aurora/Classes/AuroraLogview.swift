@@ -1,9 +1,16 @@
+// Aurora framework for Swift
 //
-//  File.swift
-//  
+// The **Aurora.framework** contains a base for your project.
 //
-//  Created by Wesley de Groot on 22/01/2021.
+// It has a lot of extensions built-in to make development easier.
 //
+// - Version: 1.0
+// - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
+//  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
+//
+// Thanks for using!
+//
+// Licence: MIT
 
 #if canImport(UIKit)
 import Foundation
@@ -82,8 +89,9 @@ public class AuroraLogView: UIViewController, UITableViewDelegate, UITableViewDa
                 $0.textLabel?.text = logMessages[indexPath.row]
             } else {
                 $0.textLabel?.text = NSLocalizedString(
-                    "Close window",
-                    comment: "Close window"
+                    "Aurora.general.close",
+                    bundle: Bundle.module,
+                    comment: "Aurora.general.close"
                 ) + "\n\n\n"
                 $0.textLabel?.textAlignment = .center
             }

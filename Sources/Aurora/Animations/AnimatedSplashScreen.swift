@@ -184,7 +184,6 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
 
         // Adds the icon to the view
         self.addSubview(imageView.unwrap(orError: "No imageView provided"))
-
     }
 
     public init(iconImage: UIImage, iconInitialSize: CGSize, backgroundView: UIView) {

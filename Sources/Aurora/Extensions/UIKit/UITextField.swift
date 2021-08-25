@@ -52,7 +52,7 @@ public extension UITextField {
         )
 
         let done: UIBarButtonItem = UIBarButtonItem(
-            title: NSLocalizedString("Done", comment: "Done"),
+            title: NSLocalizedString("Aurora.general.done", bundle: Bundle.module, comment: "Aurora.general.done"),
             style: .done,
             target: self,
             action: #selector(self.doneButtonAction)

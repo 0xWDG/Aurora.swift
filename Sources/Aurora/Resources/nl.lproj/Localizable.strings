@@ -1,0 +1,11 @@
+// MARK: Framework.
+"Aurora.loaded" = "Aurora Framework ($VERSION) voor $OS is geladen!";
+
+// MARK: General messages
+"Aurora.general.done" = "Klaar";
+"Aurora.general.close" = "Sluit venster";
+"Aurora.general.ok" = "Ok";
+
+// MARK: Networking
+"Aurora.networking.invalidURL" = "Geen correcte url";
+"Aurora.networking.timeout" = "Het duurde te lang om een response te krijgen.";

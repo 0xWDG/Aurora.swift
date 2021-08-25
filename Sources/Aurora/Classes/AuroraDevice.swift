@@ -1,9 +1,16 @@
+// Aurora framework for Swift
 //
-//  AuroraDevice.swift
-//  
+// The **Aurora.framework** contains a base for your project.
 //
-//  Created by Wesley de Groot on 09/04/2021.
+// It has a lot of extensions built-in to make development easier.
 //
+// - Version: 1.0
+// - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
+//  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
+//
+// Thanks for using!
+//
+// Licence: MIT
 
 import Foundation
 
@@ -25,6 +32,38 @@ enum AuroraOS {
     case freeBSD
     case openBSD
     case unknown
+
+    func asString() -> String {
+        switch self {
+
+        case .macOS:
+            return "Mac OS"
+        case .iOS, .iPhoneOS:
+            return "iOS"
+        case .iPadOS:
+            return "iPadOS"
+        case .tvOS:
+            return "tvOS"
+        case .watchOS:
+            return "watchOS"
+        case .audioOS, .homePod:
+            return "homePod"
+        case .bridgeOS, .touchBar:
+            return "Touchbar"
+        case .android:
+            return "Android"
+        case .linux:
+            return "Linux"
+        case .windows:
+            return "Windows"
+        case .freeBSD:
+            return "Free BSD"
+        case .openBSD:
+            return "Open BSD"
+        case .unknown:
+            return "Unknown"
+        }
+    }
 }
 
 /// User Interfaces

@@ -122,7 +122,7 @@ extension Aurora {
         DispatchQueue.main.asyncAfter(deadline: .now() + 30) {
             if waiting {
                 Aurora.shared.log(
-                    AuroraError(message: "Timeout, killing request")
+                    AuroraError(message: "Aurora.networking.timeout")
                 )
 
                 if inGroup {
@@ -178,7 +178,7 @@ extension Aurora {
         guard let siteURL = URL(string: url) else {
             completionHandler(
                 .failure(
-                    AuroraError(message: "Error: \(url) doesn't appear to be an URL")
+                    AuroraError(message: "Aurora.networking.invalidURL")
                 )
             )
 
