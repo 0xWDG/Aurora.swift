@@ -28,7 +28,7 @@ class AuroraOnTabBarInteractionDelegate: NSObject, UITabBarControllerDelegate, U
     public var onTimes: Int = 10
 
     /// old ViewController
-    private var oldVC: ViewController?
+    private var oldVC: UIViewController?
 
     /// old UITabBarItem
     private var oldItem: UITabBarItem?

@@ -31,15 +31,9 @@ let package = Package(
         .target(
             name: "Aurora",
             dependencies: [],
-            exclude: [
-                "build",
-                "docs",
-                "checkFirstRows.php",
-                "generateDocumentation.command",
-                "README.md"
-            ],
+            exclude: [],
             resources: [
-                .process("Resources/NSFW.mlmodel")
+                .process("Resources")
             ]
         ),
         .testTarget(
@@ -47,15 +41,9 @@ let package = Package(
             dependencies: [
                 "Aurora"
             ],
-            exclude: [
-                "build",
-                "docs",
-                "checkFirstRows.php",
-                "generateDocumentation.command",
-                "README.md"
-            ],
+            exclude: [],
             resources: [
-                .process("Resources/NSFW.mlmodel")
+                .process("Resources")
             ]
         )
     ]

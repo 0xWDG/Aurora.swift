@@ -160,16 +160,6 @@ public extension UIImage {
     internal class func gcdForPair(_ valueA: Int, _ valueB: Int) -> Int {
         var valueA = valueA
         var valueB = valueB
-        // Check if one of them is nil
-        if valueB == nil || valueA == nil {
-            if valueB != nil {
-                return valueB.unwrap(orError: "Failed to unwrap")
-            } else if valueA != nil {
-                return valueA.unwrap(orError: "Failed to unwrap")
-            } else {
-                return 0
-            }
-        }
 
         // Swap for modulo
         if valueA < valueB {
