@@ -8,7 +8,7 @@ let package = Package(
     name: "Aurora",
 
     defaultLocalization: "en",
-    
+
     /// It is created for:
     platforms: [
         .macOS(.v10_14),
@@ -33,10 +33,7 @@ let package = Package(
         .target(
             name: "Aurora",
             dependencies: [],
-            exclude: [
-                "../../docs",
-                "../../build"
-            ],
+            exclude: [],
             resources: [
                 .process("Resources")
             ]
