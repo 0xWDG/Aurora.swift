@@ -19,6 +19,7 @@ import UIKit
 #endif
 
 /// Operating Systems
+// swiftlint:disable cyclomatic_complexity
 enum AuroraOS {
     case macOS
     case iOS, iPadOS, iPhoneOS
@@ -35,7 +36,6 @@ enum AuroraOS {
 
     func asString() -> String {
         switch self {
-
         case .macOS:
             return "Mac OS"
         case .iOS, .iPhoneOS:
@@ -65,6 +65,7 @@ enum AuroraOS {
         }
     }
 }
+// swiftlint:enable cyclomatic_complexity
 
 /// User Interfaces
 enum AuroraUserInterface {
