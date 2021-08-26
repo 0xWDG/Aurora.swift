@@ -56,11 +56,16 @@ extension Aurora {
                 // On which Queue are we running
                 let queue = Thread.isMainThread ? "Main" : "Background"
 
+                var appName = "Unknown"
+                if let name = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String {
+                    appName = name
+                }
+
                 // Make up the log message.
                 let logMessage = logTemplate
                     .replace(
                         "$product",
-                        withString: file.contains("Sources/Aurora") ? product : Bundle.main.appName
+                        withString: file.contains("Sources/Aurora") ? product : appName
                     )
                     .replace("$version", withString: version)
                     .replace("$datetime", withString: dateFormatter.string(from: Date()))
@@ -128,11 +133,16 @@ extension Aurora {
             // On which Queue are we running
             let queue = Thread.isMainThread ? "Main" : "Background"
 
+            var appName = "Unknown"
+            if let name = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String {
+                appName = name
+            }
+
             // Make up the log message.
             let logMessage = logTemplate
                 .replace(
                     "$product",
-                    withString: file.contains("Sources/Aurora") ? product : Bundle.main.appName
+                    withString: file.contains("Sources/Aurora") ? product : appName
                 )
                 .replace("$version", withString: version)
                 .replace("$datetime", withString: dateFormatter.string(from: Date()))
