@@ -94,7 +94,7 @@ public extension UIView {
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.2)
 
         guard let intVal = layer.sublayers?.count,
-              let numVal = intVal as NSNumber else {
+              let numVal = intVal as? NSNumber else {
             fatalError("Failed to get sublayers")
         }
 
@@ -105,11 +105,11 @@ public extension UIView {
 
     /// Remove the last Subview
     func removeLastSubview() {
-        guard let intVal = (layer.sublayers?.count) - 1 else {
+        guard let intVal = layer.sublayers?.count else {
             return
         }
 
-        layer.sublayers?.remove(at: intVal)
+        layer.sublayers?.remove(at: intVal - 1)
     }
 
     /// Same size as parent

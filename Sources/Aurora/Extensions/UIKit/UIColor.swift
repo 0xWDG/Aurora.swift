@@ -49,7 +49,7 @@ public extension UIColor {
     )
 
     /// Aurora color
-    static let Aurora = Color.init(
+    static let Aurora = UIColor.init(
         red: 0,
         green: 212/255,
         blue: 255/255,
@@ -58,10 +58,10 @@ public extension UIColor {
 
     /// Random color.
     static var random: UIColor {
-        let red = Int.random(in: 0...255)
-        let green = Int.random(in: 0...255)
-        let blue = Int.random(in: 0...255)
-        return UIColor(red: red, green: green, blue: blue).unwrap(orError: "Failed to generate random color.")
+        let red = CGFloat.random(in: 0...255)
+        let green = CGFloat.random(in: 0...255)
+        let blue = CGFloat.random(in: 0...255)
+        return UIColor(red: red, green: green, blue: blue, alpha: 1)
     }
 
     /// A color object with grayscale and alpha values that are both 0.0.

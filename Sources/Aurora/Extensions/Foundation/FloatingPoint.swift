@@ -11,6 +11,7 @@
 // Thanks for using!
 //
 // Licence: MIT
+
 import Foundation
 
 public extension FloatingPoint {

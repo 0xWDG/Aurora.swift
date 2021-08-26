@@ -319,32 +319,40 @@ open class Aurora {
     /// Initialize
     public init(experimentalFunctions: Bool = false) {
         #if os(iOS)
-        self.log("Aurora Framework for iOS \(self.version) loaded")
         self.operatingSystem = .iOS
         #elseif os(macOS)
-        self.log("Aurora Framework for Mac OS \(self.version) loaded")
         self.operatingSystem = .macOS
         #elseif os(watchOS)
-        self.log("Aurora Framework for WachtOS \(self.version) loaded")
         self.operatingSystem = .watchOS
         #elseif os(tvOS)
-        self.log("Aurora Framework for tvOS \(self.version) loaded")
         self.operatingSystem = .tvOS
         #elseif os(Android)
-        self.log("Aurora Framework for Android \(self.version) loaded")
         self.operatingSystem = .android
         #elseif os(Windows)
-        self.log("Aurora Framework for Windows \(self.version) loaded")
         self.operatingSystem = .windows
         #elseif os(Linux)
-        self.log("Aurora Framework for Linux \(self.version) loaded")
         self.operatingSystem = .linux
-        #else
-        self.log("Aurora Framework \(self.version) loaded")
-        self.log("Unknown platform")
         #endif
+        self.log(
+            self.translate(message: "Aurora.loaded", [
+                "$VERSION": self.version,
+                "$OS": self.operatingSystem.asString()
+            ])
+        )
 
         isInitialized = true
+    }
+
+    private func translate(message: String, _ replacements: [String: String]?) -> String {
+        var msg = NSLocalizedString(message, bundle: Bundle.module, comment: message)
+
+        if let replacement = replacements {
+            for (replace, with) in replacement {
+                msg = msg.replace(replace, withString: with)
+            }
+        }
+
+        return msg
     }
 
     /// Start Aurora classes/functions

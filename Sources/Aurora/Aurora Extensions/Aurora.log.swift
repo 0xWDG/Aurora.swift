@@ -1,4 +1,16 @@
-// HEADER //
+// Aurora framework for Swift
+//
+// The **Aurora.framework** contains a base for your project.
+//
+// It has a lot of extensions built-in to make development easier.
+//
+// - Version: 1.0
+// - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
+//  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
+//
+// Thanks for using!
+//
+// Licence: MIT
 
 import Foundation
 
@@ -32,48 +44,56 @@ extension Aurora {
         file: String = #file,
         line: Int = #line,
         function: String = #function) -> Bool {
-        if debug {
-            // extract filename, without path, and without extension.
-            let fileName: String = (file.split("/").last).unwrap(
-                orError: "Failed to get file name"
-            ).split(".").first.unwrap(orError: "Failed to get file name")
+            if debug {
+                // extract filename, without path, and without extension.
+                let fileName: String = (file.split("/").last).unwrap(
+                    orError: "Failed to get file name"
+                ).split(".").first.unwrap(orError: "Failed to get file name")
 
-            // extract extension.
-            let fileExtension: String = file.split(".").last.unwrap(orError: "Invalid file extension")
+                // extract extension.
+                let fileExtension: String = file.split(".").last.unwrap(orError: "Invalid file extension")
 
-            // On which Queue are we running
-            let queue = Thread.isMainThread ? "Main" : "Background"
+                // On which Queue are we running
+                let queue = Thread.isMainThread ? "Main" : "Background"
 
-            // Make up the log message.
-            let logMessage = logTemplate
-                .replace("$product", withString: product)
-                .replace("$version", withString: version)
-                .replace("$datetime", withString: dateFormatter.string(from: Date()))
-                .replace("$date", withString: dateFormatter.string(from: Date()))
-                .replace("$time", withString: dateFormatter.string(from: Date()))
-                .replace("$file", withString: fileName)
-                .replace("$fileName", withString: fileName)
-                .replace("$extension", withString: fileExtension)
-                .replace("$fileExtension", withString: fileExtension)
-                .replace("$line", withString: "\(line)")
-                .replace("$function", withString: function)
-                .replace("$queue", withString: queue)
-                .replace("$message", withString: message.joined(separator: " "))
+                var appName = "Unknown"
+                if let name = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String {
+                    appName = name
+                }
+
+                // Make up the log message.
+                let logMessage = logTemplate
+                    .replace(
+                        "$product",
+                        withString: file.contains("Sources/Aurora") ? product : appName
+                    )
+                    .replace("$version", withString: version)
+                    .replace("$datetime", withString: dateFormatter.string(from: Date()))
+                    .replace("$date", withString: dateFormatter.string(from: Date()))
+                    .replace("$time", withString: dateFormatter.string(from: Date()))
+                    .replace("$file", withString: fileName)
+                    .replace("$fileName", withString: fileName)
+                    .replace("$extension", withString: fileExtension)
+                    .replace("$fileExtension", withString: fileExtension)
+                    .replace("$line", withString: "\(line)")
+                    .replace("$function", withString: function)
+                    .replace("$queue", withString: queue)
+                    .replace("$message", withString: message.joined(separator: " "))
                 + "\n"
 
-            // Print the "messages"
-            Swift.print(logMessage)
+                // Print the "messages"
+                Swift.print(logMessage)
 
-            // Append to the history
-            logHistory.append(logMessage)
+                // Append to the history
+                logHistory.append(logMessage)
 
-            if isInitialized {
-                Aurora.shared.logHandler?(logMessage)
+                if isInitialized {
+                    Aurora.shared.logHandler?(logMessage)
+                }
             }
-        }
 
-        return debug
-    }
+            return debug
+        }
 
     /// Log
     ///
@@ -102,7 +122,7 @@ extension Aurora {
 
             // extract filename, without path, and without extension.
             let fileName: String = (file.split("/").last).unwrap(
-                    orError: "Failed to get file name"
+                orError: "Failed to get file name"
             ).split(".").first.unwrap(
                 orError: "Failed to get file name"
             )
@@ -113,9 +133,17 @@ extension Aurora {
             // On which Queue are we running
             let queue = Thread.isMainThread ? "Main" : "Background"
 
+            var appName = "Unknown"
+            if let name = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String {
+                appName = name
+            }
+
             // Make up the log message.
             let logMessage = logTemplate
-                .replace("$product", withString: product)
+                .replace(
+                    "$product",
+                    withString: file.contains("Sources/Aurora") ? product : appName
+                )
                 .replace("$version", withString: version)
                 .replace("$datetime", withString: dateFormatter.string(from: Date()))
                 .replace("$date", withString: dateFormatter.string(from: Date()))
@@ -128,7 +156,7 @@ extension Aurora {
                 .replace("$function", withString: function)
                 .replace("$queue", withString: queue)
                 .replace("$message", withString: "\(anyThing)")
-                + "\n"
+            + "\n"
 
             // Print the "messages"
             Swift.print(logMessage)
@@ -169,13 +197,13 @@ extension Aurora {
         file: String = #file,
         line: Int = #line,
         function: String = #function) -> Bool {
-        return log(
-            message.joined(separator: " "),
-            file: file,
-            line: line,
-            function: function
-        )
-    }
+            return log(
+                message.joined(separator: " "),
+                file: file,
+                line: line,
+                function: function
+            )
+        }
 
     /// Show LogViewer
     public func showLogViewer() {

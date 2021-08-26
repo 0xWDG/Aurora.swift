@@ -28,16 +28,24 @@ struct AuroraError {
 
 extension AuroraError: LocalizedError {
     /// the Error description
-    var errorDescription: String? { return message }
+    var errorDescription: String? {
+        return NSLocalizedString(message, bundle: Bundle.module, comment: message)
+    }
 
     /// Failure reaseon
-    var failureReason: String? { return message }
+    var failureReason: String? {
+        return NSLocalizedString(message, bundle: Bundle.module, comment: message)
+    }
 
     /// Recovery suggestion
-    var recoverySuggestion: String? { return message }
+    var recoverySuggestion: String? {
+        return NSLocalizedString(message, bundle: Bundle.module, comment: message)
+    }
 
     /// Help anchor
-    var helpAnchor: String? { return message }
+    var helpAnchor: String? {
+        return NSLocalizedString(message, bundle: Bundle.module, comment: message)
+    }
 }
 
 extension String {
