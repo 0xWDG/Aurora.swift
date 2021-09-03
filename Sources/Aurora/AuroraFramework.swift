@@ -332,7 +332,7 @@ open class Aurora {
             self.translate(message: "Aurora.loaded", [
                 "$VERSION": self.version,
                 "$OVersion": self.operatingVersion,
-                "$OS": self.operatingSystem.asString()
+                "$OS": self.operatingSystem.rawValue
             ])
         )
 
