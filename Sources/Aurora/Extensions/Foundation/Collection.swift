@@ -38,6 +38,7 @@ public extension Sequence where Element: Numeric {
     }
 }
 
+/// Diverseable number.
 public protocol DivisibleArithmetic: Numeric {
     /// DivisibleArithmetic
     /// - Parameter value: values

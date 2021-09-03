@@ -17,7 +17,7 @@
     <a title="Aurora Extension Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Aurora 1.0 Docs</a> (99% documented)</p>
+        <p><a href="../index.html">Aurora 1.0 Docs</a> (100% documented)</p>
         <p class="header-right"><a href="https://github.com/AuroraFramework/Aurora.swift"><img src="../img/gh.png"/>View on GitHub</a></p>
         <p class="header-right"><a href="dash-feed://https%3A%2F%2FAuroraFramework.github.io%2FAurora.swift%2Fdocsets%2FBaaS.docset"><img src="../img/dash.png"/>Install in Dash</a></p>
         <p class="header-right">
@@ -50,31 +50,22 @@
                 <a href="../Classes/Aurora/HTTPMethod.html">– HTTPMethod</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Classes/Aurora/NetworkStatus.html">– NetworkStatus</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/Aurora.html#/s:6AuroraAAC3RunC">– Run</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/Aurora/Validator.html">– Validator</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/AuroraFrameworkiCloudSync.html">AuroraFrameworkiCloudSync</a>
+                <a href="../Classes/Aurora/AuroraiCloudSync.html">– AuroraiCloudSync</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/AuroraKeychain.html">AuroraKeychain</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/AuroraLogView.html">AuroraLogView</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Classes/AuroraNetworkLogger.html">AuroraNetworkLogger</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/NetworkStatus.html">NetworkStatus</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes.html#/s:6Aurora11SimpleTimerC">SimpleTimer</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/UIControlHelper.html">UIControlHelper</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/UIGradientView.html">UIGradientView</a>
@@ -129,13 +120,19 @@
                 <a href="../Extensions/Aurora/Carousel.html">– Carousel</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/Aurora/AuroraCarouselCell.html">– AuroraCarouselCell</a>
+                <a href="../Extensions/Aurora/CarouselCell.html">– CarouselCell</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/Aurora/AuroraCarouselSlide.html">– AuroraCarouselSlide</a>
+                <a href="../Extensions/Aurora/CarouselSlide.html">– CarouselSlide</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/Aurora/KeyboardHandler.html">– KeyboardHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Aurora/LogView.html">– LogView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Aurora/UIControlHelper.html">– UIControlHelper</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/Bool.html">Bool</a>
@@ -464,10 +461,7 @@
             <a href="../Typealiases.html">Type Aliases</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Typealiases.html#/SplashAnimatableCompletion">SplashAnimatableCompletion</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Typealiases.html#/SplashAnimatableExecution">SplashAnimatableExecution</a>
+                <a href="../Typealiases.html#/s:6Aurora0A5Blocka">AuroraBlock</a>
               </li>
             </ul>
           </li>
@@ -565,7 +559,7 @@
 <p>&lt;#SuperDuperDescription#&gt;</p>
 
 <p><strong>Example</strong></p>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">carousel</span> <span class="o">=</span> <span class="kt">Aurora</span><span class="o">.</span><span class="kt">Carousel</span><span class="p">()</span><span class="o">.</span><span class="n">configure</span> <span class="p">{</span>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">carousel</span> <span class="o">=</span> <span class="kt">Aurora</span><span class="o">.</span><span class="n">load</span><span class="o">.</span><span class="kt">Carousel</span><span class="p">()</span><span class="o">.</span><span class="n">configure</span> <span class="p">{</span>
     <span class="c1">// Create as many slides as you'd like to show in the carousel</span>
     <span class="nv">$0</span><span class="o">.</span><span class="n">slides</span> <span class="o">=</span> <span class="p">[</span>
       <span class="o">.</span><span class="nf">init</span><span class="p">(</span>
@@ -599,8 +593,8 @@
                   <div>
                     <code>
                     <a name="/"></a>
-                    <a name="//apple_ref/swift/Class/AuroraCarouselCell" class="dashAnchor"></a>
-                    <a class="token" href="#/">AuroraCarouselCell</a>
+                    <a name="//apple_ref/swift/Class/CarouselCell" class="dashAnchor"></a>
+                    <a class="token" href="#/">CarouselCell</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -609,7 +603,7 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         
-                        <a href="../Extensions/Aurora/AuroraCarouselCell.html" class="slightly-smaller">See more</a>
+                        <a href="../Extensions/Aurora/CarouselCell.html" class="slightly-smaller">See more</a>
                       </div>
                     </section>
                   </div>
@@ -618,8 +612,8 @@
                   <div>
                     <code>
                     <a name="/"></a>
-                    <a name="//apple_ref/swift/Struct/AuroraCarouselSlide" class="dashAnchor"></a>
-                    <a class="token" href="#/">AuroraCarouselSlide</a>
+                    <a name="//apple_ref/swift/Struct/CarouselSlide" class="dashAnchor"></a>
+                    <a class="token" href="#/">CarouselSlide</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -629,7 +623,7 @@
                       <div class="abstract">
                         <p>Aurora Carousel Slide</p>
 
-                        <a href="../Extensions/Aurora/AuroraCarouselSlide.html" class="slightly-smaller">See more</a>
+                        <a href="../Extensions/Aurora/CarouselSlide.html" class="slightly-smaller">See more</a>
                       </div>
                     </section>
                   </div>
@@ -665,6 +659,48 @@
 there&rsquo;s no protection for such things built-in.</em></p>
 
                         <a href="../Extensions/Aurora/KeyboardHandler.html" class="slightly-smaller">See more</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/"></a>
+                    <a name="//apple_ref/swift/Class/LogView" class="dashAnchor"></a>
+                    <a class="token" href="#/">LogView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Aurora logviewer class</p>
+
+<p>View the logs used/generated by Aurora.Framework</p>
+
+                        <a href="../Extensions/Aurora/LogView.html" class="slightly-smaller">See more</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/"></a>
+                    <a name="//apple_ref/swift/Class/UIControlHelper" class="dashAnchor"></a>
+                    <a class="token" href="#/">UIControlHelper</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>UI Control helper</p>
+
+                        <a href="../Extensions/Aurora/UIControlHelper.html" class="slightly-smaller">See more</a>
                       </div>
                     </section>
                   </div>

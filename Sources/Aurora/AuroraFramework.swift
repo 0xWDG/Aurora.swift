@@ -51,8 +51,11 @@ open class Aurora {
     /// The shared instance of **Aurora.framework**
     public static let shared = Aurora()
 
+    /// **Aurora.framework** reference (to use `Aurora.load.className`)
+    public static let load = Aurora.self
+
     /// Initialize crash handler
-    internal static let crashLogger = AuroraCrashHandler.shared
+    internal static let crashLogger = Aurora.load.CrashHandler.shared
 
     /// the version
     public let version = "1.0"
@@ -358,7 +361,7 @@ open class Aurora {
     /// Start Aurora classes/functions
     private func startAuroraFunctions() {
         #if os(iOS)
-        let iCloudSync: AuroraFrameworkiCloudSync = AuroraFrameworkiCloudSync()
+        let iCloudSync: AuroraiCloudSync = AuroraiCloudSync()
         iCloudSync.start()
         #endif
     }
@@ -368,6 +371,9 @@ open class Aurora {
         AuroraNetworkLogger.register()
     }
 }
+
+/// Run block
+public typealias AuroraBlock = () -> Void
 
 /// Support older configurations
 open class WDGFramework: Aurora { }

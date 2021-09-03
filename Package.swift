@@ -33,7 +33,9 @@ let package = Package(
         .target(
             name: "Aurora",
             dependencies: [],
-            exclude: [],
+            exclude: [
+                "NoSwiftPM.swift"
+            ],
             resources: [
                 .process("Resources")
             ]
@@ -43,7 +45,9 @@ let package = Package(
             dependencies: [
                 "Aurora"
             ],
-            exclude: [],
+            exclude: [
+                "NoSwiftPM.swift"
+            ],
             resources: [
                 .process("Resources")
             ]

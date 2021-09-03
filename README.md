@@ -19,7 +19,8 @@ Last update: 25-AUG-2021
  
  To use them create a proxy, since SwiftPM does not support @IBDesignables in Frameworks.
  
- `@IBDesignable class UIGradientViewProxy: UIGradientView {}`
-
-- UIViewRounded
-- UIGradientView
+ ```swift
+ @IBDesignable class UIGradientViewProxy: UIGradientView {}
+ @IBDesignable class UIViewRoundedProxy: UIViewRounded {}
+ @IBDesignable class UIGradientViewProxy: UIGradientView {}
+ ```

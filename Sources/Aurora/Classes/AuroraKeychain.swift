@@ -35,6 +35,7 @@ open class AuroraKeychain {
     /// Specifies whether the items can be synchronized with other devices through iCloud
     open var synchronizable: Bool = true
 
+    /// Create a lock
     private let lock = NSLock()
 
     /// Instantiate a KeychainSwift object

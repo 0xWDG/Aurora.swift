@@ -71,6 +71,7 @@ extension Aurora {
         /// - error: Detection was not successful
         /// - success: Detection was successful. `nsfwConfidence`: 0.0 for safe content - 1.0 for hardcore porn ;)
         public enum DetectionResult {
+            // swiftlint:disable:previous nesting
             /// error: Detection was not successful
             case error(Error)
 
@@ -126,7 +127,8 @@ extension Aurora {
         /// - Parameters:
         ///   - requestHandler: VN Request handler
         ///   - completion: Completion
-        func check(_ requestHandler: VNImageRequestHandler?, completion: @escaping (_ result: DetectionResult) -> Void) {
+        func check(_ requestHandler: VNImageRequestHandler?,
+                   completion: @escaping (_ result: DetectionResult) -> Void) {
             guard let requestHandler = requestHandler else {
                 completion(
                     .error(

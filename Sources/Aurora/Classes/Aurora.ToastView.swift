@@ -20,7 +20,7 @@ import QuartzCore
 extension Aurora {
     /// Create a toast view (like  Watch unlocked, Paired AirPods)
     ///
-    ///     Aurora.ToastView(
+    ///     Aurora.load.ToastView(
     ///       title: "Warning",
     ///       subtitle: "This is not good?",
     ///       icon: UIImage.init(systemName: "exclamationmark.triangle"),

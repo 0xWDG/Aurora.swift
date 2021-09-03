@@ -67,10 +67,12 @@ extension AuroraNetworkLoggerConfigurationType {
     }
 }
 
+/// Default Networklogger conficutation
 public struct AuroraNetworkLoggerDefaultConfiguration: AuroraNetworkLoggerConfigurationType {
 
 }
 
+/// Networklogger
 public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
     // MARK: - Public
 

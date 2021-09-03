@@ -16,23 +16,20 @@ import Foundation
 
 extension Aurora {
     /// Run actions after another
-    public class Run {
-        /// Alias for closire
-        typealias Action = () -> Void
-
+    public final class Run {
         /// The queue
-        var queue: [Action] = [Action]()
+        var queue: [AuroraBlock] = [AuroraBlock]()
 
         /// Initialize the first action
         /// - Parameter act: Action closure
-        init(action: @escaping Action) {
+        init(action: @escaping AuroraBlock) {
             queue.append(action)
         }
 
         /// Append execution in the queue
         /// - Parameter action: Action closure
         /// - Returns: Self (for appending)
-        func then(action: @escaping Action) -> Self {
+        func then(action: @escaping AuroraBlock) -> Self {
             queue.append(action)
             return self
         }

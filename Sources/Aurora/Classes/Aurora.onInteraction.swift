@@ -92,42 +92,44 @@ public extension UIControl {
         action: @escaping (AnyObject) -> Void
     ) {
         /// UIControl Helper
-        let helper = UIControlHelper(
+        let helper = Aurora.UIControlHelper(
             attachTo: self,
             closure: action
         )
 
         addTarget(
             helper,
-            action: #selector(UIControlHelper.invoke),
+            action: #selector(Aurora.UIControlHelper.invoke),
             for: controlEvents
         )
     }
 }
 
-/// UI Control helper
-public class UIControlHelper {
-    /// Closure to run
-    let closure: (AnyObject) -> Void
+extension Aurora {
+    /// UI Control helper
+    public class UIControlHelper {
+        /// Closure to run
+        let closure: (AnyObject) -> Void
 
-    /// Init helper
-    /// - Parameters:
-    ///   - attachTo: to UIControl
-    ///   - closure: what to run?
-    public init(attachTo: AnyObject, closure: @escaping (AnyObject) -> Void) {
-        self.closure = closure
-        objc_setAssociatedObject(
-            attachTo,
-            "[\(arc4random())]",
-            self,
-            .OBJC_ASSOCIATION_RETAIN
-        )
-    }
+        /// Init helper
+        /// - Parameters:
+        ///   - attachTo: to UIControl
+        ///   - closure: what to run?
+        public init(attachTo: AnyObject, closure: @escaping (AnyObject) -> Void) {
+            self.closure = closure
+            objc_setAssociatedObject(
+                attachTo,
+                "[\(arc4random())]",
+                self,
+                .OBJC_ASSOCIATION_RETAIN
+            )
+        }
 
-    /// Invoke
-    /// - Parameter sender: from sender
-    @objc func invoke(sender: AnyObject) {
-        closure(sender)
+        /// Invoke
+        /// - Parameter sender: from sender
+        @objc func invoke(sender: AnyObject) {
+            closure(sender)
+        }
     }
 }
 #endif
