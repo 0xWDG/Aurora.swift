@@ -22,6 +22,16 @@ import AudioToolbox
 #endif
 
 public extension UIDevice {
+    /// Is running iOS app on Mac?
+    var isiOSAppOnMac: Bool {
+        return ProcessInfo().isiOSAppOnMac
+    }
+
+    /// Is running as Catalyst app on Mac?
+    var isMacCatalystApp: Bool {
+        return ProcessInfo().isMacCatalystApp
+    }
+
     /// Generate a random uuid string.
     var idForVendor: String? {
         return UIDevice.current.identifierForVendor?.uuidString

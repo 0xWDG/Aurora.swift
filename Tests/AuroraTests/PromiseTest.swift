@@ -19,31 +19,25 @@ import XCTest
 
 @testable import Aurora
 
-extension AuroraTest {
-    /// Run after
-    /// - Parameters:
-    ///   - timeInterval: interfal
-    ///   - work: workish
-    func after(_ timeInterval: TimeInterval = 0.1, work: @escaping () -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + timeInterval, execute: work)
-    }
+/// Alias Promise to Aurora.Promise
+typealias Promise = Aurora.Promise
 
+extension AuroraTest {
     struct User {
         let userID: Int
         let name: String
     }
 
     func fetchIds() -> Promise<[Int]> {
-        return Promise { xxx in
+        return Aurora.Promise { xxx in
+            print("Return 0, 1, 2")
             xxx([0, 1, 2])
         }
     }
 
     func fetchUser(userID: Int) -> Promise<User> {
         return Promise { resolve in
-        after(0.1) {
-            resolve(User.init(userID: 0, name: "Aurora Framework"))
-            }
+            resolve(User.init(userID: 0, name: "Fake User"))
         }
     }
 
@@ -53,7 +47,7 @@ extension AuroraTest {
         }.then { user in // map
             return user.name
         }.then { name in // observe
-            print(name)
+            Aurora.shared.log("name=\(name)")
             XCTAssertNotNil(name)
         }
     }

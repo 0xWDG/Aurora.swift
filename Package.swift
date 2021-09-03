@@ -33,7 +33,10 @@ let package = Package(
         .target(
             name: "Aurora",
             dependencies: [],
-            exclude: [],
+            exclude: [
+                // If run from .xcodeproj this file is needed.
+                "NoSwiftPM.swift"
+            ],
             resources: [
                 .process("Resources")
             ]

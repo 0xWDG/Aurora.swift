@@ -1,5 +1,5 @@
 // MARK: Framework.
-"Aurora.loaded" = "Aurora Framework ($VERSION) voor $OS is geladen!";
+"Aurora.loaded" = "Aurora Framework ($VERSION) voor $OS $OVersion is geladen!";
 
 // MARK: General messages
 "Aurora.general.done" = "Klaar";

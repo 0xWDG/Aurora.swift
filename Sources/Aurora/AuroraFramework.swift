@@ -51,8 +51,11 @@ open class Aurora {
     /// The shared instance of **Aurora.framework**
     public static let shared = Aurora()
 
+    /// **Aurora.framework** reference (to use `Aurora.load.className`)
+    public static let load = Aurora.self
+
     /// Initialize crash handler
-    internal static let crashLogger = AuroraCrashHandler.shared
+    internal static let crashLogger = Aurora.load.CrashHandler.shared
 
     /// the version
     public let version = "1.0"
@@ -217,27 +220,7 @@ open class Aurora {
                 .replace("$product", withString: self.product)
                 .replace("$auroraVersion", withString: self.version)
                 .replace("$version", withString: self.version)
-
-            #if os(iOS)
-            returnValue = returnValue.replace(
-                "$osVersion",
-                withString: UIDevice.current.systemVersion
-            )
-            #elseif os(macOS)
-            let version = "\(ProcessInfo.processInfo.operatingSystemVersion.majorVersion)"
-                + ".\(ProcessInfo.processInfo.operatingSystemVersion.minorVersion)"
-                + ".\(ProcessInfo.processInfo.operatingSystemVersion.patchVersion)"
-
-            returnValue = returnValue.replace(
-                "$osVersion",
-                withString: version
-            )
-            #else
-            returnValue = returnValue.replace(
-                "$osVersion",
-                withString: "1.0"
-            )
-            #endif
+                .replace("$osVersion", withString: self.operatingVersion)
 
             #if canImport(UIKit) && !os(watchOS)
             var utsnameInstance = utsname()
@@ -316,6 +299,9 @@ open class Aurora {
     /// Which os we are running on?
     var operatingSystem: AuroraOS = .unknown
 
+    /// Which os we are running on?
+    var operatingVersion: String = "Unknown"
+
     /// Initialize
     public init(experimentalFunctions: Bool = false) {
         #if os(iOS)
@@ -333,18 +319,34 @@ open class Aurora {
         #elseif os(Linux)
         self.operatingSystem = .linux
         #endif
+
+#if os(iOS) || os(macOS) || os(tvOS) || os(watchOS)
+        self.operatingVersion = [
+            ProcessInfo().operatingSystemVersion.majorVersion,
+            ProcessInfo().operatingSystemVersion.minorVersion,
+            ProcessInfo().operatingSystemVersion.patchVersion
+        ].map { $0.toString }.joined(separator: ".")
+#endif
+
         self.log(
             self.translate(message: "Aurora.loaded", [
                 "$VERSION": self.version,
-                "$OS": self.operatingSystem.asString()
+                "$OVersion": self.operatingVersion,
+                "$OS": self.operatingSystem.rawValue
             ])
         )
+
+        self.log("Device name: \(ProcessInfo().hostName)")
 
         isInitialized = true
     }
 
     private func translate(message: String, _ replacements: [String: String]?) -> String {
-        var msg = NSLocalizedString(message, bundle: Bundle.module, comment: message)
+        var msg = NSLocalizedString(
+            message,
+            bundle: Bundle.module,
+            comment: message
+        )
 
         if let replacement = replacements {
             for (replace, with) in replacement {
@@ -358,7 +360,7 @@ open class Aurora {
     /// Start Aurora classes/functions
     private func startAuroraFunctions() {
         #if os(iOS)
-        let iCloudSync: AuroraFrameworkiCloudSync = AuroraFrameworkiCloudSync()
+        let iCloudSync: AuroraiCloudSync = AuroraiCloudSync()
         iCloudSync.start()
         #endif
     }
@@ -368,6 +370,9 @@ open class Aurora {
         AuroraNetworkLogger.register()
     }
 }
+
+/// Run block
+public typealias AuroraBlock = () -> Void
 
 /// Support older configurations
 open class WDGFramework: Aurora { }

@@ -23,11 +23,6 @@ import Foundation
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
 
-/// SplashAnimatableCompletion
-public typealias SplashAnimatableCompletion = () -> Void
-/// SplashAnimatableExecution
-public typealias SplashAnimatableExecution = () -> Void
-
 /// Protocol that represents splash animatable functionality
 public protocol SplashAnimatable: AnyObject {
 
@@ -217,7 +212,7 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
     }
 
     /// Starts the animation depending on the type
-    public func startAnimation(_ completion: SplashAnimatableCompletion? = nil) {
+    public func startAnimation(_ completion: AuroraBlock? = nil) {
         switch animationType {
         case .twitter:
             playTwitterAnimation(completion)
@@ -243,7 +238,7 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
     }
 
     /// Plays the twitter animation
-    func playTwitterAnimation(_ completion: SplashAnimatableCompletion? = nil) {
+    func playTwitterAnimation(_ completion: AuroraBlock? = nil) {
         if let imageView = self.imageView {
             // Define the shink and grow duration based on the duration parameter
             let shrinkDuration: TimeInterval = duration * 0.3
@@ -269,7 +264,7 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
     }
 
     /// Plays the Squeeze animation
-    func playSqueezeAnimation(_ completion: SplashAnimatableCompletion? = nil) {
+    func playSqueezeAnimation(_ completion: AuroraBlock? = nil) {
         if let imageView = self.imageView {
             // Define the shink and grow duration based on the duration parameter
             let shrinkDuration: TimeInterval = duration * 0.5
@@ -296,7 +291,7 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
     /// Plays the rotate out animation
     ///
     /// - parameter completion: when the animation completes
-    func playRotateOutAnimation(_ completion: SplashAnimatableCompletion? = nil) {
+    func playRotateOutAnimation(_ completion: AuroraBlock? = nil) {
         if let imageView = self.imageView {
             /// Sets the animation with duration delay and completion
             UIView.animate(
@@ -326,7 +321,7 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
     /// Plays a wobble animtion and then zoom out
     ///
     /// - parameter completion: completion
-    func playWoobleAnimation(_ completion: SplashAnimatableCompletion? = nil) {
+    func playWoobleAnimation(_ completion: AuroraBlock? = nil) {
 
         if let imageView = self.imageView {
 
@@ -360,7 +355,7 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
 
     /// Plays the swing animation and zoom out
     /// - parameter completion: completion
-    func playSwingAnimation(_ completion: SplashAnimatableCompletion? = nil) {
+    func playSwingAnimation(_ completion: AuroraBlock? = nil) {
         if let imageView = self.imageView {
 
             let swingForce = 0.8
@@ -384,7 +379,7 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
 
     /// Plays the pop animation with completion
     /// - parameter completion: completion
-    func playPopAnimation(_ completion: SplashAnimatableCompletion? = nil) {
+    func playPopAnimation(_ completion: AuroraBlock? = nil) {
         if let imageView = self.imageView {
 
             let popForce = 0.5
@@ -407,7 +402,7 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
 
     /// Plays the zoom out animation with completion
     /// - parameter completion: completion
-    func playZoomOutAnimation(_ completion: SplashAnimatableCompletion? = nil) {
+    func playZoomOutAnimation(_ completion: AuroraBlock? = nil) {
         if let imageView = imageView {
             let growDuration: TimeInterval =  duration * 0.3
             completion?()
@@ -432,8 +427,8 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
 
     // MARK: - Private
     fileprivate func animateLayer(
-        _ animation: SplashAnimatableExecution,
-        completion: SplashAnimatableCompletion? = nil) {
+        _ animation: AuroraBlock,
+        completion: AuroraBlock? = nil) {
         CATransaction.begin()
         if let completion = completion {
             CATransaction.setCompletionBlock { completion() }
@@ -444,7 +439,7 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
 
     /// Plays the heatbeat animation with completion
     /// - parameter completion: completion
-    func playHeartBeatAnimation(_ completion: SplashAnimatableCompletion? = nil) {
+    func playHeartBeatAnimation(_ completion: AuroraBlock? = nil) {
         if let imageView = self.imageView {
 
             let popForce = 0.8

@@ -1,33 +1,6 @@
 {
   "warnings": [
-    {
-      "file": "/Users/wesley/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/Aurora Networking/Aurora.Networking.Logger.swift",
-      "line": 70,
-      "symbol": "AuroraNetworkLoggerDefaultConfiguration",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/wesley/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/Aurora Networking/Aurora.Networking.Logger.swift",
-      "line": 74,
-      "symbol": "AuroraNetworkLogger",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/wesley/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/Extensions/Foundation/Collection.swift",
-      "line": 41,
-      "symbol": "DivisibleArithmetic",
-      "symbol_kind": "source.lang.swift.decl.protocol",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/wesley/Cloud/Apps/Universal/Aurora.swift/Sources/Aurora/SwiftUI/ShakeEffect.swift",
-      "line": 14,
-      "symbol": "ShakeEffect",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    }
+
   ],
   "source_directory": "/Users/wesley/Cloud/Apps/Universal/Aurora.swift"
 }
