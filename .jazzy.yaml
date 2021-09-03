@@ -1,4 +1,5 @@
 # Create Documentation
+swift_build_tool: spm
 
 # Set author name
 author: "Wesley de Groot (et. al)"
