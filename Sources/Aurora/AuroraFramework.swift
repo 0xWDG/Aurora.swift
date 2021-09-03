@@ -319,16 +319,39 @@ open class Aurora {
     /// Which os we are running on?
     var operatingSystem: AuroraOS = .unknown
 
+    /// Which os we are running on?
+    var operatingVersion: String = "Unknown"
+
     /// Initialize
     public init(experimentalFunctions: Bool = false) {
         #if os(iOS)
         self.operatingSystem = .iOS
+        self.operatingVersion = [
+            ProcessInfo().operatingSystemVersion.majorVersion,
+            ProcessInfo().operatingSystemVersion.minorVersion,
+            ProcessInfo().operatingSystemVersion.patchVersion,
+        ].map{ $0.toString }.joined(separator: ".")
         #elseif os(macOS)
         self.operatingSystem = .macOS
+        self.operatingVersion = [
+            ProcessInfo().operatingSystemVersion.majorVersion,
+            ProcessInfo().operatingSystemVersion.minorVersion,
+            ProcessInfo().operatingSystemVersion.patchVersion,
+        ].map{ $0.toString }.joined(separator: ".")
         #elseif os(watchOS)
         self.operatingSystem = .watchOS
+        self.operatingVersion = [
+            ProcessInfo().operatingSystemVersion.majorVersion,
+            ProcessInfo().operatingSystemVersion.minorVersion,
+            ProcessInfo().operatingSystemVersion.patchVersion,
+        ].map{ $0.toString }.joined(separator: ".")
         #elseif os(tvOS)
         self.operatingSystem = .tvOS
+        self.operatingVersion = [
+            ProcessInfo().operatingSystemVersion.majorVersion,
+            ProcessInfo().operatingSystemVersion.minorVersion,
+            ProcessInfo().operatingSystemVersion.patchVersion,
+        ].map{ $0.toString }.joined(separator: ".")
         #elseif os(Android)
         self.operatingSystem = .android
         #elseif os(Windows)
@@ -339,15 +362,22 @@ open class Aurora {
         self.log(
             self.translate(message: "Aurora.loaded", [
                 "$VERSION": self.version,
+                "$OVersion": self.operatingVersion,
                 "$OS": self.operatingSystem.asString()
             ])
         )
+
+        self.log("Device name: \(ProcessInfo().hostName)")
 
         isInitialized = true
     }
 
     private func translate(message: String, _ replacements: [String: String]?) -> String {
-        var msg = NSLocalizedString(message, bundle: Bundle.module, comment: message)
+        var msg = NSLocalizedString(
+            message,
+            bundle: Bundle.module,
+            comment: message
+        )
 
         if let replacement = replacements {
             for (replace, with) in replacement {

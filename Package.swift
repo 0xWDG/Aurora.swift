@@ -34,6 +34,7 @@ let package = Package(
             name: "Aurora",
             dependencies: [],
             exclude: [
+                // If run from .xcodeproj this file is needed.
                 "NoSwiftPM.swift"
             ],
             resources: [
@@ -45,9 +46,7 @@ let package = Package(
             dependencies: [
                 "Aurora"
             ],
-            exclude: [
-                "NoSwiftPM.swift"
-            ],
+            exclude: [],
             resources: [
                 .process("Resources")
             ]

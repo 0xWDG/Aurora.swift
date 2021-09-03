@@ -19,6 +19,27 @@ import UIKit
 #endif
 
 extension Aurora {
+
+    /// Get appname (for logging)
+    /// - Returns: App/Framework name
+    private func logGetAppName(filename file: String) -> String {
+        var appName = "Unknown"
+
+        if UnitTest.isRunning {
+            appName = "\(product)] [Unit test"
+        }
+
+        if UITest.isRunning {
+            appName = "\(product)] [UI test"
+        }
+
+        if let name = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String {
+            appName = name
+        }
+
+        return file.contains("Sources/Aurora") ? product : appName
+    }
+
     ///  Log
     ///
     ///  This is used to send log messages with the following syntax
@@ -56,17 +77,9 @@ extension Aurora {
                 // On which Queue are we running
                 let queue = Thread.isMainThread ? "Main" : "Background"
 
-                var appName = "Unknown"
-                if let name = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String {
-                    appName = name
-                }
-
                 // Make up the log message.
                 let logMessage = logTemplate
-                    .replace(
-                        "$product",
-                        withString: file.contains("Sources/Aurora") ? product : appName
-                    )
+                    .replace("$product", withString: logGetAppName(filename: file))
                     .replace("$version", withString: version)
                     .replace("$datetime", withString: dateFormatter.string(from: Date()))
                     .replace("$date", withString: dateFormatter.string(from: Date()))
@@ -133,17 +146,9 @@ extension Aurora {
             // On which Queue are we running
             let queue = Thread.isMainThread ? "Main" : "Background"
 
-            var appName = "Unknown"
-            if let name = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String {
-                appName = name
-            }
-
             // Make up the log message.
             let logMessage = logTemplate
-                .replace(
-                    "$product",
-                    withString: file.contains("Sources/Aurora") ? product : appName
-                )
+                .replace("$product", withString: logGetAppName(filename: file))
                 .replace("$version", withString: version)
                 .replace("$datetime", withString: dateFormatter.string(from: Date()))
                 .replace("$date", withString: dateFormatter.string(from: Date()))

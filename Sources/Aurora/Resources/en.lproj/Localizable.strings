@@ -1,5 +1,5 @@
 // MARK: Framework.
-"Aurora.loaded" = "Aurora Framework ($VERSION) for $OS loaded!";
+"Aurora.loaded" = "Aurora Framework ($VERSION) for $OS $OVersion loaded!";
 
 // MARK: General messages
 "Aurora.general.done" = "Done";
