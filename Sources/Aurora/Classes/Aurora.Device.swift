@@ -51,7 +51,7 @@ extension Aurora {
     class Device {
         /// Is running iOS app on Mac?
         var isiOSAppOnMac: Bool {
-            if #available(macOS 11.0, *) {
+            if #available(macOS 11.0, *, iOS 14.0, *) {
                 return ProcessInfo().isiOSAppOnMac
             }
 
@@ -60,7 +60,7 @@ extension Aurora {
 
         /// Is running as Catalyst app on Mac?
         var isMacCatalystApp: Bool {
-            if #available(macOS 11.0, *) {
+            if #available(macOS 11.0, *, iOS 13.0, *) {
                 return ProcessInfo().isMacCatalystApp
             }
 

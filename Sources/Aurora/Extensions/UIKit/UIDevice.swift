@@ -24,12 +24,20 @@ import AudioToolbox
 public extension UIDevice {
     /// Is running iOS app on Mac?
     var isiOSAppOnMac: Bool {
-        return ProcessInfo().isiOSAppOnMac
+        if #available(macOS 11.0, *, iOS 14.0, *) {
+            return ProcessInfo().isiOSAppOnMac
+        }
+
+        return false
     }
 
     /// Is running as Catalyst app on Mac?
     var isMacCatalystApp: Bool {
-        return ProcessInfo().isMacCatalystApp
+        if #available(macOS 11.0, *, iOS 13.0, *) {
+            return ProcessInfo().isMacCatalystApp
+        }
+
+        return false
     }
 
     /// Generate a random uuid string.
