@@ -19,7 +19,7 @@ import UIKit
 #endif
 
 /// Operating Systems
-// swiftlint:disable cyclomatic_complexity
+// swiftlint:disable cyclomatic_complexity file_length type_body_length
 enum AuroraOS {
     case macOS
     case iOS, iPadOS, iPhoneOS
@@ -33,7 +33,7 @@ enum AuroraOS {
     case freeBSD
     case openBSD
     case unknown
-    
+
     func asString() -> String {
         switch self {
         case .macOS:
@@ -86,19 +86,19 @@ extension Aurora {
             if #available(macOS 11.0, *) {
                 return ProcessInfo().isiOSAppOnMac
             }
-            
+
             return false
         }
-        
+
         /// Is running as Catalyst app on Mac?
         var isMacCatalystApp: Bool {
             if #available(macOS 11.0, *) {
                 return ProcessInfo().isMacCatalystApp
             }
-            
+
             return false
         }
-        
+
 #if canImport(UIKit)
         /// Are we running on Carplay?
         var isCarplay: Bool {
@@ -106,7 +106,7 @@ extension Aurora {
                 $0.traitCollection.userInterfaceIdiom == .carPlay
             }.count >= 1
         }
-        
+
         /// Are we running on a Mac?
         var isMac: Bool {
             if #available(iOS 14.0, *, tvOS 14.0, *) {
@@ -114,45 +114,45 @@ extension Aurora {
                     $0.traitCollection.userInterfaceIdiom == .mac
                 }.count >= 1
             }
-            
+
             return false
         }
-        
+
         /// Are we running on a iPad?
         var isiPad: Bool {
             return UIScreen.screens.filter {
                 $0.traitCollection.userInterfaceIdiom == .pad
             }.count >= 1
         }
-        
+
         /// Are we running on a iPhone?
         var isiPhone: Bool {
             return UIScreen.screens.filter {
                 $0.traitCollection.userInterfaceIdiom == .phone
             }.count >= 1
         }
-        
+
         /// Are we running on a TV?
         var isTV: Bool {
             return UIScreen.screens.filter {
                 $0.traitCollection.userInterfaceIdiom == .tv
             }.count >= 1
         }
-        
+
         /// Are we running on something unspecified??
         var isUnspecified: Bool {
             return UIScreen.screens.filter {
                 $0.traitCollection.userInterfaceIdiom == .unspecified
             }.count >= 1
         }
-        
+
         /// Get the first (active) carPlay screen.
         var getCarplayScreen: UIScreen? {
             return UIScreen.screens.first(where: {
                 $0.traitCollection.userInterfaceIdiom == .carPlay
             })
         }
-        
+
         /// Get the first (active) Mac screen.
         var getMacScreen: UIScreen? {
             if #available(iOS 14.0, *, tvOS 14.0, *) {
@@ -160,32 +160,32 @@ extension Aurora {
                     $0.traitCollection.userInterfaceIdiom == .mac
                 })
             }
-            
+
             // Not supported (yet)
             return nil
         }
-        
+
         /// Get the first (active) iPad screen.
         var getiPadScreen: UIScreen? {
             return UIScreen.screens.first(where: {
                 $0.traitCollection.userInterfaceIdiom == .pad
             })
         }
-        
+
         /// Get the first (active) iPhone screen.
         var getiPhoneScreen: UIScreen? {
             return UIScreen.screens.first(where: {
                 $0.traitCollection.userInterfaceIdiom == .phone
             })
         }
-        
+
         /// Get the first (active) TV screen.
         var getTVScreen: UIScreen? {
             return UIScreen.screens.first(where: {
                 $0.traitCollection.userInterfaceIdiom == .tv
             })
         }
-        
+
         /// Get the first (active) unspecified screen.
         var getScreen: UIScreen? {
             return UIScreen.screens.first(where: {
@@ -223,7 +223,7 @@ extension Aurora {
             "iPod5,1": "5th Gen iPod",
             "iPod7,1": "6th Gen iPod",
             "iPod9,1": "7th Gen iPod",
-            
+
             // MARK: iPhone
             "iPhone1,1": "iPhone",
             "iPhone1,2": "iPhone 3G",
@@ -265,7 +265,7 @@ extension Aurora {
             "iPhone13,2": "iPhone 12",
             "iPhone13,3": "iPhone 12 Pro",
             "iPhone13,4": "iPhone 12 Pro Max",
-            
+
             // MARK: iPad
             "iPad1,1": "iPad",
             "iPad1,2": "iPad 3G",
@@ -329,7 +329,7 @@ extension Aurora {
             "iPad11,7": "iPad 8th Gen (WiFi+Cellular)",
             "iPad13,1": "iPad air 4th Gen (WiFi)",
             "iPad13,2": "iPad air 4th Gen (WiFi+Celular)",
-            
+
             // MARK:  Watch
             "Watch1,1": "Apple Watch 38mm case",
             "Watch1,2": "Apple Watch 42mm case",
@@ -353,7 +353,7 @@ extension Aurora {
             "Watch6,2": "Apple Watch Series 6 44mm case (GPS)",
             "Watch6,3": "Apple Watch Series 6 40mm case (GPS+Cellular)",
             "Watch6,4": "Apple Watch Series 6 44mm case (GPS+Cellular)",
-            
+
             // MARK: Apple TV
             "AppleTV1,1": "Apple TV (1st generation)",
             "AppleTV2,1": "Apple TV (2nd generation)",
@@ -362,22 +362,22 @@ extension Aurora {
             "AppleTV5,3": "Apple TV HD",
             "AppleTV6,2": "Apple TV 4K",
             "AppleTV7,1": "Apple TV 8K?",
-            
+
             // MARK: HomePod
             "AudioAccessory1,1": "HomePod",
             "AudioAccessory1,2": "HomePod",
             "AudioAccessory5,1": "HomePod mini",
-            
+
             // MARK: AirPods
             "AirPods1,1": "AirPods (1st generation)",
             "AirPods2,1": "AirPods (2nd generation)",
             "iProd8,1": "AirPods Pro",
             "iProd8,6": "AirPods Max",
-            
+
             "i386": "Simulator",
             "x86_64": "Simulator"
         ]
-        
+
         /// Get device name
         /// - Returns: Devicename
         func getDeviceName() -> String {
@@ -388,14 +388,14 @@ extension Aurora {
                 guard let value = element.value as? Int8, value != 0 else { return identifier }
                 return identifier + String(UnicodeScalar(UInt8(value)))
             }
-            
+
             if let model = self.modelNames[identifier] {
                 return model
             } else {
                 return "Unknown <\(identifier)>"
             }
         }
-        
+
         /// Get the current operating system
         /// - Returns: current operating system
         func getOperatingSystem() -> AuroraOS {
@@ -423,25 +423,25 @@ extension Aurora {
             return .unknown
 #endif
         }
-        
+
         func getUserInterface() -> AuroraUserInterface {
 #if canImport(UIKit)
             switch UIDevice.current.userInterfaceIdiom {
             case .carPlay:
                 return .carPley
-                
+
             case .mac:
                 return .mac
-                
+
             case .pad:
                 return .pad
-                
+
             case .phone:
                 return .phone
-                
+
             case .tv:
                 return .tv
-                
+
             default:
                 return .unknown
             }
