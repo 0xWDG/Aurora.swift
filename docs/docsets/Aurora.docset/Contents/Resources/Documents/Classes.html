@@ -50,10 +50,10 @@
                 <a href="Classes/Aurora/HTTPMethod.html">– HTTPMethod</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes/AuroraCarousel.html">AuroraCarousel</a>
+                <a href="Classes/Aurora.html#/s:6AuroraAAC3RunC">– Run</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes/AuroraCarouselCell.html">AuroraCarouselCell</a>
+                <a href="Classes/Aurora/Validator.html">– Validator</a>
               </li>
               <li class="nav-group-task">
                 <a href="Classes/AuroraFrameworkiCloudSync.html">AuroraFrameworkiCloudSync</a>
@@ -68,13 +68,7 @@
                 <a href="Classes/AuroraNetworkLogger.html">AuroraNetworkLogger</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes/KeyboardHandler.html">KeyboardHandler</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="Classes/NetworkStatus.html">NetworkStatus</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes.html#/s:6Aurora3RunC">Run</a>
               </li>
               <li class="nav-group-task">
                 <a href="Classes.html#/s:6Aurora11SimpleTimerC">SimpleTimer</a>
@@ -90,9 +84,6 @@
               </li>
               <li class="nav-group-task">
                 <a href="Classes/UIViewRounded.html">UIViewRounded</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/Validator.html">Validator</a>
               </li>
               <li class="nav-group-task">
                 <a href="Classes.html#/s:6Aurora12WDGFrameworkC">WDGFramework</a>
@@ -133,6 +124,18 @@
               </li>
               <li class="nav-group-task">
                 <a href="Extensions/Aurora.html">Aurora</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/Aurora/Carousel.html">– Carousel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/Aurora/AuroraCarouselCell.html">– AuroraCarouselCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/Aurora/AuroraCarouselSlide.html">– AuroraCarouselSlide</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/Aurora/KeyboardHandler.html">– KeyboardHandler</a>
               </li>
               <li class="nav-group-task">
                 <a href="Extensions/Bool.html">Bool</a>
@@ -423,9 +426,6 @@
             <a href="Structs.html">Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Structs/AuroraCarouselSlide.html">AuroraCarouselSlide</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="Structs/AuroraConfig.html">AuroraConfig</a>
               </li>
               <li class="nav-group-task">
@@ -621,73 +621,6 @@ and <a href="https://github.com/AuroraFramework/Aurora.swift/graphs/contributors
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
-                    <a name="//apple_ref/swift/Class/AuroraCarousel" class="dashAnchor"></a>
-                    <a class="token" href="#/">AuroraCarousel</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>&lt;#Description#&gt;</p>
-
-<p>&lt;#SuperDuperDescription#&gt;</p>
-
-<p><strong>Example</strong></p>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">carousel</span> <span class="o">=</span> <span class="kt">AuroraCarousel</span><span class="p">()</span><span class="o">.</span><span class="n">configure</span> <span class="p">{</span>
-    <span class="c1">// Create as many slides as you'd like to show in the carousel</span>
-    <span class="nv">$0</span><span class="o">.</span><span class="n">slides</span> <span class="o">=</span> <span class="p">[</span>
-      <span class="o">.</span><span class="nf">init</span><span class="p">(</span>
-        <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">(),</span>
-        <span class="nv">title</span><span class="p">:</span> <span class="s">"Slide 1"</span><span class="p">,</span>
-        <span class="nv">description</span><span class="p">:</span> <span class="s">"The 1th slide"</span>
-      <span class="p">),</span>
-      <span class="o">.</span><span class="nf">init</span><span class="p">(</span>
-        <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">(),</span>
-        <span class="nv">title</span><span class="p">:</span> <span class="s">"Slide 2"</span><span class="p">,</span>
-        <span class="nv">description</span><span class="p">:</span> <span class="s">"The 2th slide"</span>
-      <span class="p">),</span>
-      <span class="o">.</span><span class="nf">init</span><span class="p">(</span>
-        <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">(),</span>
-        <span class="nv">title</span><span class="p">:</span> <span class="s">"Slide 3"</span><span class="p">,</span>
-        <span class="nv">description</span><span class="p">:</span> <span class="s">"The 3th slide"</span>
-      <span class="p">)</span>
-    <span class="p">]</span>
-  <span class="p">}</span>
-
-  <span class="c1">// Finally where needed:</span>
-  <span class="n">view</span><span class="o">.</span><span class="nf">addSubView</span><span class="p">(</span><span class="n">carousel</span><span class="p">)</span>
-</code></pre>
-
-                        <a href="Classes/AuroraCarousel.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/"></a>
-                    <a name="//apple_ref/swift/Class/AuroraCarouselCell" class="dashAnchor"></a>
-                    <a class="token" href="#/">AuroraCarouselCell</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                        <a href="Classes/AuroraCarouselCell.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
                     <a name="/s:6Aurora0A8KeychainC"></a>
                     <a name="//apple_ref/swift/Class/AuroraKeychain" class="dashAnchor"></a>
                     <a class="token" href="#/s:6Aurora0A8KeychainC">AuroraKeychain</a>
@@ -741,41 +674,6 @@ and <a href="https://github.com/AuroraFramework/Aurora.swift/graphs/contributors
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
-                    <a name="//apple_ref/swift/Class/KeyboardHandler" class="dashAnchor"></a>
-                    <a class="token" href="#/">KeyboardHandler</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Fixes the issue for screens being to small and that inputfields will be gone!</p>
-
-<p>Fixes the issue for screens being to small and that inputfields will be gone!</p>
-
-<p>.</p>
-
-<p><strong>usage:</strong></p>
-<pre class="highlight swift"><code><span class="nf">keyboardHandler</span><span class="p">(</span><span class="nv">forViewController</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span>
-</code></pre>
-
-<p>made for views which uses autolayout.</p>
-
-<p>Please note, it&rsquo;s a simple solution, so please don&rsquo;t expect micacles.</p>
-
-<p><em>WARNING, do not use if the input field is on the upper-part of the screen,
-there&rsquo;s no protection for such things built-in.</em></p>
-
-                        <a href="Classes/KeyboardHandler.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
                     <a name="/s:6Aurora13NetworkStatusC"></a>
                     <a name="//apple_ref/swift/Class/NetworkStatus" class="dashAnchor"></a>
                     <a class="token" href="#/s:6Aurora13NetworkStatusC">NetworkStatus</a>
@@ -801,36 +699,6 @@ there&rsquo;s no protection for such things built-in.</em></p>
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/NetworkStatus.swift#L20-L105">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:6Aurora3RunC"></a>
-                    <a name="//apple_ref/swift/Class/Run" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6Aurora3RunC">Run</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Run actions after another</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Run</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Run.swift#L18-L45">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -881,37 +749,6 @@ there&rsquo;s no protection for such things built-in.</em></p>
                         <p>UI Control helper</p>
 
                         <a href="Classes/UIControlHelper.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:6Aurora9ValidatorC"></a>
-                    <a name="//apple_ref/swift/Class/Validator" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6Aurora9ValidatorC">Validator</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Validate input</p>
-
-                        <a href="Classes/Validator.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">Validator</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/validators.swift#L18-L99">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
