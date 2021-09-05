@@ -17,7 +17,7 @@ import Foundation
 import Security
 
 /// A collection of helper functions for saving text and data in the keychain.
-open class AuroraKeychain {
+open class OLDAuroraKeychain {
     var lastQueryParameters: [String: Any]? // Used by the unit tests
 
     /// Contains result code from the last operation. Value is noErr (0) for a successful result.
