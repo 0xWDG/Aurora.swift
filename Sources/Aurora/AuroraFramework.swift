@@ -303,7 +303,7 @@ open class Aurora {
     var operatingVersion: String = "Unknown"
 
     /// **Aurora.framework** Nil value
-    static public let AFnil = "AuroraFramework=Nilvalue"
+    public static let AFnil = "AuroraFramework=Nilvalue"
 
     /// Initialize
     public init(experimentalFunctions: Bool = false) {
