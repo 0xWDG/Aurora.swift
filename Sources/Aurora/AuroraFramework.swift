@@ -302,9 +302,6 @@ open class Aurora {
     /// Which os we are running on?
     var operatingVersion: String = "Unknown"
 
-    /// **Aurora.framework** Nil value
-    public static let AFnil = "AuroraFramework=Nilvalue"
-
     /// Initialize
     public init(experimentalFunctions: Bool = false) {
         #if os(iOS)
