@@ -52,7 +52,7 @@ public extension UITabBarController {
     ///   - times: After x taps
     ///   - execute: What to execute
     func onTap(times: Int? = 10, execute: @escaping ((String) -> Void)) {
-        let runner = AuroraOnTabBarInteractionDelegate.sharedInstance
+        let runner = Aurora.OnTabBarInteractionDelegate.sharedInstance
         runner.onInteractionClosure = execute
         runner.onTimes = times ?? 10
 
