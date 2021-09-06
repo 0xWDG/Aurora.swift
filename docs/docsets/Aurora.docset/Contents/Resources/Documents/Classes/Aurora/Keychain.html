@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>NetworkStatus Class Reference</title>
+    <title>Keychain Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../../css/highlight.css" />
     <meta charset='utf-8'>
@@ -13,8 +13,8 @@
     <script src="../../js/jazzy.search.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/swift/Class/NetworkStatus" class="dashAnchor"></a>
-    <a title="NetworkStatus Class Reference"></a>
+    <a name="//apple_ref/swift/Class/Keychain" class="dashAnchor"></a>
+    <a title="Keychain Class Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../../index.html">Aurora 1.0 Docs</a> (100% documented)</p>
@@ -31,7 +31,7 @@
       <p id="breadcrumbs">
         <a href="../../index.html">Aurora Reference</a>
         <img id="carat" src="../../img/carat.png" />
-        NetworkStatus Class Reference
+        Keychain Class Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -464,39 +464,29 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>NetworkStatus</h1>
+            <h1>Keychain</h1>
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">@available</span><span class="p">(</span><span class="n">tvOS</span> <span class="mf">12.0</span><span class="p">,</span> <span class="o">*</span><span class="p">)</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="kt">NetworkStatus</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">Keychain</span></code></pre>
 
                 </div>
               </div>
-            <p>Network status (monitor)</p>
+            <p>A collection of helper functions for saving text and data in the keychain.</p>
 
               <div class="slightly-smaller">
-                <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Aurora.NetworkStatus.swift#L21-L106">Show on GitHub</a>
+                <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Aurora.Keychain.swift#L24-L355">Show on GitHub</a>
               </div>
           </section>
           <section class="section task-group-section">
             <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Properties"></a>
-                <a name="//apple_ref/swift/Section/Properties" class="dashAnchor"></a>
-                <div class="section-name-container">
-                  <a class="section-name-link" href="#/Properties"></a>
-                  <h3 class="section-name"><p>Properties</p>
-</h3>
-                </div>
-              </div>
               <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6AuroraAAC13NetworkStatusC6sharedADvpZ"></a>
-                    <a name="//apple_ref/swift/Variable/shared" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6AuroraAAC13NetworkStatusC6sharedADvpZ">shared</a>
+                    <a name="/s:6AuroraAAC8KeychainC14lastResultCodes5Int32Vvp"></a>
+                    <a name="//apple_ref/swift/Property/lastResultCode" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6AuroraAAC8KeychainC14lastResultCodes5Int32Vvp">lastResultCode</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -504,19 +494,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Shared instance of NetworkStatus</p>
+                        <p>Contains result code from the last operation. Value is noErr (0) for a successful result.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">shared</span><span class="p">:</span> <span class="kt"><a href="../../Classes/Aurora.html">Aurora</a></span><span class="o">.</span><span class="kt">NetworkStatus</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">lastResultCode</span><span class="p">:</span> <span class="kt">OSStatus</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Aurora.NetworkStatus.swift#L26">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Aurora.Keychain.swift#L28">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -524,9 +514,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6AuroraAAC13NetworkStatusC25didStartMonitoringHandleryycSgvp"></a>
-                    <a name="//apple_ref/swift/Property/didStartMonitoringHandler" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6AuroraAAC13NetworkStatusC25didStartMonitoringHandleryycSgvp">didStartMonitoringHandler</a>
+                    <a name="/s:6AuroraAAC8KeychainC11accessGroupSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/accessGroup" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6AuroraAAC8KeychainC11accessGroupSSSgvp">accessGroup</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -534,19 +524,22 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Completion handler to execute after we start monitoring</p>
+                        <p>Specify an access group that will be used to access keychain items.
+Access groups can be used to share keychain items between applications.
+When access group value is nil all application access groups are being accessed.
+Access group name is used by all functions: set, get, delete and clear.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">didStartMonitoringHandler</span><span class="p">:</span> <span class="p">(()</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">accessGroup</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Aurora.NetworkStatus.swift#L35">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Aurora.Keychain.swift#L37">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -554,9 +547,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6AuroraAAC13NetworkStatusC24didStopMonitoringHandleryycSgvp"></a>
-                    <a name="//apple_ref/swift/Property/didStopMonitoringHandler" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6AuroraAAC13NetworkStatusC24didStopMonitoringHandleryycSgvp">didStopMonitoringHandler</a>
+                    <a name="/s:6AuroraAAC8KeychainC14synchronizableSbvp"></a>
+                    <a name="//apple_ref/swift/Property/synchronizable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6AuroraAAC8KeychainC14synchronizableSbvp">synchronizable</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -564,19 +557,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Completion handler to execute after we stop monitoring</p>
+                        <p>Specifies whether the items can be synchronized with other devices through iCloud</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">didStopMonitoringHandler</span><span class="p">:</span> <span class="p">(()</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">synchronizable</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Aurora.NetworkStatus.swift#L38">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Aurora.Keychain.swift#L40">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -584,9 +577,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6AuroraAAC13NetworkStatusC03netC13ChangeHandleryycSgvp"></a>
-                    <a name="//apple_ref/swift/Property/netStatusChangeHandler" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6AuroraAAC13NetworkStatusC03netC13ChangeHandleryycSgvp">netStatusChangeHandler</a>
+                    <a name="/s:6AuroraAAC8KeychainCADycfc"></a>
+                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6AuroraAAC8KeychainCADycfc">init()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -594,19 +587,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Completion handler to execute after the network status changes</p>
+                        <p>Instantiate a KeychainSwift object</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">netStatusChangeHandler</span><span class="p">:</span> <span class="p">(()</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Aurora.NetworkStatus.swift#L41">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Aurora.Keychain.swift#L69">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -614,9 +607,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6AuroraAAC13NetworkStatusC11isConnectedSbvp"></a>
-                    <a name="//apple_ref/swift/Property/isConnected" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6AuroraAAC13NetworkStatusC11isConnectedSbvp">isConnected</a>
+                    <a name="/s:6AuroraAAC8KeychainC9keyPrefixADSS_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(keyPrefix:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6AuroraAAC8KeychainC9keyPrefixADSS_tcfc">init(keyPrefix:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -624,19 +617,39 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Are we connected to the internet?</p>
+                        <p>Init</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isConnected</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">keyPrefix</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>keyPrefix</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>a prefix that is added before the key in get/set methods.
+Note that <code>clear</code> method still clears everything from the Keychain.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Aurora.NetworkStatus.swift#L44-L47">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Aurora.Keychain.swift#L74-L76">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -644,9 +657,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6AuroraAAC13NetworkStatusC13interfaceType0B011NWInterfaceV09InterfaceE0OSgvp"></a>
-                    <a name="//apple_ref/swift/Property/interfaceType" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6AuroraAAC13NetworkStatusC13interfaceType0B011NWInterfaceV09InterfaceE0OSgvp">interfaceType</a>
+                    <a name="/s:6AuroraAAC8KeychainC3set_6forKeySbSS_SStF"></a>
+                    <a name="//apple_ref/swift/Method/set(_:forKey:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6AuroraAAC8KeychainC3set_6forKeySbSS_SStF">set(_:<wbr>forKey:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -654,19 +667,55 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Which interface type is available</p>
+                        <p>Stores the text value in the keychain item under the given key.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">interfaceType</span><span class="p">:</span> <span class="kt">NWInterface</span><span class="o">.</span><span class="kt">InterfaceType</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">open</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Key under which the text value is stored in the keychain.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Text string to be written to the keychain.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>True if the text was successfully written to the keychain.</p>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Aurora.NetworkStatus.swift#L50-L56">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Aurora.Keychain.swift#L85-L91">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -674,9 +723,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6AuroraAAC13NetworkStatusC24availableInterfacesTypesSay0B011NWInterfaceV13InterfaceTypeOGSgvp"></a>
-                    <a name="//apple_ref/swift/Property/availableInterfacesTypes" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6AuroraAAC13NetworkStatusC24availableInterfacesTypesSay0B011NWInterfaceV13InterfaceTypeOGSgvp">availableInterfacesTypes</a>
+                    <a name="/s:6AuroraAAC8KeychainC3set_6forKeySb10Foundation4DataV_SStF"></a>
+                    <a name="//apple_ref/swift/Method/set(_:forKey:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6AuroraAAC8KeychainC3set_6forKeySb10Foundation4DataV_SStF">set(_:<wbr>forKey:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -684,19 +733,55 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Which interface types are available</p>
+                        <p>Stores the data in the keychain item under the given key.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">availableInterfacesTypes</span><span class="p">:</span> <span class="p">[</span><span class="kt">NWInterface</span><span class="o">.</span><span class="kt">InterfaceType</span><span class="p">]?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">open</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Data</span><span class="p">,</span> <span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Key under which the data is stored in the keychain.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Data to be written to the keychain.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>True if the text was successfully written to the keychain.</p>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Aurora.NetworkStatus.swift#L59-L62">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Aurora.Keychain.swift#L100-L123">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -704,9 +789,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6AuroraAAC13NetworkStatusC11isExpensiveSbvp"></a>
-                    <a name="//apple_ref/swift/Property/isExpensive" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6AuroraAAC13NetworkStatusC11isExpensiveSbvp">isExpensive</a>
+                    <a name="/s:6AuroraAAC8KeychainC3set_6forKeyS2b_SStF"></a>
+                    <a name="//apple_ref/swift/Method/set(_:forKey:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6AuroraAAC8KeychainC3set_6forKeyS2b_SStF">set(_:<wbr>forKey:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -714,42 +799,80 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>isExpensive (on mobile internet)</p>
+                        <p>Stores the boolean value in the keychain item under the given key.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isExpensive</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">open</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span> <span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Key under which the value is stored in the keychain.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Boolean to be written to the keychain.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>withAccess</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Value that indicates when your app needs access to
+the value in the keychain item.
+By default the .AccessibleWhenUnlocked option is used that permits the data to
+be accessed only while the device is unlocked by the user.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>True if the value was successfully written to the keychain.</p>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Aurora.NetworkStatus.swift#L65-L67">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Aurora.Keychain.swift#L134-L139">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Method%20Implementation"></a>
-                <a name="//apple_ref/swift/Section/Method Implementation" class="dashAnchor"></a>
-                <div class="section-name-container">
-                  <a class="section-name-link" href="#/Method%20Implementation"></a>
-                  <h3 class="section-name"><p>Method Implementation</p>
-</h3>
-                </div>
-              </div>
-              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6AuroraAAC13NetworkStatusC15startMonitoringyyF"></a>
-                    <a name="//apple_ref/swift/Method/startMonitoring()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6AuroraAAC13NetworkStatusC15startMonitoringyyF">startMonitoring()</a>
+                    <a name="/s:6AuroraAAC8KeychainC3getySSSgSSF"></a>
+                    <a name="//apple_ref/swift/Method/get(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6AuroraAAC8KeychainC3getySSSgSSF">get(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -757,19 +880,42 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Start monitoring</p>
+                        <p>Retrieves the text value from the keychain that corresponds to the given key.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">startMonitoring</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">get</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The key that is used to read the keychain item.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The text value from the keychain. Returns nil if unable to read the item.</p>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Aurora.NetworkStatus.swift#L83-L96">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Aurora.Keychain.swift#L145-L156">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -777,9 +923,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6AuroraAAC13NetworkStatusC14stopMonitoringyyF"></a>
-                    <a name="//apple_ref/swift/Method/stopMonitoring()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6AuroraAAC13NetworkStatusC14stopMonitoringyyF">stopMonitoring()</a>
+                    <a name="/s:6AuroraAAC8KeychainC7getData_11asReference10Foundation0D0VSgSS_SbtF"></a>
+                    <a name="//apple_ref/swift/Method/getData(_:asReference:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6AuroraAAC8KeychainC7getData_11asReference10Foundation0D0VSgSS_SbtF">getData(_:<wbr>asReference:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -787,19 +933,265 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Stop monitoring</p>
+                        <p>Retrieves the data from the keychain that corresponds to the given key.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">stopMonitoring</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">getData</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">asReference</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Data</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The key that is used to read the keychain item.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>asReference</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>If true, returns the data as reference (needed for things like NEVPNProtocol).</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The text value from the keychain. Returns nil if unable to read the item.</p>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Aurora.NetworkStatus.swift#L99-L105">Show on GitHub</a>
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Aurora.Keychain.swift#L163-L198">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6AuroraAAC8KeychainC7getBoolySbSgSSF"></a>
+                    <a name="//apple_ref/swift/Method/getBool(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6AuroraAAC8KeychainC7getBoolySbSgSSF">getBool(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Retrieves the boolean value from the keychain that corresponds to the given key.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">getBool</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The key that is used to read the keychain item.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The boolean value from the keychain. Returns nil if unable to read the item.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Aurora.Keychain.swift#L203-L207">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6AuroraAAC8KeychainC6deleteySbSSF"></a>
+                    <a name="//apple_ref/swift/Method/delete(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6AuroraAAC8KeychainC6deleteySbSSF">delete(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Deletes the single keychain item specified by the key.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">open</span> <span class="kd">func</span> <span class="nf">delete</span><span class="p">(</span><span class="n">_</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The key that is used to delete the keychain item.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>True if the item was successfully deleted.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Aurora.Keychain.swift#L214-L221">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6AuroraAAC8KeychainC7allKeysSaySSGvp"></a>
+                    <a name="//apple_ref/swift/Property/allKeys" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6AuroraAAC8KeychainC7allKeysSaySSGvp">allKeys</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Return all keys from keychain</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">allKeys</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An string array with all keys from the keychain.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Aurora.Keychain.swift#L226-L251">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6AuroraAAC8KeychainC5clearSbyF"></a>
+                    <a name="//apple_ref/swift/Method/clear()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6AuroraAAC8KeychainC5clearSbyF">clear()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Deletes all Keychain items used by the app.
+Note that this method deletes all items regardless of the prefix settings used for initializing the class.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">open</span> <span class="kd">func</span> <span class="nf">clear</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>True if the keychain items were successfully deleted.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Aurora.Keychain.swift#L280-L294">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6AuroraAAC8KeychainC10getAllKeysSaySSGSgyF"></a>
+                    <a name="//apple_ref/swift/Method/getAllKeys()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6AuroraAAC8KeychainC10getAllKeysSaySSGSgyF">getAllKeys()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get all the keys saved in the Keychain</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">getAllKeys</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Keys in the keychain</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/AuroraFramework/Aurora.swift/blob/master//Sources/Aurora/Classes/Aurora.Keychain.swift#L326-L354">Show on GitHub</a>
                       </div>
                     </section>
                   </div>

@@ -45,35 +45,6 @@ class AuroraTest: XCTestCase {
         TestObserver.observe()
     }
 
-    func disabledtestKCReset() {
-        try? Aurora.Keychain.delete(account: "itemName")
-    }
-
-    func disabledtestKCRead() {
-        // testKCReset()
-
-        @KeychainItem("itemName", default: Aurora.AFnil)
-        var itemName: String
-
-        // Since property wrappers can't be nil.
-        // Use this for a nil check:
-        if itemName == Aurora.AFnil {
-           // No value set.
-            print("No value")
-        }
-
-        XCTAssertEqual(itemName, Aurora.AFnil)
-    }
-
-    func disabledtestKCWrite() {
-        @KeychainItem("itemName", default: Aurora.AFnil)
-        var itemName: String
-
-        itemName = "Hello"
-
-        XCTAssertEqual(itemName, "Hello")
-    }
-
     func testAuroraLog() {
         Aurora.shared.log("This is a test")
     }
