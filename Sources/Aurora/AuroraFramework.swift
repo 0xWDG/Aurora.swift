@@ -55,10 +55,10 @@ open class Aurora {
     public static let load = Aurora.self
 
     /// Initialize crash handler
-    internal static let crashLogger = Aurora.load.CrashHandler.shared
+    internal let crashLogger = Aurora.CrashHandler.shared
 
     /// the version
-    public let version = "1.0"
+    public let version = "1.0.0"
 
     /// The product name
     public let product = "Aurora.Framework"
@@ -335,8 +335,6 @@ open class Aurora {
                 "$OS": self.operatingSystem.rawValue
             ])
         )
-
-        self.log("Device name: \(ProcessInfo().hostName)")
 
         isInitialized = true
     }
