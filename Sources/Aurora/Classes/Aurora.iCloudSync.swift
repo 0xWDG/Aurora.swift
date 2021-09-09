@@ -70,7 +70,7 @@ extension Aurora {
         @objc
         private func fromCloud() {
             // iCloud to a Dictionary
-            let dict: NSDictionary = keyValueStore.dictionaryRepresentation as NSDictionary
+            let dict = keyValueStore.dictionaryRepresentation as NSDictionary
 
             // Disable ObServer temporary...
             notificationCenter.removeObserver(
@@ -79,12 +79,14 @@ extension Aurora {
                 object: nil
             )
 
-            // Enumerate & Duplicate
-            dict.enumerateKeysAndObjects(options: []) { (key, value, _) -> Void in
-                guard let key: String = key as? String,
-                      key.length < 60 else { return }
+            if !dict.allKeys.isEmpty {
+                // Enumerate & Duplicate
+                dict.enumerateKeysAndObjects(options: []) { (key, value, _) -> Void in
+                    guard let key: String = key as? String,
+                          key.length < 60 else { return }
 
-                UserDefaults.standard.set(value, forKey: key)
+                    UserDefaults.standard.set(value, forKey: key)
+                }
             }
 
             // Sync!

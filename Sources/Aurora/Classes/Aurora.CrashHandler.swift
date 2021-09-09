@@ -26,14 +26,14 @@ extension Aurora {
     /// Get the last crash log
     /// - Returns: The last crashlog
     public func getLastCrashLog() -> String? {
-        return Aurora.load.crashLogger.getLastCrashLog()
+        return crashLogger.getLastCrashLog()
     }
 
     /// Delete the last crash log
     /// - Returns: Bool if deleted
     @discardableResult
     public func deleteLastCrashLog() -> Bool {
-        return Aurora.load.crashLogger.deleteLastCrashLog()
+        return crashLogger.deleteLastCrashLog()
     }
 
     /// Aurora Crash Handler
