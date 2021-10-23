@@ -19,9 +19,6 @@ import XCTest
 
 @testable import Aurora
 
-/// Alias Promise to Aurora.Promise
-typealias Promise = Aurora.Promise
-
 extension AuroraTest {
     struct User {
         let userID: Int
@@ -29,7 +26,7 @@ extension AuroraTest {
     }
 
     func fetchIds() -> Promise<[Int]> {
-        return Aurora.Promise { xxx in
+        return Promise { xxx in
             print("Return 0, 1, 2")
             xxx([0, 1, 2])
         }
