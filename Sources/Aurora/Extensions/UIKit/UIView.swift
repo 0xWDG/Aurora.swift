@@ -224,6 +224,26 @@ public extension UIView {
         self.placehodlerViewRemove()
     }
 
+    /// Remove "all" placeholder things.
+    /// - Parameter maxCount: maximum amount of subviews
+    func removeAllPlaceholderViews(maxCount: Int = 5) {
+        remove(maxCount: maxCount, atLayer: self.layer.sublayers)
+    }
+
+    private func remove(maxCount: Int = 5, atLayer: [CALayer]?, counter: Int = 0) {
+        guard counter <= maxCount, let atLayer = atLayer else {
+            return
+        }
+
+        for layer in atLayer {
+            if layer.name == "placehodlerViewLayer" {
+                layer.removeFromSuperlayer()
+            }
+
+            remove(maxCount: maxCount, atLayer: layer.sublayers, counter: counter+1)
+        }
+    }
+
     // MARK: -
 
     // Animate a view, adding effect of "something went wrong". Useful for login button for example.

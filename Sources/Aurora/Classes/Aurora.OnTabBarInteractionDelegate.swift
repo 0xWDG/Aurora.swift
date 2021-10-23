@@ -17,94 +17,92 @@ import Foundation
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
 
-extension Aurora {
-    /// Aurora's onTabBarInteraction Delegate
-    ///
-    /// respond to tabBar interactions
-    class OnTabBarInteractionDelegate: NSObject, UITabBarControllerDelegate, UITabBarDelegate {
-        /// onInteraction closute
-        public var onInteractionClosure: ((String) -> Void)?
+/// Aurora's onTabBarInteraction Delegate
+///
+/// respond to tabBar interactions
+class AuroraOnTabBarInteractionDelegate: NSObject, UITabBarControllerDelegate, UITabBarDelegate {
+    /// onInteraction closute
+    public var onInteractionClosure: ((String) -> Void)?
 
-        /// On x times
-        public var onTimes: Int = 10
+    /// On x times
+    public var onTimes: Int = 10
 
-        /// old ViewController
-        private var oldVC: UIViewController?
+    /// old ViewController
+    private var oldVC: UIViewController?
 
-        /// old UITabBarItem
-        private var oldItem: UITabBarItem?
+    /// old UITabBarItem
+    private var oldItem: UITabBarItem?
 
-        /// The tap counter
-        private var tapCounter: (Double, Int) = (0.0, 0)
+    /// The tap counter
+    private var tapCounter: (Double, Int) = (0.0, 0)
 
-        /// The shared instance, otherwise it will deinit direct
-        static let sharedInstance: OnTabBarInteractionDelegate = Aurora.OnTabBarInteractionDelegate()
+    /// The shared instance, otherwise it will deinit direct
+    static let sharedInstance: AuroraOnTabBarInteractionDelegate = AuroraOnTabBarInteractionDelegate()
 
-        /// Tabbar did select
-        /// - Parameters:
-        ///   - tabBar: tabBar
-        ///   - item: Item
-        func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-            if oldItem != nil {
-                if oldItem == item {
-                    let timestamp = CACurrentMediaTime()
-                    if tapCounter.0 < timestamp - 0.4 {
-                        tapCounter.0 = timestamp
-                        tapCounter.1 = 0
-                    }
+    /// Tabbar did select
+    /// - Parameters:
+    ///   - tabBar: tabBar
+    ///   - item: Item
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        if oldItem != nil {
+            if oldItem == item {
+                let timestamp = CACurrentMediaTime()
+                if tapCounter.0 < timestamp - 0.4 {
+                    tapCounter.0 = timestamp
+                    tapCounter.1 = 0
+                }
 
-                    if tapCounter.0 >= timestamp - 0.4 {
-                        tapCounter.0 = timestamp
-                        tapCounter.1 += 1
-                    }
+                if tapCounter.0 >= timestamp - 0.4 {
+                    tapCounter.0 = timestamp
+                    tapCounter.1 += 1
+                }
 
-                    if tapCounter.1 >= onTimes {
-                        tapCounter.1 = 0
+                if tapCounter.1 >= onTimes {
+                    tapCounter.1 = 0
 
-                        if let title = item.title {
-                            onInteractionClosure?(title)
-                        } else {
-                            onInteractionClosure?("item")
-                        }
+                    if let title = item.title {
+                        onInteractionClosure?(title)
+                    } else {
+                        onInteractionClosure?("item")
                     }
                 }
             }
-
-            oldItem = item
         }
 
-        /// tabBarController did select
-        /// - Parameters:
-        ///   - tabBarController: tabBarController
-        ///   - viewController: viewController
-        func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-            if oldVC != nil {
-                if oldVC == viewController {
-                    let timestamp = CACurrentMediaTime()
-                    if tapCounter.0 < timestamp - 0.4 {
-                        tapCounter.0 = timestamp
-                        tapCounter.1 = 0
-                    }
+        oldItem = item
+    }
 
-                    if tapCounter.0 >= timestamp - 0.4 {
-                        tapCounter.0 = timestamp
-                        tapCounter.1 += 1
-                    }
+    /// tabBarController did select
+    /// - Parameters:
+    ///   - tabBarController: tabBarController
+    ///   - viewController: viewController
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if oldVC != nil {
+            if oldVC == viewController {
+                let timestamp = CACurrentMediaTime()
+                if tapCounter.0 < timestamp - 0.4 {
+                    tapCounter.0 = timestamp
+                    tapCounter.1 = 0
+                }
 
-                    if tapCounter.1 >= onTimes {
-                        tapCounter.1 = 0
+                if tapCounter.0 >= timestamp - 0.4 {
+                    tapCounter.0 = timestamp
+                    tapCounter.1 += 1
+                }
 
-                        if let title = tabBarController.tabBar.items?[tabBarController.selectedIndex].title {
-                            onInteractionClosure?(title)
-                        } else {
-                            onInteractionClosure?("item")
-                        }
+                if tapCounter.1 >= onTimes {
+                    tapCounter.1 = 0
+
+                    if let title = tabBarController.tabBar.items?[tabBarController.selectedIndex].title {
+                        onInteractionClosure?(title)
+                    } else {
+                        onInteractionClosure?("item")
                     }
                 }
             }
-
-            oldVC = viewController
         }
+
+        oldVC = viewController
     }
 }
 #endif

@@ -76,6 +76,12 @@ public extension UIViewController {
         view.endEditing(true)
     }
 
+    /// Remove "all" placeholder things.
+    /// - Parameter maxCount: maximum amount of subviews
+    func removeAllPlaceholderViews(maxCount: Int = 5) {
+        self.view.removeAllPlaceholderViews(maxCount: maxCount)
+    }
+
     /// show InputDialog
     /// - Parameters:
     ///   - title: Title

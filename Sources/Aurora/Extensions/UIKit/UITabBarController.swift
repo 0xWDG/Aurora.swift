@@ -18,6 +18,14 @@ import Foundation
 import UIKit
 
 public extension UITabBarController {
+    /// No iOS 15 transparent TabBar
+    func preIOS15() {
+        if #available(iOS 15.0, *) {
+            let appearance = UITabBarAppearance()
+            UITabBar.appearance().scrollEdgeAppearance = appearance
+        }
+    }
+
     /// Selet item with name
     /// - Parameter withName: name
     func select(withName: String) {
@@ -52,7 +60,7 @@ public extension UITabBarController {
     ///   - times: After x taps
     ///   - execute: What to execute
     func onTap(times: Int? = 10, execute: @escaping ((String) -> Void)) {
-        let runner = Aurora.OnTabBarInteractionDelegate.sharedInstance
+        let runner = AuroraOnTabBarInteractionDelegate.sharedInstance
         runner.onInteractionClosure = execute
         runner.onTimes = times ?? 10
 

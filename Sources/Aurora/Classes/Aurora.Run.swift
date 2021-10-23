@@ -14,31 +14,29 @@
 
 import Foundation
 
-extension Aurora {
-    /// Run actions after another
-    public final class Run {
-        /// The queue
-        var queue: [AuroraBlock] = [AuroraBlock]()
+/// Run actions after another
+public final class Run {
+    /// The queue
+    var queue: [AuroraBlock] = [AuroraBlock]()
 
-        /// Initialize the first action
-        /// - Parameter act: Action closure
-        init(action: @escaping AuroraBlock) {
-            queue.append(action)
-        }
+    /// Initialize the first action
+    /// - Parameter act: Action closure
+    init(action: @escaping AuroraBlock) {
+        queue.append(action)
+    }
 
-        /// Append execution in the queue
-        /// - Parameter action: Action closure
-        /// - Returns: Self (for appending)
-        func then(action: @escaping AuroraBlock) -> Self {
-            queue.append(action)
-            return self
-        }
+    /// Append execution in the queue
+    /// - Parameter action: Action closure
+    /// - Returns: Self (for appending)
+    func then(action: @escaping AuroraBlock) -> Self {
+        queue.append(action)
+        return self
+    }
 
-        /// Run all the queue items.
-        deinit {
-            for item in queue {
-                item()
-            }
+    /// Run all the queue items.
+    deinit {
+        for item in queue {
+            item()
         }
     }
 }

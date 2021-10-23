@@ -55,7 +55,7 @@ open class Aurora {
     public static let load = Aurora.self
 
     /// Initialize crash handler
-    internal let crashLogger = Aurora.CrashHandler.shared
+    internal let crashLogger = AuroraCrashHandler.shared
 
     /// the version
     public let version = "1.0.0"

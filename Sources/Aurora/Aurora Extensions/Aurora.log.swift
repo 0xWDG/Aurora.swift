@@ -213,7 +213,7 @@ extension Aurora {
     /// Show LogViewer
     public func showLogViewer() {
         #if canImport(UIKit)
-        let logView = Aurora.load.LogView()
+        let logView = AuroraLogView()
         UIApplication.shared.key?.rootViewController?.showDetailViewController(
             logView,
             sender: self

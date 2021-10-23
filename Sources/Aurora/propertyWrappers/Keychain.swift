@@ -47,7 +47,7 @@ public struct Keychain {
     /// Wrapped value
     public var wrappedValue: String? {
         get {
-            let kcVal = Aurora.Keychain().get(item)
+            let kcVal = AuroraKeychain().get(item)
 
             log(action: "read", item: item, value: kcVal)
 
@@ -56,13 +56,13 @@ public struct Keychain {
         set {
             guard let newValue = newValue else {
                 log(action: "delete (nil)", item: item, value: nil)
-                Aurora.Keychain().delete(item)
+                AuroraKeychain().delete(item)
                 return
             }
 
             log(action: "set", item: item, value: newValue)
 
-            Aurora.Keychain().set(newValue, forKey: item)
+            AuroraKeychain().set(newValue, forKey: item)
             firstSet = false
         }
     }
