@@ -14,27 +14,27 @@ import XCTest
 
 class AuroraKeychainTest: XCTestCase {
     func testSet() {
-        Aurora.Keychain().set(true, forKey: "inTest")
-        Aurora.Keychain().set("testing", forKey: "testValue")
+        AuroraKeychain().set(true, forKey: "inTest")
+        AuroraKeychain().set("testing", forKey: "testValue")
     }
 
 //    func testRead() {
 //        XCTAssertEqual(
-//            Aurora.Keychain().getBool("inTest"),
+//            AuroraKeychain().getBool("inTest"),
 //            true
 //        )
 //
 //        XCTAssertEqual(
-//            Aurora.Keychain().get("testValue"),
+//            AuroraKeychain().get("testValue"),
 //            "testValue"
 //        )
 //    }
 
     func testReset() {
-        Aurora.Keychain().delete("inTest")
+        AuroraKeychain().delete("inTest")
 
         XCTAssertEqual(
-            Aurora.Keychain().getBool("inTest"),
+            AuroraKeychain().getBool("inTest"),
             nil
         )
     }
