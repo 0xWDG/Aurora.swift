@@ -100,8 +100,8 @@ private var callbackKey = "ObjCallbackKey"
 
 public extension NSObject {
     enum runOnQueue {
-        case background, bg
-        case foreground, fg, main
+        case background
+        case foreground, main
     }
     /// The name of a the type inheriting of `NSObject`
     static var className: String {
