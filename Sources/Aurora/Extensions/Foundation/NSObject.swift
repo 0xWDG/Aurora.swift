@@ -99,6 +99,10 @@ extension UIRectEdge: Configure {}
 private var callbackKey = "ObjCallbackKey"
 
 public extension NSObject {
+    enum runOnQueue {
+        case background, bg
+        case foreground, fg, main
+    }
     /// The name of a the type inheriting of `NSObject`
     static var className: String {
         String(describing: self)
@@ -151,6 +155,24 @@ public extension NSObject {
     ///      }
     static func onDeinit(of object: NSObject, do block: @escaping () -> Void) {
         getHolder(of: object).callbacks.append(block)
+    }
+
+    /// Run on
+    /// - Parameters:
+    ///   - queue: Which queue
+    ///   - execute: Run block.
+    func run(on queue: runOnQueue, execute work: @escaping () -> Void) {
+        if queue == .background || queue == .bg {
+            DispatchQueue.global(qos: .background).async {
+                work()
+            }
+
+            return
+        }
+
+        DispatchQueue.main.async {
+            work()
+        }
     }
 }
 
