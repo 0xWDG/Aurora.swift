@@ -99,8 +99,12 @@ extension UIRectEdge: Configure {}
 private var callbackKey = "ObjCallbackKey"
 
 public extension NSObject {
-    enum runOnQueue {
+    /// Run on Queue
+    enum RunOnQueue {
+        /// Run on background
         case background
+
+        /// Run on foreground
         case foreground, main
     }
     /// The name of a the type inheriting of `NSObject`
@@ -161,8 +165,8 @@ public extension NSObject {
     /// - Parameters:
     ///   - queue: Which queue
     ///   - execute: Run block.
-    func run(on queue: runOnQueue, execute work: @escaping () -> Void) {
-        if queue == .background || queue == .bg {
+    func run(on queue: RunOnQueue, execute work: @escaping () -> Void) {
+        if queue == .background {
             DispatchQueue.global(qos: .background).async {
                 work()
             }
