@@ -175,10 +175,14 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
         backgroundImageView?.frame = UIScreen.main.bounds
         backgroundImageView?.contentMode = UIView.ContentMode.scaleAspectFill
 
-        self.addSubview(backgroundImageView.unwrap(orError: "No backgroundView provided"))
+        self.addSubview(
+            backgroundImageView.unwrap(orError: "Aurora.Animate.Splash.noBG")
+        )
 
         // Adds the icon to the view
-        self.addSubview(imageView.unwrap(orError: "No imageView provided"))
+        self.addSubview(
+            imageView.unwrap(orError: "Aurora.Animate.Splash.noImageView")
+        )
     }
 
     public init(iconImage: UIImage, iconInitialSize: CGSize, backgroundView: UIView) {
@@ -204,11 +208,13 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
 
         // Adds the icon to the view
 
-        self.addSubview(imageView.unwrap(orError: "No image view"))
+        self.addSubview(
+            imageView.unwrap(orError: "No image view")
+        )
     }
 
     public required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("init(coder:) has not been implemented".auroraTranslate)
     }
 
     /// Starts the animation depending on the type
@@ -322,7 +328,6 @@ open class AnimatedSplashScreen: UIView, SplashAnimatable {
     ///
     /// - parameter completion: completion
     func playWoobleAnimation(_ completion: AuroraBlock? = nil) {
-
         if let imageView = self.imageView {
 
             let woobleForce = 0.5

@@ -93,7 +93,16 @@ public extension Optional {
                 function: String = #function) -> Wrapped {
         guard let value = self else {
             Aurora.shared.log(
-                "Failed to unwrap value\nError: \(orError)",
+                Aurora.shared.translate(
+                    message: "Failed to unwrap value\nError: $ERROR",
+                    [
+                        "$ERROR": NSLocalizedString(
+                            orError,
+                            bundle: Bundle.module,
+                            comment: "Aurora.general.dynamicError"
+                        )
+                    ]
+                ),
                 file,
                 line,
                 function

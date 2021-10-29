@@ -34,6 +34,15 @@ import CommonCrypto
 
 // swiftlint:disable file_length
 public extension String {
+    /// Gets the translation from the Aurora bundle
+    var auroraTranslate: String {
+        return NSLocalizedString(
+            self,
+            bundle: Bundle.module,
+            comment: self
+        )
+    }
+
     /// Encode with XOR
     /// - Parameter byte: byte
     /// - Returns: XOR string

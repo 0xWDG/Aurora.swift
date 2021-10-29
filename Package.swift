@@ -7,6 +7,7 @@ let package = Package(
     /// Aurora Framework
     name: "Aurora",
 
+    /// Default localization
     defaultLocalization: "en",
 
     /// It is created for:

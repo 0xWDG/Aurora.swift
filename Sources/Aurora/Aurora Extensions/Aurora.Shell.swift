@@ -22,28 +22,28 @@ public extension Aurora {
     ///   - arguments: Arguments
     ///   - showLog: Show the log?
     /// - Returns: Shell return
-@discardableResult
-func shell(_ arguments: String, showLog: Bool = false) -> String {
-    let task = Process()
-    task.launchPath = "/bin/zsh"
-    var environment = ProcessInfo.processInfo.environment
-    environment["PATH"] = "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-    task.environment = environment
-    task.arguments = ["-c", arguments]
+    @discardableResult
+    func shell(_ arguments: String, showLog: Bool = false) -> String {
+        let task = Process()
+        task.launchPath = "/bin/zsh"
+        var environment = ProcessInfo.processInfo.environment
+        environment["PATH"] = "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+        task.environment = environment
+        task.arguments = ["-c", arguments]
 
-    let pipe = Pipe()
-    task.standardOutput = pipe
-    task.launch()
-    let data = pipe.fileHandleForReading.readDataToEndOfFile()
-    let output: String = String(data: data, encoding: .utf8).unwrap(orError: "Cannot convert output")
-    task.waitUntilExit()
-    pipe.fileHandleForReading.closeFile()
+        let pipe = Pipe()
+        task.standardOutput = pipe
+        task.launch()
+        let data = pipe.fileHandleForReading.readDataToEndOfFile()
+        let output: String = String(data: data, encoding: .utf8).unwrap(orError: "Cannot convert output")
+        task.waitUntilExit()
+        pipe.fileHandleForReading.closeFile()
 
-    if showLog && !output.isBlank {
-        print(output)
+        if showLog && !output.isBlank {
+            print(output)
+        }
+        return output
     }
-    return output
-}
 }
 
 /// ANSI Colors

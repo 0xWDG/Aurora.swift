@@ -23,16 +23,21 @@ open class AuroraValidator {
     public init() {}
 
     /// Contains banned words?
+    ///
+    /// We're using a list using local swearwords.
+    ///
+    /// Please refer to: `Sources/Aurora/Resources/LanguageID.lproj/Localizable.strings`
+    ///
+    /// - Example:
+    ///   - English `../en.lproj/Localizable.strings`
+    ///   - Dutch: `../nl.lproj/Localizable.strings`
+    ///
     /// - Parameter str: String to be checked.
     /// - Returns: Contains banned words?
     public func containsBannedWord(str: String) -> Bool {
-        let bannedWords = [
-            "neuken",
-            "fuck",
-            "lul",
-            "hoer",
-            "i hate this app"
-        ]
+        // Banned words list in "Aurora.validator.badWords" (NSLocalizedString) = auroraTranslate
+        // Split all the words by ;
+        let bannedWords = "Aurora.validator.badWords".auroraTranslate.split(";")
 
         return bannedWords.filter {
             str.contains($0)

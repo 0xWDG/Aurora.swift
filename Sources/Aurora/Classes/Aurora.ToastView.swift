@@ -362,7 +362,7 @@ public final class AuroraToastView: UIView {
     /// - Parameter coder: An abstract class that serves as the basis for objects that\
     ///  enable archiving and distribution of other objects.
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("init(coder:) has not been implemented".auroraTranslate)
     }
 }
 #endif

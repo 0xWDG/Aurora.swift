@@ -61,7 +61,7 @@ open class AuroraiCloudSync {
         } else {
             // Say i'm not syncing :'(
             isSyncInProgress = false
-            Aurora.shared.log("Can't start sync!")
+            Aurora.shared.log("Aurora.iCloud.failedStart")
         }
     }
 

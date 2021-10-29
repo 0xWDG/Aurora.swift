@@ -68,14 +68,20 @@ extension Aurora {
             if debug {
                 // extract filename, without path, and without extension.
                 let fileName: String = (file.split("/").last).unwrap(
-                    orError: "Failed to get file name"
-                ).split(".").first.unwrap(orError: "Failed to get file name")
+                    orError: "Aurora.general.failedToGetFilename"
+                ).split(".").first.unwrap(
+                    orError: "Aurora.general.failedToGetFilename"
+                )
 
                 // extract extension.
-                let fileExtension: String = file.split(".").last.unwrap(orError: "Invalid file extension")
+                let fileExtension: String = file.split(".").last.unwrap(
+                    orError: "Aurora.general.invalidFileName"
+                )
 
                 // On which Queue are we running
-                let queue = Thread.isMainThread ? "Main" : "Background"
+                let queue = (
+                    Thread.isMainThread ? "Aurora.general.mainQueue" : "Aurora.general.backgroundQueue"
+                ).auroraTranslate
 
                 // Make up the log message.
                 let logMessage = logTemplate
@@ -135,16 +141,20 @@ extension Aurora {
 
             // extract filename, without path, and without extension.
             let fileName: String = (file.split("/").last).unwrap(
-                orError: "Failed to get file name"
+                orError: "Aurora.general.failedToGetFilename"
             ).split(".").first.unwrap(
-                orError: "Failed to get file name"
+                orError: "Aurora.general.failedToGetFilename"
             )
 
             // extract extension.
-            let fileExtension: String = file.split(".").last.unwrap(orError: "Invalid name")
+            let fileExtension: String = file.split(".").last.unwrap(
+                orError: "Aurora.general.invalidFileName"
+            )
 
             // On which Queue are we running
-            let queue = Thread.isMainThread ? "Main" : "Background"
+            let queue = (
+                Thread.isMainThread ? "Aurora.general.mainQueue" : "Aurora.general.backgroundQueue"
+            ).auroraTranslate
 
             // Make up the log message.
             let logMessage = logTemplate
