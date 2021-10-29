@@ -339,7 +339,12 @@ open class Aurora {
         isInitialized = true
     }
 
-    private func translate(message: String, _ replacements: [String: String]?) -> String {
+    /// Translate
+    /// - Parameters:
+    ///   - message: Message to translate
+    ///   - replacements: replace x with y
+    /// - Returns: translated string.
+    public func translate(message: String, _ replacements: [String: String]?) -> String {
         var msg = NSLocalizedString(
             message,
             bundle: Bundle.module,

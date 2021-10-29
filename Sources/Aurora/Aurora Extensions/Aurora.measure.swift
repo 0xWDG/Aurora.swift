@@ -35,7 +35,7 @@ public extension Aurora {
 
         defer {
             let time = CACurrentMediaTime() - begin
-            self.log("[Measure] \(tag) = \(time)")
+            self.log("[\("Measure".auroraTranslate)] \(tag) = \(time)")
         }
 
         return work()

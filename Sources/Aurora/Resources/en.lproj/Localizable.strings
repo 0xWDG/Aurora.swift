@@ -5,7 +5,31 @@
 "Aurora.general.done" = "Done";
 "Aurora.general.close" = "Close";
 "Aurora.general.ok" = "OK";
+"Aurora.general.dynamicError" = "Dynamic error, this should never be visible!";
+"Aurora.general.failedToGetFilename" = "Failed to get filename";
+"Aurora.general.invalidFileName" = "Invalid file name";
+"Aurora.general.mainQueue" = "main queue";
+"Aurora.general.backgroundQueue" = "background queue";
+"Aurora.general.failedToGetKeyWindow" = "Failed to get key window";
+"Aurora.general.eofReport" = "End of report";
 
 // MARK: Networking
 "Aurora.networking.invalidURL" = "Invalid URL";
 "Aurora.networking.timeout" = "It took to long to get a response.";
+"Aurora.networking.SSLPinningUnavailable" = "SSL Pinning is not available";
+
+// MARK: Web
+"Aurora.HTMLParser.parsingFailed" = "Failed to parse HTML";
+
+// MARK: Animations
+"Aurora.Animate.Splash.noBG" = "No backgroundView provided";
+"Aurora.Animate.Splash.noImageView" = "No imageView provided";
+
+// MARK: iCloud
+"Aurora.iCloud.failedStart" = "Failed to start iCloud sync";
+
+// MARK: General (iOS)
+"init(coder:) has not been implemented" = "init(coder:) has not been implemented"'
+
+// MARK: Aurora Bad words (local language)
+"Aurora.validator.badWords" = "fuck;shit;piss;dick;vagina;ass;bitch;bastard;cunt;bollocks;bugger;bloody hell;choad;crikey;shag;wank;twat;pussy;oath;bugger;sod;";

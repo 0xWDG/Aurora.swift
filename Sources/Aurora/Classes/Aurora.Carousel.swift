@@ -60,13 +60,13 @@ public final class AuroraCarousel: UIView,
     public var interval: Double = 1.0
     public weak var delegate: AuroraCarouselDelegate?
 
-    public var slides: [CarouselSlide] = [] {
+    public var slides: [AuroraCarouselSlide] = [] {
         didSet {
             updateUI()
         }
     }
 
-    /// Calculates the index of the currently visible CarouselCell
+    /// Calculates the index of the currently visible AuroraCarouselCell
     public var currentlyVisibleIndex: Int? {
         var visibleRect = CGRect()
         visibleRect.origin = collectionView.contentOffset
@@ -105,8 +105,8 @@ public final class AuroraCarousel: UIView,
         $0.dataSource = self
         $0.isPagingEnabled = true
         $0.register(
-            CarouselCell.self,
-            forCellWithReuseIdentifier: "CarouselCell"
+            AuroraCarouselCell.self,
+            forCellWithReuseIdentifier: "AuroraCarouselCell"
         )
         $0.clipsToBounds = true
         $0.backgroundColor = .clear
@@ -119,7 +119,7 @@ public final class AuroraCarousel: UIView,
 
     /// Initialize
     /// - Parameter withSlides: Slides
-    init(withSlides: [CarouselSlide]) {
+    init(withSlides: [AuroraCarouselSlide]) {
         super.init(frame: .init())
         self.slides = withSlides
         setupCarousel()
@@ -216,9 +216,9 @@ public final class AuroraCarousel: UIView,
     public func collectionView(_ collectionView: UICollectionView,
                                cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: CarouselCell.identifier,
+            withReuseIdentifier: AuroraCarouselCell.identifier,
             for: indexPath
-        ) as? CarouselCell else {
+        ) as? AuroraCarouselCell else {
             fatalError("Can not load AuroraCarouselCell")
         }
         cell.slide = slides[indexPath.item]
@@ -257,11 +257,11 @@ public final class AuroraCarousel: UIView,
     }
 }
 
-public class CarouselCell: UICollectionViewCell {
-    static let identifier = "CarouselCell"
+public class AuroraCarouselCell: UICollectionViewCell {
+    static let identifier = "AuroraCarouselCell"
 
     // MARK: - Properties
-    public var slide: CarouselSlide? {
+    public var slide: AuroraCarouselSlide? {
         didSet {
             guard let slide = slide else {
                 Swift.print("AuroraCarousel could not parse the slide you provided.")
@@ -319,7 +319,7 @@ public class CarouselCell: UICollectionViewCell {
     }
 
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("init(coder:) has not been implemented".auroraTranslate)
     }
 
     // MARK: - Actions
@@ -361,7 +361,7 @@ public class CarouselCell: UICollectionViewCell {
         titleLabel.heightAnchor.constraint(equalToConstant: 45).isActive = true
     }
 
-    private func parseData(forSlide slide: CarouselSlide) {
+    private func parseData(forSlide slide: AuroraCarouselSlide) {
         imageView.image = slide.image
         titleLabel.text = slide.title
         descriptionLabel.text = slide.description
@@ -369,7 +369,7 @@ public class CarouselCell: UICollectionViewCell {
 }
 
 /// Aurora Carousel Slide
-public struct CarouselSlide {
+public struct AuroraCarouselSlide {
     /// Slide Image
     public var image: UIImage?
     /// Slide Title

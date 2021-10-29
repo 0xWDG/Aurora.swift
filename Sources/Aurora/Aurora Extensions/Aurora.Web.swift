@@ -88,7 +88,7 @@ public extension Aurora {
             )
             return htmlLessString
         } catch {
-            Aurora.shared.log("Failed to parse HTML String")
+            Aurora.shared.log("Aurora.HTMLParser.parsingFailed")
             return html
         }
     }

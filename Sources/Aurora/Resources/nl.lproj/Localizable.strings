@@ -5,7 +5,32 @@
 "Aurora.general.done" = "Klaar";
 "Aurora.general.close" = "Sluit venster";
 "Aurora.general.ok" = "Ok";
+"Aurora.general.dynamicError" = "Dynamische fout, dit zou nooit moeten voorkomen!";
+"Aurora.general.failedToGetFilename" = "Kan de bestandsnaam niet ophalen";
+"Aurora.general.invalidFileName" = "Ongeldige bestandsnaam";
+"Aurora.general.mainQueue" = "main queue";
+"Aurora.general.backgroundQueue" = "background queue";
+"Aurora.general.failedToGetKeyWindow" = "Kan hoofdvenster niet vinden";
+"Aurora.general.eofReport" = "Einde van rapportage";
 
 // MARK: Networking
 "Aurora.networking.invalidURL" = "Geen correcte url";
 "Aurora.networking.timeout" = "Het duurde te lang om een response te krijgen.";
+"Aurora.networking.SSLPinningUnavailable" = "SSL Pinning is niet beschikbaar";
+
+// MARK: Web
+"Aurora.HTMLParser.parsingFailed" = "Kon HTML niet verwerken";
+
+// MARK: Animations
+"Aurora.Animate.Splash.noBG" = "No backgroundView provided";
+"Aurora.Animate.Splash.noImageView" = "No imageView provided";
+
+// MARK: iCloud
+"Aurora.iCloud.failedStart" = "Kan iCloud synchronisatie niet starten";
+
+// MARK: General (iOS)
+"init(coder:) has not been implemented" = "init(coder:) is niet geïmplementeerd";
+
+// MARK: Aurora Bad words (local language)
+// Split using ;
+"Aurora.validator.badWords" = "achterlijk;debiel;downie;kanker;leijer;mongool;takkewijf;tering;tyfus;anaalgeneraal;anusridder;bitch;dikzak;papzak;flikker;fuck;kreng;kringspiermusketier;lamzak;manwijf;neuken;neukertjereetkever;swaffellen;teef;kut;lul;hoer;slet;trut;pleuris;zakkenwasser;klootzak;kloothommel;mierenneuk;mabivreter;geitenneuker;indo;kaaskop;kakker;mof;nikker;nigger;neger;poepchinees;spaghettivreter;loempiavouwer;spanjool;spleetoog;tatta;zandneger;zwartnek;zwartzak;klootviool;kenau;koekwaus;nsb;oelewapper;smeerlap;suklkel;sul;wijf;";

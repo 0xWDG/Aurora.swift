@@ -28,13 +28,16 @@ import UIKit
 
         /// View did load
         override public func viewDidLoad() {
-            logMessages.append("END OF REPORT\r\n\r\n")
+            logMessages.append(
+                "Aurora.general.eofReport".auroraTranslate +
+                "\r\n\r\n"
+            )
             logMessages.append("AuroraExitLogViewButton")
 
             /// Setup UITableView
             tableView = UITableView().configure { [self] in
                 $0.frame = UIApplication.shared.key.unwrap(
-                    orError: "Failed to get key window"
+                    orError: "Aurora.general.failedToGetKeyWindow"
                 ).frame
                 $0.delegate = self
                 $0.dataSource = self
@@ -47,8 +50,9 @@ import UIKit
             super.viewDidLoad()
 
             Aurora.shared.execute(after: 0.5) { [self] in
-                let indexPath: IndexPath = NSIndexPath(row: self.logMessages.count - 1, section: 0) as IndexPath
-                tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+//                let indexPath: IndexPath = NSIndexPath(row: self.logMessages.count - 1, section: 0) as IndexPath
+//                tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+                tableView.scrollToBottom(animated: true)
             }
 
             Aurora.shared.execute(after: 10) {
@@ -59,7 +63,10 @@ import UIKit
         /// reloads the logview
         private func reloadLogView() {
             logMessages = Aurora.shared.getLogMessages()
-            logMessages.append("END OF REPORT\r\n\r\n")
+            logMessages.append(
+                "Aurora.general.eofReport".auroraTranslate +
+                "\r\n\r\n"
+            )
             logMessages.append("AuroraExitLogViewButton")
 
             self.tableView.reloadData()
