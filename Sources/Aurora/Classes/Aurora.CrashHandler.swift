@@ -19,9 +19,10 @@ import Foundation
 import UIKit
 #endif
 
-// #if canImport(CoreTelephony)
-// import CoreTelephony
-// #endif
+#if !os(tvOS) && canImport(CoreTelephony)
+import CoreTelephony
+#endif
+
 extension Aurora {
     /// Get the last crash log
     /// - Returns: The last crashlog
@@ -34,6 +35,11 @@ extension Aurora {
     @discardableResult
     public func deleteLastCrashLog() -> Bool {
         return crashLogger.deleteLastCrashLog()
+    }
+
+    /// Crash
+    public func generateCrash() {
+        crashLogger.generateCrash()
     }
 }
 
@@ -125,14 +131,14 @@ class AuroraCrashHandler {
 
         // For some weird reason this will crash,
         // Even if canImport says true.
-        //        #if canImport(CoreTelephony)
-        //        let networkInfo = CTTelephonyNetworkInfo()
-        //        if let carrier = networkInfo.serviceSubscriberCellularProviders?.first?.value {
-        //            if let carrierName = carrier.carrierName {
-        //                crashReport += "\t\tCarrier: \(carrierName)\n"
-        //            }
-        //        }
-        //        #endif
+#if !os(tvOS) && canImport(CoreTelephony)
+        let networkInfo = CTTelephonyNetworkInfo()
+        if let carrier = networkInfo.serviceSubscriberCellularProviders?.first?.value {
+            if let carrierName = carrier.carrierName {
+                crashReport += "\t\tCarrier: \(carrierName)\n"
+            }
+        }
+#endif
 #endif
 
         if let fromException = from as? NSException {
@@ -227,6 +233,12 @@ class AuroraCrashHandler {
 
             didRegister = true
         }
+    }
+
+    /// generate a crash.
+    @discardableResult
+    public func generateCrash() -> String {
+        return ["hi", "crash"][2]
     }
 }
 #endif

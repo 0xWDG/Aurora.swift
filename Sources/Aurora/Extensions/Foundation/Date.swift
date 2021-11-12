@@ -135,13 +135,13 @@ public extension Date {
     /// Check if a `Date` is in the future.
     /// - Returns: Bool.
     var isInFuture: Bool {
-        self > Date()
+        return self > Date()
     }
 
     /// Check if a `Date` is in the past.
     /// - Returns: Bool.
     var isInPast: Bool {
-        self < Date()
+        return self < Date()
     }
 
     /// To string
@@ -151,5 +151,20 @@ public extension Date {
         let dformatter = DateFormatter()
         dformatter.dateFormat = format
         return dformatter.string(from: self)
+    }
+
+    /// Alias for `timeIntervalSince1970`
+    var unixTime: Double {
+        return self.timeIntervalSince1970
+    }
+
+    /// Returns the difference between the dates in seconds
+    static func - (lhs: Date, rhs: Date) -> Double {
+        return lhs.unixTime - rhs.unixTime
+    }
+
+    /// Adds the unix time for the dates together
+    static func + (lhs: Date, rhs: Date) -> Double {
+        return lhs.unixTime - rhs.unixTime
     }
 }
