@@ -57,9 +57,6 @@ open class Aurora {
     /// Initialize crash handler
     internal let crashLogger = AuroraCrashHandler.shared
 
-    /// Initialize MetricKit logger
-    internal let mkLogger = AuroraCrashHandlerMK.shared
-
     /// the version
     public let version = "1.0.0"
 
