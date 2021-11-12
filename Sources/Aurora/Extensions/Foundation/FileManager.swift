@@ -28,7 +28,11 @@ public extension FileManager {
         // On OS X it is, so put files in Application Support. If we aren't running
         // in a sandbox, put it in a subdirectory based on the bundle identifier
         // to avoid accidentally sharing files between applications
-        var defaultURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first
+        var defaultURL = FileManager.default.urls(
+            for: .applicationSupportDirectory,
+            in: .userDomainMask
+        ).first
+
         if ProcessInfo.processInfo.environment["APP_SANDBOX_CONTAINER_ID"] == nil {
             var identifier = Bundle.main.bundleIdentifier
             if identifier?.isEmpty ?? false {
@@ -54,7 +58,6 @@ public extension FileManager {
 
 // MARK: - Create
 public extension FileManager {
-
     /// Create a new directory at the specified URL.
     /// - Parameter directoryURL: a file URL where the directory will be created.
     /// - Note: if an error occurred during the creation, an error will be throw.
@@ -69,9 +72,17 @@ public extension FileManager {
     func createDirectory(at directoryUrl: URL) throws {
         let fileManager = FileManager.default
         var isDir: ObjCBool = false
-        let fileExists = fileManager.fileExists(atPath: directoryUrl.path, isDirectory: &isDir)
+        let fileExists = fileManager.fileExists(
+            atPath: directoryUrl.path,
+            isDirectory: &isDir
+        )
+
         if fileExists == false || isDir.boolValue != false {
-            try fileManager.createDirectory(at: directoryUrl, withIntermediateDirectories: true, attributes: nil)
+            try fileManager.createDirectory(
+                at: directoryUrl,
+                withIntermediateDirectories: true,
+                attributes: nil
+            )
         }
     }
 }

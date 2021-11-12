@@ -39,5 +39,14 @@ public extension UIScrollView {
     func addExtraScrollAt(right value: CGFloat) {
         contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: value)
     }
+
+    /// determines whether the user has scrolled near the bottom
+    /// of the scroll view within the given tolerance.
+    func isNearBottom(tolerance: CGFloat) -> Bool {
+        let height: CGFloat = self.frame.size.height
+        let distanceFromBottom: CGFloat = self.contentSize.height - self.contentOffset.y
+
+        return distanceFromBottom - height <= height * tolerance
+    }
 }
 #endif
