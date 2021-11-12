@@ -13,7 +13,9 @@
 // Licence: MIT
 
 import Foundation
-#if canImport(MetricKit)
+#if canImport(MetricKit) && !os(macOS)
+// For whatever reason, this does fail the test on Github Actions.
+// So, we just disable it for now.
 import MetricKit
 
 @available(iOS 14.0, macOS 12.0, *)

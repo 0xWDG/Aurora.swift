@@ -29,7 +29,7 @@ class AuroraCrashHandlerMK: NSObject {
     }
 
     func startMonitoring() {
-#if canImport(MetricKit)
+#if canImport(MetricKit) && !os(macOS)
         if #available(iOS 14, macOS 12.0, *) {
             MXMetricManager.shared.add(self)
         }
@@ -37,7 +37,7 @@ class AuroraCrashHandlerMK: NSObject {
     }
 }
 
-#if canImport(MetricKit)
+#if canImport(MetricKit) && !os(macOS)
 @available(iOS 13.0, macOS 12.0, *)
 extension AuroraCrashHandlerMK: MXMetricManagerSubscriber {
 #if os(iOS)
