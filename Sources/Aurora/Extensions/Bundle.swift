@@ -137,11 +137,10 @@ public extension Foundation.Bundle {
     /// important: When `Aurora` is distributed via Swift Package Manager,
     /// it will be synthesized automatically in the name of `Bundle.module`.
     static var module: Bundle = {
-        let mainPath = "\(mainPath.asSwiftStringLiteralConstant)"
-        let buildPath = "\(bundlePath.asSwiftStringLiteralConstant)"
-        let preferredBundle = Bundle(path: mainPath)
-        guard let bundle = preferredBundle != nil ? preferredBundle : Bundle(path: buildPath) else {
-            fatalError("could not load resource bundle: from \\(mainPath) or \\(buildPath)")
+        let preferredBundle = Bundle(path: mainPath.asSwiftStringLiteralConstant)
+        let buildBundle = Bundle(path: buildPath.asSwiftStringLiteralConstant)
+        guard let bundle = preferredBundle != nil ? preferredBundle : buildBundle else {
+            fatalError("could not load resource bundle: from \(mainPath) or \(buildPath)")
         }
         return bundle
     }()
