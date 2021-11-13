@@ -57,16 +57,20 @@ public class AuroraKeyboardHandler {
             if let keyboardSize = (notification.userInfo?[key] as? NSValue)?.cgRectValue {
                 // Check if the frame is 0
                 if forViewController.view.frame.origin.y == 0 {
-                    // Move the frame up
-                    forViewController.view.frame.origin.y -= (
-                        // Keyboard height
-                        keyboardSize.height
-                        // - Safe area insets (bottom)
-                        - forViewController.view.safeAreaInsets.bottom
-                    )
+                    UIView.animate(withDuration: 0.1, animations: { () -> Void in
+                        // Move the frame up
+                        forViewController.view.frame.origin.y -= (
+                            // Keyboard height
+                            keyboardSize.height
+                            // - Safe area insets (bottom)
+                            - forViewController.view.safeAreaInsets.bottom
+                        )
 
-                    // Ask to renew the layout (if needed)
-                    forViewController.view.layoutIfNeeded()
+                        // Ask to renew the layout (if needed)
+                        forViewController.view.layoutIfNeeded()
+                        forViewController.view.setNeedsDisplay()
+                        UIApplication.shared.keyWindow?.layoutIfNeeded()
+                    })
                 }
             }
         }
@@ -83,17 +87,32 @@ public class AuroraKeyboardHandler {
             // Extract the keyboard size
             if let keyboardSize = (notification.userInfo?[key] as? NSValue)?.cgRectValue {
                 // Check if the frame is not 0
-                if forViewController.view.frame.origin.y != 0 {
-                    // Move the frame down
-                    forViewController.view.frame.origin.y += (
-                        // Keyboard height
-                        keyboardSize.height
-                        // - Safe area insets (bottom)
-                        - forViewController.view.safeAreaInsets.bottom
-                    )
+                if forViewController.view.frame.origin.y > 0 {
+                    UIView.animate(withDuration: 0.1, animations: { () -> Void in
+                        // Move the frame down
+                        forViewController.view.frame.origin.y += (
+                            // Keyboard height
+                            keyboardSize.height
+                            // - Safe area insets (bottom)
+                            + forViewController.view.safeAreaInsets.bottom
+                        )
 
-                    // Ask to renew the layout (if needed)
-                    forViewController.view.layoutIfNeeded()
+                        // Ask to renew the layout (if needed)
+                        forViewController.view.layoutIfNeeded()
+                        forViewController.view.setNeedsDisplay()
+                        UIApplication.shared.keyWindow?.layoutIfNeeded()
+                    })
+                } else {
+                    UIView.animate(withDuration: 0.1, animations: { () -> Void in
+                        forViewController.view.frame.origin.y = (
+                            0 - forViewController.view.safeAreaInsets.bottom
+                        )
+
+                        // Ask to renew the layout (if needed)
+                        forViewController.view.layoutIfNeeded()
+                        forViewController.view.setNeedsDisplay()
+                        UIApplication.shared.keyWindow?.layoutIfNeeded()
+                    })
                 }
             }
         }
