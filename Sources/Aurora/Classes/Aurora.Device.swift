@@ -201,7 +201,7 @@ public class AuroraDevice {
 #if canImport(UIKit)
         switch UIDevice.current.userInterfaceIdiom {
         case .carPlay:
-            return .carPley
+            return .carPlay
 
         case .mac:
             return .mac
