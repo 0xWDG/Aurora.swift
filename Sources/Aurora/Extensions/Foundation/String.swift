@@ -1408,10 +1408,10 @@ public extension String {
         Aurora.shared.log("Entering group for \(self)")
         String.group.enter()
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + Aurora.shared.timeout) {
             if waiting {
                 Aurora.shared.log("Timeout, killing request")
-                result = "Error: Timeout (15 sec)"
+                result = "Error: Timeout (\(Aurora.shared.timeout) sec)"
 
                 if inGroup {
                     Aurora.shared.log("Leaving group for \(self)")

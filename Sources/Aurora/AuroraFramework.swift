@@ -294,13 +294,16 @@ open class Aurora {
     private var userAgentTemplate = "Mozilla/5.0 ($product/$version; $appName/$appVersion; $os/$osVersion)"
 
     /// Is it already started?
-    var isInitialized: Bool = false
+    private(set) var isInitialized: Bool = false
 
     /// Which os we are running on?
-    var operatingSystem: AuroraOS = .unknown
+    public var operatingSystem: AuroraOS = .unknown
 
     /// Which os we are running on?
-    var operatingVersion: String = "Unknown"
+    public var operatingVersion: String = "Unknown"
+
+    /// HTTP(s) timeout time
+    public var timeout: TimeInterval = 30
 
     /// Initialize
     public init(experimentalFunctions: Bool = false) {

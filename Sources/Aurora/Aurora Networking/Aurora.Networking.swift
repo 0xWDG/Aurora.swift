@@ -107,6 +107,8 @@ extension Aurora {
     ///   - method: The HTTP request method.
     ///   - values: POST values (if any)
     /// - Returns: The HTTP(S) request data
+    /// - Note: This function uses the non blocking function \
+    /// ``networkRequest(url:method:values:completionHandler:)`` and makes it blocking
     public func networkRequest(
         url: String,
         method: HTTPMethod,
@@ -119,7 +121,7 @@ extension Aurora {
 
         dGroup.enter()
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 30) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + Aurora.shared.timeout) {
             if waiting {
                 Aurora.shared.log(
                     AuroraError(message: "Aurora.networking.timeout")
@@ -158,7 +160,19 @@ extension Aurora {
     // swiftlint:disable function_body_length
     /// Creates a network request that retrieves the contents of a URL \
     /// based on the specified URL request object, and calls a handler upon completion.
-    ///  
+    ///
+    /// Example:
+    ///
+    ///     self.networkRequest(url: url, method: .post, values: posting) { result in
+    ///       switch result {
+    ///         case .success(let data):
+    ///           // do something with the data
+    ///
+    ///         case .failure(let error):
+    ///           // Do something with the error
+    ///       }
+    ///     }
+    ///
     /// - Parameters:
     ///   - url: A value that identifies the location of a resource, \
     ///   such as an item on a remote server or the path to a local file.
@@ -167,7 +181,7 @@ extension Aurora {
     ///   - completionHandler: This completion handler takes the following parameters:
     ///   `Result<Data, Error>`
     ///     - `Data`: The data returned by the server.
-    ///     - `Errror`: An error object that indicates why the request failed, or nil if the request was successful.
+    ///     - `Error`: An error object that indicates why the request failed, or nil if the request was successful.
     public func networkRequest(
         url: String,
         method: HTTPMethod,
@@ -218,8 +232,8 @@ extension Aurora {
 
         /// Create a URL Request
         let request = URLRequest(url: siteURL).configure {
-            // 60 Seconds before timeout (default)
-            $0.timeoutInterval = 15
+            // 30 Seconds before timeout (default)
+            $0.timeoutInterval = Aurora.shared.timeout
             // Set Content-Type to FORM
             $0.setValue("close", forHTTPHeaderField: "Connection")
             $0.setValue(self.userAgent, forHTTPHeaderField: "User-Agent")
