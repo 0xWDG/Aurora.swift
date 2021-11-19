@@ -19,7 +19,7 @@ import UIKit
 #endif
 
 /// Operating Systems
-enum AuroraOS: String {
+public enum AuroraOS: String {
     case macOS = "Mac OS"
     case iOS
     case iPadOS
@@ -36,18 +36,34 @@ enum AuroraOS: String {
 }
 
 /// User Interfaces
-enum AuroraUserInterface {
-    case carPley
+public enum AuroraUserInterface {
+    /// Carplay
+    case carPlay
+
+    /// MacOS
     case mac
+
+    /// iPad
     case pad
+
+    /// iPhone
     case phone
-    // swiftlint:disable:next identifier_name
+    ///  TV
     case tv
+    // swiftlint:disable:previous identifier_name
+
+    ///  Watch
+    case watch
+
+    /// Window
     case window
+
+    /// Unknown
     case unknown
 }
 
-class AuroraDevice {
+/// On which device is the framework running?
+public class AuroraDevice {
     /// Is running iOS app on Mac?
     var isiOSAppOnMac: Bool {
         if #available(macOS 11.0, *, iOS 14.0, *) {
