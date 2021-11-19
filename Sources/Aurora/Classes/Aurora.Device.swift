@@ -48,6 +48,7 @@ public enum AuroraUserInterface {
 
     /// iPhone
     case phone
+
     ///  TV
     case tv
     // swiftlint:disable:previous identifier_name
