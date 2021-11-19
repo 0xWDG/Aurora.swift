@@ -137,19 +137,19 @@ extension Aurora {
             url: url,
             method: method,
             values: values) { response in
-            waiting = false
+                waiting = false
 
-            switch response {
-            case .success(let data):
-                result = data
-            case .failure(let error):
-                Aurora.shared.log(error.localizedDescription)
-            }
+                switch response {
+                case .success(let data):
+                    result = data
+                case .failure(let error):
+                    Aurora.shared.log("Failed: \(error.localizedDescription)")
+                }
 
-            if inGroup {
-                dGroup.leave()
+                if inGroup {
+                    dGroup.leave()
+                }
             }
-        }
 
         dGroup.wait()
 
@@ -216,8 +216,8 @@ extension Aurora {
                     data: JSON,
                     encoding: .utf8
                 ).unwrap(orError: "Failed to generate POST")
-                .addingPercentEncoding(withAllowedCharacters: .urlHostAllowed
-                ).unwrap(orError: "Failed to add Percent encoding")
+                    .addingPercentEncoding(withAllowedCharacters: .urlHostAllowed
+                    ).unwrap(orError: "Failed to add Percent encoding")
             }
         }
 
@@ -283,7 +283,7 @@ extension Aurora {
             // Show a error, only on debug builds
             log(
                 "[WARNING] No Public key pinning/Certificate pinning\n" +
-                    "           Improve your security to enable this!\n"
+                "           Improve your security to enable this!\n"
             )
             // Use a non-pinned URLSession
             session = URLSession.shared
@@ -299,34 +299,27 @@ extension Aurora {
 
         // Start our datatask
         session?.dataTask(with: request) { (sitedata, _, theError) in
+            if let errorMessage = theError {
+                completionHandler(.failure(errorMessage))
+                return
+            }
+
             /// Check if we got any useable site data
             guard let sitedata = sitedata else {
-                if post.length > 3 {
-                    self.log("Error: \(theError?.localizedDescription)")
-                } else {
-                    self.log("Error: \(theError?.localizedDescription)")
-                }
-
-                completionHandler(.failure(theError.unwrap(orError: "Failed to decode error")))
+                completionHandler(.failure(
+                    AuroraError.init(message: "Failed to decode the data")
+                ))
                 return
             }
 
             // Save our cookies
             Aurora.cookies = session?.configuration.httpCookieStorage?.cookies
 
-            if post.length > 3 {
-                let data = String.init(data: sitedata, encoding: .utf8)
+            // Save full response
+            Aurora.fullResponse = String.init(data: sitedata, encoding: .utf8)
 
-                Aurora.fullResponse = data
-            } else {
-                let data = String.init(data: sitedata, encoding: .utf8)
-
-                Aurora.fullResponse = data
-            }
-
-            completionHandler(
-                .success(sitedata)
-            )
+            // Complete
+            completionHandler(.success(sitedata))
         }.resume()
 
         // Invalidate session, after saving tasks
@@ -335,7 +328,7 @@ extension Aurora {
         // Release the session from memory
         session = nil
     }
-    // swiftlint:enable function_body_length    
+    // swiftlint:enable function_body_length
 
     /// Return the full networkRequestResponse
     /// - Returns: the full networkRequestResponse
