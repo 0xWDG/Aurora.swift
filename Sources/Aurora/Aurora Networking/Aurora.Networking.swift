@@ -225,7 +225,7 @@ extension Aurora {
         catch let error as NSError {
             completionHandler(
                 .failure(
-                    AuroraError(message: "Error: \(error.localizedDescription)")
+                    AuroraError(message: "Error: \(error.description)")
                 )
             )
         }
