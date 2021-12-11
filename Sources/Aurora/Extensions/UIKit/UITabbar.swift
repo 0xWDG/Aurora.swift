@@ -19,8 +19,8 @@ public extension UITabBar {
     /// No iOS 15 transparent TabBar
     func preIOS15() {
         if #available(iOS 15.0, *) {
-            let appearance = UITabBarAppearance()
-            UITabBar.appearance().scrollEdgeAppearance = appearance
+            // let appearance = UITabBarAppearance()
+            // UITabBar.appearance().scrollEdgeAppearance = appearance
         }
     }
 
