@@ -29,7 +29,7 @@
 "Aurora.iCloud.failedStart" = "Failed to start iCloud sync";
 
 // MARK: General (iOS)
-"init(coder:) has not been implemented" = "init(coder:) has not been implemented"'
+"init(coder:) has not been implemented" = "init(coder:) has not been implemented";
 
 // MARK: Aurora Bad words (local language)
 "Aurora.validator.badWords" = "fuck;shit;piss;dick;vagina;ass;bitch;bastard;cunt;bollocks;bugger;bloody hell;choad;crikey;shag;wank;twat;pussy;oath;bugger;sod;";
