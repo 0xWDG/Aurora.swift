@@ -7,7 +7,7 @@ Aurora Framework for Swift
 
 ---
 
-Last update: 19-NOV-2021
+Last update: 21-JAN-2022
 
 ---
 
