@@ -460,7 +460,7 @@ public extension String {
     var emojiToImage: UIImage? {
         let size = CGSize(width: 30, height: 35)
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
-        UIColor.white.set()
+        UIColor.clear.set()
 
         let rect = CGRect(origin: CGPoint(), size: size)
         UIRectFill(rect)
@@ -483,7 +483,7 @@ public extension String {
     private func textToImage() -> UIImage? {
         let size = CGSize(width: 40, height: 40)
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
-        UIColor.white.set()
+        UIColor.clear.set()
         let rect = CGRect(origin: .zero, size: size)
         UIRectFill(CGRect(origin: .zero, size: size))
         (self as AnyObject).draw(in: rect, withAttributes: [.font: UIFont.systemFont(ofSize: 40)])
