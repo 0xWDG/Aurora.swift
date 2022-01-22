@@ -140,7 +140,7 @@ public extension UIViewController {
 
 #if canImport(SwiftUI)
 import SwiftUI
-extension UIViewController {
+public extension UIViewController {
     /// Add a SwiftUI `View` as a child of the input `UIView`.
     /// - Parameters:
     ///   - swiftUIView: The SwiftUI `View` to add as a child.
