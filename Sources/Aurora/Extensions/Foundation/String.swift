@@ -1889,7 +1889,7 @@ public extension String {
     #if canImport(Foundation)
     /// String without spaces and new lines.
     ///
-    ///        "   \n Swifter   \n  Swift  ".withoutSpacesAndNewLines -> "SwifterSwift"
+    ///        "   \n Aurora   .\n  Framework  ".withoutSpacesAndNewLines -> "Aurora.Framework"
     ///
     var withoutSpacesAndNewLines: String {
         return replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "\n", with: "")
@@ -2005,7 +2005,7 @@ public extension String {
 
     /// Array with unicodes for all characters in a string.
     ///
-    ///        "SwifterSwift".unicodeArray() -> [83, 119, 105, 102, 116, 101, 114, 83, 119, 105, 102, 116]
+    ///        "Aurora".unicodeArray() -> [65, 117, 114, 111, 114, 97]
     ///
     /// - Returns: The unicodes for all characters in a string.
     func unicodeArray() -> [Int] {
