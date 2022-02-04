@@ -17,10 +17,9 @@
 
 #if canImport(SwiftUI)
 import SwiftUI
-import Aurora
 
 /// <#Description#>
-struct RemoteImageView<Placeholder: View, ConfiguredImage: View>: View {
+public struct RemoteImageView<Placeholder: View, ConfiguredImage: View>: View {
     var url: URL
     private let placeholder: () -> Placeholder
     private let image: (Image) -> ConfiguredImage

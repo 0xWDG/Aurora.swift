@@ -12,14 +12,13 @@
 //
 // Licence: MIT
 
-#if canImport(swiftUI) && canImport(SafariServices)
+#if canImport(swiftUI) && canImport(SafariServices) && canImport(UIKit)
 import SwiftUI
 import SafariServices
 import UIKit
-import Aurora
 
 /// Make a Safari View for SwiftUI
-struct SafariView: UIViewControllerRepresentable {
+public struct SafariView: UIViewControllerRepresentable {
     typealias UIViewControllerType = SFSafariViewController
 
     @Binding var urlString: String

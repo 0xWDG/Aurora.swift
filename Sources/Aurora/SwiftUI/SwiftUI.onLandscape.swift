@@ -16,7 +16,7 @@
 import SwiftUI
 
 /// A view wrapper for
-extension View {
+public extension View {
     /// Perform an action only if the device is landscape mode
     ///
     /// Only perform a view modifier if the device is in landscape mode.

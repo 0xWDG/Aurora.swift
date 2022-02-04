@@ -13,14 +13,12 @@
 // Licence: MIT
 
 #if canImport(SwiftUI)
-
-import Foundation
 import SwiftUI
 
 @available(macOS 10.15, iOS 13, watchOS 6.0, tvOS 13.0, *)
 public extension View {
     /// Conditionally applies a modifier to a view.
-    func `if`<Content: View>(_ condition: Bool, content: (Self) -> Content) -> some View {
+    public func `if`<Content: View>(_ condition: Bool, content: (Self) -> Content) -> some View {
         if condition {
             return AnyView(content(self))
         } else {
@@ -29,7 +27,7 @@ public extension View {
     }
 
     /// Conditionally applies a modifier to a view.
-    func `if`<Content: View>(
+    public func `if`<Content: View>(
         _ condition: Bool,
         _ content1: (Self) -> Content,
         else content2: (Self) -> Content) -> some View {
