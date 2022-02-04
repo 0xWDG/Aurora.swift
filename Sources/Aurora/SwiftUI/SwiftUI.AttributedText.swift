@@ -15,7 +15,7 @@
 #if canImport(SwiftUI)
 import SwiftUI
 
-struct AttributedText: View {
+public struct AttributedText: View {
     @State private var size: CGSize = .zero
     let attributedString: NSAttributedString
 
