@@ -22,7 +22,11 @@ import UIKit
 public struct SafariView: UIViewControllerRepresentable {
     public typealias UIViewControllerType = SFSafariViewController
 
-    @Binding var urlString: String
+    @Binding public var urlString: String
+
+    public init(url: Binding<String>) {
+        _urlString = url
+    }
 
     public func makeUIViewController(
         context: UIViewControllerRepresentableContext<SafariView>
