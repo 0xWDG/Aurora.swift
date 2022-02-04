@@ -16,7 +16,7 @@
 // Modifications: image download in background.
 
 #if canImport(SwiftUI) && os(iOS)
-// TODO: Make also working for NSImage
+// Make also working for NSImage
 import SwiftUI
 
 /// <#Description#>
