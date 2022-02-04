@@ -12,7 +12,7 @@
 //
 // Licence: MIT
 
-#if canImport(SwiftUI)
+#if canImport(SwiftUI) && os(iOS)
 import SwiftUI
 
 /// A view wrapper for

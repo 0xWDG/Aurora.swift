@@ -18,7 +18,7 @@ import SwiftUI
 @available(macOS 10.15, iOS 13, watchOS 6.0, tvOS 13.0, *)
 public extension View {
     /// Conditionally applies a modifier to a view.
-    public func `if`<Content: View>(_ condition: Bool, content: (Self) -> Content) -> some View {
+    func `if`<Content: View>(_ condition: Bool, content: (Self) -> Content) -> some View {
         if condition {
             return AnyView(content(self))
         } else {
@@ -27,7 +27,7 @@ public extension View {
     }
 
     /// Conditionally applies a modifier to a view.
-    public func `if`<Content: View>(
+    func `if`<Content: View>(
         _ condition: Bool,
         _ content1: (Self) -> Content,
         else content2: (Self) -> Content) -> some View {

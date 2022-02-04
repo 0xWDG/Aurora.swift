@@ -19,7 +19,7 @@ import SwiftUI
 public extension View {
     /// Horizontally centers the view by embedding it
     /// in a HStack bookended by Spacers.
-    public func horizontallyCentered() -> some View {
+    func horizontallyCentered() -> some View {
         HStack {
             Spacer()
             self

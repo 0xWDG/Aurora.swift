@@ -15,7 +15,8 @@
 // Original from https://stackoverflow.com/questions/60677622/how-to-display-image-from-a-url-in-swiftui
 // Modifications: image download in background.
 
-#if canImport(SwiftUI)
+#if canImport(SwiftUI) && os(iOS)
+// TODO: Make also working for NSImage
 import SwiftUI
 
 /// <#Description#>

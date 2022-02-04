@@ -12,8 +12,9 @@
 //
 // Licence: MIT
 
-#if canImport(SwiftUI)
+#if canImport(SwiftUI) && canImport(UIKit)
 import SwiftUI
+import UIKit
 
 public struct AttributedText: View {
     @State private var size: CGSize = .zero
