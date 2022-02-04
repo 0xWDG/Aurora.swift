@@ -45,7 +45,7 @@ public struct RemoteImageView<Placeholder: View, ConfiguredImage: View>: View {
         }
     }
 
-    var body: some View {
+    public var body: some View {
         imageContent
             .onReceive(imageLoader.$image) { imageData in
                 self.imageData = imageData

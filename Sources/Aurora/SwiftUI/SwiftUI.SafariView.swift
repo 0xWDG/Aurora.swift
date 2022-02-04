@@ -18,12 +18,15 @@ import SafariServices
 import UIKit
 
 /// Make a Safari View for SwiftUI
+@available(iOS 14.0, *)
 public struct SafariView: UIViewControllerRepresentable {
-    typealias UIViewControllerType = SFSafariViewController
+    public typealias UIViewControllerType = SFSafariViewController
 
     @Binding var urlString: String
 
-    func makeUIViewController(context: UIViewControllerRepresentableContext<SafariView>) -> SFSafariViewController {
+    public func makeUIViewController(
+        context: UIViewControllerRepresentableContext<SafariView>
+    ) -> SFSafariViewController {
         guard let url = URL(string: urlString.latinized) else {
             fatalError("Invalid urlString: \(urlString)")
         }
@@ -35,7 +38,7 @@ public struct SafariView: UIViewControllerRepresentable {
         return safariViewController
     }
 
-    func updateUIViewController(
+    public func updateUIViewController(
         _ safariViewController: SFSafariViewController,
         context: UIViewControllerRepresentableContext<SafariView>
         ) {
