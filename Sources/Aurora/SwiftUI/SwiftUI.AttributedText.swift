@@ -20,11 +20,11 @@ public struct AttributedText: View {
     @State private var size: CGSize = .zero
     let attributedString: NSAttributedString
 
-    init(_ attributedString: NSAttributedString) {
+    public init(_ attributedString: NSAttributedString) {
         self.attributedString = attributedString
     }
 
-    init(HTML: String) {
+    public init(HTML: String) {
         if let HTMLData = HTML.data(using: .utf8),
            let attributedString = try? NSAttributedString(
             data: HTMLData,

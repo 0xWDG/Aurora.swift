@@ -38,7 +38,7 @@ import CommonCrypto
 ///
 /// It has a lot of extensions, functions and classes built-in to make development easier.
 ///
-/// See the [Online documentation](https://github.com/AuroraFramework/Aurora.swift/wiki) \
+/// See the [Online documentation](https://auroraframework.github.io/Aurora.swift) \
 /// for more information about all the built-in extensions, functions and classes.
 ///
 /// - Experiment: to start experimental functions use the following code in your app(delegate):
