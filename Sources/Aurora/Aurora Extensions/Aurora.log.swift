@@ -33,7 +33,7 @@ extension Aurora {
             appName = "\(product)] [UI test"
         }
 
-        if let name = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String {
+        if let name = Bundle.main.object(forInfoDictionaryKey: kCFBundleNameKey as String) as? String {
             appName = name
         }
 
