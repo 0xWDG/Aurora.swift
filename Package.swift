@@ -12,9 +12,13 @@ let package = Package(
 
     /// It is created for:
     platforms: [
-        .macOS(.v10_14),
-        .iOS(.v12),
-        .tvOS(.v12),
+        // MacOS Catelina (2019)
+        .macOS(.v10_15),
+        // iOS 13 (2019)
+        .iOS(.v13),
+        // tvOS 13 (2019)
+        .tvOS(.v13),
+        // WatchOS 6 (2019)
         .watchOS(.v6)
     ],
 
