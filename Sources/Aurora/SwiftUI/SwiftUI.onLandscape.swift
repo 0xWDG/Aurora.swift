@@ -32,8 +32,7 @@ extension View {
     @ViewBuilder public func onLandscape<Transform: View>(transform: (Self) -> Transform) -> some View {
         if UIScreen.main.traitCollection.verticalSizeClass == .compact {
             transform(self)
-        }
-        else {
+        } else {
             self
         }
     }
@@ -53,8 +52,7 @@ extension View {
     @ViewBuilder public func onPortrait<Transform: View>(transform: (Self) -> Transform) -> some View {
         if UIScreen.main.traitCollection.verticalSizeClass == .regular {
             transform(self)
-        }
-        else {
+        } else {
             self
         }
     }
