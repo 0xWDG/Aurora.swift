@@ -28,7 +28,7 @@ public struct RemoteImageView<Placeholder: View, ConfiguredImage: View>: View {
     @ObservedObject var imageLoader: ImageLoaderService
     @State var imageData: UIImage?
 
-    init(url: URL,
+    public init(url: URL,
          @ViewBuilder placeholder: @escaping () -> Placeholder,
          @ViewBuilder image: @escaping (Image) -> ConfiguredImage) {
         self.url = url
