@@ -38,7 +38,7 @@ public struct AttributedText: View {
         self.init(.init(string: "Failed to decode HTML"))
     }
 
-    var body: some View {
+    public var body: some View {
         AttributedTextRepresentable(attributedString: attributedString, size: $size)
             .frame(width: size.width, height: size.height)
     }
