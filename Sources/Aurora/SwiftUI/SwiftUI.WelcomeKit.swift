@@ -6,6 +6,7 @@
 //
 // Original coming from: https://github.com/JaydenIrwin/WelcomeKit
 
+#if canImport(SwiftUI)
 import SwiftUI
 
 public struct WelcomeFeature: Identifiable {
@@ -159,3 +160,4 @@ struct WelcomeFeatureView_Previews: PreviewProvider {
         )
     }
 }
+#endif

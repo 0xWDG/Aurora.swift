@@ -5,6 +5,7 @@
 //  Created by Wesley de Groot on 18/03/2022.
 //
 
+#if canImport(SwiftUI)
 import SwiftUI
 
 struct CardView<Content: View>: View {
@@ -65,3 +66,4 @@ struct CardViewPreviews: PreviewProvider {
         }
     }
 }
+#endif
