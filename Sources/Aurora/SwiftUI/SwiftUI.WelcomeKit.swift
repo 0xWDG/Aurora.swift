@@ -6,7 +6,7 @@
 //
 // Original coming from: https://github.com/JaydenIrwin/WelcomeKit
 
-#if canImport(SwiftUI)
+#if canImport(SwiftUI) && os(iOS)
 import SwiftUI
 
 public struct WelcomeFeature: Identifiable {
