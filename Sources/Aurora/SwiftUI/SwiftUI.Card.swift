@@ -8,7 +8,7 @@
 #if canImport(SwiftUI)
 import SwiftUI
 
-@available(macOS 11.0, *, iOS 15, *)
+@available(macOS 11.0, *, iOS 14, *)
 public struct CardView<Content: View>: View {
     // To dismiss this screen using the button.
     @Environment(\.presentationMode) var presentationMode
