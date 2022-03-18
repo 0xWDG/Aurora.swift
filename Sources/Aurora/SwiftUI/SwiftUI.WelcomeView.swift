@@ -85,7 +85,7 @@ public struct WelcomeView: View {
             .opacity(animationCompleted ? 1 : 0)
             .offset(x: 0, y: animationCompleted ? 0 : 75)
         }
-        .onAppear() {
+        .onAppear {
             withAnimation(Animation.easeOut(duration: 0.6)) {
                 animationCompleted = true
             }

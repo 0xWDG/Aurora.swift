@@ -34,7 +34,7 @@ struct CardView<Content: View>: View {
 
     var body: some View {
         VStack {
-            HStack() {
+            HStack {
                 Text(.init(title))
                     .font(.title)
                     .lineLimit(1)
