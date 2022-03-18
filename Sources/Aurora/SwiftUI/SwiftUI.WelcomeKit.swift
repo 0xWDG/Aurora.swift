@@ -9,7 +9,7 @@
 #if canImport(SwiftUI) && os(iOS)
 import SwiftUI
 
-public public struct WelcomeFeature: Identifiable {
+public struct WelcomeFeature: Identifiable {
     public var image: Image
     public var title: String
     public var body: String
