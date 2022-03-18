@@ -157,7 +157,8 @@ public extension UIDevice {
 
     /// StatusBar height
     static var screenStatusBarHeight: CGFloat {
-        return UIApplication.shared.statusBarFrame.height
+        let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        return window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
     }
 
     /// Screen's height without StatusBar

@@ -36,7 +36,8 @@ public extension UIScreen {
     /// Get the status bar height.
     /// - Returns: The status bar height.
     class var statusBarHeight: CGFloat {
-        UIApplication.shared.statusBarFrame.height
+        let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        return window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
     }
 
     /// Get the screen height without the status bar.
