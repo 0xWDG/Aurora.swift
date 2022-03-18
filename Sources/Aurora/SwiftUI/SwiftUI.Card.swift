@@ -19,15 +19,15 @@ struct CardView<Content: View>: View {
         self.content = content()
     }
 
-    var CloseButton: some View {
+    var closeButton: some View {
         Image(systemName: "xmark")
             .font(.system(size: 16, weight: .bold))
             .foregroundColor(.white)
             .padding(.all, 5)
             .background(Color.black.opacity(0.6))
             .clipShape(Circle())
-            .accessibility(label:Text("Close"))
-            .accessibility(hint:Text("Tap to close the screen"))
+            .accessibility(label: Text("Close"))
+            .accessibility(hint: Text("Tap to close the screen"))
             .accessibility(addTraits: .isButton)
             .accessibility(removeTraits: .isImage)
     }
@@ -45,7 +45,7 @@ struct CardView<Content: View>: View {
 
                 Button(action: {
                     presentationMode.wrappedValue.dismiss()
-                }, label: { self.CloseButton })
+                }, label: { self.closeButton })
             }.padding(5)
 
             // Custom Content
