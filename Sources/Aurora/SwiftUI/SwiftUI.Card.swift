@@ -16,7 +16,7 @@ public struct CardView<Content: View>: View {
     let title: String
     let content: Content
 
-    init(title: String, @ViewBuilder content: () -> Content) {
+    public init(title: String, @ViewBuilder content: () -> Content) {
         self.title = title
         self.content = content()
     }
@@ -34,7 +34,7 @@ public struct CardView<Content: View>: View {
             .accessibility(removeTraits: .isImage)
     }
 
-    var body: some View {
+    public var body: some View {
         VStack {
             HStack {
                 Text(.init(title))
@@ -61,7 +61,7 @@ public struct CardView<Content: View>: View {
 }
 
 @available(macOS 11.0, *, iOS 15, *)
-public struct CardViewPreviews: PreviewProvider {
+struct CardViewPreviews: PreviewProvider {
     static var previews: some View {
         CardView(title: "Title") {
             Text("Hello")
