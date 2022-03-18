@@ -273,8 +273,17 @@ public extension UIView {
     func centerToParent() {
         #if os(iOS)
         guard let superview = self.superview else { return }
+        var orientation: UIInterfaceOrientation = .unknown
 
-        switch UIApplication.shared.statusBarOrientation {
+        if #available(iOS 13.0, *) {
+            orientation = UIApplication.shared.windows
+                .first?.windowScene?
+                .interfaceOrientation ?? .unknown
+        } else {
+            orientation =  UIApplication.shared.statusBarOrientation
+        }
+
+        switch orientation {
         case .landscapeLeft, .landscapeRight:
             self.origin = CGPoint(
                 x: (superview.height / 2) - (self.width / 2),

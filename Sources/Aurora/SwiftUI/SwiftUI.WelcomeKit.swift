@@ -6,6 +6,7 @@
 //
 // Original coming from: https://github.com/JaydenIrwin/WelcomeKit
 
+#if canImport(SwiftUI) && os(iOS)
 import SwiftUI
 
 public struct WelcomeFeature: Identifiable {
@@ -23,6 +24,7 @@ public struct WelcomeFeature: Identifiable {
     }
 }
 
+@available(macOS 11.0, *, iOS 15, *)
 public struct WelcomeView: View {
     public static let continueNotification = Notification.Name(
         "Aurora.Welcome.Continue"
@@ -85,7 +87,7 @@ public struct WelcomeView: View {
             .opacity(animationCompleted ? 1 : 0)
             .offset(x: 0, y: animationCompleted ? 0 : 75)
         }
-        .onAppear() {
+        .onAppear {
             withAnimation(Animation.easeOut(duration: 0.6)) {
                 animationCompleted = true
             }
@@ -101,6 +103,7 @@ public struct WelcomeView: View {
     }
 }
 
+@available(macOS 11.0, *, iOS 15, *)
 struct WelcomeView_Previews: PreviewProvider {
     static var previews: some View {
         let features = [
@@ -126,7 +129,7 @@ struct WelcomeView_Previews: PreviewProvider {
     }
 }
 
-
+@available(macOS 11.0, *, iOS 15, *)
 struct WelcomeFeatureView: View {
     @State var feature: WelcomeFeature
 
@@ -149,6 +152,7 @@ struct WelcomeFeatureView: View {
     }
 }
 
+@available(macOS 11.0, *, iOS 15, *)
 struct WelcomeFeatureView_Previews: PreviewProvider {
     static var previews: some View {
         WelcomeFeatureView(
@@ -160,5 +164,4 @@ struct WelcomeFeatureView_Previews: PreviewProvider {
         )
     }
 }
-
-
+#endif

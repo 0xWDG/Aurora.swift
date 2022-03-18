@@ -40,6 +40,7 @@ public class AuroraKeyboardHandler {
     /// - Parameter forViewController: Viewcontroller (mostly `self`)
     @discardableResult
     public init(forViewController: UIViewController) {
+        // swiftlint:disable:previous function_body_length
         // Add a notification handler for 'keyboard will show'
         _ = NotificationCenter.default.addObserver(
             forName: UIResponder.keyboardWillShowNotification,
@@ -69,7 +70,13 @@ public class AuroraKeyboardHandler {
                         // Ask to renew the layout (if needed)
                         forViewController.view.layoutIfNeeded()
                         forViewController.view.setNeedsDisplay()
-                        UIApplication.shared.keyWindow?.layoutIfNeeded()
+
+                        if #available(iOS 15.0, *) {
+                            let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow})
+                            window?.windowScene?.keyWindow?.layoutIfNeeded()
+                        } else {
+                            UIApplication.shared.keyWindow?.layoutIfNeeded()
+                        }
                     })
                 }
             }
@@ -100,7 +107,13 @@ public class AuroraKeyboardHandler {
                         // Ask to renew the layout (if needed)
                         forViewController.view.layoutIfNeeded()
                         forViewController.view.setNeedsDisplay()
-                        UIApplication.shared.keyWindow?.layoutIfNeeded()
+
+                        if #available(iOS 15.0, *) {
+                            let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow})
+                            window?.windowScene?.keyWindow?.layoutIfNeeded()
+                        } else {
+                            UIApplication.shared.keyWindow?.layoutIfNeeded()
+                        }
                     })
                 } else {
                     UIView.animate(withDuration: 0.1, animations: { () -> Void in
@@ -111,7 +124,13 @@ public class AuroraKeyboardHandler {
                         // Ask to renew the layout (if needed)
                         forViewController.view.layoutIfNeeded()
                         forViewController.view.setNeedsDisplay()
-                        UIApplication.shared.keyWindow?.layoutIfNeeded()
+
+                        if #available(iOS 15.0, *) {
+                            let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow})
+                            window?.windowScene?.keyWindow?.layoutIfNeeded()
+                        } else {
+                            UIApplication.shared.keyWindow?.layoutIfNeeded()
+                        }
                     })
                 }
             }

@@ -88,13 +88,9 @@ class AuroraURLSessionPinningDelegate: NSObject, URLSessionDelegate {
             /// Server trust
             if let serverTrust = challenge.protectionSpace.serverTrust {
                 /// server trust
-                var secresult = SecTrustResultType.invalid
+                var statusPointer: CFError?
 
-                /// status
-                let status = SecTrustEvaluate(serverTrust, &secresult)
-                //                let status = SecTrustEvaluateWithError(serverTrust, &secresult)
-
-                if errSecSuccess == status {
+                if SecTrustEvaluateWithError(serverTrust, &statusPointer) {
                     // Aurora.shared.log(SecTrustGetCertificateCount(serverTrust))
                     /// Server certificate
                     if let serverCertificate = SecTrustGetCertificateAtIndex(serverTrust, 0) {

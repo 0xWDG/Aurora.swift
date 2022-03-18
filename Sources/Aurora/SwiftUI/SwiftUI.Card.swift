@@ -5,8 +5,10 @@
 //  Created by Wesley de Groot on 18/03/2022.
 //
 
+#if canImport(SwiftUI)
 import SwiftUI
 
+@available(macOS 11.0, *, iOS 15, *)
 struct CardView<Content: View>: View {
     // To dismiss this screen using the button.
     @Environment(\.presentationMode) var presentationMode
@@ -19,22 +21,22 @@ struct CardView<Content: View>: View {
         self.content = content()
     }
 
-    var CloseButton: some View {
+    var closeButton: some View {
         Image(systemName: "xmark")
             .font(.system(size: 16, weight: .bold))
             .foregroundColor(.white)
             .padding(.all, 5)
             .background(Color.black.opacity(0.6))
             .clipShape(Circle())
-            .accessibility(label:Text("Close"))
-            .accessibility(hint:Text("Tap to close the screen"))
+            .accessibility(label: Text("Close"))
+            .accessibility(hint: Text("Tap to close the screen"))
             .accessibility(addTraits: .isButton)
             .accessibility(removeTraits: .isImage)
     }
 
     var body: some View {
         VStack {
-            HStack() {
+            HStack {
                 Text(.init(title))
                     .font(.title)
                     .lineLimit(1)
@@ -45,7 +47,7 @@ struct CardView<Content: View>: View {
 
                 Button(action: {
                     presentationMode.wrappedValue.dismiss()
-                }, label: { self.CloseButton })
+                }, label: { self.closeButton })
             }.padding(5)
 
             // Custom Content
@@ -58,6 +60,7 @@ struct CardView<Content: View>: View {
     }
 }
 
+@available(macOS 11.0, *, iOS 15, *)
 struct CardViewPreviews: PreviewProvider {
     static var previews: some View {
         CardView(title: "Title") {
@@ -65,3 +68,4 @@ struct CardViewPreviews: PreviewProvider {
         }
     }
 }
+#endif
