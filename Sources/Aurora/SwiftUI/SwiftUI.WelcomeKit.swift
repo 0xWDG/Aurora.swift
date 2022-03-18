@@ -9,7 +9,7 @@
 #if canImport(SwiftUI) && os(iOS)
 import SwiftUI
 
-public struct WelcomeFeature: Identifiable {
+public public struct WelcomeFeature: Identifiable {
     public var image: Image
     public var title: String
     public var body: String
@@ -130,7 +130,7 @@ struct WelcomeView_Previews: PreviewProvider {
 }
 
 @available(macOS 11.0, *, iOS 15, *)
-struct WelcomeFeatureView: View {
+public struct WelcomeFeatureView: View {
     @State var feature: WelcomeFeature
 
     var body: some View {
