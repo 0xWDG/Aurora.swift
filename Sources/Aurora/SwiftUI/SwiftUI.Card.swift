@@ -9,7 +9,7 @@
 import SwiftUI
 
 @available(macOS 11.0, *, iOS 15, *)
-struct CardView<Content: View>: View {
+public struct CardView<Content: View>: View {
     // To dismiss this screen using the button.
     @Environment(\.presentationMode) var presentationMode
 
@@ -61,7 +61,7 @@ struct CardView<Content: View>: View {
 }
 
 @available(macOS 11.0, *, iOS 15, *)
-struct CardViewPreviews: PreviewProvider {
+public struct CardViewPreviews: PreviewProvider {
     static var previews: some View {
         CardView(title: "Title") {
             Text("Hello")
