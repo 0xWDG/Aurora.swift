@@ -109,7 +109,14 @@ public extension UIDevice {
     #if os(iOS) && !os(tvOS)
     /// Current screen orientation
     static var screenOrientation: UIInterfaceOrientation {
-        return UIApplication.shared.statusBarOrientation
+        if #available(iOS 13.0, *) {
+            return UIApplication.shared.windows
+                .first?
+                .windowScene?
+                .interfaceOrientation ?? .unknown
+        } else {
+            return UIApplication.shared.statusBarOrientation
+        }
     }
     #endif
 

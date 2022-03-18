@@ -29,7 +29,7 @@ public extension View {
     ///       }
     ///
     /// - Returns: ViewModifier
-    @ViewBuilder public func onLandscape<Transform: View>(transform: (Self) -> Transform) -> some View {
+    @ViewBuilder func onLandscape<Transform: View>(transform: (Self) -> Transform) -> some View {
         if UIScreen.main.traitCollection.verticalSizeClass == .compact {
             transform(self)
         } else {
@@ -49,7 +49,7 @@ public extension View {
     ///       }
     ///
     /// - Returns: ViewModifier
-    @ViewBuilder public func onPortrait<Transform: View>(transform: (Self) -> Transform) -> some View {
+    @ViewBuilder func onPortrait<Transform: View>(transform: (Self) -> Transform) -> some View {
         if UIScreen.main.traitCollection.verticalSizeClass == .regular {
             transform(self)
         } else {
