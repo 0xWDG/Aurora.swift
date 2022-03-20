@@ -67,7 +67,7 @@ public struct CardView<Content: View>: View {
             Spacer()
         }.background(
             Blur(style: blurStyle)
-        )
+        ).ignoresSafeArea(.all)
     }
 }
 
