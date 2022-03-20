@@ -1,9 +1,16 @@
+// Aurora framework for Swift
 //
-//  SwiftUI.WelcomeView.swift
-//  
+// The **Aurora.framework** contains a base for your project.
 //
-//  Created by Wesley de Groot on 18/03/2022.
+// It has a lot of extensions built-in to make development easier.
 //
+// - Version: 1.0
+// - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
+//  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
+//
+// Thanks for using!
+//
+// Licence: MIT
 // Original coming from: https://github.com/JaydenIrwin/WelcomeKit
 
 #if canImport(SwiftUI) && os(iOS)
