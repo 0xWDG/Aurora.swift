@@ -1,9 +1,16 @@
+// Aurora framework for Swift
 //
-//  SwiftUI.Card.swift
-//  AuroraTestApp
+// The **Aurora.framework** contains a base for your project.
 //
-//  Created by Wesley de Groot on 18/03/2022.
+// It has a lot of extensions built-in to make development easier.
 //
+// - Version: 1.0
+// - Copyright: [Wesley de Groot](https://wesleydegroot.nl) ([WDGWV](https://wdgwv.com))\
+//  and [Contributors](https://github.com/AuroraFramework/Aurora.swift/graphs/contributors).
+//
+// Thanks for using!
+//
+// Licence: MIT
 
 #if canImport(SwiftUI)
 import SwiftUI
@@ -15,10 +22,12 @@ public struct CardView<Content: View>: View {
 
     let title: String
     let content: Content
+    let blurStyle: UIBlurEffect.Style
 
-    public init(title: String, @ViewBuilder content: () -> Content) {
+    public init(title: String, blurStyle: UIBlurEffect.Style = .prominent, @ViewBuilder content: () -> Content) {
         self.title = title
         self.content = content()
+        self.blurStyle = blurStyle
     }
 
     var closeButton: some View {
@@ -56,7 +65,9 @@ public struct CardView<Content: View>: View {
 
             // Move everything up
             Spacer()
-        }.background(Blur())
+        }.background(
+            Blur(style: blurStyle)
+        )
     }
 }
 
@@ -67,5 +78,12 @@ struct CardViewPreviews: PreviewProvider {
             Text("Hello")
         }
     }
+
+    static var previews2: some View {
+        CardView(title: "Title", blurStyle: .regular) {
+            Text("Hello")
+        }
+    }
+
 }
 #endif
