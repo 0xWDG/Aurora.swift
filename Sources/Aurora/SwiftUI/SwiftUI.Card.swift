@@ -56,7 +56,7 @@ public struct CardView<Content: View>: View {
 
             // Move everything up
             Spacer()
-        }
+        }.background(Blur())
     }
 }
 
