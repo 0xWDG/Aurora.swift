@@ -12,7 +12,7 @@
 //
 // Licence: MIT
 
-#if canImport(SwiftUI)
+#if canImport(SwiftUI) && os(iOS)
 import SwiftUI
 
 @available(macOS 11.0, *, iOS 14, *)
