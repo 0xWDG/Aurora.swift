@@ -45,29 +45,37 @@ public struct CardView<Content: View>: View {
 
     public var body: some View {
         VStack {
-            HStack {
-                Text(.init(title))
-                    .font(.title)
-                    .lineLimit(1)
-                    .padding(.leading, 10)
+            GeometryReader { geometry in
+                VStack {
+                    HStack {
+                        Text(.init(title))
+                            .font(.title)
+                            .lineLimit(1)
+                            .padding(.leading, 10)
 
-                // To make it on the right
-                Spacer()
+                        // To make it on the right
+                        Spacer()
 
-                Button(action: {
-                    presentationMode.wrappedValue.dismiss()
-                }, label: { self.closeButton })
-            }.padding(5)
+                        Button(action: {
+                            presentationMode.wrappedValue.dismiss()
+                        }, label: { self.closeButton })
+                    }.padding(5)
 
-            // Custom Content
-            self.content
-                .padding(.top, 5)
+                    // Custom Content
+                    self.content
+                        .padding(.top, 5)
 
-            // Move everything up
-            Spacer()
+                    // Move everything up
+                    Spacer()
+
+                    // To fix bottom padding on card.
+                    Text("\u{3000}")
+                }
+            }
         }.background(
             Blur(style: blurStyle)
         ).ignoresSafeArea(.all)
+
     }
 }
 
