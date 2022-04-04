@@ -15,7 +15,7 @@
 #if canImport(SwiftUI)
 import SwiftUI
 
-@available(iOS 14, *)
+@available(macOS 11.0, *, iOS 14, *)
 public struct CardView<Content: View>: View {
     // To dismiss this screen using the button.
     @Environment(\.presentationMode) var presentationMode
@@ -52,7 +52,7 @@ public struct CardView<Content: View>: View {
                     Spacer()
                 }
             }.toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .navigation) {
                     VStack(alignment: .leading, spacing: 0) {
                         Text(.init(title))
                             .font(.headline)
@@ -78,7 +78,7 @@ public struct CardView<Content: View>: View {
     }
 }
 
-@available(iOS 14, *)
+@available(macOS 11.0, *, iOS 14, *)
 struct CardViewPreviews: PreviewProvider {
     static var previews: some View {
         CardView(title: "Title") {
