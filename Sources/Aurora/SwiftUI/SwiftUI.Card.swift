@@ -12,10 +12,10 @@
 //
 // Licence: MIT
 
-#if canImport(SwiftUI) && os(iOS)
+#if canImport(SwiftUI)
 import SwiftUI
 
-@available(macOS 11.0, *, iOS 14, *)
+@available(iOS 14, *)
 public struct CardView<Content: View>: View {
     // To dismiss this screen using the button.
     @Environment(\.presentationMode) var presentationMode
@@ -78,7 +78,7 @@ public struct CardView<Content: View>: View {
     }
 }
 
-@available(macOS 11.0, *, iOS 15, *)
+@available(iOS 14, *)
 struct CardViewPreviews: PreviewProvider {
     static var previews: some View {
         CardView(title: "Title") {
