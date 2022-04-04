@@ -12,7 +12,7 @@
 //
 // Licence: MIT
 
-#if canImport(SwiftUI) && os(iOS)
+#if canImport(SwiftUI)
 import SwiftUI
 
 @available(macOS 11.0, *, iOS 14, *)
@@ -21,22 +21,19 @@ public struct CardView<Content: View>: View {
     @Environment(\.presentationMode) var presentationMode
 
     let title: String
+    let subtitle: String?
     let content: Content
-    let blurStyle: UIBlurEffect.Style
 
-    public init(title: String, blurStyle: UIBlurEffect.Style = .prominent, @ViewBuilder content: () -> Content) {
+    public init(title: String, subtitle: String? = nil, @ViewBuilder content: () -> Content) {
         self.title = title
+        self.subtitle = subtitle
         self.content = content()
-        self.blurStyle = blurStyle
     }
 
     var closeButton: some View {
-        Image(systemName: "xmark")
-            .font(.system(size: 16, weight: .bold))
-            .foregroundColor(.white)
-            .padding(.all, 5)
-            .background(Color.black.opacity(0.6))
-            .clipShape(Circle())
+        Image(systemName: "xmark.circle.fill")
+            .foregroundColor(.gray)
+            .font(.system(size: 26))
             .accessibility(label: Text("Close"))
             .accessibility(hint: Text("Tap to close the screen"))
             .accessibility(addTraits: .isButton)
@@ -44,39 +41,44 @@ public struct CardView<Content: View>: View {
     }
 
     public var body: some View {
-        VStack {
-            VStack {
-                HStack {
-                    Text(.init(title))
-                        .font(.title)
-                        .lineLimit(1)
-                        .padding(.leading, 10)
+        NavigationView {
+            ScrollView {
+                VStack {
+                    // Custom Content
+                    self.content
+                        .padding(.top, 5)
 
-                    // To make it on the right
+                    // Move everything up
                     Spacer()
+                }
+            }.toolbar {
+                ToolbarItem(placement: .navigation) {
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text(.init(title))
+                            .font(.headline)
+                            .lineLimit(1)
 
-                    Button(action: {
+                        if let subtitle = subtitle {
+                            Text(.init(subtitle))
+                                .font(.subheadline)
+                                .lineLimit(1)
+                        }
+                    }
+                }
+
+                ToolbarItem(placement: .primaryAction) {
+                    Button {
                         presentationMode.wrappedValue.dismiss()
-                    }, label: { self.closeButton })
-                }.padding(5)
-
-                // Custom Content
-                self.content
-                    .padding(.top, 5)
-
-                // Move everything up
-                Spacer()
-
-                // To fix bottom padding on card.
-                Text("\u{3000}")
+                    } label: {
+                        self.closeButton
+                    }
+                }
             }
-        }.background(
-            Blur(style: blurStyle)
-        ).ignoresSafeArea(.all)
+        }
     }
 }
 
-@available(macOS 11.0, *, iOS 15, *)
+@available(macOS 11.0, *, iOS 14, *)
 struct CardViewPreviews: PreviewProvider {
     static var previews: some View {
         CardView(title: "Title") {
@@ -85,7 +87,7 @@ struct CardViewPreviews: PreviewProvider {
     }
 
     static var previews2: some View {
-        CardView(title: "Title", blurStyle: .regular) {
+        CardView(title: "Title", subtitle: "AAA") {
             Text("Hello")
         }
     }
