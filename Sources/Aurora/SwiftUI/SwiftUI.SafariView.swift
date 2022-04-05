@@ -31,7 +31,8 @@ public struct SafariView: UIViewControllerRepresentable {
     public func makeUIViewController(
         context: UIViewControllerRepresentableContext<SafariView>
     ) -> SFSafariViewController {
-        guard let url = URL(string: urlString.latinized) else {
+        guard let safeURL = urlString.latinized.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+              let url = URL(string: safeURL) else {
             fatalError("Invalid urlString: \(urlString)")
         }
 
@@ -45,7 +46,7 @@ public struct SafariView: UIViewControllerRepresentable {
     public func updateUIViewController(
         _ safariViewController: SFSafariViewController,
         context: UIViewControllerRepresentableContext<SafariView>
-        ) {
+    ) {
         return
     }
 }
