@@ -3,7 +3,9 @@ Aurora Framework for Swift
 
 [![Swift](https://github.com/AuroraFramework/Aurora.swift/workflows/Swift/badge.svg)](https://github.com/AuroraFramework/Aurora.swift/actions)
 
-[Documentation](https://auroraframework.github.io/Aurora.swift/) | [DEV Branch](https://github.com/wdg/Aurora.swift)
+[Documentation](https://auroraframework.github.io/Aurora.swift/)
+
+[Discord](https://discord.gg/RD7BbBy4mQ)
 
 ---
 
