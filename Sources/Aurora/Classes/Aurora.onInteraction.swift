@@ -118,7 +118,7 @@ public class AuroraUIControlHelper {
         self.closure = closure
         objc_setAssociatedObject(
             attachTo,
-            "[\(arc4random())]",
+            "[\(Int.random(in: 10000..<100000))]",
             self,
             .OBJC_ASSOCIATION_RETAIN
         )
