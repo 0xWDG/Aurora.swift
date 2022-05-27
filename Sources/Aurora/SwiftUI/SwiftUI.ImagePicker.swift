@@ -5,8 +5,9 @@
 //  Created by Wesley de Groot on 27/05/2022.
 //
 
-#if canImport(SwiftUI)
+#if canImport(SwiftUI) && canImport(UIKit)
 import SwiftUI
+import UIKit
 
 struct ImagePicker: UIViewControllerRepresentable {
     @Binding var isShown: Bool
