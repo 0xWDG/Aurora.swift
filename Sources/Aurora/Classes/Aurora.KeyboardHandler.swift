@@ -63,8 +63,8 @@ public class AuroraKeyboardHandler {
                         forViewController.view.frame.origin.y -= (
                             // Keyboard height
                             keyboardSize.height
-                            // - Safe area insets (bottom)
-                            - forViewController.view.safeAreaInsets.bottom
+//                            // + Safe area insets (bottom)
+//                            + forViewController.view.safeAreaInsets.bottom
                         )
 
                         // Ask to renew the layout (if needed)
@@ -100,8 +100,8 @@ public class AuroraKeyboardHandler {
                         forViewController.view.frame.origin.y += (
                             // Keyboard height
                             keyboardSize.height
-                            // - Safe area insets (bottom)
-                            + forViewController.view.safeAreaInsets.bottom
+//                            // - Safe area insets (bottom)
+//                            - forViewController.view.safeAreaInsets.bottom
                         )
 
                         // Ask to renew the layout (if needed)
