@@ -16,14 +16,17 @@ extension View {
     ///     })
     ///
     /// - Returns: The same view but calling the block asynchronously when is reloaded
-    @inlinable func onReload(perform: @escaping () -> Void) -> some View {
+    @inlinable public func onReload(perform: @escaping () -> Void) -> some View {
         DispatchQueue.main.async {
             perform()
         }
         return self
     }
 
-    @ViewBuilder func hidden(_ hidden: Bool) -> some View {
+    /// Hide a view
+    /// - Parameter hidden: hidden
+    /// - Returns: some View
+    @ViewBuilder public func hidden(_ hidden: Bool) -> some View {
         switch hidden {
         case true: self.hidden()
         case false: self
@@ -44,6 +47,16 @@ extension View {
     /// - Returns: The same view this was called, chainable.
     public func debug(_ closure: () -> Void) -> Self {
         closure()
+        return self
+    }
+
+    /// Print message
+    /// - Parameter value: message to print
+    /// - Returns: self
+    public func log(_ value: Any) -> some View {
+#if DEBUG
+        print(value)
+#endif
         return self
     }
 }
@@ -85,9 +98,10 @@ public extension View {
         }
     }
 
-
-    @inlinable
-    func then(_ body: (inout Self) -> Void) -> Self {
+    /// Then
+    /// - Parameter body: Run after
+    /// - Returns: Self
+    @inlinable func then(_ body: (inout Self) -> Void) -> Self {
         var result = self
         body(&result)
         return result
@@ -109,28 +123,34 @@ public extension View {
 
 #if canImport(UIKit)
 public extension View {
+    /// /// View (did) apear
+    /// - Parameter action: action to run
+    /// - Returns: some View
     func didAppear(perform action: (() -> Void)? = nil ) -> some View {
         self.overlay(AppearViewController(action: action).disabled(true))
     }
 
+    /// View (will) dissapear
+    /// - Parameter action: action to run
+    /// - Returns: some View
     func didDisapear(perform action: (() -> Void)? = nil ) -> some View {
         self.overlay(DisappearViewController(action: action).disabled(true))
     }
 }
 
-fileprivate struct AppearViewController: UIViewControllerRepresentable {
+private struct AppearViewController: UIViewControllerRepresentable {
     let action: (() -> Void)?
 
     func makeUIViewController(context: Context) -> Controller {
-        let vc = Controller()
-        vc.action = action
-        return vc
+        let vController = Controller()
+        vController.action = action
+        return vController
     }
 
     func updateUIViewController(_ controller: Controller, context: Context) {}
 
     class Controller: UIViewController {
-        var action: (() -> Void)? = nil
+        var action: (() -> Void)?
 
         override func viewDidLoad() {
             view.addSubview(UILabel())
@@ -142,19 +162,19 @@ fileprivate struct AppearViewController: UIViewControllerRepresentable {
     }
 }
 
-fileprivate struct DisappearViewController: UIViewControllerRepresentable {
+private struct DisappearViewController: UIViewControllerRepresentable {
     let action: (() -> Void)?
 
     func makeUIViewController(context: Context) -> Controller {
-        let vc = Controller()
-        vc.action = action
-        return vc
+        let vController = Controller()
+        vController.action = action
+        return vController
     }
 
     func updateUIViewController(_ controller: Controller, context: Context) {}
 
     class Controller: UIViewController {
-        var action: (() -> Void)? = nil
+        var action: (() -> Void)?
 
         override func viewDidLoad() {
             view.addSubview(UILabel())

@@ -10,10 +10,14 @@ import Foundation
 import CoreLocation
 
 public extension CLLocation {
+    /// Get coordinate by location
+    /// - Parameters:
+    ///   - name: <#name description#>
+    ///   - completion: <#completion description#>
     static func getCoordinateByLocation(
         place name: String,
         completion: @escaping (CLLocation?, Error?) -> Void
-    ) -> Void {
+    ) {
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(name) { placemarks, error in
 
@@ -38,10 +42,13 @@ public extension CLLocation {
 }
 
 public extension CLLocation {
+    /// Get location by coordinate
+    /// - Parameters:
+    ///   - location: <#location description#>
+    ///   - completion: <#completion description#>
     static func getLocationByCoordinate(
         location: CLLocation,
-        completion: @escaping (CLPlacemark?, Error?) -> Void )
-    -> Void {
+        completion: @escaping (CLPlacemark?, Error?) -> Void ) {
         let geocoder = CLGeocoder()
         geocoder.reverseGeocodeLocation(location) { placemark, error in
 

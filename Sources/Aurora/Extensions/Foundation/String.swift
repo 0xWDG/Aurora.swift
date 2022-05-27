@@ -65,7 +65,7 @@ public extension String {
 
         let end = index(
             startIndex,
-            offsetBy: (self.length <= bounds.upperBound ? bounds.upperBound : self.length) - 1
+            offsetBy: (self.count <= bounds.upperBound ? bounds.upperBound : self.count) - 1
         )
 
         // If self is empty, then do nothing with it.
@@ -192,7 +192,7 @@ public extension String {
         let firstMatch = dataDetector?.firstMatch(
             in: self,
             options: NSRegularExpression.MatchingOptions.reportCompletion,
-            range: NSRange(location: 0, length: length)
+            range: NSRange(location: 0, length: count)
         )
 
         return (firstMatch?.range.location != NSNotFound && firstMatch?.url?.scheme == "mailto")
@@ -411,6 +411,21 @@ public extension String {
         )
     }
 
+    /// Checks if string is empty or consists only of whitespace and newline characters
+    var isBlank: Bool {
+        let trimmed = trimmingCharacters(in: .whitespacesAndNewlines)
+        return trimmed.isEmpty
+    }
+
+    /// split
+    /// - Parameter separator: seporator
+    /// - Returns: Splitted string
+    func split(_ separator: Character) -> [String] {
+        return self.split {
+            $0 == separator
+        }.map(String.init)
+    }
+
     /// Replace (Case Insensitive)
     ///
     /// - Parameter target: String
@@ -481,7 +496,6 @@ public extension String {
         return split("\n")
     }
 
-
     /// Convert to `Float`
     /// - Returns: Float
     func toFloat() -> Float? {
@@ -513,16 +527,27 @@ public extension String {
         return nil
     }
 
-    /// Convert to bool...
-    ///
-    /// - Returns: Bool
-    func toBool() -> Bool? {
-        let trimmed = self.trimmed.lowercased
-        if trimmed == "true" || trimmed == "false" {
-            return (trimmed as NSString).boolValue
-        }
-        return nil
+    /// Lowercased and no spaces
+    var lowerAndNoSpaces: String {
+        return self.lowercased().replace(" ", withString: "")
     }
+
+#if canImport(Foundation)
+    /// Check if string is valid email format.
+    ///
+    /// - Note: Note that this property does not validate the email address against an email server.
+    /// It merely attempts to determine whether its format is suitable for an email address.
+    ///
+    ///        "john@doe.com".isValidEmail -> true
+    ///
+    var isValidEmail: Bool {
+        // http://emailregex.com/
+        // swiftlint:disable:next line_length
+        let regex = "^(?:[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[\\p{L}0-9](?:[a-z0-9-]*[\\p{L}0-9])?\\.)+[\\p{L}0-9](?:[\\p{L}0-9-]*[\\p{L}0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[\\p{L}0-9-]*[\\p{L}0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+
+        return range(of: regex, options: .regularExpression, range: nil, locale: nil) != nil
+    }
+#endif
 
     /// Convert to Date
     /// - Parameter format: Dateformat
@@ -561,7 +586,7 @@ public extension String {
     /// - Parameter Char: the character index
     /// - Returns: charcode (int)
     func charCodeAt(_ character: Int) -> Int {
-        if self.length > character {
+        if self.count > character {
             let character = String(self.characterAtIndex(character))
             return Int(
                 String(
@@ -1062,6 +1087,16 @@ public extension String {
     #endif
 
     #if canImport(Foundation)
+    /// First character of string (if applicable).
+    ///
+    ///        "Hello".firstCharacterAsString -> Optional("H")
+    ///        "".firstCharacterAsString -> nil
+    ///
+    var firstCharacterAsString: String? {
+        guard let first = first else { return nil }
+        return String(first)
+    }
+
     /// Transforms the string into a slug string.
     ///
     ///        "Swift is amazing".toSlug() -> "swift-is-amazing"
