@@ -12,7 +12,7 @@
 //
 // Licence: MIT
 
-#if canImport(swiftUI) && canImport(SafariServices) && canImport(UIKit)
+#if canImport(SwiftUI) && canImport(SafariServices) && canImport(UIKit)
 import SwiftUI
 import SafariServices
 import UIKit
