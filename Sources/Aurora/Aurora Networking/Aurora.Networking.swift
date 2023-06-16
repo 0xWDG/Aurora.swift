@@ -322,9 +322,6 @@ extension Aurora {
             completionHandler(.success(sitedata))
         }.resume()
 
-        // Invalidate session, after saving tasks
-        session?.finishTasksAndInvalidate()
-
         // Release the session from memory
         session = nil
     }
