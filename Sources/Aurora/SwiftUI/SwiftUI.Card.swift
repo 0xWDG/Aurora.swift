@@ -72,6 +72,7 @@ public struct CardView<Content: View>: View {
                     } label: {
                         self.closeButton
                     }
+                    .keyboardShortcut(.cancelAction)
                 }
             }
         }
