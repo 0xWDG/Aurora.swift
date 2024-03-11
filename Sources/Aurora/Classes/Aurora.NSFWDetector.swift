@@ -143,7 +143,7 @@ public class NSFWDetector {
         /// The request that handles the detection completion
         let request = VNCoreMLRequest(
             model: self.model,
-            completionHandler: { (request, error) in
+            completionHandler: { (request, _) in
                 guard let observations = request.results as? [VNClassificationObservation],
                       let observation = observations.first(where: { $0.identifier == "NSFW" }) else {
                           completion(

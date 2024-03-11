@@ -18,12 +18,6 @@ import Foundation
 struct AuroraError {
     /// The error message
     let message: String
-
-    /// Create an error message
-    /// - Parameter message: the error description
-    init(message: String) {
-        self.message = message
-    }
 }
 
 extension AuroraError: LocalizedError {

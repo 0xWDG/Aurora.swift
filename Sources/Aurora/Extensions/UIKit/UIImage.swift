@@ -211,9 +211,9 @@ public extension UIImage {
     var grayscale: UIImage? {
         guard let ciImage = CIImage(image: self) else { return nil }
         #if swift(>=4.0)
-        let grayscale = ciImage.applyingFilter("CIColorControls", parameters: [kCIInputSaturationKey : 0.0])
+        let grayscale = ciImage.applyingFilter("CIColorControls", parameters: [kCIInputSaturationKey: 0.0])
         #else
-        let grayscale = ciImage.applyingFilter("CIColorControls", withInputParameters: [kCIInputSaturationKey : 0.0])
+        let grayscale = ciImage.applyingFilter("CIColorControls", withInputParameters: [kCIInputSaturationKey: 0.0])
         #endif
 
         return UIImage(ciImage: grayscale)

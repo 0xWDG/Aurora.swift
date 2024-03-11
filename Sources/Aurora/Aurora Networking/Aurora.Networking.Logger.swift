@@ -121,21 +121,6 @@ public final class AuroraNetworkLogger: URLProtocol, URLSessionDelegate {
         return request
     }
 
-    /// requestIsCacheEquivalent:toRequest:
-    ///
-    /// discussion Requests are considered euqivalent for cache purposes\
-    /// if and only if they would be handled by the same protocol AND that
-    /// protocol declares them equivalent after performing
-    /// implementation-specific checks.
-    ///
-    /// - Parameters:
-    ///   - testA: The request to compare with bRequest.
-    ///   - testB: The request to compare with aRequest.
-    /// - Returns: true if aRequest and bRequest are equivalent for cache purposes, false otherwise.
-    override public class func requestIsCacheEquivalent(_ testA: URLRequest, to testB: URLRequest) -> Bool {
-        return super.requestIsCacheEquivalent(testA, to: testB)
-    }
-
     /// Starts protocol-specific loading of the request.
     ///
     /// When this method is called, the subclass implementation should start loading the request, \
