@@ -12,7 +12,7 @@
 //
 // Licence: MIT
 
-#if canImport(SwiftUI) && os(iOS)
+#if canImport(SwiftUI)
 import SwiftUI
 
 /// A view wrapper for
@@ -30,11 +30,15 @@ public extension View {
     ///
     /// - Returns: ViewModifier
     @ViewBuilder func onLandscape<Transform: View>(transform: (Self) -> Transform) -> some View {
+        #if !os(visionOS)
         if UIScreen.main.traitCollection.verticalSizeClass == .compact {
             transform(self)
         } else {
             self
         }
+        #else
+        self
+        #endif
     }
 
     /// Perform an action only if the device is portrait mode
@@ -50,11 +54,15 @@ public extension View {
     ///
     /// - Returns: ViewModifier
     @ViewBuilder func onPortrait<Transform: View>(transform: (Self) -> Transform) -> some View {
+        #if !os(visionOS)
         if UIScreen.main.traitCollection.verticalSizeClass == .regular {
             transform(self)
         } else {
             self
         }
+        #else
+        self
+        #endif
     }
 }
 

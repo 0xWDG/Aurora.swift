@@ -20,7 +20,7 @@ import Foundation
 // Better handling of the onComplete.
 
 // swiftlint:disable file_length
-#if canImport(UIKit) && !os(watchOS)
+#if canImport(UIKit) && !os(watchOS) &&  !os(visionOS)
 import UIKit
 
 /// Protocol that represents splash animatable functionality

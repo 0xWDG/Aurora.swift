@@ -311,8 +311,12 @@ public extension UIView {
     /// - Parameter pointValue: point
     /// - Returns: CGFloat
     fileprivate func _pixelIntegral(_ pointValue: CGFloat) -> CGFloat {
+        #if !os(visionOS)
         let scale = UIScreen.main.scale
         return (round(pointValue * scale) / scale)
+        #else
+        return 0
+        #endif
     }
 }
 #endif

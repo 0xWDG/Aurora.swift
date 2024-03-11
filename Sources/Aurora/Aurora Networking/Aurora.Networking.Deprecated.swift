@@ -19,8 +19,9 @@ extension Aurora {
     /// - Parameter fromURL: URL
     /// - Returns: Data
     @available(*, deprecated)
-    func networkFetch(fromURL: URL) -> Data {
-        #warning("You've called networkFetch(fromURL: URL), this is deprecated.")
+    func networkFetch(fromURL: URL, file: String = #file, line: Int = #line) -> Data {
+        print("WARNING IN \(file):\(line).")
+        print("You've called networkFetch(fromURL: URL), this is deprecated.")
         var waiting = true
         var returnData: Data = Data.init()
 

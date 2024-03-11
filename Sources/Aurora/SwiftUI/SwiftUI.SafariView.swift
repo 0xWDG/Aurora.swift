@@ -24,6 +24,14 @@ public struct SafariView: UIViewControllerRepresentable {
 
     @Binding public var urlString: String
 
+    public init(url: Binding<URL>) {
+        _urlString = Binding(get: {
+            return url.wrappedValue.absoluteString
+        }, set: { _ in
+            // Ignore
+        })
+    }
+
     public init(url: Binding<String>) {
         _urlString = url
     }
@@ -37,8 +45,10 @@ public struct SafariView: UIViewControllerRepresentable {
         }
 
         let safariViewController = SFSafariViewController(url: url)
+        #if !os(visionOS)
         safariViewController.preferredControlTintColor = UIColor(Color.accentColor)
         safariViewController.dismissButtonStyle = .close
+        #endif
 
         return safariViewController
     }

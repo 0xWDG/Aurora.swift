@@ -227,7 +227,7 @@ public extension String {
         return try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [Any]
     }
 
-    #if canImport(UIKit)
+    #if canImport(UIKit) && !os(visionOS)
     /// Messagebox
     /// - Parameters:
     ///   - viewController: onViewcontroller?
@@ -928,6 +928,7 @@ public extension String {
     ///
     var urlEncoded: String {
         return addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        // swiftlint:disable:previous force_unwrapping
     }
     #endif
 

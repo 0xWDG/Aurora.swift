@@ -79,7 +79,7 @@ class AuroraURLSessionPinningDelegate: NSObject, URLSessionDelegate {
         #endif
     }
 
-    func urlSession(
+    func urlSession( // swiftlint:disable:this function_body_length
         _ session: URLSession,
         didReceive challenge: URLAuthenticationChallenge,
         completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Swift.Void

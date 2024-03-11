@@ -14,7 +14,7 @@
 
 import Foundation
 
-#if canImport(UIKit) && !os(watchOS)
+#if canImport(UIKit) && !os(watchOS) && !os(visionOS)
 import UIKit
 
 public extension UITextField {
@@ -24,7 +24,7 @@ public extension UITextField {
         get {
             return self.doneAccessory
         }
-        // swiftlint:disable:next unused_setter_value
+
         set (hasDone) {
             if hasDone {
                 addDoneButtonOnKeyboard()

@@ -12,7 +12,7 @@
 //
 // Licence: MIT
 
-#if canImport(QuartzCore) && canImport(UIKit)
+#if canImport(QuartzCore) && canImport(UIKit) && !os(visionOS)
 
 import UIKit
 import QuartzCore
@@ -28,7 +28,6 @@ import QuartzCore
 ///       onTap: nil
 ///     )
 @available(iOS 13.0, *)
-// swiftlint:disable:next type_body_length
 public final class AuroraToastView: UIView {
     /// Toast bounds
     override public var bounds: CGRect {
@@ -225,8 +224,7 @@ public final class AuroraToastView: UIView {
     }
 
     /// Setup constraints
-    // swiftlint:disable:next function_body_length
-    private func setupConstraints() {
+    private func setupConstraints() { // swiftlint:disable:this function_body_length
         translatesAutoresizingMaskIntoConstraints = false
 
         let heightConstraint = NSLayoutConstraint(
