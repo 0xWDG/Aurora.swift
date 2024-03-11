@@ -24,7 +24,7 @@ public extension UITextField {
         get {
             return self.doneAccessory
         }
-        // swiftlint:disable:next unused_setter_value
+
         set (hasDone) {
             if hasDone {
                 addDoneButtonOnKeyboard()

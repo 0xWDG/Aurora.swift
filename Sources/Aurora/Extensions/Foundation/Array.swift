@@ -82,10 +82,8 @@ public extension Array where Element: Equatable {
     func difference(with values: [Element]...) -> [Element] {
         var result = [Element]()
         elements: for element in self {
-            for value in values {
-                if value.contains(element) {
-                    continue elements
-                }
+            for value in values where value.contains(element) {
+                continue elements
             }
             result.append(element)
         }
@@ -120,12 +118,11 @@ public extension Array where Element: Equatable {
     func union(values: [Element]...) -> Array {
         var result = self
         for array in values {
-            for value in array {
-                if !result.contains(value) {
-                    result.append(value)
-                }
+            for value in array where !result.contains(value) {
+                result.append(value)
             }
         }
+
         return result
     }
 

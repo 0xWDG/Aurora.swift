@@ -928,6 +928,7 @@ public extension String {
     ///
     var urlEncoded: String {
         return addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        // swiftlint:disable:previous force_unwrapping
     }
     #endif
 
