@@ -38,7 +38,7 @@ public enum UnitTest {
         ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
     }
 
-    #if !os(watchOS)
+    #if !os(watchOS) && !os(visionOS)
     /// Count time for action
     /// - Parameter closure: item to be performed
     /// - Returns: execution time in Float

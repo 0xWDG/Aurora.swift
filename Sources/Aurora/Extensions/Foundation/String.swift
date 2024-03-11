@@ -227,7 +227,7 @@ public extension String {
         return try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [Any]
     }
 
-    #if canImport(UIKit)
+    #if canImport(UIKit) && !os(visionOS)
     /// Messagebox
     /// - Parameters:
     ///   - viewController: onViewcontroller?

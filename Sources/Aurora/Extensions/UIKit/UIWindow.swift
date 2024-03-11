@@ -14,7 +14,7 @@
 
 import Foundation
 
-#if canImport(UIKit) && !os(watchOS)
+#if canImport(UIKit) && !os(watchOS) && !os(visionOS)
 import UIKit
 public extension UIWindow {
     /// Keywindow

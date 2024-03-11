@@ -38,7 +38,7 @@ public extension UIApplication {
         return UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft
     }
 
-    #if !os(watchOS)
+    #if !os(watchOS) && !os(visionOS)
     /// Get the top most (key) window
     var key: UIWindow? {
         if #available(iOS 13, *) {

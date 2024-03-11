@@ -12,7 +12,7 @@
 //
 // Licence: MIT
 
-#if canImport(QuartzCore) && canImport(UIKit)
+#if canImport(QuartzCore) && canImport(UIKit) && !os(visionOS)
 
 import UIKit
 import QuartzCore

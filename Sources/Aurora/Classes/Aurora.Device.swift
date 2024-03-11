@@ -83,7 +83,7 @@ public class AuroraDevice {
         return false
     }
 
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(visionOS)
     /// Are we running on Carplay?
     var isCarplay: Bool {
         return UIScreen.screens.filter {
